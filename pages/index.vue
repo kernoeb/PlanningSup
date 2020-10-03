@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-sheet
+      v-if="!$fetchState.pending"
       class="d-flex"
       height="54"
       tile

@@ -62,6 +62,7 @@ export default {
     }
   },
   created () {
+    this.time = this.$moment().format('HH:mm:ss')
     setInterval(() => {
       this.time = this.$moment().format('HH:mm:ss')
     }, 1000)
