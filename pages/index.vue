@@ -52,7 +52,7 @@
         :type="type"
         :weekdays="weekday"
         event-overlap-mode="stack"
-        first-time="08:00"
+        first-time="07:00"
         locale="fr"
         show-month-on-first
         show-week
