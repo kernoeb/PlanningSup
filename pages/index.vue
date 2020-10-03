@@ -138,7 +138,7 @@ export default {
     },
     getColor (n, l) {
       if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
-        return 'red'
+        return '#fe463a'
       } else if (n.includes('TD') || l.includes('V-B')) {
         return 'green'
       } else if (n.includes('TP')) {
