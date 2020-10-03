@@ -155,11 +155,7 @@ export default {
 </script>
 
 <style>
-.theme--dark.v-calendar-events .v-event-timed {
-  border: none!important;
-}
-
-.theme--dark.v-calendar-daily .v-calendar-daily__day-interval {
-  border-top: #505050 1px solid
+.v-calendar-daily__day-interval {
+  border-top: #505050 1px solid!important;
 }
 </style>
