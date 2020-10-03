@@ -1,5 +1,10 @@
 <template>
   <div v-show="mounted">
+    <div style="width: 150px" class="ma-4">
+      <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
+      <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
+      <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
+    </div>
     <v-sheet
       class="d-flex"
       height="54"
@@ -12,11 +17,6 @@
       >
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
-      <div style="width: 150px" class="ma-4">
-        <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
-        <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
-        <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
-      </div>
       <v-select
         v-model="type"
         :items="types"
@@ -153,3 +153,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.theme--dark.v-calendar-events .v-event-timed {
+  border: none!important;
+}
+
+.theme--dark.v-calendar-daily .v-calendar-daily__day-interval {
+  border-top: #505050 1px solid
+}
+</style>
