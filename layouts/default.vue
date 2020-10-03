@@ -66,10 +66,16 @@ export default {
     this.mounted = true
   },
   created () {
-    this.time = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
+    this.time = this.getTime()
     setInterval(() => {
-      this.time = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
+      this.time = this.getTime()
     }, 1000)
+  },
+  methods: {
+    getTime () {
+      const tmp = new Date()
+      return (tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes() + ':' + (tmp.getSeconds() < 10 ? '0' : '') + tmp.getSeconds()
+    }
   }
 }
 </script>

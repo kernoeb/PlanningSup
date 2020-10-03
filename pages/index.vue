@@ -1,6 +1,6 @@
 <template>
   <div v-show="mounted">
-    <div style="width: 150px" class="ma-4">
+    <div style="width: 150px" class="ma-4 title_month">
       <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
@@ -162,5 +162,20 @@ export default {
 .v-btn--fab.v-size--default {
   height: 25px!important;
   width: 25px!important;
+}
+
+.title_month:first-letter {
+  text-transform: capitalize
+}
+
+.theme--dark.v-calendar-daily {
+  border-top: none!important;
+  border-left: none!important;
+  border-right: none!important;
+  border-bottom: none!important;
+}
+
+.v-calendar-daily__scroll-area {
+  overflow: hidden!important;
 }
 </style>
