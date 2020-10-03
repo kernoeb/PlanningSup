@@ -27,14 +27,13 @@
         outlined
         style="width: 100px"
       />
-      <v-btn
-        outlined
+      <v-icon
         class="ma-2"
-        color="grey darken-2"
+        color="#fafafa"
         @click="setToday"
       >
-        TODAY
-      </v-btn>
+        mdi-calendar-today
+      </v-icon>
       <v-spacer />
       <v-btn
         class="ma-2"
