@@ -48,7 +48,8 @@
 export default {
   data () {
     return {
-      time: '00:00',
+      mounted: false,
+      time: this.$moment().format('HH:mm:ss'),
       drawer: false,
       fixed: false,
       items: [
@@ -60,6 +61,9 @@ export default {
       ],
       title: 'Planning IUT'
     }
+  },
+  mounted () {
+    this.mounted = true
   },
   created () {
     this.time = this.$moment().format('HH:mm:ss')
