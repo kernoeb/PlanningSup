@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-sheet
-      v-if="!$fetchState.pending && mounted"
       class="d-flex"
       height="54"
       tile
@@ -36,7 +35,7 @@
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet v-if="events.length" height="700">
+    <v-sheet v-if="events.length && !$fetchState.pending" height="700">
       <v-calendar
         ref="calendar"
         v-model="value"
