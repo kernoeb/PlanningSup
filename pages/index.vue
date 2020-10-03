@@ -99,6 +99,16 @@ export default {
     value: '',
     events: []
   }),
+  beforeDestroy () {
+    if (typeof window === 'undefined') { return }
+
+    window.removeEventListener('resize', this.onResize, { passive: true })
+  },
+  mounted () {
+    this.onResize()
+
+    window.addEventListener('resize', this.onResize, { passive: true })
+  },
   activated () {
     // Call fetch again if last fetch more than 30 sec ago
     if (this.$fetchState.timestamp <= Date.now() - 30000) {
@@ -106,6 +116,13 @@ export default {
     }
   },
   methods: {
+    onResize () {
+      if (window.innerWidth < 600) {
+        this.type = 'day'
+      } else {
+        this.type = 'week'
+      }
+    },
     getColor (n, l) {
       if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
         return 'red'
