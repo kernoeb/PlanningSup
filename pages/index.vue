@@ -27,6 +27,7 @@
         outlined
         style="width: 100px"
       />
+      <v-spacer />
       <v-icon
         class="ma-2"
         color="#fafafa"
@@ -34,7 +35,6 @@
       >
         mdi-calendar-today
       </v-icon>
-      <v-spacer />
       <v-btn
         class="ma-2"
         icon
@@ -160,7 +160,7 @@ export default {
 }
 
 .v-btn--fab.v-size--default {
-  height: 20px!important;
-  width: 20px!important;
+  height: 25px!important;
+  width: 25px!important;
 }
 </style>
