@@ -49,7 +49,7 @@ export default {
   data () {
     return {
       mounted: false,
-      time: this.$moment().format('HH:mm:ss'),
+      time: '',
       drawer: false,
       fixed: false,
       items: [
@@ -66,9 +66,9 @@ export default {
     this.mounted = true
   },
   created () {
-    this.time = this.$moment().format('HH:mm:ss')
+    this.time = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
     setInterval(() => {
-      this.time = this.$moment().format('HH:mm:ss')
+      this.time = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()
     }, 1000)
   }
 }
