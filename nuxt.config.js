@@ -4,7 +4,7 @@ import fr from 'vuetify/es5/locale/fr'
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - PlanningIUT',
+    titleTemplate: 'PlanningIUT',
     title: 'PlanningIUT',
     meta: [
       { charset: 'utf-8' },
@@ -33,12 +33,9 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    // https://github.com/nuxt-community/moment-module
     '@nuxtjs/moment'
   ],
-
-  moment: {
-    defaultLocale: 'fr'
-  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
@@ -47,6 +44,11 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
+
+  moment: {
+    defaultLocale: 'fr',
+    locales: ['fr']
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},

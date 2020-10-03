@@ -1,10 +1,7 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
+    <!-- <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
       app
     >
       <v-list>
@@ -23,15 +20,16 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
+    </v-navigation-drawer>-->
+    <v-system-bar
+      height="30"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
-    </v-app-bar>
+      <v-icon>mdi-calendar</v-icon>
+      Planning IUT
+      <v-spacer />
+      <v-icon>mdi-school</v-icon>
+      <span>{{ time }}</span>
+    </v-system-bar>
     <v-main>
       <v-container>
         <nuxt />
@@ -50,7 +48,7 @@
 export default {
   data () {
     return {
-      clipped: false,
+      time: '00:00',
       drawer: false,
       fixed: false,
       items: [
@@ -60,11 +58,13 @@ export default {
           to: '/'
         }
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'Planning IUT'
     }
+  },
+  created () {
+    setInterval(() => {
+      this.time = this.$moment().format('HH:mm:ss')
+    }, 1000)
   }
 }
 </script>
