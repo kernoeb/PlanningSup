@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="mounted">
     <v-sheet
       class="d-flex"
       height="54"
@@ -26,6 +26,14 @@
         outlined
         style="width: 100px"
       />
+      <v-btn
+        outlined
+        class="ma-2"
+        color="grey darken-2"
+        @click="setToday"
+      >
+        TODAY
+      </v-btn>
       <v-spacer />
       <v-btn
         class="ma-2"
@@ -118,6 +126,9 @@ export default {
     }
   },
   methods: {
+    setToday () {
+      this.value = ''
+    },
     onResize () {
       if (window.innerWidth < 600) {
         this.type = 'day'
