@@ -171,8 +171,11 @@ export default {
 .theme--dark.v-calendar-daily {
   border-top: none!important;
   border-left: none!important;
-  border-right: none!important;
   border-bottom: none!important;
+}
+
+.v-calendar-daily__day-container .v-calendar-daily__day:last-child {
+  border-right: none!important;
 }
 
 .v-calendar-daily__scroll-area {
