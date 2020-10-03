@@ -1,72 +1,74 @@
 <template>
-  <div v-show="mounted">
-    <v-sheet
-      class="d-flex"
-      height="54"
-      tile
-    >
-      <v-btn
-        class="ma-2"
-        icon
-        @click="$refs.calendar.prev()"
+  <transition name="out-in">
+    <div v-show="mounted">
+      <v-sheet
+        class="d-flex"
+        height="54"
+        tile
       >
-        <v-icon>mdi-chevron-left</v-icon>
-      </v-btn>
-      <div style="width: 150px" class="ma-3">
-        <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
-        <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
-      </div>
-      <v-select
-        v-model="type"
-        :items="types"
-        class="ma-2"
-        dense
-        hide-details
-        label="type"
-        outlined
-        style="width: 100px"
-      />
-      <v-btn
-        outlined
-        class="ma-2"
-        color="grey darken-2"
-        @click="setToday"
-      >
-        TODAY
-      </v-btn>
-      <v-spacer />
-      <v-btn
-        class="ma-2"
-        icon
-        @click="$refs.calendar.next()"
-      >
-        <v-icon>mdi-chevron-right</v-icon>
-      </v-btn>
-    </v-sheet>
-    <v-sheet v-if="events.length && !$fetchState.pending" height="700">
-      <v-calendar
-        ref="calendar"
-        v-model="value"
-        :event-overlap-threshold="30"
-        :events="events"
-        :type="type"
-        :weekdays="weekday"
-        event-overlap-mode="stack"
-        first-time="08:00"
-        locale="fr"
-        show-month-on-first
-        show-week
-      >
-        <template v-slot:event="{event}">
-          <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
-            <div><strong>{{ event.name }}</strong></div>
-            <div>{{ event.location ? event.location + ' | ' : '' }}{{ cleanDescription(event.description) }}</div>
-            <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('hh:mm') }}</div>
-          </div>
-        </template>
-      </v-calendar>
-    </v-sheet>
-  </div>
+        <v-btn
+          class="ma-2"
+          icon
+          @click="$refs.calendar.prev()"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+        <div style="width: 150px" class="ma-3">
+          <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
+          <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
+        </div>
+        <v-select
+          v-model="type"
+          :items="types"
+          class="ma-2"
+          dense
+          hide-details
+          label="type"
+          outlined
+          style="width: 100px"
+        />
+        <v-btn
+          outlined
+          class="ma-2"
+          color="grey darken-2"
+          @click="setToday"
+        >
+          TODAY
+        </v-btn>
+        <v-spacer />
+        <v-btn
+          class="ma-2"
+          icon
+          @click="$refs.calendar.next()"
+        >
+          <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </v-sheet>
+      <v-sheet v-if="events.length && !$fetchState.pending" height="700">
+        <v-calendar
+          ref="calendar"
+          v-model="value"
+          :event-overlap-threshold="30"
+          :events="events"
+          :type="type"
+          :weekdays="weekday"
+          event-overlap-mode="stack"
+          first-time="08:00"
+          locale="fr"
+          show-month-on-first
+          show-week
+        >
+          <template v-slot:event="{event}">
+            <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
+              <div><strong>{{ event.name }}</strong></div>
+              <div>{{ event.location ? event.location + ' | ' : '' }}{{ cleanDescription(event.description) }}</div>
+              <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('hh:mm') }}</div>
+            </div>
+          </template>
+        </v-calendar>
+      </v-sheet>
+    </div>
+  </transition>
 </template>
 
 <script>
