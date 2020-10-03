@@ -158,4 +158,9 @@ export default {
 .v-calendar-daily__day-interval {
   border-top: #505050 1px solid!important;
 }
+
+.v-btn--fab.v-size--default {
+  height: 20px!important;
+  width: 20px!important;
+}
 </style>
