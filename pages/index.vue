@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-sheet
-      v-if="!$fetchState.pending"
+      v-if="!$fetchState.pending && mounted"
       class="d-flex"
       height="54"
       tile
@@ -98,7 +98,8 @@ export default {
     }],
     weekday: [1, 2, 3, 4, 5],
     value: '',
-    events: []
+    events: [],
+    mounted: false
   }),
   beforeDestroy () {
     if (typeof window === 'undefined') { return }
@@ -106,6 +107,7 @@ export default {
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   mounted () {
+    this.mounted = true
     this.onResize()
 
     window.addEventListener('resize', this.onResize, { passive: true })
