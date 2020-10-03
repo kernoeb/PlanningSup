@@ -12,8 +12,9 @@
       >
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
-      <div style="width: 150px" class="ma-3">
+      <div style="width: 150px" class="ma-4">
         <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
+        <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
         <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
       </div>
       <v-select
