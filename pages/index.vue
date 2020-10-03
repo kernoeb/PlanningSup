@@ -61,7 +61,7 @@
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
             <div>{{ event.location ? event.location + ' | ' : '' }}{{ cleanDescription(event.description) }}</div>
-            <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('hh:mm') }}</div>
+            <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
           </div>
         </template>
       </v-calendar>
