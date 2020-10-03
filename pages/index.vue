@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mounted">
+  <div v-show="mounted">
     <v-sheet
       class="d-flex"
       height="54"
