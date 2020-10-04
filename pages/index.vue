@@ -187,7 +187,7 @@ export default {
       text: 'Jour',
       value: 'day'
     }],
-    weekday: [1, 2, 3, 4, 5],
+    weekday: [1, 2, 3, 4, 5, 6, 0],
     value: '',
     events: [],
     mounted: false
