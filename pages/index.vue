@@ -28,6 +28,73 @@
         style="width: 100px"
       />
       <v-spacer />
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            class="ma-2"
+            color="#fafafa"
+            v-bind="attrs"
+            v-on="on"
+          >
+            mdi-format-list-bulleted
+          </v-icon>
+        </template>
+        <v-card>
+          <v-card-title class="headline grey lighten-2">
+            Choisir un emploi du temps
+          </v-card-title>
+
+          <v-expansion-panels>
+            <v-expansion-panel
+              v-for="(url,i) in urls"
+              :key="`urls_${i}`"
+            >
+              <v-expansion-panel-header>
+                {{ url.title }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-expansion-panels>
+                  <v-expansion-panel
+                    v-for="(url2,j) in url.univ_edts"
+                    :key="`urls_2_${j}`"
+                  >
+                    <v-expansion-panel-header>
+                      {{ url2.title }}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <nuxt-link v-for="(url3, k) in url2.edts" :key="`urls_3_${k}`" :to="{name: 'index', query: {u: url.univ, n: url2.name, url3: url3.name}}">
+                        <v-list-item class="ml-3">
+                          <v-list-item-content>
+                            <v-list-item-title>
+                              {{ url3.title }}
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </nuxt-link>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+
+          <v-divider />
+
+          <v-card-actions>
+            <v-spacer />
+            <v-btn
+              color="primary"
+              text
+              @click="dialog = false"
+            >
+              I accept
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <v-icon
         class="ma-2"
         color="#fafafa"
@@ -71,10 +138,18 @@
 
 <script>
 import ical from 'cal-parser'
+import urls from '../static/url.json'
 
 export default {
   async fetch () {
-    const data = await this.$axios.$get('https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141cce681f91850c4ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861523ad5e42393de7942e6094ed65ada68fdc2973627c2eb073b336b55dc3e3bf3a48d3f4109b6629391')
+    let tmpUrl = urls[0].univ_edts[0].edts[0].url
+    if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
+      const univ = urls.filter(u => u.univ === this.$route.query.u)
+      const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
+      tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
+      console.log(tmpUrl)
+    }
+    const data = await this.$axios.$get(tmpUrl)
     const ics = ical.parseString(data)
 
     const events = []
@@ -92,6 +167,8 @@ export default {
     this.events = events
   },
   data: () => ({
+    urls,
+    dialog: false,
     type: 'week',
     types: [{
       text: 'Mois',
@@ -108,6 +185,9 @@ export default {
     events: [],
     mounted: false
   }),
+  watch: {
+    '$route.query': '$fetch'
+  },
   beforeDestroy () {
     if (typeof window === 'undefined') { return }
 

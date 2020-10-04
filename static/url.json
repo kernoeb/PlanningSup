@@ -1,0 +1,30 @@
+[
+  {
+    "univ": "iutvannes",
+    "title": "IUT de Vannes",
+    "univ_edts": [
+      {
+        "name": "lp",
+        "title": "Licence Pro",
+        "edts": [
+          {
+            "name": "dlis",
+            "title": "DLIS",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141cce681f91850c4ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861523ad5e42393de7942e6094ed65ada68fdc2973627c2eb073b336b55dc3e3bf3a48d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "name": "dutinfo2",
+        "title": "DUT INFO 2",
+        "edts": [
+          {
+            "name": "2a1",
+            "title": "2A1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002140684f27d200af967e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41fbcd12dfcc8a8c0e5c2973627c2eb073b3f439443c46021fd8d3f4109b6629391"
+          }
+        ]
+      }
+    ]
+  }
+]
