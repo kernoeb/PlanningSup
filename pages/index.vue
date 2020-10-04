@@ -289,8 +289,24 @@ export default {
   border-bottom: none!important;
 }
 
-.v-calendar-daily__day-container .v-calendar-daily__day:last-child {
-  border-right: none!important;
+.v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+  border-right: none !important;
+}
+
+.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
+  display: none!important;
+}
+
+.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
+  display: none!important;
+}
+
+.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
+  display: none!important;
+}
+
+.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
+  display: none!important;
 }
 
 .v-calendar-daily__scroll-area {
