@@ -148,7 +148,7 @@ export default {
       const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
       tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
     }
-    const data = await this.$axios.$get(`/univubs${tmpUrl}`)
+    const data = await this.$axios.$get(tmpUrl)
     const ics = ical.parseString(data)
 
     const events = []

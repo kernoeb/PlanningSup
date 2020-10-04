@@ -43,8 +43,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/component-cache',
-    '@nuxtjs/proxy'
+    '@nuxtjs/component-cache'
   ],
 
   moment: {
@@ -53,15 +52,9 @@ export default {
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
-
-  proxy: {
-    '/univubs': {
-      target: 'https://planning.univ-ubs.fr/jsp/custom/modules/plannings',
-      pathRewrite: {
-        '^/univubs': ''
-      }
-    }
+  axios: {
+    credentials: false,
+    proxy: true
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
