@@ -41,10 +41,22 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxt/http',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache'
   ],
+
+  http: {
+    proxy: true
+  },
+
+  proxy: {
+    '/univubs/': {
+      target: 'https://planning.univ-ubs.fr/jsp/custom/modules/plannings',
+      pathRewrite: { '^/univubs/': '' }
+    }
+  },
 
   moment: {
     defaultLocale: 'fr',

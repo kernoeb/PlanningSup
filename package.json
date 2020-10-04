@@ -11,8 +11,10 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
+    "@nuxt/http": "^0.6.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/component-cache": "^1.1.6",
+    "@nuxtjs/proxy": "^2.0.1",
     "@nuxtjs/pwa": "^3.0.2",
     "cal-parser": "^1.0.1",
     "core-js": "^3.6.5",

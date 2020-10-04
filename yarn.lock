@@ -1044,6 +1044,19 @@
     html-minifier "^4.0.0"
     node-html-parser "^1.2.20"
 
+"@nuxt/http@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@nuxt/http/-/http-0.6.0.tgz#7f6f7592cfd95f57fc9f992314efd118f7f115f1"
+  integrity sha512-p564xyaGW57YQ7Xj3DYnWvOus/HCD8rcvFQMpCUqzcIIIM6fFF6crgMwSpPlpqrxglJA6+PvXv8hnG41k3DSVQ==
+  dependencies:
+    "@nuxtjs/proxy" "^2.0.1"
+    abort-controller "^3.0.0"
+    consola "^2.15.0"
+    destr "^1.0.0"
+    ky "^0.24.0"
+    node-fetch "^2.6.1"
+    web-streams-polyfill "^3.0.0"
+
 "@nuxt/loading-screen@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@nuxt/loading-screen/-/loading-screen-2.0.2.tgz#2082e813a93bb4efa42be05a6b448121b5f1cad8"
@@ -1646,6 +1659,13 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+abort-controller@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
+  integrity sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
+  dependencies:
+    event-target-shim "^5.0.0"
 
 accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
@@ -3739,6 +3759,11 @@ etag@^1.8.1, etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
+event-target-shim@^5.0.0:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
+  integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
+
 eventemitter3@^4.0.0:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
@@ -5147,6 +5172,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+ky@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-0.24.0.tgz#337e534a7f47c12476988eef3cb968daef318349"
+  integrity sha512-/vpuQguwV30jErrqLpoaU/YJAFALrUkqqWLILnSoBOj5/O/LKzro/pPNtxbLgY6m4w5XNM6YZ3v7/or8qLlFuw==
 
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
@@ -8688,6 +8718,11 @@ watchpack@^1.7.4:
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.0"
+
+web-streams-polyfill@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.0.0.tgz#c8bcb1e2ec1820088ca201674486a0f1feae848b"
+  integrity sha512-tcZlIJ+VBxuDXdRFF3PCZTJ3yUISGklG4hkl3CDGOlZ8XwpN90L5YsJNoSPH72wZ4nbsatE/OfIaxfM3p+6W7w==
 
 webpack-bundle-analyzer@^3.9.0:
   version "3.9.0"
