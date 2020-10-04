@@ -33,6 +33,12 @@
         style="width: 100px"
       />
       <v-spacer />
+      <v-icon
+        class="ma-2"
+        @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
+      >
+        mdi-theme-light-dark
+      </v-icon>
       <v-dialog
         v-model="dialog"
         width="500"
@@ -40,7 +46,6 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             class="ma-2"
-            color="#fafafa"
             v-bind="attrs"
             v-on="on"
           >
@@ -48,9 +53,14 @@
           </v-icon>
         </template>
         <v-card>
-          <v-card-title class="headline grey lighten-2">
+          <v-card-title class="headline">
+            <v-icon class="mr-2">
+              mdi-calendar
+            </v-icon>
             Choisir un emploi du temps
           </v-card-title>
+
+          <v-divider />
 
           <v-expansion-panels>
             <v-expansion-panel
@@ -89,7 +99,6 @@
       </v-dialog>
       <v-icon
         class="ma-2"
-        color="#fafafa"
         @click="setToday"
       >
         mdi-calendar-today
@@ -184,7 +193,10 @@ export default {
     mounted: false
   }),
   watch: {
-    '$route.query': '$fetch'
+    '$route.query': '$fetch',
+    '$vuetify.theme.dark' () {
+      document.cookie = 'theme=' + this.$vuetify.theme.dark
+    }
   },
   beforeDestroy () {
     if (typeof window === 'undefined') { return }
@@ -193,6 +205,7 @@ export default {
   },
   mounted () {
     this.mounted = true
+    this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
     this.onResize()
 
     window.addEventListener('resize', this.onResize, { passive: true })
