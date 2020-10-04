@@ -5,6 +5,28 @@
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
     </div>
+    <v-bottom-sheet v-model="bottom">
+      <v-sheet
+        class="text-center"
+        height="200px"
+      >
+        <div v-if="selectedEvent" class="py-3">
+          <div class="mt-4">
+            <strong>{{ selectedEvent.name }}</strong>
+          </div>
+          <div>{{ selectedEvent.location ? selectedEvent.location + ' | ' : '' }}{{ cleanDescription(selectedEvent.description) }}</div>
+          <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
+        </div>
+        <v-btn
+          class="mt-6"
+          text
+          color="red"
+          @click="bottom = !bottom"
+        >
+          Fermer
+        </v-btn>
+      </v-sheet>
+    </v-bottom-sheet>
     <v-progress-linear
       color="yellow darken-2"
       :active="loading"
@@ -124,6 +146,7 @@
         locale="fr"
         show-month-on-first
         show-week
+        @click:event="showEvent"
       >
         <template v-slot:event="{event}">
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
@@ -173,6 +196,8 @@ export default {
     this.loading = false
   },
   data: () => ({
+    bottom: false,
+    selectedEvent: null,
     loading: true,
     urls,
     dialog: false,
@@ -210,13 +235,12 @@ export default {
 
     window.addEventListener('resize', this.onResize, { passive: true })
   },
-  /* activated () {
-    // Call fetch again if last fetch more than 30 sec ago
-    if (this.$fetchState.timestamp <= Date.now() - 5000) {
-      this.$fetch()
-    }
-  }, */
   methods: {
+    showEvent ({ nativeEvent, event }) {
+      this.bottom = true
+      this.selectedEvent = event
+      nativeEvent.stopPropagation()
+    },
     setToday () {
       this.value = ''
     },
