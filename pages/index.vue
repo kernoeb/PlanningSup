@@ -65,7 +65,7 @@
                       {{ url2.title }}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <nuxt-link v-for="(url3, k) in url2.edts" :key="`urls_3_${k}`" :to="{name: 'index', query: {u: url.univ, n: url2.name, url3: url3.name}}">
+                      <nuxt-link v-for="(url3, k) in url2.edts" :key="`urls_3_${k}`" :to="{name: 'index', query: {u: url.univ, n: url2.name, t: url3.name}}">
                         <v-list-item class="ml-3">
                           <v-list-item-content>
                             <v-list-item-title>
@@ -201,7 +201,7 @@ export default {
   },
   activated () {
     // Call fetch again if last fetch more than 30 sec ago
-    if (this.$fetchState.timestamp <= Date.now() - 30000) {
+    if (this.$fetchState.timestamp <= Date.now() - 5000) {
       this.$fetch()
     }
   },
