@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 import fr from 'vuetify/es5/locale/fr'
 
 export default {
+  ssr: false,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: 'PlanningIUT',
