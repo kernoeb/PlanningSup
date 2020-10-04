@@ -141,7 +141,7 @@ export default {
       const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
       tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
     }
-    const data = await this.$http.$get('https://cors-anywhere.herokuapp.com/' + tmpUrl, {
+    const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
       headers: {
         Origin: 'https://ent.univ-ubs.fr'
       }
