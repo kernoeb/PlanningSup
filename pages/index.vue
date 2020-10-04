@@ -5,6 +5,11 @@
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
     </div>
+    <v-progress-linear
+      color="yellow darken-2"
+      :active="loading"
+      :indeterminate="loading"
+    />
     <v-sheet
       class="d-flex"
       height="54"
@@ -66,7 +71,7 @@
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
                       <nuxt-link v-for="(url3, k) in url2.edts" :key="`urls_3_${k}`" :to="{name: 'index', query: {u: url.univ, n: url2.name, t: url3.name}}">
-                        <v-list-item class="ml-3">
+                        <v-list-item class="ml-3" @click="dialog = false">
                           <v-list-item-content>
                             <v-list-item-title>
                               {{ url3.title }}
@@ -80,19 +85,6 @@
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
-
-          <v-divider />
-
-          <v-card-actions>
-            <v-spacer />
-            <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
-            >
-              I accept
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-dialog>
       <v-icon
@@ -110,7 +102,7 @@
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet v-if="events.length && !$fetchState.pending" height="700">
+    <v-sheet v-if="events.length" height="700">
       <v-calendar
         ref="calendar"
         v-model="value"
@@ -142,6 +134,7 @@ import urls from '../static/url.json'
 
 export default {
   async fetch () {
+    this.loading = true
     let tmpUrl = urls[0].univ_edts[0].edts[0].url
     if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
       const univ = urls.filter(u => u.univ === this.$route.query.u)
@@ -168,8 +161,10 @@ export default {
       })
     }
     this.events = events
+    this.loading = false
   },
   data: () => ({
+    loading: true,
     urls,
     dialog: false,
     type: 'week',
