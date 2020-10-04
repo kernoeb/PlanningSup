@@ -147,7 +147,6 @@ export default {
       const univ = urls.filter(u => u.univ === this.$route.query.u)
       const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
       tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
-      console.log(tmpUrl)
     }
     const data = await this.$axios.$get(tmpUrl)
     const ics = ical.parseString(data)
@@ -199,12 +198,12 @@ export default {
 
     window.addEventListener('resize', this.onResize, { passive: true })
   },
-  activated () {
+  /* activated () {
     // Call fetch again if last fetch more than 30 sec ago
     if (this.$fetchState.timestamp <= Date.now() - 5000) {
       this.$fetch()
     }
-  },
+  }, */
   methods: {
     setToday () {
       this.value = ''
