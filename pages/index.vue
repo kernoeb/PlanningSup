@@ -236,7 +236,7 @@ export default {
           n: 'lp',
           t: 'dlis'
         }
-      })
+      }).then(() => {})
     }
     this.mounted = true
     try {
