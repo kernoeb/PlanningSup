@@ -222,11 +222,6 @@ export default {
       document.cookie = 'theme=' + this.$vuetify.theme.dark
     }
   },
-  activated () {
-    if (this.$fetchState.timestamp <= Date.now() - 30000) {
-      this.$fetch()
-    }
-  },
   beforeDestroy () {
     if (typeof window === 'undefined') { return }
 
