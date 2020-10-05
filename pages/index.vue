@@ -134,6 +134,10 @@
       </v-btn>
     </v-sheet>
     <v-sheet height="700">
+      <div v-if="$fetchState.error || !events.length" style="text-align: center">
+        <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
+          Bon y a eu un soucis. <br>Essaye de te connecter à Internet bg.</span>
+      </div>
       <v-calendar
         v-show="events.length"
         ref="calendar"
