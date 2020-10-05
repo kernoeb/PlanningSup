@@ -133,8 +133,9 @@
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet v-if="events.length" height="700">
+    <v-sheet height="700">
       <v-calendar
+        v-show="events.length"
         ref="calendar"
         v-model="value"
         :event-overlap-threshold="30"
@@ -179,24 +180,22 @@ export default {
           Origin: 'https://ent.univ-ubs.fr'
         }
       })
-      if (data) {
-        const ics = ical.parseString(data)
+      const ics = ical.parseString(data)
 
-        const events = []
-        for (const i of ics.events) {
-          events.push({
-            name: i.summary.value,
-            start: new Date(i.dtstart.value).getTime(),
-            end: new Date(i.dtend.value).getTime(),
-            color: this.getColor(i.summary.value, i.location.value),
-            timed: true,
-            location: i.location.value,
-            description: i.description.value
-          })
-        }
-        this.events = events
-        this.loading = false
+      const events = []
+      for (const i of ics.events) {
+        events.push({
+          name: i.summary.value,
+          start: new Date(i.dtstart.value).getTime(),
+          end: new Date(i.dtend.value).getTime(),
+          color: this.getColor(i.summary.value, i.location.value),
+          timed: true,
+          location: i.location.value,
+          description: i.description.value
+        })
       }
+      this.events = events
+      this.loading = false
     } catch (e) {
       this.loading = false
     }
@@ -265,15 +264,11 @@ export default {
     window.addEventListener('resize', this.onResize, { passive: true })
 
     setTimeout(() => {
-      if (navigator.onLine) {
-        this.$fetch()
-      }
+      this.$fetch()
     }, 1000)
 
     setInterval(() => {
-      if (navigator.onLine) {
-        this.$fetch()
-      }
+      this.$fetch()
     }, 120000)
   },
   methods: {
