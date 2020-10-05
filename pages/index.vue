@@ -29,8 +29,8 @@
     </v-bottom-sheet>
     <v-progress-linear
       color="yellow darken-2"
-      :active="loading"
-      :indeterminate="loading"
+      :active="loading || $fetchState.pending"
+      :indeterminate="loading || $fetchState.pending"
     />
     <v-sheet
       class="d-flex"
