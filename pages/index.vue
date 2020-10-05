@@ -167,33 +167,32 @@ import urls from '../static/url.json'
 export default {
   async fetch () {
     this.loading = true
-    let tmpUrl = urls[0].univ_edts[0].edts[0].url
     if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
       const univ = urls.filter(u => u.univ === this.$route.query.u)
       const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
-      tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
-    }
-    const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
-      headers: {
-        Origin: 'https://ent.univ-ubs.fr'
-      }
-    })
-    const ics = ical.parseString(data)
-
-    const events = []
-    for (const i of ics.events) {
-      events.push({
-        name: i.summary.value,
-        start: new Date(i.dtstart.value).getTime(),
-        end: new Date(i.dtend.value).getTime(),
-        color: this.getColor(i.summary.value, i.location.value),
-        timed: true,
-        location: i.location.value,
-        description: i.description.value
+      const tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
+      const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
+        headers: {
+          Origin: 'https://ent.univ-ubs.fr'
+        }
       })
+      const ics = ical.parseString(data)
+
+      const events = []
+      for (const i of ics.events) {
+        events.push({
+          name: i.summary.value,
+          start: new Date(i.dtstart.value).getTime(),
+          end: new Date(i.dtend.value).getTime(),
+          color: this.getColor(i.summary.value, i.location.value),
+          timed: true,
+          location: i.location.value,
+          description: i.description.value
+        })
+      }
+      this.events = events
+      this.loading = false
     }
-    this.events = events
-    this.loading = false
   },
   data: () => ({
     bottom: false,
@@ -229,6 +228,16 @@ export default {
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   mounted () {
+    if (!(this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t)) {
+      this.$router.push({
+        name: 'index',
+        query: {
+          u: 'iutvannes',
+          n: 'lp',
+          t: 'dlis'
+        }
+      })
+    }
     this.mounted = true
     try {
       this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
