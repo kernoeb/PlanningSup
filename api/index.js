@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 
 // Create express instance
 const app = express()
+app.use(cors())
 
 // Require API routes
 const calendar = require('./routes/calendar')
