@@ -230,7 +230,11 @@ export default {
   },
   mounted () {
     this.mounted = true
-    this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
+    try {
+      this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
+    } catch (e) {
+      this.$vuetify.theme.dark = true
+    }
     this.onResize()
 
     window.addEventListener('resize', this.onResize, { passive: true })
