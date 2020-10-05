@@ -241,8 +241,15 @@ export default {
       this.$vuetify.theme.dark = true
     }
     this.onResize()
-
     window.addEventListener('resize', this.onResize, { passive: true })
+
+    setTimeout(() => {
+      this.$fetch()
+    }, 1000)
+
+    setInterval(() => {
+      this.$fetch()
+    }, 120000)
   },
   methods: {
     showEvent ({ nativeEvent, event }) {
