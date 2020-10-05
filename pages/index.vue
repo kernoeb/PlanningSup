@@ -236,7 +236,7 @@ export default {
           n: 'lp',
           t: 'dlis'
         }
-      }).then(() => {})
+      })
     }
     this.mounted = true
     this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
