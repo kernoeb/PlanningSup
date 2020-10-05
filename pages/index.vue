@@ -271,14 +271,16 @@ export default {
 
     setTimeout(() => {
       this.$fetch()
+    }, 1000)
 
+    setTimeout(() => {
       window.onfocus = () => {
         if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 20000) {
           this.lastTimeFetch = new Date().getTime()
           this.$fetch()
         }
       }
-    }, 1000)
+    }, 20000)
 
     setInterval(() => {
       this.$fetch()
