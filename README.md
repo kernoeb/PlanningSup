@@ -2,7 +2,7 @@
 
 Un planning universitaire sympathique réalisé par @kernoeb.  
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9d54a6f2-71ff-4cd6-9eea-3c9c5cf6f0b2/deploy-status)](https://app.netlify.com/sites/planningiut/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2401b3bc-3809-435b-819a-2f1fb484cea2/deploy-status)](https://app.netlify.com/sites/planningiut/deploys)
 
 ### Ajouter une formation
 
