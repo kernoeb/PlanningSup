@@ -228,6 +228,11 @@ export default {
 
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
+  activated () {
+    if (this.$fetchState.timestamp <= Date.now() - 30000) {
+      this.$fetch()
+    }
+  },
   mounted () {
     this.mounted = true
     try {
