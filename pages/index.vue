@@ -173,27 +173,31 @@ export default {
       const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
       tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
     }
-    const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
-      headers: {
-        Origin: 'https://ent.univ-ubs.fr'
-      }
-    })
-    if (data) {
-      const ics = ical.parseString(data)
+    try {
+      const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
+        headers: {
+          Origin: 'https://ent.univ-ubs.fr'
+        }
+      })
+      if (data) {
+        const ics = ical.parseString(data)
 
-      const events = []
-      for (const i of ics.events) {
-        events.push({
-          name: i.summary.value,
-          start: new Date(i.dtstart.value).getTime(),
-          end: new Date(i.dtend.value).getTime(),
-          color: this.getColor(i.summary.value, i.location.value),
-          timed: true,
-          location: i.location.value,
-          description: i.description.value
-        })
+        const events = []
+        for (const i of ics.events) {
+          events.push({
+            name: i.summary.value,
+            start: new Date(i.dtstart.value).getTime(),
+            end: new Date(i.dtend.value).getTime(),
+            color: this.getColor(i.summary.value, i.location.value),
+            timed: true,
+            location: i.location.value,
+            description: i.description.value
+          })
+        }
+        this.events = events
+        this.loading = false
       }
-      this.events = events
+    } catch (e) {
       this.loading = false
     }
   },
@@ -231,11 +235,6 @@ export default {
 
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
-  activated () {
-    if (this.$fetchState.timestamp <= Date.now() - 30000) {
-      this.$fetch()
-    }
-  },
   mounted () {
     this.mounted = true
 
@@ -266,11 +265,15 @@ export default {
     window.addEventListener('resize', this.onResize, { passive: true })
 
     setTimeout(() => {
-      this.$fetch()
+      if (navigator.onLine) {
+        this.$fetch()
+      }
     }, 1000)
 
     setInterval(() => {
-      this.$fetch()
+      if (navigator.onLine) {
+        this.$fetch()
+      }
     }, 120000)
   },
   methods: {
