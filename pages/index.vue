@@ -1,7 +1,7 @@
 <template>
   <div v-show="mounted">
-    <div style="width: 150px" class="ma-4 title_month">
-      <span v-if="$refs.calendar">{{ $refs.calendar.title }}</span>
+    <div class="ma-4 title_month">
+      <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
     </div>
@@ -178,22 +178,24 @@ export default {
         Origin: 'https://ent.univ-ubs.fr'
       }
     })
-    const ics = ical.parseString(data)
+    if (data) {
+      const ics = ical.parseString(data)
 
-    const events = []
-    for (const i of ics.events) {
-      events.push({
-        name: i.summary.value,
-        start: new Date(i.dtstart.value).getTime(),
-        end: new Date(i.dtend.value).getTime(),
-        color: this.getColor(i.summary.value, i.location.value),
-        timed: true,
-        location: i.location.value,
-        description: i.description.value
-      })
+      const events = []
+      for (const i of ics.events) {
+        events.push({
+          name: i.summary.value,
+          start: new Date(i.dtstart.value).getTime(),
+          end: new Date(i.dtend.value).getTime(),
+          color: this.getColor(i.summary.value, i.location.value),
+          timed: true,
+          location: i.location.value,
+          description: i.description.value
+        })
+      }
+      this.events = events
+      this.loading = false
     }
-    this.events = events
-    this.loading = false
   },
   data: () => ({
     bottom: false,
@@ -215,7 +217,8 @@ export default {
     weekday: [1, 2, 3, 4, 5, 6, 0],
     value: '',
     events: [],
-    mounted: false
+    mounted: false,
+    currentWeek: ''
   }),
   watch: {
     '$route.query': '$fetch',
@@ -235,11 +238,30 @@ export default {
   },
   mounted () {
     this.mounted = true
+
     try {
       this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
     } catch (e) {
       this.$vuetify.theme.dark = true
     }
+
+    try {
+      const start = this.$moment(this.$refs.calendar.start).week().toString()
+      const end = this.$moment(this.$refs.calendar.end).week().toString()
+      this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
+    } catch (e) {}
+
+    try {
+      this.$refs.calendar.$on('change', (p) => {
+        try {
+          const start = this.$moment(p.start.date).week().toString()
+          const end = this.$moment(p.end.date).week().toString()
+          this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
+        } catch (e) {
+        }
+      })
+    } catch (e) {}
+
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
