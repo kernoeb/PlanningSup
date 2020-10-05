@@ -3,6 +3,13 @@
     <v-system-bar
       height="30"
     >
+      <transition name="fade">
+        <div v-if="!connected" style="position: absolute; left: 50%;">
+          <div style="color: grey; position: relative; left: -50%; font-size: 10px">
+            Hors connexion
+          </div>
+        </div>
+      </transition>
       <v-icon>mdi-calendar</v-icon>
       Planning IUT
       <v-spacer />
@@ -27,6 +34,7 @@
 export default {
   data () {
     return {
+      connected: true,
       mounted: false,
       time: '',
       drawer: false,
@@ -43,6 +51,18 @@ export default {
   },
   mounted () {
     this.mounted = true
+
+    if (!navigator.onLine) {
+      this.connected = false
+    }
+
+    window.addEventListener('offline', () => {
+      this.connected = false
+    })
+
+    window.addEventListener('online', () => {
+      this.connected = true
+    })
   },
   created () {
     this.time = this.getTime()
