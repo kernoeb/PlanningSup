@@ -46,7 +46,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxt/http',
+    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache'
@@ -55,12 +55,6 @@ export default {
   moment: {
     defaultLocale: 'fr',
     locales: ['fr']
-  },
-
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {
-    credentials: false,
-    proxy: true
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
