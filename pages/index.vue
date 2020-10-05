@@ -28,6 +28,7 @@
       </v-sheet>
     </v-bottom-sheet>
     <v-progress-linear
+      style="position: absolute;"
       color="yellow darken-2"
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -225,7 +226,8 @@ export default {
     value: '',
     events: [],
     mounted: false,
-    currentWeek: ''
+    currentWeek: '',
+    lastTimeFetch: 0
   }),
   watch: {
     '$route.query': '$fetch',
@@ -269,6 +271,13 @@ export default {
 
     setTimeout(() => {
       this.$fetch()
+
+      window.onfocus = () => {
+        if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 20000) {
+          this.lastTimeFetch = new Date().getTime()
+          this.$fetch()
+        }
+      }
     }, 1000)
 
     setInterval(() => {
