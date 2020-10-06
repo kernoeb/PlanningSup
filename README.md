@@ -2,7 +2,7 @@
 
 Un planning universitaire sympathique réalisé par @kernoeb.  
 
-[![Heroku](https://heroku-badge.herokuapp.com/?app=planningiut)]
+![Heroku](https://heroku-badge.herokuapp.com/?app=planningiut)
 
 ### Ajouter une formation
 
