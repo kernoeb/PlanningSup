@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "heroku-postbuild": "yarn generate"
+    "heroku-postbuild": "yarn build"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
