@@ -27,6 +27,13 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
+  /*
+  ** Server Middleware
+  */
+  serverMiddleware: {
+    '/api': '~/api'
+  },
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
@@ -39,7 +46,7 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    '@nuxt/http',
+    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache'
@@ -50,9 +57,7 @@ export default {
     locales: ['fr']
   },
 
-  // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    credentials: false,
     proxy: true
   },
 

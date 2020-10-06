@@ -14,13 +14,17 @@
           <div class="mt-4">
             <strong>{{ selectedEvent.name }}</strong>
           </div>
-          <div>{{ selectedEvent.location ? selectedEvent.location + ' | ' : '' }}{{ cleanDescription(selectedEvent.description) }}</div>
+          <div>
+            {{
+              selectedEvent.location ? selectedEvent.location + ' | ' : ''
+            }}{{ cleanDescription(selectedEvent.description) }}
+          </div>
           <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
         </div>
         <v-btn
           class="mt-6"
-          text
           color="red"
+          text
           @click="bottom = !bottom"
         >
           Fermer
@@ -28,10 +32,10 @@
       </v-sheet>
     </v-bottom-sheet>
     <v-progress-linear
-      style="position: absolute;"
-      color="yellow darken-2"
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
+      color="yellow darken-2"
+      style="position: absolute;"
     />
     <v-sheet
       class="d-flex"
@@ -68,8 +72,8 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-icon
-            class="ma-2"
             v-bind="attrs"
+            class="ma-2"
             v-on="on"
           >
             mdi-format-list-bulleted
@@ -103,7 +107,11 @@
                       {{ url2.title }}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <nuxt-link v-for="(url3, k) in url2.edts" :key="`urls_3_${k}`" :to="{name: 'index', query: {u: url.univ, n: url2.name, t: url3.name}}">
+                      <nuxt-link
+                        v-for="(url3, k) in url2.edts"
+                        :key="`urls_3_${k}`"
+                        :to="{name: 'index', query: {u: url.univ, n: url2.name, t: url3.name}}"
+                      >
                         <v-list-item class="ml-3" @click="dialog = false">
                           <v-list-item-content>
                             <v-list-item-title>
@@ -167,39 +175,23 @@
 </template>
 
 <script>
-import ical from 'cal-parser'
 import urls from '../static/url.json'
 
 export default {
   async fetch () {
     this.loading = true
-    let tmpUrl = urls[0].univ_edts[0].edts[0].url
-    if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-      const univ = urls.filter(u => u.univ === this.$route.query.u)
-      const univ2 = univ[0].univ_edts.filter(u => u.name === this.$route.query.n)
-      tmpUrl = univ2[0].edts.filter(u => u.name === this.$route.query.t)[0].url
-    }
     try {
-      const data = await this.$http.$get('https://cors-anywhere-kernoeb.herokuapp.com/' + tmpUrl, {
-        headers: {
-          Origin: 'https://ent.univ-ubs.fr'
-        }
-      })
-      const ics = ical.parseString(data)
-
-      const events = []
-      for (const i of ics.events) {
-        events.push({
-          name: i.summary.value,
-          start: new Date(i.dtstart.value).getTime(),
-          end: new Date(i.dtend.value).getTime(),
-          color: this.getColor(i.summary.value, i.location.value),
-          timed: true,
-          location: i.location.value,
-          description: i.description.value
+      if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
+        this.events = await this.$axios.$get('/api/getCalendar', {
+          params: {
+            u: this.$route.query.u,
+            n: this.$route.query.n,
+            t: this.$route.query.t
+          }
         })
+      } else {
+        this.events = await this.$axios.$get('/api/getCalendar')
       }
-      this.events = events
       this.loading = false
     } catch (e) {
       this.loading = false
@@ -236,7 +228,9 @@ export default {
     }
   },
   beforeDestroy () {
-    if (typeof window === 'undefined') { return }
+    if (typeof window === 'undefined') {
+      return
+    }
 
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
@@ -253,7 +247,8 @@ export default {
       const start = this.$moment(this.$refs.calendar.start).week().toString()
       const end = this.$moment(this.$refs.calendar.end).week().toString()
       this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
-    } catch (e) {}
+    } catch (e) {
+    }
 
     try {
       this.$refs.calendar.$on('change', (p) => {
@@ -264,14 +259,15 @@ export default {
         } catch (e) {
         }
       })
-    } catch (e) {}
+    } catch (e) {
+    }
 
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
     setTimeout(() => {
       this.$fetch()
-    }, 1000)
+    }, 3000)
 
     setTimeout(() => {
       window.onfocus = () => {
@@ -302,17 +298,6 @@ export default {
         this.type = 'week'
       }
     },
-    getColor (n, l) {
-      if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
-        return '#fe463a'
-      } else if (n.includes('TD') || l.includes('V-B')) {
-        return 'green'
-      } else if (n.includes('TP')) {
-        return 'blue'
-      } else {
-        return 'orange'
-      }
-    },
     cleanDescription (d) {
       return d.split(' (Exporté')[0].split('LP DLIS ')[1]
     }
@@ -322,12 +307,12 @@ export default {
 
 <style>
 .v-calendar-daily__day-interval {
-  border-top: #505050 1px solid!important;
+  border-top: #505050 1px solid !important;
 }
 
 .v-btn--fab.v-size--default {
-  height: 25px!important;
-  width: 25px!important;
+  height: 25px !important;
+  width: 25px !important;
 }
 
 .title_month:first-letter {
@@ -335,9 +320,9 @@ export default {
 }
 
 .theme--dark.v-calendar-daily {
-  border-top: none!important;
-  border-left: none!important;
-  border-bottom: none!important;
+  border-top: none !important;
+  border-left: none !important;
+  border-bottom: none !important;
 }
 
 .v-calendar-daily .v-calendar-daily__day:nth-child(6) {
@@ -345,22 +330,22 @@ export default {
 }
 
 .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
-  display: none!important;
+  display: none !important;
 }
 
 .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
-  display: none!important;
+  display: none !important;
 }
 
 .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
-  display: none!important;
+  display: none !important;
 }
 
 .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
-  display: none!important;
+  display: none !important;
 }
 
 .v-calendar-daily__scroll-area {
-  overflow: hidden!important;
+  overflow: hidden !important;
 }
 </style>
