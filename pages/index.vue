@@ -182,7 +182,7 @@ export default {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-        this.events = await this.$axios.$get('https://planningiut.herokuapp.com/api/getCalendar', {
+        this.events = await this.$axios.$get('/api/getCalendar', {
           params: {
             u: this.$route.query.u,
             n: this.$route.query.n,
@@ -190,7 +190,7 @@ export default {
           }
         })
       } else {
-        this.events = await this.$axios.$get('https://planningiut.herokuapp.com/api/getCalendar')
+        this.events = await this.$axios.$get('/api/getCalendar')
       }
       this.loading = false
     } catch (e) {
