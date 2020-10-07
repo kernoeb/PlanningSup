@@ -265,18 +265,14 @@ export default {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
-    /* setTimeout(() => {
-      this.$fetch()
-    }, 3000) */
-
     setTimeout(() => {
       window.onfocus = () => {
-        if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 20000) {
+        if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 40000) {
           this.lastTimeFetch = new Date().getTime()
           this.$fetch()
         }
       }
-    }, 20000)
+    }, 40000)
 
     setInterval(() => {
       this.$fetch()
