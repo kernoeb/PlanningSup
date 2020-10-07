@@ -56,8 +56,7 @@ router.use('/getCalendar', async (req, res) => {
           description: i.description.value
         })
       }
-      res.setHeader('Content-Type', 'application/json')
-      res.end(JSON.stringify(events))
+      res.json(events)
     } else {
       res.status(500).send('oof!')
     }
