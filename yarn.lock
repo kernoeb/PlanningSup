@@ -1984,6 +1984,11 @@ babel-eslint@^10.1.0:
     eslint-visitor-keys "^1.0.0"
     resolve "^1.12.0"
 
+babel-helper-vue-jsx-merge-props@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/babel-helper-vue-jsx-merge-props/-/babel-helper-vue-jsx-merge-props-2.0.3.tgz#22aebd3b33902328e513293a8e4992b384f9f1b6"
+  integrity sha512-gsLiKK7Qrb7zYJNgiXKpXblxbV5ffSwR0f5whkPAaBAR4fhi6bwRZxX9wBlIc5M/v8CCkXUbXZL4N/nSE97cqg==
+
 babel-loader@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
@@ -8647,6 +8652,13 @@ vue-server-renderer@^2.6.12:
     resolve "^1.2.0"
     serialize-javascript "^3.1.0"
     source-map "0.5.6"
+
+vue-simple-icons@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/vue-simple-icons/-/vue-simple-icons-3.10.0.tgz#6b4d3f5047cf50cf535c763c91dbe3fe3250f0ff"
+  integrity sha512-0kaa0nICnm1KOQGB+kRWaBZqLs17ajhyAWK0kqujXjw6EmJPC34FT06rua5d1s9aKfCRzeAWY4RlxQIejC1GXw==
+  dependencies:
+    babel-helper-vue-jsx-merge-props "^2.0.2"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"

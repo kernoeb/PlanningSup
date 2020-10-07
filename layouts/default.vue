@@ -22,23 +22,65 @@
       </v-container>
     </v-main>
     <v-footer
-      :absolute="!fixed"
+      absolute
       app
     >
-      <span><a href="https://twitter.com/kop_of_tea">@kernoeb</a> | {{ new Date().getFullYear() }}</span>
+      <span>Noéwen (<a style="color: white" href="https://twitter.com/kop_of_tea">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <v-spacer />
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <a
+            v-bind="attrs"
+            style="display: block; margin-top: 8px;"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://brave.com/ker880"
+            v-on="on"
+          ><brave-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
+        </template>
+        <span>Referral Brave</span>
+      </v-tooltip>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <a
+            v-bind="attrs"
+            style="display: block; margin-top: 8px;"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://paypal.me/kernoeb"
+            v-on="on"
+          ><pay-pal-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
+        </template>
+        <span>Faire un don</span>
+      </v-tooltip>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <a
+            v-bind="attrs"
+            style="display: block; margin-top: 8px;"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/kop_of_tea"
+            v-on="on"
+          ><twitter-icon size="18" style="fill: whitesmoke" /></a>
+        </template>
+        <span>Twitter</span>
+      </v-tooltip>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import { TwitterIcon, PayPalIcon, BraveIcon } from 'vue-simple-icons'
+
 export default {
+  components: { TwitterIcon, PayPalIcon, BraveIcon },
   data () {
     return {
       connected: true,
       mounted: false,
       time: '',
       drawer: false,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',

@@ -60,24 +60,36 @@
         style="width: 100px"
       />
       <v-spacer />
-      <v-icon
-        class="ma-2"
-        @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
-      >
-        mdi-theme-light-dark
-      </v-icon>
-      <v-dialog
-        v-model="dialog"
-        width="500"
-      >
+      <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
             class="ma-2"
             v-on="on"
+            @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
           >
-            mdi-format-list-bulleted
+            mdi-theme-light-dark
           </v-icon>
+        </template>
+        <span>Changer le thème</span>
+      </v-tooltip>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on: dialog, attrs }">
+          <v-tooltip top>
+            <template v-slot:activator="{ on: tooltip }">
+              <v-icon
+                v-bind="attrs"
+                class="ma-2"
+                v-on="{...dialog, ...tooltip}"
+              >
+                mdi-format-list-bulleted
+              </v-icon>
+            </template>
+            <span>Changer d'EDT</span>
+          </v-tooltip>
         </template>
         <v-card>
           <v-card-title class="headline">
@@ -128,12 +140,19 @@
           </v-expansion-panels>
         </v-card>
       </v-dialog>
-      <v-icon
-        class="ma-2"
-        @click="setToday"
-      >
-        mdi-calendar-today
-      </v-icon>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-icon
+            v-bind="attrs"
+            class="ma-2"
+            v-on="on"
+            @click="setToday"
+          >
+            mdi-calendar-today
+          </v-icon>
+        </template>
+        <span>Aujourd'hui</span>
+      </v-tooltip>
       <v-btn
         class="ma-2"
         icon
