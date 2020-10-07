@@ -265,9 +265,9 @@ export default {
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       this.$fetch()
-    }, 3000)
+    }, 3000) */
 
     setTimeout(() => {
       window.onfocus = () => {
