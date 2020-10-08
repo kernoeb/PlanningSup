@@ -62,19 +62,32 @@
             rel="noopener noreferrer"
             href="https://twitter.com/kop_of_tea"
             v-on="on"
-          ><twitter-icon size="18" style="fill: whitesmoke" /></a>
+          ><twitter-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
         </template>
         <span>Twitter</span>
+      </v-tooltip>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <a
+            v-bind="attrs"
+            style="display: block; margin-top: 8px;"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/kernoeb/planningiut"
+            v-on="on"
+          ><git-hub-icon size="18" style="fill: whitesmoke" /></a>
+        </template>
+        <span>Page du projet</span>
       </v-tooltip>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import { TwitterIcon, PayPalIcon, BraveIcon } from 'vue-simple-icons'
+import { TwitterIcon, PayPalIcon, BraveIcon, GitHubIcon } from 'vue-simple-icons'
 
 export default {
-  components: { TwitterIcon, PayPalIcon, BraveIcon },
+  components: { TwitterIcon, PayPalIcon, BraveIcon, GitHubIcon },
   data () {
     return {
       connected: true,
