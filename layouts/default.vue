@@ -25,18 +25,23 @@
       absolute
       app
     >
-      <span>Noéwen (<a style="color: white" href="https://twitter.com/kop_of_tea">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span>Noéwen (<a
+        href="https://twitter.com/kop_of_tea"
+        style="color: white"
+      >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
           <a
             v-bind="attrs"
+            href="https://brave.com/ker880"
+            rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
-            rel="noopener noreferrer"
-            href="https://brave.com/ker880"
             v-on="on"
-          ><brave-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
+          >
+            <brave-icon class="mr-4" size="18" style="fill: whitesmoke" />
+          </a>
         </template>
         <span>Referral Brave</span>
       </v-tooltip>
@@ -44,12 +49,14 @@
         <template v-slot:activator="{ on, attrs }">
           <a
             v-bind="attrs"
+            href="https://paypal.me/kernoeb"
+            rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
-            rel="noopener noreferrer"
-            href="https://paypal.me/kernoeb"
             v-on="on"
-          ><pay-pal-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
+          >
+            <pay-pal-icon class="mr-4" size="18" style="fill: whitesmoke" />
+          </a>
         </template>
         <span>Faire un don</span>
       </v-tooltip>
@@ -57,12 +64,14 @@
         <template v-slot:activator="{ on, attrs }">
           <a
             v-bind="attrs"
+            href="https://twitter.com/kop_of_tea"
+            rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/kop_of_tea"
             v-on="on"
-          ><twitter-icon class="mr-4" size="18" style="fill: whitesmoke" /></a>
+          >
+            <twitter-icon class="mr-4" size="18" style="fill: whitesmoke" />
+          </a>
         </template>
         <span>Twitter</span>
       </v-tooltip>
@@ -70,12 +79,14 @@
         <template v-slot:activator="{ on, attrs }">
           <a
             v-bind="attrs"
+            href="https://github.com/kernoeb/planningiut"
+            rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/kernoeb/planningiut"
             v-on="on"
-          ><git-hub-icon size="18" style="fill: whitesmoke" /></a>
+          >
+            <git-hub-icon size="18" style="fill: whitesmoke" />
+          </a>
         </template>
         <span>Page du projet</span>
       </v-tooltip>
@@ -87,7 +98,12 @@
 import { TwitterIcon, PayPalIcon, BraveIcon, GitHubIcon } from 'vue-simple-icons'
 
 export default {
-  components: { TwitterIcon, PayPalIcon, BraveIcon, GitHubIcon },
+  components: {
+    TwitterIcon,
+    PayPalIcon,
+    BraveIcon,
+    GitHubIcon
+  },
   data () {
     return {
       connected: true,
@@ -138,7 +154,8 @@ export default {
 .fade-enter-active, .fade-leave-active {
   transition: opacity 1s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>
