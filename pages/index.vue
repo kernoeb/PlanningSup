@@ -64,8 +64,8 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
-            v-on="on"
             class="ma-2"
+            v-on="on"
             @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
           >
             mdi-theme-light-dark
@@ -82,8 +82,8 @@
             <template v-slot:activator="{ on: tooltip }">
               <v-icon
                 v-bind="attrs"
-                v-on="{...dialog, ...tooltip}"
                 class="ma-2"
+                v-on="{...dialog, ...tooltip}"
               >
                 mdi-format-list-bulleted
               </v-icon>
@@ -144,8 +144,8 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
-            v-on="on"
             class="ma-2"
+            v-on="on"
             @click="setToday"
           >
             mdi-calendar-today
@@ -164,7 +164,9 @@
     <v-sheet height="700">
       <div v-if="$fetchState.error || !events.length" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
-          Bon y a eu un soucis. <br>Essaye de te connecter à Internet bg.</span>
+          Bon y a eu un soucis.<br> <!-- TODO Show message from API without commit -->
+          <br><v-icon class="mr-2 mb-1">mdi-alert</v-icon><span style="color: orangered; font-weight: bold">Problème côté UBS</span>
+          <br>Quand le soucis sera corrigé de leur côté, j'éviterai que ça se reproduise une deuxième fois.</span>
       </div>
       <v-calendar
         v-show="events.length"
