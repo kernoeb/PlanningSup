@@ -9,6 +9,10 @@ Un planning universitaire sympathique réalisé par @kernoeb.
 Faîtes une pull request en modifiant le fichier `static/url.json`, en respectant à la lettre le schéma déjà présent! :)
 
 
+### TODO
+
+Server side static download and send to avoid university server side issues (500)
+
 ### Captures :
 
 ![desktop](img/desktop.png)  
