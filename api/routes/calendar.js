@@ -25,7 +25,6 @@ const checkStatus = (res) => {
   }
 }
 
-// Test route
 router.use('/getCalendar', async (req, res) => {
   let reqU = 'iutvannes'
   let reqN = 'lp'
@@ -58,9 +57,11 @@ router.use('/getCalendar', async (req, res) => {
       }
       res.json(events)
     } else {
+      // TODO Take saved json (Heroku PostgreSQL ?)
       res.status(500).send('oof!')
     }
   } catch (err) {
+    // TODO Take saved json (Heroku PostgreSQL ?)
     res.status(500).send('oof! (2)')
   }
 })
