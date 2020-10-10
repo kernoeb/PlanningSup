@@ -313,7 +313,7 @@ export default {
         if (this.type !== 'month') {
           if (new Date().getDay() === 6) {
             this.$refs.calendar.next(2)
-          } else if (new Date().getDay() === 7) {
+          } else if (new Date().getDay() === 0) {
             this.$refs.calendar.next()
           }
         }
