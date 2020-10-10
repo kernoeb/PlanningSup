@@ -11,7 +11,7 @@ Faîtes une pull request en modifiant le fichier `static/url.json`, en respectan
 ### Fonctionnalités
 
 - Mode hors connexion
-- Couleurs par catégorie (Amhpi, TD, TP, etc)
+- Couleurs par catégorie (Amphi, TD, TP, etc)
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité
