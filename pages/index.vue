@@ -263,6 +263,16 @@ export default {
     }
 
     try {
+      if (this.type === 'week') {
+        if (new Date().getDay() === 6) {
+          this.$refs.calendar.next(2)
+        } else if (new Date().getDay() === 7) {
+          this.$refs.calendar.next()
+        }
+      }
+    } catch (err) {}
+
+    try {
       const start = this.$moment(this.$refs.calendar.start).week().toString()
       const end = this.$moment(this.$refs.calendar.end).week().toString()
       this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
