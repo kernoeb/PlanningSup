@@ -1,6 +1,16 @@
 import fetch from 'node-fetch'
 import ical from 'cal-parser'
 
+const { Client } = require('pg')
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+})
+client.connect()
+
 const { Router } = require('express')
 const urls = require('../../static/url.json')
 
@@ -28,17 +38,19 @@ const checkStatus = (res) => {
 
 router.use('/getCalendar', async (req, res) => {
   let reqU = 'iutvannes'
-  let reqN = 'lp'
-  let reqT = 'dlis'
+  let reqN = 'lpdlis'
+  let reqT = '1'
+
   if (req.query && req.query.u && req.query.n && req.query.t) {
     reqU = req.query.u
     reqN = req.query.n
     reqT = req.query.t
   }
-  const univ = urls.filter(u => u.univ === reqU)
-  const univ2 = univ[0].univ_edts.filter(u => u.name === reqN)
-  const tmpUrl = univ2[0].edts.filter(u => u.name === reqT)[0].url
+
   try {
+    const univ = urls.filter(u => u.univ === reqU)
+    const univ2 = univ[0].univ_edts.filter(u => u.name === reqN)
+    const tmpUrl = univ2[0].edts.filter(u => u.name === reqT)[0].url
     const response = await fetch(tmpUrl)
     if (checkStatus(response) !== 'err') {
       const body = await response.text()
@@ -56,15 +68,45 @@ router.use('/getCalendar', async (req, res) => {
           description: i.description.value
         })
       }
+      try {
+        client.query({
+          name: 'fetch-data',
+          text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
+          values: [reqU, reqN, reqT, JSON.stringify(events)]
+        }, (err) => {
+          if (err) {
+            console.log(err)
+            console.log("Erreur de l'enregistrement!")
+          }
+        })
+      } catch (err) {
+        console.log("Erreur d'insertion des données")
+      }
       res.json(events)
     } else {
-      // TODO Take saved json (Heroku PostgreSQL ?)
-      res.status(500).send('oof!')
+      try {
+        const query = await client.query({ name: 'fetch-data', text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;', values: [reqU, reqN, reqT] })
+        if (query.rows[0]) {
+          res.json(query.rows[0])
+        } else {
+          res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
+        }
+      } catch (err) {
+        res.status(500).send('Coup dur. Une erreur 500.')
+      }
     }
   } catch (err) {
     // TODO Take saved json (Heroku PostgreSQL ?)
-    res.status(500).send('oof! (2)')
+    res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
   }
 })
+
+process.on('SIGTERM', shutDown)
+process.on('SIGINT', shutDown)
+
+function shutDown () {
+  console.log('Stopping client!')
+  client.end()
+}
 
 module.exports = router
