@@ -15,7 +15,11 @@
             <strong>{{ selectedEvent.name }}</strong>
           </div>
           <div v-if="selectedEvent.location || cleanDescription(selectedEvent.description)">
-            {{ selectedEvent.location }}{{ (selectedEvent.location && cleanDescription(selectedEvent.description)) ? ' | ' : '' }}{{ cleanDescription(selectedEvent.description) }}
+            {{
+              selectedEvent.location
+            }}{{
+              (selectedEvent.location && cleanDescription(selectedEvent.description)) ? ' | ' : ''
+            }}{{ cleanDescription(selectedEvent.description) }}
           </div>
           <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
         </div>
@@ -183,7 +187,9 @@
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
             <div v-if="event.location || cleanDescription(event.description)">
-              {{ event.location }}{{ (event.location && cleanDescription(event.description)) ? ' | ' : '' }}{{ cleanDescription(event.description) }}
+              {{ event.location }}{{
+                (event.location && cleanDescription(event.description)) ? ' | ' : ''
+              }}{{ cleanDescription(event.description) }}
             </div>
             <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
           </div>
@@ -311,7 +317,8 @@ export default {
             this.$refs.calendar.next()
           }
         }
-      } catch (err) {}
+      } catch (err) {
+      }
     },
     showEvent ({ nativeEvent, event }) {
       this.bottom = true
