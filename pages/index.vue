@@ -263,7 +263,7 @@ export default {
     }
 
     try {
-      if (this.type === 'week') {
+      if (this.type === 'week' || this.type === 'day') {
         if (new Date().getDay() === 6) {
           this.$refs.calendar.next(2)
         } else if (new Date().getDay() === 7) {
