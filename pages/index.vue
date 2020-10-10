@@ -263,16 +263,6 @@ export default {
     }
 
     try {
-      if (this.type === 'week' || this.type === 'day') {
-        if (new Date().getDay() === 6) {
-          this.$refs.calendar.next(2)
-        } else if (new Date().getDay() === 7) {
-          this.$refs.calendar.next()
-        }
-      }
-    } catch (err) {}
-
-    try {
       const start = this.$moment(this.$refs.calendar.start).week().toString()
       const end = this.$moment(this.$refs.calendar.end).week().toString()
       this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
@@ -295,6 +285,10 @@ export default {
     window.addEventListener('resize', this.onResize, { passive: true })
 
     setTimeout(() => {
+      this.skipWeekend()
+    }, 0)
+
+    setTimeout(() => {
       window.onfocus = () => {
         if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 40000) {
           this.lastTimeFetch = new Date().getTime()
@@ -308,6 +302,17 @@ export default {
     }, 120000)
   },
   methods: {
+    skipWeekend () {
+      try {
+        if (this.type !== 'month') {
+          if (new Date().getDay() === 6) {
+            this.$refs.calendar.next(2)
+          } else if (new Date().getDay() === 7) {
+            this.$refs.calendar.next()
+          }
+        }
+      } catch (err) {}
+    },
     showEvent ({ nativeEvent, event }) {
       this.bottom = true
       this.selectedEvent = event
