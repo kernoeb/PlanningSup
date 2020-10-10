@@ -164,9 +164,7 @@
     <v-sheet height="700">
       <div v-if="$fetchState.error || !events.length" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
-          Bon y a eu un soucis.<br> <!-- TODO Show message from API without commit -->
-          <br><v-icon class="mr-2 mb-1">mdi-alert</v-icon><span style="color: orangered; font-weight: bold">Problème côté UBS</span>
-          <br>Quand le soucis sera corrigé de leur côté, j'éviterai que ça se reproduise une deuxième fois.</span>
+          Bon y a eu un soucis.<br>Revient plus tard bg.</span>
       </div>
       <v-calendar
         v-show="events.length"
