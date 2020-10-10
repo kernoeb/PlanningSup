@@ -14,10 +14,8 @@
           <div class="mt-4">
             <strong>{{ selectedEvent.name }}</strong>
           </div>
-          <div>
-            {{
-              selectedEvent.location ? selectedEvent.location + ' | ' : ''
-            }}{{ cleanDescription(selectedEvent.description) }}
+          <div v-if="selectedEvent.location || cleanDescription(selectedEvent.description)">
+            {{ selectedEvent.location }}{{ (selectedEvent.location && cleanDescription(selectedEvent.description)) ? ' | ' : '' }}{{ cleanDescription(selectedEvent.description) }}
           </div>
           <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
         </div>
@@ -184,7 +182,9 @@
         <template v-slot:event="{event}">
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
-            <div>{{ event.location ? event.location + ' | ' : '' }}{{ cleanDescription(event.description) }}</div>
+            <div v-if="event.location || cleanDescription(event.description)">
+              {{ event.location }}{{ (event.location && cleanDescription(event.description)) ? ' | ' : '' }}{{ cleanDescription(event.description) }}
+            </div>
             <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
           </div>
         </template>
