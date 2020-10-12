@@ -53,7 +53,7 @@ router.use('/getCalendar', async (req, res) => {
     () => {
       controller.abort()
     },
-    2000
+    2500
   )
 
   try {
