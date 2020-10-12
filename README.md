@@ -6,7 +6,9 @@ Un planning universitaire sympathique réalisé par @kernoeb.
 
 ### Ajouter une spécialité ou une université
 
-Faîtes une pull request en modifiant le fichier `static/url.json`, en respectant à la lettre le schéma déjà présent ! :)
+Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `static/url.json` - en respectant à la lettre le schéma déjà présent ! :)
+
+> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).
 
 ### Fonctionnalités
 
@@ -14,16 +16,20 @@ Faîtes une pull request en modifiant le fichier `static/url.json`, en respectan
 - Couleurs par catégorie (Amphi, TD, TP, etc)
 - Mode jour / semaine / mois
 - Zoom sur un cours
-- Changement d'université / spécialité
-- Thème clair / thème sombre
+- Changement d'université / spécialité (cookie)
+- Thème clair / thème sombre (cookie)
+
+> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos ou pour me notifier d'une erreur, ou proposer une fonctionnalité ! :)
 
 ### Comment ça marche ?
 
 Le planning est hébergé sur un Heroku, et développé en Nuxt.js (et donc Vue.js).  
 Nuxt.js, c'est du server-side rendering (SSR), donc le planning est généré côté serveur.
 
-Il existe aussi une api : `/api/getCalendar`, qui fetch le calendrier au format `.ics` depuis l'url donnée dans `static/url.json`.
+Il existe aussi une api : `/api/getCalendar`, qui fetch côté serveur le calendrier au format `.ics` depuis l'url donnée dans `static/url.json` (et vérifie l'existence du calendrier, comme un contrat).
 Ce fichier est ensuite transformé en `.json`.
+
+> Note : l'url n'est pas directement fetch dans la méthode *$fetch* de Nuxt.js pour éviter les problèmes de CORS.
 
 L'application est une `PWA`, et fonctionne donc hors connexion *(à condition d'être déjà venu sur le planning, ça se sauvegarde dans le cache !)*
 
@@ -44,3 +50,8 @@ Si une erreur est présente, les données seront donc récupérées dans cette b
 <img src="img/phone5.png" height="300" />
 <br>
 <img src="img/phone6.png" height="300" />
+
+### Dons :
+
+Si vous souhaitez me faire un petit don :  
+[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/kernoeb)
