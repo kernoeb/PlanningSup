@@ -52,6 +52,16 @@ Si une erreur est présente, les données seront donc récupérées dans cette b
 <br>
 <img src="img/phone6.png" height="300" />
 
+### Utilisation
+
+#### Heroku
+
+Config Vars :
+- DATABASE_URL | postgres://....
+- HOST | 0.0.0.0
+- NODE_ENV | production
+- NPM_CONFIG_PRODUCTION | false
+
 ### Dons
 
 Si vous souhaitez me faire un petit don :  
