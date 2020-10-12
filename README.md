@@ -6,7 +6,7 @@ Un planning universitaire moderne réalisé par @kernoeb.
 
 ### Ajouter une spécialité ou une université
 
-Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `static/url.json` - en respectant à la lettre le schéma déjà présent ! :)
+Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `static/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
 
 > Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).
 
@@ -18,8 +18,9 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie)
 - Thème clair / thème sombre (cookie)
+- Actualisation du planning au chargement, au focus de la page, ainsi que toutes les 2 minutes
 
-> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité ! :)
+> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
 ### Comment ça marche ?
 
