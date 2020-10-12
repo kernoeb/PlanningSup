@@ -1,6 +1,6 @@
 # planningiut
 
-Un planning universitaire sympathique réalisé par @kernoeb.  
+Un planning universitaire moderne réalisé par @kernoeb.  
 
 ![Heroku](https://heroku-badge.herokuapp.com/?app=planningiut)
 
@@ -13,13 +13,13 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 ### Fonctionnalités
 
 - Mode hors connexion
-- Couleurs par catégorie (Amphi, TD, TP, etc)
+- Couleurs par catégorie (Amphi, TD, TP, etc.)
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie)
 - Thème clair / thème sombre (cookie)
 
-> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos ou pour me notifier d'une erreur, ou proposer une fonctionnalité ! :)
+> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité ! :)
 
 ### Comment ça marche ?
 
@@ -36,7 +36,7 @@ L'application est une `PWA`, et fonctionne donc hors connexion *(à condition d'
 Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL *(Heroku)*.
 Si une erreur est présente, les données seront donc récupérées dans cette base de donnée.
 
-### Captures :
+### Captures
 
 ![desktop](img/desktop.png)  
 <img src="img/phone1.png" height="300" />
@@ -51,7 +51,7 @@ Si une erreur est présente, les données seront donc récupérées dans cette b
 <br>
 <img src="img/phone6.png" height="300" />
 
-### Dons :
+### Dons
 
 Si vous souhaitez me faire un petit don :  
 [![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/kernoeb)
