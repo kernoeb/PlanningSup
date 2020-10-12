@@ -1,5 +1,6 @@
 import fetch from 'node-fetch'
 import ical from 'cal-parser'
+import AbortController from 'abort-controller'
 
 const { Client } = require('pg')
 
@@ -47,12 +48,28 @@ router.use('/getCalendar', async (req, res) => {
     reqT = req.query.t
   }
 
+  const controller = new AbortController()
+  const timeout = setTimeout(
+    () => {
+      controller.abort()
+    },
+    2000
+  )
+
   try {
     const univ = urls.filter(u => u.univ === reqU)
     const univ2 = univ[0].univ_edts.filter(u => u.name === reqN)
     const tmpUrl = univ2[0].edts.filter(u => u.name === reqT)[0].url
-    const response = await fetch(tmpUrl)
-    if (checkStatus(response) !== 'err') {
+
+    let response = null
+    try {
+      response = await fetch(tmpUrl, { signal: controller.signal })
+    } catch (e) {
+    } finally {
+      clearTimeout(timeout)
+    }
+
+    if (response && checkStatus(response) !== 'err') {
       const body = await response.text()
       const ics = ical.parseString(body)
 
@@ -68,24 +85,31 @@ router.use('/getCalendar', async (req, res) => {
           description: i.description.value
         })
       }
-      try {
-        client.query({
-          name: 'fetch-data',
-          text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
-          values: [reqU, reqN, reqT, JSON.stringify(events)]
-        }, (err) => {
-          if (err) {
-            console.log(err)
-            console.log("Erreur de l'enregistrement!")
-          }
-        })
-      } catch (err) {
-        console.log("Erreur d'insertion des données")
+
+      if (process.env.DATABASE_URL) {
+        try {
+          client.query({
+            name: 'fetch-data',
+            text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
+            values: [reqU, reqN, reqT, JSON.stringify(events)]
+          }, (err) => {
+            if (err) {
+              console.log(err)
+              console.log('Erreur de l\'enregistrement!')
+            }
+          })
+        } catch (err) {
+          console.log('Erreur d\'insertion des données')
+        }
       }
       res.json(events)
-    } else {
+    } else if (process.env.DATABASE_URL) {
       try {
-        const query = await client.query({ name: 'fetch-data', text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;', values: [reqU, reqN, reqT] })
+        const query = await client.query({
+          name: 'fetch-data',
+          text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
+          values: [reqU, reqN, reqT]
+        })
         if (query.rows[0]) {
           res.json(query.rows[0])
         } else {
@@ -94,9 +118,12 @@ router.use('/getCalendar', async (req, res) => {
       } catch (err) {
         res.status(500).send('Coup dur. Une erreur 500.')
       }
+    } else {
+      res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }
   } catch (err) {
     // TODO Take saved json (Heroku PostgreSQL ?)
+    console.log(err)
     res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
   }
 })
