@@ -215,6 +215,20 @@ export default {
             t: this.$route.query.t
           }
         })
+        this.$cookies.set('edt', Buffer.from(JSON.stringify({
+          u: this.$route.query.u,
+          n: this.$route.query.n,
+          t: this.$route.query.t
+        }), 'binary').toString('base64'))
+      } else if (this.$cookies.get('edt') !== undefined) {
+        const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
+        this.events = await this.$axios.$get('/api/getCalendar', {
+          params: {
+            u: tmp.u,
+            n: tmp.n,
+            t: tmp.t
+          }
+        })
       } else {
         this.events = await this.$axios.$get('/api/getCalendar')
       }
