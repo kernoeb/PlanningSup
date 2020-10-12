@@ -52,7 +52,7 @@ Si une erreur est présente, les données seront donc récupérées dans cette b
 <br>
 <img src="img/phone6.png" height="300" />
 
-### Utilisation
+### Installation
 
 #### Heroku
 
