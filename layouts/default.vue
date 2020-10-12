@@ -27,7 +27,7 @@
     >
       <span>Noéwen (<a
         href="https://twitter.com/kop_of_tea"
-        style="color: white"
+        :style="$vuetify.theme.dark ? 'color: white' : 'color: black'"
       >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
@@ -40,7 +40,7 @@
             target="_blank"
             v-on="on"
           >
-            <brave-icon class="mr-4" size="18" style="fill: whitesmoke" />
+            <brave-icon class="mr-4" size="18" :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" />
           </a>
         </template>
         <span>Referral Brave</span>
@@ -55,7 +55,7 @@
             target="_blank"
             v-on="on"
           >
-            <pay-pal-icon class="mr-4" size="18" style="fill: whitesmoke" />
+            <pay-pal-icon class="mr-4" size="18" :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" />
           </a>
         </template>
         <span>Faire un don</span>
@@ -70,7 +70,7 @@
             target="_blank"
             v-on="on"
           >
-            <twitter-icon class="mr-4" size="18" style="fill: whitesmoke" />
+            <twitter-icon class="mr-4" size="18" :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" />
           </a>
         </template>
         <span>Twitter</span>
@@ -85,7 +85,7 @@
             target="_blank"
             v-on="on"
           >
-            <git-hub-icon size="18" style="fill: whitesmoke" />
+            <git-hub-icon size="18" :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" />
           </a>
         </template>
         <span>Page du projet</span>

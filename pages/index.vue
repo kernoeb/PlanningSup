@@ -203,6 +203,7 @@
 import urls from '../static/url.json'
 
 export default {
+  middleware: 'vuetify-theme',
   async fetch () {
     this.loading = true
     try {
@@ -249,7 +250,7 @@ export default {
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
-      document.cookie = 'theme=' + this.$vuetify.theme.dark
+      this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false')
     }
   },
   beforeDestroy () {
@@ -263,7 +264,7 @@ export default {
     this.mounted = true
 
     try {
-      this.$vuetify.theme.dark = JSON.parse(document.cookie.split('theme=')[1])
+      this.$vuetify.theme.dark = JSON.parse(this.$cookies.get('theme'))
     } catch (e) {
       this.$vuetify.theme.dark = true
     }

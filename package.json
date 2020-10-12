@@ -16,6 +16,7 @@
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.1.2",
     "cal-parser": "^1.0.1",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "ical.js": "^1.4.0",
