@@ -122,7 +122,6 @@ router.use('/getCalendar', async (req, res) => {
       res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }
   } catch (err) {
-    // TODO Take saved json (Heroku PostgreSQL ?)
     console.log(err)
     res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
   }
