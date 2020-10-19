@@ -29,6 +29,10 @@ function getColor (n, l) {
   }
 }
 
+function cleanDescription (d) {
+  return d.split(' (Exporté')[0].split('LP DLIS ')[1]
+}
+
 const checkStatus = (res) => {
   if (res.ok) {
     return res
@@ -82,7 +86,7 @@ router.use('/getCalendar', async (req, res) => {
           color: getColor(i.summary.value, i.location.value),
           timed: true,
           location: i.location.value,
-          description: i.description.value
+          description: cleanDescription(i.description.value)
         })
       }
 
