@@ -66,8 +66,8 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
-            class="ma-2"
             v-on="on"
+            class="ma-2"
             @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
           >
             mdi-theme-light-dark
@@ -84,8 +84,8 @@
             <template v-slot:activator="{ on: tooltip }">
               <v-icon
                 v-bind="attrs"
-                class="ma-2"
                 v-on="{...dialog, ...tooltip}"
+                class="ma-2"
               >
                 mdi-format-list-bulleted
               </v-icon>
@@ -146,8 +146,8 @@
         <template v-slot:activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
-            class="ma-2"
             v-on="on"
+            class="ma-2"
             @click="setToday"
           >
             mdi-calendar-today
