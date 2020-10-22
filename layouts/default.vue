@@ -17,7 +17,7 @@
       <span>{{ time }}</span>
     </v-system-bar>
     <v-main>
-      <v-container :fluid="$vuetify.breakpoint.md || $vuetify.breakpoint.lg" :class="$vuetify.breakpoint.md || $vuetify.breakpoint.lg ? 'pl-10 pr-10' : ''">
+      <v-container fluid>
         <nuxt keep-alive />
       </v-container>
     </v-main>

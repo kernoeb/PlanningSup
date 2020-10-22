@@ -166,7 +166,7 @@
     <v-sheet height="700">
       <div v-if="$fetchState.error || !events.length" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
-          Il y a eu quelques récents changements, re-sélectionne ton université stp !</span>
+          Bon y a eu un soucis.<br>Revient plus tard bg.</span>
       </div>
       <v-calendar
         v-show="events.length"
@@ -222,13 +222,17 @@ export default {
         }), 'binary').toString('base64'))
       } else if (this.$cookies.get('edt') !== undefined) {
         const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-        this.events = await this.$axios.$get('/api/getCalendar', {
-          params: {
-            u: tmp.u,
-            n: tmp.n,
-            t: tmp.t
-          }
-        })
+        try {
+          this.events = await this.$axios.$get('/api/getCalendar', {
+            params: {
+              u: tmp.u,
+              n: tmp.n,
+              t: tmp.t
+            }
+          })
+        } catch (e) {
+          this.events = await this.$axios.$get('/api/getCalendar')
+        }
       } else {
         this.events = await this.$axios.$get('/api/getCalendar')
       }
