@@ -124,7 +124,7 @@
                       <nuxt-link
                         v-for="(url3, k) in url2.edts"
                         :key="`urls_3_${k}`"
-                        :to="{name: 'index', query: {u: url.univ, n: url2.name, t: url3.name}}"
+                        :to="{name: 'index', query: {u: url.univ, n: url2.id, t: url3.id}}"
                       >
                         <v-list-item class="ml-3" @click="dialog = false">
                           <v-list-item-content>
@@ -222,14 +222,15 @@ export default {
             t: this.$route.query.t
           }
         })
+        this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
           u: this.$route.query.u,
           n: this.$route.query.n,
           t: this.$route.query.t
         }), 'binary').toString('base64'))
       } else if (this.$cookies.get('edt') !== undefined) {
-        const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
         try {
+          const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
           this.events = await this.$axios.$get('/api/getCalendar', {
             params: {
               u: tmp.u,
@@ -237,15 +238,23 @@ export default {
               t: tmp.t
             }
           })
+          this.loading = false
         } catch (e) {
+          this.$cookies.remove('edt')
           this.events = await this.$axios.$get('/api/getCalendar')
+          this.loading = false
         }
       } else {
         this.events = await this.$axios.$get('/api/getCalendar')
+        this.loading = false
       }
-      this.loading = false
     } catch (e) {
-      this.loading = false
+      try {
+        this.events = await this.$axios.$get('/api/getCalendar')
+        this.loading = false
+      } catch (e) {
+        this.loading = false
+      }
     }
   },
   data: () => ({

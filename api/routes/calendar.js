@@ -62,8 +62,8 @@ router.use('/getCalendar', async (req, res) => {
 
   try {
     const univ = urls.filter(u => u.univ === reqU)
-    const univ2 = univ[0].univ_edts.filter(u => u.name === reqN)
-    const tmpUrl = univ2[0].edts.filter(u => u.name === reqT)[0].url
+    const univ2 = univ[0].univ_edts.filter(u => u.id === reqN)
+    const tmpUrl = univ2[0].edts.filter(u => u.id === reqT)[0].url
 
     let response = null
     try {
@@ -106,7 +106,7 @@ router.use('/getCalendar', async (req, res) => {
           console.log('Erreur d\'insertion des données')
         }
       }
-      res.json(events)
+      await res.json(events)
     } else if (process.env.DATABASE_URL) {
       try {
         const query = await client.query({
@@ -115,7 +115,7 @@ router.use('/getCalendar', async (req, res) => {
           values: [reqU, reqN, reqT]
         })
         if (query.rows[0]) {
-          res.json(query.rows[0])
+          await res.json(query.rows[0])
         } else {
           res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
         }
