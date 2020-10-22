@@ -43,8 +43,8 @@ const checkStatus = (res) => {
 
 router.use('/getCalendar', async (req, res) => {
   let reqU = 'iutvannes'
-  let reqN = 'lpdlis'
-  let reqT = '1'
+  let reqN = 'lp'
+  let reqT = 'dlis'
 
   if (req.query && req.query.u && req.query.n && req.query.t) {
     reqU = req.query.u
