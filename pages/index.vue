@@ -183,6 +183,13 @@
         show-week
         @click:event="showEvent"
       >
+        <template v-slot:day-body="{ date, week }">
+          <div
+            class="v-current-time"
+            :class="{ first: date === week[0].date }"
+            :style="{ top: nowY }"
+          />
+        </template>
         <template v-slot:event="{event}">
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
@@ -265,6 +272,11 @@ export default {
     currentWeek: '',
     lastTimeFetch: 0
   }),
+  computed: {
+    nowY () {
+      return this.mounted && this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
+    }
+  },
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
@@ -400,5 +412,14 @@ export default {
 
 .v-calendar-daily__scroll-area {
   overflow: hidden !important;
+}
+
+.v-current-time {
+  height: 2px;
+  background-color: rgba(210, 78, 78, 0.8);
+  position: absolute;
+  left: -1px;
+  right: 0;
+  pointer-events: none;
 }
 </style>
