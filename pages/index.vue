@@ -185,9 +185,9 @@
       >
         <template v-slot:day-body="{ date, week }">
           <div
-            class="v-current-time"
             :class="{ first: date === week[0].date }"
             :style="{ top: nowY }"
+            class="v-current-time"
           />
         </template>
         <template v-slot:event="{event}">
@@ -325,6 +325,8 @@ export default {
       this.skipWeekend()
     }, 0)
 
+    window.addEventListener('keyup', this.keyboard)
+
     setTimeout(() => {
       window.onfocus = () => {
         if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 40000) {
@@ -358,6 +360,19 @@ export default {
     },
     setToday () {
       this.value = ''
+    },
+    keyboard (event) {
+      if (event.defaultPrevented) {
+        return
+      }
+
+      const key = event.key || event.keyCode
+
+      if (key === 'ArrowLeft' || key === 37) {
+        this.$refs.calendar.prev()
+      } else if (key === 'ArrowRight' || key === 39) {
+        this.$refs.calendar.next()
+      }
     },
     onResize () {
       if (window.innerWidth < 600) {
