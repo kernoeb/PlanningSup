@@ -4,6 +4,7 @@
       <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
+      <span v-if="currentUniv">{{ currentUniv }}</span>
     </div>
     <v-bottom-sheet v-model="bottom">
       <v-sheet
@@ -279,13 +280,10 @@ export default {
     events: [],
     mounted: false,
     currentWeek: '',
-    lastTimeFetch: 0
+    lastTimeFetch: 0,
+    currentUniv: '',
+    nowY: '-10px'
   }),
-  computed: {
-    nowY () {
-      return this.mounted && this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
-    }
-  },
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
@@ -336,8 +334,10 @@ export default {
 
     window.addEventListener('keyup', this.keyboard)
 
+    this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
     setTimeout(() => {
       window.onfocus = () => {
+        this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
         if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 40000) {
           this.lastTimeFetch = new Date().getTime()
           this.$fetch()
@@ -347,6 +347,7 @@ export default {
 
     setInterval(() => {
       this.$fetch()
+      this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
     }, 120000)
   },
   methods: {
