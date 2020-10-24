@@ -53,6 +53,12 @@ export default {
     '@nuxtjs/component-cache'
   ],
 
+  pwa: {
+    workbox: {
+      cleanupOutdatedCaches: true
+    }
+  },
+
   moment: {
     defaultLocale: 'fr',
     locales: ['fr']
