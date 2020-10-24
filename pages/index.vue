@@ -377,10 +377,16 @@ export default {
     skipWeekend () {
       try {
         if (this.type !== 'month') {
-          if (new Date().getDay() === 6) {
-            this.$refs.calendar.next(2)
-          } else if (new Date().getDay() === 0) {
-            this.$refs.calendar.next()
+          if (this.type === 'week') {
+            if ([0, 6].includes(new Date().getDay())) {
+              this.$refs.calendar.move()
+            }
+          } else if (this.type === 'day') {
+            if (new Date().getDay() === 6) {
+              this.$refs.calendar.move(2)
+            } else if (new Date().getDay() === 0) {
+              this.$refs.calendar.move(1)
+            }
           }
         }
       } catch (err) {
