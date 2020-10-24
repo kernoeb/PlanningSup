@@ -4,7 +4,9 @@
       <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
-      <span v-if="currentUniv">{{ currentUniv }}</span>
+      <div v-if="currentUniv" style="font-size: 10px">
+        {{ currentUniv }}
+      </div>
     </div>
     <v-bottom-sheet v-model="bottom">
       <v-sheet
@@ -223,6 +225,7 @@ export default {
             t: this.$route.query.t
           }
         })
+        this.setUnivTitle(this.$route.query.u, this.$route.query.n, this.$route.query.t)
         this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
           u: this.$route.query.u,
@@ -239,19 +242,23 @@ export default {
               t: tmp.t
             }
           })
+          this.setUnivTitle(tmp.u, tmp.n, tmp.t)
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
           this.events = await this.$axios.$get('/api/getCalendar')
+          this.setUnivTitle()
           this.loading = false
         }
       } else {
         this.events = await this.$axios.$get('/api/getCalendar')
+        this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
         this.events = await this.$axios.$get('/api/getCalendar')
+        this.setUnivTitle()
         this.loading = false
       } catch (e) {
         this.loading = false
@@ -351,6 +358,18 @@ export default {
     }, 120000)
   },
   methods: {
+    setUnivTitle (reqU, reqN, reqT) {
+      try {
+        if (reqU && reqN && reqT) {
+          const univ = urls.find(u => u.univ === reqU)
+          const univ2 = univ.univ_edts.find(u => u.id === reqN)
+          const univ3 = univ2.edts.find(u => u.id === reqT)
+          this.currentUniv = univ.title + ' > ' + univ2.title + ' ' + univ3.title
+        } else {
+          this.currentUniv = 'IUT de Vannes > Licence Pro DLIS'
+        }
+      } catch (e) {}
+    },
     updateTime () {
       const tmp = new Date()
       this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY((tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes()) + 'px' : '-10px'

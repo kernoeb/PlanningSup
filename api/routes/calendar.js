@@ -61,9 +61,10 @@ router.use('/getCalendar', async (req, res) => {
   )
 
   try {
-    const univ = urls.filter(u => u.univ === reqU)
-    const univ2 = univ[0].univ_edts.filter(u => u.id === reqN)
-    const tmpUrl = univ2[0].edts.filter(u => u.id === reqT)[0].url
+    const univ = urls.find(u => u.univ === reqU)
+    const univ2 = univ.univ_edts.find(u => u.id === reqN)
+    const univ3 = univ2.edts.find(u => u.id === reqT)
+    const tmpUrl = univ3.url
 
     let response = null
     try {
