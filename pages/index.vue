@@ -334,10 +334,10 @@ export default {
 
     window.addEventListener('keyup', this.keyboard)
 
-    this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
+    this.updateTime()
     setTimeout(() => {
       window.onfocus = () => {
-        this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
+        this.updateTime()
         if (!this.loading && (new Date().getTime() - this.lastTimeFetch) > 40000) {
           this.lastTimeFetch = new Date().getTime()
           this.$fetch()
@@ -347,10 +347,14 @@ export default {
 
     setInterval(() => {
       this.$fetch()
-      this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY(this.$refs.calendar.times.now) + 'px' : '-10px'
+      this.updateTime()
     }, 120000)
   },
   methods: {
+    updateTime () {
+      const tmp = new Date()
+      this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY((tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes()) + 'px' : '-10px'
+    },
     skipWeekend () {
       try {
         if (this.type !== 'month') {
