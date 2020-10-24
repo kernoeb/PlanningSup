@@ -101,7 +101,7 @@
             <v-icon class="mr-2">
               mdi-calendar
             </v-icon>
-            Choisir un emploi du temps
+            <span style="font-size: 15px">Choisir un emploi du temps</span>
           </v-card-title>
 
           <v-divider />
