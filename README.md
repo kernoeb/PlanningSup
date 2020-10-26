@@ -2,7 +2,7 @@
 
 Un planning universitaire moderne réalisé par @kernoeb.  
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=planningiut)
+[![Heroku App Status](https://heroku-shields.herokuapp.com/planningiut)](https://planningiut.herokuapp.com)
 
 ### Ajouter une spécialité ou une université
 
