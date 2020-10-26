@@ -50,7 +50,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/component-cache'
+    '@nuxtjs/component-cache',
+    ['nuxt-matomo', { matomoUrl: 'https://matomo.bizouarn.fr/', siteId: 1 }]
   ],
 
   pwa: {
