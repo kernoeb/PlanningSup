@@ -343,7 +343,6 @@ export default {
     } catch (e) {
     }
 
-    this.width = window.innerWidth
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
