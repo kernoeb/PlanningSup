@@ -100,7 +100,7 @@
                 mdi-format-list-bulleted
               </v-icon>
             </template>
-            <span>Changer d'EDT</span>
+            <span style="margin-right: 2px">Changer d'EDT</span><span style="color: lightgrey; font-size: 10px">(u)</span>
           </v-tooltip>
         </template>
         <v-card>
@@ -108,7 +108,7 @@
             <v-icon class="mr-2">
               mdi-calendar
             </v-icon>
-            <span style="font-size: 15px; margin-right: 2px">Choisir un emploi du temps</span><span style="color: grey; font-size: 10px">(u)</span>
+            <span style="font-size: 15px">Choisir un emploi du temps</span>
           </v-card-title>
 
           <v-divider />
