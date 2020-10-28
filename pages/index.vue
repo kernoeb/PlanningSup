@@ -299,7 +299,8 @@ export default {
     currentWeek: '',
     lastTimeFetch: 0,
     currentUniv: '',
-    nowY: '-10px'
+    nowY: '-10px',
+    width: 0
   }),
   watch: {
     '$route.query': '$fetch',
@@ -342,6 +343,7 @@ export default {
     } catch (e) {
     }
 
+    this.width = window.innerWidth
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
 
@@ -434,10 +436,13 @@ export default {
       }
     },
     onResize () {
-      if (window.innerWidth < 600) {
-        this.type = 'day'
-      } else {
-        this.type = 'week'
+      if (this.width !== window.innerWidth) {
+        this.width = window.innerWidth
+        if (window.innerWidth < 600) {
+          this.type = 'day'
+        } else {
+          this.type = 'week'
+        }
       }
     }
   }
