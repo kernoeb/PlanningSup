@@ -20,11 +20,9 @@
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
-    "ical.js": "^1.4.0",
-    "luxon": "^1.25.0",
     "nuxt": "^2.14.7",
     "nuxt-matomo": "^1.2.3",
-    "pg": "^8.4.1",
+    "pg": "^8.4.2",
     "vue-simple-icons": "^3.10.0"
   },
   "devDependencies": {
@@ -33,7 +31,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.0",
+    "eslint": "^7.12.1",
     "eslint-plugin-nuxt": "^1.0.0"
   }
 }
