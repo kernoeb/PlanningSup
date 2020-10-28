@@ -60,10 +60,17 @@
         class="ma-2"
         dense
         hide-details
-        label="type"
+        label="Mode"
         outlined
         style="width: 100px"
-      />
+      >
+        <template v-slot:item="{ item }">
+          <span style="width: 100%; float: left">
+            {{ item.text }}
+            <span style="color: grey; font-size: 10px">({{ item.keyboard }})</span>
+          </span>
+        </template>
+      </v-select>
       <v-spacer />
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
@@ -101,7 +108,7 @@
             <v-icon class="mr-2">
               mdi-calendar
             </v-icon>
-            <span style="font-size: 15px">Choisir un emploi du temps</span>
+            <span style="font-size: 15px; margin-right: 2px">Choisir un emploi du temps</span><span style="color: grey; font-size: 10px">(u)</span>
           </v-card-title>
 
           <v-divider />
@@ -156,7 +163,7 @@
             mdi-calendar-today
           </v-icon>
         </template>
-        <span>Aujourd'hui</span>
+        <span style="margin-right: 2px">Aujourd'hui</span><span style="color: lightgrey; font-size: 10px">(t)</span>
       </v-tooltip>
       <v-btn
         class="ma-2"
@@ -274,12 +281,15 @@ export default {
     type: 'week',
     types: [{
       text: 'Mois',
+      keyboard: 'M',
       value: 'month'
     }, {
       text: 'Semaine',
+      keyboard: 'S/W',
       value: 'week'
     }, {
       text: 'Jour',
+      keyboard: 'J/D',
       value: 'day'
     }],
     weekday: [1, 2, 3, 4, 5, 6, 0],
@@ -411,6 +421,16 @@ export default {
         this.$refs.calendar.prev()
       } else if (key === 'ArrowRight' || key === 39) {
         this.$refs.calendar.next()
+      } else if (key === 'd' || key === 68 || key === 'j' || key === 74) {
+        this.type = 'day'
+      } else if (key === 'w' || key === 87 || key === 's' || key === 83) {
+        this.type = 'week'
+      } else if (key === 'm' || key === 77) {
+        this.type = 'month'
+      } else if (key === 'u' || key === 85) {
+        this.dialog = !this.dialog
+      } else if (key === 't' || key === 84) {
+        this.value = ''
       }
     },
     onResize () {
