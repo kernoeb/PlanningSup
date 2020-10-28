@@ -56,8 +56,7 @@ export default {
 
   pwa: {
     workbox: {
-      cleanupOutdatedCaches: true,
-      cacheAssets: false
+      cleanupOutdatedCaches: true
     }
   },
 
