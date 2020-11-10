@@ -146,5 +146,27 @@
         ]
       }
     ]
+  },
+  {
+    "univ": "ulille",
+    "title": "Université de Lille",
+    "univ_edts": [
+      {
+        "id": "l3info",
+        "title": "L3 INFO",
+        "edts": [
+          {
+            "id": "0",
+            "title": "Tronc commun",
+            "url": "https://calendar.google.com/calendar/ical/n3plke0vdiiusbt6bsc18r1gv0%40group.calendar.google.com/public/basic.ics"
+          },
+          {
+            "id": "4",
+            "title": "Groupe 4",
+            "url": "https://calendar.google.com/calendar/ical/70gf3ec0gs45e3tu8iglq8lmmc%40group.calendar.google.com/public/basic.ics"
+          }
+        ]
+      }
+    ]
   }
 ]
