@@ -64,7 +64,7 @@
         outlined
         style="width: 100px"
       >
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <span style="width: 100%; float: left">
             {{ item.text }}
             <span style="color: grey; font-size: 10px">({{ item.keyboard }})</span>
@@ -73,7 +73,7 @@
       </v-select>
       <v-spacer />
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
             class="ma-2"
@@ -89,13 +89,13 @@
         v-model="dialog"
         width="500"
       >
-        <template v-slot:activator="{ on: dialog, attrs }">
+        <template #activator="{ on: d, attrs }">
           <v-tooltip top>
-            <template v-slot:activator="{ on: tooltip }">
+            <template #activator="{ on: tooltip }">
               <v-icon
                 v-bind="attrs"
                 class="ma-2"
-                v-on="{...dialog, ...tooltip}"
+                v-on="{...d, ...tooltip}"
               >
                 mdi-format-list-bulleted
               </v-icon>
@@ -153,7 +153,7 @@
         </v-card>
       </v-dialog>
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
             class="ma-2"
@@ -193,14 +193,14 @@
         show-week
         @click:event="showEvent"
       >
-        <template v-slot:day-body="{ date, week }">
+        <template #day-body="{ date, week }">
           <div
             :class="{ first: date === week[0].date }"
             :style="{ top: nowY }"
             class="v-current-time"
           />
         </template>
-        <template v-slot:event="{event}">
+        <template #event="{event}">
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
             <div v-if="event.location || event.description">
@@ -221,6 +221,36 @@ import urls from '../static/url.json'
 
 export default {
   middleware: 'vuetify-theme',
+  data: () => ({
+    bottom: false,
+    selectedEvent: null,
+    loading: true,
+    urls,
+    dialog: false,
+    type: 'week',
+    types: [{
+      text: 'Mois',
+      keyboard: 'M',
+      value: 'month'
+    }, {
+      text: 'Semaine',
+      keyboard: 'S/W',
+      value: 'week'
+    }, {
+      text: 'Jour',
+      keyboard: 'J/D',
+      value: 'day'
+    }],
+    weekday: [1, 2, 3, 4, 5, 6, 0],
+    value: '',
+    events: [],
+    mounted: false,
+    currentWeek: '',
+    lastTimeFetch: 0,
+    currentUniv: '',
+    nowY: '-10px',
+    width: 0
+  }),
   async fetch () {
     this.loading = true
     try {
@@ -272,36 +302,6 @@ export default {
       }
     }
   },
-  data: () => ({
-    bottom: false,
-    selectedEvent: null,
-    loading: true,
-    urls,
-    dialog: false,
-    type: 'week',
-    types: [{
-      text: 'Mois',
-      keyboard: 'M',
-      value: 'month'
-    }, {
-      text: 'Semaine',
-      keyboard: 'S/W',
-      value: 'week'
-    }, {
-      text: 'Jour',
-      keyboard: 'J/D',
-      value: 'day'
-    }],
-    weekday: [1, 2, 3, 4, 5, 6, 0],
-    value: '',
-    events: [],
-    mounted: false,
-    currentWeek: '',
-    lastTimeFetch: 0,
-    currentUniv: '',
-    nowY: '-10px',
-    width: 0
-  }),
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {

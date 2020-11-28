@@ -14,24 +14,24 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/component-cache": "^1.1.6",
-    "@nuxtjs/pwa": "^3.2.2",
+    "@nuxtjs/pwa": "^3.3.0",
     "abort-controller": "^3.0.0",
     "cal-parser": "^1.0.1",
     "cookie-universal-nuxt": "^2.1.4",
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.0",
     "cors": "^2.8.5",
     "nuxt": "^2.14.7",
     "nuxt-matomo": "^1.2.3",
-    "pg": "^8.4.2",
+    "pg": "^8.5.1",
     "vue-simple-icons": "^3.10.0"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^4.0.0",
-    "@nuxtjs/eslint-module": "^3.0.0",
+    "@nuxtjs/eslint-config": "^5.0.0",
+    "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.1",
-    "eslint-plugin-nuxt": "^1.0.0"
+    "eslint": "^7.14.0",
+    "eslint-plugin-nuxt": "^2.0.0"
   }
 }

@@ -31,7 +31,7 @@
       >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
             href="https://brave.com/ker880"
@@ -46,7 +46,7 @@
         <span>Referral Brave</span>
       </v-tooltip>
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
             href="https://paypal.me/kernoeb"
@@ -61,7 +61,7 @@
         <span>Faire un don</span>
       </v-tooltip>
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
             href="https://twitter.com/kop_of_tea"
@@ -76,7 +76,7 @@
         <span>Twitter</span>
       </v-tooltip>
       <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
+        <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
             href="https://github.com/kernoeb/planningiut"
