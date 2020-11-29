@@ -83,7 +83,7 @@
             mdi-theme-light-dark
           </v-icon>
         </template>
-        <span>Changer le thème</span>
+        <span>{{ config.i18n.changeTheme }}</span>
       </v-tooltip>
       <v-dialog
         v-model="dialog"
@@ -100,7 +100,9 @@
                 mdi-format-list-bulleted
               </v-icon>
             </template>
-            <span style="margin-right: 2px">Changer d'EDT</span><span style="color: lightgrey; font-size: 10px">(u)</span>
+            <span style="margin-right: 2px">{{ config.i18n.changeEdit }}</span><span
+              style="color: lightgrey; font-size: 10px"
+            >(u)</span>
           </v-tooltip>
         </template>
         <v-card>
@@ -108,7 +110,7 @@
             <v-icon class="mr-2">
               mdi-calendar
             </v-icon>
-            <span style="font-size: 15px">Choisir un emploi du temps</span>
+            <span style="font-size: 15px">{{ config.i18n.chooseEdt }}</span>
           </v-card-title>
 
           <v-divider />
@@ -163,7 +165,7 @@
             mdi-calendar-today
           </v-icon>
         </template>
-        <span style="margin-right: 2px">Aujourd'hui</span><span style="color: lightgrey; font-size: 10px">(t)</span>
+        <span style="margin-right: 2px">{{ config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
       </v-tooltip>
       <v-btn
         class="ma-2"
@@ -176,7 +178,7 @@
     <v-sheet height="700">
       <div v-if="$fetchState.error || !events.length" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
-          Bon y a eu un soucis.<br>Revient plus tard bg.</span>
+          {{ config.i18n.error1 }}<br>{{ config.i18n.error2 }}</span>
       </div>
       <v-calendar
         v-show="events.length"
@@ -218,7 +220,8 @@
 </template>
 
 <script>
-import urls from '../static/url.json'
+import urls from '@/static/url.json'
+import config from '@/config/config.json'
 
 export default {
   middleware: 'vuetify-theme',
@@ -227,18 +230,19 @@ export default {
     selectedEvent: null,
     loading: true,
     urls,
+    config,
     dialog: false,
     type: 'week',
     types: [{
-      text: 'Mois',
+      text: config.i18n.month,
       keyboard: 'M',
       value: 'month'
     }, {
-      text: 'Semaine',
+      text: config.i18n.week,
       keyboard: 'S/W',
       value: 'week'
     }, {
-      text: 'Jour',
+      text: config.i18n.day,
       keyboard: 'J/D',
       value: 'day'
     }],
@@ -256,7 +260,7 @@ export default {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-        this.events = await this.$axios.$get('/api/getCalendar', {
+        this.events = await this.$axios.$get(config.api, {
           params: {
             u: this.$route.query.u,
             n: this.$route.query.n,
@@ -273,7 +277,7 @@ export default {
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          this.events = await this.$axios.$get('/api/getCalendar', {
+          this.events = await this.$axios.$get(config.api, {
             params: {
               u: tmp.u,
               n: tmp.n,
@@ -284,18 +288,18 @@ export default {
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
-          this.events = await this.$axios.$get('/api/getCalendar')
+          this.events = await this.$axios.$get(config.api)
           this.setUnivTitle()
           this.loading = false
         }
       } else {
-        this.events = await this.$axios.$get('/api/getCalendar')
+        this.events = await this.$axios.$get(config.api)
         this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
-        this.events = await this.$axios.$get('/api/getCalendar')
+        this.events = await this.$axios.$get(config.api)
         this.setUnivTitle()
         this.loading = false
       } catch (e) {
@@ -328,7 +332,7 @@ export default {
     try {
       const start = this.$moment(this.$refs.calendar.start).week().toString()
       const end = this.$moment(this.$refs.calendar.end).week().toString()
-      this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
+      this.currentWeek = start === end ? `${config.i18n.week} ${start}` : `${config.i18n.weeks} ${start} - ${end}`
     } catch (e) {
     }
 
@@ -337,7 +341,7 @@ export default {
         try {
           const start = this.$moment(p.start.date).week().toString()
           const end = this.$moment(p.end.date).week().toString()
-          this.currentWeek = start === end ? `Semaine ${start}` : `Semaines ${start} - ${end}`
+          this.currentWeek = start === end ? `${config.i18n.week} ${start}` : `${config.i18n.weeks} ${start} - ${end}`
         } catch (e) {
         }
       })
@@ -382,9 +386,10 @@ export default {
           const univ3 = univ2.edts.find(u => u.id === reqT)
           this.currentUniv = univ.title + ' > ' + univ2.title + ' ' + univ3.title
         } else {
-          this.currentUniv = 'IUT de Vannes > Licence Pro DLIS'
+          this.currentUniv = config.defaultUnivText
         }
-      } catch (e) {}
+      } catch (e) {
+      }
     },
     updateTime () {
       const tmp = new Date()

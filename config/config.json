@@ -1,0 +1,21 @@
+{
+  "api": "/api/getCalendar",
+  "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
+  "name": "Planning IUT",
+  "i18n": {
+    "week": "Semaine",
+    "weeks": "Semaines",
+    "day": "Jour",
+    "month": "Mois",
+    "today": "Aujourd'hui",
+    "error1": "Bon y a eu un soucis.",
+    "error2": "Revient plus tard bg.",
+    "chooseEdt": "Choisir un emploi du temps",
+    "changeEdit": "Changer d'EDT",
+    "changeTheme": "Changer le thème",
+    "offline": "Hors connexion",
+    "braveReferral": "Referral Brave",
+    "donate": "Faire un don",
+    "projectPage": "Page du projet"
+  }
+}
