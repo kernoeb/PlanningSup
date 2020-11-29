@@ -191,6 +191,7 @@
         locale="fr"
         show-month-on-first
         show-week
+        @click:date="goToDay"
         @click:event="showEvent"
       >
         <template #day-body="{ date, week }">
@@ -369,6 +370,10 @@ export default {
     }, 120000)
   },
   methods: {
+    goToDay (day) {
+      this.type = 'day'
+      this.value = this.$refs.calendar.timestampToDate(day)
+    },
     setUnivTitle (reqU, reqN, reqT) {
       try {
         if (reqU && reqN && reqT) {
