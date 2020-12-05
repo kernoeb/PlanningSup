@@ -3,6 +3,7 @@
 Un planning universitaire moderne réalisé par @kernoeb.  
 
 [![Heroku App Status](https://heroku-shields.herokuapp.com/planningiut)](https://planningiut.herokuapp.com)
+[![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
 
 ### Ajouter une spécialité ou une université
 
