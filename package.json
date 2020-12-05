@@ -12,7 +12,7 @@
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.3.1",
     "abort-controller": "^3.0.0",
