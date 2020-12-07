@@ -14,13 +14,14 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 
 ### Fonctionnalités
 
-- Mode hors connexion
+<!--- Mode hors connexion-->
 - Couleurs par catégorie (Amphi, TD, TP, etc.)
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie)
 - Thème clair / thème sombre (cookie)
 - Actualisation du planning au chargement, au focus de la page, ainsi que toutes les 2 minutes
+- Liste noire (cacher un cours)
 
 > N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
