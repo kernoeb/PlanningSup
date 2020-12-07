@@ -129,14 +129,8 @@ export default {
     if (!navigator.onLine) {
       this.connected = false
     }
-
-    window.addEventListener('offline', () => {
-      this.connected = false
-    })
-
-    window.addEventListener('online', () => {
-      this.connected = true
-    })
+    window.addEventListener('offline', this.setConnectedOn)
+    window.addEventListener('online', this.setConnectedOff)
   },
   created () {
     this.time = this.getTime()
@@ -147,17 +141,19 @@ export default {
   beforeDestroy () {
     clearInterval(this.timer)
 
-    window.removeEventListener('offline', () => {
-      this.connected = false
-    })
-    window.removeEventListener('online', () => {
-      this.connected = true
-    })
+    window.removeEventListener('offline', this.setConnectedOn)
+    window.removeEventListener('online', this.setConnectedOff)
   },
   methods: {
     getTime () {
       const tmp = new Date()
       return (tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes() + ':' + (tmp.getSeconds() < 10 ? '0' : '') + tmp.getSeconds()
+    },
+    setConnectedOn () {
+      this.connected = true
+    },
+    setConnectedOff () {
+      this.connected = false
     }
   }
 }
