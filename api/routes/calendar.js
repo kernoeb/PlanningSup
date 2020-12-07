@@ -46,6 +46,15 @@ router.use('/getCalendar', async (req, res) => {
   let reqN = 'lp'
   let reqT = 'dlis'
 
+  let blocklist = []
+  if (req.cookies && req.cookies.blocklist) {
+    try {
+      blocklist = JSON.parse(req.cookies.blocklist).map(name => name.toUpperCase())
+    } catch (e) {
+      blocklist = []
+    }
+  }
+
   if (req.query && req.query.u && req.query.n && req.query.t) {
     reqU = req.query.u
     reqN = req.query.n
@@ -80,15 +89,17 @@ router.use('/getCalendar', async (req, res) => {
 
       const events = []
       for (const i of ics.events) {
-        events.push({
-          name: i.summary.value,
-          start: new Date(i.dtstart.value).getTime(),
-          end: new Date(i.dtend.value).getTime(),
-          color: getColor(i.summary.value, i.location.value),
-          timed: true,
-          location: i.location.value,
-          description: cleanDescription(i.description.value)
-        })
+        if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
+          events.push({
+            name: i.summary.value,
+            start: new Date(i.dtstart.value).getTime(),
+            end: new Date(i.dtend.value).getTime(),
+            color: getColor(i.summary.value, i.location.value),
+            timed: true,
+            location: i.location.value,
+            description: cleanDescription(i.description.value)
+          })
+        }
       }
 
       if (process.env.DATABASE_URL) {

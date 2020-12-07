@@ -17,6 +17,7 @@
     "@nuxtjs/pwa": "^3.3.2",
     "abort-controller": "^3.0.0",
     "cal-parser": "^1.0.1",
+    "cookie-parser": "^1.4.5",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.1",
     "cors": "^2.8.5",

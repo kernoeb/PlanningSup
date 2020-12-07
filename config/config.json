@@ -16,6 +16,12 @@
     "offline": "Hors connexion",
     "braveReferral": "Referral Brave",
     "donate": "Faire un don",
-    "projectPage": "Page du projet"
+    "projectPage": "Page du projet",
+    "settings": "Paramètres",
+    "lightThemeMsg": "Activer le thème clair",
+    "lightThemeDesc": "Idéal pour perdre la vue",
+    "blocklist": "Liste noire",
+    "blocklistDesc": "Cache les cours contenant le(s) mot(s)",
+    "ui": "Interface"
   }
 }

@@ -72,21 +72,8 @@
         </template>
       </v-select>
       <v-spacer />
-      <v-tooltip top>
-        <template #activator="{ on, attrs }">
-          <v-icon
-            v-bind="attrs"
-            class="ma-2"
-            v-on="on"
-            @click="$vuetify.theme.dark ? $vuetify.theme.dark = false : $vuetify.theme.dark = true"
-          >
-            mdi-theme-light-dark
-          </v-icon>
-        </template>
-        <span>{{ config.i18n.changeTheme }}</span>
-      </v-tooltip>
       <v-dialog
-        v-model="dialog"
+        v-model="dialogEdt"
         width="500"
       >
         <template #activator="{ on: d, attrs }">
@@ -138,7 +125,7 @@
                         :key="`urls_3_${k}`"
                         :to="{name: 'index', query: {u: url.univ, n: url2.id, t: url3.id}}"
                       >
-                        <v-list-item class="ml-3" @click="dialog = false">
+                        <v-list-item class="ml-3" @click="dialogEdt = false">
                           <v-list-item-content>
                             <v-list-item-title>
                               {{ url3.title }}
@@ -167,6 +154,66 @@
         </template>
         <span style="margin-right: 2px">{{ config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
       </v-tooltip>
+      <v-dialog
+        v-model="dialogSettings"
+        width="500"
+      >
+        <template #activator="{ on: d, attrs }">
+          <v-tooltip top>
+            <template #activator="{ on: tooltip }">
+              <v-icon
+                v-bind="attrs"
+                class="ma-2"
+                v-on="{...d, ...tooltip}"
+              >
+                mdi-cog-outline
+              </v-icon>
+            </template>
+            <span style="margin-right: 2px">{{ config.i18n.settings }}</span><span
+              style="color: lightgrey; font-size: 10px"
+            >(p)</span>
+          </v-tooltip>
+        </template>
+        <v-card>
+          <v-card-title class="headline">
+            <v-icon class="mr-2">
+              mdi-cog-outline
+            </v-icon>
+            <span style="font-size: 15px">{{ config.i18n.settings }}</span>
+          </v-card-title>
+
+          <v-divider />
+
+          <v-list-item-group
+            v-model="settings"
+            multiple
+          >
+            <v-subheader>{{ config.i18n.ui }}</v-subheader>
+            <v-list-item>
+              <v-list-item-action>
+                <v-checkbox v-model="checkedTheme" />
+              </v-list-item-action>
+
+              <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+                <v-list-item-title>{{ config.i18n.lightThemeMsg }}</v-list-item-title>
+                <v-list-item-subtitle>{{ config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-divider />
+            <v-subheader>{{ config.i18n.blocklist }}</v-subheader>
+            <v-list-item inactive>
+              <v-combobox
+                v-model="blocklistSelect"
+                :items="blocklist"
+                multiple
+                :label="config.i18n.blocklistDesc"
+                chips
+                @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect)); $fetch()"
+              />
+            </v-list-item>
+          </v-list-item-group>
+        </v-card>
+      </v-dialog>
       <v-btn
         class="ma-2"
         icon
@@ -231,7 +278,11 @@ export default {
     loading: true,
     urls,
     config,
-    dialog: false,
+    dialogEdt: false,
+    dialogSettings: false,
+    settings: [],
+    blocklistSelect: [],
+    blocklist: ['Projets Tuteurés', 'Maths'],
     type: 'week',
     types: [{
       text: config.i18n.month,
@@ -265,7 +316,8 @@ export default {
             u: this.$route.query.u,
             n: this.$route.query.n,
             t: this.$route.query.t
-          }
+          },
+          withCredentials: true
         })
         this.setUnivTitle(this.$route.query.u, this.$route.query.n, this.$route.query.t)
         this.loading = false
@@ -282,24 +334,25 @@ export default {
               u: tmp.u,
               n: tmp.n,
               t: tmp.t
-            }
+            },
+            withCredentials: true
           })
           this.setUnivTitle(tmp.u, tmp.n, tmp.t)
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
-          this.events = await this.$axios.$get(config.api)
+          this.events = await this.$axios.$get(config.api, { withCredentials: true })
           this.setUnivTitle()
           this.loading = false
         }
       } else {
-        this.events = await this.$axios.$get(config.api)
+        this.events = await this.$axios.$get(config.api, { withCredentials: true })
         this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
-        this.events = await this.$axios.$get(config.api)
+        this.events = await this.$axios.$get(config.api, { withCredentials: true })
         this.setUnivTitle()
         this.loading = false
       } catch (e) {
@@ -307,10 +360,30 @@ export default {
       }
     }
   },
+  computed: {
+    checkedTheme: {
+      get () {
+        return !this.$vuetify.theme.dark
+      },
+      set () {
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      }
+    }
+  },
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false')
+    }
+  },
+  created () {
+    if (this.$cookies.get('blocklist') !== undefined) {
+      try {
+        const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
+        if (tmp.length) { this.blocklistSelect = tmp } else { this.$cookies.remove('blocklist') }
+      } catch (e) {
+        this.$cookies.remove('blocklist')
+      }
     }
   },
   beforeDestroy () {
@@ -422,6 +495,10 @@ export default {
       this.value = ''
     },
     keyboard (event) {
+      if (this.dialogSettings) {
+        return
+      }
+
       if (event.defaultPrevented) {
         return
       }
@@ -439,7 +516,9 @@ export default {
       } else if (key === 'm' || key === 77) {
         this.type = 'month'
       } else if (key === 'u' || key === 85) {
-        this.dialog = !this.dialog
+        this.dialogEdt = !this.dialogEdt
+      } else if (key === 'p' || key === 80) {
+        this.dialogSettings = !this.dialogSettings
       } else if (key === 't' || key === 84) {
         this.value = ''
       }
