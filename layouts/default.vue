@@ -146,6 +146,13 @@ export default {
   },
   beforeDestroy () {
     clearInterval(this.timer)
+
+    window.removeEventListener('offline', () => {
+      this.connected = false
+    })
+    window.removeEventListener('online', () => {
+      this.connected = true
+    })
   },
   methods: {
     getTime () {

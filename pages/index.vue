@@ -393,7 +393,7 @@ export default {
     }
 
     clearInterval(this.timer)
-
+    window.removeEventListener('keyup', this.keyboard)
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   mounted () {
