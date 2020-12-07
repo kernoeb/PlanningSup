@@ -111,6 +111,7 @@ export default {
       connected: true,
       mounted: false,
       time: '',
+      timer: 0,
       drawer: false,
       items: [
         {
@@ -139,9 +140,12 @@ export default {
   },
   created () {
     this.time = this.getTime()
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.time = this.getTime()
     }, 1000)
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
   },
   methods: {
     getTime () {

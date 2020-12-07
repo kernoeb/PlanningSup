@@ -278,6 +278,7 @@ export default {
     loading: true,
     urls,
     config,
+    timer: 0,
     dialogEdt: false,
     dialogSettings: false,
     settings: [],
@@ -391,6 +392,8 @@ export default {
       return
     }
 
+    clearInterval(this.timer)
+
     window.removeEventListener('resize', this.onResize, { passive: true })
   },
   mounted () {
@@ -441,7 +444,7 @@ export default {
       }
     }, 40000)
 
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.$fetch()
       this.updateTime()
     }, 120000)
