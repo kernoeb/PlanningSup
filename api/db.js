@@ -16,6 +16,7 @@ process.on('SIGINT', shutDown)
 function shutDown () {
   console.log('Stopping client!')
   client.end()
+  process.exit()
 }
 
 module.exports = client
