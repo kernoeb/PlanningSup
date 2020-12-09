@@ -30,7 +30,7 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 Le planning est hébergé sur un Heroku, et développé en Nuxt.js (et donc Vue.js).  
 Nuxt.js, c'est du server-side rendering (SSR), donc le planning est généré côté serveur.
 
-Il existe aussi une api : `/api/getCalendar`, qui fetch côté serveur le calendrier au format `.ics` depuis l'url donnée dans `static/url.json` (et vérifie l'existence du calendrier, comme un contrat).
+Il existe aussi une api : `/api/calendar`, qui fetch côté serveur le calendrier au format `.ics` depuis l'url donnée dans `static/url.json` (et vérifie l'existence du calendrier, comme un contrat).
 Ce fichier est ensuite transformé en `.json`.
 
 > Note : l'url n'est pas directement fetch dans la méthode *$fetch* de Nuxt.js pour éviter les problèmes de CORS.

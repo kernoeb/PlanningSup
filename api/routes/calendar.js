@@ -32,7 +32,7 @@ const checkStatus = (res) => {
   }
 }
 
-router.use('/getCalendar', async (req, res) => {
+router.use('/calendar', async (req, res) => {
   let reqU = 'iutvannes'
   let reqN = 'lp'
   let reqT = 'dlis'

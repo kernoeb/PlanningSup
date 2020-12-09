@@ -1,5 +1,5 @@
 {
-  "api": "/api/getCalendar",
+  "api": "/api/calendar",
   "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
   "name": "Planning IUT",
   "i18n": {
