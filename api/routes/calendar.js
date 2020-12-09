@@ -1,18 +1,9 @@
-import fetch from 'node-fetch'
-import ical from 'cal-parser'
-import AbortController from 'abort-controller'
-
-const { Client } = require('pg')
-
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-})
-client.connect()
-
+const fetch = require('node-fetch')
+const ical = require('cal-parser')
+const AbortController = require('abort-controller')
 const { Router } = require('express')
+const client = require('../db')
+
 const urls = require('../../static/url.json')
 
 const router = Router()
@@ -142,13 +133,5 @@ router.use('/getCalendar', async (req, res) => {
     res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
   }
 })
-
-process.on('SIGTERM', shutDown)
-process.on('SIGINT', shutDown)
-
-function shutDown () {
-  console.log('Stopping client!')
-  client.end()
-}
 
 module.exports = router
