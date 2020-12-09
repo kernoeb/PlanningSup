@@ -223,7 +223,7 @@
       </v-btn>
     </v-sheet>
     <v-sheet height="700">
-      <div v-if="$fetchState.error || !events.length" style="text-align: center">
+      <div v-if="$fetchState.error || (!events.length && !$fetchState.pending)" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
           {{ config.i18n.error1 }}<br>{{ config.i18n.error2 }}</span>
       </div>
