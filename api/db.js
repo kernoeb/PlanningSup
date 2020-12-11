@@ -8,7 +8,11 @@ const client = new Client({
 })
 client.connect()
 
-console.log('Connexion réussie à la db')
+if (process.env.DATABASE_URL) {
+  console.log('Connexion réussie à la db')
+} else {
+  console.log('DATABASE_URL indisponible.')
+}
 
 process.on('SIGTERM', shutDown)
 process.on('SIGINT', shutDown)
