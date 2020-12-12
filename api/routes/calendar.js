@@ -132,8 +132,10 @@ router.use('/calendar', async (req, res) => {
           dbInsert(reqU, reqN, reqT, events)
         }
         await res.json(events)
-      } else {
+      } else if (process.env.DATABASE_URL) {
         await dbFallback(res, reqU, reqN, reqT)
+      } else {
+        res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
       }
     } else if (process.env.DATABASE_URL) {
       await dbFallback(res, reqU, reqN, reqT)
