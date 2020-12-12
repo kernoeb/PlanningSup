@@ -1,5 +1,5 @@
 <template>
-  <div v-show="mounted">
+  <div v-if="mounted">
     <div class="ma-4 title_month">
       <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
       <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM') }}</span>
@@ -209,15 +209,25 @@
                 <v-list-item-subtitle>{{ config.i18n.lightThemeDesc }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
+            <v-list-item>
+              <v-list-item-action>
+                <v-checkbox v-model="colorMode" />
+              </v-list-item-action>
+
+              <v-list-item-content @click="colorMode = !colorMode">
+                <v-list-item-title>Activer le mode couleur par cours</v-list-item-title>
+                <v-list-item-subtitle>Les couleurs se basent sur le cours</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
             <v-divider />
             <v-subheader>{{ config.i18n.blocklist }}</v-subheader>
             <v-list-item inactive>
               <v-combobox
                 v-model="blocklistSelect"
                 :items="blocklist"
-                multiple
                 :label="config.i18n.blocklistDesc"
                 chips
+                multiple
                 @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
               />
             </v-list-item>
@@ -274,6 +284,12 @@
       </v-calendar>
     </v-sheet>
   </div>
+  <div v-else class="d-flex justify-center mt-3">
+    <v-progress-circular
+      color="primary"
+      indeterminate
+    />
+  </div>
 </template>
 
 <script>
@@ -286,6 +302,7 @@ export default {
     bottom: false,
     selectedEvent: null,
     loading: true,
+    colorMode: false,
     urls,
     config,
     status: 'on',
@@ -396,13 +413,31 @@ export default {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
+    },
+    colorMode () {
+      this.setColorMode()
     }
   },
   created () {
+    try {
+      if (this.$cookies.get('colorMode') !== undefined) {
+        if (typeof this.$cookies.get('colorMode') === 'boolean') {
+          this.colorMode = this.$cookies.get('colorMode')
+        } else {
+          this.$cookies.remove('colorMode')
+        }
+      }
+    } catch (e) {
+    }
+
     if (this.$cookies.get('blocklist') !== undefined) {
       try {
         const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
-        if (tmp.length) { this.blocklistSelect = tmp } else { this.$cookies.remove('blocklist') }
+        if (tmp.length) {
+          this.blocklistSelect = tmp
+        } else {
+          this.$cookies.remove('blocklist')
+        }
       } catch (e) {
         this.$cookies.remove('blocklist')
       }
@@ -471,6 +506,10 @@ export default {
     }, 120000)
   },
   methods: {
+    setColorMode () {
+      this.$cookies.set('colorMode', this.colorMode, { maxAge: 2147483646 })
+      this.$fetch()
+    },
     goToDay (day) {
       this.type = 'day'
       this.value = this.$refs.calendar.timestampToDate(day)
@@ -510,7 +549,10 @@ export default {
       } catch (err) {
       }
     },
-    showEvent ({ nativeEvent, event }) {
+    showEvent ({
+      nativeEvent,
+      event
+    }) {
       this.bottom = true
       this.selectedEvent = event
       nativeEvent.stopPropagation()

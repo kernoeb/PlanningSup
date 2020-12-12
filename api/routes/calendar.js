@@ -8,7 +8,28 @@ const urls = require('../../static/url.json')
 
 const router = Router()
 
-function getColor (n, l) {
+function getColor (n, l, m) {
+  if (m) {
+    if (n.startsWith('UE1')) {
+      return '#f3352d'
+    } else if (n.startsWith('UE2')) {
+      return '#ffaa00'
+    } else if (n.startsWith('UE3')) {
+      return '#0377ba'
+    } else if (n.startsWith('UE4')) {
+      return '#f14fae'
+    } else if (n.startsWith('UE5')) {
+      return '#00998a'
+    } else if (n.startsWith('UE6')) {
+      return '#3c4082'
+    } else if (n.startsWith('UE7')) {
+      return '#01a156'
+    } else if (n.startsWith('UE8')) {
+      return '#571a4e'
+    } else if (n.startsWith('UE9')) {
+      return '#607b8a'
+    }
+  }
   if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
     return '#fe463a'
   } else if (l.includes('à distance') || n.toUpperCase().includes('COVID')) {
@@ -125,7 +146,7 @@ router.use('/calendar', async (req, res) => {
               name: i.summary.value,
               start: new Date(i.dtstart.value).getTime(),
               end: new Date(i.dtend.value).getTime(),
-              color: getColor(i.summary.value, i.location.value),
+              color: getColor(i.summary.value, i.location.value, req.cookies && req.cookies.colorMode && req.cookies.colorMode === 'true'),
               timed: true,
               location: i.location.value,
               description: cleanDescription(i.description.value)
