@@ -14,10 +14,14 @@ function getColor (n, l, m) {
       return '#f3352d'
     } else if (n.startsWith('UE2')) {
       return '#ffaa00'
+    } else if (n.match(/^UE3.*android/)) {
+      return 'rgb(94, 168, 212)'
     } else if (n.startsWith('UE3')) {
-      return '#0377ba'
+      return 'rgb(3, 119, 186)'
+    } else if (n.match(/^UE4.*NoSQL/)) {
+      return 'rgba(241, 79, 174, 0.616)'
     } else if (n.startsWith('UE4')) {
-      return '#f14fae'
+      return 'rgb(241, 79, 174)'
     } else if (n.startsWith('UE5')) {
       return '#00998a'
     } else if (n.startsWith('UE6')) {
@@ -143,12 +147,12 @@ router.use('/calendar', async (req, res) => {
         for (const i of ics.events) {
           if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
             events.push({
-              name: i.summary.value,
+              name: i.summary.value.trim(),
               start: new Date(i.dtstart.value).getTime(),
               end: new Date(i.dtend.value).getTime(),
               color: getColor(i.summary.value, i.location.value, req.cookies && req.cookies.colorMode && req.cookies.colorMode === 'true'),
               timed: true,
-              location: i.location.value,
+              location: i.location.value.trim(),
               description: cleanDescription(i.description.value)
             })
           }
