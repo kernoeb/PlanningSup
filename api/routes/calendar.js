@@ -131,7 +131,7 @@ router.use('/calendar', async (req, res) => {
           }
         }
 
-        if (process.env.DATABASE_URL && events && events.length) {
+        if (process.env.DATABASE_URL && events.length) {
           dbInsert(reqU, reqN, reqT, events)
         }
         await res.json({
