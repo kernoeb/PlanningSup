@@ -23,7 +23,7 @@ function getColor (n, l) {
 }
 
 function cleanDescription (d) {
-  return d.split(' (Exporté')[0].split('LP DLIS ')[1]
+  return d.replace(/Grp \d/g, '').replace(/GR \d.?\d?/g, '').replace(/LP (DLIS|CYBER)/g, '').replace(/\(Exporté.*\)/, '').trim()
 }
 
 const checkStatus = (res) => {
