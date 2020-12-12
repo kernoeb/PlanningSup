@@ -215,8 +215,8 @@
               </v-list-item-action>
 
               <v-list-item-content @click="colorMode = !colorMode">
-                <v-list-item-title>Activer le mode couleur par cours</v-list-item-title>
-                <v-list-item-subtitle>Les couleurs se basent sur le cours</v-list-item-subtitle>
+                <v-list-item-title>{{ config.i18n.colorMode }}</v-list-item-title>
+                <v-list-item-subtitle>{{ config.i18n.colorModeDesc }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-divider />
