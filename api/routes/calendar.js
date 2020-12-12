@@ -32,6 +32,40 @@ const checkStatus = (res) => {
   }
 }
 
+async function dbFallback (res, reqU, reqN, reqT) {
+  try {
+    const query = await client.query({
+      name: 'fetch-data',
+      text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
+      values: [reqU, reqN, reqT]
+    })
+    if (query.rows[0]) {
+      await res.json(query.rows[0])
+    } else {
+      res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
+    }
+  } catch (err) {
+    res.status(500).send('Coup dur. Une erreur 500.')
+  }
+}
+
+function dbInsert (reqU, reqN, reqT, events) {
+  try {
+    client.query({
+      name: 'fetch-data',
+      text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
+      values: [reqU, reqN, reqT, JSON.stringify(events)]
+    }, (err) => {
+      if (err) {
+        console.log(err)
+        console.log('Erreur de l\'enregistrement!')
+      }
+    })
+  } catch (err) {
+    console.log('Erreur d\'insertion des données')
+  }
+}
+
 router.use('/calendar', async (req, res) => {
   let reqU = 'iutvannes'
   let reqN = 'lp'
@@ -76,55 +110,33 @@ router.use('/calendar', async (req, res) => {
 
     if (response && checkStatus(response) !== 'err') {
       const body = await response.text()
-      const ics = ical.parseString(body)
+      if (!body.includes('<!DOCTYPE html>')) {
+        const ics = ical.parseString(body)
 
-      const events = []
-      for (const i of ics.events) {
-        if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
-          events.push({
-            name: i.summary.value,
-            start: new Date(i.dtstart.value).getTime(),
-            end: new Date(i.dtend.value).getTime(),
-            color: getColor(i.summary.value, i.location.value),
-            timed: true,
-            location: i.location.value,
-            description: cleanDescription(i.description.value)
-          })
+        const events = []
+        for (const i of ics.events) {
+          if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
+            events.push({
+              name: i.summary.value,
+              start: new Date(i.dtstart.value).getTime(),
+              end: new Date(i.dtend.value).getTime(),
+              color: getColor(i.summary.value, i.location.value),
+              timed: true,
+              location: i.location.value,
+              description: cleanDescription(i.description.value)
+            })
+          }
         }
-      }
 
-      if (process.env.DATABASE_URL && events && events.length) {
-        try {
-          client.query({
-            name: 'fetch-data',
-            text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
-            values: [reqU, reqN, reqT, JSON.stringify(events)]
-          }, (err) => {
-            if (err) {
-              console.log(err)
-              console.log('Erreur de l\'enregistrement!')
-            }
-          })
-        } catch (err) {
-          console.log('Erreur d\'insertion des données')
+        if (process.env.DATABASE_URL && events && events.length) {
+          dbInsert(reqU, reqN, reqT, events)
         }
+        await res.json(events)
+      } else {
+        await dbFallback(res, reqU, reqN, reqT)
       }
-      await res.json(events)
     } else if (process.env.DATABASE_URL) {
-      try {
-        const query = await client.query({
-          name: 'fetch-data',
-          text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
-          values: [reqU, reqN, reqT]
-        })
-        if (query.rows[0]) {
-          await res.json(query.rows[0])
-        } else {
-          res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
-        }
-      } catch (err) {
-        res.status(500).send('Coup dur. Une erreur 500.')
-      }
+      await dbFallback(res, reqU, reqN, reqT)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }
