@@ -108,7 +108,7 @@ router.use('/calendar', async (req, res) => {
               name: i.summary.value.trim(),
               start: new Date(i.dtstart.value).getTime(),
               end: new Date(i.dtend.value).getTime(),
-              color: utils.getColor(i.summary.value, i.location.value, req.cookies && req.cookies.colorMode && req.cookies.colorMode === 'true'),
+              color: utils.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
               timed: true,
               location: i.location.value.trim(),
               description: utils.cleanDescription(i.description.value)

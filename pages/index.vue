@@ -302,7 +302,7 @@ export default {
     bottom: false,
     selectedEvent: null,
     loading: true,
-    colorMode: false,
+    colorMode: true,
     urls,
     config,
     status: 'on',
@@ -421,13 +421,17 @@ export default {
   created () {
     try {
       if (this.$cookies.get('colorMode') !== undefined) {
-        if (typeof this.$cookies.get('colorMode') === 'boolean') {
-          this.colorMode = this.$cookies.get('colorMode')
+        const tmp = this.$cookies.get('colorMode')
+        if (typeof tmp === 'boolean') {
+          this.colorMode = tmp
         } else {
-          this.$cookies.remove('colorMode')
+          this.colorMode = true
         }
+      } else {
+        this.colorMode = true
       }
     } catch (e) {
+      this.colorMode = true
     }
 
     if (this.$cookies.get('blocklist') !== undefined) {
