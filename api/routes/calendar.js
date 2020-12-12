@@ -93,7 +93,7 @@ router.use('/calendar', async (req, res) => {
         }
       }
 
-      if (process.env.DATABASE_URL) {
+      if (process.env.DATABASE_URL && events && events.length) {
         try {
           client.query({
             name: 'fetch-data',
