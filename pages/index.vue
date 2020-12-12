@@ -218,7 +218,7 @@
                 multiple
                 :label="config.i18n.blocklistDesc"
                 chips
-                @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect)); $fetch()"
+                @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
               />
             </v-list-item>
           </v-list-item-group>
@@ -339,7 +339,7 @@ export default {
           u: this.$route.query.u,
           n: this.$route.query.n,
           t: this.$route.query.t
-        }), 'binary').toString('base64'))
+        }), 'binary').toString('base64'), { maxAge: 2147483646 })
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
@@ -395,7 +395,7 @@ export default {
   watch: {
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
-      this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false')
+      this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
     }
   },
   created () {
