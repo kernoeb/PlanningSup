@@ -11,6 +11,8 @@ const router = Router()
 function getColor (n, l) {
   if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
     return '#fe463a'
+  } else if (l.includes('à distance') || n.toUpperCase().includes('COVID')) {
+    return '#a50e83'
   } else if (n.includes('TD') || l.includes('V-B')) {
     return 'green'
   } else if (n.includes('TP')) {
