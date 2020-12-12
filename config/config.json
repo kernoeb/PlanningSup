@@ -22,6 +22,7 @@
     "lightThemeDesc": "Idéal pour perdre la vue",
     "blocklist": "Liste noire",
     "blocklistDesc": "Cache les cours contenant le(s) mot(s)",
-    "ui": "Interface"
+    "ui": "Interface",
+    "error_db": "Les serveurs de l'université choisie sont indisponibles, voici une version sauvegardée."
   }
 }

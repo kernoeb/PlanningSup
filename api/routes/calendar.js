@@ -40,7 +40,10 @@ async function dbFallback (res, reqU, reqN, reqT) {
       values: [reqU, reqN, reqT]
     })
     if (query.rows[0]) {
-      await res.json(query.rows[0].data)
+      await res.json({
+        status: 'db',
+        data: query.rows[0].data
+      })
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
     }
@@ -131,7 +134,10 @@ router.use('/calendar', async (req, res) => {
         if (process.env.DATABASE_URL && events && events.length) {
           dbInsert(reqU, reqN, reqT, events)
         }
-        await res.json(events)
+        await res.json({
+          status: 'on',
+          data: events
+        })
       } else if (process.env.DATABASE_URL) {
         await dbFallback(res, reqU, reqN, reqT)
       } else {

@@ -8,6 +8,16 @@
         {{ currentUniv }}
       </div>
     </div>
+    <transition name="fade">
+      <v-alert
+        v-if="status !== 'on'"
+        dense
+        outlined
+        type="error"
+      >
+        {{ config.i18n.error_db }}
+      </v-alert>
+    </transition>
     <v-bottom-sheet v-model="bottom">
       <v-sheet
         class="text-center"
@@ -278,6 +288,7 @@ export default {
     loading: true,
     urls,
     config,
+    status: 'on',
     timer: 0,
     dialogEdt: false,
     dialogSettings: false,
@@ -312,7 +323,7 @@ export default {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-        this.events = await this.$axios.$get(config.api, {
+        const tmpEvents = await this.$axios.$get(config.api, {
           params: {
             u: this.$route.query.u,
             n: this.$route.query.n,
@@ -320,6 +331,8 @@ export default {
           },
           withCredentials: true
         })
+        this.status = tmpEvents.status
+        this.events = tmpEvents.data
         this.setUnivTitle(this.$route.query.u, this.$route.query.n, this.$route.query.t)
         this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
@@ -330,7 +343,7 @@ export default {
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          this.events = await this.$axios.$get(config.api, {
+          const tmpEvents = await this.$axios.$get(config.api, {
             params: {
               u: tmp.u,
               n: tmp.n,
@@ -338,22 +351,30 @@ export default {
             },
             withCredentials: true
           })
+          this.status = tmpEvents.status
+          this.events = tmpEvents.data
           this.setUnivTitle(tmp.u, tmp.n, tmp.t)
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
-          this.events = await this.$axios.$get(config.api, { withCredentials: true })
+          const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+          this.status = tmpEvents.status
+          this.events = tmpEvents.data
           this.setUnivTitle()
           this.loading = false
         }
       } else {
-        this.events = await this.$axios.$get(config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+        this.status = tmpEvents.status
+        this.events = tmpEvents.data
         this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
-        this.events = await this.$axios.$get(config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+        this.status = tmpEvents.status
+        this.events = tmpEvents.data
         this.setUnivTitle()
         this.loading = false
       } catch (e) {
