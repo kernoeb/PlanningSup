@@ -40,7 +40,7 @@ async function dbFallback (res, reqU, reqN, reqT) {
       values: [reqU, reqN, reqT]
     })
     if (query.rows[0]) {
-      await res.json(query.rows[0])
+      await res.json(query.rows[0].data)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
     }
