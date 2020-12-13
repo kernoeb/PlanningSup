@@ -21,14 +21,18 @@ async function dbFallback (res, reqU, reqN, reqT) {
   try {
     const query = await client.query({
       name: 'fetch-data',
-      text: 'SELECT data FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
+      text: 'SELECT data, timestamp FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
       values: [reqU, reqN, reqT]
     })
     if (query.rows[0]) {
-      await res.json({
+      const tmp = {
         status: 'db',
         data: query.rows[0].data
-      })
+      }
+      if (query.rows[0].timestamp) {
+        tmp.timestamp = new Date(query.rows[0].timestamp).getTime()
+      }
+      await res.json(tmp)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
     }
@@ -122,6 +126,7 @@ router.use('/calendar', async (req, res) => {
         }
         await res.json({
           status: 'on',
+          timestamp: new Date().getTime(),
           data: events
         })
       } else if (process.env.DATABASE_URL) {

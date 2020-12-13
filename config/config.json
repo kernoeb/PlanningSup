@@ -25,6 +25,6 @@
     "colorMode": "Activer le mode couleur par cours",
     "colorModeDesc": "La couleur est définie en fonction de la matière",
     "ui": "Interface",
-    "error_db": "Les serveurs de l'université choisie sont indisponibles, voici une version sauvegardée."
+    "error_db": "Le serveur de l'université choisie est indisponible, voici une version sauvegardée datant du "
   }
 }

@@ -15,7 +15,7 @@
         outlined
         type="error"
       >
-        {{ config.i18n.error_db }}
+        {{ config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.
       </v-alert>
     </transition>
     <v-bottom-sheet v-model="bottom">
@@ -305,6 +305,7 @@ export default {
     colorMode: true,
     urls,
     config,
+    timestamp: 0,
     status: 'on',
     timer: 0,
     dialogEdt: false,
@@ -348,8 +349,7 @@ export default {
           },
           withCredentials: true
         })
-        this.status = tmpEvents.status
-        this.events = tmpEvents.data
+        this.setEvents(tmpEvents)
         this.setUnivTitle(this.$route.query.u, this.$route.query.n, this.$route.query.t)
         this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
@@ -368,30 +368,26 @@ export default {
             },
             withCredentials: true
           })
-          this.status = tmpEvents.status
-          this.events = tmpEvents.data
+          this.setEvents(tmpEvents)
           this.setUnivTitle(tmp.u, tmp.n, tmp.t)
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
           const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
-          this.status = tmpEvents.status
-          this.events = tmpEvents.data
+          this.setEvents(tmpEvents)
           this.setUnivTitle()
           this.loading = false
         }
       } else {
         const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
-        this.status = tmpEvents.status
-        this.events = tmpEvents.data
+        this.setEvents(tmpEvents)
         this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
         const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
-        this.status = tmpEvents.status
-        this.events = tmpEvents.data
+        this.setEvents(tmpEvents)
         this.setUnivTitle()
         this.loading = false
       } catch (e) {
@@ -510,6 +506,13 @@ export default {
     }, 120000)
   },
   methods: {
+    setEvents (events) {
+      this.status = events.status
+      this.events = events.data
+      if (events.timestamp) {
+        this.timestamp = events.timestamp
+      }
+    },
     setColorMode () {
       this.$cookies.set('colorMode', this.colorMode, { maxAge: 2147483646 })
       this.$fetch()
