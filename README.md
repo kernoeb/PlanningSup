@@ -5,6 +5,7 @@ Un planning universitaire moderne réalisé par @kernoeb.
 [![Heroku App Status](https://heroku-shields.herokuapp.com/planningiut)](https://planningiut.herokuapp.com)
 [![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
 [![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/kernoeb/planningiut)
 
 ### Ajouter une spécialité ou une université
 
