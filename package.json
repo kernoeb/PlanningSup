@@ -35,7 +35,6 @@
     "babel-eslint": "^10.1.0",
     "css-byebye": "^2.0.2",
     "eslint": "^7.15.0",
-    "eslint-plugin-nuxt": "^2.0.0",
-    "nuxt-purgecss": "^1.0.0"
+    "eslint-plugin-nuxt": "^2.0.0"
   }
 }

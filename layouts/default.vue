@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { TwitterIcon, PayPalIcon, BraveIcon, GitHubIcon } from 'vue-simple-icons'
+import { BraveIcon, GitHubIcon, PayPalIcon, TwitterIcon } from 'vue-simple-icons'
 import config from '@/config/config.json'
 
 export default {
