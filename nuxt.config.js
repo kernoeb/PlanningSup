@@ -44,9 +44,9 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // https://github.com/nuxt-community/moment-module
-    '@nuxtjs/moment',
+    '@nuxtjs/moment'
     // https://github.com/Developmint/nuxt-purgecss
-    'nuxt-purgecss'
+    // 'nuxt-purgecss'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
