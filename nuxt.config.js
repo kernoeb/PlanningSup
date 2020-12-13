@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 import fr from 'vuetify/es5/locale/fr'
+const { NODE_ENV = 'production' } = process.env
+const isDev = NODE_ENV === 'development'
 
 export default {
   ssr: true,
@@ -102,5 +104,46 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    extractCSS: true,
+
+    postcss:
+      {
+        // disable postcss plugins in development
+        plugins: isDev
+          ? {}
+          : {
+              '@fullhuman/postcss-purgecss': {
+                content: [
+                  'components/**/*.vue',
+                  'layouts/**/*.vue',
+                  'pages/**/*.vue',
+                  'plugins/**/*.js',
+                  'node_modules/vuetify/src/**/*.ts'
+                ],
+                styleExtensions: ['.css'],
+                safelist: {
+                  standard: [
+                    'body',
+                    'html',
+                    'nuxt-progress',
+                    /col-*/ // enable if using v-col for layout
+                  ],
+                  deep: [
+                    /page-enter/,
+                    /page-leave/,
+                    /dialog-transition/,
+                    /tab-transition/,
+                    /tab-reversetransition/
+                  ]
+                }
+
+              },
+              'css-byebye': {
+                rulesToRemove: [
+                  /.*\.v-application--is-rtl.*/
+                ]
+              }
+            }
+      }
   }
 }
