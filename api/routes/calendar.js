@@ -33,6 +33,7 @@ async function dbFallback (res, reqU, reqN, reqT) {
       res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
     }
   } catch (err) {
+    console.log(err)
     res.status(500).send('Coup dur. Une erreur 500.')
   }
 }
