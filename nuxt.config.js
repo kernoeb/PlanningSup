@@ -131,9 +131,7 @@ export default {
                   deep: [
                     /page-enter/,
                     /page-leave/,
-                    /dialog-transition/,
-                    /tab-transition/,
-                    /tab-reversetransition/
+                    /transition/
                   ]
                 }
 
