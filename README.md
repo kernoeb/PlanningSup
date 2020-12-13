@@ -50,10 +50,6 @@ Si une erreur est présente, les données seront donc récupérées dans cette b
 <img src="img/phone3.png" height="300" />
 <br>
 <img src="img/phone4.png" height="300" />
-<br>
-<img src="img/phone5.png" height="300" />
-<br>
-<img src="img/phone6.png" height="300" />
 
 ### Installation
 
