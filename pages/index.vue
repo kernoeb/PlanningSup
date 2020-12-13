@@ -38,11 +38,10 @@
         </div>
         <v-btn
           class="mt-6"
-          color="red"
           text
           @click="bottom = !bottom"
         >
-          Fermer
+          <span style="color: red">{{ config.i18n.close }}</span>
         </v-btn>
       </v-sheet>
     </v-bottom-sheet>
