@@ -42,8 +42,8 @@ function dbInsert (reqU, reqN, reqT, events) {
   try {
     client.query({
       name: 'fetch-data',
-      text: 'INSERT INTO public.edt (univ, spec, grp, "data") VALUES($1, $2, $3, $4) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data;',
-      values: [reqU, reqN, reqT, JSON.stringify(events)]
+      text: 'INSERT INTO public.edt (univ, spec, grp, data, timestamp) VALUES($1, $2, $3, $4, $5) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data, SET timestamp = EXCLUDED.timestamp;',
+      values: [reqU, reqN, reqT, JSON.stringify(events), new Date()]
     }, (err) => {
       if (err) {
         console.log(err)
