@@ -12,7 +12,7 @@
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.3",
+    "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.3.2",
     "abort-controller": "^3.0.0",
@@ -32,7 +32,7 @@
     "vue-simple-icons": "^3.10.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "@fullhuman/postcss-purgecss": "^3.1.0",
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
     "@nuxtjs/moment": "^1.6.1",
