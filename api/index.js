@@ -1,6 +1,9 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const logger = require('signale')
+
+logger.info('Starting...')
 
 // Create express instance
 const app = express()
@@ -20,6 +23,6 @@ module.exports = app
 if (require.main === module) {
   const port = process.env.PORT || 3001
   app.listen(port, () => {
-    console.log(`API server listening on port ${port}`)
+    logger.info(`API server listening on port ${port}`)
   })
 }

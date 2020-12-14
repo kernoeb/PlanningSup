@@ -1,4 +1,5 @@
 const { Client } = require('pg')
+const logger = require('signale')
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -9,16 +10,16 @@ const client = new Client({
 client.connect()
 
 if (process.env.DATABASE_URL) {
-  console.log('Connexion réussie à la db')
+  logger.success('Variable DATABASE_URL -> OK.')
 } else {
-  console.log('DATABASE_URL indisponible.')
+  logger.warn('DATABASE_URL -> indisponible.')
 }
 
 process.on('SIGTERM', shutDown)
 process.on('SIGINT', shutDown)
 
 function shutDown () {
-  console.log('Stopping client!')
+  logger.info('Stopping client!')
   client.end()
   process.exit()
 }

@@ -1,7 +1,5 @@
-const fetch = require('node-fetch')
-const ical = require('cal-parser')
-const AbortController = require('abort-controller')
 const { Router } = require('express')
+const logger = require('signale')
 const client = require('../db')
 const utils = require('../utils')
 
@@ -9,15 +7,7 @@ const urls = require('../../static/url.json')
 
 const router = Router()
 
-const checkStatus = (res) => {
-  if (res.ok) {
-    return res
-  } else {
-    return 'err'
-  }
-}
-
-async function dbFallback (res, reqU, reqN, reqT) {
+async function dbFallback (req, res, reqU, reqN, reqT, blocklist) {
   try {
     const query = await client.query({
       name: 'fetch-data',
@@ -26,36 +16,30 @@ async function dbFallback (res, reqU, reqN, reqT) {
     })
     if (query.rows[0]) {
       const tmp = {
-        status: 'db',
-        data: query.rows[0].data
+        status: 'db'
       }
+
+      if (query.rows[0].data && Object.entries(query.rows[0].data).length) {
+        const tmpEvents = utils.getEvents(query.rows[0].data, blocklist, req)
+        if (tmpEvents && tmpEvents.length) {
+          tmp.data = tmpEvents
+        } else {
+          return res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus... (1)')
+        }
+      } else {
+        return res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus... (2)')
+      }
+
       if (query.rows[0].timestamp) {
         tmp.timestamp = new Date(query.rows[0].timestamp).getTime()
       }
-      await res.json(tmp)
+      return res.json(tmp)
     } else {
-      res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus...')
+      return res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus... (3)')
     }
   } catch (err) {
-    console.log(err)
-    res.status(500).send('Coup dur. Une erreur 500.')
-  }
-}
-
-function dbInsert (reqU, reqN, reqT, events) {
-  try {
-    client.query({
-      name: 'fetch-data',
-      text: 'INSERT INTO public.edt (univ, spec, grp, data, timestamp) VALUES($1, $2, $3, $4, $5) ON CONFLICT(univ, spec, grp) DO UPDATE SET data = EXCLUDED.data, timestamp = EXCLUDED.timestamp;',
-      values: [reqU, reqN, reqT, JSON.stringify(events), new Date()]
-    }, (err) => {
-      if (err) {
-        console.log(err)
-        console.log('Erreur de l\'enregistrement!')
-      }
-    })
-  } catch (err) {
-    console.log('Erreur d\'insertion des données')
+    logger.error(err)
+    return res.status(500).send('Coup dur. Une erreur 500.')
   }
 }
 
@@ -79,68 +63,28 @@ router.use('/calendar', async (req, res) => {
     reqT = req.query.t
   }
 
-  const controller = new AbortController()
-  const timeout = setTimeout(
-    () => {
-      controller.abort()
-    },
-    2500
-  )
-
   try {
     const univ = urls.find(u => u.univ === reqU)
     const univ2 = univ.univ_edts.find(u => u.id === reqN)
     const univ3 = univ2.edts.find(u => u.id === reqT)
     const tmpUrl = univ3.url
 
-    let response = null
-    try {
-      response = await fetch(tmpUrl, { signal: controller.signal })
-    } catch (e) {
-    } finally {
-      clearTimeout(timeout)
-    }
+    const data = await utils.fetchData(tmpUrl, 2500)
+    if (data) {
+      const events = utils.getEvents(data, blocklist, req)
 
-    if (response && checkStatus(response) !== 'err') {
-      const body = await response.text()
-      if (!body.includes('<!DOCTYPE html>')) {
-        const ics = ical.parseString(body)
-
-        const events = []
-        for (const i of ics.events) {
-          if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
-            events.push({
-              name: i.summary.value.trim(),
-              start: new Date(i.dtstart.value).getTime(),
-              end: new Date(i.dtend.value).getTime(),
-              color: utils.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
-              timed: true,
-              location: i.location.value.trim(),
-              description: utils.cleanDescription(i.description.value)
-            })
-          }
-        }
-
-        if (process.env.DATABASE_URL && events.length) {
-          dbInsert(reqU, reqN, reqT, events)
-        }
-        await res.json({
-          status: 'on',
-          timestamp: new Date().getTime(),
-          data: events
-        })
-      } else if (process.env.DATABASE_URL) {
-        await dbFallback(res, reqU, reqN, reqT)
-      } else {
-        res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
-      }
+      await res.json({
+        status: 'on',
+        timestamp: new Date().getTime(),
+        data: events
+      })
     } else if (process.env.DATABASE_URL) {
-      await dbFallback(res, reqU, reqN, reqT)
+      await dbFallback(req, res, reqU, reqN, reqT, blocklist)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }
   } catch (err) {
-    console.log(err)
+    logger.error(err)
     res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
   }
 })

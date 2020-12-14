@@ -15,7 +15,8 @@
         outlined
         type="error"
       >
-        {{ config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.
+        <span v-if="timestamp">{{ config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
+        <span v-else>{{ config.i18n.error_db2 }}</span>
       </v-alert>
     </transition>
     <v-bottom-sheet v-model="bottom">
@@ -304,7 +305,7 @@ export default {
     colorMode: true,
     urls,
     config,
-    timestamp: 0,
+    timestamp: null,
     status: 'on',
     timer: 0,
     dialogEdt: false,

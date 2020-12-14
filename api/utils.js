@@ -1,3 +1,15 @@
+const ical = require('cal-parser')
+const AbortController = require('abort-controller')
+const fetch = require('node-fetch')
+
+const checkStatus = (res) => {
+  if (res.ok) {
+    return res
+  } else {
+    return null
+  }
+}
+
 module.exports = {
   getColor: function getColor (n, l, m) {
     if (m) {
@@ -39,5 +51,49 @@ module.exports = {
   },
   cleanDescription: function cleanDescription (d) {
     return d.replace(/Grp \d/g, '').replace(/GR \d.?\d?/g, '').replace(/LP (DLIS|CYBER)/g, '').replace(/\(Exporté.*\)/, '').trim()
+  },
+  getEvents: function getEvents (ics, blocklist, req) {
+    const events = []
+    for (const i of ics.events) {
+      if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
+        events.push({
+          name: i.summary.value.trim(),
+          start: new Date(i.dtstart.value).getTime(),
+          end: new Date(i.dtend.value).getTime(),
+          color: this.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
+          timed: true,
+          location: i.location.value.trim(),
+          description: this.cleanDescription(i.description.value)
+        })
+      }
+    }
+    return events
+  },
+  fetchData: async function fetchData (url, time) {
+    const controller = new AbortController()
+    const timeout = setTimeout(
+      () => {
+        controller.abort()
+      },
+      time
+    )
+
+    let response = null
+    try {
+      response = await fetch(url, { signal: controller.signal })
+    } catch (e) {
+    } finally {
+      clearTimeout(timeout)
+    }
+
+    if (response && checkStatus(response)) {
+      const body = await response.text()
+      if (!body.includes('<!DOCTYPE html>')) {
+        const ics = ical.parseString(body)
+        if (ics && Object.entries(ics).length) {
+          return ics
+        }
+      }
+    }
   }
 }

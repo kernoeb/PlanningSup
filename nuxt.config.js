@@ -4,6 +4,7 @@ const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
 export default {
+  telemetry: false,
   ssr: true,
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -35,9 +36,10 @@ export default {
   /*
   ** Server Middleware
   */
-  serverMiddleware: {
-    '/api': '~/api'
-  },
+  serverMiddleware: [
+    { path: '/api', handler: '~/api' },
+    { path: '/server', handler: '~/server/worker' }
+  ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [

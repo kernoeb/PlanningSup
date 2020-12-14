@@ -16,14 +16,17 @@
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.3.2",
     "abort-controller": "^3.0.0",
+    "bree": "^4.1.0",
     "cal-parser": "^1.0.1",
     "cookie-parser": "^1.4.5",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.1",
     "cors": "^2.8.5",
+    "delay": "^4.4.0",
     "nuxt": "^2.14.11",
     "nuxt-matomo": "^1.2.3",
     "pg": "^8.5.1",
+    "signale": "^1.4.0",
     "vue-simple-icons": "^3.10.0"
   },
   "devDependencies": {
