@@ -2,6 +2,13 @@
   "api": "/api/calendar",
   "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
   "name": "Planning IUT",
+  "durationWorker": 3000,
+  "durationCalendar": 2500,
+  "default": {
+    "univ": "iutvannes",
+    "spec": "lp",
+    "grp": "dlis"
+  },
   "i18n": {
     "week": "Semaine",
     "weeks": "Semaines",

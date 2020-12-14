@@ -6,12 +6,12 @@
       <transition name="fade">
         <div v-if="!connected" style="position: absolute; left: 50%;">
           <div style="color: grey; position: relative; left: -50%; font-size: 10px">
-            {{ config.i18n.offline }}
+            {{ $config.i18n.offline }}
           </div>
         </div>
       </transition>
       <v-icon>mdi-calendar</v-icon>
-      {{ config.name }}
+      {{ $config.name }}
       <v-spacer />
       <v-icon>mdi-school</v-icon>
       <span>{{ time }}</span>
@@ -43,7 +43,7 @@
             <brave-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-4" size="18" />
           </a>
         </template>
-        <span>{{ config.i18n.braveReferral }}</span>
+        <span>{{ $config.i18n.braveReferral }}</span>
       </v-tooltip>
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -58,7 +58,7 @@
             <pay-pal-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-4" size="18" />
           </a>
         </template>
-        <span>{{ config.i18n.donate }}</span>
+        <span>{{ $config.i18n.donate }}</span>
       </v-tooltip>
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -88,7 +88,7 @@
             <git-hub-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" size="18" />
           </a>
         </template>
-        <span>{{ config.i18n.projectPage }}</span>
+        <span>{{ $config.i18n.projectPage }}</span>
       </v-tooltip>
     </v-footer>
   </v-app>
@@ -96,7 +96,6 @@
 
 <script>
 import { BraveIcon, GitHubIcon, PayPalIcon, TwitterIcon } from 'vue-simple-icons'
-import config from '@/config/config.json'
 
 export default {
   components: {
@@ -107,7 +106,6 @@ export default {
   },
   data () {
     return {
-      config,
       connected: true,
       mounted: false,
       time: '',

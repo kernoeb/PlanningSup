@@ -1,10 +1,11 @@
 const { workerData } = require('worker_threads')
 const delay = require('delay')
 const logger = require('signale')
-const utils = require('../api/utils')
-const client = require('../api/db')
+const config = require('config')
+const utils = require('../server/api/utils')
+const client = require('../server/api/db')
 
-const DURATION = 3000;
+const DURATION = config.get('durationWorker') || 5000;
 
 (async () => {
   logger.info('Fetch EDT for backup')
@@ -20,11 +21,11 @@ const DURATION = 3000;
           }, (err) => {
             if (err) {
               logger.error(err)
-              logger.error('Erreur de l\'enregistrement!')
+              logger.error(i.univ + '|' + i.spec + '|' + i.grp + 'Erreur de l\'enregistrement!')
             }
           })
         } catch (err) {
-          logger.error('Erreur d\'insertion des données')
+          logger.error(i.univ + '|' + i.spec + '|' + i.grp + 'Erreur d\'insertion des données')
         }
         await delay(500)
       }

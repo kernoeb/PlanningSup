@@ -15,8 +15,8 @@
         outlined
         type="error"
       >
-        <span v-if="timestamp">{{ config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
-        <span v-else>{{ config.i18n.error_db2 }}</span>
+        <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
+        <span v-else>{{ $config.i18n.error_db2 }}</span>
       </v-alert>
     </transition>
     <v-bottom-sheet v-model="bottom">
@@ -42,7 +42,7 @@
           text
           @click="bottom = !bottom"
         >
-          <span style="color: red">{{ config.i18n.close }}</span>
+          <span style="color: red">{{ $config.i18n.close }}</span>
         </v-btn>
       </v-sheet>
     </v-bottom-sheet>
@@ -97,7 +97,7 @@
                 mdi-format-list-bulleted
               </v-icon>
             </template>
-            <span style="margin-right: 2px">{{ config.i18n.changeEdit }}</span><span
+            <span style="margin-right: 2px">{{ $config.i18n.changeEdit }}</span><span
               style="color: lightgrey; font-size: 10px"
             >(u)</span>
           </v-tooltip>
@@ -107,7 +107,7 @@
             <v-icon class="mr-2">
               mdi-calendar
             </v-icon>
-            <span style="font-size: 15px">{{ config.i18n.chooseEdt }}</span>
+            <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
           </v-card-title>
 
           <v-divider />
@@ -162,7 +162,7 @@
             mdi-calendar-today
           </v-icon>
         </template>
-        <span style="margin-right: 2px">{{ config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
+        <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
       </v-tooltip>
       <v-dialog
         v-model="dialogSettings"
@@ -179,7 +179,7 @@
                 mdi-cog-outline
               </v-icon>
             </template>
-            <span style="margin-right: 2px">{{ config.i18n.settings }}</span><span
+            <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
               style="color: lightgrey; font-size: 10px"
             >(p)</span>
           </v-tooltip>
@@ -189,7 +189,7 @@
             <v-icon class="mr-2">
               mdi-cog-outline
             </v-icon>
-            <span style="font-size: 15px">{{ config.i18n.settings }}</span>
+            <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
           </v-card-title>
 
           <v-divider />
@@ -198,15 +198,15 @@
             v-model="settings"
             multiple
           >
-            <v-subheader>{{ config.i18n.ui }}</v-subheader>
+            <v-subheader>{{ $config.i18n.ui }}</v-subheader>
             <v-list-item>
               <v-list-item-action>
                 <v-checkbox v-model="checkedTheme" />
               </v-list-item-action>
 
               <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-                <v-list-item-title>{{ config.i18n.lightThemeMsg }}</v-list-item-title>
-                <v-list-item-subtitle>{{ config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+                <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-list-item>
@@ -215,17 +215,17 @@
               </v-list-item-action>
 
               <v-list-item-content @click="colorMode = !colorMode">
-                <v-list-item-title>{{ config.i18n.colorMode }}</v-list-item-title>
-                <v-list-item-subtitle>{{ config.i18n.colorModeDesc }}</v-list-item-subtitle>
+                <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
             <v-divider />
-            <v-subheader>{{ config.i18n.blocklist }}</v-subheader>
+            <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
             <v-list-item inactive>
               <v-combobox
                 v-model="blocklistSelect"
                 :items="blocklist"
-                :label="config.i18n.blocklistDesc"
+                :label="$config.i18n.blocklistDesc"
                 chips
                 multiple
                 @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
@@ -245,7 +245,7 @@
     <v-sheet height="700">
       <div v-if="$fetchState.error || (!events.length && !$fetchState.pending)" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
-          {{ config.i18n.error1 }}<br>{{ config.i18n.error2 }}</span>
+          {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
       <v-calendar
         v-show="events.length"
@@ -294,54 +294,54 @@
 
 <script>
 import urls from '@/static/url.json'
-import config from '@/config/config.json'
 
 export default {
   middleware: 'vuetify-theme',
-  data: () => ({
-    bottom: false,
-    selectedEvent: null,
-    loading: true,
-    colorMode: true,
-    urls,
-    config,
-    timestamp: null,
-    status: 'on',
-    timer: 0,
-    dialogEdt: false,
-    dialogSettings: false,
-    settings: [],
-    blocklistSelect: [],
-    blocklist: ['Projets Tuteurés', 'Maths'],
-    type: 'week',
-    types: [{
-      text: config.i18n.month,
-      keyboard: 'M',
-      value: 'month'
-    }, {
-      text: config.i18n.week,
-      keyboard: 'S/W',
-      value: 'week'
-    }, {
-      text: config.i18n.day,
-      keyboard: 'J/D',
-      value: 'day'
-    }],
-    weekday: [1, 2, 3, 4, 5, 6, 0],
-    value: '',
-    events: [],
-    mounted: false,
-    currentWeek: '',
-    lastTimeFetch: 0,
-    currentUniv: '',
-    nowY: '-10px',
-    width: 0
-  }),
+  data () {
+    return {
+      bottom: false,
+      selectedEvent: null,
+      loading: true,
+      colorMode: true,
+      urls,
+      timestamp: null,
+      status: 'on',
+      timer: 0,
+      dialogEdt: false,
+      dialogSettings: false,
+      settings: [],
+      blocklistSelect: [],
+      blocklist: ['Projets Tuteurés', 'Maths'],
+      type: 'week',
+      types: [{
+        text: this.$config.i18n.month,
+        keyboard: 'M',
+        value: 'month'
+      }, {
+        text: this.$config.i18n.week,
+        keyboard: 'S/W',
+        value: 'week'
+      }, {
+        text: this.$config.i18n.day,
+        keyboard: 'J/D',
+        value: 'day'
+      }],
+      weekday: [1, 2, 3, 4, 5, 6, 0],
+      value: '',
+      events: [],
+      mounted: false,
+      currentWeek: '',
+      lastTimeFetch: 0,
+      currentUniv: '',
+      nowY: '-10px',
+      width: 0
+    }
+  },
   async fetch () {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-        const tmpEvents = await this.$axios.$get(config.api, {
+        const tmpEvents = await this.$axios.$get(this.$config.api, {
           params: {
             u: this.$route.query.u,
             n: this.$route.query.n,
@@ -360,7 +360,7 @@ export default {
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          const tmpEvents = await this.$axios.$get(config.api, {
+          const tmpEvents = await this.$axios.$get(this.$config.api, {
             params: {
               u: tmp.u,
               n: tmp.n,
@@ -373,20 +373,20 @@ export default {
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
-          const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+          const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
           this.setEvents(tmpEvents)
           this.setUnivTitle()
           this.loading = false
         }
       } else {
-        const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
-        const tmpEvents = await this.$axios.$get(config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.setUnivTitle()
         this.loading = false
@@ -464,7 +464,7 @@ export default {
     try {
       const start = this.$moment(this.$refs.calendar.start).week().toString()
       const end = this.$moment(this.$refs.calendar.end).week().toString()
-      this.currentWeek = start === end ? `${config.i18n.week} ${start}` : `${config.i18n.weeks} ${start} - ${end}`
+      this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
     } catch (e) {
     }
 
@@ -473,7 +473,7 @@ export default {
         try {
           const start = this.$moment(p.start.date).week().toString()
           const end = this.$moment(p.end.date).week().toString()
-          this.currentWeek = start === end ? `${config.i18n.week} ${start}` : `${config.i18n.weeks} ${start} - ${end}`
+          this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
         } catch (e) {
         }
       })
@@ -529,7 +529,7 @@ export default {
           const univ3 = univ2.edts.find(u => u.id === reqT)
           this.currentUniv = univ.title + ' > ' + univ2.title + ' ' + univ3.title
         } else {
-          this.currentUniv = config.defaultUnivText
+          this.currentUniv = this.$config.defaultUnivText
         }
       } catch (e) {
       }

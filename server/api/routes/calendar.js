@@ -1,9 +1,11 @@
 const { Router } = require('express')
 const logger = require('signale')
+const config = require('config')
 const client = require('../db')
 const utils = require('../utils')
 
-const urls = require('../../static/url.json')
+const urls = require('../../../static/url.json')
+const DURATION = config.get('durationCalendar') || 3000
 
 const router = Router()
 
@@ -44,9 +46,9 @@ async function dbFallback (req, res, reqU, reqN, reqT, blocklist) {
 }
 
 router.use('/calendar', async (req, res) => {
-  let reqU = 'iutvannes'
-  let reqN = 'lp'
-  let reqT = 'dlis'
+  let reqU = config.get('default.univ') || 'iutvannes'
+  let reqN = config.get('default.spec') || 'lp'
+  let reqT = config.get('default.grp') || 'dlis'
 
   let blocklist = []
   if (req.cookies && req.cookies.blocklist) {
@@ -69,7 +71,7 @@ router.use('/calendar', async (req, res) => {
     const univ3 = univ2.edts.find(u => u.id === reqT)
     const tmpUrl = univ3.url
 
-    const data = await utils.fetchData(tmpUrl, 2500)
+    const data = await utils.fetchData(tmpUrl, DURATION)
     if (data) {
       const events = utils.getEvents(data, blocklist, req)
 

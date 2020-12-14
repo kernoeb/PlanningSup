@@ -37,7 +37,7 @@ export default {
   ** Server Middleware
   */
   serverMiddleware: [
-    { path: '/api', handler: '~/api' },
+    { path: '/api', handler: '~/server/api' },
     { path: '/server', handler: '~/server/worker' }
   ],
 
@@ -58,7 +58,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache',
-    ['nuxt-matomo', { matomoUrl: 'https://matomo.bizouarn.fr/', siteId: 1 }]
+    ['nuxt-matomo', { matomoUrl: 'https://matomo.bizouarn.fr/', siteId: 1 }],
+    'nuxt-json-config'
   ],
 
   pwa: {
