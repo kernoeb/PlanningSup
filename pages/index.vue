@@ -485,11 +485,11 @@ export default {
 
     setTimeout(() => {
       this.skipWeekend()
+      this.updateTime()
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
 
-    this.updateTime()
     setTimeout(() => {
       window.onfocus = () => {
         this.updateTime()
