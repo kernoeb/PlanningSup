@@ -165,4 +165,8 @@ export default {
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+
+html {
+  overflow-y: auto
+}
 </style>
