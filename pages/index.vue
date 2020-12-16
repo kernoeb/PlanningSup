@@ -83,6 +83,7 @@
       </v-select>
       <v-spacer />
       <v-dialog
+        v-if="urls.length"
         v-model="dialogEdt"
         width="500"
       >
@@ -97,7 +98,7 @@
                 mdi-format-list-bulleted
               </v-icon>
             </template>
-            <span style="margin-right: 2px">{{ $config.i18n.changeEdit }}</span><span
+            <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
               style="color: lightgrey; font-size: 10px"
             >(u)</span>
           </v-tooltip>
@@ -293,8 +294,6 @@
 </template>
 
 <script>
-import urls from '@/static/url.json'
-
 export default {
   middleware: 'vuetify-theme',
   data () {
@@ -303,7 +302,8 @@ export default {
       selectedEvent: null,
       loading: true,
       colorMode: true,
-      urls,
+      urls: [],
+      first: false,
       timestamp: null,
       status: 'on',
       timer: 0,
@@ -338,10 +338,14 @@ export default {
     }
   },
   async fetch () {
+    if (!this.first) {
+      this.urls = await this.$axios.$get(this.$config.apiUrls)
+    }
+    this.first = true
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
-        const tmpEvents = await this.$axios.$get(this.$config.api, {
+        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
           params: {
             u: this.$route.query.u,
             n: this.$route.query.n,
@@ -350,7 +354,6 @@ export default {
           withCredentials: true
         })
         this.setEvents(tmpEvents)
-        this.setUnivTitle(this.$route.query.u, this.$route.query.n, this.$route.query.t)
         this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
           u: this.$route.query.u,
@@ -360,7 +363,7 @@ export default {
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          const tmpEvents = await this.$axios.$get(this.$config.api, {
+          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
             params: {
               u: tmp.u,
               n: tmp.n,
@@ -369,26 +372,22 @@ export default {
             withCredentials: true
           })
           this.setEvents(tmpEvents)
-          this.setUnivTitle(tmp.u, tmp.n, tmp.t)
           this.loading = false
         } catch (e) {
           this.$cookies.remove('edt')
-          const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
+          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
           this.setEvents(tmpEvents)
-          this.setUnivTitle()
           this.loading = false
         }
       } else {
-        const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
-        this.setUnivTitle()
         this.loading = false
       }
     } catch (e) {
       try {
-        const tmpEvents = await this.$axios.$get(this.$config.api, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
-        this.setUnivTitle()
         this.loading = false
       } catch (e) {
         this.loading = false
@@ -509,6 +508,7 @@ export default {
     setEvents (events) {
       this.status = events.status
       this.events = events.data
+      this.currentUniv = events.name
       if (events.timestamp) {
         this.timestamp = events.timestamp
       }
@@ -520,19 +520,6 @@ export default {
     goToDay (day) {
       this.type = 'day'
       this.value = this.$refs.calendar.timestampToDate(day)
-    },
-    setUnivTitle (reqU, reqN, reqT) {
-      try {
-        if (reqU && reqN && reqT) {
-          const univ = urls.find(u => u.univ === reqU)
-          const univ2 = univ.univ_edts.find(u => u.id === reqN)
-          const univ3 = univ2.edts.find(u => u.id === reqT)
-          this.currentUniv = univ.title + ' > ' + univ2.title + ' ' + univ3.title
-        } else {
-          this.currentUniv = this.$config.defaultUnivText
-        }
-      } catch (e) {
-      }
     },
     updateTime () {
       const tmp = new Date()

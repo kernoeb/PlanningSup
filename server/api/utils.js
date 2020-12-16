@@ -1,6 +1,7 @@
 const ical = require('cal-parser')
 const AbortController = require('abort-controller')
 const fetch = require('node-fetch')
+const logger = require('signale')
 
 const checkStatus = (res) => {
   if (res.ok) {
@@ -82,12 +83,18 @@ module.exports = {
     try {
       response = await fetch(url, { signal: controller.signal })
     } catch (e) {
+      if (process.env.DEBUG) {
+        logger.debug(e)
+      }
     } finally {
       clearTimeout(timeout)
     }
 
     if (response && checkStatus(response)) {
       const body = await response.text()
+      if (process.env.DEBUG) {
+        logger.debug(body)
+      }
       if (!body.includes('<!DOCTYPE html>')) {
         const ics = ical.parseString(body)
         if (ics && Object.entries(ics).length) {

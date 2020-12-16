@@ -9,7 +9,7 @@ const DURATION = config.get('durationCalendar') || 3000
 
 const router = Router()
 
-async function dbFallback (req, res, reqU, reqN, reqT, blocklist) {
+async function dbFallback (req, res, reqU, reqN, reqT, blocklist, name) {
   try {
     const query = await client.query({
       name: 'fetch-data',
@@ -18,7 +18,8 @@ async function dbFallback (req, res, reqU, reqN, reqT, blocklist) {
     })
     if (query.rows[0]) {
       const tmp = {
-        status: 'db'
+        status: 'db',
+        name
       }
 
       if (query.rows[0].data && Object.entries(query.rows[0].data).length) {
@@ -70,6 +71,7 @@ router.use('/calendar', async (req, res) => {
     const univ2 = univ.univ_edts.find(u => u.id === reqN)
     const univ3 = univ2.edts.find(u => u.id === reqT)
     const tmpUrl = univ3.url
+    const name = univ.title + ' > ' + univ2.title + ' ' + univ3.title
 
     const data = await utils.fetchData(tmpUrl, DURATION)
     if (data) {
@@ -77,11 +79,12 @@ router.use('/calendar', async (req, res) => {
 
       await res.json({
         status: 'on',
+        name,
         timestamp: new Date().getTime(),
         data: events
       })
     } else if (process.env.DATABASE_URL) {
-      await dbFallback(req, res, reqU, reqN, reqT, blocklist)
+      await dbFallback(req, res, reqU, reqN, reqT, blocklist, name)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }

@@ -28,6 +28,7 @@
     "nuxt-json-config": "^0.0.2",
     "nuxt-matomo": "^1.2.3",
     "pg": "^8.5.1",
+    "route-cache": "^0.4.5",
     "signale": "^1.4.0",
     "vue-simple-icons": "^3.10.0"
   },
