@@ -91,4 +91,3 @@ sw.*
 
 # Vim swap files
 *.swp
-server/api/routes/urls.js
