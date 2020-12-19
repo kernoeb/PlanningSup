@@ -24,7 +24,7 @@ async function dbFallback (req, res, reqU, reqN, reqT, blocklist, name) {
 
       if (query.rows[0].data && Object.entries(query.rows[0].data).length) {
         const tmpEvents = utils.getEvents(query.rows[0].data, blocklist, req)
-        if (tmpEvents && tmpEvents.length) {
+        if (tmpEvents.length) {
           tmp.data = tmpEvents
         } else {
           return res.status(500).send('Coup dur. Une erreur 500. Aucune sauvegarde non plus... (1)')

@@ -2,7 +2,6 @@
   <div v-if="mounted">
     <div class="ma-4 title_month">
       <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
-      <span v-else-if="$vuetify.breakpoint.mobile">{{ $moment().format('MMMM YYYY') }}</span>
       <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
       <div v-if="currentUniv" style="font-size: 10px">
         {{ currentUniv }}
