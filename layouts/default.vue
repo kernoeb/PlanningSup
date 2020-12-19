@@ -27,7 +27,7 @@
     >
       <span>Noéwen (<a
         :style="$vuetify.theme.dark ? 'color: white' : 'color: black'"
-        href="https://twitter.com/kop_of_tea"
+        href="https://twitter.com/kernoeb"
       >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
@@ -64,7 +64,7 @@
         <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
-            href="https://twitter.com/kop_of_tea"
+            href="https://twitter.com/kernoeb"
             rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
