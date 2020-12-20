@@ -3,9 +3,11 @@ const logger = require('../signale')
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  ssl: (process.env.DATABASE_SSL && process.env.DATABASE_SSL === 'true')
+    ? {
+        rejectUnauthorized: false
+      }
+    : false
 })
 client.connect()
 
