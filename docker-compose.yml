@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:testpassword56@db
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - /opt/planning/data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: testpassword56
+
+networks:
+  default:
+    external:
+      name: planning
