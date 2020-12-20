@@ -1,6 +1,6 @@
 const Bree = require('bree')
-const logger = require('signale')
 const urls = require('../static/url.json')
+const logger = require('./signale')
 
 const tmp = []
 for (const univ of urls) {

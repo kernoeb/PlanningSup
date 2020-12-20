@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 const routeCache = require('route-cache')
-const logger = require('signale')
+const logger = require('../../signale')
 const urls = require('../../../static/url.json')
 
 router.use('/urls', routeCache.cacheSeconds(60 * 60 * 24 * 7), (req, res) => {

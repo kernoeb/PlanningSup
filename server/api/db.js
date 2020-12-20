@@ -1,5 +1,5 @@
 const { Client } = require('pg')
-const logger = require('signale')
+const logger = require('../signale')
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,

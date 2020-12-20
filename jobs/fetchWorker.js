@@ -1,7 +1,7 @@
 const { workerData } = require('worker_threads')
 const delay = require('delay')
-const logger = require('signale')
 const config = require('config')
+const logger = require('../server/signale')
 const utils = require('../server/api/utils')
 const client = require('../server/api/db')
 

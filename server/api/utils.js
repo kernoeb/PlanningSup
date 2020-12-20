@@ -1,7 +1,7 @@
 const ical = require('cal-parser')
 const AbortController = require('abort-controller')
 const fetch = require('node-fetch')
-const logger = require('signale')
+const logger = require('../signale')
 
 const checkStatus = (res) => {
   if (res.ok) {
