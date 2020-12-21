@@ -1,9 +1,11 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const packageJson = require('../../package.json')
 const logger = require('../signale')
 
 logger.info('Starting...')
+logger.info('Version : ' + packageJson.version)
 
 // Create express instance
 const app = express()
