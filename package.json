@@ -14,7 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.4",
     "@nuxtjs/component-cache": "^1.1.6",
-    "@nuxtjs/pwa": "^3.3.2",
+    "@nuxtjs/pwa": "^3.3.3",
     "abort-controller": "^3.0.0",
     "bree": "^4.1.0",
     "cal-parser": "^1.0.1",
