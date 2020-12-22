@@ -11,12 +11,13 @@ Un planning universitaire moderne réalisé par @kernoeb.
 
 Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `static/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
 
-> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).
+> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).  
+> Si vous ne maîtrisez pas Git, envoyez moi un message privé (voir ci-dessous) :)
 
 ### Fonctionnalités
 
 <!--- Mode hors connexion-->
-- Couleurs par catégorie (Amphi, TD, TP, etc.)
+- Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.)
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie)
@@ -28,18 +29,20 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 
 ### Comment ça marche ?
 
-Le planning est hébergé sur un Heroku, et développé en Nuxt.js (et donc Vue.js).  
-Nuxt.js, c'est du server-side rendering (SSR), donc le planning est généré côté serveur.
+Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Pour résumer, c'est du server-side rendering (SSR).
 
-Il existe aussi une api : `/api/calendar`, qui fetch côté serveur le calendrier au format `.ics` depuis l'url donnée dans `static/url.json` (et vérifie l'existence du calendrier, comme un contrat).
-Ce fichier est ensuite transformé en `.json`.
+#### APIs :
+
+- `/api/calendar` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
+- `/api/urls` (en cache côté serveur) : `./static/url.json`, mais sans les URLs
+
 
 > Note : l'url n'est pas directement fetch dans la méthode *$fetch* de Nuxt.js pour éviter les problèmes de CORS.
 
-L'application est une `PWA`, et fonctionne donc hors connexion *(à condition d'être déjà venu sur le planning, ça se sauvegarde dans le cache !)*
+L'application est une [PWA (Progressive web app)](https://fr.wikipedia.org/wiki/Progressive_web_app).
 
-Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL *(Heroku)*.
-Si une erreur est présente, les données seront donc récupérées dans cette base de donnée.
+Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
+Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.
 
 ### Captures
 
@@ -61,6 +64,50 @@ Config Vars :
 - HOST | 0.0.0.0
 - NODE_ENV | production
 - NPM_CONFIG_PRODUCTION | false
+
+#### Docker
+
+docker-compose.yml
+```
+services:
+  web:
+    image: ghcr.io/kernoeb/planningiut/planning
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - web.env
+    depends_on:
+      - db
+  db:
+    image: postgres
+    volumes:
+      - /opt/planning/data:/var/lib/postgresql/data
+    restart: always
+    env_file:
+      - db.env
+
+networks:
+  default:
+    external:
+      name: planning
+```
+
+db.env
+```
+DATABASE_URL=postgresql://postgres:P4SSW0RD@db
+```
+
+web.env
+```
+DATABASE_URL=postgresql://postgres:P4SSW0RD@db
+```
+
+Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
+```
+*/30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d
+```
+
 
 ### Dons
 
