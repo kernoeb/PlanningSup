@@ -86,6 +86,7 @@ module.exports = {
       if (process.env.DEBUG) {
         logger.debug(e)
       }
+      return
     } finally {
       clearTimeout(timeout)
     }
