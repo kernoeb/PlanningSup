@@ -1213,10 +1213,10 @@
     webpack-node-externals "^2.5.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/axios@^5.12.5":
-  version "5.12.5"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.12.5.tgz#d4a1003052d21e54d93d97a895ca84f58e4bc8d9"
-  integrity sha512-KCZMLRZFYOKcGt9mKxJMH6UJMB6H6g+BF/YxXEYz3Urrf2U2XiNkj6rmBqgw0XLRY5XD9Wm8knTGp6955512fQ==
+"@nuxtjs/axios@^5.13.0":
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.13.0.tgz#e0771829fc093b1232ed0a94eae379fd64c7994d"
+  integrity sha512-ppTgvKENzXhz7Ro7uqDWVlFJfiaoYfDXlSbUwMIabPsTZOJ/sR3+366KNy7fE/PY0qjzFe4ftA8ZWjY2ZWWesA==
   dependencies:
     "@nuxtjs/proxy" "^2.1.0"
     axios "^0.21.1"
@@ -3316,10 +3316,10 @@ defu@^3.2.2:
   resolved "https://registry.yarnpkg.com/defu/-/defu-3.2.2.tgz#be20f4cc49b9805d54ee6b610658d53894942e97"
   integrity sha512-8UWj5lNv7HD+kB0e9w77Z7TdQlbUYDVWqITLHNqFIn6khrNHv5WQo38Dcm1f6HeNyZf0U7UbPf6WeZDSdCzGDQ==
 
-delay@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/delay/-/delay-4.4.1.tgz#6e02d02946a1b6ab98b39262ced965acba2ac4d1"
-  integrity sha512-aL3AhqtfhOlT/3ai6sWXeqwnw63ATNpnUiN4HL7x9q+My5QtHlO3OIkasmug9LKzpheLdmUKGRKnYXYAS7FQkQ==
+delay@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/delay/-/delay-5.0.0.tgz#137045ef1b96e5071060dd5be60bf9334436bd1d"
+  integrity sha512-ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==
 
 depd@~1.1.2:
   version "1.1.2"
