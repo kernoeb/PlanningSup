@@ -6,6 +6,7 @@ Un planning universitaire moderne réalisé par @kernoeb.
 [![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
 [![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kernoeb/planningiut)
+[![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/4xs1.svg)](https://betteruptime.com/?utm_source=status_badge)
 
 ### Ajouter une spécialité ou une université
 
@@ -38,8 +39,6 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Pour résumer, c'
 
 
 > Note : l'url n'est pas directement fetch dans la méthode *$fetch* de Nuxt.js pour éviter les problèmes de CORS.
-
-L'application est une [PWA (Progressive web app)](https://fr.wikipedia.org/wiki/Progressive_web_app).
 
 Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
 Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.
