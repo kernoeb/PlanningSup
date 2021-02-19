@@ -12,19 +12,20 @@
     "heroku-postbuild": "yarn build"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.0",
+    "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/pwa": "^3.3.5",
     "abort-controller": "^3.0.0",
-    "bree": "^4.1.1",
+    "bree": "^6.1.0",
     "cal-parser": "^1.0.1",
     "config": "^3.3.3",
     "cookie-parser": "^1.4.5",
     "cookie-universal-nuxt": "^2.1.4",
-    "core-js": "^3.8.3",
+    "core-js": "^3.9.0",
     "cors": "^2.8.5",
     "delay": "^5.0.0",
-    "nuxt": "^2.14.12",
+    "express": "^4.17.1",
+    "nuxt": "^2.15.1",
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.5.1",
     "route-cache": "^0.4.5",
@@ -40,7 +41,7 @@
     "@nuxtjs/vuetify": "^1.11.3",
     "babel-eslint": "^10.1.0",
     "css-byebye": "^2.0.2",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-nuxt": "^2.0.0"
   }
 }
