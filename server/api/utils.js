@@ -40,8 +40,6 @@ module.exports = {
     }
     if (n.includes('CM') || n.includes('Amphi') || l.includes('Amphi')) {
       return '#fe463a'
-    } else if (l.includes('à distance') || n.toUpperCase().includes('COVID')) {
-      return '#a50e83'
     } else if (n.includes('TD') || l.includes('V-B')) {
       return 'green'
     } else if (n.includes('TP')) {
@@ -64,7 +62,8 @@ module.exports = {
           color: this.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
           timed: true,
           location: i.location.value.trim(),
-          description: this.cleanDescription(i.description.value)
+          description: this.cleanDescription(i.description.value),
+          distance: i.location.value.trim().includes('à distance') || undefined
         })
       }
     }

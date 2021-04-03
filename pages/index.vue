@@ -274,11 +274,14 @@
           <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
             <div><strong>{{ event.name }}</strong></div>
             <div v-if="event.location || event.description">
-              {{ event.location }}{{
-                (event.location && event.description) ? ' | ' : ''
+              {{ !event.distance ? event.location : '' }}{{
+                ((event.location && !event.distance) && event.description) ? ' | ' : ''
               }}{{ event.description }}
             </div>
             <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
+            <small v-if="event.distance">
+              <i>{{ $config.i18n.distance }}</i>
+            </small>
           </div>
         </template>
       </v-calendar>
