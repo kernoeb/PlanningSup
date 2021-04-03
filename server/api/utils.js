@@ -63,7 +63,7 @@ module.exports = {
           timed: true,
           location: i.location.value.trim(),
           description: this.cleanDescription(i.description.value),
-          distance: i.location.value.trim().includes('à distance') || undefined
+          distance: i.location.value.trim().match(/à distance|EAD/) || undefined
         })
       }
     }
