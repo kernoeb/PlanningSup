@@ -40,7 +40,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/vuetify": "^1.11.3",
     "babel-eslint": "^10.1.0",
-    "css-byebye": "^2.0.2",
+    "css-byebye": "^3.0.0",
     "eslint": "^7.23.0",
     "eslint-plugin-nuxt": "^2.0.0"
   }
