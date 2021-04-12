@@ -61,7 +61,7 @@
         icon
         @click="$refs.calendar.prev()"
       >
-        <v-icon>mdi-chevron-left</v-icon>
+        <v-icon>{{ mdiChevronLeft }}</v-icon>
       </v-btn>
       <v-select
         v-model="type"
@@ -69,7 +69,7 @@
         class="ma-2"
         dense
         hide-details
-        label="Mode"
+        :label="$config.i18n.mode"
         outlined
         style="width: 100px"
       >
@@ -78,6 +78,11 @@
             {{ item.text }}
             <span style="color: grey; font-size: 10px">({{ item.keyboard }})</span>
           </span>
+        </template>
+        <template #append>
+          <v-icon>
+            {{ mdiMenuDown }}
+          </v-icon>
         </template>
       </v-select>
       <v-spacer />
@@ -94,7 +99,7 @@
                 class="ma-2"
                 v-on="{...d, ...tooltip}"
               >
-                mdi-format-list-bulleted
+                {{ mdiFormatListBulleted }}
               </v-icon>
             </template>
             <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
@@ -105,7 +110,7 @@
         <v-card>
           <v-card-title class="headline">
             <v-icon class="mr-2">
-              mdi-calendar
+              {{ mdiCalendar }}
             </v-icon>
             <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
           </v-card-title>
@@ -117,7 +122,7 @@
               v-for="(url,i) in urls"
               :key="`urls_${i}`"
             >
-              <v-expansion-panel-header>
+              <v-expansion-panel-header :expand-icon="mdiChevronDown">
                 {{ url.title }}
               </v-expansion-panel-header>
               <v-expansion-panel-content>
@@ -126,7 +131,7 @@
                     v-for="(url2,j) in url.univ_edts"
                     :key="`urls_2_${j}`"
                   >
-                    <v-expansion-panel-header>
+                    <v-expansion-panel-header :expand-icon="mdiChevronDown">
                       {{ url2.title }}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
@@ -159,7 +164,7 @@
             v-on="on"
             @click="setToday"
           >
-            mdi-calendar-today
+            {{ mdiCalendarToday }}
           </v-icon>
         </template>
         <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
@@ -176,7 +181,7 @@
                 class="ma-2"
                 v-on="{...d, ...tooltip}"
               >
-                mdi-cog-outline
+                {{ mdiCogOutline }}
               </v-icon>
             </template>
             <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
@@ -187,7 +192,7 @@
         <v-card>
           <v-card-title class="headline">
             <v-icon class="mr-2">
-              mdi-cog-outline
+              {{ mdiCogOutline }}
             </v-icon>
             <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
           </v-card-title>
@@ -201,7 +206,7 @@
             <v-subheader>{{ $config.i18n.ui }}</v-subheader>
             <v-list-item>
               <v-list-item-action>
-                <v-checkbox v-model="checkedTheme" />
+                <v-checkbox v-model="checkedTheme" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
               </v-list-item-action>
 
               <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
@@ -211,7 +216,7 @@
             </v-list-item>
             <v-list-item>
               <v-list-item-action>
-                <v-checkbox v-model="colorMode" />
+                <v-checkbox v-model="colorMode" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
               </v-list-item-action>
 
               <v-list-item-content @click="colorMode = !colorMode">
@@ -228,8 +233,22 @@
                 :label="$config.i18n.blocklistDesc"
                 chips
                 multiple
+                :append-icon="mdiMenuDown"
                 @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
-              />
+              >
+                <template #item="{ item, on, attrs }">
+                  <v-list-item v-bind="attrs" v-on="on">
+                    <v-list-item-action>
+                      <v-checkbox :input-value="attrs.inputValue" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{ item }}
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+              </v-combobox>
             </v-list-item>
           </v-list-item-group>
         </v-card>
@@ -239,12 +258,12 @@
         icon
         @click="$refs.calendar.next()"
       >
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
     <v-sheet height="700">
       <div v-if="$fetchState.error || (!events.length && !$fetchState.pending)" style="text-align: center">
-        <span><br><v-icon class="mr-2 mb-1">mdi-wifi-off</v-icon>
+        <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
       <v-calendar
@@ -271,7 +290,7 @@
           />
         </template>
         <template #event="{event}">
-          <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2">
+          <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
             <div><strong>{{ event.name }}</strong></div>
             <div v-if="event.location || event.description">
               {{ !event.distance ? event.location : '' }}{{
@@ -296,10 +315,26 @@
 </template>
 
 <script>
+import { mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+
 export default {
   middleware: 'vuetify-theme',
   data () {
     return {
+      // Fonts
+      mdiChevronLeft,
+      mdiChevronDown,
+      mdiChevronRight,
+      mdiFormatListBulleted,
+      mdiCalendar,
+      mdiCalendarToday,
+      mdiCogOutline,
+      mdiSchool,
+      mdiWifiOff,
+      mdiMenuDown,
+      mdiCheckboxBlankOutline,
+      mdiCheckboxMarked,
+
       bottom: false,
       selectedEvent: null,
       loading: true,

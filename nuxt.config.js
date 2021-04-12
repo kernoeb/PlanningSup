@@ -48,7 +48,13 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // https://github.com/nuxt-community/moment-module
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    ['@nuxtjs/google-fonts', {
+      display: 'swap',
+      families: {
+        Roboto: [100, 300, 400, 500, 700, 900]
+      }
+    }]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -86,6 +92,7 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
+    defaultAssets: false,
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
     theme: {

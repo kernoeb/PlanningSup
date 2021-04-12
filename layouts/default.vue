@@ -10,10 +10,14 @@
           </div>
         </div>
       </transition>
-      <v-icon>mdi-calendar</v-icon>
+      <v-icon small>
+        {{ mdiCalendar }}
+      </v-icon>
       {{ $config.name }}
       <v-spacer />
-      <v-icon>mdi-school</v-icon>
+      <v-icon small>
+        {{ mdiSchool }}
+      </v-icon>
       <span>{{ time }}</span>
     </v-system-bar>
     <v-main>
@@ -96,6 +100,7 @@
 
 <script>
 import { BraveIcon, GitHubIcon, PayPalIcon, TwitterIcon } from 'vue-simple-icons'
+import { mdiCalendar, mdiSchool, mdiApps } from '@mdi/js'
 
 export default {
   components: {
@@ -106,18 +111,15 @@ export default {
   },
   data () {
     return {
+      mdiCalendar,
+      mdiSchool,
+      mdiApps,
+
       connected: true,
       mounted: false,
       time: '',
       timer: 0,
       drawer: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        }
-      ],
       title: 'Planning IUT'
     }
   },
