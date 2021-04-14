@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 import fr from 'vuetify/es5/locale/fr'
+import minifyTheme from 'minify-css-string'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
@@ -97,6 +98,7 @@ export default {
     treeShake: true,
     theme: {
       dark: true,
+      options: { minifyTheme },
       lang: {
         locales: { fr },
         current: 'fr'
