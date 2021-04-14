@@ -1,15 +1,6 @@
 const ical = require('cal-parser')
-const AbortController = require('abort-controller')
-const fetch = require('node-fetch')
+const axios = require('axios')
 const logger = require('../signale')
-
-const checkStatus = (res) => {
-  if (res.ok) {
-    return res
-  } else {
-    return null
-  }
-}
 
 module.exports = {
   getColor: function getColor (n, l, m) {
@@ -70,36 +61,26 @@ module.exports = {
     return events
   },
   fetchData: async function fetchData (url, time) {
-    const controller = new AbortController()
-    const timeout = setTimeout(
-      () => {
-        controller.abort()
-      },
-      time
-    )
-
-    let response = null
+    let response
     try {
-      response = await fetch(url, { signal: controller.signal })
-    } catch (e) {
+      response = await axios({
+        method: 'GET',
+        url,
+        timeout: time
+      })
+      const { data } = response
       if (process.env.DEBUG) {
-        logger.debug(e)
+        logger.debug(data)
       }
-      return
-    } finally {
-      clearTimeout(timeout)
-    }
-
-    if (response && checkStatus(response)) {
-      const body = await response.text()
-      if (process.env.DEBUG) {
-        logger.debug(body)
-      }
-      if (!body.includes('<!DOCTYPE html>')) {
-        const ics = ical.parseString(body)
+      if (data && data.length && !data.includes('<!DOCTYPE html>')) {
+        const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {
           return ics
         }
+      }
+    } catch (e) {
+      if (process.env.DEBUG) {
+        logger.debug(e)
       }
     }
   }
