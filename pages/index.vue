@@ -250,6 +250,13 @@
                 </template>
               </v-combobox>
             </v-list-item>
+            <v-subheader>{{ $config.i18n.contact }}</v-subheader>
+            <v-list-item inactive>
+              <div class="d-flex flex-column mb-3">
+                <div><twitter-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a></div>
+                <div><proton-mail-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a></div>
+              </div>
+            </v-list-item>
           </v-list-item-group>
         </v-card>
       </v-dialog>
@@ -317,12 +324,17 @@
 
 <script>
 import { mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { TwitterIcon, ProtonMailIcon } from 'vue-simple-icons'
 
 export default {
+  components: {
+    TwitterIcon,
+    ProtonMailIcon
+  },
   middleware: 'vuetify-theme',
   data () {
     return {
-      // Fonts
+      // Icons
       mdiChevronLeft,
       mdiChevronDown,
       mdiChevronRight,
