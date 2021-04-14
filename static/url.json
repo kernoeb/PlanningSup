@@ -156,6 +156,98 @@
             "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e541967672301e36e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
           }
         ]
+      },
+      {
+        "id": "stid1",
+        "title": "STID 1",
+        "edts": [
+          {
+            "id": "g1a1",
+            "title": "Groupe 1A1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145da68ee7d4257b29e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1a2",
+            "title": "Groupe 1A2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214b8ac04389650e78ae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1b1",
+            "title": "Groupe 1B1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021483c4463655706235e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1b2",
+            "title": "Groupe 1B2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149788dc11087ed4d9e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1c1",
+            "title": "Groupe 1C1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214ce0cccd402da1eb9e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1c2",
+            "title": "Groupe 1C2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145ada2d6f3881e90ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1d1",
+            "title": "Groupe 1D1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214360f760adfbc4532e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g1d2",
+            "title": "Groupe 1D2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214f9d8178d7226cbb6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "id": "stid2",
+        "title": "STID 2",
+        "edts": [
+          {
+            "id": "g2a1",
+            "title": "Groupe 2A1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021482c99d1b8992f943e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2a2",
+            "title": "Groupe 2A2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214faa72bb69efce0e5e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2b1",
+            "title": "Groupe 2B1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149707a6deed1a5036e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2b2",
+            "title": "Groupe 2B2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214bc7f4043bcc092cce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2c1",
+            "title": "Groupe 2C1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214b98dfdf1734b91c4e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2c2",
+            "title": "Groupe 2C2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214176c7313597420a1e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a70c233dbd7525cd7c2973627c2eb073b4f4abb758f0647048d3f4109b6629391"
+          },
+          {
+            "id": "g2d1",
+            "title": "Groupe 2D1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002149b4a7395d720c451324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a7161fd43df1c7236294a03789be703436e8504f9d2b878bbd9ef24f0b5407c86"
+          },
+          {
+            "id": "g2d2",
+            "title": "Groupe 2D2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214754509b38d4d7efe324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a7161fd43df1c7236294a03789be703436e8504f9d2b878bbd9ef24f0b5407c86"
+          }
+        ]
       }
     ]
   },
