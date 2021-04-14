@@ -639,7 +639,11 @@ export default {
 </script>
 
 <style>
-.v-calendar-daily__day-interval {
+.theme--light .v-calendar-daily__day-interval {
+  border-top: #c9c9c9 1px solid !important;
+}
+
+.theme--dark .v-calendar-daily__day-interval {
   border-top: #505050 1px solid !important;
 }
 
