@@ -270,6 +270,7 @@
         v-show="events.length"
         ref="calendar"
         v-model="value"
+        color="primary"
         :event-overlap-threshold="30"
         :events="events"
         :type="type"
