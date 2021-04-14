@@ -87,7 +87,6 @@
       </v-select>
       <v-spacer />
       <v-dialog
-        v-if="urls.length"
         v-model="dialogEdt"
         width="500"
       >
@@ -252,7 +251,7 @@
             </v-list-item>
             <v-subheader>{{ $config.i18n.contact }}</v-subheader>
             <v-list-item inactive>
-              <div class="d-flex flex-column mb-3">
+              <div class="d-flex flex-column mb-4">
                 <div><twitter-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a></div>
                 <div><proton-mail-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a></div>
               </div>
@@ -353,7 +352,6 @@ export default {
       loading: true,
       colorMode: true,
       urls: [],
-      first: false,
       timestamp: null,
       status: 'on',
       timer: 0,
@@ -388,10 +386,6 @@ export default {
     }
   },
   async fetch () {
-    if (!this.first) {
-      this.urls = await this.$axios.$get(this.$config.apiUrls)
-    }
-    this.first = true
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
@@ -538,6 +532,10 @@ export default {
     setTimeout(() => {
       this.skipWeekend()
       this.updateTime()
+
+      this.$axios.$get(this.$config.apiUrls).then((data) => {
+        this.urls = data
+      }).catch(() => {})
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
