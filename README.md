@@ -10,7 +10,7 @@ Un planning universitaire moderne réalisé par @kernoeb.
 
 ### Ajouter une spécialité ou une université
 
-Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `static/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
+Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
 
 > Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).  
 > Si vous ne maîtrisez pas Git, envoyez moi un message privé (voir ci-dessous) :)
@@ -35,7 +35,7 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Pour résumer, c'
 #### APIs :
 
 - `/api/calendar` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : `./static/url.json`, mais sans les URLs
+- `/api/urls` (en cache côté serveur) : `./assets/url.json`, mais sans les URLs
 
 
 > Note : l'url n'est pas directement fetch dans la méthode *$fetch* de Nuxt.js pour éviter les problèmes de CORS.
