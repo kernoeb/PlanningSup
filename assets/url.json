@@ -310,6 +310,233 @@
     ]
   },
   {
+    "univ": "ensibs",
+    "title": "ENSIBS",
+    "univ_edts": [
+      {
+        "id": "a1s1",
+        "title": "A1-S1",
+        "edts": [
+          {
+            "id": "cyberdefs1tp1",
+            "title": "CyberDef TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214cbbcab559de882c1fa37e64353c042d78108e2ec348924488192bcbbe409d97dd0f533a6f63751ccda3ec03ab2099bc091648bfddf138ed046374e030f5b7360c68bab9e75fca8fb"
+          },
+          {
+            "id": "cyberdefs1tp2",
+            "title": "CyberDef TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c4a415d06ef43d7b324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a2adb8ecca78c82842cbb84d9aea1221c6e8504f9d2b878bb740fa646d87d02be"
+          },
+          {
+            "id": "cyberdefs1tp3",
+            "title": "CyberDef TP3",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214f789543cd10cccd6e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs1tp4",
+            "title": "CyberDef TP4",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214252a5d34d363fd8ee0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs1tp5",
+            "title": "CyberDef TP5",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e2d18a7a9ca53185e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs1tp6",
+            "title": "CyberDef TP6",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002141b2585940a628bd3e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs1tp1",
+            "title": "CyberLog TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147d58ce7c458bba9be0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs1tp2",
+            "title": "CyberLog TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002146a2ff8bcd630d28f324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a2adb8ecca78c82842cbb84d9aea1221c6e8504f9d2b878bb740fa646d87d02be"
+          }
+        ]
+      },
+      {
+        "id": "a1s2",
+        "title": "A1-S2",
+        "edts": [
+          {
+            "id": "cyberdefs2tp1",
+            "title": "CyberDef TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147b1375e05e9b73d1e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs2tp2",
+            "title": "CyberDef TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147a2467c8676b4c4ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs2tp3",
+            "title": "CyberDef TP3",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145d23762f9a03a572e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs2tp4",
+            "title": "CyberDef TP4",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d82a8a376f840539e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs2tp5",
+            "title": "CyberDef TP5",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143abaf3ca4ee7fe0ee0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs2tp6",
+            "title": "CyberDef TP6",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d9759ca198b3f265e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs2tp1",
+            "title": "CyberLog TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002142d05f6d6ce519862e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs2tp2",
+            "title": "CyberLog TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021492dfba34f79168e0e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "id": "a2s3",
+        "title": "A2-S3",
+        "edts": [
+          {
+            "id": "cyberdefs3tp1",
+            "title": "CyberDef TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021469b880393035a1cae0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs3tp2",
+            "title": "CyberDef TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e53471581b0a6ec0e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs3tp3",
+            "title": "CyberDef TP3",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021481768c2388907206e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs3tp4",
+            "title": "CyberDef TP4",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002146c9eebb5811a9a9ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs3tp1",
+            "title": "CyberLog TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143c97ce69f42ba8b2324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a2adb8ecca78c82842cbb84d9aea1221c6e8504f9d2b878bb740fa646d87d02be"
+          },
+          {
+            "id": "cyberlogs3tp2",
+            "title": "CyberLog TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002147adfeee7dc72a67ee0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "id": "a2s4",
+        "title": "A2-S4",
+        "edts": [
+          {
+            "id": "cyberdefs4tp1",
+            "title": "CyberDef TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021467f5ae42ba82b88ce0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs4tp2",
+            "title": "CyberDef TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021447475cfd3ab8ee29e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs4tp3",
+            "title": "CyberDef TP3",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d21b2a11ba33e371e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs4tp4",
+            "title": "CyberDef TP4",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e659a3a5a28a8ccfe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs4tp1",
+            "title": "CyberLog TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214370536b50fcc57df324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a2adb8ecca78c82842cbb84d9aea1221c6e8504f9d2b878bb740fa646d87d02be"
+          },
+          {
+            "id": "cyberlogs4tp2",
+            "title": "CyberLog TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148cfdfac49402f5b4e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "gihs4tp1",
+            "title": "GIH TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021496955ffb7aca4f81e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f7a9ffa18a8ba8c34c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "id": "a3s5",
+        "title": "A3-S5",
+        "edts": [
+          {
+            "id": "cyberdefs5tp1",
+            "title": "CyberDef TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d063f83e9c5368c0e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs5tp2",
+            "title": "CyberDef TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021410fc27a89a36676fe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs5tp3",
+            "title": "CyberDef TP3",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc387320021470e683a2da081dbfe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberdefs5tp4",
+            "title": "CyberDef TP4",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002143c7235215d5a56f0e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "cyberlogs5tp1",
+            "title": "CyberLog TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214d95e468251b4f9c0324cfcf2e9e6b4356213d7c347ee7c2df43b49ed91b3cccdb0db0d7caf18783a2adb8ecca78c82842cbb84d9aea1221c6e8504f9d2b878bb740fa646d87d02be"
+          },
+          {
+            "id": "cyberlogs5tp2",
+            "title": "CyberLog TP2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002146969cce97457d582e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          },
+          {
+            "id": "gihs6tp1",
+            "title": "GIH TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002148c212cc61578d8fbe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          }
+        ]
+      },
+      {
+        "id": "a3s6",
+        "title": "A3-S6",
+        "edts": [
+          {
+            "id": "gihs6tp1",
+            "title": "GIH TP1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214fb33035c3f3c7c83e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e86152d0472efb473cb41f138d3f68dbf25d00c2973627c2eb073b39b47d65d6a3d0778d3f4109b6629391"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "univ": "uga",
     "title": "Université Grenoble Alpes",
     "univ_edts": [
