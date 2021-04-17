@@ -1,5 +1,5 @@
 const Bree = require('bree')
-const urls = require('../static/url.json')
+const urls = require('../assets/url.json')
 const logger = require('./signale')
 
 const edt = []

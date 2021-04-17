@@ -4,7 +4,7 @@ const config = require('config')
 const client = require('../db')
 const utils = require('../utils')
 
-const urls = require('../../../static/url.json')
+const urls = require('../../../assets/url.json')
 const DURATION = config.get('durationCalendar') || 3000
 
 const router = Router()
@@ -46,7 +46,7 @@ async function dbFallback (req, res, reqU, reqN, reqT, blocklist, name) {
   }
 }
 
-router.use('/calendar', async (req, res) => {
+router.get('/calendar', async (req, res) => {
   let reqU = config.get('default.univ') || 'iutvannes'
   let reqN = config.get('default.spec') || 'lp'
   let reqT = config.get('default.grp') || 'dlis'
