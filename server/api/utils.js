@@ -40,7 +40,10 @@ module.exports = {
     }
   },
   cleanDescription: function cleanDescription (d) {
-    return d.replace(/Grp \d/g, '').replace(/GR \d.?\d?/g, '').replace(/LP (DLIS|CYBER)/g, '').replace(/\(Exporté.*\)/, '').trim()
+    return d && d.replace(/Grp \d/g, '').replace(/GR \d.?\d?/g, '').replace(/LP (DLIS|CYBER)/g, '').replace(/\(Exporté.*\)/, '').trim()
+  },
+  cleanLocation: function cleanLocation (l) {
+    return l && l.trim().replace('salle joker à distance', 'À distance').split(',').map(v => v.replace(/^V-/, '')).join(', ')
   },
   getEvents: function getEvents (ics, blocklist, req) {
     const events = []
@@ -52,7 +55,7 @@ module.exports = {
           end: new Date(i.dtend.value).getTime(),
           color: this.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
           timed: true,
-          location: i.location.value.trim().replace('salle joker à distance', 'À distance').replace(/V-/g, '').split(',').join(', '),
+          location: this.cleanLocation(i.location.value),
           description: this.cleanDescription(i.description.value),
           distance: i.location.value.trim().match(/à distance$|EAD/) || undefined
         })
