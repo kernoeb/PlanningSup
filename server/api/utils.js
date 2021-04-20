@@ -52,9 +52,9 @@ module.exports = {
           end: new Date(i.dtend.value).getTime(),
           color: this.getColor(i.summary.value, i.location.value, req.cookies && ((req.cookies.colorMode && req.cookies.colorMode === 'true') || !req.cookies.colorMode)),
           timed: true,
-          location: i.location.value.trim(),
+          location: i.location.value.trim().replace('salle joker à distance', 'À distance').replace(/V-/g, '').split(',').join(', '),
           description: this.cleanDescription(i.description.value),
-          distance: i.location.value.trim().match(/à distance|EAD/) || undefined
+          distance: i.location.value.trim().match(/à distance$|EAD/) || undefined
         })
       }
     }
