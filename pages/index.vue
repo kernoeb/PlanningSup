@@ -507,24 +507,24 @@ export default {
       this.$vuetify.theme.dark = true
     }
 
-    try {
-      const start = this.$moment(this.$refs.calendar.start).week().toString()
-      const end = this.$moment(this.$refs.calendar.end).week().toString()
-      this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
-    } catch (e) {
-    }
+    this.$nextTick(function () {
+      try {
+        const start = this.$moment(this.$refs.calendar.start).week().toString()
+        const end = this.$moment(this.$refs.calendar.end).week().toString()
+        this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
+      } catch (e) {
+      }
 
-    try {
       this.$refs.calendar.$on('change', (p) => {
         try {
           const start = this.$moment(p.start.date).week().toString()
           const end = this.$moment(p.end.date).week().toString()
           this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
         } catch (e) {
+          this.currentWeek = ''
         }
       })
-    } catch (e) {
-    }
+    })
 
     this.onResize()
     window.addEventListener('resize', this.onResize, { passive: true })
@@ -662,8 +662,8 @@ export default {
   width: 25px !important;
 }
 
-.title_month:first-letter {
-  text-transform: capitalize
+.title_month {
+  text-transform: capitalize;
 }
 
 .theme--dark.v-calendar-daily {
