@@ -4,6 +4,8 @@ import minifyTheme from 'minify-css-string'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
+const PLAUSIBLE_URL = 'plausible.noewen.com'
+
 export default {
   telemetry: false,
   ssr: true,
@@ -67,11 +69,36 @@ export default {
     '@nuxtjs/component-cache',
     'nuxt-json-config',
     // https://github.com/moritzsternemann/vue-plausible
-    'vue-plausible'
+    'vue-plausible',
+    [
+      '@dansmaculotte/nuxt-security',
+      {
+        hsts: {
+          maxAge: 15552000,
+          includeSubDomains: true,
+          preload: true
+        },
+        referrer: 'same-origin',
+        additionalHeaders: true
+      }
+    ]
   ],
 
+  render: {
+    csp: {
+      hashAlgorithm: 'sha256',
+      policies: {
+        'default-src': ["'self'"],
+        'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
+        'font-src': ['fonts.googleapis.com', 'fonts.gstatic.com'],
+        'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        'connect-src': ["'self'", PLAUSIBLE_URL]
+      }
+    }
+  },
+
   plausible: {
-    apiHost: 'https://plausible.noewen.com'
+    apiHost: 'https://' + PLAUSIBLE_URL
   },
 
   pwa: {
