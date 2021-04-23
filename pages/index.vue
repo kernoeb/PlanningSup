@@ -52,6 +52,7 @@
       style="position: absolute;"
     />
     <v-sheet
+      :style="$vuetify.theme.dark ? 'background-color: #121212' : null"
       class="d-flex"
       height="54"
       tile
@@ -267,7 +268,7 @@
         <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet height="700">
+    <v-sheet height="750">
       <div v-if="$fetchState.error" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
@@ -657,6 +658,11 @@ export default {
   border-top: #505050 1px solid !important;
 }
 
+.theme--dark.v-calendar-daily .v-calendar-daily_head-day {
+  border-right: #868686 1px solid!important;
+  border-bottom: #868686 1px solid!important;
+}
+
 .v-btn--fab.v-size--default {
   height: 25px !important;
   width: 25px !important;
@@ -667,12 +673,17 @@ export default {
 }
 
 .theme--dark.v-calendar-daily {
+  background-color: #121212!important;
   border-top: none !important;
   border-left: none !important;
   border-bottom: none !important;
 }
 
 .v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+  border-right: none !important;
+}
+
+.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(6) {
   border-right: none !important;
 }
 
