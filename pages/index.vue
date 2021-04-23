@@ -268,7 +268,7 @@
         <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet height="750">
+    <v-sheet height="710">
       <div v-if="$fetchState.error" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
