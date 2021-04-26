@@ -25,7 +25,6 @@
         <v-spacer />
         <v-btn
           icon
-          dark
           @click="dialog = false"
         >
           <v-icon>{{ mdiClose }}</v-icon>
