@@ -15,10 +15,12 @@ app.use(cookieParser())
 // Require API routes
 const calendar = require('./routes/calendar')
 const urls = require('./routes/urls')
+const crous = require('./routes/crous')
 
 // Import API Routes
 app.use(calendar)
 app.use(urls)
+app.use(crous)
 
 // Export express app
 module.exports = app

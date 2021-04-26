@@ -1,11 +1,14 @@
 <template>
   <div v-if="mounted">
-    <div class="title_month" :class="titleCss" style="transition: margin 500ms">
-      <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
-      <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
-      <div v-if="currentUniv" style="font-size: 10px">
-        {{ currentUniv }}
+    <div class="d-flex justify-space-between">
+      <div class="title_month" :class="titleCss" style="transition: margin 500ms">
+        <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
+        <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
+        <div v-if="currentUniv" style="font-size: 10px">
+          {{ currentUniv }}
+        </div>
       </div>
+      <crous v-if="currentUniv.includes('Vannes')" />
     </div>
     <transition name="fade">
       <v-alert
@@ -325,9 +328,11 @@
 <script>
 import { mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import { TwitterIcon, ProtonMailIcon } from 'vue-simple-icons'
+import crous from '@/components/crous'
 
 export default {
   components: {
+    crous,
     TwitterIcon,
     ProtonMailIcon
   },

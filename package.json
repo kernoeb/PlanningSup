@@ -29,10 +29,12 @@
     "cors": "^2.8.5",
     "delay": "^5.0.0",
     "express": "^4.17.1",
+    "jsdom": "^16.5.3",
     "nuxt": "^2.15.4",
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.6.0",
     "route-cache": "^0.4.5",
+    "sanitize-html": "^2.3.3",
     "signale": "^1.4.0",
     "vue-plausible": "^1.1.4",
     "vue-simple-icons": "^4.7.0"
@@ -45,7 +47,7 @@
     "@nuxtjs/vuetify": "^1.11.3",
     "babel-eslint": "^10.1.0",
     "css-byebye": "^3.0.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "minify-css-string": "^1.0.0"
   }

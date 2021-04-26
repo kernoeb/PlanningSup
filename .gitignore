@@ -91,3 +91,5 @@ sw.*
 
 # Vim swap files
 *.swp
+
+dev/

@@ -1,6 +1,7 @@
 {
   "apiCalendar": "/api/calendar",
   "apiUrls": "/api/urls",
+  "apiCrous": "/api/crous_menu",
   "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
   "name": "Planning IUT",
   "durationWorker": 3000,
