@@ -75,19 +75,21 @@ export default {
   name: 'Crous',
   data () {
     return {
+      // Icons
       mdiClose,
       mdiFoodForkDrink,
+
       dialog: false,
       menu: null
     }
   },
   methods: {
     getMenus () {
-      try {
-        this.$plausible.trackEvent('crous')
-      } catch (err) {}
       this.$axios.$get(this.$config.apiCrous).then((b) => {
         this.menu = b
+        try {
+          this.$plausible.trackEvent('crous')
+        } catch (err) {}
       }).catch(() => {
         this.menu = []
       })
