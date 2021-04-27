@@ -280,6 +280,10 @@
         v-show="events"
         ref="calendar"
         v-model="value"
+        v-touch="{
+          left: () => $refs.calendar.next(),
+          right: () => $refs.calendar.prev()
+        }"
         color="primary"
         :event-overlap-threshold="30"
         :events="events"
