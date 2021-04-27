@@ -99,7 +99,7 @@
             <template #activator="{ on: tooltip }">
               <v-icon
                 v-bind="attrs"
-                class="ma-2"
+                class="ma-3"
                 v-on="{...d, ...tooltip}"
               >
                 {{ mdiFormatListBulleted }}
@@ -163,7 +163,7 @@
         <template #activator="{ on, attrs }">
           <v-icon
             v-bind="attrs"
-            class="ma-2"
+            class="ma-3"
             v-on="on"
             @click="setToday"
           >
@@ -181,7 +181,7 @@
             <template #activator="{ on: tooltip }">
               <v-icon
                 v-bind="attrs"
-                class="ma-2"
+                class="ma-3"
                 v-on="{...d, ...tooltip}"
               >
                 {{ mdiCogOutline }}
