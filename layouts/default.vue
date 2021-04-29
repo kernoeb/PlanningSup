@@ -123,6 +123,20 @@ export default {
       title: 'Planning IUT'
     }
   },
+  head () {
+    return {
+      meta: [
+        {
+          name: 'theme-color',
+          content: this.$vuetify.theme.dark ? '#121212' : '#FFFFFF'
+        },
+        {
+          name: 'apple-mobile-web-app-status-bar-style',
+          content: this.$vuetify.theme.dark ? '#121212' : '#FFFFFF'
+        }
+      ]
+    }
+  },
   mounted () {
     this.mounted = true
 
