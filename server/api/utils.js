@@ -57,7 +57,7 @@ module.exports = {
           timed: true,
           location: this.cleanLocation(i.location.value),
           description: this.cleanDescription(i.description.value),
-          distance: i.location.value.trim().match(/à distance$|EAD/) || undefined
+          distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined
         })
       }
     }
