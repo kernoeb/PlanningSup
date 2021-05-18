@@ -112,6 +112,52 @@
         ]
       },
       {
+        "id": "dutinfo2app",
+        "title": "DUT INFO 2 Apprentis",
+        "edts": [
+          {
+            "id": "A1",
+            "title": "Groupe A1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214c4e163e75ef44e32e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b19e7577fd58327f08d3f4109b6629391"
+          },
+          {
+            "id": "A2",
+            "title": "Groupe A2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214b775f74f2e962593e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "B1",
+            "title": "Groupe B1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214bd579bc0fe4dc646e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "B2",
+            "title": "Groupe B2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214e1594d7b5553dc5be0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "C1",
+            "title": "Groupe C1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc38732002145c2c4556b3951ac8e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "C2",
+            "title": "Groupe C2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214cc8106b1e384f5ffe0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "D1",
+            "title": "Groupe D1",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214cbfa0c6e1287e936e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          },
+          {
+            "id": "D2",
+            "title": "Groupe D2",
+            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?data=8241fc3873200214fd371adc942c84c8e0fa50826f0818af4a82a8fde6ce3f14906f45af276f59ae8fac93f781e861520eb2e6fa65f0f79a0933fd6c7476cab5c2973627c2eb073b267b0cc7601babd18d3f4109b6629391"
+          }
+        ]
+      },
+      {
         "id": "tc1",
         "title": "TC 1",
         "edts": [
