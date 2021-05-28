@@ -14,10 +14,10 @@ export default {
     htmlAttrs: {
       lang: 'fr'
     },
-    titleTemplate: 'PlanningIUT',
     title: 'PlanningIUT',
     meta: [
       { charset: 'utf-8' },
+      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningIUT' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Un planning universitaire sympathique réalisé par @kernoeb' }
     ],
@@ -102,10 +102,24 @@ export default {
   },
 
   pwa: {
+    meta: {
+      title: 'PlanningIUT',
+      author: 'kernoeb',
+      description: 'Un planning universitaire sympathique réalisé par @kernoeb',
+      lang: 'fr',
+      ogSiteName: 'PlanningIUT',
+      ogTitle: 'PlanningIUT',
+      ogDescription: 'Un planning universitaire sympathique réalisé par @kernoeb'
+    },
+    manifest: {
+      name: 'PlanningIUT',
+      short_name: 'PlanningIUT',
+      lang: 'fr',
+      purpose: 'any'
+    },
     workbox: {
       enabled: false,
-      cleanupOutdatedCaches: true,
-      cacheAssets: false
+      cleanupOutdatedCaches: true
     }
   },
 
@@ -147,7 +161,7 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     extractCSS: true,
-    babel:{
+    babel: {
       plugins: [
         ['@babel/plugin-proposal-private-methods', { loose: true }]
       ]
