@@ -36,7 +36,7 @@
           v-for="(m,i) in menu"
           :key="`menu_${i}`"
         >
-          <v-expansion-panel-header>
+          <v-expansion-panel-header :class="isToday(new Date(m.date)) ? 'font-weight-bold green lighten-1 white--text' : null">
             {{ m.title }}
           </v-expansion-panel-header>
           <v-expansion-panel-content>
@@ -84,6 +84,12 @@ export default {
     }
   },
   methods: {
+    isToday (someDate) {
+      const today = new Date()
+      return someDate.getDate() === today.getDate() &&
+        someDate.getMonth() === today.getMonth() &&
+        someDate.getFullYear() === today.getFullYear()
+    },
     getMenus () {
       this.$axios.$get(this.$config.apiCrous).then((b) => {
         this.menu = b

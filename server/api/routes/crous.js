@@ -4,6 +4,7 @@ const axios = require('axios')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const sanitizeHtml = require('sanitize-html')
+const { DateTime } = require('luxon')
 
 router.get('/crous_menu', (req, res) => {
   axios.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/').then((d) => {
@@ -17,7 +18,8 @@ router.get('/crous_menu', (req, res) => {
           const dej = sanitizeHtml(tmp[1].innerHTML.trim())
           allEls.push({
             title: tmp[0].textContent,
-            content: dej.split('\n')
+            content: dej.split('\n'),
+            date: DateTime.fromFormat(tmp[0].textContent.split(' ').slice(-3).join(' '), 'd LLLL yyyy', { locale: 'fr' }).toISO()
           })
         }
       })
