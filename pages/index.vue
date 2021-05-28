@@ -256,8 +256,16 @@
             <v-subheader>{{ $config.i18n.contact }}</v-subheader>
             <v-list-item inactive>
               <div class="d-flex flex-column mb-4">
-                <div><twitter-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a></div>
-                <div><proton-mail-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-2" size="15" />Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a></div>
+                <div>
+                  <v-icon class="mr-2 mt-n1" size="15">
+                    {{ mdiTwitter }}
+                  </v-icon>Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a>
+                </div>
+                <div>
+                  <v-icon class="mr-2 mt-n1" size="15">
+                    {{ mdiMail }}
+                  </v-icon>Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a>
+                </div>
               </div>
             </v-list-item>
           </v-list-item-group>
@@ -330,20 +338,19 @@
 </template>
 
 <script>
-import { mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import { TwitterIcon, ProtonMailIcon } from 'vue-simple-icons'
+import { mdiTwitter, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import crous from '@/components/crous'
 
 export default {
   components: {
-    crous,
-    TwitterIcon,
-    ProtonMailIcon
+    crous
   },
   middleware: 'vuetify-theme',
   data () {
     return {
       // Icons
+      mdiMail,
+      mdiTwitter,
       mdiChevronLeft,
       mdiChevronDown,
       mdiChevronRight,

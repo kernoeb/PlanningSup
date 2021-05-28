@@ -38,43 +38,13 @@
         <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
-            href="https://brave.com/ker880"
-            rel="noopener noreferrer"
-            style="display: block; margin-top: 8px;"
-            target="_blank"
-            v-on="on"
-          >
-            <brave-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-4" size="18" />
-          </a>
-        </template>
-        <span>{{ $config.i18n.braveReferral }}</span>
-      </v-tooltip>
-      <v-tooltip top>
-        <template #activator="{ on, attrs }">
-          <a
-            v-bind="attrs"
-            href="https://paypal.me/kernoeb"
-            rel="noopener noreferrer"
-            style="display: block; margin-top: 8px;"
-            target="_blank"
-            v-on="on"
-          >
-            <pay-pal-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-4" size="18" />
-          </a>
-        </template>
-        <span>{{ $config.i18n.donate }}</span>
-      </v-tooltip>
-      <v-tooltip top>
-        <template #activator="{ on, attrs }">
-          <a
-            v-bind="attrs"
             href="https://twitter.com/kernoeb"
             rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
             v-on="on"
           >
-            <twitter-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" class="mr-4" size="18" />
+            <v-icon class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
           </a>
         </template>
         <span>Twitter</span>
@@ -89,7 +59,7 @@
             target="_blank"
             v-on="on"
           >
-            <git-hub-icon :style="$vuetify.theme.dark ? 'fill: whitesmoke' : 'fill: black'" size="18" />
+            <v-icon class="mt-n3">{{ mdiGithub }}</v-icon>
           </a>
         </template>
         <span>{{ $config.i18n.projectPage }}</span>
@@ -99,21 +69,16 @@
 </template>
 
 <script>
-import { BraveIcon, GitHubIcon, PayPalIcon, TwitterIcon } from 'vue-simple-icons'
-import { mdiCalendar, mdiSchool, mdiApps } from '@mdi/js'
+import { mdiCalendar, mdiSchool, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
 
 export default {
-  components: {
-    TwitterIcon,
-    PayPalIcon,
-    BraveIcon,
-    GitHubIcon
-  },
   data () {
     return {
+      mdiGithub,
       mdiCalendar,
       mdiSchool,
       mdiApps,
+      mdiTwitter,
 
       connected: true,
       mounted: false,
