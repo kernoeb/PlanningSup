@@ -1,4 +1,4 @@
-FROM node:15.13.0
+FROM node:14.15.4
 
 # Create app directory
 WORKDIR /app
