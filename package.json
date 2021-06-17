@@ -12,13 +12,13 @@
     "heroku-postbuild": "yarn build"
   },
   "engines": {
-    "node": "14.15.4",
+    "node": "14.17.0",
     "yarn": "1.22.5"
   },
   "dependencies": {
     "@dansmaculotte/nuxt-security": "^0.0.4",
     "@mdi/js": "^5.9.55",
-    "@nuxtjs/axios": "^5.13.5",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/component-cache": "^1.1.6",
     "@nuxtjs/google-fonts": "^1.3.0",
     "@nuxtjs/pwa": "^3.3.5",
@@ -28,14 +28,14 @@
     "cal-parser": "^1.0.1",
     "config": "^3.3.6",
     "cookie-parser": "^1.4.5",
-    "cookie-universal-nuxt": "^2.1.4",
-    "core-js": "^3.13.0",
+    "cookie-universal-nuxt": "^2.1.5",
+    "core-js": "^3.14.0",
     "cors": "^2.8.5",
     "delay": "^5.0.0",
     "express": "^4.17.1",
     "jsdom": "^16.6.0",
     "luxon": "^1.27.0",
-    "nuxt": "^2.15.6",
+    "nuxt": "^2.15.7",
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.6.0",
     "route-cache": "^0.4.5",
@@ -48,10 +48,10 @@
     "@nuxtjs/eslint-config": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/moment": "^1.6.1",
-    "@nuxtjs/vuetify": "^1.11.3",
+    "@nuxtjs/vuetify": "^1.12.1",
     "babel-eslint": "^10.1.0",
     "css-byebye": "^3.0.0",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "minify-css-string": "^1.0.0"
   }
