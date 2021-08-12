@@ -50,7 +50,7 @@ router.get('/calendar', async (req, res) => {
   let reqU = config.get('default.univ') || 'iutdevannes'
   let reqS = config.get('default.spec') || 'butdutinfo'
   let reqY = config.get('default.year') || '1ereannee'
-  let reqG = config.get('default.grp') || 'g1'
+  let reqG = config.get('default.grp') || 'a1'
 
   let blocklist = []
   if (req.cookies && req.cookies.blocklist) {
@@ -73,27 +73,32 @@ router.get('/calendar', async (req, res) => {
     const spec = univ.edts.find(u => u.id === reqS)
     const year = spec.edts.find(u => u.id === reqY)
     const grp = year.edts.find(u => u.id === reqG)
-    const tmpUrl = grp.url
-    const name = univ.title + ' > ' + spec.title + ' ' + year.title + ' ' + grp.title
+    const tmpUrl = grp ? grp.url : undefined
 
-    const data = await utils.fetchData(tmpUrl, DURATION)
-    if (data) {
-      const events = utils.getEvents(data, blocklist, req)
+    if (tmpUrl) {
+      const name = univ.title + ' > ' + spec.title + ' ' + year.title + ' ' + grp.title
 
-      await res.json({
-        status: 'on',
-        name,
-        timestamp: new Date().getTime(),
-        data: events
-      })
-    } else if (process.env.DATABASE_URL) {
-      await dbFallback(req, res, reqU, reqS, reqY, reqG, blocklist, name)
+      const data = await utils.fetchData(tmpUrl, DURATION)
+      if (data) {
+        const events = utils.getEvents(data, blocklist, req)
+
+        await res.json({
+          status: 'on',
+          name,
+          timestamp: new Date().getTime(),
+          data: events
+        })
+      } else if (process.env.DATABASE_URL) {
+        await dbFallback(req, res, reqU, reqS, reqY, reqG, blocklist, name)
+      } else {
+        res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
+      }
     } else {
-      res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
+      res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres (1).')
     }
   } catch (err) {
     logger.error(err)
-    res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres.')
+    res.status(500).send('Une erreur est survenue, veuillez vérifier les paramètres (2).')
   }
 })
 
