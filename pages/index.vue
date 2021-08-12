@@ -131,26 +131,38 @@
               <v-expansion-panel-content>
                 <v-expansion-panels>
                   <v-expansion-panel
-                    v-for="(url2,j) in url.univ_edts"
+                    v-for="(url2,j) in url.edts"
                     :key="`urls_2_${j}`"
                   >
                     <v-expansion-panel-header :expand-icon="mdiChevronDown">
                       {{ url2.title }}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      <nuxt-link
-                        v-for="(url3, k) in url2.edts"
-                        :key="`urls_3_${k}`"
-                        :to="{name: 'index', query: {u: url.univ, n: url2.id, t: url3.id}}"
-                      >
-                        <v-list-item class="ml-3" @click="dialogEdt = false">
-                          <v-list-item-content>
-                            <v-list-item-title>
-                              {{ url3.title }}
-                            </v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </nuxt-link>
+                      <v-expansion-panels>
+                        <v-expansion-panel
+                          v-for="(url3,k) in url2.edts"
+                          :key="`urls_3_${k}`"
+                        >
+                          <v-expansion-panel-header :expand-icon="mdiChevronDown">
+                            {{ url3.title }}
+                          </v-expansion-panel-header>
+                          <v-expansion-panel-content>
+                            <nuxt-link
+                              v-for="(url4, l) in url3.edts"
+                              :key="`urls_4_${l}`"
+                              :to="{name: 'index', query: {u: url.id, s: url2.id, y: url3.id, g: url4.id}}"
+                            >
+                              <v-list-item class="ml-3" @click="dialogEdt = false">
+                                <v-list-item-content>
+                                  <v-list-item-title>
+                                    {{ url4.title }}
+                                  </v-list-item-title>
+                                </v-list-item-content>
+                              </v-list-item>
+                            </nuxt-link>
+                          </v-expansion-panel-content>
+                        </v-expansion-panel>
+                      </v-expansion-panels>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
                 </v-expansion-panels>
@@ -405,12 +417,13 @@ export default {
   async fetch () {
     this.loading = true
     try {
-      if (this.$route.query && this.$route.query.u && this.$route.query.n && this.$route.query.t) {
+      if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
         const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
           params: {
             u: this.$route.query.u,
-            n: this.$route.query.n,
-            t: this.$route.query.t
+            s: this.$route.query.s,
+            y: this.$route.query.y,
+            g: this.$route.query.g
           },
           withCredentials: true
         })
@@ -418,8 +431,9 @@ export default {
         this.loading = false
         this.$cookies.set('edt', Buffer.from(JSON.stringify({
           u: this.$route.query.u,
-          n: this.$route.query.n,
-          t: this.$route.query.t
+          s: this.$route.query.s,
+          y: this.$route.query.y,
+          g: this.$route.query.g
         }), 'binary').toString('base64'), { maxAge: 2147483646 })
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
@@ -427,8 +441,9 @@ export default {
           const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
             params: {
               u: tmp.u,
-              n: tmp.n,
-              t: tmp.t
+              s: tmp.s,
+              y: tmp.y,
+              g: tmp.g
             },
             withCredentials: true
           })

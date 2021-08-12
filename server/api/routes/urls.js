@@ -8,9 +8,11 @@ router.get('/urls', process.env.NODE_ENV === 'production' ? routeCache.cacheSeco
   logger.info('Regénération des URLs')
   const tmpUrls = JSON.parse(JSON.stringify(urls))
   for (const i of tmpUrls) {
-    for (const j of i.univ_edts) {
+    for (const j of i.edts) {
       for (const k of j.edts) {
-        delete k.url
+        for (const l of k.edts) {
+          delete l.url
+        }
       }
     }
   }

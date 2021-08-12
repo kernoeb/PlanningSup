@@ -9,12 +9,12 @@ const DURATION = config.get('durationCalendar') || 3000
 
 const router = Router()
 
-async function dbFallback (req, res, reqU, reqN, reqT, blocklist, name) {
+async function dbFallback (req, res, reqU, reqS, reqY, reqG, blocklist, name) {
   try {
     const query = await client.query({
       name: 'fetch-data',
-      text: 'SELECT data, timestamp FROM public.edt WHERE univ = $1 AND spec = $2 AND grp = $3;',
-      values: [reqU, reqN, reqT]
+      text: 'SELECT data, timestamp FROM public.edt WHERE univ = $1 AND spec = $2 AND year = $3 AND grp = $4;',
+      values: [reqU, reqS, reqY, reqG]
     })
     if (query.rows[0]) {
       const tmp = {
@@ -47,9 +47,10 @@ async function dbFallback (req, res, reqU, reqN, reqT, blocklist, name) {
 }
 
 router.get('/calendar', async (req, res) => {
-  let reqU = config.get('default.univ') || 'iutvannes'
-  let reqN = config.get('default.spec') || 'lp'
-  let reqT = config.get('default.grp') || 'dlis'
+  let reqU = config.get('default.univ') || 'iutdevannes'
+  let reqS = config.get('default.spec') || 'butdutinfo'
+  let reqY = config.get('default.year') || '1ereannee'
+  let reqG = config.get('default.grp') || 'g1'
 
   let blocklist = []
   if (req.cookies && req.cookies.blocklist) {
@@ -60,18 +61,20 @@ router.get('/calendar', async (req, res) => {
     }
   }
 
-  if (req.query && req.query.u && req.query.n && req.query.t) {
+  if (req.query && req.query.u && req.query.s && req.query.y && req.query.g) {
     reqU = req.query.u
-    reqN = req.query.n
-    reqT = req.query.t
+    reqS = req.query.s
+    reqY = req.query.y
+    reqG = req.query.g
   }
 
   try {
-    const univ = urls.find(u => u.univ === reqU)
-    const univ2 = univ.univ_edts.find(u => u.id === reqN)
-    const univ3 = univ2.edts.find(u => u.id === reqT)
-    const tmpUrl = univ3.url
-    const name = univ.title + ' > ' + univ2.title + ' ' + univ3.title
+    const univ = urls.find(u => u.id === reqU)
+    const spec = univ.edts.find(u => u.id === reqS)
+    const year = spec.edts.find(u => u.id === reqY)
+    const grp = year.edts.find(u => u.id === reqG)
+    const tmpUrl = grp.url
+    const name = univ.title + ' > ' + spec.title + ' ' + year.title + ' ' + grp.title
 
     const data = await utils.fetchData(tmpUrl, DURATION)
     if (data) {
@@ -84,7 +87,7 @@ router.get('/calendar', async (req, res) => {
         data: events
       })
     } else if (process.env.DATABASE_URL) {
-      await dbFallback(req, res, reqU, reqN, reqT, blocklist, name)
+      await dbFallback(req, res, reqU, reqS, reqY, reqG, blocklist, name)
     } else {
       res.status(500).send('Coup dur. Une erreur 500. Et surtout pas de DATABASE_URL.')
     }

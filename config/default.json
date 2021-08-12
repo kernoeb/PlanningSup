@@ -7,9 +7,10 @@
   "durationWorker": 3000,
   "durationCalendar": 2500,
   "default": {
-    "univ": "iutvannes",
-    "spec": "lp",
-    "grp": "dlis"
+    "univ": "iutdevannes",
+    "spec": "butdutinfo",
+    "year": "1ereannee",
+    "grp": "g1"
   },
   "i18n": {
     "week": "Semaine",

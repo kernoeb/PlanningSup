@@ -4,9 +4,11 @@ const logger = require('./signale')
 
 const edt = []
 for (const univ of urls) {
-  for (const spec of univ.univ_edts) {
-    for (const grp of spec.edts) {
-      edt.push({ univ: univ.univ, spec: spec.id, grp: grp.id, url: grp.url })
+  for (const spec of univ.edts) {
+    for (const year of spec.edts) {
+      for (const grp of year.edts) {
+        edt.push({ univ: univ.univ, spec: spec.id, year: year.id, grp: grp.id, url: grp.url })
+      }
     }
   }
 }
