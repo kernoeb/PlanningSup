@@ -837,7 +837,7 @@
         ]
       },
       {
-        "id": "licencesciences,ecologieetsociete",
+        "id": "licencesciencesecologieetsociete",
         "title": "Licence Sciences, Ecologie et Société",
         "edts": [
           {
@@ -908,7 +908,7 @@
     ]
   },
   {
-    "id": "facdroit,economie&gestion",
+    "id": "facdroiteconomiegestion",
     "title": "Fac Droit, Économie & Gestion",
     "edts": [
       {
@@ -1076,7 +1076,7 @@
         ]
       },
       {
-        "id": "licenceeconomie&gestion",
+        "id": "licenceeconomiegestion",
         "title": "Licence Économie & Gestion",
         "edts": [
           {
