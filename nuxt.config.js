@@ -31,7 +31,10 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [
+    // https://github.com/moritzsternemann/vue-plausible
+    { src: '~/plugins/vue-plausible.js', mode: 'client' }
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -68,8 +71,6 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/component-cache',
     'nuxt-json-config',
-    // https://github.com/moritzsternemann/vue-plausible
-    'vue-plausible',
     [
       '@dansmaculotte/nuxt-security',
       {
@@ -95,10 +96,6 @@ export default {
         'connect-src': ["'self'", PLAUSIBLE_URL]
       }
     }
-  },
-
-  plausible: {
-    apiHost: 'https://' + PLAUSIBLE_URL
   },
 
   pwa: {
