@@ -280,6 +280,9 @@
                 </div>
               </div>
             </v-list-item>
+            <v-list-item inactive>
+              <div><small><b>Donateurs :</b> W00dy 🙏</small></div>
+            </v-list-item>
           </v-list-item-group>
         </v-card>
       </v-dialog>

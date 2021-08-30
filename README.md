@@ -1,4 +1,4 @@
-# planningiut
+# planningsup
 
 Un planning universitaire moderne réalisé par @kernoeb.  
 

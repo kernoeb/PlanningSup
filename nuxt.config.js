@@ -14,10 +14,10 @@ export default {
     htmlAttrs: {
       lang: 'fr'
     },
-    title: 'PlanningIUT',
+    title: 'PlanningSup',
     meta: [
       { charset: 'utf-8' },
-      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningIUT' },
+      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningSup' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Un planning universitaire sympathique réalisé par @kernoeb' }
     ],
@@ -100,17 +100,17 @@ export default {
 
   pwa: {
     meta: {
-      title: 'PlanningIUT',
+      title: 'PlanningSup',
       author: 'kernoeb',
       description: 'Un planning universitaire sympathique réalisé par @kernoeb',
       lang: 'fr',
-      ogSiteName: 'PlanningIUT',
-      ogTitle: 'PlanningIUT',
+      ogSiteName: 'PlanningSup',
+      ogTitle: 'PlanningSup',
       ogDescription: 'Un planning universitaire sympathique réalisé par @kernoeb'
     },
     manifest: {
-      name: 'PlanningIUT',
-      short_name: 'PlanningIUT',
+      name: 'PlanningSup',
+      short_name: 'PlanningSup',
       lang: 'fr',
       purpose: 'any'
     },

@@ -85,7 +85,7 @@ export default {
       time: '',
       timer: 0,
       drawer: false,
-      title: 'Planning IUT'
+      title: 'PlanningSup'
     }
   },
   head () {
