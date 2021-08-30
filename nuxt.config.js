@@ -42,7 +42,7 @@ export default {
       { property: 'twitter:image', content: 'https://planningsup.app/banner.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
