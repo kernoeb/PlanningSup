@@ -19,7 +19,27 @@ export default {
       { charset: 'utf-8' },
       { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningSup' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Un planning universitaire sympathique réalisé par @kernoeb' }
+      { hid: 'description', name: 'description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
+      { name: 'keywords', content: 'planning,planningedt,planninguniv,edt,emploi du temps,université,calendrier,universitaire,planningiut,planningiut.fr,edtuniv,planningapp,app planning,site planning' },
+      { name: 'author', content: 'kernoeb' },
+      { name: 'language', content: 'French' },
+      { name: 'robots', content: 'index,follow' },
+      { name: 'category', content: 'internet' },
+      { hid: 'title', name: 'title', content: 'PlanningSup | Calendrier universitaire' },
+
+      // Facebook
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://planningsup.app/' },
+      { hid: 'og:title', property: 'og:title', content: 'PlanningSup | Calendrier universitaire' },
+      { hid: 'og:description', property: 'og:description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
+      { property: 'og:image', content: 'https://planningsup.app/banner.png' },
+
+      // Twitter
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: 'https://planningsup.app/' },
+      { hid: 'twitter:title', property: 'twitter:title', content: 'PlanningSup | Calendrier universitaire' },
+      { hid: 'twitter:description', property: 'twitter:description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
+      { property: 'twitter:image', content: 'https://planningsup.app/banner.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
