@@ -1,20 +1,20 @@
 <template>
   <div v-if="mounted">
     <div class="d-flex justify-space-between">
-      <div :class="titleCss" style="transition: margin 500ms" class="truncate">
+      <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
         <transition name="fade" mode="out-in">
-          <div v-if="$refs.calendar" key="date" class="title_month truncate">
+          <div v-if="$refs.calendar" key="date" class="title_month text-truncate">
             {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
           </div>
-          <div v-else key="nodate" class="title_month truncate">
+          <div v-else key="nodate" class="title_month text-truncate">
             ...
           </div>
         </transition>
         <transition name="fade" mode="out-in">
-          <div v-if="currentUniv" :key="currentUniv" style="font-size: 10px" class="truncate">
+          <div v-if="currentUniv" :key="currentUniv" style="font-size: 10px" class="text-truncate">
             {{ currentUniv }}
           </div>
-          <div v-else key="nocurrentuniv" style="font-size: 10px" class="truncate">
+          <div v-else key="nocurrentuniv" style="font-size: 10px" class="text-truncate">
             ...
           </div>
         </transition>
@@ -38,8 +38,8 @@
         height="200px"
       >
         <div v-if="selectedEvent" class="py-3">
-          <div class="mt-4">
-            <strong>{{ selectedEvent.name }}</strong>
+          <div class="mt-4 font-weight-bold">
+            {{ selectedEvent.name }}
           </div>
           <div v-if="selectedEvent.location || selectedEvent.description">
             {{
@@ -340,7 +340,9 @@
           </template>
           <template #event="{event}">
             <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
-              <div><strong>{{ event.name }}</strong></div>
+              <div class="text-truncate font-weight-bold">
+                {{ event.name }}
+              </div>
               <div v-if="event.location || event.description">
                 {{ !event.distance ? event.location : '' }}{{
                   ((event.location && !event.distance) && event.description) ? ' | ' : ''
@@ -772,13 +774,6 @@ export default {
   text-transform: capitalize;
 }
 
-.truncate {
-  max-width: 350px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .theme--dark.v-calendar-daily {
   background-color: #121212!important;
   border-top: none !important;
@@ -821,5 +816,10 @@ export default {
   left: -1px;
   right: 0;
   pointer-events: none;
+}
+
+.v-event-timed-container {
+  margin-left: 6px!important;
+  margin-right: 6px!important;
 }
 </style>
