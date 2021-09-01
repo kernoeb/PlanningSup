@@ -735,6 +735,23 @@ export default {
         this.dialogSettings = !this.dialogSettings
       } else if (key === 't' || key === 84) {
         this.value = ''
+      } else if (key === 'r' || key === 82) {
+        // Just a security check Kappa
+        const arr = ['Never gonna give you up', 'Never gonna let you down']
+        let tmp = true
+        const s = setInterval(() => {
+          this.events.forEach((v, i) => {
+            v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
+            v.location = 'YouTube'
+            v.description = 'Rick Astley'
+            v.color = tmp ? '#e28b6f' : '#c3bde7'
+          })
+          tmp = !tmp
+        }, 531)
+        setTimeout(() => {
+          clearInterval(s)
+          this.$fetch()
+        }, 6500)
       }
     },
     onResize () {
