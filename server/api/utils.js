@@ -1,5 +1,5 @@
 const ical = require('cal-parser')
-const axios = require('axios')
+const axios = require('../axios')
 const logger = require('../signale')
 
 module.exports = {
@@ -63,13 +63,12 @@ module.exports = {
     }
     return events
   },
-  fetchData: async function fetchData (url, time) {
+  fetchData: async function fetchData (url) {
     let response
     try {
       response = await axios({
         method: 'GET',
-        url,
-        timeout: time
+        url
       })
       const { data } = response
       if (process.env.DEBUG) {

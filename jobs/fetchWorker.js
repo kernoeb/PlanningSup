@@ -5,13 +5,11 @@ const logger = require('../server/signale')
 const utils = require('../server/api/utils')
 const client = require('../server/api/db')
 
-const DURATION = config.get('durationWorker') || 5000;
-
 (async () => {
   logger.info('Fetch EDT for backup')
   for (const i of workerData.data) {
     try {
-      const data = await utils.fetchData(i.url, DURATION)
+      const data = await utils.fetchData(i.url)
       if (data && client) {
         try {
           client.query({

@@ -5,8 +5,6 @@ const client = require('../db')
 const utils = require('../utils')
 
 const urls = require('../../../assets/url.json')
-const DURATION = config.get('durationCalendar') || 3000
-
 const router = Router()
 
 async function dbFallback (req, res, reqU, reqS, reqY, reqG, blocklist, name) {
@@ -78,7 +76,7 @@ router.get('/calendar', async (req, res) => {
     if (tmpUrl) {
       const name = univ.title + ' > ' + spec.title + ' ' + year.title + ' ' + grp.title
 
-      const data = await utils.fetchData(tmpUrl, DURATION)
+      const data = await utils.fetchData(tmpUrl)
       if (data) {
         const events = utils.getEvents(data, blocklist, req)
 
