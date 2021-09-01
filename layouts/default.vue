@@ -53,7 +53,7 @@
         <template #activator="{ on, attrs }">
           <a
             v-bind="attrs"
-            href="https://github.com/kernoeb/planningiut"
+            href="https://github.com/kernoeb/planningsup"
             rel="noopener noreferrer"
             style="display: block; margin-top: 8px;"
             target="_blank"
