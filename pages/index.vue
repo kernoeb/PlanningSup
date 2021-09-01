@@ -1,12 +1,23 @@
 <template>
   <div v-if="mounted">
     <div class="d-flex justify-space-between">
-      <div class="title_month" :class="titleCss" style="transition: margin 500ms">
-        <span v-if="$refs.calendar">{{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}</span>
-        <span v-else>{{ $moment().format('MMMM YYYY') }}</span>
-        <div v-if="currentUniv" style="font-size: 10px">
-          {{ currentUniv }}
-        </div>
+      <div :class="titleCss" style="transition: margin 500ms" class="truncate">
+        <transition name="fade" mode="out-in">
+          <div v-if="$refs.calendar" key="date" class="title_month truncate">
+            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
+          </div>
+          <div v-else key="nodate" class="title_month truncate">
+            ...
+          </div>
+        </transition>
+        <transition name="fade" mode="out-in">
+          <div v-if="currentUniv" :key="currentUniv" style="font-size: 10px" class="truncate">
+            {{ currentUniv }}
+          </div>
+          <div v-else key="nocurrentuniv" style="font-size: 10px" class="truncate">
+            ...
+          </div>
+        </transition>
       </div>
       <crous v-if="currentUniv.includes('Vannes')" />
     </div>
@@ -90,202 +101,201 @@
         </template>
       </v-select>
       <v-spacer />
-      <v-dialog
-        v-model="dialogEdt"
-        width="500"
-      >
-        <template #activator="{ on: d, attrs }">
-          <v-tooltip top>
-            <template #activator="{ on: tooltip }">
-              <v-icon
-                v-bind="attrs"
-                class="ma-3"
-                v-on="{...d, ...tooltip}"
-              >
-                {{ mdiFormatListBulleted }}
+      <div class="d-flex justify-space-between" style="width: 125px;">
+        <v-dialog
+          v-model="dialogEdt"
+          width="500"
+        >
+          <template #activator="{ on: d, attrs }">
+            <v-tooltip top>
+              <template #activator="{ on: tooltip }">
+                <v-icon
+                  v-bind="attrs"
+                  v-on="{...d, ...tooltip}"
+                >
+                  {{ mdiFormatListBulleted }}
+                </v-icon>
+              </template>
+              <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
+                style="color: lightgrey; font-size: 10px"
+              >(u)</span>
+            </v-tooltip>
+          </template>
+          <v-card>
+            <v-card-title class="headline">
+              <v-icon class="mr-2">
+                {{ mdiCalendar }}
               </v-icon>
-            </template>
-            <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
-              style="color: lightgrey; font-size: 10px"
-            >(u)</span>
-          </v-tooltip>
-        </template>
-        <v-card>
-          <v-card-title class="headline">
-            <v-icon class="mr-2">
-              {{ mdiCalendar }}
-            </v-icon>
-            <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
-          </v-card-title>
+              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
+            </v-card-title>
 
-          <v-divider />
+            <v-divider />
 
-          <v-expansion-panels>
-            <v-expansion-panel
-              v-for="(url,i) in urls"
-              :key="`urls_${i}`"
-            >
-              <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                {{ url.title }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                <v-expansion-panels>
-                  <v-expansion-panel
-                    v-for="(url2,j) in url.edts"
-                    :key="`urls_2_${j}`"
-                  >
-                    <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                      {{ url2.title }}
-                    </v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                      <v-expansion-panels>
-                        <v-expansion-panel
-                          v-for="(url3,k) in url2.edts"
-                          :key="`urls_3_${k}`"
-                        >
-                          <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                            {{ url3.title }}
-                          </v-expansion-panel-header>
-                          <v-expansion-panel-content>
-                            <nuxt-link
-                              v-for="(url4, l) in url3.edts"
-                              :key="`urls_4_${l}`"
-                              :to="{name: 'index', query: {u: url.id, s: url2.id, y: url3.id, g: url4.id}}"
-                            >
-                              <v-list-item class="ml-3" @click="dialogEdt = false">
-                                <v-list-item-content>
-                                  <v-list-item-title>
-                                    {{ url4.title }}
-                                  </v-list-item-title>
-                                </v-list-item-content>
-                              </v-list-item>
-                            </nuxt-link>
-                          </v-expansion-panel-content>
-                        </v-expansion-panel>
-                      </v-expansion-panels>
-                    </v-expansion-panel-content>
-                  </v-expansion-panel>
-                </v-expansion-panels>
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-card>
-      </v-dialog>
-      <v-tooltip top>
-        <template #activator="{ on, attrs }">
-          <v-icon
-            v-bind="attrs"
-            class="ma-3"
-            v-on="on"
-            @click="setToday"
-          >
-            {{ mdiCalendarToday }}
-          </v-icon>
-        </template>
-        <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
-      </v-tooltip>
-      <v-dialog
-        v-model="dialogSettings"
-        width="500"
-      >
-        <template #activator="{ on: d, attrs }">
-          <v-tooltip top>
-            <template #activator="{ on: tooltip }">
-              <v-icon
-                v-bind="attrs"
-                class="ma-3"
-                v-on="{...d, ...tooltip}"
+            <v-expansion-panels>
+              <v-expansion-panel
+                v-for="(url,i) in urls"
+                :key="`urls_${i}`"
               >
+                <v-expansion-panel-header :expand-icon="mdiChevronDown">
+                  {{ url.title }}
+                </v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <v-expansion-panels>
+                    <v-expansion-panel
+                      v-for="(url2,j) in url.edts"
+                      :key="`urls_2_${j}`"
+                    >
+                      <v-expansion-panel-header :expand-icon="mdiChevronDown">
+                        {{ url2.title }}
+                      </v-expansion-panel-header>
+                      <v-expansion-panel-content>
+                        <v-expansion-panels>
+                          <v-expansion-panel
+                            v-for="(url3,k) in url2.edts"
+                            :key="`urls_3_${k}`"
+                          >
+                            <v-expansion-panel-header :expand-icon="mdiChevronDown">
+                              {{ url3.title }}
+                            </v-expansion-panel-header>
+                            <v-expansion-panel-content>
+                              <nuxt-link
+                                v-for="(url4, l) in url3.edts"
+                                :key="`urls_4_${l}`"
+                                :to="{name: 'index', query: {u: url.id, s: url2.id, y: url3.id, g: url4.id}}"
+                              >
+                                <v-list-item class="ml-3" @click="dialogEdt = false">
+                                  <v-list-item-content>
+                                    <v-list-item-title>
+                                      {{ url4.title }}
+                                    </v-list-item-title>
+                                  </v-list-item-content>
+                                </v-list-item>
+                              </nuxt-link>
+                            </v-expansion-panel-content>
+                          </v-expansion-panel>
+                        </v-expansion-panels>
+                      </v-expansion-panel-content>
+                    </v-expansion-panel>
+                  </v-expansion-panels>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+          </v-card>
+        </v-dialog>
+        <v-tooltip top>
+          <template #activator="{ on, attrs }">
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              @click="setToday"
+            >
+              {{ mdiCalendarToday }}
+            </v-icon>
+          </template>
+          <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
+        </v-tooltip>
+        <v-dialog
+          v-model="dialogSettings"
+          width="500"
+        >
+          <template #activator="{ on: d, attrs }">
+            <v-tooltip top>
+              <template #activator="{ on: tooltip }">
+                <v-icon
+                  v-bind="attrs"
+                  v-on="{...d, ...tooltip}"
+                >
+                  {{ mdiCogOutline }}
+                </v-icon>
+              </template>
+              <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
+                style="color: lightgrey; font-size: 10px"
+              >(p)</span>
+            </v-tooltip>
+          </template>
+          <v-card>
+            <v-card-title class="headline">
+              <v-icon class="mr-2">
                 {{ mdiCogOutline }}
               </v-icon>
-            </template>
-            <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
-              style="color: lightgrey; font-size: 10px"
-            >(p)</span>
-          </v-tooltip>
-        </template>
-        <v-card>
-          <v-card-title class="headline">
-            <v-icon class="mr-2">
-              {{ mdiCogOutline }}
-            </v-icon>
-            <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
-          </v-card-title>
+              <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
+            </v-card-title>
 
-          <v-divider />
-
-          <v-list-item-group
-            v-model="settings"
-            multiple
-          >
-            <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="checkedTheme" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-              </v-list-item-action>
-
-              <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-                <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
-                <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-action>
-                <v-checkbox v-model="colorMode" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-              </v-list-item-action>
-
-              <v-list-item-content @click="colorMode = !colorMode">
-                <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
-                <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
-              </v-list-item-content>
-            </v-list-item>
             <v-divider />
-            <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
-            <v-list-item inactive>
-              <v-combobox
-                v-model="blocklistSelect"
-                :items="blocklist"
-                :label="$config.i18n.blocklistDesc"
-                chips
-                multiple
-                :append-icon="mdiMenuDown"
-                @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
-              >
-                <template #item="{ item, on, attrs }">
-                  <v-list-item v-bind="attrs" v-on="on">
-                    <v-list-item-action>
-                      <v-checkbox :input-value="attrs.inputValue" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                    </v-list-item-action>
-                    <v-list-item-content>
-                      <v-list-item-title>
-                        {{ item }}
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </v-list-item>
-                </template>
-              </v-combobox>
-            </v-list-item>
-            <v-subheader>{{ $config.i18n.contact }}</v-subheader>
-            <v-list-item inactive>
-              <div class="d-flex flex-column mb-4">
-                <div>
-                  <v-icon class="mr-2 mt-n1" size="15">
-                    {{ mdiTwitter }}
-                  </v-icon>Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a>
+
+            <v-list-item-group
+              v-model="settings"
+              multiple
+            >
+              <v-subheader>{{ $config.i18n.ui }}</v-subheader>
+              <v-list-item>
+                <v-list-item-action>
+                  <v-checkbox v-model="checkedTheme" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
+                </v-list-item-action>
+
+                <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+                  <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-action>
+                  <v-checkbox v-model="colorMode" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
+                </v-list-item-action>
+
+                <v-list-item-content @click="colorMode = !colorMode">
+                  <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+              <v-divider />
+              <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
+              <v-list-item inactive>
+                <v-combobox
+                  v-model="blocklistSelect"
+                  :items="blocklist"
+                  :label="$config.i18n.blocklistDesc"
+                  chips
+                  multiple
+                  :append-icon="mdiMenuDown"
+                  @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
+                >
+                  <template #item="{ item, on, attrs }">
+                    <v-list-item v-bind="attrs" v-on="on">
+                      <v-list-item-action>
+                        <v-checkbox :input-value="attrs.inputValue" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
+                      </v-list-item-action>
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          {{ item }}
+                        </v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                </v-combobox>
+              </v-list-item>
+              <v-subheader>{{ $config.i18n.contact }}</v-subheader>
+              <v-list-item inactive>
+                <div class="d-flex flex-column mb-4">
+                  <div>
+                    <v-icon class="mr-2 mt-n1" size="15">
+                      {{ mdiTwitter }}
+                    </v-icon>Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a>
+                  </div>
+                  <div>
+                    <v-icon class="mr-2 mt-n1" size="15">
+                      {{ mdiMail }}
+                    </v-icon>Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a>
+                  </div>
                 </div>
-                <div>
-                  <v-icon class="mr-2 mt-n1" size="15">
-                    {{ mdiMail }}
-                  </v-icon>Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a>
-                </div>
-              </div>
-            </v-list-item>
-            <v-list-item inactive>
-              <div><small><b>Donateurs :</b> W00dy 🙏</small></div>
-            </v-list-item>
-          </v-list-item-group>
-        </v-card>
-      </v-dialog>
+              </v-list-item>
+              <v-list-item inactive>
+                <div><small><b>Donateurs :</b> W00dy 🙏</small></div>
+              </v-list-item>
+            </v-list-item-group>
+          </v-card>
+        </v-dialog>
+      </div>
       <v-btn
         class="ma-2"
         icon
@@ -294,54 +304,56 @@
         <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet height="710">
+    <v-sheet height="710" :style="$vuetify.theme.dark ? 'background-color: #121212' : null">
       <div v-if="$fetchState.error" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
-      <v-calendar
-        v-show="events"
-        ref="calendar"
-        v-model="value"
-        v-touch="{
-          left: () => $refs.calendar.next(),
-          right: () => $refs.calendar.prev()
-        }"
-        color="primary"
-        :event-overlap-threshold="30"
-        :events="events"
-        :type="type"
-        :weekdays="weekday"
-        event-overlap-mode="stack"
-        first-time="07:00"
-        locale="fr"
-        show-month-on-first
-        show-week
-        @click:date="goToDay"
-        @click:event="showEvent"
-      >
-        <template #day-body="{ date, week }">
-          <div
-            :class="{ first: date === week[0].date }"
-            :style="{ top: nowY }"
-            class="v-current-time"
-          />
-        </template>
-        <template #event="{event}">
-          <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
-            <div><strong>{{ event.name }}</strong></div>
-            <div v-if="event.location || event.description">
-              {{ !event.distance ? event.location : '' }}{{
-                ((event.location && !event.distance) && event.description) ? ' | ' : ''
-              }}{{ event.description }}
+      <transition name="fade">
+        <v-calendar
+          v-show="!start"
+          ref="calendar"
+          v-model="value"
+          v-touch="{
+            left: () => $refs.calendar.next(),
+            right: () => $refs.calendar.prev()
+          }"
+          color="primary"
+          :event-overlap-threshold="30"
+          :events="events"
+          :type="type"
+          :weekdays="weekday"
+          event-overlap-mode="stack"
+          first-time="07:00"
+          locale="fr"
+          show-month-on-first
+          show-week
+          @click:date="goToDay"
+          @click:event="showEvent"
+        >
+          <template #day-body="{ date, week }">
+            <div
+              :class="{ first: date === week[0].date }"
+              :style="{ top: nowY }"
+              class="v-current-time"
+            />
+          </template>
+          <template #event="{event}">
+            <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
+              <div><strong>{{ event.name }}</strong></div>
+              <div v-if="event.location || event.description">
+                {{ !event.distance ? event.location : '' }}{{
+                  ((event.location && !event.distance) && event.description) ? ' | ' : ''
+                }}{{ event.description }}
+              </div>
+              <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
+              <small v-if="event.distance">
+                <i>{{ $config.i18n.distance }}</i>
+              </small>
             </div>
-            <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
-            <small v-if="event.distance">
-              <i>{{ $config.i18n.distance }}</i>
-            </small>
-          </div>
-        </template>
-      </v-calendar>
+          </template>
+        </v-calendar>
+      </transition>
     </v-sheet>
     <v-dialog
       v-model="modelBadUrl"
@@ -457,6 +469,7 @@ export default {
       value: '',
       events: [],
       mounted: false,
+      start: true,
       currentWeek: '',
       lastTimeFetch: 0,
       currentUniv: '',
@@ -464,6 +477,7 @@ export default {
       width: 0
     }
   },
+  fetchOnServer: false,
   async fetch () {
     this.loading = true
     try {
@@ -649,6 +663,7 @@ export default {
       if (events.timestamp) {
         this.timestamp = events.timestamp
       }
+      this.start = false
     },
     setColorMode () {
       this.$cookies.set('colorMode', this.colorMode, { maxAge: 2147483646 })
@@ -755,6 +770,13 @@ export default {
 
 .title_month {
   text-transform: capitalize;
+}
+
+.truncate {
+  max-width: 350px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .theme--dark.v-calendar-daily {
