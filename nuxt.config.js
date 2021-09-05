@@ -20,7 +20,7 @@ export default {
       { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningSup' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
-      { name: 'keywords', content: 'planning,planningedt,planninguniv,edt,emploi du temps,université,calendrier,universitaire,planningiut,planningiut.fr,edtuniv,planningapp,app planning,site planning' },
+      { name: 'keywords', content: 'planning,planningedt,planninguniv,edt,emploi du temps,université,calendrier,universitaire,planningiut,planningiut.fr,edtuniv,planningapp,app planning,site planning,planning sup,planning iut,dut informatique,dut,iutvannes,iut de vannes,iut vannes' },
       { name: 'author', content: 'kernoeb' },
       { name: 'language', content: 'French' },
       { name: 'robots', content: 'index,follow' },
