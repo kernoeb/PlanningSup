@@ -108,8 +108,8 @@ export default {
     if (!navigator.onLine) {
       this.connected = false
     }
-    window.addEventListener('offline', this.setConnectedOn)
-    window.addEventListener('online', this.setConnectedOff)
+    window.addEventListener('offline', this.setConnectedOff)
+    window.addEventListener('online', this.setConnectedOn)
   },
   created () {
     this.time = this.getTime()
@@ -120,8 +120,8 @@ export default {
   beforeDestroy () {
     clearInterval(this.timer)
 
-    window.removeEventListener('offline', this.setConnectedOn)
-    window.removeEventListener('online', this.setConnectedOff)
+    window.removeEventListener('offline', this.setConnectedOff)
+    window.removeEventListener('online', this.setConnectedOn)
   },
   methods: {
     getTime () {

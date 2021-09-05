@@ -664,6 +664,7 @@ export default {
       this.currentUniv = events.name
       if (events.timestamp) {
         this.timestamp = events.timestamp
+        if (window) { window.last_timestamp = this.timestamp }
       }
       this.start = false
     },

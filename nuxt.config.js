@@ -131,11 +131,11 @@ export default {
     manifest: {
       name: 'PlanningSup',
       short_name: 'PlanningSup',
+      description: 'Un planning universitaire sympathique réalisé par @kernoeb',
       lang: 'fr',
-      purpose: 'any'
+      display: 'standalone'
     },
     workbox: {
-      enabled: false,
       cleanupOutdatedCaches: true
     }
   },
