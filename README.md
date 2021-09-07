@@ -1,4 +1,4 @@
-# planningsup
+# PlanningSup
 
 Un planning universitaire moderne réalisé par @kernoeb.  
 
@@ -108,7 +108,7 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 #### Nécessaire
 
 - Yarn : [Site officiel](https://yarnpkg.com/)
-- Node.js > 16 : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- Node.js > 14 : Installation via [nvm](https://github.com/nvm-sh/nvm)
 
 #### Commandes utiles
 
