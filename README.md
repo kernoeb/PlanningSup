@@ -1,4 +1,4 @@
-# planningsup
+# PlanningSup
 
 Un planning universitaire moderne réalisé par @kernoeb.  
 
@@ -16,7 +16,7 @@ Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n
 
 ### Fonctionnalités
 
-<!--- Mode hors connexion-->
+- Hors connexion / installation en mode PWA
 - Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.)
 - Mode jour / semaine / mois
 - Zoom sur un cours
@@ -45,13 +45,10 @@ Si une erreur est présente (serveur down, par exemple), les données seront don
 ### Captures
 
 ![desktop](img/desktop.png)  
-<img src="img/phone1.png" height="300" />
+<img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
 <br>
-<img src="img/phone2.png" height="300" />
+<img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
 <br>
-<img src="img/phone3.png" height="300" />
-<br>
-<img src="img/phone4.png" height="300" />
 
 ### Installation
 
@@ -69,7 +66,7 @@ docker-compose.yml
 ```
 services:
   web:
-    image: ghcr.io/kernoeb/planningiut/planning
+    image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     ports:
       - "3000:3000"
@@ -106,8 +103,20 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 */30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d
 ```
 
+### Développement
+
+#### Nécessaire
+
+- Yarn : [Site officiel](https://yarnpkg.com/)
+- Node.js > 14 : Installation via [nvm](https://github.com/nvm-sh/nvm)
+
+#### Commandes utiles
+
+- Lancement en local : `yarn dev` 
+- Build du projet : `yarn build`
 
 ### Dons
 
 Si vous souhaitez me faire un petit don :  
 [![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/kernoeb)
+
