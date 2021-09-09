@@ -12,8 +12,8 @@
     "heroku-postbuild": "yarn build"
   },
   "engines": {
-    "node": "14.17.5",
-    "yarn": "1.22.5"
+    "node": "16.9.0",
+    "yarn": "3.0.2"
   },
   "dependencies": {
     "@dansmaculotte/nuxt-security": "^0.0.5",
@@ -29,7 +29,7 @@
     "config": "^3.3.6",
     "cookie-parser": "^1.4.5",
     "cookie-universal-nuxt": "^2.1.5",
-    "core-js": "^3.17.2",
+    "core-js": "^3.17.3",
     "cors": "^2.8.5",
     "delay": "^5.0.0",
     "express": "^4.17.1",
@@ -39,7 +39,7 @@
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.7.1",
     "route-cache": "^0.4.5",
-    "sanitize-html": "^2.4.0",
+    "sanitize-html": "^2.5.0",
     "signale": "^1.4.0",
     "vue-plausible": "^1.2.1"
   },
@@ -54,5 +54,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "minify-css-string": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }
