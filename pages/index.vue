@@ -484,23 +484,58 @@ export default {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-          params: {
+        // Temp fix to have multiple plannings at once
+        if (this.$route.query?.multi === true || this.$route.query?.multi === 'true') {
+          let nb = ''
+          let tmpEvents = {}
+          while (this.$route.query['u' + nb] && this.$route.query['s' + nb] && this.$route.query['y' + nb] && this.$route.query['s' + nb]) {
+            if (tmpEvents.data) {
+              tmpEvents.data = tmpEvents.data.concat((await this.$axios.$get(this.$config.apiCalendar, {
+                params: {
+                  u: this.$route.query['u' + nb],
+                  s: this.$route.query['s' + nb],
+                  y: this.$route.query['y' + nb],
+                  g: this.$route.query['g' + nb]
+                },
+                withCredentials: true
+              })).data)
+            } else {
+              tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
+                params: {
+                  u: this.$route.query['u' + nb],
+                  s: this.$route.query['s' + nb],
+                  y: this.$route.query['y' + nb],
+                  g: this.$route.query['g' + nb]
+                },
+                withCredentials: true
+              })
+            }
+            if (nb === '') { nb = 0 }
+            nb++
+          }
+          // Remove identical events
+          tmpEvents.data = tmpEvents.data.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
+          this.setEvents(tmpEvents, 'Plusieurs plannings...')
+          this.loading = false
+        } else {
+          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
+            params: {
+              u: this.$route.query.u,
+              s: this.$route.query.s,
+              y: this.$route.query.y,
+              g: this.$route.query.g
+            },
+            withCredentials: true
+          })
+          this.setEvents(tmpEvents)
+          this.loading = false
+          this.$cookies.set('edt', Buffer.from(JSON.stringify({
             u: this.$route.query.u,
             s: this.$route.query.s,
             y: this.$route.query.y,
             g: this.$route.query.g
-          },
-          withCredentials: true
-        })
-        this.setEvents(tmpEvents)
-        this.loading = false
-        this.$cookies.set('edt', Buffer.from(JSON.stringify({
-          u: this.$route.query.u,
-          s: this.$route.query.s,
-          y: this.$route.query.y,
-          g: this.$route.query.g
-        }), 'binary').toString('base64'), { maxAge: 2147483646 })
+          }), 'binary').toString('base64'), { maxAge: 2147483646 })
+        }
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
@@ -658,10 +693,10 @@ export default {
     }, 120000)
   },
   methods: {
-    setEvents (events) {
+    setEvents (events, customText) {
       this.status = events.status
       this.events = events.data
-      this.currentUniv = events.name
+      this.currentUniv = customText || events.name
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }
