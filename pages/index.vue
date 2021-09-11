@@ -515,7 +515,7 @@ export default {
           }
           // Remove identical events
           tmpEvents.data = tmpEvents.data.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
-          this.setEvents(tmpEvents, 'Plusieurs plannings...')
+          this.setEvents(tmpEvents, this.$config.i18n.multiplePlannings)
           this.loading = false
         } else {
           const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
