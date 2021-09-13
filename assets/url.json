@@ -3203,89 +3203,241 @@
     "title": "ISTIC",
     "edts": [
       {
-        "id": "isticmasters1info",
+        "id": "isticm1info",
         "title": "Masters 1 Informatique",
         "edts": [
           {
-            "id": "isticmasteril1",
+            "id": "isticmil1",
             "title": "Master IL",
             "edts": [
               {
                 "id": "isticil11",
                 "title": "IL1",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/5YrBrjYO.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10547&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil111",
                 "title": "IL1.1",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/5YG8k2nJ.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13774&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil112",
                 "title": "IL1.2",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/zWoMq2YM.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13776&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil113",
                 "title": "IL1.3",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/mWbva6W2.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20263&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil12",
                 "title": "IL2",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/KYggr8YJ.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10578&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil121",
                 "title": "IL2.1",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/2YXqJ2nD.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15009&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticil122",
                 "title": "IL2.2",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9WQQJdW6.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15008&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               }
             ]
           },
           {
-            "id": "isticmastercr1",
+            "id": "isticmcr1",
             "title": "Master Cloud et Réseaux",
             "edts": [
               {
                 "id": "isticcr1",
                 "title": "CR",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/5YrBejYO.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10579&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticcr111",
                 "title": "CR 1.1",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/o3JKl0Yr.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13734&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticcr112",
                 "title": "CR 1.2",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/rYBp5pWx.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13750&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticcr113",
                 "title": "CR 1.3",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/qnqJ54WJ.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16057&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               }
             ]
           },
           {
-            "id": "isticmasterccn1",
+            "id": "isticmccn1",
             "title": "Master CCN",
             "edts": [
               {
                 "id": "isticccn1s1",
                 "title": "S1 CCN",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/53yb5yYj.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17251&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               },
               {
                 "id": "isticccn1s2",
                 "title": "S2 CCN",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/53w456Yy.shu"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17270&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "isticm1optionS1",
+            "title": "Options Master Semestre1",
+            "edts": [
+              {
+                "id": "isticm1cseopt-isr",
+                "title": "M1 CSE Opt-ISR",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18084&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-cobracm",
+                "title": "COBRA CM",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12357&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-cobratdaa",
+                "title": "COBRA TD AA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12662&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-str-cobratpgra",
+                "title": "STR - COBRA TP GrA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12509&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-str-cobratpgrb",
+                "title": "STR - COBRA TP GrB",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12402&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-bdd",
+                "title": "BDD",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12075&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-bif",
+                "title": "BIF",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12857&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-gui",
+                "title": "GUI",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1764&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-iamp;ebasics",
+                "title": "I&E basics",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15006&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-ihm",
+                "title": "IHM",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12856&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-isr",
+                "title": "ISR",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11909&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-mac",
+                "title": "MAC",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13728&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-ro",
+                "title": "RO",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13952&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticm1opt-sem",
+                "title": "SEM",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13950&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartdg1",
+                "title": "PPAR TD G1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12269&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartdg2",
+                "title": "PPAR TD G2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12268&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartpg1",
+                "title": "PPAR TP G1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12266&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartpg2",
+                "title": "PPAR TP  G2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12265&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartpg3",
+                "title": "PPAR TP G3",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12264&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "isticppartpg4",
+                "title": "PPAR TP G4",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13760&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "isticm1projets",
+            "title": "Projets",
+            "edts": [
+              {
+                "id": "bio4t",
+                "title": "BIO4T",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10463&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "coolin",
+                "title": "CoolIn",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14856&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "rrros",
+                "title": "RrrOS",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10464&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "se4ln",
+                "title": "SE4LN",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10262&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "projet",
+                "title": "Projet",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13904&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "fdm-viz",
+                "title": "FDM-Viz",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13898&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "hanot",
+                "title": "Hanot",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13902&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "visit",
+                "title": "Visit",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12153&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
               }
             ]
           }
