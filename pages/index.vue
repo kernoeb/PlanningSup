@@ -101,7 +101,7 @@
         </template>
       </v-select>
       <v-spacer />
-      <div class="d-flex justify-space-between" style="width: 125px;">
+      <div class="d-flex justify-space-between" style="max-height: 24px; align-self: center; width: 125px;">
         <v-dialog
           v-model="dialogEdt"
           width="500"
