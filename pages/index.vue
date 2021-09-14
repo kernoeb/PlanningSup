@@ -476,7 +476,9 @@ export default {
       lastTimeFetch: 0,
       currentUniv: '',
       nowY: '-10px',
-      width: 0
+      width: 0,
+      doublePress: false,
+      playing: false
     }
   },
   fetchOnServer: false,
@@ -771,23 +773,35 @@ export default {
         this.dialogSettings = !this.dialogSettings
       } else if (key === 't' || key === 84) {
         this.value = ''
-      } else if (key === 'r' || key === 82) {
-        // Just a security check Kappa
-        const arr = ['Never gonna give you up', 'Never gonna let you down']
-        let tmp = true
-        const s = setInterval(() => {
-          this.events.forEach((v, i) => {
-            v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
-            v.location = 'YouTube'
-            v.description = 'Rick Astley'
-            v.color = tmp ? '#e28b6f' : '#c3bde7'
-          })
-          tmp = !tmp
-        }, 531)
-        setTimeout(() => {
-          clearInterval(s)
-          this.$fetch()
-        }, 6500)
+      } else if ((key === 'r' || key === 82) && !this.playing) {
+        // Just a security check
+        if (this.doublePress) {
+          this.doublePress = false
+          const arr = ['Never gonna give you up', 'Never gonna let you down']
+          let tmp = true
+          const audio = new Audio('/sound/security.mp3')
+          this.playing = true
+          audio.play().then(() => {}).catch(() => {})
+          const s = setInterval(() => {
+            this.events.forEach((v, i) => {
+              v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
+              v.location = 'YouTube'
+              v.description = 'Rick Astley'
+              v.color = tmp ? '#e28b6f' : '#c3bde7'
+            })
+            tmp = !tmp
+          }, 531)
+          setTimeout(() => {
+            clearInterval(s)
+            this.playing = false
+            this.$fetch()
+          }, 6500)
+        } else {
+          this.doublePress = true
+          setTimeout(() => {
+            this.doublePress = false
+          }, 500)
+        }
       }
     },
     onResize () {
