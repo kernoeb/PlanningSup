@@ -219,15 +219,6 @@ export default {
                 ]
               }
             }
-      },
-      extend(config, { isDev, isClient }) {
-        config.module.rules.push({
-          test: /\.mp3$/,
-          loader: 'url-loader'
-        })
-        if (isDev) {
-          config.mode = 'development'
-        }
       }
   }
 }
