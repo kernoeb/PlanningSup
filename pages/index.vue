@@ -775,6 +775,8 @@ export default {
         // Just a security check Kappa
         const arr = ['Never gonna give you up', 'Never gonna let you down']
         let tmp = true
+        const audio = new Audio(require('@/assets/sound/security.mp3').default)
+        audio.play()
         const s = setInterval(() => {
           this.events.forEach((v, i) => {
             v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
