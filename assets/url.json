@@ -461,6 +461,110 @@
     ]
   },
   {
+    "id": "iutdestmalo",
+    "title": "IUT de St-Malo",
+    "edts": [
+      {
+        "id": "gea",
+        "title": "GEA",
+        "edts": [
+          {
+            "id": "1gea",
+            "title": "Année1 S1/S2",
+            "edts": [
+              {
+                "id": "g1a",
+                "title": "G1-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/zWoJwEnM.shu"
+              },
+              {
+                "id": "g1b",
+                "title": "G1-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/L3ZZm73J.shu"
+              },
+              {
+                "id": "g2a",
+                "title": "G2-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/83DmdwYx.shu"
+              },
+              {
+                "id": "g2b",
+                "title": "G2-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8wLdY8.shu"
+              },
+              {
+                "id": "g3a",
+                "title": "G3-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8Nvl38.shu"
+              },
+              {
+                "id": "g3b",
+                "title": "G3-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/V3L04m3A.shu"
+              },
+              {
+                "id": "g4a",
+                "title": "G4-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/wWxyZp39.shu"
+              },
+              {
+                "id": "g4b",
+                "title": "G4-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/E3p902YA.shu"
+              }
+            ]
+          },
+          {
+            "id": "2gea",
+            "title": "Année2 S3/S4",
+            "edts": [
+              {
+                "id": "g1a",
+                "title": "G1-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/PnRL4o38.shu"
+              },
+              {
+                "id": "g1b",
+                "title": "G1-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/bWKRQPna.shu"
+              },
+              {
+                "id": "g2a",
+                "title": "G2-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/5YGwZ4YJ.shu"
+              },
+              {
+                "id": "g2b",
+                "title": "G2-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/AWvPB5YP.shu"
+              },
+              {
+                "id": "g3a",
+                "title": "G3-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/ZYjJpmYB.shu"
+              },
+              {
+                "id": "g3b",
+                "title": "G3-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/Xn0z4V37.shu"
+              },
+              {
+                "id": "g4a",
+                "title": "G4-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/83Dm2ZYx.shu"
+              },
+              {
+                "id": "g4b",
+                "title": "G4-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9n9dNRYP.shu"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "ensibs",
     "title": "ENSIBS",
     "edts": [
