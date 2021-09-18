@@ -28,8 +28,13 @@
         outlined
         type="error"
       >
-        <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
-        <span v-else>{{ $config.i18n.error_db2 }}</span>
+        <div v-if="status === 'semi'">
+          <span>{{ $config.i18n.error_db_one }}</span>
+        </div>
+        <div v-else>
+          <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
+          <span v-else>{{ $config.i18n.error_db2 }}</span>
+        </div>
       </v-alert>
     </transition>
     <v-bottom-sheet v-model="bottom">
@@ -140,6 +145,9 @@
               hide-details
               dense
             />
+            <v-btn text small color="green" @click="reset">
+              Réinitialiser
+            </v-btn>
             <select-planning :urls="urls" />
           </v-card>
         </v-dialog>
@@ -612,10 +620,17 @@ export default {
   },
   methods: {
     ...mapMutations(['setPlannings']),
+    reset () {
+      this.$cookies.remove('plannings')
+      this.setPlannings([])
+      this.$nextTick(() => {
+        this.$router.push({ name: 'index', query: { p: undefined } })
+      })
+    },
     setEvents (events) {
       this.status = events.status
-      this.events = [].concat.apply([], events.plannings.map(v => v.events))
-      this.setPlannings(events.plannings.map(v => v.id))
+      this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
+      this.setPlannings((events.plannings || []).map(v => v.id).filter(v => v))
       this.currentUniv = events.plannings?.length > 1 ? (events.plannings.length + ' plannings sélectionnés') : events.plannings[0].title
       if (events.timestamp) {
         this.timestamp = events.timestamp
