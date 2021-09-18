@@ -101,7 +101,7 @@
         </template>
       </v-select>
       <v-spacer />
-      <div class="d-flex justify-space-between" style="width: 125px;">
+      <div class="d-flex justify-space-between" style="max-height: 24px; align-self: center; width: 125px;">
         <v-dialog
           v-model="dialogEdt"
           width="500"
@@ -476,7 +476,9 @@ export default {
       lastTimeFetch: 0,
       currentUniv: '',
       nowY: '-10px',
-      width: 0
+      width: 0,
+      doublePress: false,
+      playing: false
     }
   },
   fetchOnServer: false,
@@ -484,23 +486,58 @@ export default {
     this.loading = true
     try {
       if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-          params: {
+        // Temp fix to have multiple plannings at once
+        if (this.$route.query?.multi === true || this.$route.query?.multi === 'true') {
+          let nb = ''
+          let tmpEvents = {}
+          while (this.$route.query['u' + nb] && this.$route.query['s' + nb] && this.$route.query['y' + nb] && this.$route.query['s' + nb]) {
+            if (tmpEvents.data) {
+              tmpEvents.data = tmpEvents.data.concat((await this.$axios.$get(this.$config.apiCalendar, {
+                params: {
+                  u: this.$route.query['u' + nb],
+                  s: this.$route.query['s' + nb],
+                  y: this.$route.query['y' + nb],
+                  g: this.$route.query['g' + nb]
+                },
+                withCredentials: true
+              })).data)
+            } else {
+              tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
+                params: {
+                  u: this.$route.query['u' + nb],
+                  s: this.$route.query['s' + nb],
+                  y: this.$route.query['y' + nb],
+                  g: this.$route.query['g' + nb]
+                },
+                withCredentials: true
+              })
+            }
+            if (nb === '') { nb = 0 }
+            nb++
+          }
+          // Remove identical events
+          tmpEvents.data = tmpEvents.data.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
+          this.setEvents(tmpEvents, this.$config.i18n.multiplePlannings)
+          this.loading = false
+        } else {
+          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
+            params: {
+              u: this.$route.query.u,
+              s: this.$route.query.s,
+              y: this.$route.query.y,
+              g: this.$route.query.g
+            },
+            withCredentials: true
+          })
+          this.setEvents(tmpEvents)
+          this.loading = false
+          this.$cookies.set('edt', Buffer.from(JSON.stringify({
             u: this.$route.query.u,
             s: this.$route.query.s,
             y: this.$route.query.y,
             g: this.$route.query.g
-          },
-          withCredentials: true
-        })
-        this.setEvents(tmpEvents)
-        this.loading = false
-        this.$cookies.set('edt', Buffer.from(JSON.stringify({
-          u: this.$route.query.u,
-          s: this.$route.query.s,
-          y: this.$route.query.y,
-          g: this.$route.query.g
-        }), 'binary').toString('base64'), { maxAge: 2147483646 })
+          }), 'binary').toString('base64'), { maxAge: 2147483646 })
+        }
       } else if (this.$cookies.get('edt') !== undefined) {
         try {
           const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
@@ -658,10 +695,10 @@ export default {
     }, 120000)
   },
   methods: {
-    setEvents (events) {
+    setEvents (events, customText) {
       this.status = events.status
       this.events = events.data
-      this.currentUniv = events.name
+      this.currentUniv = customText || events.name
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }
@@ -736,23 +773,35 @@ export default {
         this.dialogSettings = !this.dialogSettings
       } else if (key === 't' || key === 84) {
         this.value = ''
-      } else if (key === 'r' || key === 82) {
-        // Just a security check Kappa
-        const arr = ['Never gonna give you up', 'Never gonna let you down']
-        let tmp = true
-        const s = setInterval(() => {
-          this.events.forEach((v, i) => {
-            v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
-            v.location = 'YouTube'
-            v.description = 'Rick Astley'
-            v.color = tmp ? '#e28b6f' : '#c3bde7'
-          })
-          tmp = !tmp
-        }, 531)
-        setTimeout(() => {
-          clearInterval(s)
-          this.$fetch()
-        }, 6500)
+      } else if ((key === 'r' || key === 82) && !this.playing) {
+        // Just a security check
+        if (this.doublePress) {
+          this.doublePress = false
+          const arr = ['Never gonna give you up', 'Never gonna let you down']
+          let tmp = true
+          const audio = new Audio('/sound/security.mp3')
+          this.playing = true
+          audio.play().then(() => {}).catch(() => {})
+          const s = setInterval(() => {
+            this.events.forEach((v, i) => {
+              v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
+              v.location = 'YouTube'
+              v.description = 'Rick Astley'
+              v.color = tmp ? '#e28b6f' : '#c3bde7'
+            })
+            tmp = !tmp
+          }, 531)
+          setTimeout(() => {
+            clearInterval(s)
+            this.playing = false
+            this.$fetch()
+          }, 6500)
+        } else {
+          this.doublePress = true
+          setTimeout(() => {
+            this.doublePress = false
+          }, 500)
+        }
       }
     },
     onResize () {
