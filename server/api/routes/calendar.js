@@ -26,7 +26,7 @@ function getPlanning (arr) {
     title.push(obj.title)
   }
   if (!obj || (obj && !obj.url)) return null
-  return { title: title.join(','), url: obj.url }
+  return { title: title.join(' | '), url: obj.url, id: arr.join('.') }
 }
 
 /**
@@ -63,6 +63,7 @@ router.get('/calendars', async (req, res) => {
     const plannings = (data || []).map((v, i) => {
       if (!v) status = 'semi'
       return ({
+        id: tmpUrls?.[i]?.id,
         title: tmpUrls?.[i]?.title,
         timestamp: new Date().getTime(),
         events: v && getFormattedEvents(v, blocklist)

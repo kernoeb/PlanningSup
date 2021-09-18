@@ -126,60 +126,21 @@
               <v-icon class="mr-2">
                 {{ mdiCalendar }}
               </v-icon>
-              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
+              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }} ({{ selectedPlannings.length }} sélectionnés)</span>
             </v-card-title>
 
             <v-divider />
 
-            <v-expansion-panels>
-              <v-expansion-panel
-                v-for="(url,i) in urls"
-                :key="`urls_${i}`"
-              >
-                <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                  {{ url.title }}
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                  <v-expansion-panels>
-                    <v-expansion-panel
-                      v-for="(url2,j) in url.edts"
-                      :key="`urls_2_${j}`"
-                    >
-                      <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                        {{ url2.title }}
-                      </v-expansion-panel-header>
-                      <v-expansion-panel-content>
-                        <v-expansion-panels>
-                          <v-expansion-panel
-                            v-for="(url3,k) in url2.edts"
-                            :key="`urls_3_${k}`"
-                          >
-                            <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                              {{ url3.title }}
-                            </v-expansion-panel-header>
-                            <v-expansion-panel-content>
-                              <nuxt-link
-                                v-for="(url4, l) in url3.edts"
-                                :key="`urls_4_${l}`"
-                                :to="{name: 'index', query: {u: url.id, s: url2.id, y: url3.id, g: url4.id}}"
-                              >
-                                <v-list-item class="ml-3" @click="dialogEdt = false">
-                                  <v-list-item-content>
-                                    <v-list-item-title>
-                                      {{ url4.title }}
-                                    </v-list-item-title>
-                                  </v-list-item-content>
-                                </v-list-item>
-                              </nuxt-link>
-                            </v-expansion-panel-content>
-                          </v-expansion-panel>
-                        </v-expansion-panels>
-                      </v-expansion-panel-content>
-                    </v-expansion-panel>
-                  </v-expansion-panels>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
+            <v-text-field
+              v-model="searchCalendar"
+              label="Rechercher un planning"
+              filled
+              clearable
+              :clear-icon="mdiClose"
+              hide-details
+              dense
+            />
+            <select-planning :urls="urls" />
           </v-card>
         </v-dialog>
         <v-tooltip top>
@@ -359,7 +320,7 @@
     </v-sheet>
     <v-dialog
       v-model="modelBadUrl"
-      :overlay-color="dark ? 'white' : 'black'"
+      :overlay-color="$vuetify.theme.dark ? 'white' : 'black'"
       persistent
       max-width="500"
     >
@@ -412,12 +373,15 @@
 </template>
 
 <script>
-import { mdiTwitter, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { mapState, mapMutations } from 'vuex'
 import crous from '@/components/crous'
+import SelectPlanning from '@/components/SelectPlanning'
 
 export default {
   components: {
-    crous
+    crous,
+    SelectPlanning
   },
   middleware: 'vuetify-theme',
   data () {
@@ -439,6 +403,7 @@ export default {
       mdiMenuDown,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
+      mdiClose,
 
       bottom: false,
       selectedEvent: null,
@@ -478,94 +443,39 @@ export default {
       nowY: '-10px',
       width: 0,
       doublePress: false,
-      playing: false
+      playing: false,
+      searchCalendar: ''
     }
   },
   fetchOnServer: false,
   async fetch () {
     this.loading = true
+    const apiCalendar = '/api/calendars' || this.$config.apiCalendar
     try {
-      if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
-        // Temp fix to have multiple plannings at once
-        if (this.$route.query?.multi === true || this.$route.query?.multi === 'true') {
-          let nb = ''
-          let tmpEvents = {}
-          while (this.$route.query['u' + nb] && this.$route.query['s' + nb] && this.$route.query['y' + nb] && this.$route.query['s' + nb]) {
-            if (tmpEvents.data) {
-              tmpEvents.data = tmpEvents.data.concat((await this.$axios.$get(this.$config.apiCalendar, {
-                params: {
-                  u: this.$route.query['u' + nb],
-                  s: this.$route.query['s' + nb],
-                  y: this.$route.query['y' + nb],
-                  g: this.$route.query['g' + nb]
-                },
-                withCredentials: true
-              })).data)
-            } else {
-              tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-                params: {
-                  u: this.$route.query['u' + nb],
-                  s: this.$route.query['s' + nb],
-                  y: this.$route.query['y' + nb],
-                  g: this.$route.query['g' + nb]
-                },
-                withCredentials: true
-              })
-            }
-            if (nb === '') { nb = 0 }
-            nb++
-          }
-          // Remove identical events
-          tmpEvents.data = tmpEvents.data.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
-          this.setEvents(tmpEvents, this.$config.i18n.multiplePlannings)
-          this.loading = false
-        } else {
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-            params: {
-              u: this.$route.query.u,
-              s: this.$route.query.s,
-              y: this.$route.query.y,
-              g: this.$route.query.g
-            },
-            withCredentials: true
-          })
-          this.setEvents(tmpEvents)
-          this.loading = false
-          this.$cookies.set('edt', Buffer.from(JSON.stringify({
-            u: this.$route.query.u,
-            s: this.$route.query.s,
-            y: this.$route.query.y,
-            g: this.$route.query.g
-          }), 'binary').toString('base64'), { maxAge: 2147483646 })
-        }
-      } else if (this.$cookies.get('edt') !== undefined) {
+      if (this.$route.query && this.$route.query.p) {
+        const tmpEvents = await this.$axios.$get(apiCalendar, { params: { p: this.$route.query.p }, withCredentials: true })
+        this.setEvents(tmpEvents)
+        this.loading = false
+        this.$cookies.set('plannings', this.$route.query.p, { maxAge: 2147483646 })
+      } else if (this.$cookies.get('plannings') !== undefined) {
         try {
-          const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-            params: {
-              u: tmp.u,
-              s: tmp.s,
-              y: tmp.y,
-              g: tmp.g
-            },
-            withCredentials: true
-          })
+          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
           this.setEvents(tmpEvents)
           this.loading = false
         } catch (e) {
-          this.$cookies.remove('edt')
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+          this.$cookies.remove('plannings')
+          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
           this.setEvents(tmpEvents)
           this.loading = false
         }
       } else {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.loading = false
       }
     } catch (e) {
       try {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.loading = false
       } catch (e) {
@@ -574,6 +484,7 @@ export default {
     }
   },
   computed: {
+    ...mapState(['selectedPlannings']),
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
     },
@@ -587,6 +498,11 @@ export default {
     }
   },
   watch: {
+    searchCalendar () {
+      this.$axios.$get(this.$config.apiUrls, { params: { q: this.searchCalendar } }).then((data) => {
+        this.urls = data
+      }).catch(() => {})
+    },
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
@@ -695,10 +611,12 @@ export default {
     }, 120000)
   },
   methods: {
-    setEvents (events, customText) {
+    ...mapMutations(['setPlannings']),
+    setEvents (events) {
       this.status = events.status
-      this.events = events.data
-      this.currentUniv = customText || events.name
+      this.events = [].concat.apply([], events.plannings.map(v => v.events))
+      this.setPlannings(events.plannings.map(v => v.id))
+      this.currentUniv = events.plannings?.length > 1 ? (events.plannings.length + ' plannings sélectionnés') : events.plannings[0].title
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }
@@ -747,7 +665,7 @@ export default {
       this.value = ''
     },
     keyboard (event) {
-      if (this.dialogSettings) {
+      if (this.dialogSettings || this.dialogEdt) {
         return
       }
 

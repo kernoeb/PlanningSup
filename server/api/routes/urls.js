@@ -16,14 +16,14 @@ function getChildElement (child) {
   else (child.edts || child).forEach((v) => { getChildElement(v) })
 }
 
+const tmpUrls = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf-8'))
+getChildElement(tmpUrls)
+
 /**
  * GET route with plannings, without their URLs
  */
-router.get('/urls', routeCache.cacheSeconds(PRODUCTION ? (60 * 60 * 24 * 7) : 0), (req, res) => {
-  logger.info('Génération des URLs')
-  const tmpUrls = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf-8'))
-  getChildElement(tmpUrls)
-  res.json(tmpUrls)
+router.get('/urls', (req, res) => {
+  res.json(tmpUrls.filter(v => req.query.q && req.query.q.length ? v.title.toUpperCase().includes(req.query.q.toUpperCase()) : true))
 })
 
 module.exports = router
