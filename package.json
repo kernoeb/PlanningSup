@@ -12,7 +12,7 @@
     "heroku-postbuild": "yarn build"
   },
   "engines": {
-    "node": "16.9.0",
+    "node": "16.9.1",
     "yarn": "3.0.2"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "abort-controller": "^3.0.0",
     "axios": "^0.21.4",
-    "bree": "^6.3.0",
+    "bree": "^6.3.1",
     "cal-parser": "^1.0.1",
     "config": "^3.3.6",
     "cookie-parser": "^1.4.5",
@@ -35,11 +35,12 @@
     "express": "^4.17.1",
     "jsdom": "^17.0.0",
     "luxon": "^2.0.2",
+    "nanoexpress": "^5.1.0",
     "nuxt": "^2.15.8",
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.7.1",
     "route-cache": "^0.4.5",
-    "sanitize-html": "^2.5.0",
+    "sanitize-html": "^2.5.1",
     "signale": "^1.4.0",
     "vue-plausible": "^1.2.1"
   },
