@@ -22,44 +22,9 @@
       <crous v-if="currentUniv.includes('Vannes')" />
     </div>
     <transition name="fade">
-      <v-alert
-        v-if="status !== 'on'"
-        dense
-        outlined
-        type="error"
-      >
-        <div v-if="status === 'semi'">
-          <span>{{ $config.i18n.error_db_one }}</span>
-        </div>
-        <div v-else>
-          <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
-          <span v-else>{{ $config.i18n.error_db2 }}</span>
-        </div>
-      </v-alert>
+      <error-alert v-if="status !== 'on'" :timestamp="timestamp" :status="status" />
     </transition>
-    <v-bottom-sheet v-model="bottom">
-      <v-sheet
-        class="text-center"
-        height="200px"
-      >
-        <div v-if="selectedEvent" class="py-3">
-          <div class="mt-4 font-weight-bold">
-            {{ selectedEvent.name }}
-          </div>
-          <div v-if="selectedEvent.location || selectedEvent.description">
-            {{ selectedEvent.location }}{{ (selectedEvent.location && selectedEvent.description) ? ' | ' : '' }}{{ selectedEvent.description }}
-          </div>
-          <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
-        </div>
-        <v-btn
-          class="mt-6"
-          text
-          @click="bottom = !bottom"
-        >
-          <span style="color: red">{{ $config.i18n.close }}</span>
-        </v-btn>
-      </v-sheet>
-    </v-bottom-sheet>
+    <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -171,7 +136,7 @@
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
-        <Settings
+        <settings
           :blocklist-select="blocklistSelect"
           :dialog-settings="dialogSettings"
           :settings="settings"
@@ -256,12 +221,16 @@ import { mapState, mapMutations } from 'vuex'
 import Crous from '@/components/Crous'
 import SelectPlanning from '@/components/SelectPlanning'
 import Settings from '@/components/Settings'
+import Bottom from '@/components/Bottom'
+import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
     Crous,
     SelectPlanning,
-    Settings
+    Settings,
+    Bottom,
+    ErrorAlert
   },
   middleware: 'vuetify-theme',
   data () {
@@ -527,10 +496,7 @@ export default {
       } catch (err) {
       }
     },
-    showEvent ({
-      nativeEvent,
-      event
-    }) {
+    showEvent ({ nativeEvent, event }) {
       this.bottom = true
       this.selectedEvent = event
       nativeEvent.stopPropagation()
