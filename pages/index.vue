@@ -171,107 +171,16 @@
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
-        <v-dialog
-          v-model="dialogSettings"
-          width="500"
-        >
-          <template #activator="{ on: d, attrs }">
-            <v-tooltip top>
-              <template #activator="{ on: tooltip }">
-                <v-icon
-                  v-bind="attrs"
-                  v-on="{...d, ...tooltip}"
-                >
-                  {{ mdiCogOutline }}
-                </v-icon>
-              </template>
-              <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
-                style="color: lightgrey; font-size: 10px"
-              >(p)</span>
-            </v-tooltip>
-          </template>
-          <v-card>
-            <v-card-title class="headline">
-              <v-icon class="mr-2">
-                {{ mdiCogOutline }}
-              </v-icon>
-              <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
-            </v-card-title>
-
-            <v-divider />
-
-            <v-list-item-group
-              v-model="settings"
-              multiple
-            >
-              <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-              <v-list-item>
-                <v-list-item-action>
-                  <v-checkbox v-model="checkedTheme" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                </v-list-item-action>
-
-                <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-                  <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-action>
-                  <v-checkbox v-model="colorMode" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                </v-list-item-action>
-
-                <v-list-item-content @click="colorMode = !colorMode">
-                  <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider />
-              <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
-              <v-list-item inactive>
-                <v-combobox
-                  v-model="blocklistSelect"
-                  :items="blocklist"
-                  :label="$config.i18n.blocklistDesc"
-                  chips
-                  multiple
-                  :append-icon="mdiMenuDown"
-                  @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
-                >
-                  <template #item="{ item, on, attrs }">
-                    <v-list-item v-bind="attrs" v-on="on">
-                      <v-list-item-action>
-                        <v-checkbox :input-value="attrs.inputValue" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>
-                          {{ item }}
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </template>
-                </v-combobox>
-              </v-list-item>
-              <v-subheader>{{ $config.i18n.contact }}</v-subheader>
-              <v-list-item inactive>
-                <div class="d-flex flex-column mb-4">
-                  <div>
-                    <v-icon class="mr-2 mt-n1" size="15">
-                      {{ mdiTwitter }}
-                    </v-icon>Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a>
-                  </div>
-                  <div>
-                    <v-icon class="mr-2 mt-n1" size="15">
-                      {{ mdiMail }}
-                    </v-icon>Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a>
-                  </div>
-                </div>
-              </v-list-item>
-              <v-list-item inactive>
-                <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
-              </v-list-item>
-            </v-list-item-group>
-          </v-card>
-        </v-dialog>
+        <Settings
+          :blocklist-select="blocklistSelect"
+          :dialog-settings="dialogSettings"
+          :settings="settings"
+          :color-mode="colorMode"
+          @change_dialog="dialogSettings = $event"
+          @change_settings="settings = $event"
+          @change_color_mode="colorMode = $event"
+          @change_blocklist_select="blocklistSelect = $event; $cookies.set('blocklist', JSON.stringify($event), { maxAge: 2147483646 }); $fetch()"
+        />
       </div>
       <v-btn
         class="ma-2"
@@ -321,9 +230,7 @@
                 {{ event.name }}
               </div>
               <div v-if="event.location || event.description">
-                {{ !event.distance ? event.location : '' }}{{
-                  ((event.location && !event.distance) && event.description) ? ' | ' : ''
-                }}{{ event.description }}
+                {{ !event.distance ? event.location : '' }}{{ ((event.location && !event.distance) && event.description) ? ' | ' : '' }}{{ event.description }}
               </div>
               <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
               <small v-if="event.distance">
@@ -334,7 +241,6 @@
         </v-calendar>
       </transition>
     </v-sheet>
-    <DialogNewPlanning />
   </div>
   <div v-else class="d-flex justify-center mt-3">
     <v-progress-circular
@@ -349,13 +255,13 @@ import { mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiForma
 import { mapState, mapMutations } from 'vuex'
 import Crous from '@/components/Crous'
 import SelectPlanning from '@/components/SelectPlanning'
-import DialogNewPlanning from '@/components/DialogNewPlanning'
+import Settings from '@/components/Settings'
 
 export default {
   components: {
     Crous,
     SelectPlanning,
-    DialogNewPlanning
+    Settings
   },
   middleware: 'vuetify-theme',
   data () {
@@ -389,7 +295,6 @@ export default {
       dialogSettings: false,
       settings: [],
       blocklistSelect: [],
-      blocklist: ['Projets Tuteurés', 'Maths'],
       type: 'week',
       types: [{
         text: this.$config.i18n.month,
@@ -460,14 +365,6 @@ export default {
     ...mapState(['selectedPlannings']),
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
-    },
-    checkedTheme: {
-      get () {
-        return !this.$vuetify.theme.dark
-      },
-      set () {
-        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      }
     }
   },
   watch: {

@@ -13,7 +13,7 @@
       <v-icon small>
         {{ mdiCalendar }}
       </v-icon>
-      {{ $config.name }}
+      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span>
       <v-spacer />
       <v-icon small>
         {{ mdiSchool }}
@@ -29,10 +29,7 @@
       absolute
       app
     >
-      <span>Noéwen (<a
-        :style="$vuetify.theme.dark ? 'color: white' : 'color: black'"
-        href="https://twitter.com/kernoeb"
-      >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span>Noéwen (<a :style="$vuetify.theme.dark ? 'color: white' : 'color: black'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -100,6 +97,11 @@ export default {
           content: this.$vuetify.theme.dark ? '#121212' : '#FFFFFF'
         }
       ]
+    }
+  },
+  computed: {
+    development () {
+      return process.env.NODE_ENV !== 'production'
     }
   },
   mounted () {
