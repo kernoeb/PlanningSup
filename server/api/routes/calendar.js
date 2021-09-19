@@ -2,7 +2,7 @@ const { Router } = require('express')
 const router = Router()
 
 const logger = require('../../util/signale')
-const { fetchAndGetJSON, getFormattedEvents } = require('../../util/utils')
+const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning } = require('../../util/utils')
 const urls = require('../../../assets/url.json')
 
 const DEBUG = process.env?.DEBUG === 'true'
@@ -60,15 +60,20 @@ router.get('/calendars', async (req, res) => {
 
     // Convert ICS to JSON events
     let status = 'on'
-    const plannings = (data || []).map((v, i) => {
+    const plannings = await Promise.all((data || []).map(async (v, i) => {
       if (!v) status = 'semi'
+      // TODO Here get last backed planning
+      console.log(tmpUrls?.[i]?.id)
+      let events
+      if (v) events = getFormattedEvents(v, blocklist)
+      else events = await getBackedPlanning(tmpUrls?.[i]?.id)
       return ({
         id: tmpUrls?.[i]?.id,
         title: tmpUrls?.[i]?.title,
         timestamp: new Date().getTime(),
-        events: v && getFormattedEvents(v, blocklist)
+        events
       })
-    })
+    }))
 
     return res.json({
       status: !plannings.find(v => v.events) ? 'off' : status,

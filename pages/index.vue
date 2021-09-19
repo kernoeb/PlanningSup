@@ -459,7 +459,9 @@ export default {
       this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
       this.titles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
       this.setPlannings((events.plannings || []).map(v => v.id).filter(v => v))
-      this.currentUniv = events.plannings?.length > 1 ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings) : events.plannings[0].title
+      this.currentUniv = events.plannings?.length > 1
+        ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings)
+        : (events.plannings?.[0]?.title || '')
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }

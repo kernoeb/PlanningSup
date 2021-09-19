@@ -43,6 +43,9 @@ const cleanLocation = l => l && l
   .split(',').map(v => v.replace(/^V-/, '')).join(', ')
 
 module.exports = {
+  getBackedPlanning: async (id) => {
+    return []
+  },
   /**
    * Get formatted json
    * @param j
