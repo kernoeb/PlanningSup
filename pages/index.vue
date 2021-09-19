@@ -47,11 +47,7 @@
             {{ selectedEvent.name }}
           </div>
           <div v-if="selectedEvent.location || selectedEvent.description">
-            {{
-              selectedEvent.location
-            }}{{
-              (selectedEvent.location && selectedEvent.description) ? ' | ' : ''
-            }}{{ selectedEvent.description }}
+            {{ selectedEvent.location }}{{ (selectedEvent.location && selectedEvent.description) ? ' | ' : '' }}{{ selectedEvent.description }}
           </div>
           <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
         </div>
@@ -138,7 +134,7 @@
 
             <v-text-field
               v-model="searchCalendar"
-              label="Rechercher un planning"
+              :label="$config.i18n.searchPlanning"
               filled
               clearable
               :clear-icon="mdiClose"
@@ -146,8 +142,20 @@
               dense
             />
             <v-btn text small color="green" @click="reset">
-              Réinitialiser
+              {{ $config.i18n.reset }}
             </v-btn>
+            <v-tooltip right color="blue">
+              <template #activator="{ on, attrs }">
+                <v-btn text small color="blue" v-bind="attrs" v-on="on">
+                  {{ $config.i18n.selection }}
+                </v-btn>
+              </template>
+              <div>
+                <div v-for="(p, i) in selectedPlannings" :key="`selectedPlanning_${i}`">
+                  {{ (titles.find(i => i.id === p) || {}).title }}
+                </div>
+              </div>
+            </v-tooltip>
             <select-planning :urls="urls" />
           </v-card>
         </v-dialog>
@@ -259,7 +267,7 @@
                 </div>
               </v-list-item>
               <v-list-item inactive>
-                <div><small><b>Donateurs :</b> W00dy 🙏</small></div>
+                <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
               </v-list-item>
             </v-list-item-group>
           </v-card>
@@ -326,51 +334,7 @@
         </v-calendar>
       </transition>
     </v-sheet>
-    <v-dialog
-      v-model="modelBadUrl"
-      :overlay-color="$vuetify.theme.dark ? 'white' : 'black'"
-      persistent
-      max-width="500"
-    >
-      <v-card>
-        <v-card-title class="text-h5">
-          Nouveau !
-        </v-card-title>
-        <v-card-text>
-          <div style="font-size: 17px;">
-            Le planning devient <b>PlanningSup</b> !
-            <br>
-            et change de nom de domaine :
-            <br>
-            <br>
-            <v-btn style="text-transform: none" href="https://planningsup.app" outlined>
-              PlanningSup.app
-            </v-btn>
-            <br><br>
-            C'est clairement plus simple à retenir et ça permet à d'autres écoles de venir ici <small>(pas que des IUTs)</small> :)
-            <br>
-            <small>(oublie pas d'ajouter en favoris)</small>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="grey"
-            text
-            @click="modelBadUrl = false"
-          >
-            Je m'en fiche
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            href="https://planningsup.app"
-          >
-            C'est parti !
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <DialogNewPlanning />
   </div>
   <div v-else class="d-flex justify-center mt-3">
     <v-progress-circular
@@ -383,19 +347,19 @@
 <script>
 import { mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import { mapState, mapMutations } from 'vuex'
-import crous from '@/components/crous'
+import Crous from '@/components/Crous'
 import SelectPlanning from '@/components/SelectPlanning'
+import DialogNewPlanning from '@/components/DialogNewPlanning'
 
 export default {
   components: {
-    crous,
-    SelectPlanning
+    Crous,
+    SelectPlanning,
+    DialogNewPlanning
   },
   middleware: 'vuetify-theme',
   data () {
     return {
-      modelBadUrl: false,
-
       // Icons
       mdiMail,
       mdiTwitter,
@@ -443,6 +407,7 @@ export default {
       weekday: [1, 2, 3, 4, 5, 6, 0],
       value: '',
       events: [],
+      titles: [],
       mounted: false,
       start: true,
       currentWeek: '',
@@ -595,10 +560,6 @@ export default {
       this.$axios.$get(this.$config.apiUrls).then((data) => {
         this.urls = data
       }).catch(() => {})
-
-      if (document.domain === 'planningiut.herokuapp.com' || document.domain === 'planning.noewen.com') {
-        this.modelBadUrl = true
-      }
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
@@ -630,8 +591,9 @@ export default {
     setEvents (events) {
       this.status = events.status
       this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
+      this.titles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
       this.setPlannings((events.plannings || []).map(v => v.id).filter(v => v))
-      this.currentUniv = events.plannings?.length > 1 ? (events.plannings.length + ' plannings sélectionnés') : events.plannings[0].title
+      this.currentUniv = events.plannings?.length > 1 ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings) : events.plannings[0].title
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }

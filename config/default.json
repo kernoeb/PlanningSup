@@ -41,6 +41,10 @@
     "distance": "DISTANCIEL",
     "mode": "Mode",
     "contact": "Me contacter",
-    "multiplePlannings": "Multiples plannings"
+    "multiplePlannings": "Multiples plannings",
+    "reset": "Réinitialiser",
+    "selection": "Sélection",
+    "searchPlanning": "Rechercher un planning",
+    "selectedPlannings": "plannings sélectionnés"
   }
 }

@@ -54,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .select_planning .v-expansion-panel-header, .v-list-item {
   min-height: 34px!important;
   height: 34px;

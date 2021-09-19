@@ -10,9 +10,11 @@ export const mutations = {
   addPlanning (state, planning) {
     if (state.selectedPlannings.includes(planning)) state.selectedPlannings = state.selectedPlannings.filter(v => v !== planning)
     else state.selectedPlannings.push(planning)
+    if (state.selectedPlannings.length === 0) this.$cookies.remove('plannings')
     this.$router.push({ name: 'index', query: { p: state.selectedPlannings && state.selectedPlannings.length ? getParameter(state.selectedPlannings) : undefined } })
   },
   setPlannings (state, plannings) {
     state.selectedPlannings = plannings
+    if (state.selectedPlannings.length === 0) this.$cookies.remove('plannings')
   }
 }
