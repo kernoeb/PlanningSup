@@ -563,6 +563,90 @@
         ]
       },
       {
+        "id": "gim",
+        "title": "GIM",
+        "edts": [
+          {
+            "id": "but1",
+            "title": "BUT1 TD1/TD2",
+            "edts": [
+              {
+                "id": "tpa",
+                "title": "BUT 1 TPA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8142&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "tpb",
+                "title": "BUT 1 TPB",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8141&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "tpc",
+                "title": "BUT 1 TPC",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8199&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "tpd",
+                "title": "BUT1 TPD",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8217&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "fa",
+            "title": "FA",
+            "edts": [
+              {
+                "id": "gimfa1_gra",
+                "title": "GIMFA1 GrA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8189&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gimfa1_grb ",
+                "title": "GIMFA1 GrB",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4015&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gimfa2_gra",
+                "title": "GIMFA2 GrA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8186&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gimfa2_grb",
+                "title": "GIMFA2 GrB",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18900&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "gim2",
+            "title": "GIM - Année2 S3/S4",
+            "edts": [
+              {
+                "id": "gim2ga",
+                "title": "GIM2GA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8249&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gim2gb",
+                "title": "GIM2GB",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1755&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gim2gc",
+                "title": "GIM2GC",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3664&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gim2gd",
+                "title": "GIM2GD",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11453&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "rt",
         "title": "R&T",
         "edts": [
