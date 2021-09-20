@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  web:
+    image: ghcr.io/kernoeb/planningsup/planning
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - planning
+  mongodb:
+    image: docker.io/bitnami/mongodb:5.0
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - '/opt/planning_v2:/bitnami/mongodb'
+    networks:
+      - planning
+
+networks:
+  planning:
+    driver: bridge

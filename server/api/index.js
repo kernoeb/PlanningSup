@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const packageJson = require('../../package.json')
-const logger = require('../signale')
+const logger = require('../util/signale')
 
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
@@ -12,15 +12,10 @@ const app = express()
 app.use(cors())
 app.use(cookieParser())
 
-// Require API routes
-const calendar = require('./routes/calendar')
-const urls = require('./routes/urls')
-const crous = require('./routes/crous')
-
 // Import API Routes
-app.use(calendar)
-app.use(urls)
-app.use(crous)
+app.use(require('./routes/calendar'))
+app.use(require('./routes/urls'))
+app.use(require('./routes/crous'))
 
 // Export express app
 module.exports = app

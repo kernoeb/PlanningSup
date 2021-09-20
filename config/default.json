@@ -35,11 +35,16 @@
     "colorModeDesc": "La couleur est définie en fonction de la matière",
     "ui": "Interface",
     "error_db": "Le serveur de l'université choisie est indisponible (ou en galère), voici une version sauvegardée datant du ",
+    "error_db_one": "Au moins un des plannings est temporairement indisponible.",
     "error_db2": "Le serveur de l'université choisie est indisponible (ou en galère), voici une version sauvegardée.",
     "close": "Fermer",
     "distance": "DISTANCIEL",
     "mode": "Mode",
     "contact": "Me contacter",
-    "multiplePlannings": "Multiples plannings"
+    "multiplePlannings": "Multiples plannings",
+    "reset": "Réinitialiser",
+    "selection": "Sélection",
+    "searchPlanning": "Rechercher un planning",
+    "selectedPlannings": "plannings sélectionnés"
   }
 }

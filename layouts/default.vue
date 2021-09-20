@@ -10,10 +10,15 @@
           </div>
         </div>
       </transition>
-      <v-icon small>
-        {{ mdiCalendar }}
-      </v-icon>
-      {{ $config.name }}
+      <v-tooltip left>
+        <template #activator="{ on, attrs }">
+          <v-icon small v-bind="attrs" v-on="on">
+            {{ mdiCalendar }}
+          </v-icon>
+        </template>
+        {{ version }}
+      </v-tooltip>
+      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span>
       <v-spacer />
       <v-icon small>
         {{ mdiSchool }}
@@ -29,10 +34,7 @@
       absolute
       app
     >
-      <span>Noéwen (<a
-        :style="$vuetify.theme.dark ? 'color: white' : 'color: black'"
-        href="https://twitter.com/kernoeb"
-      >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span>Noéwen (<a :style="$vuetify.theme.dark ? 'color: white' : 'color: black'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -70,6 +72,7 @@
 
 <script>
 import { mdiCalendar, mdiSchool, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
+const { version } = require('../package.json')
 
 export default {
   data () {
@@ -100,6 +103,14 @@ export default {
           content: this.$vuetify.theme.dark ? '#121212' : '#FFFFFF'
         }
       ]
+    }
+  },
+  computed: {
+    version () {
+      return version || ''
+    },
+    development () {
+      return process.env.NODE_ENV !== 'production'
     }
   },
   mounted () {

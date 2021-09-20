@@ -12,8 +12,8 @@
     "heroku-postbuild": "yarn build"
   },
   "engines": {
-    "node": "14.17.5",
-    "yarn": "1.22.5"
+    "node": "16.9.1",
+    "yarn": "3.0.2"
   },
   "dependencies": {
     "@dansmaculotte/nuxt-security": "^0.0.5",
@@ -35,6 +35,7 @@
     "express": "^4.17.1",
     "jsdom": "^17.0.0",
     "luxon": "^2.0.2",
+    "nanoexpress": "^5.1.0",
     "nuxt": "^2.15.8",
     "nuxt-json-config": "^0.0.2",
     "pg": "^8.7.1",
@@ -54,5 +55,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "minify-css-string": "^1.0.0"
-  }
+  },
+  "packageManager": "yarn@3.0.2"
 }

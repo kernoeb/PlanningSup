@@ -1,14 +1,14 @@
 const { workerData } = require('worker_threads')
 const delay = require('delay')
-const logger = require('../server/signale')
-const utils = require('../server/api/utils')
-const client = require('../server/api/db');
+const logger = require('../server/util/signale')
+const utils = require('../server/util/utils')
+const client = require('../server/util/db');
 
 (async () => {
   logger.info('Fetch EDT for backup')
   for (const i of workerData.data) {
     try {
-      const data = await utils.fetchData(i.url)
+      const data = await utils.fetchAndGetJSON(i.url)
       if (data && client) {
         try {
           client.query({

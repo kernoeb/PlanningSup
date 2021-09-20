@@ -22,43 +22,9 @@
       <crous v-if="currentUniv.includes('Vannes')" />
     </div>
     <transition name="fade">
-      <v-alert
-        v-if="status !== 'on'"
-        dense
-        outlined
-        type="error"
-      >
-        <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
-        <span v-else>{{ $config.i18n.error_db2 }}</span>
-      </v-alert>
+      <error-alert v-if="status !== 'on'" :timestamp="timestamp" :status="status" />
     </transition>
-    <v-bottom-sheet v-model="bottom">
-      <v-sheet
-        class="text-center"
-        height="200px"
-      >
-        <div v-if="selectedEvent" class="py-3">
-          <div class="mt-4 font-weight-bold">
-            {{ selectedEvent.name }}
-          </div>
-          <div v-if="selectedEvent.location || selectedEvent.description">
-            {{
-              selectedEvent.location
-            }}{{
-              (selectedEvent.location && selectedEvent.description) ? ' | ' : ''
-            }}{{ selectedEvent.description }}
-          </div>
-          <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
-        </div>
-        <v-btn
-          class="mt-6"
-          text
-          @click="bottom = !bottom"
-        >
-          <span style="color: red">{{ $config.i18n.close }}</span>
-        </v-btn>
-      </v-sheet>
-    </v-bottom-sheet>
+    <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -126,60 +92,36 @@
               <v-icon class="mr-2">
                 {{ mdiCalendar }}
               </v-icon>
-              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }}</span>
+              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }} ({{ selectedPlannings.length }} sélectionnés)</span>
             </v-card-title>
 
             <v-divider />
 
-            <v-expansion-panels>
-              <v-expansion-panel
-                v-for="(url,i) in urls"
-                :key="`urls_${i}`"
-              >
-                <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                  {{ url.title }}
-                </v-expansion-panel-header>
-                <v-expansion-panel-content>
-                  <v-expansion-panels>
-                    <v-expansion-panel
-                      v-for="(url2,j) in url.edts"
-                      :key="`urls_2_${j}`"
-                    >
-                      <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                        {{ url2.title }}
-                      </v-expansion-panel-header>
-                      <v-expansion-panel-content>
-                        <v-expansion-panels>
-                          <v-expansion-panel
-                            v-for="(url3,k) in url2.edts"
-                            :key="`urls_3_${k}`"
-                          >
-                            <v-expansion-panel-header :expand-icon="mdiChevronDown">
-                              {{ url3.title }}
-                            </v-expansion-panel-header>
-                            <v-expansion-panel-content>
-                              <nuxt-link
-                                v-for="(url4, l) in url3.edts"
-                                :key="`urls_4_${l}`"
-                                :to="{name: 'index', query: {u: url.id, s: url2.id, y: url3.id, g: url4.id}}"
-                              >
-                                <v-list-item class="ml-3" @click="dialogEdt = false">
-                                  <v-list-item-content>
-                                    <v-list-item-title>
-                                      {{ url4.title }}
-                                    </v-list-item-title>
-                                  </v-list-item-content>
-                                </v-list-item>
-                              </nuxt-link>
-                            </v-expansion-panel-content>
-                          </v-expansion-panel>
-                        </v-expansion-panels>
-                      </v-expansion-panel-content>
-                    </v-expansion-panel>
-                  </v-expansion-panels>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-expansion-panels>
+            <v-text-field
+              v-model="searchCalendar"
+              :label="$config.i18n.searchPlanning"
+              filled
+              clearable
+              :clear-icon="mdiClose"
+              hide-details
+              dense
+            />
+            <v-btn text small color="green" @click="reset">
+              {{ $config.i18n.reset }}
+            </v-btn>
+            <v-tooltip right color="blue">
+              <template #activator="{ on, attrs }">
+                <v-btn text small color="blue" v-bind="attrs" v-on="on">
+                  {{ $config.i18n.selection }}
+                </v-btn>
+              </template>
+              <div>
+                <div v-for="(p, i) in selectedPlannings" :key="`selectedPlanning_${i}`">
+                  {{ (titles.find(i => i.id === p) || {}).title }}
+                </div>
+              </div>
+            </v-tooltip>
+            <select-planning :urls="urls" />
           </v-card>
         </v-dialog>
         <v-tooltip top>
@@ -194,107 +136,16 @@
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
-        <v-dialog
-          v-model="dialogSettings"
-          width="500"
-        >
-          <template #activator="{ on: d, attrs }">
-            <v-tooltip top>
-              <template #activator="{ on: tooltip }">
-                <v-icon
-                  v-bind="attrs"
-                  v-on="{...d, ...tooltip}"
-                >
-                  {{ mdiCogOutline }}
-                </v-icon>
-              </template>
-              <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
-                style="color: lightgrey; font-size: 10px"
-              >(p)</span>
-            </v-tooltip>
-          </template>
-          <v-card>
-            <v-card-title class="headline">
-              <v-icon class="mr-2">
-                {{ mdiCogOutline }}
-              </v-icon>
-              <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
-            </v-card-title>
-
-            <v-divider />
-
-            <v-list-item-group
-              v-model="settings"
-              multiple
-            >
-              <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-              <v-list-item>
-                <v-list-item-action>
-                  <v-checkbox v-model="checkedTheme" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                </v-list-item-action>
-
-                <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-                  <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-action>
-                  <v-checkbox v-model="colorMode" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                </v-list-item-action>
-
-                <v-list-item-content @click="colorMode = !colorMode">
-                  <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
-                  <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-              <v-divider />
-              <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
-              <v-list-item inactive>
-                <v-combobox
-                  v-model="blocklistSelect"
-                  :items="blocklist"
-                  :label="$config.i18n.blocklistDesc"
-                  chips
-                  multiple
-                  :append-icon="mdiMenuDown"
-                  @change="$cookies.set('blocklist', JSON.stringify(blocklistSelect), { maxAge: 2147483646 }); $fetch()"
-                >
-                  <template #item="{ item, on, attrs }">
-                    <v-list-item v-bind="attrs" v-on="on">
-                      <v-list-item-action>
-                        <v-checkbox :input-value="attrs.inputValue" :off-icon="mdiCheckboxBlankOutline" :on-icon="mdiCheckboxMarked" :indeterminate-icon="mdiCheckboxBlankOutline" />
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>
-                          {{ item }}
-                        </v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </template>
-                </v-combobox>
-              </v-list-item>
-              <v-subheader>{{ $config.i18n.contact }}</v-subheader>
-              <v-list-item inactive>
-                <div class="d-flex flex-column mb-4">
-                  <div>
-                    <v-icon class="mr-2 mt-n1" size="15">
-                      {{ mdiTwitter }}
-                    </v-icon>Twitter : <a target="_blank" href="https://twitter.com/kernoeb">@kernoeb</a>
-                  </div>
-                  <div>
-                    <v-icon class="mr-2 mt-n1" size="15">
-                      {{ mdiMail }}
-                    </v-icon>Mail : <a target="_blank" href="mailto:kernoeb@protonmail.com">kernoeb@protonmail.com</a>
-                  </div>
-                </div>
-              </v-list-item>
-              <v-list-item inactive>
-                <div><small><b>Donateurs :</b> W00dy 🙏</small></div>
-              </v-list-item>
-            </v-list-item-group>
-          </v-card>
-        </v-dialog>
+        <settings
+          :blocklist-select="blocklistSelect"
+          :dialog-settings="dialogSettings"
+          :settings="settings"
+          :color-mode="colorMode"
+          @change_dialog="dialogSettings = $event"
+          @change_settings="settings = $event"
+          @change_color_mode="colorMode = $event"
+          @change_blocklist_select="blocklistSelect = $event; $cookies.set('blocklist', JSON.stringify($event), { maxAge: 2147483646 }); $fetch()"
+        />
       </div>
       <v-btn
         class="ma-2"
@@ -344,9 +195,7 @@
                 {{ event.name }}
               </div>
               <div v-if="event.location || event.description">
-                {{ !event.distance ? event.location : '' }}{{
-                  ((event.location && !event.distance) && event.description) ? ' | ' : ''
-                }}{{ event.description }}
+                {{ !event.distance ? event.location : '' }}{{ ((event.location && !event.distance) && event.description) ? ' | ' : '' }}{{ event.description }}
               </div>
               <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
               <small v-if="event.distance">
@@ -357,51 +206,6 @@
         </v-calendar>
       </transition>
     </v-sheet>
-    <v-dialog
-      v-model="modelBadUrl"
-      :overlay-color="dark ? 'white' : 'black'"
-      persistent
-      max-width="500"
-    >
-      <v-card>
-        <v-card-title class="text-h5">
-          Nouveau !
-        </v-card-title>
-        <v-card-text>
-          <div style="font-size: 17px;">
-            Le planning devient <b>PlanningSup</b> !
-            <br>
-            et change de nom de domaine :
-            <br>
-            <br>
-            <v-btn style="text-transform: none" href="https://planningsup.app" outlined>
-              PlanningSup.app
-            </v-btn>
-            <br><br>
-            C'est clairement plus simple à retenir et ça permet à d'autres écoles de venir ici <small>(pas que des IUTs)</small> :)
-            <br>
-            <small>(oublie pas d'ajouter en favoris)</small>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="grey"
-            text
-            @click="modelBadUrl = false"
-          >
-            Je m'en fiche
-          </v-btn>
-          <v-btn
-            color="green darken-1"
-            text
-            href="https://planningsup.app"
-          >
-            C'est parti !
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
   </div>
   <div v-else class="d-flex justify-center mt-3">
     <v-progress-circular
@@ -412,18 +216,25 @@
 </template>
 
 <script>
-import { mdiTwitter, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import crous from '@/components/crous'
+import { mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { mapState, mapMutations } from 'vuex'
+import Crous from '@/components/Crous'
+import SelectPlanning from '@/components/SelectPlanning'
+import Settings from '@/components/Settings'
+import Bottom from '@/components/Bottom'
+import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
-    crous
+    Crous,
+    SelectPlanning,
+    Settings,
+    Bottom,
+    ErrorAlert
   },
   middleware: 'vuetify-theme',
   data () {
     return {
-      modelBadUrl: false,
-
       // Icons
       mdiMail,
       mdiTwitter,
@@ -439,6 +250,7 @@ export default {
       mdiMenuDown,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
+      mdiClose,
 
       bottom: false,
       selectedEvent: null,
@@ -452,7 +264,6 @@ export default {
       dialogSettings: false,
       settings: [],
       blocklistSelect: [],
-      blocklist: ['Projets Tuteurés', 'Maths'],
       type: 'week',
       types: [{
         text: this.$config.i18n.month,
@@ -470,6 +281,7 @@ export default {
       weekday: [1, 2, 3, 4, 5, 6, 0],
       value: '',
       events: [],
+      titles: [],
       mounted: false,
       start: true,
       currentWeek: '',
@@ -478,94 +290,39 @@ export default {
       nowY: '-10px',
       width: 0,
       doublePress: false,
-      playing: false
+      playing: false,
+      searchCalendar: ''
     }
   },
   fetchOnServer: false,
   async fetch () {
     this.loading = true
+    const apiCalendar = '/api/calendars' || this.$config.apiCalendar
     try {
-      if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
-        // Temp fix to have multiple plannings at once
-        if (this.$route.query?.multi === true || this.$route.query?.multi === 'true') {
-          let nb = ''
-          let tmpEvents = {}
-          while (this.$route.query['u' + nb] && this.$route.query['s' + nb] && this.$route.query['y' + nb] && this.$route.query['s' + nb]) {
-            if (tmpEvents.data) {
-              tmpEvents.data = tmpEvents.data.concat((await this.$axios.$get(this.$config.apiCalendar, {
-                params: {
-                  u: this.$route.query['u' + nb],
-                  s: this.$route.query['s' + nb],
-                  y: this.$route.query['y' + nb],
-                  g: this.$route.query['g' + nb]
-                },
-                withCredentials: true
-              })).data)
-            } else {
-              tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-                params: {
-                  u: this.$route.query['u' + nb],
-                  s: this.$route.query['s' + nb],
-                  y: this.$route.query['y' + nb],
-                  g: this.$route.query['g' + nb]
-                },
-                withCredentials: true
-              })
-            }
-            if (nb === '') { nb = 0 }
-            nb++
-          }
-          // Remove identical events
-          tmpEvents.data = tmpEvents.data.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
-          this.setEvents(tmpEvents, this.$config.i18n.multiplePlannings)
-          this.loading = false
-        } else {
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-            params: {
-              u: this.$route.query.u,
-              s: this.$route.query.s,
-              y: this.$route.query.y,
-              g: this.$route.query.g
-            },
-            withCredentials: true
-          })
-          this.setEvents(tmpEvents)
-          this.loading = false
-          this.$cookies.set('edt', Buffer.from(JSON.stringify({
-            u: this.$route.query.u,
-            s: this.$route.query.s,
-            y: this.$route.query.y,
-            g: this.$route.query.g
-          }), 'binary').toString('base64'), { maxAge: 2147483646 })
-        }
-      } else if (this.$cookies.get('edt') !== undefined) {
+      if (this.$route.query && this.$route.query.p) {
+        const tmpEvents = await this.$axios.$get(apiCalendar, { params: { p: this.$route.query.p }, withCredentials: true })
+        this.setEvents(tmpEvents)
+        this.loading = false
+        this.$cookies.set('plannings', this.$route.query.p, { maxAge: 2147483646 })
+      } else if (this.$cookies.get('plannings') !== undefined) {
         try {
-          const tmp = JSON.parse(Buffer.from(this.$cookies.get('edt'), 'base64').toString('binary'))
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, {
-            params: {
-              u: tmp.u,
-              s: tmp.s,
-              y: tmp.y,
-              g: tmp.g
-            },
-            withCredentials: true
-          })
+          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
           this.setEvents(tmpEvents)
           this.loading = false
         } catch (e) {
-          this.$cookies.remove('edt')
-          const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+          this.$cookies.remove('plannings')
+          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
           this.setEvents(tmpEvents)
           this.loading = false
         }
       } else {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.loading = false
       }
     } catch (e) {
       try {
-        const tmpEvents = await this.$axios.$get(this.$config.apiCalendar, { withCredentials: true })
+        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
         this.setEvents(tmpEvents)
         this.loading = false
       } catch (e) {
@@ -574,19 +331,17 @@ export default {
     }
   },
   computed: {
+    ...mapState(['selectedPlannings']),
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
-    },
-    checkedTheme: {
-      get () {
-        return !this.$vuetify.theme.dark
-      },
-      set () {
-        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-      }
     }
   },
   watch: {
+    searchCalendar () {
+      this.$axios.$get(this.$config.apiUrls, { params: { q: this.searchCalendar } }).then((data) => {
+        this.urls = data
+      }).catch(() => {})
+    },
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
@@ -671,10 +426,6 @@ export default {
       this.$axios.$get(this.$config.apiUrls).then((data) => {
         this.urls = data
       }).catch(() => {})
-
-      if (document.domain === 'planningiut.herokuapp.com' || document.domain === 'planning.noewen.com') {
-        this.modelBadUrl = true
-      }
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
@@ -695,10 +446,22 @@ export default {
     }, 120000)
   },
   methods: {
-    setEvents (events, customText) {
+    ...mapMutations(['setPlannings']),
+    reset () {
+      this.$cookies.remove('plannings')
+      this.setPlannings([])
+      this.$nextTick(() => {
+        this.$router.push({ name: 'index', query: { p: undefined } })
+      })
+    },
+    setEvents (events) {
       this.status = events.status
-      this.events = events.data
-      this.currentUniv = customText || events.name
+      this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
+      this.titles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
+      this.setPlannings((events.plannings || []).map(v => v.id).filter(v => v))
+      this.currentUniv = events.plannings?.length > 1
+        ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings)
+        : (events.plannings?.[0]?.title || '')
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }
@@ -735,10 +498,7 @@ export default {
       } catch (err) {
       }
     },
-    showEvent ({
-      nativeEvent,
-      event
-    }) {
+    showEvent ({ nativeEvent, event }) {
       this.bottom = true
       this.selectedEvent = event
       nativeEvent.stopPropagation()
@@ -747,7 +507,7 @@ export default {
       this.value = ''
     },
     keyboard (event) {
-      if (this.dialogSettings) {
+      if (this.dialogSettings || this.dialogEdt) {
         return
       }
 
