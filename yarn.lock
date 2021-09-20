@@ -2405,10 +2405,10 @@ braces@^3.0.1, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-bree@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/bree/-/bree-6.3.0.tgz#1d2276dc36537e7b522ee4ae4395da263b81c7fe"
-  integrity sha512-m8UjOAXATfE3JVTeuj1cotNQaUp6tXlO8Ge5NPb1bST4MO0FV3hkJf5PfaLyB8ALVJhFsptofxSBrtJkkXTngg==
+bree@^6.3.1:
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/bree/-/bree-6.3.1.tgz#7ebb5f8907de4f50f2195629ac30dd089c141b75"
+  integrity sha512-FADpEV5c+3ZuFIBothyyRUxZClJD2PetIo0lmqAFJ3ZMI9WsSmQmmstZ86Dy0G4Gyw3nPNdfYTjV7+9pPtlB8g==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@breejs/later" "^4.0.2"
@@ -8633,10 +8633,10 @@ safe-timers@^1.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sanitize-html@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/sanitize-html/-/sanitize-html-2.5.0.tgz#142f43524bc6dc8a5e3fb565528aa0d9679c56dd"
-  integrity sha512-smU67ODza8E0rJF7oY37qQqMF5srxwEkqsgV17PFfdYAtIxnicH8LIyDEGINJIso8bPaxRZS7zGhCjg6BeDoqQ==
+sanitize-html@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/sanitize-html/-/sanitize-html-2.5.1.tgz#f49998dc54c8180153940440d3a7294b09e4258a"
+  integrity sha512-hUITPitQk+eFNLtr4dEkaaiAJndG2YE87IOpcfBSL1XdklWgwcNDJdr9Ppe8QKL/C3jFt1xH/Mbj20e0GZQOfg==
   dependencies:
     deepmerge "^4.2.2"
     escape-string-regexp "^4.0.0"
