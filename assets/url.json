@@ -745,6 +745,119 @@
         ]
       },
       {
+        "id": "lp",
+        "title": "Licences Pro",
+        "edts": [
+          {
+            "id": "asur",
+            "title": "ASUR",
+            "edts": [
+              {
+                "id": "asur_fa_cp",
+                "title": "ASUR FA/CP",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2635&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "asur_fi_fc",
+                "title": "ASUR FI/FC",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2636&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "cart",
+            "title": "CART",
+            "edts": [
+              {
+                "id": "lpcart_g1",
+                "title": "LPCART G1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11892&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lpcart_g2",
+                "title": "LPCART G2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12407&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "cpclg",
+            "title": "CPCLG",
+            "edts": [
+              {
+                "id": "cpclg_fa",
+                "title": "CPCLG FA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8225&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "cpclg_fi",
+                "title": "CPCLG FI",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8224&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "ecommerce",
+            "title": "E-COMMERCE",
+            "edts": [
+              {
+                "id": "ecomm_gr_a",
+                "title": "ECOMM GR A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5723&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "ecomm_gr_b",
+                "title": "ECOMM GR B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10029&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "mgri",
+            "title": "MGRI",
+            "edts": [
+              {
+                "id": "gimlpg1",
+                "title": "GIMLPG1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8182&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "gimlpg2",
+                "title": "GIMLPG2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8179&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "ogehr",
+            "title": "OGEHR",
+            "edts": [
+              {
+                "id": "ogehrlp",
+                "title": "OGEHR",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1262&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "rims",
+            "title": "RIMS",
+            "edts": [
+              {
+                "id": "lprims_g1",
+                "title": "LPRIMS G1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8194&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lprims_g2",
+                "title": "LPRIMS G2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8246&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "rt",
         "title": "R&T",
         "edts": [
