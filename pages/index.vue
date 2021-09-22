@@ -589,6 +589,9 @@ export default {
     background: #fff;
     box-shadow: inset 0px 0px 0px 0px #F0F0F0;
   }
+  body {
+    background-color: #fff!important;
+  }
 </style>
 <style v-else>
   ::-webkit-scrollbar-thumb{
@@ -600,6 +603,9 @@ export default {
   ::-webkit-scrollbar-track{
     background: #1E1E1E;
     box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+  }
+  body {
+    background-color: #1E1E1E!important;
   }
 </style>
 
