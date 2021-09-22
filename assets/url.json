@@ -465,6 +465,104 @@
     "title": "IUT de St-Malo",
     "edts": [
       {
+        "id": "cj",
+        "title": "CJ",
+        "edts": [
+          {
+            "id": "1cj",
+            "title": "Année1 S1/S2",
+            "edts": [
+              {
+                "id": "g1a",
+                "title": "G1-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8159&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g1b",
+                "title": "G1-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1305&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g2a",
+                "title": "G2-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8157&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g2b",
+                "title": "G2-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8156&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g3a",
+                "title": "G3-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8154&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g3b",
+                "title": "G3-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8153&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g4a",
+                "title": "G4-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8151&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g4b",
+                "title": "G4-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8149&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "2cj",
+            "title": "Année2 S3/S4",
+            "edts": [
+              {
+                "id": "g1a",
+                "title": "G1-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8191&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g1b",
+                "title": "G1-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8195&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g2a",
+                "title": "G2-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8183&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g2b",
+                "title": "G2-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8181&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g3a",
+                "title": "G3-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8177&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g3b",
+                "title": "G3-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8173&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g4a",
+                "title": "G4-A",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8169&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "g4b",
+                "title": "G4-B",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8168&projectId=3&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "gea",
         "title": "GEA",
         "edts": [
