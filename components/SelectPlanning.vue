@@ -71,4 +71,9 @@ export default {
 .v-expansion-panel-content__wrap {
     padding: 0 18px 16px!important;
 }
+
+.v-list-item__content > .font-weight-bold {
+  text-decoration: underline;
+  color: #2196F3 !important;
+}
 </style>

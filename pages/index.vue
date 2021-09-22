@@ -578,6 +578,31 @@ export default {
 }
 </script>
 
+<style v-if="$vuetify.theme.light">
+  ::-webkit-scrollbar-thumb{
+    background: #BDBDBD;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background: #cecece;
+  }
+  ::-webkit-scrollbar-track{
+    background: #fff;
+    box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+  }
+</style>
+<style v-else>
+  ::-webkit-scrollbar-thumb{
+    background: #BDBDBD;
+  }
+  ::-webkit-scrollbar-thumb:hover{
+    background: #666666;
+  }
+  ::-webkit-scrollbar-track{
+    background: #1E1E1E;
+    box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+  }
+</style>
+
 <style>
 .theme--light .v-calendar-daily__day-interval {
   border-top: #c9c9c9 1px solid !important;
@@ -652,5 +677,22 @@ export default {
 
 .v-expansion-panel-content__wrap {
     padding: 0 12px 16px !important;
+}
+
+.v-btn:not(.v-btn--round).v-size--small {
+  margin: 5px 10px !important;
+}
+
+::-webkit-scrollbar{
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-track{
+  border-radius: 30px;
 }
 </style>
