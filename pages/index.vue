@@ -649,4 +649,8 @@ export default {
   margin-left: 6px!important;
   margin-right: 6px!important;
 }
+
+.v-expansion-panel-content__wrap {
+    padding: 0 12px 16px !important;
+}
 </style>
