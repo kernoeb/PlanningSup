@@ -117,7 +117,7 @@ export default {
     this.mounted = true
 
     this.$watch('$vuetify.theme.dark', () => {
-      document.querySelector('body').className = this.$vuetify.theme.dark ? '' : 'global_light'
+      if (document && document.querySelector('body')) document.querySelector('body').className = this.$vuetify.theme.dark ? '' : 'global_light'
     }, { immediate: true })
 
     if (!navigator.onLine) {
