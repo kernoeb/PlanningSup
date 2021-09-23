@@ -68,8 +68,7 @@ export default {
   ** Server Middleware
   */
   serverMiddleware: [
-    { path: '/api', handler: '~/server/api' }
-    // { path: '/server', handler: '~/server/util/worker' }
+    { path: '/api', handler: '~/server/' }
   ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)

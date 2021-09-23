@@ -1,9 +1,9 @@
 const { Router } = require('express')
 const router = Router()
 
-const logger = require('../../util/signale')
-const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning } = require('../../util/utils')
-const urls = require('../../../assets/url.json')
+const urls = require('../../assets/url.json')
+const logger = require('../util/signale')
+const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning } = require('../util/utils')
 
 const DEBUG = process.env?.DEBUG === 'true'
 const defaultPlanning = ['iutdevannes', 'butdutinfo', '2emeannee', 'a1']

@@ -5,7 +5,7 @@ const { JSDOM } = jsdom
 const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
-const axios = require('../../util/axios')
+const axios = require('../util/axios')
 
 router.get('/crous_menu', process.env.NODE_ENV === 'production' ? routeCache.cacheSeconds(60 * 10) : routeCache.cacheSeconds(0), async (req, res) => {
   try {

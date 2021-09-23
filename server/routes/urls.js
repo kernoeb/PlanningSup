@@ -3,7 +3,7 @@ const path = require('path')
 const { Router } = require('express')
 const router = Router()
 const routeCache = require('route-cache')
-const logger = require('../../util/signale')
+const logger = require('../util/signale')
 
 const PRODUCTION = process.env?.NODE_ENV === 'production'
 
