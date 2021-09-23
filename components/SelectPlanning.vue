@@ -57,10 +57,23 @@ export default {
 <style scoped>
 .select_planning .v-expansion-panel-header, .v-list-item {
   min-height: 34px!important;
-  height: 34px;
+  height: 38px;
 }
 
 .select_planning .v-expansion-panels, .v-expansion-panel {
   border-radius: 0!important;
+}
+
+.v-expansion-panel-header {
+    padding: 16px 18px;
+}
+
+.v-expansion-panel-content__wrap {
+    padding: 0 18px 16px!important;
+}
+
+.v-list-item__content > .font-weight-bold {
+  text-decoration: underline;
+  color: #2196F3 !important;
 }
 </style>

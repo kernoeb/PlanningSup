@@ -109,7 +109,7 @@
             <v-btn text small color="green" @click="reset">
               {{ $config.i18n.reset }}
             </v-btn>
-            <v-tooltip right color="blue">
+            <v-tooltip v-if="selectedPlannings.length" right color="blue">
               <template #activator="{ on, attrs }">
                 <v-btn text small color="blue" v-bind="attrs" v-on="on">
                   {{ $config.i18n.selection }}
@@ -450,9 +450,6 @@ export default {
     reset () {
       this.$cookies.remove('plannings')
       this.setPlannings([])
-      this.$nextTick(() => {
-        this.$router.push({ name: 'index', query: { p: undefined } })
-      })
     },
     setEvents (events) {
       this.status = events.status
@@ -648,5 +645,13 @@ export default {
 .v-event-timed-container {
   margin-left: 6px!important;
   margin-right: 6px!important;
+}
+
+.v-expansion-panel-content__wrap {
+    padding: 0 12px 16px !important;
+}
+
+.v-btn:not(.v-btn--round).v-size--small {
+  margin: 5px 10px !important;
 }
 </style>
