@@ -4,14 +4,18 @@ const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
+const Agenda = require('agenda')
 const packageJson = require('../package.json')
 const logger = require('./util/signale')
+const { fetchAndGetJSON } = require('./util/utils')
 const { Schema } = mongoose
+
+const agenda = new Agenda()
 
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
 
-mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async () => {
+mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async (v) => {
   logger.info('Mongo initialized !')
 
   const planningSchema = new Schema({
@@ -58,9 +62,11 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
       cAdded++
     } catch (err) {}
   }
-  logger.info(cAdded + ' added elements')
 
+  logger.info('------------------')
+  logger.info(cAdded + ' added elements')
   let cDeleted = 0
+
   let cEdited = 0
   for (const p of (await Planning.find({}))) {
     const newPlanning = newPlannings.find(v => v.fullId === p.fullId)
@@ -77,6 +83,53 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
   }
   logger.info(cDeleted + ' deleted elements')
   logger.info(cEdited + ' edited elements')
+  logger.info('------------------')
+
+  // Agenda
+  logger.success('Agenda deleted', (await v.connections[0].db.collection('agenda').deleteMany({})).deletedCount)
+
+  const VAR_PLANNING = 'BACKUP_PLANNINGS'
+
+  agenda.define(VAR_PLANNING, {}, async () => {
+    const plannings = await Planning.find({})
+
+    logger.info('Number of plannings : ' + plannings.length)
+
+    let c = 0
+
+    const startTime = performance.now()
+
+    for (const p of plannings) {
+      const j = await fetchAndGetJSON(p.url)
+      if (j?.events?.length) {
+        p.backup = j.events
+        await p.save()
+      }
+      c++
+      logger.info(c + '/' + plannings.length + ' - ' + p.title)
+      await new Promise(resolve => setTimeout(resolve, 450))
+    }
+
+    const endTime = performance.now()
+    logger.info(`Took ${(endTime - startTime) / 1000} seconds`)
+
+    logger.success('Finished backing plannings')
+  })
+
+  agenda.mongo(v.connections[0].db, 'agenda')
+
+  agenda.on('ready', async () => {
+    setTimeout(() => {
+      agenda.start().then(() => {
+        logger.success('Agenda started successfully')
+      })
+    }, 1000)
+
+    if (!process.env.NO_UPDATE) {
+      const UPDATE_CHALLENGES = agenda.create(VAR_PLANNING, {})
+      await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
+    }
+  })
 })
 
 // Create express instance

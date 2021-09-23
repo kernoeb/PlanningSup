@@ -1,4 +1,5 @@
 const ical = require('cal-parser')
+const mongoose = require('mongoose')
 const axios = require('./axios')
 const logger = require('./signale')
 
@@ -44,7 +45,8 @@ const cleanLocation = l => l && l
 
 module.exports = {
   getBackedPlanning: async (id) => {
-    return []
+    const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
+    return tmpPlanning && tmpPlanning.backup
   },
   /**
    * Get formatted json
@@ -53,8 +55,9 @@ module.exports = {
    * @returns {*[]}
    */
   getFormattedEvents: (j, blocklist) => {
+    if (!j.events || !j) return undefined
     const events = []
-    for (const i of j.events) {
+    for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
         events.push({
           name: i.summary.value.trim(),

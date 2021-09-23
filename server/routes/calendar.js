@@ -62,11 +62,9 @@ router.get('/calendars', async (req, res) => {
     let status = 'on'
     const plannings = await Promise.all((data || []).map(async (v, i) => {
       if (!v) status = 'semi'
-      // TODO Here get last backed planning
-      console.log(tmpUrls?.[i]?.id)
       let events
       if (v) events = getFormattedEvents(v, blocklist)
-      else events = await getBackedPlanning(tmpUrls?.[i]?.id)
+      else events = getFormattedEvents(await getBackedPlanning(tmpUrls?.[i]?.id), blocklist)
       return ({
         id: tmpUrls?.[i]?.id,
         title: tmpUrls?.[i]?.title,
