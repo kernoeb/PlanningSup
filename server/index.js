@@ -14,6 +14,7 @@ const agenda = new Agenda()
 
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
+logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
 
 mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async (v) => {
   logger.info('Mongo initialized !')
