@@ -45,8 +45,12 @@ const cleanLocation = l => l && l
 
 module.exports = {
   getBackedPlanning: async (id) => {
-    const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
-    return tmpPlanning && tmpPlanning.backup
+    try {
+      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
+      return tmpPlanning && tmpPlanning.backup
+    } catch (err) {
+      return null
+    }
   },
   /**
    * Get formatted json

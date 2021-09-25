@@ -22,7 +22,7 @@
       <crous v-if="currentUniv.includes('Vannes')" />
     </div>
     <transition name="fade">
-      <error-alert v-if="status !== 'on'" :timestamp="timestamp" :status="status" />
+      <error-alert v-if="status !== 'on' && status !== 'reset'" :timestamp="timestamp" :status="status" />
     </transition>
     <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
@@ -88,17 +88,36 @@
             </v-tooltip>
           </template>
           <v-card>
-            <v-card-title class="headline">
-              <v-icon class="mr-2">
-                {{ mdiCalendar }}
-              </v-icon>
-              <span style="font-size: 15px">{{ $config.i18n.chooseEdt }} ({{ selectedPlannings.length }} sélectionnés)</span>
-            </v-card-title>
+            <v-toolbar
+              class="toolbar_edt"
+              flat
+            >
+              <v-card-title class="headline">
+                <v-icon class="mr-3">
+                  {{ mdiCalendar }}
+                </v-icon>
+                <div>
+                  <div style="font-size: 15px; height: 20px;">
+                    {{ $config.i18n.chooseEdt }}
+                  </div>
+                  <div style="font-size: 10px;">
+                    {{ (selectedPlannings && selectedPlannings.length) || 0 }} sélectionnés
+                  </div>
+                </div>
+              </v-card-title>
+              <v-spacer />
+              <v-btn
+                icon
+                @click="dialogEdt = false"
+              >
+                <v-icon>{{ mdiClose }}</v-icon>
+              </v-btn>
+            </v-toolbar>
 
             <v-divider />
 
             <v-text-field
-              v-model="searchCalendar"
+              v-model.trim="searchCalendar"
               :label="$config.i18n.searchPlanning"
               filled
               clearable
@@ -109,19 +128,41 @@
             <v-btn text small color="green" @click="reset">
               {{ $config.i18n.reset }}
             </v-btn>
-            <v-tooltip v-if="selectedPlannings.length" right color="blue">
+            <v-tooltip v-if="selectedPlannings && selectedPlannings.length" right color="blue">
               <template #activator="{ on, attrs }">
                 <v-btn text small color="blue" v-bind="attrs" v-on="on">
                   {{ $config.i18n.selection }}
                 </v-btn>
               </template>
-              <div>
-                <div v-for="(p, i) in selectedPlannings" :key="`selectedPlanning_${i}`">
-                  {{ (titles.find(i => i.id === p) || {}).title }}
+              <div v-if="selectedPlannings">
+                <div v-for="(p, i) in selectedPlannings.map(v => v.title)" :key="`selectedPlanning_${i}`">
+                  {{ p }}
                 </div>
               </div>
             </v-tooltip>
-            <select-planning :urls="urls" />
+            <v-treeview
+              v-if="selectedPlannings"
+              v-model="selectedPlannings"
+              :on-icon="mdiCheckboxMarked"
+              :indeterminate-icon="mdiMinusBox"
+              :off-icon="mdiCheckboxBlankOutline"
+              selectable
+              dense
+              return-object
+              :search="searchCalendar"
+              :filter="filter"
+              transition
+              open-on-click
+              :expand-icon="mdiMenuDown"
+              :items="urls"
+              item-children="edts"
+              item-key="fullId"
+              item-text="title"
+            >
+              <template #label="{item}">
+                <span :class="selectedPlannings.some(i => i.fullId === item.fullId) ? 'selected_planning' : ''">{{ item.title }}</span>
+              </template>
+            </v-treeview>
           </v-card>
         </v-dialog>
         <v-tooltip top>
@@ -140,10 +181,8 @@
           :blocklist-select="blocklistSelect"
           :dialog-settings="dialogSettings"
           :settings="settings"
-          :color-mode="colorMode"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"
-          @change_color_mode="colorMode = $event"
           @change_blocklist_select="blocklistSelect = $event; $cookies.set('blocklist', JSON.stringify($event), { maxAge: 2147483646 }); $fetch()"
         />
       </div>
@@ -216,10 +255,8 @@
 </template>
 
 <script>
-import { mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import { mapState, mapMutations } from 'vuex'
+import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import Crous from '@/components/Crous'
-import SelectPlanning from '@/components/SelectPlanning'
 import Settings from '@/components/Settings'
 import Bottom from '@/components/Bottom'
 import ErrorAlert from '@/components/ErrorAlert'
@@ -227,7 +264,6 @@ import ErrorAlert from '@/components/ErrorAlert'
 export default {
   components: {
     Crous,
-    SelectPlanning,
     Settings,
     Bottom,
     ErrorAlert
@@ -251,11 +287,11 @@ export default {
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
       mdiClose,
+      mdiMinusBox,
 
       bottom: false,
       selectedEvent: null,
       loading: true,
-      colorMode: true,
       urls: [],
       timestamp: null,
       status: 'on',
@@ -281,7 +317,6 @@ export default {
       weekday: [1, 2, 3, 4, 5, 6, 0],
       value: '',
       events: [],
-      titles: [],
       mounted: false,
       start: true,
       currentWeek: '',
@@ -291,7 +326,9 @@ export default {
       width: 0,
       doublePress: false,
       playing: false,
-      searchCalendar: ''
+      searchCalendar: '',
+      selectedPlannings: null,
+      firstOK: false
     }
   },
   fetchOnServer: false,
@@ -331,41 +368,29 @@ export default {
     }
   },
   computed: {
-    ...mapState(['selectedPlannings']),
+    filter () {
+      return (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase())
+    },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
     }
   },
   watch: {
-    searchCalendar () {
-      this.$axios.$get(this.$config.apiUrls, { params: { q: this.searchCalendar } }).then((data) => {
-        this.urls = data
-      }).catch(() => {})
+    selectedPlannings () {
+      if (this.selectedPlannings && this.firstOK) {
+        this.$router.push({
+          name: 'index',
+          query: { p: this.selectedPlannings.length ? Buffer.from(JSON.stringify(this.selectedPlannings.map(v => v.fullId)), 'binary').toString('base64') : 'reset' }
+        })
+      }
+      this.firstOK = true
     },
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
-    },
-    colorMode () {
-      this.setColorMode()
     }
   },
   created () {
-    try {
-      if (this.$cookies.get('colorMode') !== undefined) {
-        const tmp = this.$cookies.get('colorMode')
-        if (typeof tmp === 'boolean') {
-          this.colorMode = tmp
-        } else {
-          this.colorMode = true
-        }
-      } else {
-        this.colorMode = true
-      }
-    } catch (e) {
-      this.colorMode = true
-    }
-
     if (this.$cookies.get('blocklist') !== undefined) {
       try {
         const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
@@ -446,16 +471,17 @@ export default {
     }, 120000)
   },
   methods: {
-    ...mapMutations(['setPlannings']),
     reset () {
       this.$cookies.remove('plannings')
-      this.setPlannings([])
+      this.selectedPlannings = []
+      this.events = []
+      this.currentUniv = ''
+      this.searchCalendar = ''
     },
     setEvents (events) {
       this.status = events.status
       this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
-      this.titles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
-      this.setPlannings((events.plannings || []).map(v => v.id).filter(v => v))
+      this.selectedPlannings = (events.plannings || []).map(v => ({ fullId: v.id, title: v.title }))
       this.currentUniv = events.plannings?.length > 1
         ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings)
         : (events.plannings?.[0]?.title || '')
@@ -464,10 +490,6 @@ export default {
         if (window) { window.last_timestamp = this.timestamp }
       }
       this.start = false
-    },
-    setColorMode () {
-      this.$cookies.set('colorMode', this.colorMode, { maxAge: 2147483646 })
-      this.$fetch()
     },
     goToDay (day) {
       this.type = 'day'
@@ -653,5 +675,15 @@ export default {
 
 .v-btn:not(.v-btn--round).v-size--small {
   margin: 5px 10px !important;
+}
+
+.selected_planning {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #2196F3 !important;
+}
+
+.toolbar_edt .v-toolbar__content {
+  padding-left: 5px!important;
 }
 </style>

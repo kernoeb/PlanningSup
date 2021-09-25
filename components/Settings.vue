@@ -20,12 +20,24 @@
       </v-tooltip>
     </template>
     <v-card>
-      <v-card-title class="headline">
-        <v-icon class="mr-2">
-          {{ mdiCogOutline }}
-        </v-icon>
-        <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
-      </v-card-title>
+      <v-toolbar
+        class="toolbar_edt"
+        flat
+      >
+        <v-card-title class="headline">
+          <v-icon class="mr-2">
+            {{ mdiCogOutline }}
+          </v-icon>
+          <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
+        </v-card-title>
+        <v-spacer />
+        <v-btn
+          icon
+          @click="$emit('change_dialog', false)"
+        >
+          <v-icon>{{ mdiClose }}</v-icon>
+        </v-btn>
+      </v-toolbar>
 
       <v-divider />
 
@@ -48,25 +60,6 @@
           <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
             <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
             <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-action>
-            <v-checkbox
-              :false-value="false"
-              :true-value="true"
-              :input-value="colorMode"
-              :value="colorMode"
-              :indeterminate-icon="mdiCheckboxBlankOutline"
-              :off-icon="mdiCheckboxBlankOutline"
-              :on-icon="mdiCheckboxMarked"
-              @change="$emit('change_color_mode', !!$event)"
-            />
-          </v-list-item-action>
-
-          <v-list-item-content @click="$emit('change_color_mode', !!!colorMode)">
-            <v-list-item-title>{{ $config.i18n.colorMode }}</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.colorModeDesc }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -126,7 +119,7 @@
 </template>
 
 <script>
-import { mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter } from '@mdi/js'
+import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter } from '@mdi/js'
 
 export default {
   name: 'Settings',
@@ -138,10 +131,6 @@ export default {
     settings: {
       type: Array,
       default: () => []
-    },
-    colorMode: {
-      type: Boolean,
-      default: false
     },
     blocklistSelect: {
       type: Array,
@@ -157,6 +146,7 @@ export default {
       mdiMenuDown,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
+      mdiClose,
 
       blocklist: ['Projets Tuteurés', 'Maths'] // Oui, bon...
     }

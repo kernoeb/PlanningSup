@@ -23,7 +23,7 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
     url: String,
     backup: Array,
     timestamp: Date,
-    title: String
+    title: { type: 'String', index: true }
   })
 
   const Planning = mongoose.model('Planning', planningSchema)
@@ -71,13 +71,13 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
   for (const p of (await Planning.find({}))) {
     const newPlanning = newPlannings.find(v => v.fullId === p.fullId)
     if (!newPlanning) {
-      logger.log('Deleted ' + p.fullId)
+      logger.log('Deleted : ' + p.fullId)
       try {
         await Planning.deleteOne({ _id: p._id })
         cDeleted++
       } catch (err) {}
-    } else if (newPlanning.title !== p.title) {
-      await Planning.updateOne({ fullId: newPlanning.fullId }, { $set: { title: newPlanning.title } })
+    } else if (newPlanning.title !== p.title || newPlanning.url !== p.url) {
+      await Planning.updateOne({ fullId: newPlanning.fullId }, { $set: { title: newPlanning.title, url: newPlanning.url } })
       cEdited++
     }
   }
@@ -130,6 +130,8 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
       await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
     }
   })
+}).catch(() => {
+  logger.error('Error while initializing mongo')
 })
 
 // Create express instance

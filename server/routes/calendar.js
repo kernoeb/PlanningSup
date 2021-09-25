@@ -34,6 +34,8 @@ function getPlanning (arr) {
  * From `p` parameter or `plannings` cookie
  */
 router.get('/calendars', async (req, res) => {
+  if (req?.query?.p === 'reset') return res.json({ status: 'reset' })
+
   // Get blocklist courses
   let blocklist = []
   try {
