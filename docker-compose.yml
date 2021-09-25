@@ -5,14 +5,16 @@ services:
     image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     ports:
-      - "3000:3000"
+      - "31020:3000"
     networks:
       - planning
+    environment:
+      - MONGODB_URL=mongodb:27017
   mongodb:
     image: docker.io/bitnami/mongodb:5.0
     restart: always
     ports:
-      - "27017:27017"
+      - "27017"
     volumes:
       - '/opt/planning_v2:/bitnami/mongodb'
     networks:
