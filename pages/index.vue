@@ -140,29 +140,7 @@
                 </div>
               </div>
             </v-tooltip>
-            <v-treeview
-              v-if="selectedPlannings"
-              v-model="selectedPlannings"
-              :on-icon="mdiCheckboxMarked"
-              :indeterminate-icon="mdiMinusBox"
-              :off-icon="mdiCheckboxBlankOutline"
-              selectable
-              dense
-              return-object
-              :search="searchCalendar"
-              :filter="filter"
-              transition
-              open-on-click
-              :expand-icon="mdiMenuDown"
-              :items="urls"
-              item-children="edts"
-              item-key="fullId"
-              item-text="title"
-            >
-              <template #label="{item}">
-                <span :class="selectedPlannings.some(i => i.fullId === item.fullId) ? 'selected_planning' : ''">{{ item.title }}</span>
-              </template>
-            </v-treeview>
+            <select-planning v-if="selectedPlannings" :search-calendar="searchCalendar" :selected-plannings="selectedPlannings" @selected-plannings="selectedPlannings = $event" />
           </v-card>
         </v-dialog>
         <v-tooltip top>
@@ -256,17 +234,16 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import Crous from '@/components/Crous'
-import Settings from '@/components/Settings'
 import Bottom from '@/components/Bottom'
 import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
-    Crous,
-    Settings,
+    Crous: () => import('@/components/Crous'),
+    Settings: () => import('@/components/Settings'),
     Bottom,
-    ErrorAlert
+    ErrorAlert,
+    SelectPlanning: () => import('@/components/SelectPlanning')
   },
   middleware: 'vuetify-theme',
   data () {
@@ -292,7 +269,6 @@ export default {
       bottom: false,
       selectedEvent: null,
       loading: true,
-      urls: [],
       timestamp: null,
       status: 'on',
       timer: 0,
@@ -368,9 +344,6 @@ export default {
     }
   },
   computed: {
-    filter () {
-      return (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase())
-    },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
     }
@@ -447,10 +420,6 @@ export default {
     setTimeout(() => {
       this.skipWeekend()
       this.updateTime()
-
-      this.$axios.$get(this.$config.apiUrls).then((data) => {
-        this.urls = data
-      }).catch(() => {})
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
@@ -679,7 +648,6 @@ export default {
 
 .selected_planning {
   font-weight: bold;
-  text-decoration: underline;
   color: #2196F3 !important;
 }
 
