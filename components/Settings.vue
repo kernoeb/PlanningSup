@@ -148,7 +148,7 @@ export default {
       mdiCheckboxMarked,
       mdiClose,
 
-      blocklist: ['Projets Tuteurés', 'Maths'] // Oui, bon...
+      blocklist: ['Maths', 'Communication'] // Oui, bon...
     }
   },
   computed: {
