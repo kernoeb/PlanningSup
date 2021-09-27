@@ -80,11 +80,12 @@ module.exports = {
   /**
    * Fetch planning from URL, convert ICS to JSON
    * @param url
+   * @param instance optional axios instance
    * @returns {Promise<*>}
    */
-  fetchAndGetJSON: async (url) => {
+  fetchAndGetJSON: async (url, instance) => {
     try {
-      const response = await axios.get(url)
+      const response = instance ? await instance.get(url) : await axios.get(url)
       const { data } = response
       if (data && data.length && !data.includes('<!DOCTYPE html>')) { // Yeah that's perfectible
         const ics = ical.parseString(data)

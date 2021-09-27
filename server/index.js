@@ -1,15 +1,17 @@
 const fs = require('fs')
 const path = require('path')
+const http = require('http')
+const https = require('https')
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const Agenda = require('agenda')
+const axios = require('axios')
 const packageJson = require('../package.json')
 const logger = require('./util/signale')
 const { fetchAndGetJSON } = require('./util/utils')
 const { Schema } = mongoose
-
 const agenda = new Agenda()
 
 logger.info('Starting...')
@@ -92,6 +94,12 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
   const VAR_PLANNING = 'BACKUP_PLANNINGS'
 
   agenda.define(VAR_PLANNING, {}, async () => {
+    const instance = axios.create({
+      timeout: 5000,
+      httpAgent: new http.Agent({ keepAlive: true }),
+      httpsAgent: new https.Agent({ keepAlive: true })
+    })
+
     const plannings = await Planning.find({})
 
     logger.info('Number of plannings : ' + plannings.length)
@@ -101,7 +109,7 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
     const startTime = performance.now()
 
     for (const p of plannings) {
-      const j = await fetchAndGetJSON(p.url)
+      const j = await fetchAndGetJSON(p.url, instance)
       if (j?.events?.length) {
         p.backup = j.events
         await p.save()
