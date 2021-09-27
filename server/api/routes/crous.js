@@ -34,7 +34,12 @@ router.get('/crous/:ville', process.env.NODE_ENV === 'production' ? routeCache.c
         for (const elem of result.root.resto) {
           var id = (elem["$"].id);
 
-          json[id].menu = elem.menu
+          json[id].menu = new Array()
+          if (elem.menu != null) {
+            for (const repas of elem.menu) {
+              json[id].menu.push({ data: repas["$"].date, repas: repas["_"] })
+            }
+		      }
         }
         return res.json(json)
       });
