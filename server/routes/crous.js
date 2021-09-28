@@ -6,18 +6,17 @@ const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
-const axios = require('../../axios')
 const axios = require('../util/axios')
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
 
-router.get('/crous', async (req, res) => {
+router.get('/crous', (req, res) => {
   return res.json(villes)
 })
 
-router.get('/crous/:ville',  routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), async (req, res) => {
+router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), async (req, res) => {
   try {
-    if (!villes.includes(req.params.ville)) return res.status(400).json({title: 'Nope! Are U tryna hak PlanningSup???!!'})
+    if (!villes.includes(req.params.ville)) return res.status(400).json({ title: 'Nope! Are U tryna hak PlanningSup???!!' })
     const d = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
     const d2 = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
 
