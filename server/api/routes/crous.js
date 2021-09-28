@@ -1,52 +1,59 @@
-const { Router, json } = require('express')
+const { Router } = require('express')
 const router = Router()
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
+const xml2js = require('xml2js')
 const axios = require('../../axios')
-const xml2js = require('xml2js');
 
-router.get('/crous/:ville', process.env.NODE_ENV === 'production' ? routeCache.cacheSeconds(60 * 10) : routeCache.cacheSeconds(0), async (req, res) => {
+const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
+
+router.get('/crous', async (req, res) => {
+  return res.json(villes)
+})
+
+router.get('/crous/:ville',  routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), async (req, res) => {
   try {
+    if (!villes.includes(req.params.ville)) return res.status(400).json({title: 'Nope! Are U tryna hak PlanningSup???!!'})
+    const d = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
+    const d2 = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
 
-    const d = await axios.get("http://webservices-v2.crous-mobile.fr:8080/feed/" + req.params.ville + "/externe/resto.xml")
-    const d2 = await axios.get("http://webservices-v2.crous-mobile.fr:8080/feed/" + req.params.ville + "/externe/menu.xml")
-    
-    var json = {}
+    const json = {}
     xml2js.parseString(d.data, (err, result) => {
       if (err) {
-        throw err;
+        throw err
       }
       for (const elem of result.root.resto) {
-        var id = (elem["$"].id);
+        const id = (elem.$.id)
         json[id] = ({
-          description: elem["$"],
-          infos: elem.infos[0],
-          contact: elem.contact[0]
+          description: elem.$,
+          infos: sanitizeHtml(elem.infos[0]),
+          contact: sanitizeHtml(elem.contact[0])
         })
       }
       xml2js.parseString(d2.data, (err, result) => {
         if (err) {
-          throw err;
+          throw err
         }
         for (const elem of result.root.resto) {
-          var id = (elem["$"].id);
+          const id = (elem.$.id)
 
-          json[id].menu = new Array()
+          json[id].menu = []
           if (elem.menu != null) {
             for (const repas of elem.menu) {
-              json[id].menu.push({ data: repas["$"].date, repas: repas["_"] })
+              json[id].menu.push({
+                data: sanitizeHtml(repas.$.date),
+                repas: sanitizeHtml(repas._)
+              })
             }
-		      }
+          }
         }
         return res.json(json)
-      });
-    });
-    
+      })
+    })
   } catch (err) {
-    throw err;
     return res.json({ title: err })
   }
 })
