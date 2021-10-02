@@ -29,14 +29,7 @@ jobs:
         with:
           node-version: '16.10.0'
       - name: Run tests
-      - run: yarn && yarn test
-      - run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
+        run: yarn && yarn test
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
