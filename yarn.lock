@@ -1367,10 +1367,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/js@npm:^6.1.95":
-  version: 6.1.95
-  resolution: "@mdi/js@npm:6.1.95"
-  checksum: 318899617da78956ae1e0650b83be65aa459f7fdb9f45212fe081776016e3b9881d1cf03458f65a5d86a99c3387caad0d87828808bca87e21db7e69706337016
+"@mdi/js@npm:^6.2.95":
+  version: 6.2.95
+  resolution: "@mdi/js@npm:6.2.95"
+  checksum: 85f33d0bbb0665ef048dbcae8759eb7b17db35594f1e471c71946fb36ea8416d3c21b3a1013bb587c7293f2c84d97af6ed791a6904625abdae7ec96a75569e5e
   languageName: node
   linkType: hard
 
@@ -3540,12 +3540,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1, axios@npm:^0.21.4":
+"axios@npm:^0.21.1":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
     follow-redirects: ^1.14.0
   checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.22.0":
+  version: 0.22.0
+  resolution: "axios@npm:0.22.0"
+  dependencies:
+    follow-redirects: ^1.14.4
+  checksum: 83dc4d02e180f69aa9f0d1d0d50b84ec3603517230d58b4c3720ebd440c7e64ea86c5e892dc6e19061608e8e1103504a709d8baa4051c4b7652101b523d04b63
   languageName: node
   linkType: hard
 
@@ -5031,10 +5040,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.18.0":
-  version: 3.18.0
-  resolution: "core-js@npm:3.18.0"
-  checksum: 192c345eb0c8b9d582ebed798cf124e00cd8241303c3c801987563f8ebb8cb991e2ff91494c258752014c29d5515070d2c0a862687401c7d7e1e2f96f8980d42
+"core-js@npm:^3.18.1":
+  version: 3.18.1
+  resolution: "core-js@npm:3.18.1"
+  checksum: 89cac0fe657df722d10b0e658ee76af12a614c0a75fe3fb11e87c2e3f27f6d7e609e3bf40748da5d8feb055b0535766a583ff1d1ac89dba57105f6f1ad64dc21
   languageName: node
   linkType: hard
 
@@ -7198,7 +7207,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.4":
   version: 1.14.4
   resolution: "follow-redirects@npm:1.14.4"
   peerDependenciesMeta:
@@ -10649,9 +10658,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.0.7":
-  version: 6.0.7
-  resolution: "mongoose@npm:6.0.7"
+"mongoose@npm:^6.0.8":
+  version: 6.0.8
+  resolution: "mongoose@npm:6.0.8"
   dependencies:
     bson: ^4.2.2
     kareem: 2.3.2
@@ -10662,7 +10671,7 @@ fsevents@~2.3.2:
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: d803758da3bfec7a493a69feccbdc009bbf6f1141096d4b1c971269f182fba8dd5173c1802a8944831dfc6222ee53c50324c5d368e788085576c931704f94ce8
+  checksum: 3d2ad342d6003f9ede81bc4d7fd6e7f9c2c1d2e480583a27e2f9a9f8c4d680295a1f964f580851ee22ee7d60e083b78f8047262145924323819239e603532586
   languageName: node
   linkType: hard
 
@@ -12129,7 +12138,7 @@ fsevents@~2.3.2:
   dependencies:
     "@dansmaculotte/nuxt-security": ^0.0.5
     "@fullhuman/postcss-purgecss": ^3.1.3
-    "@mdi/js": ^6.1.95
+    "@mdi/js": ^6.2.95
     "@nuxtjs/axios": ^5.13.6
     "@nuxtjs/component-cache": ^1.1.6
     "@nuxtjs/eslint-config": ^6.0.1
@@ -12139,14 +12148,14 @@ fsevents@~2.3.2:
     "@nuxtjs/pwa": ^3.3.5
     "@nuxtjs/vuetify": ^1.12.1
     agenda: ^4.2.1
-    axios: ^0.21.4
+    axios: ^0.22.0
     babel-eslint: ^10.1.0
     cal-parser: ^1.0.1
     chai: ^4.3.4
     config: ^3.3.6
     cookie-parser: ^1.4.5
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.18.0
+    core-js: ^3.18.1
     cors: ^2.8.5
     css-byebye: ^3.0.0
     eslint: ^7.32.0
@@ -12156,7 +12165,7 @@ fsevents@~2.3.2:
     luxon: ^2.0.2
     minify-css-string: ^1.0.0
     mocha: ^9.1.2
-    mongoose: ^6.0.7
+    mongoose: ^6.0.8
     nanoexpress: ^5.1.0
     nodemon: ^2.0.13
     nuxt: ^2.15.8
