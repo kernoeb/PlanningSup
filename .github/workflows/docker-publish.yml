@@ -25,9 +25,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
       - name: Run tests
-        run: |
+      - run: yarn && yarn test
+      - run: |
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
