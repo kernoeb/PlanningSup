@@ -4,7 +4,7 @@
   "apiCrous": "/api/crous_menu",
   "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
   "name": "PlanningSup",
-  "durationWorker": 3000,
+  "duration": 3000,
   "durationCalendar": 2500,
   "default": {
     "univ": "iutdevannes",

@@ -4,6 +4,7 @@ const http = require('http')
 const https = require('https')
 const express = require('express')
 const cors = require('cors')
+const config = require('config')
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const Agenda = require('agenda')
@@ -17,131 +18,149 @@ const agenda = new Agenda()
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
 logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
+logger.info('Duration : ' + (process.env.DURATION_CALENDAR || config.get('duration')))
 
-mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async (v) => {
-  logger.info('Mongo initialized !')
+if (!process.env.NO_MONGO) {
+  mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async (v) => {
+    logger.info('Mongo initialized !')
 
-  const planningSchema = new Schema({
-    fullId: { type: 'String', unique: true, index: true },
-    url: String,
-    backup: Array,
-    timestamp: Date,
-    title: { type: 'String', index: true }
-  })
-
-  const Planning = mongoose.model('Planning', planningSchema)
-
-  const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
-
-  const newPlannings = []
-  const idSeparator = '.'
-  const titleSeparator = ' > '
-  function recursiveEdts (j, id, title) {
-    if (j.edts) {
-      j.edts.forEach((edts) => {
-        recursiveEdts(edts, id ? (id + idSeparator + j.id) : j.id, title ? (title + titleSeparator + j.title) : j.title)
-      })
-    } else {
-      const tmp = { ...j }
-      tmp.fullId = id + idSeparator + tmp.id
-      tmp.title = title + titleSeparator + tmp.title
-      tmp.backup = []
-      tmp.timestamp = new Date()
-      delete tmp.id
-      newPlannings.push(tmp)
-    }
-  }
-
-  j.forEach((univ) => {
-    recursiveEdts(univ)
-  })
-
-  let cAdded = 0
-  for (const p of newPlannings) {
-    try {
-      const tmpPlanning = new Planning(p)
-      await tmpPlanning.save()
-      logger.log('Added : ' + tmpPlanning.fullId)
-      cAdded++
-    } catch (err) {}
-  }
-
-  logger.info('------------------')
-  logger.info(cAdded + ' added elements')
-  let cDeleted = 0
-
-  let cEdited = 0
-  for (const p of (await Planning.find({}))) {
-    const newPlanning = newPlannings.find(v => v.fullId === p.fullId)
-    if (!newPlanning) {
-      logger.log('Deleted : ' + p.fullId)
-      try {
-        await Planning.deleteOne({ _id: p._id })
-        cDeleted++
-      } catch (err) {}
-    } else if (newPlanning.title !== p.title || newPlanning.url !== p.url) {
-      await Planning.updateOne({ fullId: newPlanning.fullId }, { $set: { title: newPlanning.title, url: newPlanning.url } })
-      cEdited++
-    }
-  }
-  logger.info(cDeleted + ' deleted elements')
-  logger.info(cEdited + ' edited elements')
-  logger.info('------------------')
-
-  // Agenda
-  logger.success('Agenda deleted', (await v.connections[0].db.collection('agenda').deleteMany({})).deletedCount)
-
-  const VAR_PLANNING = 'BACKUP_PLANNINGS'
-
-  agenda.define(VAR_PLANNING, {}, async () => {
-    const instance = axios.create({
-      timeout: 5000,
-      httpAgent: new http.Agent({ keepAlive: true }),
-      httpsAgent: new https.Agent({ keepAlive: true })
+    const planningSchema = new Schema({
+      fullId: {
+        type: 'String',
+        unique: true,
+        index: true
+      },
+      url: String,
+      backup: Array,
+      timestamp: Date,
+      title: {
+        type: 'String',
+        index: true
+      }
     })
 
-    const plannings = await Planning.find({})
+    const Planning = mongoose.model('Planning', planningSchema)
 
-    logger.info('Number of plannings : ' + plannings.length)
+    const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
 
-    let c = 0
+    const newPlannings = []
+    const idSeparator = '.'
+    const titleSeparator = ' > '
 
-    const startTime = performance.now()
-
-    for (const p of plannings) {
-      const j = await fetchAndGetJSON(p.url, instance)
-      if (j?.events?.length) {
-        p.backup = j.events
-        await p.save()
+    function recursiveEdts (j, id, title) {
+      if (j.edts) {
+        j.edts.forEach((edts) => {
+          recursiveEdts(edts, id ? (id + idSeparator + j.id) : j.id, title ? (title + titleSeparator + j.title) : j.title)
+        })
+      } else {
+        const tmp = { ...j }
+        tmp.fullId = id + idSeparator + tmp.id
+        tmp.title = title + titleSeparator + tmp.title
+        tmp.backup = []
+        tmp.timestamp = new Date()
+        delete tmp.id
+        newPlannings.push(tmp)
       }
-      c++
-      logger.info(c + '/' + plannings.length + ' - ' + p.title)
-      await new Promise(resolve => setTimeout(resolve, 450))
     }
 
-    const endTime = performance.now()
-    logger.info(`Took ${(endTime - startTime) / 1000} seconds`)
+    j.forEach((univ) => {
+      recursiveEdts(univ)
+    })
 
-    logger.success('Finished backing plannings')
-  })
+    let cAdded = 0
+    for (const p of newPlannings) {
+      try {
+        const tmpPlanning = new Planning(p)
+        await tmpPlanning.save()
+        logger.log('Added : ' + tmpPlanning.fullId)
+        cAdded++
+      } catch (err) {
+      }
+    }
 
-  agenda.mongo(v.connections[0].db, 'agenda')
+    logger.info('------------------')
+    logger.info(cAdded + ' added elements')
+    let cDeleted = 0
 
-  agenda.on('ready', async () => {
-    setTimeout(() => {
-      agenda.start().then(() => {
-        logger.success('Agenda started successfully')
+    let cEdited = 0
+    for (const p of (await Planning.find({}))) {
+      const newPlanning = newPlannings.find(v => v.fullId === p.fullId)
+      if (!newPlanning) {
+        logger.log('Deleted : ' + p.fullId)
+        try {
+          await Planning.deleteOne({ _id: p._id })
+          cDeleted++
+        } catch (err) {
+        }
+      } else if (newPlanning.title !== p.title || newPlanning.url !== p.url) {
+        await Planning.updateOne({ fullId: newPlanning.fullId }, {
+          $set: {
+            title: newPlanning.title,
+            url: newPlanning.url
+          }
+        })
+        cEdited++
+      }
+    }
+    logger.info(cDeleted + ' deleted elements')
+    logger.info(cEdited + ' edited elements')
+    logger.info('------------------')
+
+    // Agenda
+    logger.success('Agenda deleted', (await v.connections[0].db.collection('agenda').deleteMany({})).deletedCount)
+
+    const VAR_PLANNING = 'BACKUP_PLANNINGS'
+
+    agenda.define(VAR_PLANNING, {}, async () => {
+      const instance = axios.create({
+        timeout: 5000,
+        httpAgent: new http.Agent({ keepAlive: true }),
+        httpsAgent: new https.Agent({ keepAlive: true })
       })
-    }, 1000)
 
-    if (!process.env.NO_UPDATE) {
-      const UPDATE_CHALLENGES = agenda.create(VAR_PLANNING, {})
-      await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
-    }
+      const plannings = await Planning.find({})
+
+      logger.info('Number of plannings : ' + plannings.length)
+
+      let c = 0
+
+      const startTime = performance.now()
+
+      for (const p of plannings) {
+        const j = await fetchAndGetJSON(p.url, instance)
+        if (j?.events?.length) {
+          p.backup = j.events
+          await p.save()
+        }
+        c++
+        logger.info(c + '/' + plannings.length + ' - ' + p.title)
+        await new Promise(resolve => setTimeout(resolve, 450))
+      }
+
+      const endTime = performance.now()
+      logger.info(`Took ${(endTime - startTime) / 1000} seconds`)
+
+      logger.success('Finished backing plannings')
+    })
+
+    agenda.mongo(v.connections[0].db, 'agenda')
+
+    agenda.on('ready', async () => {
+      setTimeout(() => {
+        agenda.start().then(() => {
+          logger.success('Agenda started successfully')
+        })
+      }, 1000)
+
+      if (!process.env.NO_UPDATE) {
+        const UPDATE_CHALLENGES = agenda.create(VAR_PLANNING, {})
+        await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
+      }
+    })
+  }).catch(() => {
+    logger.error('Error while initializing mongo')
   })
-}).catch(() => {
-  logger.error('Error while initializing mongo')
-})
+}
 
 // Create express instance
 const app = express()

@@ -59,7 +59,7 @@ module.exports = {
    * @returns {*[]}
    */
   getFormattedEvents: (j, blocklist) => {
-    if (!j.events || !j) return undefined
+    if ((j && !j.events) || !j) return undefined
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {

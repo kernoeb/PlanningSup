@@ -7,7 +7,7 @@ const logger = require('./signale')
 const MAX_REQUESTS_COUNT = 20
 const INTERVAL_MS = 20
 let PENDING_REQUESTS = 0
-const DURATION = config.get('durationWorker') || 5000
+const DURATION = config.get('duration') || 5000
 
 logger.log('Axios instantiated')
 
