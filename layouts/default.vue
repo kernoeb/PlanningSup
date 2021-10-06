@@ -202,4 +202,7 @@ body.global_light {
 ::-webkit-scrollbar-track {
   border-radius: 30px;
 }
+.v-input__append-inner:hover {
+  cursor:pointer;
+}
 </style>
