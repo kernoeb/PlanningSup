@@ -92,4 +92,8 @@ export default {
 .v-treeview-node__level {
   width:12px !important;
 }
+.accent--text svg {
+  color:unset;
+  color:#2196F3 !important;
+}
 </style>
