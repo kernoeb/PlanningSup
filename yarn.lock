@@ -3938,7 +3938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bson@npm:^4.2.2, bson@npm:^4.5.1, bson@npm:^4.5.2":
+"bson@npm:^4.2.2, bson@npm:^4.5.2":
   version: 4.5.2
   resolution: "bson@npm:4.5.2"
   dependencies:
@@ -5040,10 +5040,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.18.1":
-  version: 3.18.1
-  resolution: "core-js@npm:3.18.1"
-  checksum: 89cac0fe657df722d10b0e658ee76af12a614c0a75fe3fb11e87c2e3f27f6d7e609e3bf40748da5d8feb055b0535766a583ff1d1ac89dba57105f6f1ad64dc21
+"core-js@npm:^3.18.2":
+  version: 3.18.2
+  resolution: "core-js@npm:3.18.2"
+  checksum: 4a09d170d8135a1f1c458f6aef786ba18bfb81fa6dab106561dd5379b9d175400ed012c2a30eee921b6e5bd53842ce32fb02ffd57d2984e157de622d9439dc5c
   languageName: node
   linkType: hard
 
@@ -5794,13 +5794,6 @@ __metadata:
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
   checksum: a51744d9b53c164ba9c0492471a1a2ffa0b6727451bdc89e31627fdf4adda9d51277cfcbfb20f0a6f08ccb3c436f341df3e92631a3440226d93a8971724771fd
-  languageName: node
-  linkType: hard
-
-"denque@npm:^1.5.0":
-  version: 1.5.1
-  resolution: "denque@npm:1.5.1"
-  checksum: 4375ad19d5cea99f90effa82a8cecdaa10f4eb261fbcd7e47cd753ff2737f037aac8f7f4e031cc77f3966314c491c86a0d3b20c128aeee57f791b4662c45108e
   languageName: node
   linkType: hard
 
@@ -10628,22 +10621,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongodb@npm:4.1.1":
-  version: 4.1.1
-  resolution: "mongodb@npm:4.1.1"
-  dependencies:
-    bson: ^4.5.1
-    denque: ^1.5.0
-    mongodb-connection-string-url: ^2.0.0
-    saslprep: ^1.0.0
-  dependenciesMeta:
-    saslprep:
-      optional: true
-  checksum: 242cc95b90d9f3a00a0bcacabf9afad1affdd27c7ed3288875317cfccff37669c4c3e4abe0b5b4cb11fa9f77d2f9fcb1e4f5858428bd70c9230de76960927c6f
-  languageName: node
-  linkType: hard
-
-"mongodb@npm:^4.1.0":
+"mongodb@npm:4.1.2, mongodb@npm:^4.1.0":
   version: 4.1.2
   resolution: "mongodb@npm:4.1.2"
   dependencies:
@@ -10658,20 +10636,20 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.0.8":
-  version: 6.0.8
-  resolution: "mongoose@npm:6.0.8"
+"mongoose@npm:^6.0.9":
+  version: 6.0.9
+  resolution: "mongoose@npm:6.0.9"
   dependencies:
     bson: ^4.2.2
     kareem: 2.3.2
-    mongodb: 4.1.1
+    mongodb: 4.1.2
     mpath: 0.8.4
     mquery: 4.0.0
     ms: 2.1.2
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: 3d2ad342d6003f9ede81bc4d7fd6e7f9c2c1d2e480583a27e2f9a9f8c4d680295a1f964f580851ee22ee7d60e083b78f8047262145924323819239e603532586
+  checksum: 465857146820be3b1da5da6c85077b52c3580ec5600ddce6022259bf977aaff246b6055e8a68858a8f8c9929032d70503f751c40e01a5405248b2c78c0df62c2
   languageName: node
   linkType: hard
 
@@ -12155,7 +12133,7 @@ fsevents@~2.3.2:
     config: ^3.3.6
     cookie-parser: ^1.4.5
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.18.1
+    core-js: ^3.18.2
     cors: ^2.8.5
     css-byebye: ^3.0.0
     eslint: ^7.32.0
@@ -12165,7 +12143,7 @@ fsevents@~2.3.2:
     luxon: ^2.0.2
     minify-css-string: ^1.0.0
     mocha: ^9.1.2
-    mongoose: ^6.0.8
+    mongoose: ^6.0.9
     nanoexpress: ^5.1.0
     nodemon: ^2.0.13
     nuxt: ^2.15.8
@@ -14117,7 +14095,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"saslprep@npm:^1.0.0, saslprep@npm:^1.0.3":
+"saslprep@npm:^1.0.3":
   version: 1.0.3
   resolution: "saslprep@npm:1.0.3"
   dependencies:
