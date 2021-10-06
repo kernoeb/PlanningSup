@@ -72,8 +72,9 @@
             :label="$config.i18n.blocklistDesc"
             chips
             multiple
+            class="ban-word"
             @change="$emit('change_blocklist_select', $event);"
-          class="ban-word">
+          >
             <template #item="{ item, on, attrs }">
               <v-list-item v-bind="attrs" v-on="on">
                 <v-list-item-action>
