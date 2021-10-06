@@ -63,9 +63,7 @@ export default {
     }, 0)
   },
   methods: {
-    filter () {
-      return (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase())
-    },
+    filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     addPlanning (event) {
       if (event && event.length) {
         let tmp = [...this.selectedPlannings]
