@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const { Router } = require('express')
 const router = Router()
-const mongoose = require('mongoose')
 
 const idSeparator = '.'
 /**
@@ -26,7 +25,7 @@ getChildElement(tmpUrls)
 /**
  * GET route with plannings, without their URLs
  */
-router.get('/urls', async (req, res) => {
+router.get('/urls', (req, res) => {
   return res.json(tmpUrls)
 })
 

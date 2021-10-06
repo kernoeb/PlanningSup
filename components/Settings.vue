@@ -72,6 +72,7 @@
             :label="$config.i18n.blocklistDesc"
             chips
             multiple
+            class="ban-word"
             @change="$emit('change_blocklist_select', $event);"
           >
             <template #item="{ item, on, attrs }">
@@ -164,6 +165,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.ban-word .v-input__append-inner:hover {
+  cursor:pointer;
+}
 </style>

@@ -87,4 +87,17 @@ export default {
 .treeview_plannings .v-treeview-node--leaf button.v-treeview-node__checkbox {
   display: block !important;
 }
+.v-treeview-node__level {
+  width:12px !important;
+}
+.accent--text svg {
+  color:unset;
+  color:#2196F3 !important;
+}
+.treeview_plannings > .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node[aria-expanded=true]) {
+  padding-bottom:10px;
+}
+.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node[aria-expanded=true]) {
+  padding-bottom:10px;
+}
 </style>
