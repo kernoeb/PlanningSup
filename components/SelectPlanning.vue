@@ -94,10 +94,10 @@ export default {
   color:unset;
   color:#2196F3 !important;
 }
-.v-treeview > .v-treeview-node:nth-last-child(1):not(.v-treeview > .v-treeview-node[aria-expanded=true]) {
+.treeview_plannings > .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node[aria-expanded=true]) {
   padding-bottom:10px;
 }
-.v-treeview > .v-treeview-node:nth-last-child(1) .v-treeview-node:nth-last-child(1):not(.v-treeview > .v-treeview-node:nth-last-child(1) .v-treeview-node[aria-expanded=true]) {
+.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node[aria-expanded=true]) {
   padding-bottom:10px;
 }
 </style>

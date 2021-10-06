@@ -73,7 +73,7 @@
             chips
             multiple
             @change="$emit('change_blocklist_select', $event);"
-          >
+          class="ban-word">
             <template #item="{ item, on, attrs }">
               <v-list-item v-bind="attrs" v-on="on">
                 <v-list-item-action>
@@ -164,6 +164,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.ban-word .v-input__append-inner:hover {
+  cursor:pointer;
+}
 </style>
