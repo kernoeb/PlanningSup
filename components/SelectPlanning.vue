@@ -89,4 +89,7 @@ export default {
 .treeview_plannings .v-treeview-node--leaf button.v-treeview-node__checkbox {
   display: block !important;
 }
+.v-treeview-node__level {
+  width:12px !important;
+}
 </style>
