@@ -213,7 +213,8 @@ export default {
                     'body',
                     'html',
                     'nuxt-progress',
-                    /col-*/ // enable if using v-col for layout
+                    /col-*/, // enable if using v-col for layout,
+                    /swatches/
                   ],
                   deep: [
                     /page-enter/,
