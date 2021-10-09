@@ -1,13 +1,22 @@
+const http = require('http')
+const https = require('https')
 const { Router } = require('express')
-const router = Router()
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
 const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
+const axios = require('axios')
 const logger = require('../util/signale')
-const axios = require('../util/axios')
+
+const router = Router()
+
+const instance = axios.create({
+  timeout: 6000,
+  httpAgent: new http.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: true })
+})
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
 
@@ -17,9 +26,11 @@ router.get('/crous', (req, res) => {
 
 router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), async (req, res) => {
   try {
-    if (!villes.includes(req.params.ville)) return res.status(400).json({ title: 'Nope! Are U tryna hak PlanningSup???!!' })
-    const d = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
-    const d2 = await axios.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
+    if (!villes.includes(req.params.ville)) {
+      return res.status(400).json({ title: 'Nope! Are U tryna hak PlanningSup???!!' })
+    }
+    const d = await instance.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
+    const d2 = await instance.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
 
     const json = {}
     xml2js.parseString(d.data, (err, result) => {
@@ -62,7 +73,7 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
 // Cache 10 minutes
 router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 600 : 0), async (req, res) => {
   try {
-    const d = await axios.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
+    const d = await instance.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
     const dom = new JSDOM(d.data)
     const el = dom.window.document.getElementById('menu-repas').childNodes
     const allEls = []
