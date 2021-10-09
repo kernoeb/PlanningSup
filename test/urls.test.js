@@ -13,8 +13,8 @@ describe('API : /urls', function () {
       .expect(200)
       .expect('Content-Type', /json/)
       .then((response) => {
-        assert.equal(response.body[0].id, plannings[0].id)
-        assert.equal(response.body.at(-1).id, plannings.at(-1).id)
+        assert.equal(response.body[0].title, plannings[0].title)
+        assert.equal(response.body.at(-1).title, plannings.at(-1).title)
       })
   })
 })
