@@ -63,7 +63,7 @@
             <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader>Couleurs des cours</v-subheader>
+        <v-subheader>{{ $config.i18n.colors }}</v-subheader>
         <v-list-item inactive>
           <v-list-item-action>
             <v-swatches
@@ -77,7 +77,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>TD</v-list-item-title>
-            <v-list-item-subtitle>Travaux dirigés</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ $config.i18n.types.td }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item inactive>
@@ -93,7 +93,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>TP</v-list-item-title>
-            <v-list-item-subtitle>Travaux pratiques</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ $config.i18n.types.tp }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item inactive>
@@ -109,7 +109,7 @@
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Amphis</v-list-item-title>
-            <v-list-item-subtitle>Amphithéâtre</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ $config.i18n.types.amphi }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item inactive>
@@ -124,8 +124,8 @@
             />
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Autres</v-list-item-title>
-            <v-list-item-subtitle>Les cours random</v-list-item-subtitle>
+            <v-list-item-title>{{ $config.i18n.others }}</v-list-item-title>
+            <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider />

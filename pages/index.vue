@@ -135,7 +135,7 @@
                 </v-btn>
               </template>
               <div v-if="selectedPlannings">
-                <div v-for="(p, i) in selectedPlanningsTitles" :key="`selectedPlanning_${i}`">
+                <div v-for="(p, i) in (selectedPlanningsTitles || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`">
                   {{ p.title }}
                 </div>
               </div>
