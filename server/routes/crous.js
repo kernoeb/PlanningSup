@@ -6,6 +6,7 @@ const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
+const logger = require('../util/signale')
 const axios = require('../util/axios')
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
@@ -58,7 +59,8 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
   }
 })
 
-router.get('/crous_menu', process.env.NODE_ENV === 'production' ? routeCache.cacheSeconds(60 * 10) : routeCache.cacheSeconds(0), async (req, res) => {
+// Cache 10 minutes
+router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 600 : 0), async (req, res) => {
   try {
     const d = await axios.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
     const dom = new JSDOM(d.data)
@@ -78,7 +80,8 @@ router.get('/crous_menu', process.env.NODE_ENV === 'production' ? routeCache.cac
     })
     return res.json(allEls)
   } catch (err) {
-    return res.json({})
+    logger.error('crous_menu : ' + err)
+    return res.status(500).json([])
   }
 })
 
