@@ -15,7 +15,6 @@
     item-key="fullId"
     item-text="title"
     open-on-click
-    return-object
     selectable
     selection-type="independent"
     transition
@@ -23,7 +22,7 @@
     @update:active="addPlanning"
   >
     <template #label="{item}">
-      <span :class="selectedPlannings.some(i => i.fullId === item.fullId) ? 'selected_planning' : ''">{{ item.title }}</span>
+      <span :class="selectedPlannings.includes(item.fullId) ? 'selected_planning' : ''">{{ item.title }}</span>
     </template>
   </v-treeview>
 </template>
@@ -58,6 +57,7 @@ export default {
     setTimeout(() => {
       this.$axios.$get(this.$config.apiUrls).then((data) => {
         this.urls = data
+        this.$emit('selected-plannings', [...this.selectedPlannings])
       }).catch(() => {
       })
     }, 0)
@@ -65,14 +65,14 @@ export default {
   methods: {
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     addPlanning (event) {
+      let tmp = [...this.selectedPlannings]
       if (event && event.length) {
-        let tmp = [...this.selectedPlannings]
-        if (tmp.some(v => v.fullId === event?.[0]?.fullId)) tmp = tmp.filter(v => v.fullId !== event?.[0]?.fullId)
+        if (tmp.includes(event?.[0])) tmp = tmp.filter(v => v !== event?.[0])
         else tmp.push(event[0])
         this.$emit('selected-plannings', tmp)
-        this.activatedPlanning = event?.[0]?.fullId
+        this.activatedPlanning = event?.[0]
       } else {
-        this.$emit('selected-plannings', this.selectedPlannings.filter(v => v.fullId !== this.activatedPlanning))
+        this.$emit('selected-plannings', tmp.filter(v => v !== this.activatedPlanning))
       }
     }
   }
@@ -91,7 +91,6 @@ export default {
   width:12px !important;
 }
 .accent--text svg {
-  color:unset;
   color:#2196F3 !important;
 }
 .treeview_plannings > .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node[aria-expanded=true]) {

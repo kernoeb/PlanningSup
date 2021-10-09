@@ -33,7 +33,7 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Pour résumer, c'
 
 #### APIs :
 
-- `/api/calendar` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
+- `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
 - `/api/urls` (en cache côté serveur) : `./assets/url.json`, mais sans les URLs
 
 

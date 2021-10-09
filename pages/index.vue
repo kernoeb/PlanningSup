@@ -135,8 +135,8 @@
                 </v-btn>
               </template>
               <div v-if="selectedPlannings">
-                <div v-for="(p, i) in selectedPlannings.map(v => v.title)" :key="`selectedPlanning_${i}`">
-                  {{ p }}
+                <div v-for="(p, i) in selectedPlanningsTitles" :key="`selectedPlanning_${i}`">
+                  {{ p.title }}
                 </div>
               </div>
             </v-tooltip>
@@ -159,6 +159,7 @@
           :blocklist-select="blocklistSelect"
           :dialog-settings="dialogSettings"
           :settings="settings"
+          @fetch="$fetch()"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"
           @change_blocklist_select="blocklistSelect = $event; $cookies.set('blocklist', JSON.stringify($event), { maxAge: 2147483646 }); $fetch()"
@@ -304,14 +305,38 @@ export default {
       playing: false,
       searchCalendar: '',
       selectedPlannings: null,
+      selectedPlanningsTitles: [],
       firstOK: false
     }
   },
   fetchOnServer: false,
   async fetch () {
     this.loading = true
-    const apiCalendar = '/api/calendars' || this.$config.apiCalendar
+    const apiCalendar = this.$config.apiCalendar
     try {
+      // Deprecated / Planning v1 migration
+      if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
+        try {
+          await this.$router.replace({
+            name: 'index',
+            query: { p: Buffer.from(JSON.stringify([`${this.$route.query.u}.${this.$route.query.s}.${this.$route.query.y}.${this.$route.query.g}`]), 'binary').toString('base64') }
+          })
+        } catch (err) {
+        }
+      } else if (this.$cookies.get('edt')) {
+        try {
+          const edt = JSON.parse(Buffer.from(decodeURIComponent(this.$cookies.get('edt')), 'base64').toString())
+          if (edt.u && edt.s && edt.y && edt.g) {
+            await this.$router.replace({
+              name: 'index',
+              query: { p: Buffer.from(JSON.stringify([`${edt.u}.${edt.s}.${edt.y}.${edt.g}`]), 'binary').toString('base64') }
+            })
+            this.$cookies.remove('edt')
+          }
+        } catch (err) {
+        }
+      }
+
       if (this.$route.query && this.$route.query.p) {
         const tmpEvents = await this.$axios.$get(apiCalendar, { params: { p: this.$route.query.p }, withCredentials: true })
         this.setEvents(tmpEvents)
@@ -349,14 +374,16 @@ export default {
     }
   },
   watch: {
-    selectedPlannings () {
-      if (this.selectedPlannings && this.firstOK) {
-        this.$router.push({
-          name: 'index',
-          query: { p: this.selectedPlannings.length ? Buffer.from(JSON.stringify(this.selectedPlannings.map(v => v.fullId)), 'binary').toString('base64') : 'reset' }
-        })
+    selectedPlannings: {
+      handler (newVal, oldVal) {
+        if (this.selectedPlannings && this.firstOK && (JSON.stringify(newVal) !== JSON.stringify(oldVal))) {
+          this.$router.push({
+            name: 'index',
+            query: { p: this.selectedPlannings.length ? Buffer.from(JSON.stringify(this.selectedPlannings), 'binary').toString('base64') : 'reset' }
+          })
+        }
+        this.firstOK = true
       }
-      this.firstOK = true
     },
     '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
@@ -450,7 +477,8 @@ export default {
     setEvents (events) {
       this.status = events.status
       this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
-      this.selectedPlannings = (events.plannings || []).map(v => ({ fullId: v.id, title: v.title }))
+      this.selectedPlannings = (events.plannings || []).map(v => v.id)
+      this.selectedPlanningsTitles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
       this.currentUniv = events.plannings?.length > 1
         ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings)
         : (events.plannings?.[0]?.title || '')

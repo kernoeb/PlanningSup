@@ -89,11 +89,17 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    // https://www.npmjs.com/package/cookie-universal-nuxt
     'cookie-universal-nuxt',
+    // https://axios.nuxtjs.org/
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://www.npmjs.com/package/@nuxtjs/component-cache
     '@nuxtjs/component-cache',
+    // https://saintplay.github.io/vue-swatches/
+    'vue-swatches/nuxt',
+    // https://github.com/Djancyp/nuxt-config#readme
     'nuxt-json-config',
     [
       '@dansmaculotte/nuxt-security',

@@ -42,6 +42,16 @@ router.get('/calendars', async (req, res) => {
     if (req.cookies?.blocklist) blocklist = JSON.parse(req.cookies.blocklist).map(name => name.toUpperCase())
   } catch (e) {}
 
+  // Get custom color courses
+  let customColors = null
+  try {
+    if (req.cookies?.customColors) customColors = JSON.parse(req.cookies.customColors)
+    for (const c in customColors) {
+      if (typeof customColors[c] !== 'string') delete customColors[c]
+    }
+    if (Object.keys(customColors)?.length === 0) customColors = null
+  } catch (e) {}
+
   try {
     const p = req.query.p || req.cookies.plannings
     const calendars = p && bToA(p)
@@ -62,11 +72,9 @@ router.get('/calendars', async (req, res) => {
 
     // Convert ICS to JSON events
     let status = 'on'
-    const plannings = await Promise.all((data || []).map(async (v, i) => {
-      if (!v) status = 'semi'
-      let events
-      if (v) events = getFormattedEvents(v, blocklist)
-      else events = getFormattedEvents(await getBackedPlanning(tmpUrls?.[i]?.id), blocklist)
+    const plannings = await Promise.all((data || []).map(async (planning, i) => {
+      if (!planning) status = 'semi'
+      const events = getFormattedEvents(planning || await getBackedPlanning(tmpUrls?.[i]?.id), blocklist, customColors)
       return ({
         id: tmpUrls?.[i]?.id,
         title: tmpUrls?.[i]?.title,

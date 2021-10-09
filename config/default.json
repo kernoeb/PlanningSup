@@ -1,5 +1,5 @@
 {
-  "apiCalendar": "/api/calendar",
+  "apiCalendar": "/api/calendars",
   "apiUrls": "/api/urls",
   "apiCrous": "/api/crous_menu",
   "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
@@ -40,7 +40,7 @@
     "mode": "Mode",
     "contact": "Me contacter",
     "multiplePlannings": "Multiples plannings",
-    "reset": "Réinitialiser",
+    "reset": "Tout désélectionner",
     "selection": "Sélection",
     "searchPlanning": "Rechercher un planning",
     "selectedPlannings": "plannings sélectionnés"

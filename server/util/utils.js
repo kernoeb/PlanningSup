@@ -7,17 +7,18 @@ const logger = require('./signale')
  * Get appropriate color for event
  * @param value
  * @param location
+ * @param customColor
  * @returns {string}
  */
-const getColor = (value, location) => {
+const getColor = (value, location, customColor) => {
   if (value.includes('CM') || value.includes('Amphi') || location.includes('Amphi')) {
-    return '#fe463a'
+    return customColor?.amphi || '#fe463a'
   } else if (value.includes('TD') || location.includes('V-B')) {
-    return 'green'
+    return customColor?.td || 'green'
   } else if (value.includes('TP')) {
-    return 'blue'
+    return customColor?.tp || 'blue'
   } else {
-    return 'orange'
+    return customColor?.other || 'orange'
   }
 }
 
@@ -56,9 +57,10 @@ module.exports = {
    * Get formatted json
    * @param j
    * @param blocklist
+   * @param colors
    * @returns {*[]}
    */
-  getFormattedEvents: (j, blocklist) => {
+  getFormattedEvents: (j, blocklist, colors) => {
     if ((j && !j.events) || !j) return undefined
     const events = []
     for (const i of j.events || j) {
@@ -67,7 +69,7 @@ module.exports = {
           name: i.summary.value.trim(),
           start: new Date(i.dtstart.value).getTime(),
           end: new Date(i.dtend.value).getTime(),
-          color: getColor(i.summary.value, i.location.value),
+          color: getColor(i.summary.value, i.location.value, colors),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),
           distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined,

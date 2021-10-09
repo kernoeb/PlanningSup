@@ -44,6 +44,7 @@
       <v-list-item-group
         :value="settings"
         multiple
+        :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
         @change="$emit('change_settings', $event)"
       >
         <v-subheader>{{ $config.i18n.ui }}</v-subheader>
@@ -60,6 +61,71 @@
           <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
             <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
             <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-subheader>Couleurs des cours</v-subheader>
+        <v-list-item inactive>
+          <v-list-item-action>
+            <v-swatches
+              v-model="colorTD"
+              :background-color="$vuetify.theme.dark ? '#151515' : '#fff'"
+              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+              show-fallback
+              fallback-input-type="color"
+              @input="setColor('td', $event)"
+            />
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>TD</v-list-item-title>
+            <v-list-item-subtitle>Travaux dirigés</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item inactive>
+          <v-list-item-action>
+            <v-swatches
+              v-model="colorTP"
+              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+              show-fallback
+              fallback-input-type="color"
+              @input="setColor('tp', $event)"
+            />
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>TP</v-list-item-title>
+            <v-list-item-subtitle>Travaux pratiques</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item inactive>
+          <v-list-item-action>
+            <v-swatches
+              v-model="colorAmphi"
+              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+              show-fallback
+              fallback-input-type="color"
+              @input="setColor('amphi', $event)"
+            />
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Amphis</v-list-item-title>
+            <v-list-item-subtitle>Amphithéâtre</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item inactive>
+          <v-list-item-action>
+            <v-swatches
+              v-model="colorOthers"
+              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+              show-fallback
+              fallback-input-type="color"
+              @input="setColor('other', $event)"
+            />
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Autres</v-list-item-title>
+            <v-list-item-subtitle>Les cours random</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-divider />
@@ -149,7 +215,12 @@ export default {
       mdiCheckboxMarked,
       mdiClose,
 
-      blocklist: ['Maths', 'Communication'] // Oui, bon...
+      blocklist: ['Maths', 'Communication'], // Oui, bon...
+
+      colorTP: 'blue',
+      colorTD: 'green',
+      colorAmphi: '#fe463a',
+      colorOthers: 'orange'
     }
   },
   computed: {
@@ -161,6 +232,29 @@ export default {
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark
       }
     }
+  },
+  mounted () {
+    try {
+      const c = this.$cookies.get('customColors')
+      if (c.amphi) this.colorAmphi = c.amphi
+      if (c.td) this.colorTD = c.td
+      if (c.tp) this.colorTP = c.tp
+      if (c.other) this.colorOthers = c.other
+    } catch (err) {}
+  },
+  methods: {
+    setColor (type, color) {
+      try {
+        const tmpCookie = this.$cookies.get('customColors') || {}
+        tmpCookie[type] = color
+        this.$cookies.set('customColors', tmpCookie)
+      } catch (err) {
+        this.$cookies.set('customColors', { [type]: color })
+      }
+      this.$nextTick(() => {
+        this.$emit('fetch')
+      })
+    }
   }
 }
 </script>
@@ -168,5 +262,12 @@ export default {
 <style>
 .ban-word .v-input__append-inner:hover {
   cursor:pointer;
+}
+
+.custom_swatch-light .vue-swatches__container {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.2), 0 0 0 1px rgba(10, 10, 10, 0.2)!important;
+}
+.custom_swatch-dark .vue-swatches__container {
+  box-shadow: 0 2px 3px rgba(199, 198, 198, 0.2), 0 0 0 1px rgba(222, 218, 218, 0.2)!important;
 }
 </style>
