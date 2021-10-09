@@ -15,7 +15,7 @@ const getColor = (value, location, customColor) => {
     return customColor?.amphi || '#fe463a'
   } else if (value.includes('TP') || value.includes('TDi')) {
     return customColor?.tp || 'blue'
-  } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value)) {
+  } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
     return customColor?.td || 'green'
   } else {
     return customColor?.other || 'orange'
