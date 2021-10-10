@@ -36,7 +36,7 @@
           </div>
         </v-tooltip>
       </div>
-      <crous v-if="selectedPlanningsTitles.some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
+      <crous v-if="(selectedPlanningsTitles || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
     <transition name="fade">
       <error-alert v-if="status !== 'on' && status !== 'reset'" :timestamp="timestamp" :status="status" />
