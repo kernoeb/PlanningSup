@@ -7,6 +7,9 @@
     <div v-if="status === 'semi'">
       <span>{{ $config.i18n.error_db_one }}</span>
     </div>
+    <div v-else-if="status === 'off'">
+      <span>{{ $config.i18n.error_db_all }}</span>
+    </div>
     <div v-else>
       <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
       <span v-else>{{ $config.i18n.error_db2 }}</span>
