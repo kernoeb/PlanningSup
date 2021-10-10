@@ -5,6 +5,7 @@ on:
     # Publish `main` as Docker `latest` image.
     branches:
       - main
+      - planning-v2
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -25,15 +26,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.10.0'
       - name: Run tests
-        run: |
-          if [ -f docker-compose.test.yml ]; then
-            docker-compose --file docker-compose.test.yml build
-            docker-compose --file docker-compose.test.yml run sut
-          else
-            docker build . --file Dockerfile
-          fi
+        run: yarn && yarn test
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -42,7 +39,7 @@ jobs:
     needs: test
 
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v2

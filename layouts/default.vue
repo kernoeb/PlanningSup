@@ -10,10 +10,15 @@
           </div>
         </div>
       </transition>
-      <v-icon small>
-        {{ mdiCalendar }}
-      </v-icon>
-      {{ $config.name }}
+      <v-tooltip left>
+        <template #activator="{ on, attrs }">
+          <v-icon small v-bind="attrs" v-on="on">
+            {{ mdiCalendar }}
+          </v-icon>
+        </template>
+        {{ version }}
+      </v-tooltip>
+      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span>
       <v-spacer />
       <v-icon small>
         {{ mdiSchool }}
@@ -29,10 +34,7 @@
       absolute
       app
     >
-      <span>Noéwen (<a
-        :style="$vuetify.theme.dark ? 'color: white' : 'color: black'"
-        href="https://twitter.com/kernoeb"
-      >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span>Noéwen (<a :style="$vuetify.theme.dark ? 'color: white' : 'color: black'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -70,6 +72,7 @@
 
 <script>
 import { mdiCalendar, mdiSchool, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
+const { version } = require('../package.json')
 
 export default {
   data () {
@@ -102,8 +105,20 @@ export default {
       ]
     }
   },
+  computed: {
+    version () {
+      return version || ''
+    },
+    development () {
+      return process.env.NODE_ENV !== 'production'
+    }
+  },
   mounted () {
     this.mounted = true
+
+    this.$watch('$vuetify.theme.dark', () => {
+      if (document && document.querySelector('body')) document.querySelector('body').className = this.$vuetify.theme.dark ? '' : 'global_light'
+    }, { immediate: true })
 
     if (!navigator.onLine) {
       this.connected = false
@@ -149,5 +164,42 @@ export default {
 
 html {
   overflow-y: auto
+}
+
+/** Scrollbar **/
+::-webkit-scrollbar-thumb {
+  background: #4b4b4b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track {
+  background: #1E1E1E;
+  box-shadow: inset 0 0 0 0 #F0F0F0;
+}
+body {
+  background-color: #1E1E1E!important;
+}
+body.global_light::-webkit-scrollbar-thumb, body.global_light .v-dialog::-webkit-scrollbar-thumb {
+  background: #BDBDBD;
+}
+body.global_light::-webkit-scrollbar-thumb:hover, body.global_light .v-dialog::-webkit-scrollbar-thumb:hover {
+  background: #cecece;
+}
+body.global_light::-webkit-scrollbar-track, body.global_light .v-dialog::-webkit-scrollbar-track {
+  background: #fff;
+  box-shadow: inset 0 0 0 0 #F0F0F0;
+}
+body.global_light {
+  background-color: #fff!important;
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 30px;
+}
+::-webkit-scrollbar-track {
+  border-radius: 30px;
 }
 </style>

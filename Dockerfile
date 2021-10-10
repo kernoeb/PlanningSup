@@ -1,9 +1,13 @@
-FROM node:14.17.5
+FROM node:16.10.0
 
 # Create app directory
 WORKDIR /app
 ADD . /app/
 
+# Use yarn berry v3 because we're in the future
+RUN yarn set version berry && yarn set version berry
+
+# Build the project
 RUN yarn
 RUN yarn build
 

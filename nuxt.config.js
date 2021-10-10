@@ -5,6 +5,11 @@ const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
 const PLAUSIBLE_URL = 'plausible.noewen.com'
+const DESCRIPTION = 'Un planning universitaire moderne réalisé par @kernoeb'
+const TITLE = 'PlanningSup'
+const META_TITLE = `${TITLE} | Calendrier universitaire`
+const URL = 'https://planningsup.app'
+const BANNER = `${URL}/banner.png`
 
 export default {
   telemetry: false,
@@ -14,32 +19,32 @@ export default {
     htmlAttrs: {
       lang: 'fr'
     },
-    title: 'PlanningSup',
+    title: TITLE,
     meta: [
       { charset: 'utf-8' },
-      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: 'PlanningSup' },
+      { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: TITLE },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
+      { hid: 'description', name: 'description', content: DESCRIPTION },
       { name: 'keywords', content: 'planning,planningedt,planninguniv,edt,emploi du temps,université,calendrier,universitaire,planningiut,planningiut.fr,edtuniv,planningapp,app planning,site planning,planning sup,planning iut,dut informatique,dut,iutvannes,iut de vannes,iut vannes' },
       { name: 'author', content: 'kernoeb' },
       { name: 'language', content: 'French' },
       { name: 'robots', content: 'index,follow' },
       { name: 'category', content: 'internet' },
-      { hid: 'title', name: 'title', content: 'PlanningSup | Calendrier universitaire' },
+      { hid: 'title', name: 'title', content: META_TITLE },
 
       // Facebook
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://planningsup.app/' },
-      { hid: 'og:title', property: 'og:title', content: 'PlanningSup | Calendrier universitaire' },
-      { hid: 'og:description', property: 'og:description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
-      { property: 'og:image', content: 'https://planningsup.app/banner.png' },
+      { property: 'og:url', content: URL + '/' },
+      { hid: 'og:title', property: 'og:title', content: META_TITLE },
+      { hid: 'og:description', property: 'og:description', content: DESCRIPTION },
+      { property: 'og:image', content: BANNER },
 
       // Twitter
       { property: 'twitter:card', content: 'summary_large_image' },
-      { property: 'twitter:url', content: 'https://planningsup.app/' },
-      { hid: 'twitter:title', property: 'twitter:title', content: 'PlanningSup | Calendrier universitaire' },
-      { hid: 'twitter:description', property: 'twitter:description', content: 'Un planning universitaire moderne réalisé par @kernoeb' },
-      { property: 'twitter:image', content: 'https://planningsup.app/banner.png' }
+      { property: 'twitter:url', content: URL + '/' },
+      { hid: 'twitter:title', property: 'twitter:title', content: META_TITLE },
+      { hid: 'twitter:description', property: 'twitter:description', content: DESCRIPTION },
+      { property: 'twitter:image', content: BANNER }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -63,8 +68,7 @@ export default {
   ** Server Middleware
   */
   serverMiddleware: [
-    { path: '/api', handler: '~/server/api' },
-    { path: '/server', handler: '~/server/worker' }
+    { path: '/api', handler: '~/server/' }
   ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
@@ -85,11 +89,17 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
+    // https://www.npmjs.com/package/cookie-universal-nuxt
     'cookie-universal-nuxt',
+    // https://axios.nuxtjs.org/
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://www.npmjs.com/package/@nuxtjs/component-cache
     '@nuxtjs/component-cache',
+    // https://saintplay.github.io/vue-swatches/
+    'vue-swatches/nuxt',
+    // https://github.com/Djancyp/nuxt-config#readme
     'nuxt-json-config',
     [
       '@dansmaculotte/nuxt-security',
@@ -120,18 +130,18 @@ export default {
 
   pwa: {
     meta: {
-      title: 'PlanningSup',
+      title: TITLE,
       author: 'kernoeb',
-      description: 'Un planning universitaire sympathique réalisé par @kernoeb',
+      description: DESCRIPTION,
       lang: 'fr',
-      ogSiteName: 'PlanningSup',
-      ogTitle: 'PlanningSup',
-      ogDescription: 'Un planning universitaire sympathique réalisé par @kernoeb'
+      ogSiteName: TITLE,
+      ogTitle: TITLE,
+      ogDescription: DESCRIPTION
     },
     manifest: {
-      name: 'PlanningSup',
-      short_name: 'PlanningSup',
-      description: 'Un planning universitaire sympathique réalisé par @kernoeb',
+      name: TITLE,
+      short_name: TITLE,
+      description: DESCRIPTION,
       lang: 'fr',
       display: 'standalone'
     },
@@ -203,7 +213,8 @@ export default {
                     'body',
                     'html',
                     'nuxt-progress',
-                    /col-*/ // enable if using v-col for layout
+                    /col-*/, // enable if using v-col for layout,
+                    /swatches/
                   ],
                   deep: [
                     /page-enter/,
