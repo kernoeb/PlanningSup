@@ -1,5 +1,6 @@
 <template>
   <v-treeview
+    v-if="urls"
     :expand-icon="mdiMenuDown"
     :filter="filter"
     :indeterminate-icon="mdiMinusBox"
@@ -25,6 +26,13 @@
       <span :class="selectedPlannings.includes(item.fullId) ? 'selected_planning' : ''">{{ item.title }}</span>
     </template>
   </v-treeview>
+  <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
+    <v-progress-circular
+      :active="urls"
+      indeterminate
+      color="yellow darken-2"
+    />
+  </div>
 </template>
 
 <script>
@@ -50,7 +58,7 @@ export default {
       mdiMenuDown,
 
       activatedPlanning: null,
-      urls: []
+      urls: null
     }
   },
   mounted () {
