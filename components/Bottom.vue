@@ -5,7 +5,7 @@
       height="200px"
     >
       <div v-if="selectedEvent" class="py-3">
-        <div class="mt-4 font-weight-bold">
+        <div class="mt-4 font-weight-bold ml-1 mr-1">
           {{ selectedEvent.name }}
         </div>
         <div v-if="selectedEvent.location || selectedEvent.description">

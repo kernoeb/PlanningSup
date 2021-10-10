@@ -46,7 +46,7 @@
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
       color="yellow darken-2"
-      style="position: absolute;"
+      style="position: absolute;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center; width: 95%;"
     />
     <v-sheet
       :style="$vuetify.theme.dark ? 'background-color: #121212' : null"
