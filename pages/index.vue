@@ -10,16 +10,33 @@
             ...
           </div>
         </transition>
-        <transition name="fade" mode="out-in">
-          <div v-if="currentUniv" :key="currentUniv" style="font-size: 10px" class="text-truncate">
-            {{ currentUniv }}
+        <v-tooltip bottom>
+          <template #activator="{ on, attrs }">
+            <transition name="fade" mode="out-in">
+              <div v-if="selectedPlanningsTitles && selectedPlanningsTitles.length === 1" key="one_planning" style="font-size: 10px" class="text-truncate">
+                {{ selectedPlanningsTitles[0].title }}
+              </div>
+              <div
+                v-else-if="selectedPlanningsTitles && selectedPlanningsTitles.length > 1"
+                key="multiple_plannings"
+                style="font-size: 10px; cursor: pointer;"
+                class="text-truncate"
+                v-bind="attrs"
+                v-on="on"
+              >
+                {{ selectedPlanningsTitles.length + ' ' + $config.i18n.selectedPlannings }}
+              </div>
+              <div v-else key="no_current_planning" style="font-size: 10px" class="text-truncate">
+                ...
+              </div>
+            </transition>
+          </template>
+          <div v-for="(p, i) in (selectedPlanningsTitles || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`" style="font-size: 12px;">
+            {{ p.title }}
           </div>
-          <div v-else key="nocurrentuniv" style="font-size: 10px" class="text-truncate">
-            ...
-          </div>
-        </transition>
+        </v-tooltip>
       </div>
-      <crous v-if="currentUniv.includes('Vannes')" />
+      <crous v-if="selectedPlanningsTitles.some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
     <transition name="fade">
       <error-alert v-if="status !== 'on' && status !== 'reset'" :timestamp="timestamp" :status="status" />
@@ -298,7 +315,6 @@ export default {
       start: true,
       currentWeek: '',
       lastTimeFetch: 0,
-      currentUniv: '',
       nowY: '-10px',
       width: 0,
       doublePress: false,
@@ -471,7 +487,6 @@ export default {
       this.$cookies.remove('plannings')
       this.selectedPlannings = []
       this.events = []
-      this.currentUniv = ''
       this.searchCalendar = ''
     },
     setEvents (events) {
@@ -479,9 +494,6 @@ export default {
       this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
       this.selectedPlannings = (events.plannings || []).map(v => v.id)
       this.selectedPlanningsTitles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
-      this.currentUniv = events.plannings?.length > 1
-        ? (events.plannings.length + ' ' + this.$config.i18n.selectedPlannings)
-        : (events.plannings?.[0]?.title || '')
       if (events.timestamp) {
         this.timestamp = events.timestamp
         if (window) { window.last_timestamp = this.timestamp }
