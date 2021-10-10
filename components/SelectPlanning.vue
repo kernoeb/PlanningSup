@@ -28,7 +28,6 @@
   </v-treeview>
   <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
     <v-progress-circular
-      :active="urls"
       indeterminate
       color="yellow darken-2"
     />
