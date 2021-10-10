@@ -1,6 +1,6 @@
 # PlanningSup
 
-Un planning universitaire moderne réalisé par @kernoeb.  
+Un planning universitaire moderne réalisé par [@kernoeb](https://github.com/kernoeb).  
 
 [![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
 [![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
