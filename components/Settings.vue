@@ -247,9 +247,9 @@ export default {
       try {
         const tmpCookie = this.$cookies.get('customColors') || {}
         tmpCookie[type] = color
-        this.$cookies.set('customColors', tmpCookie)
+        this.$cookies.set('customColors', tmpCookie, { maxAge: 2147483646 })
       } catch (err) {
-        this.$cookies.set('customColors', { [type]: color })
+        this.$cookies.set('customColors', { [type]: color }, { maxAge: 2147483646 })
       }
       this.$nextTick(() => {
         this.$emit('fetch')
