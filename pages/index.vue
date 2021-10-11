@@ -588,6 +588,9 @@ export default {
               v.description = 'Rick Astley'
             })
           }, 4440)
+          this.events.forEach((v, i) => {
+            v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
+          })
           const s = setInterval(() => {
             this.events.forEach((v, i) => {
               v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
