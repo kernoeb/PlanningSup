@@ -565,25 +565,46 @@ export default {
         // Just a security check
         if (this.doublePress) {
           this.doublePress = false
-          const arr = ['Never gonna give you up', 'Never gonna let you down']
-          let tmp = true
           const audio = new Audio('/sound/security.mp3')
           this.playing = true
-          audio.play().then(() => {}).catch(() => {})
-          const s = setInterval(() => {
+          const su = setTimeout(() => {
             this.events.forEach((v, i) => {
-              v.name = i % 2 === 0 ? arr[tmp ? 0 : 1] : arr[tmp ? 1 : 0]
+              v.name = 'Never gonna give you up'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
-              v.color = tmp ? '#e28b6f' : '#c3bde7'
             })
-            tmp = !tmp
-          }, 531)
+          }, 0)
+          const sd = setTimeout(() => {
+            this.events.forEach((v, i) => {
+              v.name = 'Never gonna let you down'
+              v.location = 'YouTube'
+              v.description = 'Rick Astley'
+            })
+          }, 2260)
+          const sa = setTimeout(() => {
+            this.events.forEach((v, i) => {
+              v.name = 'Never gonna run around'
+              v.location = 'YouTube'
+              v.description = 'Rick Astley'
+            })
+          }, 4440)
+          this.events.forEach((v, i) => {
+            v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
+          })
+          const s = setInterval(() => {
+            this.events.forEach((v, i) => {
+              v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
+            })
+          }, 500)
+          audio.play().then(() => {}).catch(() => {})
           setTimeout(() => {
+            clearInterval(su)
+            clearInterval(sd)
+            clearInterval(sa)
             clearInterval(s)
             this.playing = false
             this.$fetch()
-          }, 6500)
+          }, 6000)
         } else {
           this.doublePress = true
           setTimeout(() => {
