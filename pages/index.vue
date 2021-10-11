@@ -565,7 +565,6 @@ export default {
         // Just a security check
         if (this.doublePress) {
           this.doublePress = false
-          // const arr = ['Never gonna let you down', 'Never gonna give you up']
           const audio = new Audio('/sound/security.mp3')
           this.playing = true
           const su = setTimeout(() => {
@@ -593,7 +592,7 @@ export default {
             this.events.forEach((v, i) => {
               v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
             })
-          }, 200)
+          }, 500)
           audio.play().then(() => {}).catch(() => {})
           setTimeout(() => {
             clearInterval(su)
@@ -602,7 +601,7 @@ export default {
             clearInterval(s)
             this.playing = false
             this.$fetch()
-          }, 6500)
+          }, 6000)
         } else {
           this.doublePress = true
           setTimeout(() => {
