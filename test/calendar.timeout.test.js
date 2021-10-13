@@ -10,6 +10,7 @@ describe('API : /calendars', function () {
       .get('/calendars')
       .expect(200)
       .then((response) => {
+        // console.log(response)
         assert(response.body.status, 'off')
       })
   })

@@ -79,7 +79,7 @@ router.get('/calendars', async (req, res) => {
       if (planning) events = getFormattedEvents(planning, blocklist, customColors)
       else {
         backed = await getBackedPlanning(tmpUrls?.[i]?.id)
-        events = getFormattedEvents(backed.backup, blocklist, customColors)
+        if (backed && backed.backup) events = getFormattedEvents(backed.backup, blocklist, customColors)
       }
       return ({
         id: tmpUrls?.[i]?.id,
