@@ -48,7 +48,7 @@ module.exports = {
   getBackedPlanning: async (id) => {
     try {
       const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
-      return tmpPlanning && tmpPlanning.backup
+      return tmpPlanning && tmpPlanning.backup && { backup: tmpPlanning.backup, timestamp: tmpPlanning.timestamp }
     } catch (err) {
       return null
     }
@@ -61,7 +61,6 @@ module.exports = {
    * @returns {*[]}
    */
   getFormattedEvents: (j, blocklist, colors) => {
-    if ((j && !j.events) || !j) return undefined
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {

@@ -74,11 +74,17 @@ router.get('/calendars', async (req, res) => {
     let status = 'on'
     const plannings = await Promise.all((data || []).map(async (planning, i) => {
       if (!planning) status = 'semi'
-      const events = getFormattedEvents(planning || await getBackedPlanning(tmpUrls?.[i]?.id), blocklist, customColors)
+      let events
+      let backed
+      if (planning) events = getFormattedEvents(planning, blocklist, customColors)
+      else {
+        backed = await getBackedPlanning(tmpUrls?.[i]?.id)
+        events = getFormattedEvents(backed.backup, blocklist, customColors)
+      }
       return ({
         id: tmpUrls?.[i]?.id,
         title: tmpUrls?.[i]?.title,
-        timestamp: new Date().getTime(),
+        timestamp: (backed && backed.timestamp) || new Date().getTime(),
         events
       })
     }))
