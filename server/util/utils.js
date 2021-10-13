@@ -51,7 +51,6 @@ module.exports = {
    * @returns array custom events
    */
   getCustomEventContent: async (name) => {
-    console.log(name)
     try {
       const data = await mongoose.models.CustomEvents.findOne({ name })
       return data && data.content && data.content.length ? data.content : ''
