@@ -3,7 +3,7 @@ const router = Router()
 
 const urls = require('../../assets/url.json')
 const logger = require('../util/signale')
-const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning } = require('../util/utils')
+const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning, getCustomEventContent } = require('../util/utils')
 
 const DEBUG = process.env?.DEBUG === 'true'
 const defaultPlanning = ['iutdevannes', 'butdutinfo', '2emeannee', 'a1']
@@ -98,6 +98,11 @@ router.get('/calendars', async (req, res) => {
     logger.error(err)
     res.status(500).send('Oof, the server encountered a error :\'(')
   }
+})
+
+router.get('/custom-event-content', async (req, res) => {
+  if (req.query.name) return res.send(await getCustomEventContent(req.query.name) || '')
+  else return res.send('')
 })
 
 module.exports = router

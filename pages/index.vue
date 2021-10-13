@@ -225,7 +225,7 @@
             />
           </template>
           <template #event="{event}">
-            <div :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
+            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
               <div class="text-truncate font-weight-bold">
                 {{ event.name }}
               </div>
@@ -526,9 +526,19 @@ export default {
       } catch (err) {
       }
     },
+    async getCustomEventContent (e) {
+      const { data } = await this.$axios.get('/api/custom-event-content', { params: { name: (e.name || '').trim() } })
+      return '<b>' + e.name + '</b>' + '<br>' + data
+    },
+    setSelectedEvent (e) {
+      this.selectedEvent = { event: e }
+      this.$axios.get('/api/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
+        if (d.data && d.data.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
+      })
+    },
     showEvent ({ nativeEvent, event }) {
       this.bottom = true
-      this.selectedEvent = event
+      this.setSelectedEvent(event)
       nativeEvent.stopPropagation()
     },
     setToday () {
@@ -714,5 +724,56 @@ export default {
 
 .toolbar_edt .v-toolbar__content {
   padding-left: 5px!important;
+}
+
+.tooltip {
+  display: block !important;
+  z-index: 10000;
+}
+
+.tooltip .tooltip-inner {
+  background: rgba(35, 35, 35, 0.82);
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  border-radius: 16px;
+  padding: 5px 10px 4px;
+}
+
+.tooltip .tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  margin: 5px;
+  border-color: rgba(35, 35, 35, 0.82);
+  z-index: 1;
+}
+
+.tooltip[x-placement^="bottom"] {
+  margin-top: 5px;
+}
+
+.tooltip[x-placement^="bottom"] .tooltip-arrow {
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tooltip[aria-hidden='true'] {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .15s, visibility .15s;
+}
+
+.tooltip[aria-hidden='false'] {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .15s;
 }
 </style>

@@ -41,6 +41,17 @@ if (!process.env.NO_MONGO) {
 
     const Planning = mongoose.model('Planning', planningSchema)
 
+    const customEventsSchema = new Schema({
+      name: {
+        type: 'String',
+        unique: true,
+        index: true
+      },
+      content: String
+    })
+
+    mongoose.model('CustomEvents', customEventsSchema)
+
     const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
 
     const newPlannings = []

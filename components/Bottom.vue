@@ -4,14 +4,17 @@
       class="text-center"
       height="200px"
     >
-      <div v-if="selectedEvent" class="py-3">
-        <div class="mt-4 font-weight-bold ml-1 mr-1">
-          {{ selectedEvent.name }}
+      <div v-if="selectedEvent && selectedEvent.event" class="py-3">
+        <div class="mt-4 font-weight-bold ml-3 mr-3">
+          {{ selectedEvent.event.name }}
         </div>
-        <div v-if="selectedEvent.location || selectedEvent.description">
-          {{ selectedEvent.location }}{{ (selectedEvent.location && selectedEvent.description) ? ' | ' : '' }}{{ selectedEvent.description }}
+        <div v-if="selectedEvent.event.location || selectedEvent.event.description">
+          {{ selectedEvent.event.location }}{{ (selectedEvent.event.location && selectedEvent.event.description) ? ' | ' : '' }}{{ selectedEvent.event.description }}
         </div>
-        <div>{{ $moment(selectedEvent.start).format('H:mm') }} - {{ $moment(selectedEvent.end).format('H:mm') }}</div>
+        <div>{{ $moment(selectedEvent.event.start).format('H:mm') }} - {{ $moment(selectedEvent.event.end).format('H:mm') }}</div>
+      </div>
+      <div v-if="selectedEvent && selectedEvent.content">
+        <code>{{ selectedEvent.content }}</code>
       </div>
       <v-btn
         class="mt-6"

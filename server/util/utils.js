@@ -45,6 +45,25 @@ const cleanLocation = l => l && l
   .split(',').map(v => v.replace(/^V-/, '')).join(', ')
 
 module.exports = {
+  /**
+   * Get custom events for a planning
+   * @param name
+   * @returns array custom events
+   */
+  getCustomEventContent: async (name) => {
+    console.log(name)
+    try {
+      const data = await mongoose.models.CustomEvents.findOne({ name })
+      return data && data.content && data.content.length ? data.content : ''
+    } catch (err) {
+      return ''
+    }
+  },
+  /**
+   * Get backed plannings
+   * @param id
+   * @returns {Promise<[]|*|{backup: ([]|*), timestamp}|null>}
+   */
   getBackedPlanning: async (id) => {
     try {
       const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
