@@ -466,6 +466,7 @@ export default {
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
+    window.addEventListener('mouseup', this.mouse)
 
     setTimeout(() => {
       window.onfocus = () => {
@@ -543,6 +544,20 @@ export default {
     },
     setToday () {
       this.value = ''
+    },
+    mouse (event) {
+      if (event.defaultPrevented) {
+        return
+      }
+
+      if (event.target.classList.contains('v-overlay__scrim')) {
+        setTimeout(() => {
+          document.querySelectorAll('.v-tooltip__content').forEach((element, index) => {
+            console.log(element)
+            element.style.display = 'none'
+          })
+        }, 100)
+      }
     },
     keyboard (event) {
       if (this.dialogSettings || this.dialogEdt) {
@@ -775,5 +790,16 @@ export default {
   visibility: visible;
   opacity: 1;
   transition: opacity .15s;
+}
+/* Header button fix */
+.theme--dark.v-icon:focus[aria-expanded='true']::after {
+    opacity: 0.24;
+}
+.theme--dark.v-icon:focus[aria-expanded='false']::after {
+    opacity: 0;
+}
+/* Crous fix */
+.theme--dark.v-btn:focus[aria-expanded='false']::before {
+    opacity: 0;
 }
 </style>
