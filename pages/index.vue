@@ -84,26 +84,28 @@
         </template>
       </v-select>
       <v-spacer />
-      <div class="d-flex justify-space-between" style="max-height: 24px; align-self: center; width: 125px;">
+      <div class="d-flex justify-space-between" style="align-self: center; width: 125px;">
+        <v-tooltip top>
+          <template #activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              icon
+              v-on="on"
+              @click="dialogEdt = true"
+            >
+              <v-icon>
+                {{ mdiFormatListBulleted }}
+              </v-icon>
+            </v-btn>
+          </template>
+          <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
+            style="color: lightgrey; font-size: 10px"
+          >(u)</span>
+        </v-tooltip>
         <v-dialog
           v-model="dialogEdt"
           width="500"
         >
-          <template #activator="{ on: d, attrs }">
-            <v-tooltip top>
-              <template #activator="{ on: tooltip }">
-                <v-icon
-                  v-bind="attrs"
-                  v-on="{...d, ...tooltip}"
-                >
-                  {{ mdiFormatListBulleted }}
-                </v-icon>
-              </template>
-              <span style="margin-right: 2px">{{ $config.i18n.changeEdt }}</span><span
-                style="color: lightgrey; font-size: 10px"
-              >(u)</span>
-            </v-tooltip>
-          </template>
           <v-card>
             <v-toolbar
               class="toolbar_edt"
@@ -162,13 +164,16 @@
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
-            <v-icon
+            <v-btn
               v-bind="attrs"
+              icon
               v-on="on"
               @click="setToday"
             >
-              {{ mdiCalendarToday }}
-            </v-icon>
+              <v-icon>
+                {{ mdiCalendarToday }}
+              </v-icon>
+            </v-btn>
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
@@ -466,7 +471,6 @@ export default {
     }, 0)
 
     window.addEventListener('keyup', this.keyboard)
-    window.addEventListener('mouseup', this.mouse)
 
     setTimeout(() => {
       window.onfocus = () => {
@@ -544,20 +548,6 @@ export default {
     },
     setToday () {
       this.value = ''
-    },
-    mouse (event) {
-      if (event.defaultPrevented) {
-        return
-      }
-
-      if (event.target.classList.contains('v-overlay__scrim')) {
-        setTimeout(() => {
-          document.querySelectorAll('.v-tooltip__content').forEach((element, index) => {
-            console.log(element)
-            element.style.display = 'none'
-          })
-        }, 100)
-      }
     },
     keyboard (event) {
       if (this.dialogSettings || this.dialogEdt) {

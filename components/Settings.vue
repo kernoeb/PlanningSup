@@ -1,188 +1,190 @@
 <template>
-  <v-dialog
-    :value="dialogSettings"
-    width="500"
-    @input="$emit('change_dialog', $event)"
-  >
-    <template #activator="{ on: d, attrs }">
-      <v-tooltip top>
-        <template #activator="{ on: tooltip }">
-          <v-icon
-            v-bind="attrs"
-            v-on="{...d, ...tooltip}"
-          >
-            {{ mdiCogOutline }}
-          </v-icon>
-        </template>
-        <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
-          style="color: lightgrey; font-size: 10px"
-        >(p)</span>
-      </v-tooltip>
-    </template>
-    <v-card>
-      <v-toolbar
-        class="toolbar_edt"
-        flat
-      >
-        <v-card-title class="headline">
-          <v-icon class="mr-2">
-            {{ mdiCogOutline }}
-          </v-icon>
-          <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
-        </v-card-title>
-        <v-spacer />
+  <div>
+    <v-tooltip top>
+      <template #activator="{ on, attrs }">
         <v-btn
           icon
-          @click="$emit('change_dialog', false)"
+          v-bind="attrs"
+          @click="$emit('change_dialog', true)"
+          v-on="on"
         >
-          <v-icon>{{ mdiClose }}</v-icon>
+          <v-icon>{{ mdiCogOutline }}</v-icon>
         </v-btn>
-      </v-toolbar>
-
-      <v-divider />
-
-      <v-list-item-group
-        :value="settings"
-        multiple
-        :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
-        @change="$emit('change_settings', $event)"
-      >
-        <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-        <v-list-item>
-          <v-list-item-action>
-            <v-checkbox
-              v-model="checkedTheme"
-              :indeterminate-icon="mdiCheckboxBlankOutline"
-              :off-icon="mdiCheckboxBlankOutline"
-              :on-icon="mdiCheckboxMarked"
-            />
-          </v-list-item-action>
-
-          <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-            <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-subheader>{{ $config.i18n.colors }}</v-subheader>
-        <v-list-item inactive>
-          <v-list-item-action>
-            <v-swatches
-              v-model="colorTD"
-              :background-color="$vuetify.theme.dark ? '#151515' : '#fff'"
-              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-              show-fallback
-              fallback-input-type="color"
-              @input="setColor('td', $event)"
-            />
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>TD</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.types.td }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item inactive>
-          <v-list-item-action>
-            <v-swatches
-              v-model="colorTP"
-              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-              show-fallback
-              fallback-input-type="color"
-              @input="setColor('tp', $event)"
-            />
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>TP</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.types.tp }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item inactive>
-          <v-list-item-action>
-            <v-swatches
-              v-model="colorAmphi"
-              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-              show-fallback
-              fallback-input-type="color"
-              @input="setColor('amphi', $event)"
-            />
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Amphis</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.types.amphi }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item inactive>
-          <v-list-item-action>
-            <v-swatches
-              v-model="colorOthers"
-              :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-              :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-              show-fallback
-              fallback-input-type="color"
-              @input="setColor('other', $event)"
-            />
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ $config.i18n.others }}</v-list-item-title>
-            <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider />
-        <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
-        <v-list-item inactive>
-          <v-combobox
-            :value="blocklistSelect"
-            :append-icon="mdiMenuDown"
-            :items="blocklist"
-            :label="$config.i18n.blocklistDesc"
-            chips
-            multiple
-            class="ban-word"
-            @change="$emit('change_blocklist_select', $event);"
+      </template>
+      <span style="margin-right: 2px">{{ $config.i18n.settings }}</span><span
+        style="color: lightgrey; font-size: 10px"
+      >(p)</span>
+    </v-tooltip>
+    <v-dialog
+      :value="dialogSettings"
+      width="500"
+      @input="$emit('change_dialog', $event)"
+    >
+      <v-card>
+        <v-toolbar
+          class="toolbar_edt"
+          flat
+        >
+          <v-card-title class="headline">
+            <v-icon class="mr-2">
+              {{ mdiCogOutline }}
+            </v-icon>
+            <span style="font-size: 15px">{{ $config.i18n.settings }}</span>
+          </v-card-title>
+          <v-spacer />
+          <v-btn
+            icon
+            @click="$emit('change_dialog', false)"
           >
-            <template #item="{ item, on, attrs }">
-              <v-list-item v-bind="attrs" v-on="on">
-                <v-list-item-action>
-                  <v-checkbox
-                    :indeterminate-icon="mdiCheckboxBlankOutline"
-                    :input-value="attrs.inputValue"
-                    :off-icon="mdiCheckboxBlankOutline"
-                    :on-icon="mdiCheckboxMarked"
-                  />
-                </v-list-item-action>
-                <v-list-item-content>
-                  <v-list-item-title>
-                    {{ item }}
-                  </v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-          </v-combobox>
-        </v-list-item>
-        <v-subheader>{{ $config.i18n.contact }}</v-subheader>
-        <v-list-item inactive>
-          <div class="d-flex flex-column mb-4">
-            <div>
-              <v-icon class="mr-2 mt-n1" size="15">
-                {{ mdiTwitter }}
-              </v-icon>
-              Twitter : <a href="https://twitter.com/kernoeb" target="_blank">@kernoeb</a>
+            <v-icon>{{ mdiClose }}</v-icon>
+          </v-btn>
+        </v-toolbar>
+
+        <v-divider />
+
+        <v-list-item-group
+          :value="settings"
+          multiple
+          :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
+          @change="$emit('change_settings', $event)"
+        >
+          <v-subheader>{{ $config.i18n.ui }}</v-subheader>
+          <v-list-item>
+            <v-list-item-action>
+              <v-checkbox
+                v-model="checkedTheme"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+
+            <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+              <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
+              <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-subheader>{{ $config.i18n.colors }}</v-subheader>
+          <v-list-item inactive>
+            <v-list-item-action>
+              <v-swatches
+                v-model="colorTD"
+                :background-color="$vuetify.theme.dark ? '#151515' : '#fff'"
+                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                show-fallback
+                fallback-input-type="color"
+                @input="setColor('td', $event)"
+              />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>TD</v-list-item-title>
+              <v-list-item-subtitle>{{ $config.i18n.types.td }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item inactive>
+            <v-list-item-action>
+              <v-swatches
+                v-model="colorTP"
+                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                show-fallback
+                fallback-input-type="color"
+                @input="setColor('tp', $event)"
+              />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>TP</v-list-item-title>
+              <v-list-item-subtitle>{{ $config.i18n.types.tp }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item inactive>
+            <v-list-item-action>
+              <v-swatches
+                v-model="colorAmphi"
+                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                show-fallback
+                fallback-input-type="color"
+                @input="setColor('amphi', $event)"
+              />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Amphis</v-list-item-title>
+              <v-list-item-subtitle>{{ $config.i18n.types.amphi }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item inactive>
+            <v-list-item-action>
+              <v-swatches
+                v-model="colorOthers"
+                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                show-fallback
+                fallback-input-type="color"
+                @input="setColor('other', $event)"
+              />
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ $config.i18n.others }}</v-list-item-title>
+              <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider />
+          <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
+          <v-list-item inactive>
+            <v-combobox
+              :value="blocklistSelect"
+              :append-icon="mdiMenuDown"
+              :items="blocklist"
+              :label="$config.i18n.blocklistDesc"
+              chips
+              multiple
+              class="ban-word"
+              @change="$emit('change_blocklist_select', $event);"
+            >
+              <template #item="{ item, on, attrs }">
+                <v-list-item v-bind="attrs" v-on="on">
+                  <v-list-item-action>
+                    <v-checkbox
+                      :indeterminate-icon="mdiCheckboxBlankOutline"
+                      :input-value="attrs.inputValue"
+                      :off-icon="mdiCheckboxBlankOutline"
+                      :on-icon="mdiCheckboxMarked"
+                    />
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      {{ item }}
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-combobox>
+          </v-list-item>
+          <v-subheader>{{ $config.i18n.contact }}</v-subheader>
+          <v-list-item inactive>
+            <div class="d-flex flex-column mb-4">
+              <div>
+                <v-icon class="mr-2 mt-n1" size="15">
+                  {{ mdiTwitter }}
+                </v-icon>
+                Twitter : <a href="https://twitter.com/kernoeb" target="_blank">@kernoeb</a>
+              </div>
+              <div>
+                <v-icon class="mr-2 mt-n1" size="15">
+                  {{ mdiMail }}
+                </v-icon>
+                Mail : <a href="mailto:kernoeb@protonmail.com" target="_blank">kernoeb@protonmail.com</a>
+              </div>
             </div>
-            <div>
-              <v-icon class="mr-2 mt-n1" size="15">
-                {{ mdiMail }}
-              </v-icon>
-              Mail : <a href="mailto:kernoeb@protonmail.com" target="_blank">kernoeb@protonmail.com</a>
-            </div>
-          </div>
-        </v-list-item>
-        <v-list-item inactive>
-          <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
-        </v-list-item>
-      </v-list-item-group>
-    </v-card>
-  </v-dialog>
+          </v-list-item>
+          <v-list-item inactive>
+            <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
+          </v-list-item>
+        </v-list-item-group>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
