@@ -781,15 +781,4 @@ export default {
   opacity: 1;
   transition: opacity .15s;
 }
-/* Header button fix */
-.theme--dark.v-icon:focus[aria-expanded='true']::after {
-    opacity: 0.24;
-}
-.theme--dark.v-icon:focus[aria-expanded='false']::after {
-    opacity: 0;
-}
-/* Crous fix */
-.theme--dark.v-btn:focus[aria-expanded='false']::before {
-    opacity: 0;
-}
 </style>
