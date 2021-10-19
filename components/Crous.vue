@@ -15,7 +15,7 @@
       :hide-overlay="$vuetify.breakpoint.smAndDown"
       :width="$vuetify.breakpoint.smAndDown ? null : 500"
     >
-      <v-card min-height="544">
+      <v-card min-height="544" height="100%">
         <v-toolbar :style="$vuetify.breakpoint.smAndDown ? 'position: fixed; z-index: 1500; width: 100%;' : null">
           <v-progress-linear
             v-if="menu === null"

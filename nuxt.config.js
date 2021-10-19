@@ -214,6 +214,7 @@ export default {
                     'body',
                     'html',
                     'nuxt-progress',
+                    /progress-circular/,
                     /col-*/, // enable if using v-col for layout,
                     /swatches/
                   ],
