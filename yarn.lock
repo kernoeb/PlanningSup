@@ -1351,10 +1351,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdi/js@npm:^6.3.95":
-  version: 6.3.95
-  resolution: "@mdi/js@npm:6.3.95"
-  checksum: e0ecdf2a2b1b46ead42266cc9dcc29c08495c8d3af53314bf28e0c2b637d528e9e1d16e523c1ab678b78c8930a7d29ee91a43f35f15a4ae5aa00244bc836da54
+"@mdi/js@npm:^6.4.95":
+  version: 6.4.95
+  resolution: "@mdi/js@npm:6.4.95"
+  checksum: 76055821b0b611090f1fadff3cb93b0d2c05f7c52778a0e8966abe1c85d3aae8312c497e91882bb8cb02bf9235edda901da944099553afb2dbacafb11ed40b18
   languageName: node
   linkType: hard
 
@@ -3015,12 +3015,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "axios@npm:0.23.0"
+"axios@npm:^0.24.0":
+  version: 0.24.0
+  resolution: "axios@npm:0.24.0"
   dependencies:
     follow-redirects: ^1.14.4
-  checksum: 879f61022bd825da2a7ebb72410bc528683ba54c140436baa0b924b7cab02ec0919fe64a04a546f482a75f5fd570b77884f9826764a95f2fd88265e61dcb70db
+  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
   languageName: node
   linkType: hard
 
@@ -4291,10 +4291,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.18.3":
-  version: 3.18.3
-  resolution: "core-js@npm:3.18.3"
-  checksum: 4aa5017992c18b0a09ded6c7dbf3c3880b27b6ade97a522dba332f52381466978d441317e5aad49f0684e9241aecc450e3e72c550ddaccfc9fb1e69c5908e53c
+"core-js@npm:^3.19.0":
+  version: 3.19.0
+  resolution: "core-js@npm:3.19.0"
+  checksum: 9f03e72f01d9eeafb2724ee5787ab8d6e7dcf0e3b44c4dec23e6a0cfc9e2e0a76460b77ce7d1d0be09db918618b11595fad6838978ff97f2684270738898c5a2
   languageName: node
   linkType: hard
 
@@ -9089,22 +9089,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongodb@npm:4.1.2":
-  version: 4.1.2
-  resolution: "mongodb@npm:4.1.2"
-  dependencies:
-    bson: ^4.5.2
-    denque: ^2.0.1
-    mongodb-connection-string-url: ^2.0.0
-    saslprep: ^1.0.3
-  dependenciesMeta:
-    saslprep:
-      optional: true
-  checksum: ea1e4ceebc594eaee0d4dcac5f293491752b1607c427e173f9f13a439823a6135b82fcdbe509f3d3bf78ef22f831ce71d5acdef0cbeb654c9b861f690ee48b83
-  languageName: node
-  linkType: hard
-
-"mongodb@npm:^4.1.0":
+"mongodb@npm:4.1.3, mongodb@npm:^4.1.0":
   version: 4.1.3
   resolution: "mongodb@npm:4.1.3"
   dependencies:
@@ -9119,20 +9104,20 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.0.11":
-  version: 6.0.11
-  resolution: "mongoose@npm:6.0.11"
+"mongoose@npm:^6.0.12":
+  version: 6.0.12
+  resolution: "mongoose@npm:6.0.12"
   dependencies:
     bson: ^4.2.2
     kareem: 2.3.2
-    mongodb: 4.1.2
+    mongodb: 4.1.3
     mpath: 0.8.4
     mquery: 4.0.0
     ms: 2.1.2
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: 55e432b36780a1538c0376c56a370c30d0daa5d5957af3aa9b25a1379abf1401672ff58690ba8d5d8852417ec3215f48668eda0bbc0ee0ba2d99cbe6b605b36f
+  checksum: 1eb8619b7626da4a0777b6039673274baaa47eece7a84c6335ae4adb50c0b5062e04b9e2cf2bed336d1a0f72251f2955a87d568cf92f070574a33ea3b8948cb9
   languageName: node
   linkType: hard
 
@@ -10248,7 +10233,7 @@ fsevents@~2.3.2:
   dependencies:
     "@dansmaculotte/nuxt-security": ^0.0.5
     "@fullhuman/postcss-purgecss": ^3.1.3
-    "@mdi/js": ^6.3.95
+    "@mdi/js": ^6.4.95
     "@nuxtjs/axios": ^5.13.6
     "@nuxtjs/component-cache": ^1.1.6
     "@nuxtjs/eslint-config": ^6.0.1
@@ -10258,14 +10243,14 @@ fsevents@~2.3.2:
     "@nuxtjs/pwa": ^3.3.5
     "@nuxtjs/vuetify": ^1.12.1
     agenda: ^4.2.1
-    axios: ^0.23.0
+    axios: ^0.24.0
     babel-eslint: ^10.1.0
     cal-parser: ^1.0.1
     chai: ^4.3.4
     config: ^3.3.6
     cookie-parser: ^1.4.5
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.18.3
+    core-js: ^3.19.0
     cors: ^2.8.5
     css-byebye: ^3.0.0
     eslint: ^7.32.0
@@ -10275,7 +10260,7 @@ fsevents@~2.3.2:
     luxon: ^2.0.2
     minify-css-string: ^1.0.0
     mocha: ^9.1.3
-    mongoose: ^6.0.11
+    mongoose: ^6.0.12
     nodemon: ^2.0.14
     nuxt: ^2.15.8
     nuxt-json-config: ^0.0.2
