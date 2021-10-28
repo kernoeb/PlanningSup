@@ -33,6 +33,7 @@ const cleanDescription = d => d && d
   .replace(/LP (DLIS|CYBER)/g, '')
   .replace(/\(Exporté.*\)/, '')
   .replace(/\(Exported :.*\)/, '')
+  .replace(/\(Updated :.*\)/, '')
   .trim()
 
 /**
