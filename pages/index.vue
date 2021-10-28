@@ -496,7 +496,9 @@ export default {
     },
     setEvents (events) {
       this.status = events.status
-      this.events = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
+      const tmpEvents = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
+      if ((events.plannings || []).length > 1) this.events = tmpEvents.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i) // No duplicates
+      else this.events = tmpEvents
       this.selectedPlannings = (events.plannings || []).map(v => v.id)
       this.selectedPlanningsTitles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
       if (events.timestamp) {
