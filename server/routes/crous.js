@@ -15,7 +15,7 @@ const router = Router()
 const instance = axios.create({
   timeout: 6000,
   httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true })
+  httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: false })
 })
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']

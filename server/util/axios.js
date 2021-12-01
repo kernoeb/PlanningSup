@@ -14,7 +14,7 @@ logger.log('Axios instantiated')
 const instance = axios.create({
   timeout: DURATION,
   httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true })
+  httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: false })
 })
 
 instance.interceptors.request.use(function (config) {

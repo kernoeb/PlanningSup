@@ -126,7 +126,7 @@ if (!process.env.NO_MONGO) {
       const instance = axios.create({
         timeout: 5000,
         httpAgent: new http.Agent({ keepAlive: true }),
-        httpsAgent: new https.Agent({ keepAlive: true })
+        httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: false })
       })
 
       const plannings = await Planning.find({})
