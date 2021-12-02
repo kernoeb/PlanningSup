@@ -13,11 +13,12 @@ ADD LICENSE .
 ADD .yarnrc.yml .
 ADD package.json .
 ADD yarn.lock .
-# faster builds
 ADD .yarn .yarn
 RUN yarn
 
 # UI files
+ADD nuxt.config.js .
+ADD pages pages
 ADD assets assets
 ADD components components
 ADD config config
@@ -34,4 +35,4 @@ RUN yarn build
 EXPOSE 3000
 
 # Start command
-CMD ["node", "--max-old-space-size", "4096", "node_modules/nuxt/bin/nuxt.js", "start"]
+CMD ["node", "--max-old-space-size=4096", "node_modules/nuxt/bin/nuxt.js", "start"]
