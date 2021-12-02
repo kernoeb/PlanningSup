@@ -140,6 +140,7 @@ if (!process.env.NO_MONGO) {
       for (const p of plannings) {
         const j = await fetchAndGetJSON(p.url, instance)
         if (j?.events?.length) {
+          p.timestamp = new Date()
           p.backup = j.events
           await p.save()
         }
