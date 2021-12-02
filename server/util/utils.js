@@ -107,7 +107,7 @@ module.exports = {
     try {
       const response = instance ? await instance.get(url) : await axios.get(url)
       const { data } = response
-      if (data && data.length && !data.includes('<!DOCTYPE html>')) { // Yeah that's perfectible
+      if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah that's perfectible
         const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {
           return ics
