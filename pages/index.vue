@@ -501,10 +501,12 @@ export default {
       else this.events = tmpEvents
       this.selectedPlannings = (events.plannings || []).map(v => v.id)
       this.selectedPlanningsTitles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
-      if (events.timestamp) {
-        this.timestamp = events.timestamp
-        if (window) { window.last_timestamp = this.timestamp }
+      if (events.plannings?.length === 1 && events.plannings?.[0]?.timestamp) {
+        this.timestamp = events.plannings[0].timestamp
+      } else {
+        this.timestamp = null
       }
+      if (window && events.timestamp) window.last_timestamp = events.timestamp
       this.start = false
     },
     goToDay (day) {

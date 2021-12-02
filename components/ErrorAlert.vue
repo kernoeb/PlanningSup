@@ -3,9 +3,11 @@
     dense
     outlined
     type="error"
+    :icon="mdiAlert"
   >
     <div v-if="status === 'semi'">
-      <span>{{ $config.i18n.error_db_one }}</span>
+      <span v-if="timestamp">{{ $config.i18n.error_db_only }} <small>({{ $config.i18n.error_saved }}&nbsp;{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }})</small></span>
+      <span v-else>{{ $config.i18n.error_db_one }}&nbsp;({{ $config.i18n.error_saved2 }})</span>
     </div>
     <div v-else-if="status === 'off'">
       <span>{{ $config.i18n.error_db_all }}</span>
@@ -18,6 +20,8 @@
 </template>
 
 <script>
+import { mdiAlert } from '@mdi/js'
+
 export default {
   name: 'ErrorAlert',
   props: {
@@ -28,6 +32,11 @@ export default {
     timestamp: {
       type: Number,
       default: null
+    }
+  },
+  data () {
+    return {
+      mdiAlert
     }
   }
 }
