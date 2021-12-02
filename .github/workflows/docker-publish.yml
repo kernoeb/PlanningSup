@@ -1,11 +1,10 @@
-name: Docker
+name: Build CI Docker
 
 on:
   push:
     # Publish `main` as Docker `latest` image.
     branches:
       - main
-      - planning-v2
 
     # Publish `v1.2.3` tags as releases.
     tags:
@@ -15,7 +14,6 @@ on:
   pull_request:
 
 env:
-  # TODO: Change variable to your image's name.
   IMAGE_NAME: planning
 
 jobs:
@@ -25,12 +23,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo $GITHUB_REF
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.10.0'
+          node-version: '16.13.1'
+
+      - uses: c-hive/gha-yarn-cache@v2
+
       - name: Run tests
-        run: yarn
+      - run: yarn
+      - run: yarn lint
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -43,6 +46,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v2
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME

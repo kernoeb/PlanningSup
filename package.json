@@ -14,7 +14,7 @@
     "test": "NO_MONGO=true DURATION_CALENDAR=10000 mocha test/calendar.test.js test/urls.test.js && NO_MONGO=true DURATION_CALENDAR=10 mocha test/calendar.timeout.test.js"
   },
   "engines": {
-    "node": "16.10.0",
+    "node": "16.13.1",
     "yarn": "3.0.2"
   },
   "dependencies": {
