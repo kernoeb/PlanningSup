@@ -31,7 +31,6 @@ jobs:
 
       - uses: c-hive/gha-yarn-cache@v2
 
-      - name: Run tests
       - run: yarn
       - run: yarn lint
 
