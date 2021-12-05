@@ -5,37 +5,28 @@ const urls = require('../../assets/url.json')
 const logger = require('../util/signale')
 const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning, getCustomEventContent } = require('../util/utils')
 
-const DEBUG = process.env?.DEBUG === 'true'
-const defaultPlanning = ['iutdevannes', 'butdutinfo', '2emeannee', 'a1']
-
-// Util functions
-const getChild = (parent, id) => parent && parent.find(v => v.id === id)
-const bToA = s => Buffer.from(s, 'base64').toString('ascii')
-
-/**
- * Get planning Title and URL
- * @param arr
- * @returns {{title: string, url}|null}
- */
-function getPlanning (arr) {
-  let obj = urls
-  const title = []
-  for (const v of arr) {
-    obj = getChild(obj.edts || obj, v)
-    if (!obj) break
-    title.push(obj.title)
+const allPlannings = []
+const idSeparator = '.'
+const titleSeparator = ' | '
+function recursiveEdts (j, id, title) {
+  if (j.edts) {
+    j.edts.forEach((edts) => {
+      recursiveEdts(edts, id ? (id + idSeparator + j.id) : j.id, title ? (title + titleSeparator + j.title) : j.title)
+    })
+  } else {
+    allPlannings[id + idSeparator + j.id] = { title: title + titleSeparator + j.title, url: j.url }
   }
-  if (!obj || (obj && !obj.url)) return null
-  return { title: title.join(' | '), url: obj.url, id: arr.join('.') }
 }
+
+urls.forEach((univ) => {
+  recursiveEdts(univ)
+})
 
 /**
  * Calendars GET route
  * From `p` parameter or `plannings` cookie
  */
 router.get('/calendars', async (req, res) => {
-  if (req?.query?.p === 'reset') return res.json({ status: 'reset' })
-
   // Get blocklist courses
   let blocklist = []
   try {
@@ -53,45 +44,24 @@ router.get('/calendars', async (req, res) => {
   } catch (e) {}
 
   try {
-    const p = req.query.p || req.cookies.plannings
-    const calendars = p && bToA(p)
-
-    let arr = null
-    try {
-      arr = calendars && JSON.parse(calendars).filter(v => typeof v === 'string').map(v => v.split('.'))
-    } catch (err) {
-      return res.status(400).send(DEBUG ? 'Invalid json : ' + err.message : 'Invalid json.')
-    }
+    const calendars = (req.query?.p && req.query.p.split(',')) || (req.cookies?.plannings && req.cookies.plannings.split(',')) || null
+    if (calendars == null) return res.status(400).send('No cookie or no parameter found')
 
     // Get planning URLs
-    const tmpUrls = (arr || [defaultPlanning]).map(p => getPlanning(p)).filter(m => m && m.url)
-    if (!tmpUrls || (tmpUrls && !tmpUrls.length)) return res.status(400).send('No planning(s) found !')
+    const tmpIds = calendars.filter(p => allPlannings[p]?.url)
+    if (!tmpIds?.length) return res.status(404).send('No plannings found !')
 
-    // Get data
-    const data = await Promise.all(tmpUrls.map((m, i) => fetchAndGetJSON(m.url)))
-
-    // Convert ICS to JSON events
-    let status = 'on'
-    const plannings = await Promise.all((data || []).map(async (planning, i) => {
-      if (!planning) status = 'semi'
-      let events
-      let backed
-      if (planning) events = getFormattedEvents(planning, blocklist, customColors)
-      else {
-        backed = await getBackedPlanning(tmpUrls?.[i]?.id)
-        if (backed && backed.backup) events = getFormattedEvents(backed.backup, blocklist, customColors)
-      }
-      return ({
-        id: tmpUrls?.[i]?.id,
-        title: tmpUrls?.[i]?.title,
-        timestamp: (backed && backed.timestamp) || new Date().getTime(),
-        events
-      })
+    const plannings = await Promise.all(tmpIds.map(async (id) => {
+      const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
+      if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColors) }
+      const backed = await getBackedPlanning(id)
+      if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColors) }
+      else return { id, title: allPlannings[id].title, status: 'off' }
     }))
 
     return res.json({
-      status: !plannings.find(v => v.events) ? 'off' : status,
-      timestamp: new Date().getTime(),
+      timestamp: new Date().toISOString(),
+      status: plannings.every(p => p.status === 'ok') ? 'ok' : 'partial',
       plannings
     })
   } catch (err) {

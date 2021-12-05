@@ -61,12 +61,12 @@ module.exports = {
   },
   /**
    * Get backed plannings
-   * @param id
    * @returns {Promise<[]|*|{backup: ([]|*), timestamp}|null>}
+   * @param fullId
    */
-  getBackedPlanning: async (id) => {
+  getBackedPlanning: async (fullId) => {
     try {
-      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
+      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId })
       return tmpPlanning && tmpPlanning.backup && { backup: tmpPlanning.backup, timestamp: tmpPlanning.timestamp }
     } catch (err) {
       return null
@@ -99,8 +99,8 @@ module.exports = {
   },
   /**
    * Fetch planning from URL, convert ICS to JSON
-   * @param url
-   * @param instance optional axios instance
+   * @param {String} url
+   * @param instance
    * @returns {Promise<*>}
    */
   fetchAndGetJSON: async (url, instance) => {

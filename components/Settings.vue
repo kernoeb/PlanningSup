@@ -133,14 +133,14 @@
           <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
           <v-list-item inactive>
             <v-combobox
-              :value="blocklistSelect"
+              v-model="blocklistSelect"
               :append-icon="mdiMenuDown"
               :items="blocklist"
               :label="$config.i18n.blocklistDesc"
               chips
               multiple
               class="ban-word"
-              @change="$emit('change_blocklist_select', $event);"
+              @change="updateBlocklist"
             >
               <template #item="{ item, on, attrs }">
                 <v-list-item v-bind="attrs" v-on="on">
@@ -200,10 +200,6 @@ export default {
     settings: {
       type: Array,
       default: () => []
-    },
-    blocklistSelect: {
-      type: Array,
-      default: () => {}
     }
   },
   data () {
@@ -218,6 +214,7 @@ export default {
       mdiClose,
 
       blocklist: ['Maths', 'Communication'], // Oui, bon...
+      blocklistSelect: [],
 
       colorTP: 'blue',
       colorTD: 'green',
@@ -236,6 +233,19 @@ export default {
     }
   },
   mounted () {
+    if (this.$cookies.get('blocklist') !== undefined) {
+      try {
+        const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
+        if (tmp.length) {
+          this.blocklistSelect = tmp
+        } else {
+          this.$cookies.remove('blocklist')
+        }
+      } catch (e) {
+        this.$cookies.remove('blocklist')
+      }
+    }
+
     try {
       const c = this.$cookies.get('customColors')
       if (c.amphi) this.colorAmphi = c.amphi
@@ -245,6 +255,18 @@ export default {
     } catch (err) {}
   },
   methods: {
+    delayedFetch () {
+      this.$nextTick(() => {
+        this.$emit('fetch')
+      })
+    },
+    updateBlocklist (event) {
+      try {
+        this.$cookies.set('blocklist', JSON.stringify(event), { maxAge: 2147483646 })
+        this.delayedFetch()
+      } catch (err) {
+      }
+    },
     setColor (type, color) {
       try {
         const tmpCookie = this.$cookies.get('customColors') || {}
@@ -253,9 +275,7 @@ export default {
       } catch (err) {
         this.$cookies.set('customColors', { [type]: color }, { maxAge: 2147483646 })
       }
-      this.$nextTick(() => {
-        this.$emit('fetch')
-      })
+      this.delayedFetch()
     }
   }
 }

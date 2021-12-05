@@ -15,6 +15,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
-    curly: 'off'
+    curly: 'off',
+    'no-console': 'off'
   }
 }

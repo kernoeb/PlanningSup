@@ -13,33 +13,33 @@
         <v-tooltip bottom>
           <template #activator="{ on, attrs }">
             <transition name="fade" mode="out-in">
-              <div v-if="selectedPlanningsTitles && selectedPlanningsTitles.length === 1" key="one_planning" style="font-size: 10px" class="text-truncate">
-                {{ selectedPlanningsTitles[0].title }}
+              <div v-if="plannings && plannings.length === 1" key="one_planning" style="font-size: 10px" class="text-truncate">
+                {{ plannings[0].title }}
               </div>
               <div
-                v-else-if="selectedPlanningsTitles && selectedPlanningsTitles.length > 1"
+                v-else-if="plannings && plannings.length > 1"
                 key="multiple_plannings"
                 style="font-size: 10px; cursor: pointer;"
                 class="text-truncate"
                 v-bind="attrs"
                 v-on="on"
               >
-                {{ selectedPlanningsTitles.length + ' ' + $config.i18n.selectedPlannings }}
+                {{ plannings.length + ' ' + $config.i18n.selectedPlannings }}
               </div>
               <div v-else key="no_current_planning" style="font-size: 10px" class="text-truncate">
                 ...
               </div>
             </transition>
           </template>
-          <div v-for="(p, i) in (selectedPlanningsTitles || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`" style="font-size: 12px;">
+          <div v-for="(p, i) in (plannings || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`" style="font-size: 12px;">
             {{ p.title }}
           </div>
         </v-tooltip>
       </div>
-      <crous v-if="(selectedPlanningsTitles || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
+      <crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
-    <transition name="fade">
-      <error-alert v-if="status !== 'on' && status !== 'reset'" :timestamp="timestamp" :status="status" />
+    <transition name="fade" mode="out-in">
+      <error-alert v-if="plannings != null && (selectedPlanningsIds != null || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
     </transition>
     <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
@@ -106,61 +106,7 @@
           v-model="dialogEdt"
           width="500"
         >
-          <v-card>
-            <v-toolbar
-              class="toolbar_edt"
-              flat
-            >
-              <v-card-title class="headline">
-                <v-icon class="mr-3">
-                  {{ mdiCalendar }}
-                </v-icon>
-                <div>
-                  <div style="font-size: 15px; height: 20px;">
-                    {{ $config.i18n.chooseEdt }}
-                  </div>
-                  <div style="font-size: 10px;">
-                    {{ (selectedPlannings && selectedPlannings.length) || 0 }} sélectionnés
-                  </div>
-                </div>
-              </v-card-title>
-              <v-spacer />
-              <v-btn
-                icon
-                @click="dialogEdt = false"
-              >
-                <v-icon>{{ mdiClose }}</v-icon>
-              </v-btn>
-            </v-toolbar>
-
-            <v-divider />
-
-            <v-text-field
-              v-model.trim="searchCalendar"
-              :label="$config.i18n.searchPlanning"
-              filled
-              clearable
-              :clear-icon="mdiClose"
-              hide-details
-              dense
-            />
-            <v-btn text small color="green" @click="reset">
-              {{ $config.i18n.reset }}
-            </v-btn>
-            <v-tooltip v-if="selectedPlannings && selectedPlannings.length" right color="blue">
-              <template #activator="{ on, attrs }">
-                <v-btn text small color="blue" v-bind="attrs" v-on="on">
-                  {{ $config.i18n.selection }}
-                </v-btn>
-              </template>
-              <div v-if="selectedPlannings">
-                <div v-for="(p, i) in (selectedPlanningsTitles || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`">
-                  {{ p.title }}
-                </div>
-              </div>
-            </v-tooltip>
-            <select-planning v-if="selectedPlannings" :search-calendar="searchCalendar" :selected-plannings="selectedPlannings" @selected-plannings="selectedPlannings = $event" />
-          </v-card>
+          <select-planning v-if="selectedPlanningsIds" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
@@ -178,13 +124,11 @@
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
         <settings
-          :blocklist-select="blocklistSelect"
           :dialog-settings="dialogSettings"
           :settings="settings"
           @fetch="$fetch()"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"
-          @change_blocklist_select="blocklistSelect = $event; $cookies.set('blocklist', JSON.stringify($event), { maxAge: 2147483646 }); $fetch()"
         />
       </div>
       <v-btn
@@ -199,6 +143,15 @@
       <div v-if="$fetchState.error" style="text-align: center">
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
+      </div>
+      <div v-else-if="errorMessage" class="title" style="text-align: center">
+        <br><span>{{ errorMessage }}</span>
+        <br><br><div style="font-size: 80px;">
+          404
+        </div>
+        <br><br><v-btn @click="dialogEdt = true">
+          Sélectionner un planning
+        </v-btn>
       </div>
       <transition name="fade">
         <v-calendar
@@ -258,14 +211,14 @@
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import Bottom from '@/components/Bottom'
-import ErrorAlert from '@/components/ErrorAlert'
+// import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
     Crous: () => import('@/components/Crous'),
     Settings: () => import('@/components/Settings'),
     Bottom,
-    ErrorAlert,
+    // ErrorAlert,
     SelectPlanning: () => import('@/components/SelectPlanning')
   },
   middleware: 'vuetify-theme',
@@ -289,16 +242,18 @@ export default {
       mdiClose,
       mdiMinusBox,
 
+      plannings: null,
+      selectedPlanningsIds: null,
+      errorMessage: null,
       bottom: false,
       selectedEvent: null,
-      loading: true,
+      loading: false,
       timestamp: null,
       status: 'on',
       timer: 0,
       dialogEdt: false,
       dialogSettings: false,
       settings: [],
-      blocklistSelect: [],
       type: 'week',
       types: [{
         text: this.$config.i18n.month,
@@ -323,71 +278,55 @@ export default {
       nowY: '-10px',
       width: 0,
       doublePress: false,
-      playing: false,
-      searchCalendar: '',
-      selectedPlannings: null,
-      selectedPlanningsTitles: [],
-      firstOK: false
+      playing: false
     }
   },
   fetchOnServer: false,
   async fetch () {
+    if (this.loading) return
     this.loading = true
-    const apiCalendar = this.$config.apiCalendar
-    try {
-      // Deprecated / Planning v1 migration
-      if (this.$route.query && this.$route.query.u && this.$route.query.s && this.$route.query.y && this.$route.query.g) {
-        try {
-          await this.$router.replace({
-            name: 'index',
-            query: { p: Buffer.from(JSON.stringify([`${this.$route.query.u}.${this.$route.query.s}.${this.$route.query.y}.${this.$route.query.g}`]), 'binary').toString('base64') }
-          })
-        } catch (err) {
-        }
-      } else if (this.$cookies.get('edt')) {
-        try {
-          const edt = JSON.parse(Buffer.from(decodeURIComponent(this.$cookies.get('edt')), 'base64').toString())
-          if (edt.u && edt.s && edt.y && edt.g) {
-            await this.$router.replace({
-              name: 'index',
-              query: { p: Buffer.from(JSON.stringify([`${edt.u}.${edt.s}.${edt.y}.${edt.g}`]), 'binary').toString('base64') }
-            })
-            this.$cookies.remove('edt')
-          }
-        } catch (err) {
-        }
-      }
+    // Planning v1 migration
+    this.$cookies.remove('edt')
 
-      if (this.$route.query && this.$route.query.p) {
-        const tmpEvents = await this.$axios.$get(apiCalendar, { params: { p: this.$route.query.p }, withCredentials: true })
-        this.setEvents(tmpEvents)
-        this.loading = false
-        this.$cookies.set('plannings', this.$route.query.p, { maxAge: 2147483646 })
-      } else if (this.$cookies.get('plannings') !== undefined) {
-        try {
-          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
-          this.setEvents(tmpEvents)
-          this.loading = false
-        } catch (e) {
-          this.$cookies.remove('plannings')
-          const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
-          this.setEvents(tmpEvents)
-          this.loading = false
-        }
-      } else {
-        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
-        this.setEvents(tmpEvents)
-        this.loading = false
-      }
-    } catch (e) {
+    if (this.selectedPlanningsIds == null) {
+      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.a1'
+      let planningString
       try {
-        const tmpEvents = await this.$axios.$get(apiCalendar, { withCredentials: true })
-        this.setEvents(tmpEvents)
-        this.loading = false
-      } catch (e) {
+        planningString = this.$route.query?.p || this.$cookies.get('plannings') || defaultPlanning
+      } catch (err) {
+        console.log(err)
+        planningString = defaultPlanning
+      }
+      this.selectedPlanningsIds = planningString.split(',')
+    } else if (this.selectedPlanningsIds && this.selectedPlanningsIds.length === 0) {
+      this.events = []
+      this.plannings = []
+      this.loading = false
+      return
+    }
+
+    try {
+      const events = await this.$axios.$get(`${this.$config.publicUrl}/api/v1/calendars`, { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+      this.setEvents(events)
+      this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+    } catch (e) {
+      if (e?.response?.status === 404) {
+        this.$cookies.remove('plannings')
+        this.errorMessage = 'Planning inexistant !'
+      } else this.errorMessage = null
+      // Let's try again
+      console.log(e)
+      try {
+        const events = await this.$axios.$get(`${this.$config.publicUrl}/api/v1/calendars`, { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+        this.setEvents(events)
+        this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+      } catch (err) {
+        console.log(err)
         this.loading = false
       }
     }
+
+    this.loading = false
   },
   computed: {
     titleCss () {
@@ -395,34 +334,8 @@ export default {
     }
   },
   watch: {
-    selectedPlannings: {
-      handler (newVal, oldVal) {
-        if (this.selectedPlannings && this.firstOK && (JSON.stringify(newVal) !== JSON.stringify(oldVal))) {
-          this.$router.push({
-            name: 'index',
-            query: { p: this.selectedPlannings.length ? Buffer.from(JSON.stringify(this.selectedPlannings), 'binary').toString('base64') : 'reset' }
-          })
-        }
-        this.firstOK = true
-      }
-    },
-    '$route.query': '$fetch',
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
-    }
-  },
-  created () {
-    if (this.$cookies.get('blocklist') !== undefined) {
-      try {
-        const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
-        if (tmp.length) {
-          this.blocklistSelect = tmp
-        } else {
-          this.$cookies.remove('blocklist')
-        }
-      } catch (e) {
-        this.$cookies.remove('blocklist')
-      }
     }
   },
   beforeDestroy () {
@@ -451,15 +364,17 @@ export default {
       } catch (e) {
       }
 
-      this.$refs.calendar.$on('change', (p) => {
-        try {
-          const start = this.$moment(p.start.date).week().toString()
-          const end = this.$moment(p.end.date).week().toString()
-          this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
-        } catch (e) {
-          this.currentWeek = ''
-        }
-      })
+      if (this.$refs && this.$refs.calendar) {
+        this.$refs.calendar.$on('change', (p) => {
+          try {
+            const start = this.$moment(p.start.date).week().toString()
+            const end = this.$moment(p.end.date).week().toString()
+            this.currentWeek = start === end ? `${this.$config.i18n.week} ${start}` : `${this.$config.i18n.weeks} ${start} - ${end}`
+          } catch (e) {
+            this.currentWeek = ''
+          }
+        })
+      }
     })
 
     this.onResize()
@@ -488,25 +403,16 @@ export default {
     }, 120000)
   },
   methods: {
-    reset () {
-      this.$cookies.remove('plannings')
-      this.selectedPlannings = []
-      this.events = []
-      this.searchCalendar = ''
-    },
-    setEvents (events) {
-      this.status = events.status
-      const tmpEvents = [].concat.apply([], (events.plannings || []).map(v => v.events).filter(v => v))
-      if ((events.plannings || []).length > 1) this.events = tmpEvents.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i) // No duplicates
+    setEvents (req) {
+      // Merge planning and remove duplicates events
+      const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
+      if ((req.plannings || []).length > 1) this.events = tmpEvents.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
       else this.events = tmpEvents
-      this.selectedPlannings = (events.plannings || []).map(v => v.id)
-      this.selectedPlanningsTitles = (events.plannings || []).map(v => ({ id: v.id, title: v.title }))
-      if (events.plannings?.length === 1 && events.plannings?.[0]?.timestamp) {
-        this.timestamp = events.plannings[0].timestamp
-      } else {
-        this.timestamp = null
-      }
-      if (window && events.timestamp) window.last_timestamp = events.timestamp
+
+      this.status = req.status
+      this.plannings = req.plannings.map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
+
+      if (window && req.timestamp) window.last_timestamp = req.timestamp
       this.start = false
     },
     goToDay (day) {
@@ -536,12 +442,12 @@ export default {
       }
     },
     async getCustomEventContent (e) {
-      const { data } = await this.$axios.get('/api/custom-event-content', { params: { name: (e.name || '').trim() } })
+      const { data } = await this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } })
       return '<b>' + e.name + '</b>' + '<br>' + data
     },
     setSelectedEvent (e) {
       this.selectedEvent = { event: e }
-      this.$axios.get('/api/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
+      this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
         if (d.data && d.data.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
       })
     },
@@ -608,11 +514,11 @@ export default {
             })
           }, 4440)
           this.events.forEach((v, i) => {
-            v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
+            v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
           })
           const s = setInterval(() => {
             this.events.forEach((v, i) => {
-              v.color = (Math.floor(Math.random() * (1 - 0 + 1)) + 0) === 0 ? '#e28b6f' : '#c3bde7'
+              v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
             })
           }, 500)
           audio.play().then(() => {}).catch(() => {})

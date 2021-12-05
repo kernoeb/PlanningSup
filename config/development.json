@@ -1,3 +1,4 @@
 {
-  "duration": 3000
+  "duration": 3000,
+  "publicUrl": "http://localhost:3000"
 }

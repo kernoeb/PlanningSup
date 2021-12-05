@@ -5,16 +5,15 @@
     type="error"
     :icon="mdiAlert"
   >
-    <div v-if="status === 'semi'">
-      <span v-if="timestamp">{{ $config.i18n.error_db_only }} <small>({{ $config.i18n.error_saved }}&nbsp;{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }})</small></span>
+    <div v-if="status === 'partial'">
+      <span v-if="plannings && plannings.length === 1 && plannings[0] && plannings[0].timestamp">{{ $config.i18n.error_db_only }} <small>({{ $config.i18n.error_saved }}&nbsp;{{ $moment(plannings[0].timestamp).format('dddd DD MMM à HH:mm') }})</small></span>
       <span v-else>{{ $config.i18n.error_db_one }}&nbsp;({{ $config.i18n.error_saved2 }})</span>
     </div>
     <div v-else-if="status === 'off'">
       <span>{{ $config.i18n.error_db_all }}</span>
     </div>
     <div v-else>
-      <span v-if="timestamp">{{ $config.i18n.error_db }}{{ $moment(timestamp).format('dddd DD MMM à HH:mm') }}.</span>
-      <span v-else>{{ $config.i18n.error_db2 }}</span>
+      {{ $config.i18n.error_db2 }}
     </div>
   </v-alert>
 </template>
@@ -29,8 +28,8 @@ export default {
       type: String,
       default: 'on'
     },
-    timestamp: {
-      type: Number,
+    plannings: {
+      type: Array,
       default: null
     }
   },
