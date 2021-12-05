@@ -211,14 +211,14 @@
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import Bottom from '@/components/Bottom'
-// import ErrorAlert from '@/components/ErrorAlert'
+import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
     Crous: () => import('@/components/Crous'),
     Settings: () => import('@/components/Settings'),
     Bottom,
-    // ErrorAlert,
+    ErrorAlert,
     SelectPlanning: () => import('@/components/SelectPlanning')
   },
   middleware: 'vuetify-theme',
