@@ -4,6 +4,8 @@ const { describe, it } = require('mocha')
 
 const app = require('../server/index.js')
 
+// TODO Nock usage
+
 describe('API : /calendars', function () {
   it('Default calendar and check result', function () {
     this.timeout(process.env.DURATION_CALENDAR || 10000)
