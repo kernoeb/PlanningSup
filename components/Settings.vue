@@ -129,7 +129,9 @@
               <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <span class="pl-4" style="font-weight: 300; font-size: 15px;" @click="reset()"><a>Réinitialiser</a></span>
+          <div class="pl-4 mb-2" style="font-weight: 300; font-size: 15px;" @click="reset()">
+            <a class="hover_reset">Réinitialiser</a>
+          </div>
           <v-divider />
           <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
           <v-list-item inactive>
@@ -291,6 +293,10 @@ export default {
 </script>
 
 <style>
+.hover_reset:hover {
+  filter: brightness(120%);
+}
+
 .ban-word .v-input__append-inner:hover {
   cursor:pointer;
 }
