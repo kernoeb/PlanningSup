@@ -17,7 +17,7 @@
     </v-tooltip>
     <v-dialog
       :value="dialogSettings"
-      width="500"
+      width="600"
       @input="$emit('change_dialog', $event)"
     >
       <v-card>
@@ -45,6 +45,7 @@
         <v-list-item-group
           :value="settings"
           multiple
+          class="pa-2"
           :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
           @change="$emit('change_settings', $event)"
         >
@@ -164,6 +165,18 @@
               </template>
             </v-combobox>
           </v-list-item>
+
+          <v-divider />
+
+          <div>
+            <v-subheader>FAQ / Aide</v-subheader>
+            <help-info style="width: 98%;" />
+          </div>
+
+          <br>
+
+          <v-divider />
+
           <v-subheader>{{ $config.i18n.contact }}</v-subheader>
           <v-list-item inactive>
             <div class="d-flex flex-column mb-4">
@@ -185,15 +198,6 @@
             <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
           </v-list-item>
         </v-list-item-group>
-
-        <v-divider />
-
-        <div class="mt-4 ml-4 mb-2">
-          <div class="font-weight-bold mb-2">
-            FAQ / Aide
-          </div>
-          <help-info style="width: 98%;" />
-        </div>
       </v-card>
     </v-dialog>
   </div>
