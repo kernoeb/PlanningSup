@@ -176,13 +176,13 @@ html {
 body {
   background-color: #1E1E1E!important;
 }
-body.global_light::-webkit-scrollbar-thumb, body.global_light .v-dialog::-webkit-scrollbar-thumb {
+body.global_light::-webkit-scrollbar-thumb, body.global_light .v-dialog::-webkit-scrollbar-thumb, body.global_light .v-treeview::-webkit-scrollbar-thumb {
   background: #BDBDBD;
 }
-body.global_light::-webkit-scrollbar-thumb:hover, body.global_light .v-dialog::-webkit-scrollbar-thumb:hover {
+body.global_light::-webkit-scrollbar-thumb:hover, body.global_light .v-dialog::-webkit-scrollbar-thumb:hover, body.global_light .v-treeview::-webkit-scrollbar-thumb:hover {
   background: #cecece;
 }
-body.global_light::-webkit-scrollbar-track, body.global_light .v-dialog::-webkit-scrollbar-track {
+body.global_light::-webkit-scrollbar-track, body.global_light .v-dialog::-webkit-scrollbar-track, body.global_light .v-treeview::-webkit-scrollbar-track {
   background: #fff;
   box-shadow: inset 0 0 0 0 #F0F0F0;
 }
@@ -190,7 +190,7 @@ body.global_light {
   background-color: #fff!important;
 }
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 30px;

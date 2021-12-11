@@ -67,7 +67,7 @@
       <v-btn text small color="green" @click="reset">
         Réinitialiser
       </v-btn>
-      <div v-if="urls">
+      <div v-if="urls" class="mb-2">
         <v-treeview
           style="max-height: calc(90vh - 200px); overflow: auto;"
           :expand-icon="mdiMenuDown"
