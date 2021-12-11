@@ -42,7 +42,7 @@
         <v-btn
           v-tooltip="'Copier la sélection actuelle sous forme d\'URL dans le presse-papier'"
           icon
-          @click="copyTextToClipboard($config.publicUrl + '/?p=' + localPlannings.join(','))"
+          @click="copyTextToClipboard()"
         >
           <v-icon>{{ mdiContentCopy }}</v-icon>
         </v-btn><v-btn
@@ -158,7 +158,7 @@ export default {
     }
   },
   mounted () {
-    this.$axios.$get(`${this.$config.publicUrl}/api/v1/urls`).then((data) => {
+    this.$axios.$get('/api/v1/urls').then((data) => {
       this.urls = data
     }).catch((err) => {
       console.log(err)
@@ -191,7 +191,10 @@ export default {
 
       document.body.removeChild(textArea)
     },
-    copyTextToClipboard (text) {
+    copyTextToClipboard () {
+      const { href } = location
+      const text = (href.endsWith('/') ? href.slice(0, -1) : href) + '/?p=' + this.localPlannings.join(',')
+
       if (!navigator.clipboard) {
         this.fallbackCopyTextToClipboard(text)
         return

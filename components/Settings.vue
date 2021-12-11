@@ -129,6 +129,7 @@
               <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <span class="pl-4" style="font-weight: 300; font-size: 15px;" @click="reset()"><a>Réinitialiser</a></span>
           <v-divider />
           <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
           <v-list-item inactive>
@@ -216,10 +217,10 @@ export default {
       blocklist: ['Maths', 'Communication'], // Oui, bon...
       blocklistSelect: [],
 
-      colorTP: 'blue',
-      colorTD: 'green',
-      colorAmphi: '#fe463a',
-      colorOthers: 'orange'
+      colorTP: '#bbe0ff',
+      colorTD: '#d4fbcc',
+      colorAmphi: '#efd6d8',
+      colorOthers: '#eddd6e'
     }
   },
   computed: {
@@ -247,7 +248,7 @@ export default {
     }
 
     try {
-      const c = this.$cookies.get('customColors')
+      const c = this.$cookies.get('customColorList')
       if (c.amphi) this.colorAmphi = c.amphi
       if (c.td) this.colorTD = c.td
       if (c.tp) this.colorTP = c.tp
@@ -255,6 +256,14 @@ export default {
     } catch (err) {}
   },
   methods: {
+    reset () {
+      this.$cookies.remove('customColorList')
+      this.colorTP = '#bbe0ff'
+      this.colorTD = '#d4fbcc'
+      this.colorAmphi = '#efd6d8'
+      this.colorOthers = '#eddd6e'
+      this.delayedFetch()
+    },
     delayedFetch () {
       this.$nextTick(() => {
         this.$emit('fetch')
@@ -269,11 +278,11 @@ export default {
     },
     setColor (type, color) {
       try {
-        const tmpCookie = this.$cookies.get('customColors') || {}
+        const tmpCookie = this.$cookies.get('customColorList') || {}
         tmpCookie[type] = color
-        this.$cookies.set('customColors', tmpCookie, { maxAge: 2147483646 })
+        this.$cookies.set('customColorList', tmpCookie, { maxAge: 2147483646 })
       } catch (err) {
-        this.$cookies.set('customColors', { [type]: color }, { maxAge: 2147483646 })
+        this.$cookies.set('customColorList', { [type]: color }, { maxAge: 2147483646 })
       }
       this.delayedFetch()
     }

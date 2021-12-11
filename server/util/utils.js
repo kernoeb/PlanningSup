@@ -12,13 +12,13 @@ const logger = require('./signale')
  */
 const getColor = (value, location, customColor) => {
   if (value.includes('CM') || value.includes('Amphi') || location.includes('Amphi')) {
-    return customColor?.amphi || '#fe463a'
+    return customColor?.amphi || '#efd6d8'
   } else if (value.includes('TP') || value.includes('TDi')) {
-    return customColor?.tp || 'blue'
+    return customColor?.tp || '#bbe0ff'
   } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
-    return customColor?.td || 'green'
+    return customColor?.td || '#d4fbcc'
   } else {
-    return customColor?.other || 'orange'
+    return customColor?.other || '#EDDD6E'
   }
 }
 

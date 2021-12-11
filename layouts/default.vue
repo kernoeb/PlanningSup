@@ -18,7 +18,7 @@
         </template>
         {{ version }}
       </v-tooltip>
-      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span>
+      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span><span v-else class="ml-1">{{ version }}</span>
       <v-spacer />
       <v-icon small>
         {{ mdiSchool }}

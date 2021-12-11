@@ -34,13 +34,13 @@ router.get('/calendars', async (req, res) => {
   } catch (e) {}
 
   // Get custom color courses
-  let customColors = null
+  let customColorList = null
   try {
-    if (req.cookies?.customColors) customColors = JSON.parse(req.cookies.customColors)
-    for (const c in customColors) {
-      if (typeof customColors[c] !== 'string') delete customColors[c]
+    if (req.cookies?.customColorList) customColorList = JSON.parse(req.cookies.customColorList)
+    for (const c in customColorList) {
+      if (typeof customColorList[c] !== 'string') delete customColorList[c]
     }
-    if (Object.keys(customColors)?.length === 0) customColors = null
+    if (Object.keys(customColorList)?.length === 0) customColorList = null
   } catch (e) {}
 
   try {
@@ -53,9 +53,9 @@ router.get('/calendars', async (req, res) => {
 
     const plannings = await Promise.all(tmpIds.map(async (id) => {
       const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
-      if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColors) }
+      if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColorList) }
       const backed = await getBackedPlanning(id)
-      if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColors) }
+      if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColorList) }
       else return { id, title: allPlannings[id].title, status: 'off' }
     }))
 

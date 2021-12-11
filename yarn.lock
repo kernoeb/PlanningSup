@@ -1866,16 +1866,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/vuetify@npm:^1.12.1":
-  version: 1.12.1
-  resolution: "@nuxtjs/vuetify@npm:1.12.1"
+"@nuxtjs/vuetify@npm:^1.12.2":
+  version: 1.12.2
+  resolution: "@nuxtjs/vuetify@npm:1.12.2"
   dependencies:
     deepmerge: ^4.2.2
     sass: ~1.32.13
-    sass-loader: ^10.2.0
-    vuetify: ^2.5.3
-    vuetify-loader: ^1.7.2
-  checksum: e7f3df4aeb34b8fcfb3f99cacf5fd3de7e5e429f8b8b9ac5eda6a64a863ef0c9803f37b24b0fef262bab671f5e911df25848a976109e67142157a13cf501875d
+    sass-loader: ^12.3.0
+    vuetify: ^2.6
+    vuetify-loader: ^1.7.3
+  checksum: 2adb658dbbe113b6896ec4d3874a15b8b89fa6c077418812f7ffd9ff7173f1a64eeaab203d87a01d125e8737fdece453c96f544fbf352b793a26f5f3f7e54dff
   languageName: node
   linkType: hard
 
@@ -3376,7 +3376,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bson@npm:^4.5.4":
+"bson@npm:^4.6.0":
   version: 4.6.0
   resolution: "bson@npm:4.6.0"
   dependencies:
@@ -4300,10 +4300,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.19.2":
-  version: 3.19.2
-  resolution: "core-js@npm:3.19.2"
-  checksum: a605f7b0448a7aa13731fd9a13525460681e15ce60ec0e1ff45e88b18b71e74f6c625959200f0f8376ec0a1eb94b0f06e3d6807a01c5a46f3871d08a2c4f1d58
+"core-js@npm:^3.19.3":
+  version: 3.19.3
+  resolution: "core-js@npm:3.19.3"
+  checksum: eaa7afd87411393a7b1637fd0813957f689e91007219b6a951a1fe1aa08edccfddbbfbb1acb281a76dbe90b42fe7768377289258d81ba46e13c9919527aee95a
   languageName: node
   linkType: hard
 
@@ -8556,10 +8556,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"luxon@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "luxon@npm:2.1.1"
-  checksum: 6d562796c4df195988f2afdca733e5a36457d6449c196cbf16710c706fde8d6b96c7d47fa54cd37c0cb29e4d2e7d8628a9677f36e23490139a8c90232f489e02
+"luxon@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "luxon@npm:2.2.0"
+  checksum: 69c715529b6aaa1f96fad8edfe2681004a1f314191ac243804a90c023fc533b5e3f0b9d34d5c86555d2a41297ddbee96a67a7cbb185f20243e66b7c6d4b809ac
   languageName: node
   linkType: hard
 
@@ -9100,7 +9100,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongodb-connection-string-url@npm:^2.1.0":
+"mongodb-connection-string-url@npm:^2.2.0":
   version: 2.2.0
   resolution: "mongodb-connection-string-url@npm:2.2.0"
   dependencies:
@@ -9110,18 +9110,18 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongodb@npm:4.1.4":
-  version: 4.1.4
-  resolution: "mongodb@npm:4.1.4"
+"mongodb@npm:4.2.1":
+  version: 4.2.1
+  resolution: "mongodb@npm:4.2.1"
   dependencies:
-    bson: ^4.5.4
+    bson: ^4.6.0
     denque: ^2.0.1
-    mongodb-connection-string-url: ^2.1.0
+    mongodb-connection-string-url: ^2.2.0
     saslprep: ^1.0.3
   dependenciesMeta:
     saslprep:
       optional: true
-  checksum: 8d5a3caf349bdf10d0f14ab73f55e3cc194bc9e0f740a3b0e1e089fa721af725e27d2f4916c837013e1ba2561bded9df11253dae4b1c687c341e876a36ff4815
+  checksum: 3bd32c0afe538ee1c7166b69721941c2fc2fe2c30bada62d3178530942a119d83083a13b9263005f9b468acc5b25df82f848b809a2bb67169ea2074d4ffb4cef
   languageName: node
   linkType: hard
 
@@ -9140,20 +9140,20 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.0.14":
-  version: 6.0.14
-  resolution: "mongoose@npm:6.0.14"
+"mongoose@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "mongoose@npm:6.1.1"
   dependencies:
     bson: ^4.2.2
     kareem: 2.3.2
-    mongodb: 4.1.4
+    mongodb: 4.2.1
     mpath: 0.8.4
     mquery: 4.0.0
     ms: 2.1.2
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: 8c54360a2ebcd436466f9b5b3a9a7639db4cf49c6c322f840bdcd7846ef947ef28e1cd5647af8c10417fe2207fdb3c6daba284705263d136a290517e290063ff
+  checksum: 5c79e7bc5f00a0fe2c58fdf3859c1539009bb35e81a52d45f73e4615dd6424413052726a5a1fa435f86f149a09cb875b53fc323538001c8dc1a23801ff7a1ef6
   languageName: node
   linkType: hard
 
@@ -10286,7 +10286,7 @@ fsevents@~2.3.2:
     "@nuxtjs/google-fonts": ^1.3.0
     "@nuxtjs/moment": ^1.6.1
     "@nuxtjs/pwa": ^3.3.5
-    "@nuxtjs/vuetify": ^1.12.1
+    "@nuxtjs/vuetify": ^1.12.2
     agenda: ^4.2.1
     axios: ^0.24.0
     babel-eslint: ^10.1.0
@@ -10295,28 +10295,29 @@ fsevents@~2.3.2:
     config: ^3.3.6
     cookie-parser: ^1.4.6
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.19.2
+    core-js: ^3.19.3
     cors: ^2.8.5
     css-byebye: ^3.1.0
     eslint: ^7.32.0
     eslint-plugin-nuxt: ^2.0.0
     express: ^4.17.1
     jsdom: ^19.0.0
-    luxon: ^2.1.1
+    luxon: ^2.2.0
     minify-css-string: ^1.0.0
     mocha: ^9.1.3
-    mongoose: ^6.0.14
+    mongoose: ^6.1.1
     nodemon: ^2.0.15
     nuxt: ^2.15.8
     nuxt-json-config: ^0.0.2
     route-cache: ^0.4.5
-    sanitize-html: ^2.6.0
+    sanitize-html: ^2.6.1
+    sass-loader: 10
     signale: ^1.4.0
     supertest: ^6.1.6
     v-tooltip: ^2.1.3
     vue-plausible: ^1.2.1
     vue-swatches: ^2.1.1
-    vuetify: ^2.5.10
+    vuetify: ^2.6.1
     xml2js: ^0.4.23
   languageName: unknown
   linkType: soft
@@ -12076,9 +12077,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sanitize-html@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "sanitize-html@npm:2.6.0"
+"sanitize-html@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "sanitize-html@npm:2.6.1"
   dependencies:
     deepmerge: ^4.2.2
     escape-string-regexp: ^4.0.0
@@ -12086,7 +12087,7 @@ fsevents@~2.3.2:
     is-plain-object: ^5.0.0
     parse-srcset: ^1.0.2
     postcss: ^8.3.11
-  checksum: ba4a63d9ba33be0f446bdba773676bfbb8db0bdac21a42891cb9b1f0e3ecacb1a8fda4de3724823c518261e1312c8120df4e601062d1524753b5ba39d4f55c8a
+  checksum: a8898ecff59e15b3b75e9478de812f2cdc8b1770344ad7bf91cf2dd745974e9ab76c9e7c4a305d9f03683a150575358edb48f2a8a34ebabc9abe82a4bab38230
   languageName: node
   linkType: hard
 
@@ -12099,7 +12100,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^10.2.0":
+"sass-loader@npm:10":
   version: 10.2.0
   resolution: "sass-loader@npm:10.2.0"
   dependencies:
@@ -12121,6 +12122,28 @@ fsevents@~2.3.2:
     sass:
       optional: true
   checksum: d53212e5d199cdd221a67046ab4276c352d56b50ca64347115b36e8ebbb2c68ec396a14d6cf5a08853c830a6b0ec1fd2b016cdc53cbe90a0332a908f50ec2043
+  languageName: node
+  linkType: hard
+
+"sass-loader@npm:^12.3.0":
+  version: 12.4.0
+  resolution: "sass-loader@npm:12.4.0"
+  dependencies:
+    klona: ^2.0.4
+    neo-async: ^2.6.2
+  peerDependencies:
+    fibers: ">= 3.1.0"
+    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+    sass: ^1.3.0
+    webpack: ^5.0.0
+  peerDependenciesMeta:
+    fibers:
+      optional: true
+    node-sass:
+      optional: true
+    sass:
+      optional: true
+  checksum: 0f7ca3633e7f61c412b0628766a9b57cb15f68def45e4303e68eb2f3a0722aec231956fbfd118489d93c997ab605470e89de8e3f7d6776830cc6366d9657d618
   languageName: node
   linkType: hard
 
@@ -14039,7 +14062,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"vuetify-loader@npm:^1.7.2":
+"vuetify-loader@npm:^1.7.3":
   version: 1.7.3
   resolution: "vuetify-loader@npm:1.7.3"
   dependencies:
@@ -14054,12 +14077,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^2.5.10, vuetify@npm:^2.5.3":
-  version: 2.5.10
-  resolution: "vuetify@npm:2.5.10"
+"vuetify@npm:^2.6, vuetify@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "vuetify@npm:2.6.1"
   peerDependencies:
     vue: ^2.6.4
-  checksum: 3cbb3cb96d63daffdf44ffe0e57c44fb8970eb74d196eaca9ca257990d560a97b6d21ca9415e24435bbb54057d89b3d2392d97e3bf3bb6efd16f1202e846c64d
+  checksum: 76a66a52bdd5ce67baf81fee79c97cd128f4d3519ef531b9a76b85dfdf04ffd42559ca4da1bc75e0c5666a8ae88225cc4b4a7b36e868b38e902a1529fca8f6d8
   languageName: node
   linkType: hard
 

@@ -3,7 +3,7 @@
     <div class="d-flex justify-space-between">
       <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
         <transition name="fade" mode="out-in">
-          <div v-if="$refs.calendar" key="date" class="title_month text-truncate">
+          <div v-if="$refs.calendar" key="date" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
             {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
           </div>
           <div v-else key="nodate" class="title_month text-truncate">
@@ -13,7 +13,7 @@
         <v-tooltip bottom>
           <template #activator="{ on, attrs }">
             <transition name="fade" mode="out-in">
-              <div v-if="plannings && plannings.length === 1" key="one_planning" style="font-size: 10px" class="text-truncate">
+              <div v-if="plannings && plannings.length === 1" key="one_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
                 {{ plannings[0].title }}
               </div>
               <div
@@ -69,7 +69,7 @@
         hide-details
         :label="$config.i18n.mode"
         outlined
-        style="width: 100px"
+        style="max-width: 350px"
       >
         <template #item="{ item }">
           <span style="width: 100%; float: left">
@@ -183,14 +183,16 @@
             />
           </template>
           <template #event="{event}">
-            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :style="{'background-color':event.color,color:'white'}" class="fill-height pl-2 roboto-font">
-              <div class="text-truncate font-weight-bold">
+            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :style="{'background-color':event.color,color:'white'}" class="fill-height ml-3 roboto-font black--text d-flex justify-center flex-column" style="margin-top: -2px;">
+              <div class="text-truncate font-weight-bold text-body-2">
                 {{ event.name }}
               </div>
               <div v-if="event.location || event.description">
-                {{ !event.distance ? event.location : '' }}{{ ((event.location && !event.distance) && event.description) ? ' | ' : '' }}{{ event.description }}
+                {{ !event.distance ? event.location : '' }}<b>{{ ((event.location && !event.distance) && event.description) ? ' · ' : '' }}</b>{{ event.description }}
               </div>
-              <div>{{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}</div>
+              <div style="font-weight: 300">
+                {{ $moment(event.start).format('H:mm') }} - {{ $moment(event.end).format('H:mm') }}
+              </div>
               <small v-if="event.distance">
                 <i>{{ $config.i18n.distance }}</i>
               </small>
@@ -287,6 +289,7 @@ export default {
     this.loading = true
     // Planning v1 migration
     this.$cookies.remove('edt')
+    this.$cookies.remove('customColors')
 
     if (this.selectedPlanningsIds == null) {
       const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.a1'
@@ -306,7 +309,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get(`${this.$config.publicUrl}/api/v1/calendars`, { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
     } catch (e) {
@@ -317,7 +320,7 @@ export default {
       // Let's try again
       console.log(e)
       try {
-        const events = await this.$axios.$get(`${this.$config.publicUrl}/api/v1/calendars`, { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
       } catch (err) {
@@ -622,6 +625,10 @@ export default {
 .v-event-timed-container {
   margin-left: 6px!important;
   margin-right: 6px!important;
+}
+
+.v-event-timed-container div.v-event-timed {
+  overflow: hidden;
 }
 
 .v-expansion-panel-content__wrap {
