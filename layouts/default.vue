@@ -113,7 +113,11 @@ export default {
     this.mounted = true
 
     this.$watch('$vuetify.theme.dark', () => {
-      if (document && document.querySelector('body')) document.querySelector('body').className = this.$vuetify.theme.dark ? '' : 'global_light'
+      let tmp = ''
+      try {
+        tmp = this.$cookies.get('fullDark', { parseJSON: false }) === 'true' ? ' fullDark' : ''
+      } catch (err) {}
+      if (document && document.querySelector('body')) document.querySelector('body').className = (this.$vuetify.theme.dark ? '' : 'global_light') + tmp
     }, { immediate: true })
 
     if (!navigator.onLine) {
@@ -197,5 +201,8 @@ body.global_light {
 }
 ::-webkit-scrollbar-track {
   border-radius: 30px;
+}
+body.fullDark .v-event-timed {
+  filter: invert(1) hue-rotate(180deg);
 }
 </style>

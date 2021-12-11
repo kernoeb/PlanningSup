@@ -65,6 +65,20 @@
               <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item>
+            <v-list-item-action>
+              <v-checkbox
+                v-model="fullDark"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+            <v-list-item-content @click="forceFullMode()">
+              <v-list-item-title>Événements sombres</v-list-item-title>
+              <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
           <v-subheader>{{ $config.i18n.colors }}</v-subheader>
           <v-list-item inactive>
             <v-list-item-action>
@@ -238,7 +252,9 @@ export default {
       colorTP: '#bbe0ff',
       colorTD: '#d4fbcc',
       colorAmphi: '#efd6d8',
-      colorOthers: '#eddd6e'
+      colorOthers: '#eddd6e',
+
+      fullDark: false
     }
   },
   computed: {
@@ -249,6 +265,13 @@ export default {
       set () {
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark
       }
+    }
+  },
+  created () {
+    try {
+      this.fullDark = this.$cookies.get('fullDark', { parseJSON: false }) === 'true' || false
+    } catch (err) {
+      this.fullDark = false
     }
   },
   mounted () {
@@ -274,6 +297,17 @@ export default {
     } catch (err) {}
   },
   methods: {
+    forceFullMode () {
+      this.fullDark = !this.fullDark
+      this.$cookies.set('fullDark', this.fullDark)
+      try {
+        if (document && document.querySelector('body')) {
+          const body = document.querySelector('body')
+          if (body.className.includes('fullDark')) body.className = body.className.replace('fullDark', '').trim()
+          else body.className = (body.className + ' fullDark').trim()
+        }
+      } catch (err) {}
+    },
     reset () {
       this.$cookies.remove('customColorList')
       this.colorTP = '#bbe0ff'
