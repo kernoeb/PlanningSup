@@ -153,10 +153,10 @@
         </div>
         <span v-else>{{ errorMessage }}</span>
         <br><br>
-        <div id="interrogation" style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;" @click="securityCheck()">
+        <div id="interrogation" style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;">
           ?
         </div>
-        <br><br><v-btn @click="dialogEdt = true">
+        <br><br><v-btn @click="resetNewPlanning()">
           Sélectionner un planning
         </v-btn>
       </div>
@@ -427,6 +427,13 @@ export default {
     }, 120000)
   },
   methods: {
+    resetNewPlanning () {
+      this.$cookies.remove('plannings')
+      this.selectedPlanningsIds = []
+      this.$nextTick(() => {
+        this.dialogEdt = true
+      })
+    },
     setEvents (req) {
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
@@ -571,9 +578,6 @@ export default {
           this.type = 'week'
         }
       }
-    },
-    securityCheck () {
-      console.log('aha')
     },
     resetRoute () {
       this.$nextTick(() => {
