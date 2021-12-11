@@ -31,7 +31,7 @@
       absolute
       app
     >
-      <span>Noéwen (<a :style="$vuetify.theme.dark ? 'color: white' : 'color: black'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span class="text--disabled">Noéwen (<a :style="$vuetify.theme.dark ? 'color: gray' : 'color: gray'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -43,7 +43,7 @@
             target="_blank"
             v-on="on"
           >
-            <v-icon class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
+            <v-icon color="#00acee" class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
           </a>
         </template>
         <span>Twitter</span>

@@ -185,6 +185,15 @@
             <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
           </v-list-item>
         </v-list-item-group>
+
+        <v-divider />
+
+        <div class="mt-4 ml-4 mb-2">
+          <div class="font-weight-bold mb-2">
+            FAQ / Aide
+          </div>
+          <help-info style="width: 98%;" />
+        </div>
       </v-card>
     </v-dialog>
   </div>
@@ -195,6 +204,9 @@ import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, md
 
 export default {
   name: 'Settings',
+  components: {
+    HelpInfo: () => import('@/components/HelpInfo')
+  },
   props: {
     dialogSettings: {
       type: Boolean,

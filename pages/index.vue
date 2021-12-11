@@ -6,7 +6,7 @@
           <div v-if="$refs.calendar" key="date" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
             {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
           </div>
-          <div v-else key="nodate" class="title_month text-truncate">
+          <div v-else key="nodate" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
             ...
           </div>
         </transition>
@@ -26,7 +26,7 @@
               >
                 {{ plannings.length + ' ' + $config.i18n.selectedPlannings }}
               </div>
-              <div v-else key="no_current_planning" style="font-size: 10px" class="text-truncate">
+              <div v-else key="no_current_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
                 ...
               </div>
             </transition>
@@ -312,7 +312,6 @@ export default {
         console.log(err)
         planningString = defaultPlanning
       }
-      console.log(planningString)
       this.selectedPlanningsIds = planningString.split(',')
     } else if (this.selectedPlanningsIds && this.selectedPlanningsIds.length === 0) {
       this.events = []
