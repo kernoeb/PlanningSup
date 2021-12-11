@@ -50,7 +50,7 @@
           @change="$emit('change_settings', $event)"
         >
           <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-          <v-list-item>
+          <v-list-item inactive style="cursor:pointer;">
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedTheme"
@@ -65,7 +65,7 @@
               <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item>
+          <v-list-item inactive style="cursor:pointer;">
             <v-list-item-action>
               <v-checkbox
                 v-model="fullDark"
