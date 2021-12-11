@@ -145,8 +145,15 @@
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
       <div v-else-if="errorMessage" class="title" style="text-align: center">
-        <br><span>{{ errorMessage }}</span>
-        <br><br><div style="font-size: 80px;">
+        <br>
+        <div v-if="errorMessage === 'unknown'">
+          <span>Planning inexistant :(</span>
+          <br>
+          <small class="text--disabled">ou quelque chose a changé, désolé !</small>
+        </div>
+        <span v-else>{{ errorMessage }}</span>
+        <br><br>
+        <div id="interrogation" style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;" @click="securityCheck()">
           ?
         </div>
         <br><br><v-btn @click="dialogEdt = true">
@@ -327,7 +334,7 @@ export default {
       this.errorMessage = null
     } catch (e) {
       if (e?.response?.status === 404 && e?.response?.data?.includes('planning')) {
-        this.errorMessage = 'Planning inexistant !'
+        this.errorMessage = 'unknown'
       } else this.errorMessage = null
       // Let's try again, just to be sure
       console.log(e)
@@ -562,6 +569,9 @@ export default {
           this.type = 'week'
         }
       }
+    },
+    securityCheck () {
+      console.log('aha')
     }
   }
 }
@@ -709,5 +719,14 @@ export default {
   visibility: visible;
   opacity: 1;
   transition: opacity .15s;
+}
+
+#interrogation {
+  transition: transform 2s;
+  margin: 0 auto;
+}
+
+#interrogation:hover {
+  transform: scale(6.1)
 }
 </style>

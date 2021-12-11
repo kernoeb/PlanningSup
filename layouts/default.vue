@@ -46,7 +46,7 @@
             <v-icon color="#00acee" class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
           </a>
         </template>
-        <span>Twitter</span>
+        <span>Mon Twitter</span>
       </v-tooltip>
       <v-tooltip top>
         <template #activator="{ on, attrs }">
