@@ -87,7 +87,6 @@
           selectable
           selection-type="independent"
           transition
-          @update:open="open"
         >
           <template #label="{item, selected}">
             <span :class="(selected || (item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId)))) ? 'selected_planning' : ''">{{ item.title }}</span>
@@ -210,9 +209,6 @@ export default {
     reset () {
       this.localPlannings = []
       this.searchCalendar = ''
-    },
-    open (ev) {
-      console.log(ev)
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {

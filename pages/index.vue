@@ -19,7 +19,7 @@
               <div
                 v-else-if="plannings && plannings.length > 1"
                 key="multiple_plannings"
-                style="font-size: 10px; cursor: pointer;"
+                style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300; cursor: pointer;"
                 class="text-truncate"
                 v-bind="attrs"
                 v-on="on"
