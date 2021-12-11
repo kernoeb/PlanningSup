@@ -147,7 +147,7 @@
       <div v-else-if="errorMessage" class="title" style="text-align: center">
         <br><span>{{ errorMessage }}</span>
         <br><br><div style="font-size: 80px;">
-          404
+          ?
         </div>
         <br><br><v-btn @click="dialogEdt = true">
           Sélectionner un planning
@@ -290,16 +290,29 @@ export default {
     // Planning v1 migration
     this.$cookies.remove('edt')
     this.$cookies.remove('customColors')
+    this.$cookies.remove('colorMode')
+    if (this.$cookies.get('plannings')) {
+      try {
+        const oldCookie = Buffer.from(decodeURIComponent(this.$cookies.get('plannings', { parseJSON: false })), 'base64').toString()
+        if (oldCookie.startsWith('[') && oldCookie.endsWith(']')) {
+          const j = JSON.parse(oldCookie)
+          this.$cookies.set('plannings', j.join(','))
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
 
     if (this.selectedPlanningsIds == null) {
       const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.a1'
       let planningString
       try {
-        planningString = this.$route.query?.p || this.$cookies.get('plannings') || defaultPlanning
+        planningString = this.$route.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
       } catch (err) {
         console.log(err)
         planningString = defaultPlanning
       }
+      console.log(planningString)
       this.selectedPlanningsIds = planningString.split(',')
     } else if (this.selectedPlanningsIds && this.selectedPlanningsIds.length === 0) {
       this.events = []
@@ -312,12 +325,12 @@ export default {
       const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+      this.errorMessage = null
     } catch (e) {
-      if (e?.response?.status === 404) {
-        this.$cookies.remove('plannings')
+      if (e?.response?.status === 404 && e?.response?.data?.includes('planning')) {
         this.errorMessage = 'Planning inexistant !'
       } else this.errorMessage = null
-      // Let's try again
+      // Let's try again, just to be sure
       console.log(e)
       try {
         const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })

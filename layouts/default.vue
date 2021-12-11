@@ -20,9 +20,6 @@
       </v-tooltip>
       {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span><span v-else class="ml-1">{{ version }}</span>
       <v-spacer />
-      <v-icon small>
-        {{ mdiSchool }}
-      </v-icon>
       <span>{{ time }}</span>
     </v-system-bar>
     <v-main>
@@ -71,7 +68,7 @@
 </template>
 
 <script>
-import { mdiCalendar, mdiSchool, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
+import { mdiCalendar, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
 const { version } = require('../package.json')
 
 export default {
@@ -79,7 +76,6 @@ export default {
     return {
       mdiGithub,
       mdiCalendar,
-      mdiSchool,
       mdiApps,
       mdiTwitter,
 
