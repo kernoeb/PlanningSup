@@ -335,6 +335,7 @@ export default {
     } catch (e) {
       if (e?.response?.status === 404 && e?.response?.data?.includes('planning')) {
         this.errorMessage = 'unknown'
+        this.resetRoute()
       } else this.errorMessage = null
       // Let's try again, just to be sure
       console.log(e)
@@ -342,6 +343,7 @@ export default {
         const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+        this.errorMessage = null
       } catch (err) {
         console.log(err)
         this.loading = false
@@ -572,6 +574,13 @@ export default {
     },
     securityCheck () {
       console.log('aha')
+    },
+    resetRoute () {
+      this.$nextTick(() => {
+        try {
+          this.$router.replace({ name: 'index', params: { p: '' } }).then(() => {}).catch(() => {})
+        } catch (err) {}
+      })
     }
   }
 }
@@ -722,11 +731,12 @@ export default {
 }
 
 #interrogation {
-  transition: transform 2s;
+  transition: transform 2s, opacity 1.5s;
   margin: 0 auto;
 }
 
 #interrogation:hover {
-  transform: scale(6.1)
+  transform: translateY(-3em);
+  opacity: 0;
 }
 </style>

@@ -69,27 +69,35 @@
       </v-btn>
       <div v-if="urls">
         <v-treeview
-          v-model="localPlannings"
           style="max-height: calc(90vh - 200px); overflow: auto;"
           :expand-icon="mdiMenuDown"
           :filter="filter"
-          :indeterminate-icon="mdiMinusBox"
           :items="urls"
-          :off-icon="mdiCheckboxBlankOutline"
-          :on-icon="mdiCheckboxMarked"
           :search="searchCalendar"
           class="treeview_plannings"
           dense
+          open-on-click
           item-children="edts"
           item-key="fullId"
           item-text="title"
-          open-on-click
-          selectable
-          selection-type="independent"
           transition
         >
-          <template #label="{item, selected}">
-            <span :class="(selected || (item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId)))) ? 'selected_planning' : ''">{{ item.title }}</span>
+          <template #label="{ item }">
+            <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''">
+              <v-checkbox
+                v-if="!item.edts"
+                v-model="localPlannings"
+                color="#2196F3"
+                :value="item.fullId"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+                :label="item.title"
+              />
+              <div v-else>
+                {{ item.title }}
+              </div>
+            </div>
           </template>
         </v-treeview>
       </div>
@@ -220,23 +228,25 @@ export default {
 </script>
 
 <style>
-.treeview_plannings button.v-treeview-node__checkbox {
-  display: none !important;
-}
-
-.treeview_plannings .v-treeview-node--leaf button.v-treeview-node__checkbox {
-  display: block !important;
-}
 .v-treeview-node__level {
-  width:12px !important;
+  width: 8px !important;
 }
 .accent--text svg {
   color:#2196F3 !important;
 }
-.treeview_plannings > .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node[aria-expanded=true]) {
-  padding-bottom:10px;
+.treeview_plannings .v-input__slot {
+  margin-bottom: 0!important;
+  min-height: 40px;
+  padding-left: 8px;
+ }
+.treeview_plannings .v-messages {
+  display: none!important;
 }
-.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node:nth-last-child(1):not(.treeview_plannings > .v-treeview-node:nth-last-child(1) .v-treeview-node[aria-expanded=true]) {
-  padding-bottom:10px;
+.treeview_plannings .v-input--selection-controls {
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.treeview_plannings .theme--light.v-label {
+  color: inherit!important;
 }
 </style>
