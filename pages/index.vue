@@ -190,7 +190,7 @@
             />
           </template>
           <template #event="{event}">
-            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :style="{'background-color':event.color,color:'white'}" class="event_custom fill-height ml-3 roboto-font black--text d-flex justify-center flex-column" style="margin-top: -2px;">
+            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :class="(event.end && event.start && (event.end - event.start)) <= 3600000 ? '' : 'justify-center'" :style="{'background-color':event.color,color:'white'}" class="event_custom fill-height ml-3 roboto-font black--text d-flex flex-column" style="margin-top: -2px;">
               <div class="text-truncate font-weight-bold text-body-2 flex-shrink-0">
                 {{ event.name }}
               </div>
