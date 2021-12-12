@@ -70,6 +70,16 @@ router.get('/calendars', async (req, res) => {
   }
 })
 
+router.get('/calendars/info', (req, res) => {
+  if (!req.query.p) return res.status(400).send('No parameter found')
+  try {
+    return res.json(req.query.p.split(',').map(planning => ({ planning, title: allPlannings[planning]?.title?.replace(/ \| /gi, ' ') })))
+  } catch (err) {
+    logger.error(err)
+    return res.status(500).send('Oof, the server encountered a error :\'(')
+  }
+})
+
 router.get('/custom-event-content', async (req, res) => {
   if (req.query.name) return res.send(await getCustomEventContent(req.query.name) || '')
   else return res.send('')

@@ -67,46 +67,108 @@
       <v-btn text small color="green" @click="reset">
         Réinitialiser
       </v-btn>
-      <div v-if="urls" class="mb-2">
-        <v-treeview
-          style="max-height: calc(90vh - 200px); overflow: auto;"
-          :expand-icon="mdiMenuDown"
-          :filter="filter"
-          :items="urls"
-          :search="searchCalendar"
-          class="treeview_plannings"
-          dense
-          open-on-click
-          item-children="edts"
-          item-key="fullId"
-          item-text="title"
-          transition
-        >
-          <template #label="{ item }">
-            <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''">
-              <v-checkbox
-                v-if="!item.edts"
-                v-model="localPlannings"
-                color="#2196F3"
-                :value="item.fullId"
-                :indeterminate-icon="mdiCheckboxBlankOutline"
-                :off-icon="mdiCheckboxBlankOutline"
-                :on-icon="mdiCheckboxMarked"
-                :label="item.title"
-              />
-              <div v-else>
-                {{ item.title }}
-              </div>
-            </div>
-          </template>
-        </v-treeview>
+      <div style="max-height: calc(90vh - 200px); overflow: auto;">
+        <transition name="fade">
+          <div v-if="filteredFavorites && filteredFavorites.length" class="pa-2">
+            <v-card rounded>
+              <v-card-title>
+                <v-icon color="orange" class="mt-n1 mr-1">
+                  {{ mdiStar }}
+                </v-icon>
+                <span class="text-h6 font-weight-bold">Favoris</span>
+              </v-card-title>
+              <v-card-text>
+                <v-list rounded dense>
+                  <transition-group name="list-complete" tag="div">
+                    <v-list-item
+                      v-for="(favorite, i) in filteredFavorites"
+                      :key="`${i}-${favorite}`"
+                      dense
+                      class="list-complete-item"
+                      link
+                      @click="localPlannings = [favorite]; updatePlannings(); $emit('close');"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
+                        <v-list-item-subtitle class="text--disabled">
+                          {{ favorite }}
+                        </v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action>
+                        <v-btn small icon @click="setFavorite(favorite)">
+                          <v-icon small color="red">
+                            {{ mdiDelete }}
+                          </v-icon>
+                        </v-btn>
+                      </v-list-item-action>
+                    </v-list-item>
+                  </transition-group>
+                </v-list>
+              </v-card-text>
+            </v-card>
+          </div>
+        </transition>
+        <div>
+          <div v-if="urls" class="mb-2">
+            <v-treeview
+              :expand-icon="mdiMenuDown"
+              :filter="filter"
+              :items="urls"
+              :search="searchCalendar"
+              class="treeview_plannings"
+              dense
+              open-on-click
+              item-children="edts"
+              item-key="fullId"
+              item-text="title"
+              transition
+            >
+              <template #label="{ item }">
+                <div class="d-flex justify-space-between">
+                  <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''">
+                    <v-checkbox
+                      v-if="!item.edts"
+                      v-model="localPlannings"
+                      :title="item.fullId"
+                      color="#2196F3"
+                      :value="item.fullId"
+                      :indeterminate-icon="mdiCheckboxBlankOutline"
+                      :off-icon="mdiCheckboxBlankOutline"
+                      :on-icon="mdiCheckboxMarked"
+                      :label="item.title"
+                    />
+                    <div v-else>
+                      {{ item.title }}
+                    </div>
+                  </div>
+                  <v-hover v-slot="{ hover }">
+                    <v-btn
+                      v-if="!item.edts"
+                      icon
+                      style="margin-top: 2px;"
+                      @click="setFavorite(item.fullId)"
+                    >
+                      <v-icon v-if="(favorites || []).includes(item.fullId)" color="orange">
+                        {{ mdiStar }}
+                      </v-icon>
+                      <v-icon v-else :color="hover ? 'orange' : 'grey lighten-2'">
+                        {{ mdiStarOutline }}
+                      </v-icon>
+                    </v-btn>
+                  </v-hover>
+                </div>
+              </template>
+            </v-treeview>
+          </div>
+          <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
+            <v-progress-circular
+              indeterminate
+              color="yellow darken-2"
+            />
+          </div>
+        </div>
       </div>
-      <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
-        <v-progress-circular
-          indeterminate
-          color="yellow darken-2"
-        />
-      </div>
+
       <v-btn block :disabled="disabledValidate" @click="updatePlannings()">
         Valider
       </v-btn>
@@ -115,7 +177,7 @@
 </template>
 
 <script>
-import { mdiClose, mdiContentCopy, mdiCalendar, mdiMenuDown, mdiMinusBox, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { mdiDelete, mdiStarHalfFull, mdiStar, mdiStarOutline, mdiClose, mdiContentCopy, mdiCalendar, mdiMenuDown, mdiMinusBox, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 
 export default {
   name: 'SelectPlanning',
@@ -131,6 +193,7 @@ export default {
   },
   data () {
     return {
+      mdiDelete,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
       mdiMinusBox,
@@ -138,6 +201,9 @@ export default {
       mdiCalendar,
       mdiClose,
       mdiContentCopy,
+      mdiStarHalfFull,
+      mdiStar,
+      mdiStarOutline,
 
       showSnackbar: false,
       showSnackbarError: false,
@@ -146,10 +212,17 @@ export default {
       activatedPlanning: null,
       urls: null,
 
-      localPlannings: []
+      localPlannings: [],
+      favorites: [],
+
+      planningNames: null
     }
   },
   computed: {
+    filteredFavorites () {
+      if (!this.favorites) return null
+      return [...this.favorites].filter(v => v)
+    },
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
     }
@@ -163,6 +236,13 @@ export default {
       },
       immediate: true
     }
+  },
+  created () {
+    try {
+      this.favorites = this.$cookies?.get('favorites')?.split(',') || []
+      this.getNames()
+      if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
+    } catch (err) {}
   },
   mounted () {
     this.$axios.$get('/api/v1/urls').then((data) => {
@@ -214,14 +294,35 @@ export default {
         this.showSnackbarError = true
       })
     },
+    getNames () {
+      if (this.favorites && this.favorites.length) {
+        this.$axios.$get('/api/v1/calendars/info', { params: { p: (this.favorites || []).join(',') } }).then((data) => {
+          this.planningNames = data
+        }).catch(() => {
+          this.planningNames = []
+        })
+      }
+    },
     reset () {
       this.localPlannings = []
       this.searchCalendar = ''
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {
-      console.log(this.localPlannings)
       this.$emit('selected-plannings', this.localPlannings)
+    },
+    setFavorite (id) {
+      let tmp = [...this.favorites]
+      if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
+      else tmp.push(id)
+      const final = [...new Set(tmp)]
+      this.favorites = final
+      this.$cookies.set('favorites', (final || []).join(','))
+      this.getNames()
+    },
+    getFavoriteName (favorite) {
+      if (this.planningNames === null) return ''
+      return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
     }
   }
 }
@@ -248,5 +349,22 @@ export default {
 }
 .treeview_plannings .theme--light.v-label {
   color: inherit!important;
+}
+
+.list-complete-item {
+  transition: all 0.4s;
+}
+.list-complete-enter, .list-complete-leave-to  {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+.list-complete-leave-active {
+  position: absolute;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
