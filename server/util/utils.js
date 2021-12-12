@@ -12,13 +12,13 @@ const logger = require('./signale')
  */
 const getColor = (value, location, customColor) => {
   if (value.includes('CM') || value.includes('Amphi') || location.includes('Amphi')) {
-    return customColor?.amphi || '#fe463a'
+    return customColor?.amphi || '#efd6d8'
   } else if (value.includes('TP') || value.includes('TDi')) {
-    return customColor?.tp || 'blue'
+    return customColor?.tp || '#bbe0ff'
   } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
-    return customColor?.td || 'green'
+    return customColor?.td || '#d4fbcc'
   } else {
-    return customColor?.other || 'orange'
+    return customColor?.other || '#EDDD6E'
   }
 }
 
@@ -61,12 +61,12 @@ module.exports = {
   },
   /**
    * Get backed plannings
-   * @param id
    * @returns {Promise<[]|*|{backup: ([]|*), timestamp}|null>}
+   * @param fullId
    */
-  getBackedPlanning: async (id) => {
+  getBackedPlanning: async (fullId) => {
     try {
-      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId: id })
+      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId })
       return tmpPlanning && tmpPlanning.backup && { backup: tmpPlanning.backup, timestamp: tmpPlanning.timestamp }
     } catch (err) {
       return null
@@ -99,8 +99,8 @@ module.exports = {
   },
   /**
    * Fetch planning from URL, convert ICS to JSON
-   * @param url
-   * @param instance optional axios instance
+   * @param {String} url
+   * @param instance
    * @returns {Promise<*>}
    */
   fetchAndGetJSON: async (url, instance) => {

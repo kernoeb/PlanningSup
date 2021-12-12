@@ -69,7 +69,7 @@ export default {
   ** Server Middleware
   */
   serverMiddleware: [
-    { path: '/api', handler: '~/server/' }
+    { path: '/api/v1', handler: '~/server/' }
   ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
@@ -216,7 +216,8 @@ export default {
                     'nuxt-progress',
                     /progress-circular/,
                     /col-*/, // enable if using v-col for layout,
-                    /swatches/
+                    /swatches/,
+                    /[a-z]+--text/
                   ],
                   deep: [
                     /page-enter/,

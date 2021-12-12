@@ -1,17 +1,6 @@
 {
-  "apiCalendar": "/api/calendars",
-  "apiUrls": "/api/urls",
-  "apiCrous": "/api/crous_menu",
-  "defaultUnivText": "IUT de Vannes > Licence Pro DLIS",
   "name": "PlanningSup",
   "duration": 3000,
-  "durationCalendar": 2500,
-  "default": {
-    "univ": "iutdevannes",
-    "spec": "butdutinfo",
-    "year": "1ereannee",
-    "grp": "a1"
-  },
   "i18n": {
     "week": "Semaine",
     "weeks": "Semaines",

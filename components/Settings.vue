@@ -17,7 +17,7 @@
     </v-tooltip>
     <v-dialog
       :value="dialogSettings"
-      width="500"
+      width="600"
       @input="$emit('change_dialog', $event)"
     >
       <v-card>
@@ -45,11 +45,12 @@
         <v-list-item-group
           :value="settings"
           multiple
+          class="pa-2"
           :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
           @change="$emit('change_settings', $event)"
         >
           <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-          <v-list-item>
+          <v-list-item inactive style="cursor:pointer;">
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedTheme"
@@ -62,6 +63,20 @@
             <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
               <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
               <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item inactive style="cursor:pointer;">
+            <v-list-item-action>
+              <v-checkbox
+                v-model="fullDark"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+            <v-list-item-content @click="forceFullMode()">
+              <v-list-item-title>Événements sombres</v-list-item-title>
+              <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <v-subheader>{{ $config.i18n.colors }}</v-subheader>
@@ -129,18 +144,21 @@
               <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <div class="pl-4 mb-2" style="font-weight: 300; font-size: 15px;" @click="reset()">
+            <a class="hover_reset">Réinitialiser</a>
+          </div>
           <v-divider />
           <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
           <v-list-item inactive>
             <v-combobox
-              :value="blocklistSelect"
+              v-model="blocklistSelect"
               :append-icon="mdiMenuDown"
               :items="blocklist"
               :label="$config.i18n.blocklistDesc"
               chips
               multiple
               class="ban-word"
-              @change="$emit('change_blocklist_select', $event);"
+              @change="updateBlocklist"
             >
               <template #item="{ item, on, attrs }">
                 <v-list-item v-bind="attrs" v-on="on">
@@ -161,6 +179,18 @@
               </template>
             </v-combobox>
           </v-list-item>
+
+          <v-divider />
+
+          <div>
+            <v-subheader>FAQ / Aide</v-subheader>
+            <help-info style="width: 98%;" />
+          </div>
+
+          <br>
+
+          <v-divider />
+
           <v-subheader>{{ $config.i18n.contact }}</v-subheader>
           <v-list-item inactive>
             <div class="d-flex flex-column mb-4">
@@ -192,6 +222,9 @@ import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, md
 
 export default {
   name: 'Settings',
+  components: {
+    HelpInfo: () => import('@/components/HelpInfo')
+  },
   props: {
     dialogSettings: {
       type: Boolean,
@@ -200,10 +233,6 @@ export default {
     settings: {
       type: Array,
       default: () => []
-    },
-    blocklistSelect: {
-      type: Array,
-      default: () => {}
     }
   },
   data () {
@@ -218,11 +247,14 @@ export default {
       mdiClose,
 
       blocklist: ['Maths', 'Communication'], // Oui, bon...
+      blocklistSelect: [],
 
-      colorTP: 'blue',
-      colorTD: 'green',
-      colorAmphi: '#fe463a',
-      colorOthers: 'orange'
+      colorTP: '#bbe0ff',
+      colorTD: '#d4fbcc',
+      colorAmphi: '#efd6d8',
+      colorOthers: '#eddd6e',
+
+      fullDark: false
     }
   },
   computed: {
@@ -235,9 +267,29 @@ export default {
       }
     }
   },
-  mounted () {
+  created () {
     try {
-      const c = this.$cookies.get('customColors')
+      this.fullDark = this.$cookies.get('fullDark', { parseJSON: false }) === 'true' || false
+    } catch (err) {
+      this.fullDark = false
+    }
+  },
+  mounted () {
+    if (this.$cookies.get('blocklist') !== undefined) {
+      try {
+        const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
+        if (tmp.length) {
+          this.blocklistSelect = tmp
+        } else {
+          this.$cookies.remove('blocklist')
+        }
+      } catch (e) {
+        this.$cookies.remove('blocklist')
+      }
+    }
+
+    try {
+      const c = this.$cookies.get('customColorList')
       if (c.amphi) this.colorAmphi = c.amphi
       if (c.td) this.colorTD = c.td
       if (c.tp) this.colorTP = c.tp
@@ -245,23 +297,56 @@ export default {
     } catch (err) {}
   },
   methods: {
-    setColor (type, color) {
+    forceFullMode () {
+      this.fullDark = !this.fullDark
+      this.$cookies.set('fullDark', this.fullDark)
       try {
-        const tmpCookie = this.$cookies.get('customColors') || {}
-        tmpCookie[type] = color
-        this.$cookies.set('customColors', tmpCookie, { maxAge: 2147483646 })
-      } catch (err) {
-        this.$cookies.set('customColors', { [type]: color }, { maxAge: 2147483646 })
-      }
+        if (document && document.querySelector('body')) {
+          const body = document.querySelector('body')
+          if (body.className.includes('fullDark')) body.className = body.className.replace('fullDark', '').trim()
+          else body.className = (body.className + ' fullDark').trim()
+        }
+      } catch (err) {}
+    },
+    reset () {
+      this.$cookies.remove('customColorList')
+      this.colorTP = '#bbe0ff'
+      this.colorTD = '#d4fbcc'
+      this.colorAmphi = '#efd6d8'
+      this.colorOthers = '#eddd6e'
+      this.delayedFetch()
+    },
+    delayedFetch () {
       this.$nextTick(() => {
         this.$emit('fetch')
       })
+    },
+    updateBlocklist (event) {
+      try {
+        this.$cookies.set('blocklist', JSON.stringify(event), { maxAge: 2147483646 })
+        this.delayedFetch()
+      } catch (err) {
+      }
+    },
+    setColor (type, color) {
+      try {
+        const tmpCookie = this.$cookies.get('customColorList') || {}
+        tmpCookie[type] = color
+        this.$cookies.set('customColorList', tmpCookie, { maxAge: 2147483646 })
+      } catch (err) {
+        this.$cookies.set('customColorList', { [type]: color }, { maxAge: 2147483646 })
+      }
+      this.delayedFetch()
     }
   }
 }
 </script>
 
 <style>
+.hover_reset:hover {
+  filter: brightness(120%);
+}
+
 .ban-word .v-input__append-inner:hover {
   cursor:pointer;
 }

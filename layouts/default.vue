@@ -18,11 +18,8 @@
         </template>
         {{ version }}
       </v-tooltip>
-      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span>
+      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span><span v-else class="ml-1">{{ version }}</span>
       <v-spacer />
-      <v-icon small>
-        {{ mdiSchool }}
-      </v-icon>
       <span>{{ time }}</span>
     </v-system-bar>
     <v-main>
@@ -34,7 +31,7 @@
       absolute
       app
     >
-      <span>Noéwen (<a :style="$vuetify.theme.dark ? 'color: white' : 'color: black'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span class="text--disabled">Noéwen (<a :style="$vuetify.theme.dark ? 'color: gray' : 'color: gray'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -46,10 +43,10 @@
             target="_blank"
             v-on="on"
           >
-            <v-icon class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
+            <v-icon color="#00acee" class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
           </a>
         </template>
-        <span>Twitter</span>
+        <span>Mon Twitter</span>
       </v-tooltip>
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -71,7 +68,7 @@
 </template>
 
 <script>
-import { mdiCalendar, mdiSchool, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
+import { mdiCalendar, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
 const { version } = require('../package.json')
 
 export default {
@@ -79,7 +76,6 @@ export default {
     return {
       mdiGithub,
       mdiCalendar,
-      mdiSchool,
       mdiApps,
       mdiTwitter,
 
@@ -117,7 +113,11 @@ export default {
     this.mounted = true
 
     this.$watch('$vuetify.theme.dark', () => {
-      if (document && document.querySelector('body')) document.querySelector('body').className = this.$vuetify.theme.dark ? '' : 'global_light'
+      let tmp = ''
+      try {
+        tmp = this.$cookies.get('fullDark', { parseJSON: false }) === 'true' ? ' fullDark' : ''
+      } catch (err) {}
+      if (document && document.querySelector('body')) document.querySelector('body').className = (this.$vuetify.theme.dark ? '' : 'global_light') + tmp
     }, { immediate: true })
 
     if (!navigator.onLine) {
@@ -180,13 +180,13 @@ html {
 body {
   background-color: #1E1E1E!important;
 }
-body.global_light::-webkit-scrollbar-thumb, body.global_light .v-dialog::-webkit-scrollbar-thumb {
+body.global_light::-webkit-scrollbar-thumb, body.global_light .v-dialog::-webkit-scrollbar-thumb, body.global_light div::-webkit-scrollbar-thumb {
   background: #BDBDBD;
 }
-body.global_light::-webkit-scrollbar-thumb:hover, body.global_light .v-dialog::-webkit-scrollbar-thumb:hover {
+body.global_light::-webkit-scrollbar-thumb:hover, body.global_light .v-dialog::-webkit-scrollbar-thumb:hover, body.global_light div::-webkit-scrollbar-thumb:hover {
   background: #cecece;
 }
-body.global_light::-webkit-scrollbar-track, body.global_light .v-dialog::-webkit-scrollbar-track {
+body.global_light::-webkit-scrollbar-track, body.global_light .v-dialog::-webkit-scrollbar-track, body.global_light div::-webkit-scrollbar-track {
   background: #fff;
   box-shadow: inset 0 0 0 0 #F0F0F0;
 }
@@ -194,12 +194,15 @@ body.global_light {
   background-color: #fff!important;
 }
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 30px;
 }
 ::-webkit-scrollbar-track {
   border-radius: 30px;
+}
+body.fullDark .v-event-timed {
+  filter: invert(1) hue-rotate(180deg);
 }
 </style>
