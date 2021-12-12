@@ -216,7 +216,8 @@ export default {
                     'nuxt-progress',
                     /progress-circular/,
                     /col-*/, // enable if using v-col for layout,
-                    /swatches/
+                    /swatches/,
+                    /[a-z]+--text/
                   ],
                   deep: [
                     /page-enter/,

@@ -67,7 +67,7 @@
       <v-btn text small color="green" @click="reset">
         Réinitialiser
       </v-btn>
-      <div style="max-height: calc(90vh - 200px); overflow: auto;">
+      <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
           <div v-if="filteredFavorites && filteredFavorites.length" class="pa-2">
             <v-card rounded>
@@ -125,7 +125,7 @@
             >
               <template #label="{ item }">
                 <div class="d-flex justify-space-between">
-                  <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''">
+                  <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''" style="width: 100%;">
                     <v-checkbox
                       v-if="!item.edts"
                       v-model="localPlannings"
