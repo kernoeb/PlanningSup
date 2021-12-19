@@ -35,4 +35,4 @@ RUN yarn build
 EXPOSE 3000
 
 # Start command
-CMD ["node", "--max-old-space-size=4096", "node_modules/nuxt/bin/nuxt.js", "start"]
+CMD ["node", "--max-old-space-size=2048", "node_modules/nuxt/bin/nuxt.js", "start"]
