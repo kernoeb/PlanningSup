@@ -3905,6 +3905,59 @@
             ]
           },
           {
+              "id": "isticm1optionS2",
+              "title": "Options Master 1 Semestre 2",
+              "edts": [
+                  {
+                      "id": "isticm1optionS21",
+                      "title": "Option 1",
+                      "edts": [
+                          {"id":"isticm1opt1-ia-gr.a","title":"IA - Gr.A","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15054&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-ia-gr.b","title":"IA - Gr.B","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15055&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-cmtdstr","title":"CM TD STR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14252&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-str","title":"STR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11291&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-str-tpgrb","title":"STR - TP GrB","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15033&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-dsaasr","title":"DS AASR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13730&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-ipiaasr","title":"Innovation et Propriété intellectuelle AASR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12294&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-msaasr","title":"Marketing Strategie AASR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12653&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-plcgroupe1","title":"PLC groupe 1","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13731&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1opt1-plcgroupe2","title":"PLC groupe 2","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14636&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1cropt1ppar","title":"CR opt PPAR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18345&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"isticm1ilopt1ppar","title":"IL opt PPAR","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18344&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"}
+                      ]
+                  },
+                  {
+                      "id": "isticm1optionS22",
+                      "title": "Option 2",
+                      "edts": [
+                          {"id":"cmcobra","title":"CM COBRA","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20686&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"tdcobra","title":"TD COBRA","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20687&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-ia-gr.a","title":"IA - Gr.A","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11653&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-ia-gr.b","title":"IA - Gr.B","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11652&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-lrc-gr.a","title":"LRC - Gr.A","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13389&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-lrc-gr.b","title":"LRC - Gr.B","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13390&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-mcfa-gr.a","title":"MCFA - Gr.A","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14057&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-mcfa-gr.b","title":"MCFA - Gr.B","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14600&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-ntr-gr.a","title":"NTR - Gr.A","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=21949&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt2-ntr-gr.b","title":"NTR - Gr.B","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=21950&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"}
+                      ]
+                  },
+                  {
+                      "id": "isticm1optionS23",
+                      "title": "Option 3",
+                      "edts": [
+                          {"id":"m1cropt3-meps","title":"CR opt- MEPS","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14607&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1cropt3-sofwaresecurity","title":"CR opt- Sofware Security","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14615&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1ilopt3-meps","title":"IL opt- MEPS","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20534&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1ilopt3-webengineering","title":"IL opt-Web Engineering","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16517&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt3-ast","title":"AST","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16473&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt3-noy","title":"NOY","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16465&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"},
+                          {"id":"m1opt3-meps","title":"MEPS","url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16417&projectId=0&calType=ical&firstDate=2021-01-01&lastDate=2025-12-31"}
+                      ]
+                  }
+              ]
+          },
+          {
             "id": "isticm1projets",
             "title": "Projets",
             "edts": [
