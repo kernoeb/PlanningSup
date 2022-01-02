@@ -4293,10 +4293,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.20.1":
-  version: 3.20.1
-  resolution: "core-js@npm:3.20.1"
-  checksum: e45f4f4b5c64d4650d46075b1fa8845c62ea08f5c30ee92ffc14b95147b4a9eb511c8a1184a31d03660061a8570a9610e598e30981afc2d2f8bca460f63dd3cb
+"core-js@npm:^3.20.2":
+  version: 3.20.2
+  resolution: "core-js@npm:3.20.2"
+  checksum: dc055a5a79f2e3c2e060b4fb8a3e228fa0de16464bff3c6605646183139eebaa68c390ec6d9c3acc5677f333df510b977ee3f1d5992e6c36b1f200e35f5ed8ca
   languageName: node
   linkType: hard
 
@@ -8160,10 +8160,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"kareem@npm:2.3.2":
-  version: 2.3.2
-  resolution: "kareem@npm:2.3.2"
-  checksum: 61ee3adb273e3e999eae731119bd74e40fd01ffef585b4e47756ca29dfc939a03c6a1dd8a43f2a864e599c3716e00404d1812e685b32ec7f9c52d6cedf2f2fcb
+"kareem@npm:2.3.3":
+  version: 2.3.3
+  resolution: "kareem@npm:2.3.3"
+  checksum: 6acbfeadce9b781844bfce6ecb8f721af2e6453c55e42d14bc9cf337cf4748bc4a084f915c4206e12d33f1c973f65d5010afb6e225b1f772a7b6e40e84da4efc
   languageName: node
   linkType: hard
 
@@ -8549,10 +8549,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"luxon@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "luxon@npm:2.2.0"
-  checksum: 69c715529b6aaa1f96fad8edfe2681004a1f314191ac243804a90c023fc533b5e3f0b9d34d5c86555d2a41297ddbee96a67a7cbb185f20243e66b7c6d4b809ac
+"luxon@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "luxon@npm:2.3.0"
+  checksum: 3d00e1b812a31082cf0d97e844d7354c93891fbd14795756f396ee5656387e21d2c862edb841516114eb391f8314a6cf3848799acc6d59cf9560c88c909b91f0
   languageName: node
   linkType: hard
 
@@ -9133,12 +9133,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.1.3":
-  version: 6.1.3
-  resolution: "mongoose@npm:6.1.3"
+"mongoose@npm:^6.1.4":
+  version: 6.1.4
+  resolution: "mongoose@npm:6.1.4"
   dependencies:
     bson: ^4.2.2
-    kareem: 2.3.2
+    kareem: 2.3.3
     mongodb: 4.2.2
     mpath: 0.8.4
     mquery: 4.0.0
@@ -9146,7 +9146,7 @@ fsevents@~2.3.2:
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: 9683d1c801aa9a95c3c476c29c1dffd925ba4c368413de529412113ecfd7186b673ea93e9fd383de0bafb4c97f97f91fd5f4fefd8149c61954764769b6eba1bc
+  checksum: 9878de980e81f4961294b30be1259ce5445812f48fa892520f213a002d0a7148250a9d7be16fdf08a90b0ea4ad98f0c332ad593a47d0db9315e19051051e184f
   languageName: node
   linkType: hard
 
@@ -10288,17 +10288,17 @@ fsevents@~2.3.2:
     config: ^3.3.6
     cookie-parser: ^1.4.6
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.20.1
+    core-js: ^3.20.2
     cors: ^2.8.5
     css-byebye: ^3.1.0
     eslint: ^7.32.0
     eslint-plugin-nuxt: ^2.0.0
     express: ^4.17.2
     jsdom: ^19.0.0
-    luxon: ^2.2.0
+    luxon: ^2.3.0
     minify-css-string: ^1.0.0
     mocha: ^9.1.3
-    mongoose: ^6.1.3
+    mongoose: ^6.1.4
     nodemon: ^2.0.15
     nuxt: ^2.15.8
     nuxt-json-config: ^0.0.2
