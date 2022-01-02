@@ -27,7 +27,7 @@ const removeAccents = function (string) {
 }
 
 const cleanText = function (string) {
-  return removeAccents(string.replace(/\//gi, '').replace(/&/gi, '').replace(/,/gi, '').replace(/[()]/gi, '').replace(/\s/gi, '')).toLowerCase()
+  return removeAccents(string.replace(/\//gi, '').replace(/&/gi, '').replace(/,/gi, '').replace(/[()]/gi, '').replace(/\s/gi, '').replace(/\./gi, '')).toLowerCase()
 }
 
 function strClipboard (a, b) {
