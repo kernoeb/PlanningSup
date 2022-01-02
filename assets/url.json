@@ -3913,12 +3913,12 @@
                 "title": "Option 1",
                 "edts": [
                   {
-                    "id": "isticm1opt1-ia-gr.a",
+                    "id": "isticm1opt1-ia-gr-a",
                     "title": "IA - Gr.A",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15054&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "isticm1opt1-ia-gr.b",
+                    "id": "isticm1opt1-ia-gr-b",
                     "title": "IA - Gr.B",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15055&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
@@ -3989,42 +3989,42 @@
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20687&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-ia-gr.a",
+                    "id": "m1opt2-ia-gr-a",
                     "title": "IA - Gr.A",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11653&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-ia-gr.b",
+                    "id": "m1opt2-ia-gr-b",
                     "title": "IA - Gr.B",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11652&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-lrc-gr.a",
+                    "id": "m1opt2-lrc-gr-a",
                     "title": "LRC - Gr.A",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13389&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-lrc-gr.b",
+                    "id": "m1opt2-lrc-gr-b",
                     "title": "LRC - Gr.B",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13390&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-mcfa-gr.a",
+                    "id": "m1opt2-mcfa-gr-a",
                     "title": "MCFA - Gr.A",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14057&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-mcfa-gr.b",
+                    "id": "m1opt2-mcfa-gr-b",
                     "title": "MCFA - Gr.B",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14600&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-ntr-gr.a",
+                    "id": "m1opt2-ntr-gr-a",
                     "title": "NTR - Gr.A",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=21949&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   },
                   {
-                    "id": "m1opt2-ntr-gr.b",
+                    "id": "m1opt2-ntr-gr-b",
                     "title": "NTR - Gr.B",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=21950&projectId=3&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
                   }
