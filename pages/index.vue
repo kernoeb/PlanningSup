@@ -427,6 +427,9 @@ export default {
     }, 120000)
   },
   methods: {
+    uniqWith (arr, fn) {
+      return arr.filter((element, index) => arr.findIndex(step => fn(element, step)) === index)
+    },
     resetNewPlanning () {
       this.$cookies.remove('plannings')
       this.selectedPlanningsIds = []
@@ -437,7 +440,7 @@ export default {
     setEvents (req) {
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
-      if ((req.plannings || []).length > 1) this.events = tmpEvents.filter((v, i, a) => a.findIndex(t => (JSON.stringify(t) === JSON.stringify(v))) === i)
+      if ((req.plannings || []).length > 1) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status
