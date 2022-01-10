@@ -299,7 +299,7 @@ export default {
   methods: {
     forceFullMode () {
       this.fullDark = !this.fullDark
-      this.$cookies.set('fullDark', this.fullDark)
+      this.$cookies.set('fullDark', this.fullDark, { maxAge: 2147483646 })
       try {
         if (document && document.querySelector('body')) {
           const body = document.querySelector('body')

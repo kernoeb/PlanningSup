@@ -303,7 +303,7 @@ export default {
         const oldCookie = Buffer.from(decodeURIComponent(this.$cookies.get('plannings', { parseJSON: false })), 'base64').toString()
         if (oldCookie.startsWith('[') && oldCookie.endsWith(']')) {
           const j = JSON.parse(oldCookie)
-          this.$cookies.set('plannings', j.join(','))
+          this.$cookies.set('plannings', j.join(','), { maxAge: 2147483646 })
         }
       } catch (err) {
         console.log(err)

@@ -317,7 +317,7 @@ export default {
       else tmp.push(id)
       const final = [...new Set(tmp)]
       this.favorites = final
-      this.$cookies.set('favorites', (final || []).join(','))
+      this.$cookies.set('favorites', (final || []).join(','), { maxAge: 2147483646 })
       this.getNames()
     },
     getFavoriteName (favorite) {
