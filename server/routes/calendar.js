@@ -62,7 +62,7 @@ router.get('/calendars', async (req, res) => {
 
     // Analytics and session management
 
-    if (req.header('ignore-statistics') == null && req.header('ignore-statistics') !== 'true') {
+    if (req.header('ignore-statistics') !== 'true') {
       req.session.plannings = tmpIds
       tmpIds.forEach((id) => {
         trackPlannings(id, req.session.id)
