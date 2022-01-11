@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
   web:
@@ -21,8 +21,6 @@ services:
   mongodb:
     image: docker.io/bitnami/mongodb:5.0
     restart: always
-    ports:
-      - "27017"
     volumes:
       - '/opt/planning_v2:/bitnami/mongodb'
     networks:
