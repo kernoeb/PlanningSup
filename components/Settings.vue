@@ -68,7 +68,7 @@
           <v-list-item inactive style="cursor:pointer;">
             <v-list-item-action>
               <v-checkbox
-                v-model="fullDark"
+                v-model="checkedFullDark"
                 :indeterminate-icon="mdiCheckboxBlankOutline"
                 :off-icon="mdiCheckboxBlankOutline"
                 :on-icon="mdiCheckboxMarked"
@@ -77,6 +77,20 @@
             <v-list-item-content @click="forceFullMode()">
               <v-list-item-title>Événements sombres</v-list-item-title>
               <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item inactive style="cursor:pointer;">
+            <v-list-item-action>
+              <v-checkbox
+                v-model="checkedMergeDuplicates"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+            <v-list-item-content @click="switchMergeDuplicates()">
+              <v-list-item-title>Fusionner les événements identiques</v-list-item-title>
+              <v-list-item-subtitle>Pour les utilisateurs qui doivent sélectionner plusieurs plannings</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
           <v-subheader>{{ $config.i18n.colors }}</v-subheader>
@@ -254,7 +268,8 @@ export default {
       colorAmphi: '#efd6d8',
       colorOthers: '#eddd6e',
 
-      fullDark: false
+      fullDark: false,
+      mergeDuplicates: true
     }
   },
   computed: {
@@ -265,6 +280,22 @@ export default {
       set () {
         this.$vuetify.theme.dark = !this.$vuetify.theme.dark
       }
+    },
+    checkedFullDark: {
+      get () {
+        return this.fullDark
+      },
+      set () {
+        this.forceFullMode()
+      }
+    },
+    checkedMergeDuplicates: {
+      get () {
+        return this.mergeDuplicates
+      },
+      set () {
+        this.switchMergeDuplicates()
+      }
     }
   },
   created () {
@@ -272,6 +303,12 @@ export default {
       this.fullDark = this.$cookies.get('fullDark', { parseJSON: false }) === 'true' || false
     } catch (err) {
       this.fullDark = false
+    }
+
+    try {
+      this.mergeDuplicates = this.$cookies.get('mergeDuplicates', { parseJSON: false }) !== 'false'
+    } catch (err) {
+      this.mergeDuplicates = true
     }
   },
   mounted () {
@@ -307,6 +344,11 @@ export default {
           else body.className = (body.className + ' fullDark').trim()
         }
       } catch (err) {}
+    },
+    switchMergeDuplicates () {
+      this.mergeDuplicates = !this.mergeDuplicates
+      this.$cookies.set('mergeDuplicates', this.mergeDuplicates, { maxAge: 2147483646 })
+      this.delayedFetch()
     },
     reset () {
       this.$cookies.remove('customColorList')

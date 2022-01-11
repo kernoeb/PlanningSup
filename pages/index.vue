@@ -430,6 +430,13 @@ export default {
     uniqWith (arr, fn) {
       return arr.filter((element, index) => arr.findIndex(step => fn(element, step)) === index)
     },
+    mergeDuplicates () {
+      try {
+        return this.$cookies.get('mergeDuplicates', { parseJSON: false }) !== 'false'
+      } catch (err) {
+        return true
+      }
+    },
     resetNewPlanning () {
       this.$cookies.remove('plannings')
       this.selectedPlanningsIds = []
@@ -440,7 +447,7 @@ export default {
     setEvents (req) {
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
-      if ((req.plannings || []).length > 1) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
+      if ((req.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status
