@@ -2808,6 +2808,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"archetype@npm:0.13.x":
+  version: 0.13.0
+  resolution: "archetype@npm:0.13.0"
+  dependencies:
+    lodash.clonedeep: 4.x
+    lodash.set: 4.x
+    mpath: 0.8.x
+  checksum: ea4010a973070206101f8c57f3324f4b12b41bf81bbf569cab161930b109bf2da3c87148b4931d4be78a87ebf822fd110eca73375d6133c1409543da04fd2123
+  languageName: node
+  linkType: hard
+
 "are-we-there-yet@npm:~1.1.2":
   version: 1.1.7
   resolution: "are-we-there-yet@npm:1.1.7"
@@ -3396,6 +3407,15 @@ __metadata:
   dependencies:
     buffer: ^5.6.0
   checksum: d38ca1b6c581d8667137c62258f22c0076575879c77f278c08282721844166afc0538d9fb4942976bb320a2e3dec3ddfae57b7ad52845bf7464bf997d3fdc5a2
+  languageName: node
+  linkType: hard
+
+"bson@npm:^4.6.1":
+  version: 4.6.1
+  resolution: "bson@npm:4.6.1"
+  dependencies:
+    buffer: ^5.6.0
+  checksum: 32c38400b0c5f85cf22c28b9f9bbc63b3c090c23a749a8c159db975f225161a7fe776f8a18ed1da3f58a9e7496ce2b7935753e9471f17c614bf02ebab145e052
   languageName: node
   linkType: hard
 
@@ -4134,6 +4154,16 @@ __metadata:
     write-file-atomic: ^3.0.0
     xdg-basedir: ^4.0.0
   checksum: 60ef65d493b63f96e14b11ba7ec072fdbf3d40110a94fb7199d1c287761bdea5c5244e76b2596325f30c1b652213aa75de96ea20afd4a5f82065e61ea090988e
+  languageName: node
+  linkType: hard
+
+"connect-mongodb-session@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "connect-mongodb-session@npm:3.1.1"
+  dependencies:
+    archetype: 0.13.x
+    mongodb: 4.x
+  checksum: 18416bc98f6c2d9296ddf99b2d0eff14bc750240b98ee24af8c9bc5cff063c51e7f6c52d2337d72bd36afa56091d24a792bf5d54c2ee2be34e86b76d8f869523
   languageName: node
   linkType: hard
 
@@ -4998,7 +5028,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"depd@npm:2.0.0":
+"depd@npm:2.0.0, depd@npm:~2.0.0":
   version: 2.0.0
   resolution: "depd@npm:2.0.0"
   checksum: abbe19c768c97ee2eed6282d8ce3031126662252c58d711f646921c9623f9052e3e1906443066beec1095832f534e57c523b7333f8e7e0d93051ab6baef5ab3a
@@ -5925,6 +5955,22 @@ __metadata:
     snapdragon: ^0.8.1
     to-regex: ^3.0.1
   checksum: 1781d422e7edfa20009e2abda673cadb040a6037f0bd30fcd7357304f4f0c284afd420d7622722ca4a016f39b6d091841ab57b401c1f7e2e5131ac65b9f14fa1
+  languageName: node
+  linkType: hard
+
+"express-session@npm:^1.17.2":
+  version: 1.17.2
+  resolution: "express-session@npm:1.17.2"
+  dependencies:
+    cookie: 0.4.1
+    cookie-signature: 1.0.6
+    debug: 2.6.9
+    depd: ~2.0.0
+    on-headers: ~1.0.2
+    parseurl: ~1.3.3
+    safe-buffer: 5.2.1
+    uid-safe: ~2.1.5
+  checksum: 9e05cff29865c039f2b3a623325a66707a6229598a33f6e6f082c1581b0afa0bf9196d93c70445883e610138a36698842ff9ddeccdafc9c3ef65ff2a6e237d83
   languageName: node
   linkType: hard
 
@@ -8419,7 +8465,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"lodash.clonedeep@npm:^4.5.0":
+"lodash.clonedeep@npm:4.x, lodash.clonedeep@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.clonedeep@npm:4.5.0"
   checksum: 92c46f094b064e876a23c97f57f81fbffd5d760bf2d8a1c61d85db6d1e488c66b0384c943abee4f6af7debf5ad4e4282e74ff83177c9e63d8ff081a4837c3489
@@ -8458,6 +8504,13 @@ fsevents@~2.3.2:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: ad580b4bdbb7ca1f7abf7e1bce63a9a0b98e370cf40194b03380a46b4ed799c9573029599caebc1b14e3f24b111aef72b96674a56cfa105e0f5ac70546cdc005
+  languageName: node
+  linkType: hard
+
+"lodash.set@npm:4.x":
+  version: 4.3.2
+  resolution: "lodash.set@npm:4.3.2"
+  checksum: a9122f49eef9f2d0fc9061a33d87f8e5b8c6b23d46e8b9e9ce1529d3588d79741bd1145a3abdfa3b13082703e65af27ff18d8a07bfc22b9be32f3fc36f763f70
   languageName: node
   linkType: hard
 
@@ -9164,6 +9217,22 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"mongodb@npm:4.x":
+  version: 4.3.0
+  resolution: "mongodb@npm:4.3.0"
+  dependencies:
+    bson: ^4.6.1
+    denque: ^2.0.1
+    mongodb-connection-string-url: ^2.3.2
+    saslprep: ^1.0.3
+    socks: ^2.6.1
+  dependenciesMeta:
+    saslprep:
+      optional: true
+  checksum: c1772ebf1d78076e998817c9fc49bdcb8f2b006e88ca31fa72e2d8c4cfcc15e0ce5f545e3523e240d2706cf482faaa0443939799c6a0880ec19566fa7cea6fa6
+  languageName: node
+  linkType: hard
+
 "mongodb@npm:^4.1.0":
   version: 4.1.3
   resolution: "mongodb@npm:4.1.3"
@@ -9211,7 +9280,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mpath@npm:0.8.4":
+"mpath@npm:0.8.4, mpath@npm:0.8.x":
   version: 0.8.4
   resolution: "mpath@npm:0.8.4"
   checksum: 06ad1d443766626fa361b67a4eca9cd4c36a71e475e92e8a5c242dbbc9a911adac00ce971177843b48475356df609f847342548da7701a976a2ab4116135caf0
@@ -10333,6 +10402,7 @@ fsevents@~2.3.2:
     cal-parser: ^1.0.1
     chai: ^4.3.4
     config: ^3.3.6
+    connect-mongodb-session: ^3.1.1
     cookie-parser: ^1.4.6
     cookie-universal-nuxt: ^2.1.5
     core-js: ^3.20.2
@@ -10341,6 +10411,7 @@ fsevents@~2.3.2:
     eslint: ^7.32.0
     eslint-plugin-nuxt: ^2.0.0
     express: ^4.17.2
+    express-session: ^1.17.2
     jsdom: ^19.0.0
     luxon: ^2.3.0
     minify-css-string: ^1.0.0
@@ -11562,6 +11633,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"random-bytes@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "random-bytes@npm:1.0.0"
+  checksum: 09faa256394aa2ca9754aa57e92a27c452c3e97ffb266e98bebb517332e9df7168fea393159f88d884febce949ba8bec8ddb02f03342da6c6023ecc7b155e0ae
+  languageName: node
+  linkType: hard
+
 "randombytes@npm:^2.0.0, randombytes@npm:^2.0.1, randombytes@npm:^2.0.5, randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -12632,7 +12710,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"socks@npm:^2.3.3":
+"socks@npm:^2.3.3, socks@npm:^2.6.1":
   version: 2.6.1
   resolution: "socks@npm:2.6.1"
   dependencies:
@@ -13627,6 +13705,15 @@ fsevents@~2.3.2:
   bin:
     uglifyjs: bin/uglifyjs
   checksum: 4d8e5c63b2c0455b598cc09ade538cd4fe6d68cb46a9bc563464d749650047592d96aff5a283c1c29a0c27a6ce8f9eb0b3a33525b3e7555b841a53b2b32d6219
+  languageName: node
+  linkType: hard
+
+"uid-safe@npm:~2.1.5":
+  version: 2.1.5
+  resolution: "uid-safe@npm:2.1.5"
+  dependencies:
+    random-bytes: ~1.0.0
+  checksum: 07536043da9a026f4a2bc397543d0ace7587449afa1d9d2c4fd3ce76af8a5263a678788bcc429dff499ef29d45843cd5ee9d05434450fcfc19cc661229f703d1
   languageName: node
   linkType: hard
 

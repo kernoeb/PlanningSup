@@ -4,6 +4,7 @@ const router = Router()
 const urls = require('../../assets/url.json')
 const logger = require('../util/signale')
 const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning, getCustomEventContent } = require('../util/utils')
+const { trackPlannings } = require('../util/analytics')
 
 const allPlannings = []
 const idSeparator = '.'
@@ -58,6 +59,12 @@ router.get('/calendars', async (req, res) => {
       if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColorList) }
       else return { id, title: allPlannings[id].title, status: 'off' }
     }))
+
+    // Analytics and session management
+    req.session.plannings = tmpIds
+    tmpIds.forEach((id) => {
+      trackPlannings(id, req.session.id)
+    })
 
     return res.json({
       timestamp: new Date().toISOString(),

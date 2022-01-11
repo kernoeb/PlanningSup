@@ -9,10 +9,13 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const Agenda = require('agenda')
 const axios = require('axios')
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session)
 const packageJson = require('../package.json')
 const logger = require('./util/signale')
 const { fetchAndGetJSON } = require('./util/utils')
 const { Schema } = mongoose
+
 const agenda = new Agenda()
 
 logger.info('Starting...')
@@ -39,7 +42,7 @@ if (!process.env.NO_MONGO) {
       }
     })
 
-    const Planning = mongoose.model('Planning', planningSchema)
+    const Planning = mongoose.models.Planning ? mongoose.model('Planning') : mongoose.model('Planning', planningSchema)
 
     const customEventsSchema = new Schema({
       name: {
@@ -50,7 +53,28 @@ if (!process.env.NO_MONGO) {
       content: String
     })
 
-    mongoose.model('CustomEvents', customEventsSchema)
+    !mongoose.models.CustomEvents && mongoose.model('CustomEvents', customEventsSchema)
+
+    const metricsSchema = new Schema({
+      timestamp: { type: Date, required: true },
+      planning: { type: String, required: true },
+      sessionId: { type: String, required: true },
+      count: {
+        type: Number,
+        default: 0,
+        required: true
+      }
+    })
+
+    metricsSchema.index({ timestamp: 1, planning: 1, sessionId: 1 }, { unique: true })
+    metricsSchema.index({ timestamp: 1, planning: 1, count: 1 })
+    metricsSchema.index({ timestamp: 1, count: 1 })
+    metricsSchema.index({ timestamp: 1, planning: 1 })
+    metricsSchema.index({ timestamp: 1, sessionId: 1 })
+    metricsSchema.index({ planning: 1 })
+    metricsSchema.index({ timestamp: 1 })
+
+    !mongoose.models.Metrics && mongoose.model('Metrics', metricsSchema)
 
     const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
 
@@ -169,20 +193,49 @@ if (!process.env.NO_MONGO) {
         await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
       }
     })
-  }).catch(() => {
-    logger.error('Error while initializing mongo')
+  }).catch((err) => {
+    logger.error('Error while initializing mongo', err)
   })
 }
 
 // Create express instance
 const app = express()
+
 app.use(cors())
 app.use(cookieParser())
+
+const store = new MongoDBStore({
+  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`,
+  collection: 'sessions'
+})
+
+// Catch errors
+store.on('error', function (error) {
+  console.log(error)
+})
+
+const sess = {
+  secret: app.get('env') === 'production' ? process.env.SESSION_SECRET : 'secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 365 * 10 // 10 years
+  },
+  store,
+  resave: true,
+  saveUninitialized: true
+}
+
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
+
+app.use(session(sess))
 
 // Import API Routes
 app.use(require('./routes/calendar'))
 app.use(require('./routes/urls'))
 app.use(require('./routes/crous'))
+app.use(require('./routes/metrics'))
 
 // Export express app
 module.exports = app
