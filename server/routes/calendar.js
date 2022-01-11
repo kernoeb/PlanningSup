@@ -61,10 +61,15 @@ router.get('/calendars', async (req, res) => {
     }))
 
     // Analytics and session management
-    req.session.plannings = tmpIds
-    tmpIds.forEach((id) => {
-      trackPlannings(id, req.session.id)
-    })
+
+    if (req.header('ignore-statistics') == null && req.header('ignore-statistics') !== 'true') {
+      req.session.plannings = tmpIds
+      tmpIds.forEach((id) => {
+        trackPlannings(id, req.session.id)
+      })
+    } else {
+      logger.log('Ignoring statistics', new Date().toISOString(), req.session.id, req.ip, req.headers['user-agent'])
+    }
 
     return res.json({
       timestamp: new Date().toISOString(),

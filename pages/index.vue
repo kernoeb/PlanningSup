@@ -328,7 +328,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] ? 'true' : 'false' } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
       this.errorMessage = null
@@ -340,7 +340,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') } })
+        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] ? 'true' : 'false' } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
         this.errorMessage = null
