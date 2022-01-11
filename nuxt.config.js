@@ -4,11 +4,12 @@ import minifyTheme from 'minify-css-string'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
-const PLAUSIBLE_URL = 'plausible.noewen.com'
+const PLAUSIBLE_DOMAIN = 'plausible.noewen.com'
 const DESCRIPTION = 'Un planning universitaire moderne réalisé par @kernoeb'
 const TITLE = 'PlanningSup'
 const META_TITLE = `${TITLE} | Calendrier universitaire`
-const URL = 'https://planningsup.app'
+const DOMAIN = 'planningsup.app'
+const URL = 'https://' + DOMAIN
 const BANNER = `${URL}/banner.png`
 
 export default {
@@ -57,8 +58,6 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    // https://github.com/moritzsternemann/vue-plausible
-    { src: '~/plugins/vue-plausible.js', mode: 'client' },
     { src: '~/plugins/v-tooltip.js', mode: 'client' }
   ],
 
@@ -85,7 +84,9 @@ export default {
       families: {
         Roboto: [100, 300, 400, 500, 700, 900]
       }
-    }]
+    }],
+    // https://github.com/moritzsternemann/vue-plausible
+    'vue-plausible'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -124,7 +125,7 @@ export default {
         'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
         'font-src': ['fonts.googleapis.com', 'fonts.gstatic.com'],
         'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        'connect-src': ["'self'", PLAUSIBLE_URL]
+        'connect-src': ["'self'", PLAUSIBLE_DOMAIN]
       }
     }
   },
@@ -158,6 +159,20 @@ export default {
 
   axios: {
     proxy: true
+  },
+
+  plausible: { // Use as fallback if no runtime config is available at runtime
+    domain: DOMAIN,
+    enableAutoPageviews: true,
+    enableAutoOutboundTracking: true
+  },
+  publicRuntimeConfig: {
+    plausible: {
+      domain: DOMAIN,
+      apiHost: 'https://' + PLAUSIBLE_DOMAIN,
+      enableAutoPageviews: true,
+      enableAutoOutboundTracking: true
+    }
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)

@@ -1866,16 +1866,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nuxtjs/vuetify@npm:^1.12.2":
-  version: 1.12.2
-  resolution: "@nuxtjs/vuetify@npm:1.12.2"
+"@nuxtjs/vuetify@npm:^1.12.3":
+  version: 1.12.3
+  resolution: "@nuxtjs/vuetify@npm:1.12.3"
   dependencies:
     deepmerge: ^4.2.2
     sass: ~1.32.13
-    sass-loader: ^12.3.0
+    sass-loader: ^10.2.0
     vuetify: ^2.6
     vuetify-loader: ^1.7.3
-  checksum: 2adb658dbbe113b6896ec4d3874a15b8b89fa6c077418812f7ffd9ff7173f1a64eeaab203d87a01d125e8737fdece453c96f544fbf352b793a26f5f3f7e54dff
+  checksum: bfadb3641330e29c76bc278768cf6dbe371360508cc94801c209c5d37dc360ed29bc2265da3db14f3d2940a9171db09f488edd1413c9a41c05f13bc2ecb8a651
   languageName: node
   linkType: hard
 
@@ -2029,6 +2029,13 @@ __metadata:
   version: 16.10.8
   resolution: "@types/node@npm:16.10.8"
   checksum: e4d35774ff5a195aca2079131acc189ace1be568423c88ee332944206f2c5a632999e8eca461f65c204baa482b3ae9a0e92727185c94d009d82a6af0fa5edd80
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:< 17.0.6":
+  version: 17.0.5
+  resolution: "@types/node@npm:17.0.5"
+  checksum: 105535e78722515c26cfdc1b0cbf1b19f55fe53b814e2e90d8b1e653bc63136d4760c7efc102eca111c6d124a291e37d60d761d569a3f4afb3fba05bad5d9ade
   languageName: node
   linkType: hard
 
@@ -2904,6 +2911,13 @@ __metadata:
   version: 2.0.1
   resolution: "arrify@npm:2.0.1"
   checksum: 067c4c1afd182806a82e4c1cb8acee16ab8b5284fbca1ce29408e6e91281c36bb5b612f6ddfbd40a0f7a7e0c75bf2696eb94c027f6e328d6e9c52465c98e4209
+  languageName: node
+  linkType: hard
+
+"asap@npm:^2.0.0":
+  version: 2.0.6
+  resolution: "asap@npm:2.0.6"
+  checksum: b296c92c4b969e973260e47523207cd5769abd27c245a68c26dc7a0fe8053c55bb04360237cb51cab1df52be939da77150ace99ad331fb7fb13b3423ed73ff3d
   languageName: node
   linkType: hard
 
@@ -4248,7 +4262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookiejar@npm:^2.1.2":
+"cookiejar@npm:^2.1.3":
   version: 2.1.3
   resolution: "cookiejar@npm:2.1.3"
   checksum: 88259983ebc52ceb23cdacfa48762b6a518a57872eff1c7ed01d214fff5cf492e2660d7d5c04700a28f1787a76811df39e8639f8e17670b3cf94ecd86e161f07
@@ -4794,6 +4808,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "debug@npm:4.3.3"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 14472d56fe4a94dbcfaa6dbed2dd3849f1d72ba78104a1a328047bb564643ca49df0224c3a17fa63533fd11dd3d4c8636cd861191232a2c6735af00cc2d4de16
+  languageName: node
+  linkType: hard
+
 "decache@npm:^4.6.0":
   version: 4.6.0
   resolution: "decache@npm:4.6.0"
@@ -5021,6 +5047,16 @@ __metadata:
   version: 2.0.1
   resolution: "devalue@npm:2.0.1"
   checksum: 94bedfba0311b3404ca3281180c56baf0259481b8411eae1cae8ffd5741e1add47092d560c2ea9091086c9eef940a887a3ce86c63128d9c310b7486002762a08
+  languageName: node
+  linkType: hard
+
+"dezalgo@npm:1.0.3":
+  version: 1.0.3
+  resolution: "dezalgo@npm:1.0.3"
+  dependencies:
+    asap: ^2.0.0
+    wrappy: 1
+  checksum: 8b26238db91423b2702a7a6d9629d0019c37c415e7b6e75d4b3e8d27e9464e21cac3618dd145f4d4ee96c70cc6ff034227b5b8a0e9c09015a8bdbe6dace3cfb9
   languageName: node
   linkType: hard
 
@@ -6024,7 +6060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-safe-stringify@npm:^2.0.7":
+"fast-safe-stringify@npm:^2.1.1":
   version: 2.1.1
   resolution: "fast-safe-stringify@npm:2.1.1"
   checksum: a851cbddc451745662f8f00ddb622d6766f9bd97642dabfd9a405fb0d646d69fc0b9a1243cbf67f5f18a39f40f6fa821737651ff1bceeba06c9992ca2dc5bd3d
@@ -6263,17 +6299,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data@npm:^3.0.0":
-  version: 3.0.1
-  resolution: "form-data@npm:3.0.1"
-  dependencies:
-    asynckit: ^0.4.0
-    combined-stream: ^1.0.8
-    mime-types: ^2.1.12
-  checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
-  languageName: node
-  linkType: hard
-
 "form-data@npm:^4.0.0":
   version: 4.0.0
   resolution: "form-data@npm:4.0.0"
@@ -6285,10 +6310,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formidable@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "formidable@npm:1.2.2"
-  checksum: 43b3ec9a8f8055112e1a9a40eb748cdcd86cb9076dc9a17b0caa2bc26908eeae865dbee62d7c4bc26681fb75c2f42d60323af9c9d06c843e94f51f9b46954a0a
+"formidable@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "formidable@npm:2.0.1"
+  dependencies:
+    dezalgo: 1.0.3
+    hexoid: 1.0.0
+    once: 1.4.0
+    qs: 6.9.3
+  checksum: b35445444e7b6f6f3cacbadd5e6fadd6b5b2e83162e7c41fa22586df584cc515bbd1ee0dc2b701ce031fcb000d71769bc77bd0958db8a89a0ceb8b2227bdc695
   languageName: node
   linkType: hard
 
@@ -6930,6 +6960,13 @@ fsevents@~2.3.2:
   version: 1.1.0
   resolution: "hex-color-regex@npm:1.1.0"
   checksum: 44fa1b7a26d745012f3bfeeab8015f60514f72d2fcf10dce33068352456b8d71a2e6bc5a17f933ab470da2c5ab1e3e04b05caf3fefe3c1cabd7e02e516fc8784
+  languageName: node
+  linkType: hard
+
+"hexoid@npm:1.0.0":
+  version: 1.0.0
+  resolution: "hexoid@npm:1.0.0"
+  checksum: 27a148ca76a2358287f40445870116baaff4a0ed0acc99900bf167f0f708ffd82e044ff55e9949c71963852b580fc024146d3ac6d5d76b508b78d927fa48ae2d
   languageName: node
   linkType: hard
 
@@ -8815,12 +8852,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mime@npm:^2.3.1, mime@npm:^2.4.6":
+"mime@npm:^2.3.1":
   version: 2.5.2
   resolution: "mime@npm:2.5.2"
   bin:
     mime: cli.js
   checksum: dd3c93d433d41a09f6a1cfa969b653b769899f3bd573e7bfcea33bdc8b0cc4eba57daa2f95937369c2bd2b6d39d62389b11a4309fe40d1d3a1b736afdedad0ff
+  languageName: node
+  linkType: hard
+
+"mime@npm:^2.5.0":
+  version: 2.6.0
+  resolution: "mime@npm:2.6.0"
+  bin:
+    mime: cli.js
+  checksum: 1497ba7b9f6960694268a557eae24b743fd2923da46ec392b042469f4b901721ba0adcf8b0d3c2677839d0e243b209d76e5edcbd09cfdeffa2dfb6bb4df4b862
   languageName: node
   linkType: hard
 
@@ -9133,10 +9179,11 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.1.4":
-  version: 6.1.4
-  resolution: "mongoose@npm:6.1.4"
+"mongoose@npm:^6.1.6":
+  version: 6.1.6
+  resolution: "mongoose@npm:6.1.6"
   dependencies:
+    "@types/node": < 17.0.6
     bson: ^4.2.2
     kareem: 2.3.3
     mongodb: 4.2.2
@@ -9146,7 +9193,7 @@ fsevents@~2.3.2:
     regexp-clone: 1.0.0
     sift: 13.5.2
     sliced: 1.0.1
-  checksum: 9878de980e81f4961294b30be1259ce5445812f48fa892520f213a002d0a7148250a9d7be16fdf08a90b0ea4ad98f0c332ad593a47d0db9315e19051051e184f
+  checksum: 15d6a151dfcb031f8e630a0deca575cb54d4cdc319c1376ed7e84b6d0a569dfa175d22088324d2b2f5d548d11a4fce81abf0691e29795556a67544dfb4803d81
   languageName: node
   linkType: hard
 
@@ -9736,7 +9783,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"once@npm:^1.3.0, once@npm:^1.3.1, once@npm:^1.4.0":
+"once@npm:1.4.0, once@npm:^1.3.0, once@npm:^1.3.1, once@npm:^1.4.0":
   version: 1.4.0
   resolution: "once@npm:1.4.0"
   dependencies:
@@ -10279,7 +10326,7 @@ fsevents@~2.3.2:
     "@nuxtjs/google-fonts": ^1.3.0
     "@nuxtjs/moment": ^1.6.1
     "@nuxtjs/pwa": ^3.3.5
-    "@nuxtjs/vuetify": ^1.12.2
+    "@nuxtjs/vuetify": ^1.12.3
     agenda: ^4.2.1
     axios: ^0.24.0
     babel-eslint: ^10.1.0
@@ -10298,7 +10345,7 @@ fsevents@~2.3.2:
     luxon: ^2.3.0
     minify-css-string: ^1.0.0
     mocha: ^9.1.3
-    mongoose: ^6.1.4
+    mongoose: ^6.1.6
     nodemon: ^2.0.15
     nuxt: ^2.15.8
     nuxt-json-config: ^0.0.2
@@ -10306,19 +10353,19 @@ fsevents@~2.3.2:
     sanitize-html: ^2.6.1
     sass-loader: 10
     signale: ^1.4.0
-    supertest: ^6.1.6
+    supertest: ^6.2.0
     v-tooltip: ^2.1.3
-    vue-plausible: ^1.2.1
+    vue-plausible: ^1.3.1
     vue-swatches: ^2.1.1
-    vuetify: ^2.6.1
+    vuetify: ^2.6.2
     xml2js: ^0.4.23
   languageName: unknown
   linkType: soft
 
-"plausible-tracker@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "plausible-tracker@npm:0.3.1"
-  checksum: db63c2abdc3c94c09a5fa0e187ae016ebe7511d4ee04fbf7e52356b64d94d7c92c54f4b784b8db3a13a4f90759d8520ebb4ea0e74b09dae3d968752d1c0c3060
+"plausible-tracker@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "plausible-tracker@npm:0.3.4"
+  checksum: d6850cdb19f706b2c01f37c1dfbe4fc0431fe8af66493a639c532725cc91a02660ed770ceece6f8db4fc8b2138a7eda4dc32b8f5efef2101a345f253279e1985
   languageName: node
   linkType: hard
 
@@ -11426,10 +11473,26 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"qs@npm:6.9.3":
+  version: 6.9.3
+  resolution: "qs@npm:6.9.3"
+  checksum: 89cd1b5e521c19a7e0a7a056ddc261c5c30889664608cf9ce6085f9f25606fc48568cf6a6249e641b4b5c04dac7889e3b82133142523abf397228eb4f488fc38
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.9.6":
   version: 6.9.6
   resolution: "qs@npm:6.9.6"
   checksum: cb6df402bb8a3dbefa4bd46eba0dfca427079baca923e6b8d28a03e6bfb16a5c1dcdb96e69388f9c5813ac8ff17bb8bbca22f2ecd31fe1e344a55cb531b5fabf
+  languageName: node
+  linkType: hard
+
+"qs@npm:^6.10.1":
+  version: 6.10.3
+  resolution: "qs@npm:6.10.3"
+  dependencies:
+    side-channel: ^1.0.4
+  checksum: 0fac5e6c7191d0295a96d0e83c851aeb015df7e990e4d3b093897d3ac6c94e555dbd0a599739c84d7fa46d7fee282d94ba76943983935cf33bba6769539b8019
   languageName: node
   linkType: hard
 
@@ -12093,7 +12156,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:10":
+"sass-loader@npm:10, sass-loader@npm:^10.2.0":
   version: 10.2.0
   resolution: "sass-loader@npm:10.2.0"
   dependencies:
@@ -12115,28 +12178,6 @@ fsevents@~2.3.2:
     sass:
       optional: true
   checksum: d53212e5d199cdd221a67046ab4276c352d56b50ca64347115b36e8ebbb2c68ec396a14d6cf5a08853c830a6b0ec1fd2b016cdc53cbe90a0332a908f50ec2043
-  languageName: node
-  linkType: hard
-
-"sass-loader@npm:^12.3.0":
-  version: 12.4.0
-  resolution: "sass-loader@npm:12.4.0"
-  dependencies:
-    klona: ^2.0.4
-    neo-async: ^2.6.2
-  peerDependencies:
-    fibers: ">= 3.1.0"
-    node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
-    sass: ^1.3.0
-    webpack: ^5.0.0
-  peerDependenciesMeta:
-    fibers:
-      optional: true
-    node-sass:
-      optional: true
-    sass:
-      optional: true
-  checksum: 0f7ca3633e7f61c412b0628766a9b57cb15f68def45e4303e68eb2f3a0722aec231956fbfd118489d93c997ab605470e89de8e3f7d6776830cc6366d9657d618
   languageName: node
   linkType: hard
 
@@ -13032,32 +13073,32 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"superagent@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "superagent@npm:6.1.0"
+"superagent@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "superagent@npm:7.0.1"
   dependencies:
     component-emitter: ^1.3.0
-    cookiejar: ^2.1.2
-    debug: ^4.1.1
-    fast-safe-stringify: ^2.0.7
-    form-data: ^3.0.0
-    formidable: ^1.2.2
+    cookiejar: ^2.1.3
+    debug: ^4.3.3
+    fast-safe-stringify: ^2.1.1
+    form-data: ^4.0.0
+    formidable: ^2.0.1
     methods: ^1.1.2
-    mime: ^2.4.6
-    qs: ^6.9.4
+    mime: ^2.5.0
+    qs: ^6.10.1
     readable-stream: ^3.6.0
-    semver: ^7.3.2
-  checksum: 32ca1bc9805679cddeffdf5cf369da47359a0d38ee45ea668bba4116e17c247739e4084db9cc88217dd594a816e766a3dbf2431de017fbac0bc80efd6af30c1d
+    semver: ^7.3.5
+  checksum: 13ebebbc6f7a0abe85f9afdf10dbeea0c2712f6fff0efe7d2049977eb095567a8bcc31c47f4a99d7aa456006d4c4620d0b1786fb565e771f783ed62e236dff5f
   languageName: node
   linkType: hard
 
-"supertest@npm:^6.1.6":
-  version: 6.1.6
-  resolution: "supertest@npm:6.1.6"
+"supertest@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "supertest@npm:6.2.0"
   dependencies:
     methods: ^1.1.2
-    superagent: ^6.1.0
-  checksum: 51d11b794a022b49f0f9664e6d8ffef5e8d18467f65d2b4326e52ec96f0801d7066bf9a97eb06e8b6cd3eb6f662ee5bed937cd5764ab0617a822d7ee4c72ff36
+    superagent: ^7.0.1
+  checksum: 3b599e401bcd3334d2bcfb878197df87f8682f185b1ddf7de7143ae439010b418e768d02e63c7029eb4b0d9f37ef7e17e3d4ab95b72cdc7f09a7244cebec5eb3
   languageName: node
   linkType: hard
 
@@ -14018,12 +14059,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"vue-plausible@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "vue-plausible@npm:1.2.1"
+"vue-plausible@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "vue-plausible@npm:1.3.1"
   dependencies:
-    plausible-tracker: ^0.3.1
-  checksum: 6a9e32d17a8316c79a188b18ede89e13056c71d946a2b20d36c7cf9647391728bf433b519018df0bc1aeb595794eaf9c728e1482e5bd00ffa1564c07839f960d
+    plausible-tracker: ^0.3.4
+  checksum: 84860ff453a776d9a9b6fb0ea902685706776c067bd1fe065f31d8edc771bf21b8ae1f7e517cdc8afc63b947e9d3b74cf40b9d7594be24a308d093946cc3109a
   languageName: node
   linkType: hard
 
@@ -14117,12 +14158,21 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^2.6, vuetify@npm:^2.6.1":
+"vuetify@npm:^2.6":
   version: 2.6.1
   resolution: "vuetify@npm:2.6.1"
   peerDependencies:
     vue: ^2.6.4
   checksum: 76a66a52bdd5ce67baf81fee79c97cd128f4d3519ef531b9a76b85dfdf04ffd42559ca4da1bc75e0c5666a8ae88225cc4b4a7b36e868b38e902a1529fca8f6d8
+  languageName: node
+  linkType: hard
+
+"vuetify@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "vuetify@npm:2.6.2"
+  peerDependencies:
+    vue: ^2.6.4
+  checksum: 1f0075fdf7442d62a955d72b89cfce1e3dfdb8306f7c8cac62a9096962770f8a4d1ec1495140b41aaee696884e67301bd05b326e5388c04eee13b2254aae8dc7
   languageName: node
   linkType: hard
 
