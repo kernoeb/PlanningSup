@@ -328,7 +328,6 @@ export default {
     }
 
     try {
-      console.log(this.$route.query['ignore-statistics'])
       const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] !== undefined ? 'true' : 'false' } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })

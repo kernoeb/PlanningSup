@@ -211,7 +211,7 @@ const store = new MongoDBStore({
 
 // Catch errors
 store.on('error', function (error) {
-  console.log(error)
+  logger.error(error)
 })
 
 const sess = {
