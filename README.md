@@ -63,41 +63,17 @@ Config Vars :
 
 #### Docker
 
-docker-compose.yml
-```
-version: '2'
+Créez un fichier `.env` avec les variables suivantes :  
 
-services:
-  web:
-    # build: .
-    image: ghcr.io/kernoeb/planningsup/planning
-    restart: always
-    stdin_open: true
-    tty: true
-    ports:
-      - "31020:3000"
-    networks:
-      - planning
-    volumes:
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
-    environment:
-      - MONGODB_URL=mongodb:27017
-      - TZ=Europe/Paris
-  mongodb:
-    image: docker.io/bitnami/mongodb:5.0
-    restart: always
-    ports:
-      - "27017"
-    volumes:
-      - '/opt/planning_v2:/bitnami/mongodb'
-    networks:
-      - planning
+> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et unique.
 
-networks:
-  planning:
-    driver: bridge
 ```
+SESSION_SECRET=secret
+MONGODB_URL=mongodb:27017
+TZ=Europe/Paris
+```
+
+Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les containers.
 
 Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ```

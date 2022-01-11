@@ -2,7 +2,7 @@ version: '2'
 
 services:
   web:
-#    build: .
+    # build: .
     image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     stdin_open: true
@@ -16,9 +16,8 @@ services:
       - "/etc/localtime:/etc/localtime:ro"
     depends_on:
       - mongodb
-    environment:
-      - MONGODB_URL=mongodb:27017
-      - TZ=Europe/Paris
+    env_file:
+      - .env
   mongodb:
     image: docker.io/bitnami/mongodb:5.0
     restart: always
