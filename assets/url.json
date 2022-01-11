@@ -3012,34 +3012,78 @@
         "title": "L1 SPI-MISn-SDI",
         "edts": [
           {
-            "id": "61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-            "title": "PEI L1-61",
+            "id": "l1spi-missemestre1",
+            "title": "Semestre 1",
             "edts": [
               {
-                "id": "a_61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-                "title": "Groupe A",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7276&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                "id": "61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                "title": "PEI L1-61",
+                "edts": [
+                  {
+                    "id": "a_61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                    "title": "Groupe A",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7276&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  },
+                  {
+                    "id": "b_61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                    "title": "Groupe B",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7277&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  }
+                ]
               },
               {
-                "id": "b_61mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-                "title": "Groupe B",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7277&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                "id": "62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                "title": "PEI L1-62",
+                "edts": [
+                  {
+                    "id": "a_62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                    "title": "Groupe A",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7279&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  },
+                  {
+                    "id": "b_62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
+                    "title": "Groupe B",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7280&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  }
+                ]
               }
             ]
           },
           {
-            "id": "62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-            "title": "PEI L1-62",
+            "id": "l1spi-missemestre2",
+            "title": "Semestre 2",
             "edts": [
               {
-                "id": "a_62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-                "title": "Groupe A",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7279&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                "id": "61-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                "title": "PEI L1-61",
+                "edts": [
+                  {
+                    "id": "a_61-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                    "title": "Groupe A",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  },
+                  {
+                    "id": "b_61-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                    "title": "Groupe B",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8092&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  }
+                ]
               },
               {
-                "id": "b_62mth1106-sdi1102-chi1104-mth1107-sdi1101-uepei",
-                "title": "Groupe B",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7280&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                "id": "62-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                "title": "PEI L1-62",
+                "edts": [
+                  {
+                    "id": "a_62-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                    "title": "Groupe A",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  },
+                  {
+                    "id": "b_62-peil1mth1206-sdi1202-inf1209-mtx1201-sdi1201-uepeis2",
+                    "title": "Groupe B",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8091&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31"
+                  }
+                ]
               }
             ]
           }
