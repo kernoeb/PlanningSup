@@ -1,4 +1,4 @@
-FROM node:16.13.1
+FROM node:16.13.2-alpine
 MAINTAINER "kernoeb@protonmail.com"
 
 # Add environment variables
@@ -14,7 +14,6 @@ ADD .yarnrc.yml .
 ADD package.json .
 ADD yarn.lock .
 ADD .yarn .yarn
-RUN yarn
 
 # UI files
 ADD nuxt.config.js .
@@ -30,7 +29,9 @@ ADD static static
 # Server files
 ADD server server
 
-RUN yarn build
+RUN yarn && yarn build && \
+    apk --no-cache add curl && \
+    curl -sf https://gobinaries.com/tj/node-prune | sh && node-prune
 
 EXPOSE 3000
 
