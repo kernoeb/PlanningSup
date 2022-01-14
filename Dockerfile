@@ -1,4 +1,4 @@
-FROM node:16.13.2-alpine
+FROM node:16.13.2-alpine3.15
 MAINTAINER "kernoeb@protonmail.com"
 
 # Add environment variables
