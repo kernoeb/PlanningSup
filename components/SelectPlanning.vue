@@ -189,6 +189,10 @@ export default {
     plannings: {
       type: Array,
       default: () => []
+    },
+    dialog: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -245,6 +249,12 @@ export default {
     } catch (err) {}
   },
   mounted () {
+    window.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        if (!this.disabledValidate && this.dialog) this.updatePlannings()
+      }
+    })
+
     this.$axios.$get('/api/v1/urls').then((data) => {
       this.urls = data
     }).catch((err) => {

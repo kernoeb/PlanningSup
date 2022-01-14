@@ -106,7 +106,7 @@
           v-model="dialogEdt"
           width="500"
         >
-          <select-planning v-if="selectedPlanningsIds" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
+          <select-planning v-if="selectedPlanningsIds" :dialog="dialogEdt" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
