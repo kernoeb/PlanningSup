@@ -1,5 +1,6 @@
 const ical = require('cal-parser')
 const mongoose = require('mongoose')
+const { DateTime } = require('luxon')
 const axios = require('./axios')
 const logger = require('./signale')
 
@@ -80,13 +81,16 @@ module.exports = {
    * @returns {*[]}
    */
   getFormattedEvents: (j, blocklist, colors) => {
+    const TZ = 'Europe/Paris'
+    const locale = 'fr'
+
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
         events.push({
           name: i.summary.value.trim(),
-          start: new Date(i.dtstart.value).getTime(),
-          end: new Date(i.dtend.value).getTime(),
+          start: DateTime.fromJSDate(i.dtstart.value, { zone: TZ }).setLocale(locale).toMillis(),
+          end: DateTime.fromJSDate(i.dtend.value, { zone: TZ }).setLocale(locale).toMillis(),
           color: getColor(i.summary.value, i.location.value, colors),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),
