@@ -1,10 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 import fr from 'vuetify/es5/locale/fr'
-import minifyTheme from 'minify-css-string'
-const { NODE_ENV = 'production' } = process.env
-const isDev = NODE_ENV === 'development'
 
-const PLAUSIBLE_DOMAIN = 'plausible.noewen.com'
 const DESCRIPTION = 'Un planning universitaire moderne réalisé par @kernoeb'
 const TITLE = 'PlanningSup'
 const META_TITLE = `${TITLE} | Calendrier universitaire`
@@ -15,6 +11,7 @@ const BANNER = `${URL}/banner.png`
 export default {
   telemetry: false,
   ssr: true,
+  target: 'static',
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
@@ -52,10 +49,6 @@ export default {
     ]
   },
 
-  // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [
-  ],
-
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/v-tooltip.js', mode: 'client' }
@@ -63,13 +56,6 @@ export default {
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
-
-  /*
-  ** Server Middleware
-  */
-  serverMiddleware: [
-    { path: '/api/v1', handler: '~/server/' }
-  ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -84,9 +70,7 @@ export default {
       families: {
         Roboto: [100, 300, 400, 500, 700, 900]
       }
-    }],
-    // https://github.com/moritzsternemann/vue-plausible
-    'vue-plausible'
+    }]
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -102,55 +86,8 @@ export default {
     // https://saintplay.github.io/vue-swatches/
     'vue-swatches/nuxt',
     // https://github.com/Djancyp/nuxt-config#readme
-    'nuxt-json-config',
-    [
-      '@dansmaculotte/nuxt-security',
-      {
-        hsts: {
-          maxAge: 15552000,
-          includeSubDomains: true,
-          preload: true
-        },
-        referrer: 'same-origin',
-        additionalHeaders: true
-      }
-    ]
+    'nuxt-json-config'
   ],
-
-  render: {
-    csp: {
-      hashAlgorithm: 'sha256',
-      policies: {
-        'default-src': ["'self'"],
-        'style-src': ["'self'", "'unsafe-inline'", 'fonts.googleapis.com'],
-        'font-src': ['fonts.googleapis.com', 'fonts.gstatic.com'],
-        'script-src': ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-        'connect-src': ["'self'", PLAUSIBLE_DOMAIN]
-      }
-    }
-  },
-
-  pwa: {
-    meta: {
-      title: TITLE,
-      author: 'kernoeb',
-      description: DESCRIPTION,
-      lang: 'fr',
-      ogSiteName: TITLE,
-      ogTitle: TITLE,
-      ogDescription: DESCRIPTION
-    },
-    manifest: {
-      name: TITLE,
-      short_name: TITLE,
-      description: DESCRIPTION,
-      lang: 'fr',
-      display: 'standalone'
-    },
-    workbox: {
-      cleanupOutdatedCaches: true
-    }
-  },
 
   moment: {
     defaultLocale: 'fr',
@@ -158,20 +95,19 @@ export default {
   },
 
   axios: {
-    proxy: true
+    proxy: true,
+    baseURL: process.env.BASE_URL
   },
 
-  plausible: { // Use as fallback if no runtime config is available at runtime
-    domain: DOMAIN,
-    enableAutoPageviews: true,
-    enableAutoOutboundTracking: true
-  },
   publicRuntimeConfig: {
-    plausible: {
-      domain: DOMAIN,
-      apiHost: 'https://' + PLAUSIBLE_DOMAIN,
-      enableAutoPageviews: true,
-      enableAutoOutboundTracking: true
+    axios: {
+      browserBaseURL: process.env.BASE_URL
+    }
+  },
+
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BASE_URL
     }
   },
 
@@ -182,7 +118,6 @@ export default {
     treeShake: true,
     theme: {
       dark: true,
-      options: { minifyTheme },
       lang: {
         locales: { fr },
         current: 'fr'
@@ -199,55 +134,5 @@ export default {
         }
       }
     }
-  },
-
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    extractCSS: true,
-    babel: {
-      plugins: [
-        ['@babel/plugin-proposal-private-methods', { loose: true }]
-      ]
-    },
-    postcss:
-      {
-        // disable postcss plugins in development
-        plugins: isDev
-          ? {}
-          : {
-              '@fullhuman/postcss-purgecss': {
-                content: [
-                  'components/**/*.vue',
-                  'layouts/**/*.vue',
-                  'pages/**/*.vue',
-                  'plugins/**/*.js',
-                  'node_modules/vuetify/src/**/*.ts'
-                ],
-                styleExtensions: ['.css'],
-                safelist: {
-                  standard: [
-                    'body',
-                    'html',
-                    'nuxt-progress',
-                    /progress-circular/,
-                    /col-*/, // enable if using v-col for layout,
-                    /swatches/,
-                    /[a-z]+--text/
-                  ],
-                  deep: [
-                    /page-enter/,
-                    /page-leave/,
-                    /transition/
-                  ]
-                }
-
-              },
-              'css-byebye': {
-                rulesToRemove: [
-                  /.*\.v-application--is-rtl.*/
-                ]
-              }
-            }
-      }
   }
 }

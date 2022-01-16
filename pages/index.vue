@@ -219,6 +219,7 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import { SplashScreen } from '@capacitor/splash-screen'
 import Bottom from '@/components/Bottom'
 import ErrorAlert from '@/components/ErrorAlert'
 
@@ -379,6 +380,14 @@ export default {
     } catch (e) {
       this.$vuetify.theme.dark = true
     }
+
+    this.$nextTick(() => {
+      setTimeout(() => {
+        SplashScreen.hide({
+          fadeOutDuration: 100
+        })
+      }, 75)
+    })
 
     this.$nextTick(function () {
       try {

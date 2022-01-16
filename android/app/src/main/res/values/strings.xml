@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PlanningSup</string>
+    <string name="title_activity_main">PlanningSup</string>
+    <string name="package_name">com.planningsup.app</string>
+    <string name="custom_url_scheme">com.planningsup.app</string>
+</resources>

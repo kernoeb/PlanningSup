@@ -100,3 +100,19 @@ sw.*
 *.swp
 
 dev/
+
+dist/
+
+android/.gradle/
+android/build/
+android/local.properties
+android/*.log
+android/captures/
+android/.externalNativeBuild/
+android/.cxx/
+android/*.apk
+android/output.json
+android/*.jks
+android/*.keystore
+android/google-services.json
+android/*.hprof

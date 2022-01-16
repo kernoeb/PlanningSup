@@ -1,0 +1,13 @@
+{
+	"appId": "com.planningsup.app",
+	"appName": "PlanningSup",
+	"webDir": "dist",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchAutoHide": false,
+			"backgroundColor": "#000000,",
+			"androidScaleType": "CENTER_CROP"
+		}
+	}
+}

@@ -231,11 +231,15 @@ if (app.get('env') === 'production') {
 
 app.use(session(sess))
 
+const apiRouter = express.Router()
+
 // Import API Routes
-app.use(require('./routes/calendar'))
-app.use(require('./routes/urls'))
-app.use(require('./routes/crous'))
-app.use(require('./routes/metrics'))
+apiRouter.use(require('./routes/calendar'))
+apiRouter.use(require('./routes/urls'))
+apiRouter.use(require('./routes/crous'))
+apiRouter.use(require('./routes/metrics'))
+
+app.use('/api/v1', apiRouter)
 
 // Export express app
 module.exports = app
