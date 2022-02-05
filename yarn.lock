@@ -2032,13 +2032,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:< 17.0.6":
-  version: 17.0.5
-  resolution: "@types/node@npm:17.0.5"
-  checksum: 105535e78722515c26cfdc1b0cbf1b19f55fe53b814e2e90d8b1e653bc63136d4760c7efc102eca111c6d124a291e37d60d761d569a3f4afb3fba05bad5d9ade
-  languageName: node
-  linkType: hard
-
 "@types/normalize-package-data@npm:^2.4.0":
   version: 2.4.1
   resolution: "@types/normalize-package-data@npm:2.4.1"
@@ -3401,15 +3394,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bson@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "bson@npm:4.6.0"
-  dependencies:
-    buffer: ^5.6.0
-  checksum: d38ca1b6c581d8667137c62258f22c0076575879c77f278c08282721844166afc0538d9fb4942976bb320a2e3dec3ddfae57b7ad52845bf7464bf997d3fdc5a2
-  languageName: node
-  linkType: hard
-
 "bson@npm:^4.6.1":
   version: 4.6.1
   resolution: "bson@npm:4.6.1"
@@ -3713,17 +3697,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chai@npm:^4.3.4":
-  version: 4.3.4
-  resolution: "chai@npm:4.3.4"
+"chai@npm:^4.3.6":
+  version: 4.3.6
+  resolution: "chai@npm:4.3.6"
   dependencies:
     assertion-error: ^1.1.0
     check-error: ^1.0.2
     deep-eql: ^3.0.1
     get-func-name: ^2.0.0
+    loupe: ^2.3.1
     pathval: ^1.1.1
     type-detect: ^4.0.5
-  checksum: 772c522b3bfe3fcf0e0e74edfe584cd886b0e85a73126dec750095300e023d4e1ec6d40e3c35a80d2bd8f33dca46c42767a36f5f50f32dca6fa31c88b5f49ab8
+  checksum: acff93fd537f96d4a4d62dd83810285dffcfccb5089e1bf2a1205b28ec82d93dff551368722893cf85004282df10ee68802737c33c90c5493957ed449ed7ce71
   languageName: node
   linkType: hard
 
@@ -4365,10 +4350,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.20.3":
-  version: 3.20.3
-  resolution: "core-js@npm:3.20.3"
-  checksum: 2106cdfb1330abf9e27d577666fc0421feafe8c39bb5af90a63af16e9706c767a7e3a82edc21ce3ed6b9d806f3200d1cf6cc3d0597a8c0af12dbec287c781d65
+"core-js@npm:^3.21.0":
+  version: 3.21.0
+  resolution: "core-js@npm:3.21.0"
+  checksum: 87df49aa2c5d0a521c52102b6669842dd30b334742e86dd4e0173c51230bc48d610060ab6de0f149766d188325b8c1b84598f901cf455674fe6c03ccc5c8026f
   languageName: node
   linkType: hard
 
@@ -8588,6 +8573,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"loupe@npm:^2.3.1":
+  version: 2.3.3
+  resolution: "loupe@npm:2.3.3"
+  dependencies:
+    get-func-name: ^2.0.0
+  checksum: 9eaf76fa5e93c30a193b5b7fbb2161ee9a4e4d385bad6d9f146f0d804f9a4157afa2ee9934d1bf66396b858368531db46bad653930fafb7dc444d9592e634088
+  languageName: node
+  linkType: hard
+
 "lower-case@npm:^1.1.1":
   version: 1.1.4
   resolution: "lower-case@npm:1.1.4"
@@ -9226,18 +9220,29 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongodb@npm:4.2.2":
-  version: 4.2.2
-  resolution: "mongodb@npm:4.2.2"
+"mongodb-connection-string-url@npm:^2.4.1":
+  version: 2.4.2
+  resolution: "mongodb-connection-string-url@npm:2.4.2"
   dependencies:
-    bson: ^4.6.0
+    "@types/whatwg-url": ^8.2.1
+    whatwg-url: ^11.0.0
+  checksum: aed2718840c79f8d6be35309e308bf4466a009256da6b02e6212abeef39ae27bf6101273580696e246e51ee4f7471e2d938c44e8f8a5194982092f692b37c571
+  languageName: node
+  linkType: hard
+
+"mongodb@npm:4.3.1":
+  version: 4.3.1
+  resolution: "mongodb@npm:4.3.1"
+  dependencies:
+    bson: ^4.6.1
     denque: ^2.0.1
-    mongodb-connection-string-url: ^2.3.2
+    mongodb-connection-string-url: ^2.4.1
     saslprep: ^1.0.3
+    socks: ^2.6.1
   dependenciesMeta:
     saslprep:
       optional: true
-  checksum: 645cc8889ee093c0d6479638aa4f5b3e587b84be5179a35993f0796fda6b25d22c4b6f7d5f27b4d23c3aacb694db2ff696ea0a5080ddc745508ffff95131f3b5
+  checksum: 5684b5481bfbf73e4628b8bad7018cd4436fdb23b9548fb38dece3e079b1716fe870d41070a505d13ae4d86c107315afaf34891ba2b64925eb4fa4cd5bb70300
   languageName: node
   linkType: hard
 
@@ -9272,20 +9277,19 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"mongoose@npm:^6.1.8":
-  version: 6.1.8
-  resolution: "mongoose@npm:6.1.8"
+"mongoose@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "mongoose@npm:6.2.0"
   dependencies:
-    "@types/node": < 17.0.6
     bson: ^4.2.2
     kareem: 2.3.3
-    mongodb: 4.2.2
+    mongodb: 4.3.1
     mpath: 0.8.4
     mquery: 4.0.2
     ms: 2.1.2
     regexp-clone: 1.0.0
     sift: 13.5.2
-  checksum: e4f6400d569dda57664a678a046be965e6512cf97c9b2eb455ea95c545c981b0bae70dae05b6bac7a59067c34a5fcb68ff170bc3c8e389874a7730179dcdde29
+  checksum: e5ebc256d793f5270de35221588da6c576652519be4230811704f9d11cd4d17afc4b53950d7ea4abe72f52d81e1cf9bd814154ee88353cf84f3c5130595b4568
   languageName: node
   linkType: hard
 
@@ -10421,12 +10425,12 @@ fsevents@~2.3.2:
     axios: ^0.25.0
     babel-eslint: ^10.1.0
     cal-parser: ^1.0.1
-    chai: ^4.3.4
+    chai: ^4.3.6
     config: ^3.3.7
     connect-mongodb-session: ^3.1.1
     cookie-parser: ^1.4.6
     cookie-universal-nuxt: ^2.1.5
-    core-js: ^3.20.3
+    core-js: ^3.21.0
     cors: ^2.8.5
     css-byebye: ^3.1.0
     eslint: ^7.32.0
@@ -10437,19 +10441,19 @@ fsevents@~2.3.2:
     luxon: ^2.3.0
     minify-css-string: ^1.0.0
     mocha: ^9.2.0
-    mongoose: ^6.1.8
+    mongoose: ^6.2.0
     nodemon: ^2.0.15
     nuxt: ^2.15.8
     nuxt-json-config: ^0.0.2
     route-cache: ^0.4.7
-    sanitize-html: ^2.6.1
+    sanitize-html: ^2.7.0
     sass-loader: 10
     signale: ^1.4.0
     supertest: ^6.2.2
     v-tooltip: ^2.1.3
     vue-plausible: ^1.3.1
     vue-swatches: ^2.1.1
-    vuetify: ^2.6.2
+    vuetify: ^2.6.3
     xml2js: ^0.4.23
   languageName: unknown
   linkType: soft
@@ -12232,9 +12236,9 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"sanitize-html@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "sanitize-html@npm:2.6.1"
+"sanitize-html@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "sanitize-html@npm:2.7.0"
   dependencies:
     deepmerge: ^4.2.2
     escape-string-regexp: ^4.0.0
@@ -12242,7 +12246,7 @@ fsevents@~2.3.2:
     is-plain-object: ^5.0.0
     parse-srcset: ^1.0.2
     postcss: ^8.3.11
-  checksum: a8898ecff59e15b3b75e9478de812f2cdc8b1770344ad7bf91cf2dd745974e9ab76c9e7c4a305d9f03683a150575358edb48f2a8a34ebabc9abe82a4bab38230
+  checksum: 73a4d66f69578bace3506519ca0734279b7117e15c33c7e4d075cdb483b1586261a18acd35934f6c6109f3b2a4a82f82c242171a94d5dc23fba5b09b01ea5b22
   languageName: node
   linkType: hard
 
@@ -14268,12 +14272,12 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"vuetify@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "vuetify@npm:2.6.2"
+"vuetify@npm:^2.6.3":
+  version: 2.6.3
+  resolution: "vuetify@npm:2.6.3"
   peerDependencies:
     vue: ^2.6.4
-  checksum: 1f0075fdf7442d62a955d72b89cfce1e3dfdb8306f7c8cac62a9096962770f8a4d1ec1495140b41aaee696884e67301bd05b326e5388c04eee13b2254aae8dc7
+  checksum: f50a4c9d22c578a6a3d0c7def9ac3741a146a65aaf997062bf963e7ad8b1b2479c122f3f594694bb00293baec6e081d2f73f97bebbc9ce10a01e36096478b088
   languageName: node
   linkType: hard
 
