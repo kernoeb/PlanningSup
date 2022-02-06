@@ -190,7 +190,7 @@ if (!process.env.NO_MONGO) {
 
       if (!process.env.NO_UPDATE) {
         const UPDATE_CHALLENGES = agenda.create(VAR_PLANNING, {})
-        await UPDATE_CHALLENGES.repeatEvery('20 minutes', {}).save()
+        await UPDATE_CHALLENGES.repeatEvery('30 minutes', {}).save()
       }
     })
   }).catch((err) => {
