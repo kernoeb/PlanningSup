@@ -1,39 +1,30 @@
-FROM node:16.13.2-alpine3.15
+FROM node:16.14.0-alpine3.15
 MAINTAINER "kernoeb@protonmail.com"
 
-# Add environment variables
+RUN apk add --no-cache curl bash
+RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+
 ENV HOST 0.0.0.0
+
+USER node:node
+WORKDIR /home/node
+
+ENV NUXT_VERSION=2.15.8
+
+COPY --chown=node:node . ./
+RUN chown -R node:node /home/node
+
+RUN : \
+  && pnpm install --frozen-lockfile \
+  && pnpm build -- --standalone \
+  && rm -rf node_modules \
+  && pnpm install --frozen-lockfile --prod \
+  && pnpm i "nuxt-start@${NUXT_VERSION}" \
+  && :
+
 ENV NODE_ENV production
-ENV NPM_CONFIG_PRODUCTION false
 
-# Create app directory
-WORKDIR /app
-
-ADD LICENSE .
-ADD .yarnrc.yml .
-ADD package.json .
-ADD yarn.lock .
-ADD .yarn .yarn
-
-# UI files
-ADD nuxt.config.js .
-ADD pages pages
-ADD assets assets
-ADD components components
-ADD config config
-ADD layouts layouts
-ADD middleware middleware
-ADD plugins plugins
-ADD static static
-
-# Server files
-ADD server server
-
-RUN yarn && yarn build && \
-    apk --no-cache add curl && \
-    curl -sf https://gobinaries.com/tj/node-prune | sh && node-prune
+RUN curl -sf https://gobinaries.com/tj/node-prune | PREFIX=/tmp sh && /tmp/node-prune && rm /tmp/node-prune
 
 EXPOSE 3000
-
-# Start command
-CMD ["node", "--max-old-space-size=2048", "node_modules/nuxt/bin/nuxt.js", "start"]
+ENTRYPOINT ["npx", "nuxt-start", "-p", "3000"]

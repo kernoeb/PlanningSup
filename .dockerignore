@@ -1,3 +1,22 @@
-node_modules/
-dist/
-.nuxt/
+# Ignore everything, except...
+*
+
+# Modules
+!package.json
+!pnpm-lock.yaml
+
+# UI files
+!nuxt.config.js
+!pages/
+!assets/
+!components/
+!config/
+!layouts/
+!middleware/
+!plugins/
+!static/
+
+# Server files
+!server/
+
+!.npmrc

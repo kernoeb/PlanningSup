@@ -84,13 +84,13 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 #### Nécessaire
 
-- Yarn 3 : [Site officiel](https://yarnpkg.com/)
+- pnpm : [Site officiel](https://pnpm.io/)
 - Node.js 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
 
 #### Commandes utiles
 
-- Lancement en local : `NO_MONGO=true NO_UPDATE=true yarn dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
-- Build du projet : `yarn build`
+- Lancement en local : `NO_MONGO=true NO_UPDATE=true pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
+- Build du projet : `pnpm run build`
 - Démarrage de MongoDB
 
 ```
