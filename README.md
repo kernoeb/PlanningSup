@@ -2,19 +2,18 @@
 
 Un planning universitaire moderne réalisé par [@kernoeb](https://github.com/kernoeb).  
 
-[![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
 [![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kernoeb/planningsup)
 [![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/cg82.svg)](https://betteruptime.com/?utm_source=status_badge)
 
 ### Ajouter une spécialité ou une université
 
-Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/url.json` - en respectant à la lettre le schéma déjà présent !
 
-Avec l'aide de [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
+Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
 
-> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).  
-> Si vous ne maîtrisez pas Git, envoyez moi un message privé (voir ci-dessous) :)
+> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'URL obtenue (veillez à mettre un calendrier qui dure longtemps !).  
+> Si vous ne maîtrisez pas Git, envoyez-moi un message privé (voir ci-dessous) :)
 
 ### Fonctionnalités
 
@@ -25,10 +24,10 @@ Avec l'aide de [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](
 - Changement d'université / spécialité (cookie ou paramètre)
 - Thème clair / thème sombre (cookie)
 - Sélection **multiple** de plannings
-- Actualisation du planning au chargement, au focus de la page, et toutes les 2 minutes
+- Actualisation du planning au chargement, au focus de la page et toutes les 2 minutes
 - Liste noire (cacher un cours)
 
-> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
+> N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
 ### Comment ça marche ?
 
@@ -52,15 +51,6 @@ Si une erreur est présente (serveur down, par exemple), les données seront don
 
 ### Installation
 
-#### Heroku
-
-Config Vars :
-- MONGODB_URL | mongodb://....
-- TZ | Europe/Paris
-- HOST | 0.0.0.0
-- NODE_ENV | production
-- NPM_CONFIG_PRODUCTION | false
-
 #### Docker
 
 Créez un fichier `.env` avec les variables suivantes :  
@@ -73,7 +63,7 @@ MONGODB_URL=mongodb:27017
 TZ=Europe/Paris
 ```
 
-Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les containers.
+Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les conteneurs.
 
 Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ```
@@ -84,14 +74,14 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 #### Nécessaire
 
-- pnpm : [Site officiel](https://pnpm.io/)
-- Node.js 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- [Node.js](https://github.com/nodejs/node) 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- [pnpm](https://pnpm.io/) : Gestionnaire de paquets
 
 #### Commandes utiles
 
 - Lancement en local : `NO_MONGO=true NO_UPDATE=true pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 - Build du projet : `pnpm run build`
-- Démarrage de MongoDB
+- Démarrage de MongoDB (en local) : `docker-compose up -f docker-compose-dev.yml up -d --remove-orphans`
 
 ```
 version: '2'
@@ -108,6 +98,7 @@ services:
 
 ### Dons
 
-Si vous souhaitez me faire un petit don :  
-[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/kernoeb)
+Si vous souhaitez me faire un petit don :
+
+[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/paypalme/kernoeb)
 
