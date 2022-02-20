@@ -2,7 +2,8 @@ version: '3'
 
 services:
   web:
-    build: .
+    # build: .
+    image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     stdin_open: true
     tty: true
