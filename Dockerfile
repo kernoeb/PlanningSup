@@ -39,7 +39,7 @@ COPY --chown=node:node --from=builder /app/.nuxt /app/.nuxt
 COPY --chown=node:node . /app
 
 HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
-  CMD ["/bin/bash", "-c", "curl", "-H", "ignore-statistics: true", "http://localhost:3000"]
+  CMD ["curl", "-H", "ignore-statistics: true", "http://localhost:3000"]
 
 EXPOSE 3000
 CMD ["dumb-init", "node", "--max-old-space-size=2048", "node_modules/nuxt-start/bin/nuxt-start.js", "--port", "3000"]
