@@ -8,26 +8,27 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 
-
 WORKDIR /app
-
 ENV NUXT_VERSION=2.15.8
 
 COPY . /app/
 
-RUN pnpm install --frozen-lockfile \
-  && pnpm build -- --standalone \
-  && rm -rf node_modules \
-  && pnpm install --frozen-lockfile --prod \
-  && pnpm i "nuxt-start@${NUXT_VERSION}" \
-  && pnpm i clean-modules@2.0.4 \
-  && node_modules/clean-modules/bin/cli.js --yes --exclude "**/*.mustache" \
-  && pnpm remove clean-modules
+# https://github.com/duniul/clean-modules
+RUN pnpm i -g clean-modules@2.0.4
 
+RUN pnpm install --frozen-lockfile
+RUN pnpm build -- --standalone
+RUN rm -rf node_modules
+
+# Now we don't need all the dependencies
+RUN pnpm install --frozen-lockfile --prod
+RUN pnpm i "nuxt-start@${NUXT_VERSION}"
+
+RUN clean-modules --yes --exclude "**/*.mustache"
 
 FROM node:16.14.0-alpine3.15 as app
 
-RUN apk --no-cache add dumb-init curl bash
+RUN apk --no-cache add dumb-init curl bash ncdu
 
 ENV NODE_ENV production
 ENV HOST 0.0.0.0
