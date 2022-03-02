@@ -4,8 +4,8 @@ module.exports = {
     browser: true,
     node: true
   },
-  parser: '@babel/eslint-parser',
   parserOptions: {
+    parser: '@babel/eslint-parser',
     requireConfigFile: false
   },
   extends: [
@@ -16,6 +16,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'vue/multi-word-component-names': 'off',
     curly: 'off',
     'no-console': 'off'
   }

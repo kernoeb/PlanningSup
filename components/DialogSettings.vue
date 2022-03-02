@@ -235,7 +235,7 @@
 import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter } from '@mdi/js'
 
 export default {
-  name: 'Settings',
+  name: 'DialogSettings',
   components: {
     HelpInfo: () => import('@/components/HelpInfo')
   },

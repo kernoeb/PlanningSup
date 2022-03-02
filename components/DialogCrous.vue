@@ -69,7 +69,7 @@
 import { mdiClose, mdiFoodForkDrink } from '@mdi/js'
 
 export default {
-  name: 'Crous',
+  name: 'DialogCrous',
   data () {
     return {
       // Icons
