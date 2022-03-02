@@ -8,22 +8,22 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 
-WORKDIR /app
-ENV NUXT_VERSION=2.15.8
-
-COPY . /app/
-
 # https://github.com/duniul/clean-modules
 RUN pnpm i -g clean-modules@2.0.4
 
-RUN pnpm install --frozen-lockfile
+WORKDIR /app
+
+# Only copy the files we need for the moment
+COPY package.json pnpm-lock.yaml /app/
+RUN pnpm install --frozen-lockfile --prefer-offline
+
+# Copy all files, and build the app
+COPY . /app/
 RUN pnpm build -- --standalone
 RUN rm -rf node_modules
 
-# Now we don't need all the dependencies
-RUN pnpm install --frozen-lockfile --prod
-RUN pnpm i "nuxt-start@${NUXT_VERSION}"
-
+# Only production dependencies
+RUN pnpm install --frozen-lockfile --production --prefer-offline
 RUN clean-modules --yes --exclude "**/*.mustache"
 
 FROM node:16.14.0-alpine3.15 as app

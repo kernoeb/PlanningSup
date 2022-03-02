@@ -71,8 +71,17 @@ export default {
     { path: '/api/v1', handler: '~/server/' }
   ],
 
+  webpackOptimisations: {
+    // debug: true,
+    features: {
+      parallelPlugin: process.env.NODE_ENV === 'development'
+    }
+  },
+
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
+    // https://github.com/harlan-zw/nuxt-webpack-optimisations
+    'nuxt-webpack-optimisations',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
