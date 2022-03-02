@@ -184,6 +184,7 @@
         >
           <template #day-body="{ date, week }">
             <div
+              v-if="showCurrentTime(date)"
               :class="{ first: date === week[0].date }"
               :style="{ top: nowY }"
               class="v-current-time"
@@ -219,13 +220,13 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import Bottom from '@/components/Bottom'
+import Bottom from '~/components/EventBottom'
 import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
   components: {
-    Crous: () => import('@/components/Crous'),
-    Settings: () => import('@/components/Settings'),
+    Crous: () => import('~/components/DialogCrous'),
+    Settings: () => import('~/components/DialogSettings'),
     Bottom,
     ErrorAlert,
     SelectPlanning: () => import('@/components/SelectPlanning')
@@ -285,6 +286,7 @@ export default {
       currentWeek: '',
       lastTimeFetch: 0,
       nowY: '-10px',
+      dateNow: '',
       width: 0,
       doublePress: false,
       playing: false
@@ -427,6 +429,19 @@ export default {
     }, 120000)
   },
   methods: {
+    showCurrentTime (date) {
+      try {
+        if (!this.$refs.calendar) {
+          return false
+        }
+        if (this.type === 'week') return this.$moment(date).week() === this.$moment(this.$refs.calendar.start).week()
+        else if (this.type === 'month') return false
+        else return this.dateNow === '' || date === this.dateNow
+      } catch (e) {
+        // you can never be too careful
+        return false
+      }
+    },
     uniqWith (arr, fn) {
       return arr.filter((element, index) => arr.findIndex(step => fn(element, step)) === index)
     },
@@ -462,6 +477,7 @@ export default {
     },
     updateTime () {
       const tmp = new Date()
+      this.dateNow = this.$moment(tmp).format('YYYY-MM-DD')
       this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY((tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes()) + 'px' : '-10px'
     },
     skipWeekend () {
@@ -665,6 +681,16 @@ export default {
   left: -1px;
   right: 0;
   pointer-events: none;
+}
+.v-current-time.first::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(210, 78, 78, 0.8);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -6.5px;
 }
 
 .v-event-timed-container {
