@@ -14,7 +14,7 @@ RUN pnpm i -g clean-modules@2.0.4
 WORKDIR /app
 
 # Only copy the files we need for the moment
-COPY package.json pnpm-lock.yaml /app/
+COPY package.json pnpm-lock.yaml .npmrc /app/
 RUN pnpm install --frozen-lockfile --prefer-offline
 
 # Copy all files, and build the app
