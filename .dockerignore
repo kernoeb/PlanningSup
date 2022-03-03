@@ -14,7 +14,10 @@
 !layouts/
 !middleware/
 !plugins/
-!static/
+!static/sound/
+!static/banner.png
+!static/favicon.ico
+!static/icon.png
 
 # Server files
 !server/
