@@ -14,6 +14,7 @@ logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
 logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
 logger.info('Duration : ' + (process.env.DURATION_CALENDAR || config.get('duration')))
+logger.info('BREE : ' + (process.env.NO_BREE ? 'disabled' : 'enabled'))
 
 // Connect to MongoDB first
 mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(() => {
@@ -26,8 +27,12 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
     const t2 = Date.now()
     logger.info('Database initialized !')
     logger.info('Database initialization time : ' + (t2 - t1) / 1000 + 's')
+
     // Initialize Bree.js when the database is ready
-    initBree()
+    if (!process.env.NO_BREE) {
+      logger.info('Initializing Bree.js...')
+      initBree()
+    }
   })
 }).catch((err) => {
   logger.error('Error while initializing mongo', err)
