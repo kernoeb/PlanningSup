@@ -1,6 +1,6 @@
 const ical = require('cal-parser')
-const CustomEvents = require('../models/customevent')
 const Planning = require('../models/planning')
+const CustomEvents = require('../models/customevent')
 const axios = require('./axios')
 const logger = require('./signale')
 

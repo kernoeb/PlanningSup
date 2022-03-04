@@ -1,19 +1,20 @@
 const { Router } = require('express')
 const router = Router()
-const mongoose = require('mongoose')
+
+const Metric = require('../models/metric')
 
 router.get('/analytics/today', async (req, res) => {
   const date = new Date()
   date.setHours(2, 0, 0, 0)
 
-  const nbSession = await mongoose.model('Metrics').aggregate([
+  const nbSession = await Metric.aggregate([
     { $match: { timestamp: date } },
     { $group: { _id: '$sessionId' } },
     { $group: { _id: null, nb: { $sum: 1 } } }
   ])
 
   // mongo sum of all the count of date
-  const nbRequests = await mongoose.model('Metrics').aggregate([
+  const nbRequests = await Metric.aggregate([
     { $match: { timestamp: date } },
     { $group: { _id: null, nb: { $sum: '$count' } } }
   ])
@@ -30,7 +31,7 @@ router.get('/metrics/today', async (req, res) => {
   date.setHours(2, 0, 0, 0)
 
   try {
-    const ret = await mongoose.model('Metrics').aggregate([
+    const ret = await Metric.aggregate([
       {
         $match: {
           timestamp: date
