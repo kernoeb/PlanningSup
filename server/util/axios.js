@@ -9,7 +9,7 @@ const INTERVAL_MS = 20
 let PENDING_REQUESTS = 0
 const DURATION = config.get('duration') || 5000
 
-logger.log('Axios instantiated')
+logger.log('Axios instantiated with duration:', DURATION)
 
 const instance = axios.create({
   timeout: DURATION,

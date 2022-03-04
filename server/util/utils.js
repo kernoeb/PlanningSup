@@ -1,5 +1,6 @@
 const ical = require('cal-parser')
-const mongoose = require('mongoose')
+const CustomEvents = require('../models/customevent')
+const Planning = require('../models/planning')
 const axios = require('./axios')
 const logger = require('./signale')
 
@@ -53,7 +54,7 @@ module.exports = {
    */
   getCustomEventContent: async (name) => {
     try {
-      const data = await mongoose.models.CustomEvents.findOne({ name })
+      const data = await CustomEvents.findOne({ name })
       return data && data.content && data.content.length ? data.content : ''
     } catch (err) {
       return ''
@@ -66,7 +67,7 @@ module.exports = {
    */
   getBackedPlanning: async (fullId) => {
     try {
-      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId })
+      const tmpPlanning = await Planning.findOne({ fullId })
       return tmpPlanning && tmpPlanning.backup && { backup: tmpPlanning.backup, timestamp: tmpPlanning.timestamp }
     } catch (err) {
       return null

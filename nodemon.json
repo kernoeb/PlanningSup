@@ -2,7 +2,8 @@
   "restartable": "rs",
   "watch": [
     "server/",
-    "test/"
+    "test/",
+    "jobs/"
   ],
   "ignore": [
     ".git",

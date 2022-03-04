@@ -15,7 +15,7 @@ WORKDIR /app
 
 # Only copy the files we need for the moment
 COPY package.json pnpm-lock.yaml .npmrc /app/
-RUN pnpm install --frozen-lockfile --prefer-offline
+RUN pnpm install --frozen-lockfile --prefer-offline --unsafe-perm
 
 # Copy all files, and build the app
 COPY . /app/
@@ -23,7 +23,7 @@ RUN pnpm build -- --standalone
 RUN rm -rf node_modules
 
 # Only production dependencies
-RUN pnpm install --frozen-lockfile --production --prefer-offline
+RUN pnpm install --frozen-lockfile --production --prefer-offline --unsafe-perm
 RUN clean-modules --yes --exclude "**/*.mustache"
 
 FROM node:16.14.0-alpine3.15 as app
@@ -32,6 +32,9 @@ RUN apk --no-cache add dumb-init curl bash
 
 ENV NODE_ENV production
 ENV HOST 0.0.0.0
+
+# Remove some useless stuff
+RUN rm -rf /usr/local/lib/node_modules/npm/ /usr/local/bin/npm /opt/yarn-*
 
 # No evil root access
 USER node
