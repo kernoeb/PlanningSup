@@ -4,7 +4,7 @@ const logger = require('../util/signale')
 
 module.exports = {
   initDB: async () => {
-    const Planning = require('../models/planning')
+    const { Planning } = require('../models/planning')
 
     const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
 

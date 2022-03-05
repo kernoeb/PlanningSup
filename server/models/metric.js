@@ -19,4 +19,5 @@ metricSchema.index({ timestamp: 1, sessionId: 1 })
 metricSchema.index({ planning: 1 })
 metricSchema.index({ timestamp: 1 })
 
-module.exports = model('Metrics', metricSchema)
+const Metric = model('Metric', metricSchema)
+module.exports = { Metric }

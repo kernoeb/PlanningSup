@@ -25,6 +25,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.12.3",
     "axios": "^0.26.0",
+    "bip39": "^3.0.4",
+    "body-parser": "^1.19.2",
     "bree": "^7.2.0",
     "cal-parser": "^1.0.2",
     "config": "^3.3.7",

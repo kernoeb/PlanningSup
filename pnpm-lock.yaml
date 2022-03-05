@@ -16,6 +16,8 @@ specifiers:
   '@nuxtjs/pwa': ^3.3.5
   '@nuxtjs/vuetify': ^1.12.3
   axios: ^0.26.0
+  bip39: ^3.0.4
+  body-parser: ^1.19.2
   bree: ^7.2.0
   cal-parser: ^1.0.2
   chai: ^4.3.6
@@ -62,6 +64,8 @@ dependencies:
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/vuetify': 1.12.3
   axios: 0.26.0
+  bip39: 3.0.4
+  body-parser: 1.19.2
   bree: 7.2.0
   cal-parser: 1.0.2
   config: 3.3.7
@@ -1940,6 +1944,10 @@ packages:
     resolution: {integrity: sha512-uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==}
     dev: false
 
+  /@types/node/11.11.6:
+    resolution: {integrity: sha512-Exw4yUWMBXM3X+8oqzJNRqZSwUAaS4+7NdvHqQuFi/d+synz++xmX3QIf+BFqneW8N31R8Ky+sikfZUXq07ggQ==}
+    dev: false
+
   /@types/node/17.0.21:
     resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
 
@@ -2749,6 +2757,15 @@ packages:
       file-uri-to-path: 1.0.0
     dev: false
     optional: true
+
+  /bip39/3.0.4:
+    resolution: {integrity: sha512-YZKQlb752TrUWqHWj7XAwCSjYEgGAk+/Aas3V7NyjQeZYsztO8JnQUaCWhcnL4T+jL8nvB8typ2jRPzTlgugNw==}
+    dependencies:
+      '@types/node': 11.11.6
+      create-hash: 1.2.0
+      pbkdf2: 3.1.2
+      randombytes: 2.1.0
+    dev: false
 
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}

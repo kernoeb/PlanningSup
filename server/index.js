@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const config = require('config')
 const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
@@ -44,6 +45,7 @@ const app = express()
 
 app.use(cors())
 app.use(cookieParser())
+app.use(bodyParser.json())
 
 // Create session store for express-session
 const store = new MongoDBStore({
@@ -79,6 +81,7 @@ app.use(require('./routes/calendar'))
 app.use(require('./routes/urls'))
 app.use(require('./routes/crous'))
 app.use(require('./routes/metrics'))
+// app.use('/sync', require('./routes/sync')) // Work in progress
 
 // Export express app
 module.exports = app

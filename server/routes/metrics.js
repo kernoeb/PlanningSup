@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 
-const Metric = require('../models/metric')
+const { Metric } = require('../models/metric')
 
 router.get('/analytics/today', async (req, res) => {
   const date = new Date()

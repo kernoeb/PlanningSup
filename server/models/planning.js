@@ -8,4 +8,5 @@ const schemaPlanning = new Schema({
   title: { type: 'String', index: true }
 })
 
-module.exports = model('Planning', schemaPlanning)
+const Planning = model('Planning', schemaPlanning)
+module.exports = { Planning }

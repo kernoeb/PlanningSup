@@ -1,5 +1,5 @@
 const logger = require('../util/signale')
-const Metrics = require('../models/metric')
+const { Metrics } = require('../models/metric')
 
 module.exports = {
   trackPlannings: (planning, sessionId) => {

@@ -9,4 +9,5 @@ const schemaCustomEvent = new Schema({
   content: String
 })
 
-module.exports = model('CustomEvents', schemaCustomEvent)
+const CustomEvent = model('CustomEvent', schemaCustomEvent)
+module.exports = { CustomEvent }
