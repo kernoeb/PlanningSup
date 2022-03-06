@@ -1,7 +1,7 @@
 const ical = require('cal-parser')
 const { Planning } = require('../models/planning')
 const { CustomEvents } = require('../models/customevent')
-const axios = require('./axios')
+const curl = require('./curl')
 const logger = require('./signale')
 
 /**
@@ -101,13 +101,11 @@ module.exports = {
   /**
    * Fetch planning from URL, convert ICS to JSON
    * @param {String} url
-   * @param instance
    * @returns {Promise<*>}
    */
-  fetchAndGetJSON: async (url, instance) => {
+  fetchAndGetJSON: async (url) => {
     try {
-      const response = instance ? await instance.get(url) : await axios.get(url)
-      const { data } = response
+      const { data } = await curl.get(url)
       if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah that's perfectible
         const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {

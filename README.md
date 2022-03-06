@@ -79,7 +79,7 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 #### Commandes utiles
 
-- Lancement en local : `NO_MONGO=true NO_UPDATE=true pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
+- Lancement en local : `pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 - Build du projet : `pnpm run build`
 - Démarrage de MongoDB (en local) : `docker-compose up -f docker-compose-dev.yml up -d --remove-orphans`
 

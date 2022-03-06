@@ -1,5 +1,3 @@
-const http = require('http')
-const https = require('https')
 const { Router } = require('express')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
@@ -7,16 +5,10 @@ const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
-const axios = require('axios')
 const logger = require('../util/signale')
+const curl = require('../util/curl')
 
 const router = Router()
-
-const instance = axios.create({
-  timeout: 6000,
-  httpAgent: new http.Agent({ keepAlive: true }),
-  httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: false })
-})
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
 
@@ -29,8 +21,8 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
     if (!villes.includes(req.params.ville)) {
       return res.status(400).json({ title: 'Nope! Are U tryna hak PlanningSup???!!' })
     }
-    const d = await instance.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
-    const d2 = await instance.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
+    const d = await curl.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
+    const d2 = await curl.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
 
     const json = {}
     xml2js.parseString(d.data, (err, result) => {
@@ -73,7 +65,7 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
 // Cache 10 minutes
 router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 600 : 0), async (req, res) => {
   try {
-    const d = await instance.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
+    const d = await curl.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
     const dom = new JSDOM(d.data)
     const el = dom.window.document.getElementById('menu-repas').childNodes
     const allEls = []
