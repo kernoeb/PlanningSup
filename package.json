@@ -3,13 +3,13 @@
   "version": "2.5.1",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js build",
-    "dev:bree": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "dev": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "dev-server": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true nodemon --inspect --max-old-space-size=2048 server/",
     "dev-server:bree": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && nodemon --inspect --max-old-space-size=2048 server/",
+    "dev:bree": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "generate": "nuxt generate",
+    "preinstall": "npx only-allow pnpm",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "start": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js start",
     "test": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js"
@@ -24,6 +24,7 @@
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/vuetify": "^1.12.3",
+    "axios": "^0.26.0",
     "bip39": "^3.0.4",
     "body-parser": "^1.19.2",
     "bree": "^7.2.0",

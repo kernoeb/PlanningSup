@@ -15,6 +15,7 @@ specifiers:
   '@nuxtjs/moment': ^1.6.1
   '@nuxtjs/pwa': ^3.3.5
   '@nuxtjs/vuetify': ^1.12.3
+  axios: ^0.26.0
   bip39: ^3.0.4
   body-parser: ^1.19.2
   bree: ^7.2.0
@@ -63,6 +64,7 @@ dependencies:
   '@nuxtjs/moment': 1.6.1
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/vuetify': 1.12.3
+  axios: 0.26.0
   bip39: 3.0.4
   body-parser: 1.19.2
   bree: 7.2.0
@@ -2689,6 +2691,14 @@ packages:
 
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+    dependencies:
+      follow-redirects: 1.14.9
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /axios/0.26.0:
+    resolution: {integrity: sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==}
     dependencies:
       follow-redirects: 1.14.9
     transitivePeerDependencies:

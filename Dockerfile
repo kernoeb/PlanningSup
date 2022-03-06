@@ -11,15 +11,18 @@ RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
 # https://github.com/duniul/clean-modules
 RUN pnpm i -g clean-modules@2.0.4
 
-WORKDIR /app
+WORKDIR /home/node/build
+RUN chown -R node:node /home/node/build
+
+USER node
 
 # Only copy the files we need for the moment
-COPY pnpm-lock.yaml .npmrc ./
+COPY --chown=node:node pnpm-lock.yaml .npmrc ./
 RUN pnpm fetch
 
 # Copy all files, and build the app
-COPY . ./
-RUN pnpm install -r --offline --unsafe-perm
+COPY --chown=node:node . ./
+RUN pnpm install -r --offline
 
 # Nuxt.js build
 RUN pnpm build -- --standalone
@@ -28,7 +31,13 @@ RUN pnpm build -- --standalone
 RUN rm -rf ./node_modules/
 
 # Only production dependencies
-RUN pnpm install -r --prod --prefer-offline --unsafe-perm
+RUN pnpm fetch --prod
+RUN pnpm install -r --prod --offline
+
+# This ensure the file exists, ls will exit with an error if it doesn't
+RUN ls node_modules/node-libcurl/lib/binding/
+
+# Clean node_modules, one of the heaviest object in the universe
 RUN clean-modules --yes --exclude "**/*.mustache"
 
 FROM node:16.14.0-alpine3.15 as app
@@ -46,9 +55,9 @@ USER node
 WORKDIR /app
 
 COPY --chown=node:node . ./
-COPY --chown=node:node --from=builder /app/node_modules ./node_modules
-COPY --chown=node:node --from=builder /app/.nuxt ./.nuxt
-COPY --chown=node:node --from=builder /app/static/ ./static/
+COPY --chown=node:node --from=builder /home/node/build/node_modules ./node_modules
+COPY --chown=node:node --from=builder /home/node/build/.nuxt ./.nuxt
+COPY --chown=node:node --from=builder /home/node/build/static/ ./static/
 
 # The planning never falls, but you never know
 HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
