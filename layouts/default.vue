@@ -127,10 +127,12 @@ export default {
     window.addEventListener('online', this.setConnectedOn)
   },
   created () {
-    this.time = this.getTime()
-    this.timer = setInterval(() => {
+    if (process.client) { // We don't want to run this on the server, memory leak ?
       this.time = this.getTime()
-    }, 1000)
+      this.timer = setInterval(() => {
+        this.time = this.getTime()
+      }, 1000)
+    }
   },
   beforeDestroy () {
     clearInterval(this.timer)

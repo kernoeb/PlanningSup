@@ -17,10 +17,10 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
   const num = await Planning.countDocuments()
   logger.info('Number of plannings : ' + num)
 
-  let c = 0
-
   const startTime = performance.now()
 
+  // Here we fetch all the plannings
+  // We only show error if there is a problem with the fetching, to avoid massive logs
   for await (const p of Planning.find({})) {
     const j = await fetchAndGetJSON(p.url, instance)
     if (j?.events?.length) {
@@ -28,15 +28,13 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
       p.backup = j.events
       await p.save()
     }
-    c++
-    logger.info(c + '/' + num + ' - ' + p.title)
-    await new Promise(resolve => setTimeout(resolve, 450))
+    await new Promise(resolve => setTimeout(resolve, 600))
   }
 
   const endTime = performance.now()
   logger.info(`Took ${(endTime - startTime) / 1000} seconds`)
 
-  logger.success('Finished backing plannings')
+  logger.success(`Finished backing ${num} plannings`)
 
   await mongoose.disconnect()
   logger.info('BREE Mongo disconnected !')
