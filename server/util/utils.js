@@ -1,6 +1,6 @@
 const ical = require('cal-parser')
 const { Planning } = require('../models/planning')
-const { CustomEvents } = require('../models/customevent')
+const { CustomEvent } = require('../models/customevent')
 const logger = require('./signale')
 let curl
 
@@ -61,9 +61,10 @@ module.exports = {
    */
   getCustomEventContent: async (name) => {
     try {
-      const data = await CustomEvents.findOne({ name })
-      return data && data.content && data.content.length ? data.content : ''
+      const data = await CustomEvent.findOne({ name })
+      return data?.content || ''
     } catch (err) {
+      logger.error(err)
       return ''
     }
   },
