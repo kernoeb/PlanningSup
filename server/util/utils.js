@@ -46,6 +46,13 @@ const cleanLocation = l => l && l
   .trim().replace('salle joker à distance', 'À distance')
   .split(',').map(v => v.replace(/^V-/, '')).join(', ')
 
+/**
+ * Sanitize event name
+ * @param name
+ * @returns {*}
+ */
+const cleanName = name => (name && name.replace(/([A-Za-z])\?([A-Za-z])/gi, (_, b, c) => b + "'" + c).trim()) || ''
+
 module.exports = {
   /**
    * Get custom events for a planning
@@ -85,7 +92,7 @@ module.exports = {
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
         events.push({
-          name: i.summary.value.trim(),
+          name: cleanName(i.summary.value),
           start: new Date(i.dtstart.value).getTime(),
           end: new Date(i.dtend.value).getTime(),
           color: getColor(i.summary.value, i.location.value, colors),
