@@ -118,12 +118,14 @@ module.exports = {
       curl = require('./curl')
     }
     try {
-      const { data } = instance ? instance.get(url) : await curl.get(url)
+      const { data } = instance ? await instance.get(url) : await curl.get(url)
       if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah that's perfectible
         const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {
           return ics
         }
+      } else {
+        logger.debug(data)
       }
     } catch (e) {
       logger.debug(e)
