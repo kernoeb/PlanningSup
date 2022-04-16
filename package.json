@@ -1,6 +1,6 @@
 {
   "name": "planningsup",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "private": true,
   "scripts": {
     "build": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js build",
