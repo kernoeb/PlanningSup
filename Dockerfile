@@ -1,15 +1,15 @@
-FROM node:16.14.2-alpine3.15 as builder
+FROM node:16.15.0-alpine3.15 as build-tools
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 RUN apk add --no-cache curl bash
 
+RUN npm install -g pnpm clean-modules@2.0.4
+
+FROM build-tools as builder
+LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
+
 # https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-RUN curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
-
-# https://github.com/duniul/clean-modules
-RUN pnpm i -g clean-modules@2.0.4
 
 WORKDIR /home/node/build
 RUN chown -R node:node /home/node/build
@@ -25,7 +25,7 @@ COPY --chown=node:node . ./
 RUN pnpm install -r --offline
 
 # Nuxt.js build
-RUN pnpm build -- --standalone
+RUN pnpm build --standalone
 
 # Now we remove the node_modules, as we only need production dependencies in the docker image
 RUN rm -rf ./node_modules/
@@ -40,7 +40,7 @@ RUN ls node_modules/node-libcurl/lib/binding/
 # Clean node_modules, one of the heaviest object in the universe
 RUN clean-modules --yes --exclude "**/*.mustache"
 
-FROM node:16.14.2-alpine3.15 as app
+FROM node:16.15.0-alpine3.15 as app
 
 RUN apk --no-cache add dumb-init curl bash
 

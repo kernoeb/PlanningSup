@@ -86,7 +86,8 @@ export default {
       }
     }],
     // https://github.com/moritzsternemann/vue-plausible
-    'vue-plausible'
+    'vue-plausible',
+    '@nuxt/postcss8'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
