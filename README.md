@@ -96,9 +96,21 @@ services:
       - '/opt/planning_v2:/bitnami/mongodb'
 ```
 
-### Dons
+### Donateurs
+
+- [W00dy](https://github.com/0xW00dy)
+- [Rick](https://github.com/rick-gnous)
+- [Lahgolz](https://twitter.com/lahgolzmiin)
+- [Dyskal](https://github.com/Dyskal)
+- [Mimipepin](https://github.com/mimipepin)
+- [Atao](https://github.com/Ataaoo)
+- [PandAmiral](https://github.com/PandAmiral)
+- [ShockedPlot](https://github.com/ShockedPlot7560)
+
+(merci à vous ! ❤️)
 
 Si vous souhaitez me faire un petit don :
 
-[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/paypalme/kernoeb)
+[![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/paypalme/kernoeb)
 
+[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb)
