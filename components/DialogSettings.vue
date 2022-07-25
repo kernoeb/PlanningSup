@@ -223,7 +223,7 @@
             </div>
           </v-list-item>
           <v-list-item inactive>
-            <div><small><b>Donateurs :</b> W00dy, Rick 🙏</small></div>
+            <div><small><b>Donateurs :</b> W00dy, Rick, Lahgolz, Dyskal 🙏</small></div>
           </v-list-item>
         </v-list-item-group>
       </v-card>
