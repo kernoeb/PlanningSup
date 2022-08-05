@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const config = require('config')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
@@ -50,8 +49,7 @@ app.use(bodyParser.json())
 
 // Create session store for express-session
 const store = new MongoDBStore({
-  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`,
-  collection: 'sessions'
+  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`, collection: 'sessions'
 })
 
 // Catch errors

@@ -96,6 +96,8 @@ services:
       - '/opt/planning_v2:/bitnami/mongodb'
 ```
 
+> For MacOS M1, you can use `zcube/bitnami-compat-mongodb:5.0`
+
 ### Donateurs
 
 - [W00dy](https://github.com/0xW00dy)
