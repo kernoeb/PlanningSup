@@ -20,6 +20,7 @@ services:
       - .env
   mongodb:
     image: docker.io/bitnami/mongodb:5.0
+    # image: ghcr.io/zcube/bitnami-compat/mongodb:5.0
     restart: always
     volumes:
       - '/opt/planning_v2:/bitnami/mongodb'
