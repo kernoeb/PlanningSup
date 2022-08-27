@@ -65,7 +65,7 @@
     "@nuxtjs/eslint-module": "^3.1.0",
     "chai": "^4.3.6",
     "css-byebye": "^3.1.1",
-    "eslint": "^8.23.0",
+    "eslint": "^8.22.0",
     "eslint-plugin-nuxt": "^3.2.0",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.19",
