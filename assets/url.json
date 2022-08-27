@@ -262,11 +262,119 @@
                 "id": "lpdlisgrp2",
                 "title": "LP DLIS Grp 2",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4209&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "cgid",
+            "title": "CGID",
+            "edts": [
+              {
+                "id": "lpcgid",
+                "title": "LP CGID",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3510&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
               },
               {
-                "id": "lpcyber",
-                "title": "LP CYBER",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+                "id": "lpcgidalt",
+                "title": "LP CGID ALT",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5877&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "gab",
+            "title": "GAB",
+            "edts": [
+              {
+                "id": "lpgabi",
+                "title": "LP GABI",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1849&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "ecommn",
+            "title": "E-COMMN",
+            "edts": [
+              {
+                "id": "lpecommnalt",
+                "title": "LP E-COMMN ALT",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5252&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "cd",
+            "title": "CD",
+            "edts": [
+              {
+                "id": "lpcd",
+                "title": "LP CD",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3508&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "c2a",
+            "title": "C2A",
+            "edts": [
+              {
+                "id": "lpc2a",
+                "title": "LP C2A",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4226&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "sis",
+            "title": "SIS",
+            "edts": [
+              {
+                "id": "lpsisalt",
+                "title": "LP SIS ALT",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1890&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lpsisa",
+                "title": "LP SIS-A",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6787&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lpsisb",
+                "title": "LP SIS-B",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6789&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "sdm",
+            "title": "SDM",
+            "edts": [
+              {
+                "id": "lpsdmalt",
+                "title": "LP SDM ALT",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1359&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lpsdma",
+                "title": "LP SDM-A",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6791&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "lpsdmb",
+                "title": "LP SDM-B",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6800&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "csd",
+            "title": "CSD",
+            "edts": [
+              {
+                "id": "lpcsdalt",
+                "title": "LP CSD ALT",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3577&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
               }
             ]
           }
@@ -319,6 +427,21 @@
                 "id": "d2",
                 "title": "D2",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3457&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "allemand",
+                "title": "Allemand",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3492&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "espagnol",
+                "title": "Espagnol",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3493&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "duetd",
+                "title": "DU ETD",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5298&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
               }
             ]
           },
@@ -355,6 +478,21 @@
                 "id": "c2",
                 "title": "C2",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3447&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "allemand",
+                "title": "Allemand",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3492&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "espagnol",
+                "title": "Espagnol",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3493&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
+              },
+              {
+                "id": "duetd",
+                "title": "DU ETD",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5298&projectId=1&calType=ical&firstDate=2022-07-01&lastDate=2025-12-31"
               }
             ]
           }
