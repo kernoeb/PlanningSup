@@ -1288,6 +1288,22 @@
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4527,5264&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               }
             ]
+          },
+          {
+            "id": "2emeannee",
+            "title": "2ème année",
+            "edts": [
+              {
+                "id": "tp1",
+                "title": "TP1",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2187,154&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              },
+              {
+                "id": "tp2",
+                "title": "TP2",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2239,4176&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              }
+            ]
           }
         ]
       },
