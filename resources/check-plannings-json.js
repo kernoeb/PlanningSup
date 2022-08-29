@@ -16,21 +16,25 @@ const element = {
   additionalProperties: false,
   properties: {
     id: {
-      type: 'string'
+      type: 'string',
+      minLength: 1
     },
     title: {
-      type: 'string'
+      type: 'string',
+      minLength: 1
     },
     edts: {
       type: 'array',
       items: {
         type: 'object',
         $ref: 'element'
-      }
+      },
+      minItems: 1
     },
     url: {
       type: 'string',
-      format: 'uri'
+      format: 'uri',
+      minLength: 5
     }
   }
 }
