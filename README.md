@@ -8,7 +8,7 @@ Un planning universitaire moderne réalisé par [@kernoeb](https://github.com/ke
 
 ### Ajouter une spécialité ou une université
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/url.json` - en respectant à la lettre le schéma déjà présent !
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/plannings.json` - en respectant à la lettre le schéma déjà présent !
 
 Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
 
@@ -36,7 +36,7 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockeris
 #### APIs :
 
 - `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : `./assets/url.json`, mais sans les URLs
+- `/api/urls` (en cache côté serveur) : `./assets/plannings.json`, mais sans les URLs
 
 Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
 Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.

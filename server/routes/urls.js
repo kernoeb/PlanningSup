@@ -33,7 +33,7 @@ function deleteIds (obj, match) {
   }
 }
 
-const tmpUrls = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf-8'))
+const tmpUrls = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/plannings.json'), 'utf-8'))
 getChildElement(tmpUrls)
 tmpUrls.forEach((v) => {
   deleteIds(v, 'id')
