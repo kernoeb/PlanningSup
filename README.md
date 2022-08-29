@@ -13,6 +13,9 @@
   <a href="https://betteruptime.com/?utm_source=status_badge">
     <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
   </a>
+  <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=22093&bid=649211">
+    <img src="https://deepscan.io/api/teams/12018/projects/22093/branches/649211/badge/grade.svg" alt="DeepScan grade">
+  </a>
 </p>
 
 ![img.png](img/planning_mac.png)
@@ -27,19 +30,16 @@
 - Thème clair / thème sombre (cookie)
 - Sélection **multiple** de plannings
 - Actualisation du planning au chargement, au focus de la page et toutes les 2 minutes
-- Liste noire (cacher un cours)
+- Liste de bloquage (cacher un cours)
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
 
 ## Ajouter une spécialité ou une université
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/plannings.json` - en respectant à la lettre le schéma déjà présent !
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `assets/plannings.json` :)
 
-Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
-
-> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'URL obtenue (veillez à mettre un calendrier qui dure longtemps !).  
-> Si vous ne maîtrisez pas Git, envoyez-moi un message privé (voir ci-dessous) :)
+> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `resources` du projet.  
 
 ## Comment ça marche ?
 
@@ -50,12 +50,10 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockeris
 - `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
 - `/api/urls` (en cache côté serveur) : `./assets/plannings.json`, mais sans les URLs
 
-Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
-Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.
+Chaque planning est sauvegardé dans une base de données `MongoDB`, à un intervalle régulier. En cas de lenteur ou de coupure serveur (côté université), le dernier planning enregistré est alors utilisé.
 
-## Captures
+## Captures (mobile)
 
-![desktop](img/desktop.png)  
 <img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
 <br>
 <img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
@@ -67,7 +65,7 @@ Si une erreur est présente (serveur down, par exemple), les données seront don
 
 Créez un fichier `.env` avec les variables suivantes :  
 
-> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et unique.
+> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et **unique**.
 
 ```
 SESSION_SECRET=secret
