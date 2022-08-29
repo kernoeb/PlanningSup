@@ -23,8 +23,13 @@ USER node
 COPY --chown=node:node pnpm-lock.yaml .npmrc ./
 RUN pnpm fetch
 
-# Copy all files, and build the app
+# Copy all files
 COPY --chown=node:node . ./
+
+# Check lint + JSON is valid
+RUN pnpm run lint && node -e "JSON.parse(fs.readFileSync('./assets/url.json', 'utf-8'))"
+
+# Install dependencies
 RUN pnpm install -r --offline
 
 # Nuxt.js build
