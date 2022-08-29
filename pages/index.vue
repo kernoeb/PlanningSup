@@ -330,7 +330,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
       this.errorMessage = null
@@ -342,7 +342,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
         this.errorMessage = null
@@ -467,7 +467,7 @@ export default {
       else this.events = tmpEvents
 
       this.status = req.status
-      this.plannings = req.plannings.map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
+      this.plannings = (req.plannings || []).map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
 
       if (window && req.timestamp) window.last_timestamp = req.timestamp
       this.start = false
