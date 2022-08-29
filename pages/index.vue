@@ -313,7 +313,7 @@ export default {
     }
 
     if (this.selectedPlanningsIds == null) {
-      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.a1'
+      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1'
       let planningString
       try {
         planningString = this.$route.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
