@@ -6075,7 +6075,7 @@
     "edts": [
       {
         "id": "s5-info",
-        "title": "S5-INFO",
+        "title": "S5 INFO",
         "edts": [
           {
             "id": "s5-infoprojetlangues",
@@ -6084,32 +6084,32 @@
           },
           {
             "id": "s5-info-g1",
-            "title": "S5-INFO-G1",
+            "title": "GR 1",
             "edts": [
               {
                 "id": "s5-info-g11",
-                "title": "S5-INFO-G1.1",
+                "title": "GR 1.1",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1356&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               },
               {
                 "id": "s5-info-g12",
-                "title": "S5-INFO-G1.2",
+                "title": "GR 1.2",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2203&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               }
             ]
           },
           {
             "id": "s5-info-g2",
-            "title": "S5-INFO-G2",
+            "title": "GR 2",
             "edts": [
               {
                 "id": "s5-info-g21",
-                "title": "S5-INFO-G2.1",
+                "title": "GR 2.1",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1357&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               },
               {
                 "id": "s5-info-g22",
-                "title": "S5-INFO-G2.2",
+                "title": "GR 2.2",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               }
             ]
