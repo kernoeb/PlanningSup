@@ -6068,5 +6068,69 @@
         ]
       }
     ]
+  },
+  {
+    "id": "insa",
+    "title": "INSA",
+    "edts": [
+      {
+        "id": "s5-info",
+        "title": "S5-INFO",
+        "edts": [
+          {
+            "id": "s5-infoprojetlangues",
+            "title": "S5-INFO projet langues",
+            "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=160&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+          },
+          {
+            "id": "s5-info-g1",
+            "title": "S5-INFO-G1",
+            "edts": [
+              {
+                "id": "s5-info-g11",
+                "title": "S5-INFO-G1.1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1356&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              },
+              {
+                "id": "s5-info-g12",
+                "title": "S5-INFO-G1.2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2203&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "s5-info-g2",
+            "title": "S5-INFO-G2",
+            "edts": [
+              {
+                "id": "s5-info-g21",
+                "title": "S5-INFO-G2.1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1357&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              },
+              {
+                "id": "s5-info-g22",
+                "title": "S5-INFO-G2.2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+              }
+            ]
+          },
+          {
+            "id": "s5-info-rem1",
+            "title": "Remédiation Maths",
+            "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1368&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+          },
+          {
+            "id": "s5-info-rem2",
+            "title": "Remédiation Java",
+            "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2326&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+          },
+          {
+            "id": "s5-info-rem3",
+            "title": "Remédiation Base de données",
+            "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2339&projectId=1&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
+          }
+        ]
+      }
+    ]
   }
 ]
