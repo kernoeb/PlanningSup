@@ -39,7 +39,7 @@
       <crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
     <transition name="fade" mode="out-in">
-      <error-alert v-if="plannings != null && (selectedPlanningsIds != null || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
+      <error-alert v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
     </transition>
     <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
