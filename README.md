@@ -1,21 +1,27 @@
-# PlanningSup
+<h1 align="center">
+  <br>
+  <a href="https://planningsup.app"><img src="https://raw.githubusercontent.com/kernoeb/PlanningSup/main/static/icon.png" alt="PlanningSup" width="200"></a>
+  <br>
+  PlanningSup
+  <br>
+</h1>
 
-Un planning universitaire moderne réalisé par [@kernoeb](https://github.com/kernoeb).  
+<h4 align="center">Un planning universitaire moderne réalisé par <a href="https://github.com/kernoeb" target="_blank">@kernoeb</a>.</h4>
 
-[![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/kernoeb/planningsup)
-[![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/cg82.svg)](https://betteruptime.com/?utm_source=status_badge)
+<p align="center">
+  <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903">
+    <img src="https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg"
+         alt="DeepScan grade">
+  </a>
+  <a href="https://github.com/kernoeb/PlanningSup/releases"><img src="https://img.shields.io/github/v/release/kernoeb/planningsup"></a>
+  <a href="https://betteruptime.com/?utm_source=status_badge">
+    <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
+  </a>
+</p>
 
-### Ajouter une spécialité ou une université
+![img.png](img/planning_mac.png)
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/plannings.json` - en respectant à la lettre le schéma déjà présent !
-
-Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
-
-> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'URL obtenue (veillez à mettre un calendrier qui dure longtemps !).  
-> Si vous ne maîtrisez pas Git, envoyez-moi un message privé (voir ci-dessous) :)
-
-### Fonctionnalités
+## Fonctionnalités
 
 - **Hors connexion** / installation en mode **PWA**
 - Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.) et choix des couleurs
@@ -29,7 +35,17 @@ Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://gi
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
-### Comment ça marche ?
+
+## Ajouter une spécialité ou une université
+
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/plannings.json` - en respectant à la lettre le schéma déjà présent !
+
+Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
+
+> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'URL obtenue (veillez à mettre un calendrier qui dure longtemps !).  
+> Si vous ne maîtrisez pas Git, envoyez-moi un message privé (voir ci-dessous) :)
+
+## Comment ça marche ?
 
 Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockerisé !
 
@@ -41,7 +57,7 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockeris
 Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
 Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.
 
-### Captures
+## Captures
 
 ![desktop](img/desktop.png)  
 <img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
@@ -49,9 +65,9 @@ Si une erreur est présente (serveur down, par exemple), les données seront don
 <img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
 <br>
 
-### Installation
+## Installation
 
-#### Docker
+### Docker
 
 Créez un fichier `.env` avec les variables suivantes :  
 
@@ -70,14 +86,14 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 */30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d --remove-orphans
 ```
 
-### Développement
+## Développement
 
-#### Nécessaire
+### Nécessaire
 
 - [Node.js](https://github.com/nodejs/node) 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
 - [pnpm](https://pnpm.io/) : Gestionnaire de paquets
 
-#### Commandes utiles
+### Commandes utiles
 
 - Lancement en local : `pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 - Build du projet : `pnpm run build`
@@ -98,7 +114,7 @@ services:
 
 > For MacOS M1, you can use `zcube/bitnami-compat-mongodb:5.0`
 
-### Donateurs
+## Donateurs
 
 - [W00dy](https://github.com/0xW00dy)
 - [Rick](https://github.com/rick-gnous)
