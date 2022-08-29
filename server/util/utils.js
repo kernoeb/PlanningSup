@@ -1,8 +1,18 @@
 const ical = require('cal-parser')
+const dayjs = require('dayjs')
 const { Planning } = require('../models/planning')
 const { CustomEvent } = require('../models/customevent')
 const logger = require('./signale')
+
+const dateStartTemplate = '{date-start}'
+const dateEndTemplate = '{date-end}'
+
 let curl
+
+/**
+ * Check if includes template
+ */
+const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(dateEndTemplate))
 
 /**
  * Get appropriate color for event
@@ -113,13 +123,19 @@ module.exports = {
    * @returns {Promise<*>}
    */
   fetchAndGetJSON: async (url, instance) => {
+    if (includesTemplate(url)) {
+      url = url
+        .replace(dateStartTemplate, encodeURIComponent(dayjs().subtract(1, 'month').format('YYYY-MM-DD')))
+        .replace(dateEndTemplate, encodeURIComponent(dayjs().add(2, 'year').format('YYYY-MM-DD')))
+    }
+
     if (!instance && !curl) {
       logger.info('Initializing curl')
       curl = require('./curl')
     }
     try {
       const { data } = instance ? await instance.get(url) : await curl.get(url)
-      if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah that's perfectible
+      if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
         const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {
           return ics
