@@ -9,10 +9,6 @@
 <h4 align="center">Un planning universitaire moderne réalisé par <a href="https://github.com/kernoeb" target="_blank">@kernoeb</a>.</h4>
 
 <p align="center">
-  <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903">
-    <img src="https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg"
-         alt="DeepScan grade">
-  </a>
   <a href="https://github.com/kernoeb/PlanningSup/releases"><img src="https://img.shields.io/github/v/release/kernoeb/planningsup"></a>
   <a href="https://betteruptime.com/?utm_source=status_badge">
     <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
