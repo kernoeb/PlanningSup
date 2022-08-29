@@ -3,8 +3,8 @@ const request = require('supertest')
 const { describe, it } = require('mocha')
 
 const app = require('../server/index.js')
-const p = 'iutdevannes.butdutgea.1ereannee.gr1a.gr1a1'
-const p2 = 'iutdevannes.butdutgea.1ereannee.gr1a.gr1a2'
+const p = 'iutdevannes.butdutgea.1ereannee.groupe1.gr1g'
+const p2 = 'iutdevannes.butdutgea.1ereannee.groupe2.gr2g'
 
 describe('API : /calendars', function () {
   process.env.CURL_TIMEOUT = '10000'
