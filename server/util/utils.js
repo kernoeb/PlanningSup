@@ -126,7 +126,7 @@ module.exports = {
     if (includesTemplate(url)) {
       url = url
         .replace(dateStartTemplate, encodeURIComponent(dayjs().subtract(1, 'month').format('YYYY-MM-DD')))
-        .replace(dateEndTemplate, encodeURIComponent(dayjs().add(2, 'year').format('YYYY-MM-DD')))
+        .replace(dateEndTemplate, encodeURIComponent(dayjs().add(2, 'years').format('YYYY-MM-DD')))
     }
 
     if (!instance && !curl) {

@@ -33,8 +33,8 @@ const element = {
     },
     url: {
       type: 'string',
-      format: 'uri',
-      minLength: 5
+      minLength: 5,
+      pattern: '^https?://'
     }
   }
 }
