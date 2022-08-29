@@ -249,11 +249,7 @@ export default {
     } catch (err) {}
   },
   mounted () {
-    window.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter' || event.keyCode === 13) {
-        if (!this.disabledValidate && this.dialog) this.updatePlannings()
-      }
-    })
+    window.addEventListener('keyup', this.keyup)
 
     this.$axios.$get('/api/v1/urls').then((data) => {
       this.urls = data
@@ -261,7 +257,15 @@ export default {
       console.log(err)
     })
   },
+  beforeDestroy () {
+    window.removeEventListener('keyup', this.keyup)
+  },
   methods: {
+    keyup (event) {
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        if (!this.disabledValidate && this.dialog) this.updatePlannings()
+      }
+    },
     // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
     fallbackCopyTextToClipboard (text) {
       const textArea = document.createElement('textarea')
@@ -306,7 +310,7 @@ export default {
     },
     getNames () {
       if (this.favorites && this.favorites.length) {
-        this.$axios.$get('/api/v1/calendars/info', { params: { p: (this.favorites || []).join(',') } }).then((data) => {
+        this.$axios.$get('/api/v1/calendars/info', { params: { p: this.favorites.join(',') } }).then((data) => {
           this.planningNames = data
         }).catch(() => {
           this.planningNames = []
@@ -327,7 +331,7 @@ export default {
       else tmp.push(id)
       const final = [...new Set(tmp)]
       this.favorites = final
-      this.$cookies.set('favorites', (final || []).join(','), { maxAge: 2147483646 })
+      this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
       this.getNames()
     },
     getFavoriteName (favorite) {

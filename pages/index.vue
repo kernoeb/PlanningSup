@@ -316,7 +316,7 @@ export default {
       const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1'
       let planningString
       try {
-        planningString = this.$route.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
+        planningString = this.$route?.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
       } catch (err) {
         console.log(err)
         planningString = defaultPlanning
@@ -461,8 +461,8 @@ export default {
     },
     setEvents (req) {
       // Merge planning and remove duplicates events
-      const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
-      if ((req.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
+      const tmpEvents = [].concat.apply([], (req?.plannings || []).map(v => v.events).filter(v => v))
+      if ((req?.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status
