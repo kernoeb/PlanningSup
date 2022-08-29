@@ -63,6 +63,8 @@
     "@nuxt/types": "~2.15.8",
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
     "chai": "^4.3.6",
     "css-byebye": "^3.1.1",
     "eslint": "^8.22.0",

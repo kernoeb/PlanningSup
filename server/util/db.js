@@ -6,7 +6,7 @@ module.exports = {
   initDB: async () => {
     const { Planning } = require('../models/planning')
 
-    const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/url.json'), 'utf8'))
+    const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/plannings.json'), 'utf8'))
 
     const newPlannings = []
     const idSeparator = '.'

@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const router = Router()
 
-const urls = require('../../assets/url.json')
+const urls = require('../../assets/plannings.json')
 const logger = require('../util/signale')
 const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning, getCustomEventContent } = require('../util/utils')
 const { trackPlannings } = require('../util/analytics')

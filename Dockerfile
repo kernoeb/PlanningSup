@@ -27,7 +27,7 @@ RUN pnpm fetch
 COPY --chown=node:node . ./
 
 # Check JSON is valid
-RUN node -e "JSON.parse(fs.readFileSync('./assets/url.json', 'utf-8'))"
+RUN node ./resources/check-plannings-json && rm -rf ./resources
 
 # Install dependencies
 RUN pnpm install -r --offline

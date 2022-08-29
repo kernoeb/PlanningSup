@@ -24,3 +24,6 @@
 !jobs/
 
 !.npmrc
+
+# Other stuff
+!resources/check-plannings-json.js
