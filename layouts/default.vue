@@ -31,7 +31,7 @@
       absolute
       app
     >
-      <span class="text--disabled">Noéwen (<a :style="$vuetify.theme.dark ? 'color: gray' : 'color: gray'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span class="text--disabled">Noéwen (<a style="color: gray" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">

@@ -326,7 +326,7 @@ export default {
       this.$emit('selected-plannings', this.localPlannings)
     },
     setFavorite (id) {
-      let tmp = [...this.favorites]
+      let tmp = [...(this.favorites || [])]
       if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
       else tmp.push(id)
       const final = [...new Set(tmp)]

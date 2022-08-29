@@ -342,7 +342,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
         this.errorMessage = null
@@ -460,9 +460,10 @@ export default {
       })
     },
     setEvents (req) {
+      req ||= {}
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req?.plannings || []).map(v => v.events).filter(v => v))
-      if ((req?.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
+      if ((req.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status

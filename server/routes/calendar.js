@@ -56,8 +56,17 @@ router.get('/calendars', async (req, res) => {
       const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
       if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColorList) }
       const backed = await getBackedPlanning(id)
-      if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColorList) }
-      else return { id, title: allPlannings[id].title, status: 'off' }
+      if (backed?.backup) {
+        return {
+          id,
+          status: 'backup',
+          title: allPlannings[id].title,
+          timestamp: backed.timestamp || undefined,
+          events: getFormattedEvents(backed.backup, blocklist, customColorList)
+        }
+      } else {
+        return { id, title: allPlannings[id].title, status: 'off' }
+      }
     }))
 
     // Analytics and session management
