@@ -2,11 +2,11 @@ version: '2'
 
 services:
   mongodb:
-    image: docker.io/bitnami/mongodb:5.0
-    # image: ghcr.io/zcube/bitnami-compat/mongodb:5.0
+    #image: docker.io/bitnami/mongodb:5.0
+    image: ghcr.io/zcube/bitnami-compat/mongodb:5.0
     restart: always
     ports:
       - "27017:27017"
     volumes:
-      - '/opt/planning_v2:/bitnami/mongodb'
-      # - '.mongo-planning:/bitnami/mongodb'
+      #- '/opt/planning_v2:/bitnami/mongodb'
+      - '.mongo-planning:/bitnami/mongodb'

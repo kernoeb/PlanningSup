@@ -6226,5 +6226,1459 @@
         ]
       }
     ]
+  },
+  {
+    "id": "iutdenantes",
+    "title": "IUT de Nantes",
+    "edts": [
+      {
+        "id": "but",
+        "title": "BUT",
+        "edts": [
+          {
+            "id": "g980718",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980718.ics",
+            "title": "BUT2 GC2F"
+          },
+          {
+            "id": "g980431",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980431.ics",
+            "title": "BUT2 GC2F ALT"
+          },
+          {
+            "id": "g980426",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980426.ics",
+            "title": "BUT2 GEMA ALT"
+          },
+          {
+            "id": "g980720",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980720.ics",
+            "title": "BUT2 GEMA1"
+          },
+          {
+            "id": "g980722",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980722.ics",
+            "title": "BUT2 GEMA2"
+          },
+          {
+            "id": "g980723",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980723.ics",
+            "title": "BUT2 GEMA3"
+          },
+          {
+            "id": "g980724",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980724.ics",
+            "title": "BUT2 GPRH"
+          },
+          {
+            "id": "g980684",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980684.ics",
+            "title": "BUT2 Promo"
+          },
+          {
+            "id": "g980746",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980746.ics",
+            "title": "BUT2 SS GRPE DCG"
+          },
+          {
+            "id": "g980568",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980568.ics",
+            "title": "BUT2 SS GRPE DCG ALT"
+          },
+          {
+            "id": "g980751",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980751.ics",
+            "title": "BUT2 SS GRPE GC2F"
+          },
+          {
+            "id": "g980571",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g980571.ics",
+            "title": "BUT2 SS GRPE GC2F ALT"
+          }
+        ]
+      },
+      {
+        "id": "dcu",
+        "title": "DCU",
+        "edts": [
+          {
+            "id": "g862551",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g862551.ics",
+            "title": "DCU DCG 2022-2023"
+          },
+          {
+            "id": "g893222",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g893222.ics",
+            "title": "Management DCU"
+          }
+        ]
+      },
+      {
+        "id": "droit",
+        "title": "Droit",
+        "edts": [
+          {
+            "id": "g491415",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g491415.ics",
+            "title": "Droit des sociétés DCU"
+          },
+          {
+            "id": "g491414",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g491414.ics",
+            "title": "droit fiscal dcu"
+          },
+          {
+            "id": "g745868",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g745868.ics",
+            "title": "Droit social"
+          }
+        ]
+      },
+      {
+        "id": "ext",
+        "title": "Ext",
+        "edts": [
+          {
+            "id": "g60085",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g60085.ics",
+            "title": "Ext LP PEGC"
+          },
+          {
+            "id": "g60049",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g60049.ics",
+            "title": "Ext M1 EEA"
+          },
+          {
+            "id": "g380721",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g380721.ics",
+            "title": "Ext M1 SdM"
+          },
+          {
+            "id": "g57221",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g57221.ics",
+            "title": "Ext Tous"
+          }
+        ]
+      },
+      {
+        "id": "gea",
+        "title": "GEA",
+        "edts": [
+          {
+            "id": "g32725",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32725.ics",
+            "title": "GEA Promo"
+          },
+          {
+            "id": "g2358",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2358.ics",
+            "title": "GEA1 Groupe1"
+          },
+          {
+            "id": "g2359",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2359.ics",
+            "title": "GEA1 Groupe2"
+          },
+          {
+            "id": "g2360",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2360.ics",
+            "title": "GEA1 Groupe3"
+          },
+          {
+            "id": "g2361",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2361.ics",
+            "title": "GEA1 Groupe4"
+          },
+          {
+            "id": "g2362",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2362.ics",
+            "title": "GEA1 Groupe5"
+          },
+          {
+            "id": "g2363",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2363.ics",
+            "title": "GEA1 Groupe6"
+          },
+          {
+            "id": "g855939",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g855939.ics",
+            "title": "GEA1 Groupe7"
+          },
+          {
+            "id": "g2356",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2356.ics",
+            "title": "GEA1 Promo"
+          }
+        ]
+      },
+      {
+        "id": "geii",
+        "title": "GEII",
+        "edts": [
+          {
+            "id": "g32102",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32102.ics",
+            "title": "GEII 1 Promo"
+          },
+          {
+            "id": "g32126",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32126.ics",
+            "title": "GEII 1 TD A"
+          },
+          {
+            "id": "g32128",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32128.ics",
+            "title": "GEII 1 TD B"
+          },
+          {
+            "id": "g32130",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32130.ics",
+            "title": "GEII 1 TD C"
+          },
+          {
+            "id": "g32131",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32131.ics",
+            "title": "GEII 1 TD D"
+          },
+          {
+            "id": "g32162",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32162.ics",
+            "title": "GEII 1 TP 1"
+          },
+          {
+            "id": "g32165",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32165.ics",
+            "title": "GEII 1 TP 2"
+          },
+          {
+            "id": "g32179",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32179.ics",
+            "title": "GEII 1 TP 3"
+          },
+          {
+            "id": "g32181",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32181.ics",
+            "title": "GEII 1 TP 4"
+          },
+          {
+            "id": "g32182",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32182.ics",
+            "title": "GEII 1 TP 5"
+          },
+          {
+            "id": "g32211",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32211.ics",
+            "title": "GEII 1 TP 6"
+          },
+          {
+            "id": "g32212",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32212.ics",
+            "title": "GEII 1 TP 7"
+          },
+          {
+            "id": "g32213",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32213.ics",
+            "title": "GEII 1 TP 8"
+          },
+          {
+            "id": "g973825",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g973825.ics",
+            "title": "GEII2 AII"
+          },
+          {
+            "id": "g1001505",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g1001505.ics",
+            "title": "GEII2 Alternance"
+          },
+          {
+            "id": "g973827",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g973827.ics",
+            "title": "GEII2 EME"
+          },
+          {
+            "id": "g973826",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g973826.ics",
+            "title": "GEII2 ESE"
+          },
+          {
+            "id": "g992100",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992100.ics",
+            "title": "GEII2 init1"
+          },
+          {
+            "id": "g992101",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992101.ics",
+            "title": "GEII2 init2"
+          },
+          {
+            "id": "g992106",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992106.ics",
+            "title": "GEII2 init3"
+          },
+          {
+            "id": "g992107",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992107.ics",
+            "title": "GEII2 init4"
+          },
+          {
+            "id": "g107756",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g107756.ics",
+            "title": "GEII2 Polytech"
+          },
+          {
+            "id": "g258053",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g258053.ics",
+            "title": "GEII2 PROMO"
+          },
+          {
+            "id": "g992071",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992071.ics",
+            "title": "GEII2 TDA"
+          },
+          {
+            "id": "g992072",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992072.ics",
+            "title": "GEII2 TDB"
+          },
+          {
+            "id": "g992073",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992073.ics",
+            "title": "GEII2 TDC"
+          },
+          {
+            "id": "g992074",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992074.ics",
+            "title": "GEII2 TPA1"
+          },
+          {
+            "id": "g992075",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992075.ics",
+            "title": "GEII2 TPA2"
+          },
+          {
+            "id": "g992076",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992076.ics",
+            "title": "GEII2 TPB1"
+          },
+          {
+            "id": "g992077",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992077.ics",
+            "title": "GEII2 TPB2"
+          },
+          {
+            "id": "g992102",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992102.ics",
+            "title": "GEII2 TPC1"
+          },
+          {
+            "id": "g992103",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g992103.ics",
+            "title": "GEII2 TPC2"
+          }
+        ]
+      },
+      {
+        "id": "gmp",
+        "title": "GMP",
+        "edts": [
+          {
+            "id": "g32957",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32957.ics",
+            "title": "GMP1 Dpromo1"
+          },
+          {
+            "id": "g32984",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32984.ics",
+            "title": "GMP1 Dpromo2"
+          },
+          {
+            "id": "g32735",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32735.ics",
+            "title": "GMP1 GA"
+          },
+          {
+            "id": "g32762",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32762.ics",
+            "title": "GMP1 GA1"
+          },
+          {
+            "id": "g32782",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32782.ics",
+            "title": "GMP1 GA2"
+          },
+          {
+            "id": "g34610",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34610.ics",
+            "title": "GMP1 GAa"
+          },
+          {
+            "id": "g34611",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34611.ics",
+            "title": "GMP1 GAb"
+          },
+          {
+            "id": "g34612",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34612.ics",
+            "title": "GMP1 GAc"
+          },
+          {
+            "id": "g32747",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32747.ics",
+            "title": "GMP1 GB"
+          },
+          {
+            "id": "g32783",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32783.ics",
+            "title": "GMP1 GB1"
+          },
+          {
+            "id": "g32785",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32785.ics",
+            "title": "GMP1 GB2"
+          },
+          {
+            "id": "g34613",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34613.ics",
+            "title": "GMP1 GBa"
+          },
+          {
+            "id": "g34614",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34614.ics",
+            "title": "GMP1 GBb"
+          },
+          {
+            "id": "g34615",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34615.ics",
+            "title": "GMP1 GBc"
+          },
+          {
+            "id": "g32753",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32753.ics",
+            "title": "GMP1 GC"
+          },
+          {
+            "id": "g32793",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32793.ics",
+            "title": "GMP1 GC1"
+          },
+          {
+            "id": "g32798",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32798.ics",
+            "title": "GMP1 GC2"
+          },
+          {
+            "id": "g34616",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34616.ics",
+            "title": "GMP1 GCa"
+          },
+          {
+            "id": "g34617",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34617.ics",
+            "title": "GMP1 GCb"
+          },
+          {
+            "id": "g34618",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34618.ics",
+            "title": "GMP1 GCc"
+          },
+          {
+            "id": "g32755",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32755.ics",
+            "title": "GMP1 GD"
+          },
+          {
+            "id": "g32801",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32801.ics",
+            "title": "GMP1 GD1"
+          },
+          {
+            "id": "g32803",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32803.ics",
+            "title": "GMP1 GD2"
+          },
+          {
+            "id": "g34619",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34619.ics",
+            "title": "GMP1 GDa"
+          },
+          {
+            "id": "g34620",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34620.ics",
+            "title": "GMP1 GDb"
+          },
+          {
+            "id": "g34621",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34621.ics",
+            "title": "GMP1 GDc"
+          },
+          {
+            "id": "g32719",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32719.ics",
+            "title": "GMP1 Promo"
+          },
+          {
+            "id": "g968812",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g968812.ics",
+            "title": "GMP2 CPDC"
+          },
+          {
+            "id": "g32732",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32732.ics",
+            "title": "GMP2 GA"
+          },
+          {
+            "id": "g32745",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32745.ics",
+            "title": "GMP2 GA1"
+          },
+          {
+            "id": "g32748",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32748.ics",
+            "title": "GMP2 GA2"
+          },
+          {
+            "id": "g35075",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35075.ics",
+            "title": "GMP2 GAa"
+          },
+          {
+            "id": "g35100",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35100.ics",
+            "title": "GMP2 GAb"
+          },
+          {
+            "id": "g35101",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35101.ics",
+            "title": "GMP2 GAc"
+          },
+          {
+            "id": "g32739",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32739.ics",
+            "title": "GMP2 GB"
+          },
+          {
+            "id": "g32767",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32767.ics",
+            "title": "GMP2 GB1"
+          },
+          {
+            "id": "g32781",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32781.ics",
+            "title": "GMP2 GB2"
+          },
+          {
+            "id": "g35108",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35108.ics",
+            "title": "GMP2 GBa"
+          },
+          {
+            "id": "g35110",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35110.ics",
+            "title": "GMP2 GBb"
+          },
+          {
+            "id": "g35111",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35111.ics",
+            "title": "GMP2 GBc"
+          },
+          {
+            "id": "g32743",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32743.ics",
+            "title": "GMP2 GC"
+          },
+          {
+            "id": "g32770",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32770.ics",
+            "title": "GMP2 GC1"
+          },
+          {
+            "id": "g32771",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32771.ics",
+            "title": "GMP2 GC2"
+          },
+          {
+            "id": "g35116",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35116.ics",
+            "title": "GMP2 GCa"
+          },
+          {
+            "id": "g35119",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35119.ics",
+            "title": "GMP2 GCb"
+          },
+          {
+            "id": "g35120",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35120.ics",
+            "title": "GMP2 GCc"
+          },
+          {
+            "id": "g32744",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32744.ics",
+            "title": "GMP2 GD"
+          },
+          {
+            "id": "g32772",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32772.ics",
+            "title": "GMP2 GD1"
+          },
+          {
+            "id": "g32773",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32773.ics",
+            "title": "GMP2 GD2"
+          },
+          {
+            "id": "g35123",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35123.ics",
+            "title": "GMP2 GDa"
+          },
+          {
+            "id": "g35124",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35124.ics",
+            "title": "GMP2 GDb"
+          },
+          {
+            "id": "g35126",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35126.ics",
+            "title": "GMP2 GDc"
+          },
+          {
+            "id": "g968816",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g968816.ics",
+            "title": "GMP2 II"
+          },
+          {
+            "id": "g968814",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g968814.ics",
+            "title": "GMP2 MPI"
+          },
+          {
+            "id": "g32727",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32727.ics",
+            "title": "GMP2 Promo"
+          },
+          {
+            "id": "g968815",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g968815.ics",
+            "title": "GMP2 SNRV"
+          }
+        ]
+      },
+      {
+        "id": "info",
+        "title": "INFO",
+        "edts": [
+          {
+            "id": "g3083",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3083.ics",
+            "title": "INFO 1 Groupe 1"
+          },
+          {
+            "id": "g3146",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3146.ics",
+            "title": "INFO 1 Groupe 2"
+          },
+          {
+            "id": "g3159",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3159.ics",
+            "title": "INFO 1 Groupe 3"
+          },
+          {
+            "id": "g3160",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3160.ics",
+            "title": "INFO 1 Groupe 4"
+          },
+          {
+            "id": "g3145",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3145.ics",
+            "title": "INFO 1 Promo"
+          },
+          {
+            "id": "g3163",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3163.ics",
+            "title": "INFO 1 TP 1-1"
+          },
+          {
+            "id": "g3164",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3164.ics",
+            "title": "INFO 1 TP 1-2"
+          },
+          {
+            "id": "g3165",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3165.ics",
+            "title": "INFO 1 TP 2-1"
+          },
+          {
+            "id": "g3166",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3166.ics",
+            "title": "INFO 1 TP 2-2"
+          },
+          {
+            "id": "g3167",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3167.ics",
+            "title": "INFO 1 TP 3-1"
+          },
+          {
+            "id": "g3168",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3168.ics",
+            "title": "INFO 1 TP 3-2"
+          },
+          {
+            "id": "g3170",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3170.ics",
+            "title": "INFO 1 TP 4-1"
+          },
+          {
+            "id": "g3173",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3173.ics",
+            "title": "INFO 1 TP 4-2"
+          },
+          {
+            "id": "g3178",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3178.ics",
+            "title": "INFO 2 Groupe 1"
+          },
+          {
+            "id": "g3179",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3179.ics",
+            "title": "INFO 2 Groupe 2"
+          },
+          {
+            "id": "g3180",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3180.ics",
+            "title": "INFO 2 Groupe 3"
+          },
+          {
+            "id": "g3182",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3182.ics",
+            "title": "INFO 2 Groupe 4"
+          },
+          {
+            "id": "g3177",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3177.ics",
+            "title": "INFO 2 Promo"
+          },
+          {
+            "id": "g3183",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3183.ics",
+            "title": "INFO 2 TP 1-1"
+          },
+          {
+            "id": "g3184",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3184.ics",
+            "title": "INFO 2 TP 1-2"
+          },
+          {
+            "id": "g3187",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3187.ics",
+            "title": "INFO 2 TP 2-1"
+          },
+          {
+            "id": "g3188",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3188.ics",
+            "title": "INFO 2 TP 2-2"
+          },
+          {
+            "id": "g3189",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3189.ics",
+            "title": "INFO 2 TP 3-1"
+          },
+          {
+            "id": "g3190",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3190.ics",
+            "title": "INFO 2 TP 3-2"
+          },
+          {
+            "id": "g3191",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3191.ics",
+            "title": "INFO 2 TP 4-1"
+          },
+          {
+            "id": "g3192",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g3192.ics",
+            "title": "INFO 2 TP 4-2"
+          }
+        ]
+      },
+      {
+        "id": "logiqual",
+        "title": "LOGIQUAL",
+        "edts": [
+          {
+            "id": "g32728",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32728.ics",
+            "title": "LOGIQUAL"
+          },
+          {
+            "id": "g32746",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32746.ics",
+            "title": "LOGIQUAL 1"
+          },
+          {
+            "id": "g32751",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32751.ics",
+            "title": "LOGIQUAL 2"
+          }
+        ]
+      },
+      {
+        "id": "lp",
+        "title": "LP",
+        "edts": [
+          {
+            "id": "g32792",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32792.ics",
+            "title": "LP D3M"
+          },
+          {
+            "id": "g967715",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g967715.ics",
+            "title": "LP D3M(a)"
+          },
+          {
+            "id": "g967716",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g967716.ics",
+            "title": "LP D3M(b)"
+          },
+          {
+            "id": "g2482",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g2482.ics",
+            "title": "LP Distribution"
+          },
+          {
+            "id": "g198017",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g198017.ics",
+            "title": "LP EAS"
+          },
+          {
+            "id": "g104173",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g104173.ics",
+            "title": "LP Fica Promo"
+          },
+          {
+            "id": "g119566",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g119566.ics",
+            "title": "LP GRH 1 an"
+          },
+          {
+            "id": "g264879",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g264879.ics",
+            "title": "LP GRH 2ans"
+          },
+          {
+            "id": "g32756",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32756.ics",
+            "title": "LP i2P"
+          },
+          {
+            "id": "g32754",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32754.ics",
+            "title": "LP i2P CIP"
+          },
+          {
+            "id": "g57233",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g57233.ics",
+            "title": "LP i2P CIP1"
+          },
+          {
+            "id": "g57234",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g57234.ics",
+            "title": "LP i2P CIP2"
+          },
+          {
+            "id": "g32764",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32764.ics",
+            "title": "LP i2p iMoc"
+          },
+          {
+            "id": "g32734",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32734.ics",
+            "title": "LP i2P MPP"
+          },
+          {
+            "id": "g57237",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g57237.ics",
+            "title": "LP i2P MPP1"
+          },
+          {
+            "id": "g57238",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g57238.ics",
+            "title": "LP i2P MPP2"
+          },
+          {
+            "id": "g254992",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g254992.ics",
+            "title": "LP I2P TIS"
+          },
+          {
+            "id": "g121096",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g121096.ics",
+            "title": "LP IDEB"
+          },
+          {
+            "id": "g32768",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32768.ics",
+            "title": "LP IMocp"
+          },
+          {
+            "id": "g289268",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g289268.ics",
+            "title": "LP IMocp RTM 1"
+          },
+          {
+            "id": "g289270",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g289270.ics",
+            "title": "LP IMocp RTM 2"
+          },
+          {
+            "id": "g289271",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g289271.ics",
+            "title": "LP IMocp RTM 3"
+          },
+          {
+            "id": "g92457",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g92457.ics",
+            "title": "LP IMocp1"
+          },
+          {
+            "id": "g92451",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g92451.ics",
+            "title": "LP IMocp2"
+          },
+          {
+            "id": "g58524",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g58524.ics",
+            "title": "LP SYRDES"
+          }
+        ]
+      },
+      {
+        "id": "mj",
+        "title": "M1j / M2j",
+        "edts": [
+          {
+            "id": "g591084",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591084.ics",
+            "title": "M1j EGE"
+          },
+          {
+            "id": "g591080",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591080.ics",
+            "title": "M1j EN"
+          },
+          {
+            "id": "g591139",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591139.ics",
+            "title": "M1j FAR"
+          },
+          {
+            "id": "g591145",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591145.ics",
+            "title": "M1j IP"
+          },
+          {
+            "id": "g591148",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591148.ics",
+            "title": "M1j MPP"
+          },
+          {
+            "id": "g591159",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591159.ics",
+            "title": "M2j EGE"
+          },
+          {
+            "id": "g591150",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591150.ics",
+            "title": "M2j EN"
+          },
+          {
+            "id": "g591170",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591170.ics",
+            "title": "M2j FAR"
+          },
+          {
+            "id": "g591177",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591177.ics",
+            "title": "M2j IP"
+          },
+          {
+            "id": "g591188",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591188.ics",
+            "title": "M2j MPP"
+          }
+        ]
+      },
+      {
+        "id": "mm",
+        "title": "M1m / M2m",
+        "edts": [
+          {
+            "id": "g591268",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591268.ics",
+            "title": "M1m EGE"
+          },
+          {
+            "id": "g591074",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591074.ics",
+            "title": "M1m EN"
+          },
+          {
+            "id": "g591271",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591271.ics",
+            "title": "M1m FAR"
+          },
+          {
+            "id": "g591273",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591273.ics",
+            "title": "M1m IP"
+          },
+          {
+            "id": "g591279",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591279.ics",
+            "title": "M1m MPP"
+          },
+          {
+            "id": "g591281",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591281.ics",
+            "title": "M2m EGE"
+          },
+          {
+            "id": "g591280",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591280.ics",
+            "title": "M2m EN"
+          },
+          {
+            "id": "g591282",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591282.ics",
+            "title": "M2m FAR"
+          },
+          {
+            "id": "g591283",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591283.ics",
+            "title": "M2m IP"
+          },
+          {
+            "id": "g591286",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591286.ics",
+            "title": "M2m MPP"
+          }
+        ]
+      },
+      {
+        "id": "master",
+        "title": "MASTER",
+        "edts": [
+          {
+            "id": "g567821",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g567821.ics",
+            "title": "MASTER CCA 1"
+          },
+          {
+            "id": "g704915",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g704915.ics",
+            "title": "MASTER CCA 2"
+          },
+          {
+            "id": "g463730",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g463730.ics",
+            "title": "Master ITI"
+          }
+        ]
+      },
+      {
+        "id": "miti",
+        "title": "MITI",
+        "edts": [
+          {
+            "id": "g591068",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591068.ics",
+            "title": "MITI 1"
+          },
+          {
+            "id": "g591069",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g591069.ics",
+            "title": "MITI 2"
+          }
+        ]
+      },
+      {
+        "id": "mt2e",
+        "title": "MT2E",
+        "edts": [
+          {
+            "id": "g32759",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32759.ics",
+            "title": "MT2E-1 Groupe A"
+          },
+          {
+            "id": "g32795",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32795.ics",
+            "title": "MT2E-1 Groupe A1"
+          },
+          {
+            "id": "g32796",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32796.ics",
+            "title": "MT2E-1 Groupe A2"
+          },
+          {
+            "id": "g32760",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32760.ics",
+            "title": "MT2E-1 Groupe B"
+          },
+          {
+            "id": "g32799",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32799.ics",
+            "title": "MT2E-1 Groupe B1"
+          },
+          {
+            "id": "g32800",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32800.ics",
+            "title": "MT2E-1 Groupe B2"
+          },
+          {
+            "id": "g32761",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32761.ics",
+            "title": "MT2E-1 Groupe C"
+          },
+          {
+            "id": "g32802",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32802.ics",
+            "title": "MT2E-1 Groupe C1"
+          },
+          {
+            "id": "g32804",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32804.ics",
+            "title": "MT2E-1 Groupe C2"
+          },
+          {
+            "id": "g17651",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g17651.ics",
+            "title": "MT2E-1 Promo"
+          },
+          {
+            "id": "g32763",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32763.ics",
+            "title": "MT2E-2 Groupe A"
+          },
+          {
+            "id": "g32807",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32807.ics",
+            "title": "MT2E-2 Groupe A1"
+          },
+          {
+            "id": "g32808",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32808.ics",
+            "title": "MT2E-2 Groupe A2"
+          },
+          {
+            "id": "g32765",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32765.ics",
+            "title": "MT2E-2 Groupe B"
+          },
+          {
+            "id": "g32809",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32809.ics",
+            "title": "MT2E-2 Groupe B1"
+          },
+          {
+            "id": "g32811",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32811.ics",
+            "title": "MT2E-2 Groupe B2"
+          },
+          {
+            "id": "g32766",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32766.ics",
+            "title": "MT2E-2 Groupe C"
+          },
+          {
+            "id": "g39733",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g39733.ics",
+            "title": "MT2E-2 Groupe C1"
+          },
+          {
+            "id": "g32741",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32741.ics",
+            "title": "MT2E-2 Groupe C2"
+          },
+          {
+            "id": "g39732",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g39732.ics",
+            "title": "MT2E-2 Promo"
+          }
+        ]
+      },
+      {
+        "id": "qlio",
+        "title": "QLIO",
+        "edts": [
+          {
+            "id": "g45979",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g45979.ics",
+            "title": "QLIOTOUS"
+          },
+          {
+            "id": "g123146",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g123146.ics",
+            "title": "QLIO A1"
+          },
+          {
+            "id": "g32335",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32335.ics",
+            "title": "QLIO1 1/2G 1A"
+          },
+          {
+            "id": "g32336",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32336.ics",
+            "title": "QLIO1 1/2G 1B"
+          },
+          {
+            "id": "g32334",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32334.ics",
+            "title": "QLIO1 1/2G 2A"
+          },
+          {
+            "id": "g32333",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32333.ics",
+            "title": "QLIO1 1/2G 2B"
+          },
+          {
+            "id": "g32331",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32331.ics",
+            "title": "QLIO1 1/2G 3A"
+          },
+          {
+            "id": "g32332",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32332.ics",
+            "title": "QLIO1 1/2G 3B"
+          },
+          {
+            "id": "g17632",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g17632.ics",
+            "title": "QLIO1 G1"
+          },
+          {
+            "id": "g32305",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32305.ics",
+            "title": "QLIO1 G2"
+          },
+          {
+            "id": "g32330",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32330.ics",
+            "title": "QLIO1 G3"
+          },
+          {
+            "id": "g32337",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32337.ics",
+            "title": "QLIO1 Promo"
+          },
+          {
+            "id": "g975371",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g975371.ics",
+            "title": "QLIO2 1/2 Promo A"
+          },
+          {
+            "id": "g975372",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g975372.ics",
+            "title": "QLIO2 1/2 Promo B"
+          },
+          {
+            "id": "g34073",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34073.ics",
+            "title": "QLIO2 1/2G 1A"
+          },
+          {
+            "id": "g34074",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34074.ics",
+            "title": "QLIO2 1/2G 1B"
+          },
+          {
+            "id": "g34075",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34075.ics",
+            "title": "QLIO2 1/2G 2A"
+          },
+          {
+            "id": "g34076",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34076.ics",
+            "title": "QLIO2 1/2G 2B"
+          },
+          {
+            "id": "g34071",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34071.ics",
+            "title": "QLIO2 1/2G 3A"
+          },
+          {
+            "id": "g34072",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34072.ics",
+            "title": "QLIO2 1/2G 3B"
+          },
+          {
+            "id": "g975368",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g975368.ics",
+            "title": "QLIO2 1/2G 4A"
+          },
+          {
+            "id": "g975369",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g975369.ics",
+            "title": "QLIO2 1/2G 4B"
+          },
+          {
+            "id": "g34078",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34078.ics",
+            "title": "QLIO2 G1"
+          },
+          {
+            "id": "g34079",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34079.ics",
+            "title": "QLIO2 G2"
+          },
+          {
+            "id": "g34077",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34077.ics",
+            "title": "QLIO2 G3"
+          },
+          {
+            "id": "g975370",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g975370.ics",
+            "title": "QLIO2 G4"
+          },
+          {
+            "id": "g34080",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g34080.ics",
+            "title": "QLIO2 Promo"
+          }
+        ]
+      },
+      {
+        "id": "seicom",
+        "title": "SEICOM",
+        "edts": [
+          {
+            "id": "g37686",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g37686.ics",
+            "title": "SEICOM"
+          },
+          {
+            "id": "g38015",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g38015.ics",
+            "title": "SEICOM TP1"
+          },
+          {
+            "id": "g38017",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g38017.ics",
+            "title": "SEICOM TP2"
+          }
+        ]
+      },
+      {
+        "id": "sgm",
+        "title": "SGM",
+        "edts": [
+          {
+            "id": "g48413",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g48413.ics",
+            "title": "sgm"
+          },
+          {
+            "id": "g32339",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32339.ics",
+            "title": "sgm1 G1"
+          },
+          {
+            "id": "g32367",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32367.ics",
+            "title": "sgm1 G11"
+          },
+          {
+            "id": "g32370",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32370.ics",
+            "title": "sgm1 G12"
+          },
+          {
+            "id": "g32340",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32340.ics",
+            "title": "sgm1 G2"
+          },
+          {
+            "id": "g32368",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32368.ics",
+            "title": "sgm1 G21"
+          },
+          {
+            "id": "g32371",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32371.ics",
+            "title": "sgm1 G22"
+          },
+          {
+            "id": "g32341",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32341.ics",
+            "title": "sgm1 G3"
+          },
+          {
+            "id": "g32372",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32372.ics",
+            "title": "sgm1 G31"
+          },
+          {
+            "id": "g32373",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32373.ics",
+            "title": "sgm1 G32"
+          },
+          {
+            "id": "g32338",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g32338.ics",
+            "title": "sgm1 P"
+          },
+          {
+            "id": "g35494",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35494.ics",
+            "title": "sgm2 G1"
+          },
+          {
+            "id": "g35495",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35495.ics",
+            "title": "sgm2 G11"
+          },
+          {
+            "id": "g35496",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35496.ics",
+            "title": "sgm2 G12"
+          },
+          {
+            "id": "g35497",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35497.ics",
+            "title": "sgm2 G2"
+          },
+          {
+            "id": "g35498",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35498.ics",
+            "title": "sgm2 G21"
+          },
+          {
+            "id": "g35499",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35499.ics",
+            "title": "sgm2 G22"
+          },
+          {
+            "id": "g35500",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35500.ics",
+            "title": "sgm2 G3"
+          },
+          {
+            "id": "g35501",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35501.ics",
+            "title": "sgm2 G31"
+          },
+          {
+            "id": "g35503",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35503.ics",
+            "title": "sgm2 G32"
+          },
+          {
+            "id": "g35502",
+            "url": "https://edt.univ-nantes.fr/iut_nantes/g35502.ics",
+            "title": "sgm2 P"
+          }
+        ]
+      }
+    ]
   }
 ]
