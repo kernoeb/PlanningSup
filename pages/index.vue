@@ -36,12 +36,12 @@
           </div>
         </v-tooltip>
       </div>
-      <crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
+      <lazy-dialog-crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
     <transition name="fade" mode="out-in">
       <error-alert v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
     </transition>
-    <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
+    <event-bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
     <v-progress-linear
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -106,7 +106,7 @@
           v-model="dialogEdt"
           width="500"
         >
-          <select-planning v-if="selectedPlanningsIds" :dialog="dialogEdt" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
+          <lazy-select-planning v-if="selectedPlanningsIds" :dialog="dialogEdt" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
@@ -123,7 +123,7 @@
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
-        <settings
+        <lazy-dialog-settings
           :dialog-settings="dialogSettings"
           :settings="settings"
           @fetch="$fetch()"
@@ -220,17 +220,8 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import Bottom from '~/components/EventBottom'
-import ErrorAlert from '@/components/ErrorAlert'
 
 export default {
-  components: {
-    Crous: () => import('~/components/DialogCrous'),
-    Settings: () => import('~/components/DialogSettings'),
-    Bottom,
-    ErrorAlert,
-    SelectPlanning: () => import('@/components/SelectPlanning')
-  },
   middleware: 'vuetify-theme',
   data () {
     return {

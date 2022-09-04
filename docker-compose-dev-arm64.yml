@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  mongodb:
+    image: ghcr.io/zcube/bitnami-compat/mongodb:5.0
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - '.mongo-planning:/bitnami/mongodb'

@@ -198,7 +198,7 @@
 
           <div>
             <v-subheader>FAQ / Aide</v-subheader>
-            <help-info style="width: 98%;" />
+            <lazy-help-info style="width: 98%;" />
           </div>
 
           <br>
@@ -236,9 +236,6 @@ import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, md
 
 export default {
   name: 'DialogSettings',
-  components: {
-    HelpInfo: () => import('@/components/HelpInfo')
-  },
   props: {
     dialogSettings: {
       type: Boolean,
