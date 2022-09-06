@@ -430,12 +430,12 @@
               {
                 "id": "gr2d1",
                 "title": "GR 2D1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2744&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4294&projectId=0&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               },
               {
                 "id": "gr2d2",
                 "title": "GR 2D2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2776&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4296&projectId=0&calType=ical&firstDate=2022-08-15&lastDate=2025-12-31"
               }
             ]
           }
