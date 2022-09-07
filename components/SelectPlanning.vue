@@ -251,7 +251,7 @@ export default {
   mounted () {
     window.addEventListener('keyup', this.keyup)
 
-    this.$axios.$get('/api/v1/urls').then((data) => {
+    this.$axios.$get('http://localhost:3001/urls').then((data) => {
       this.urls = data
     }).catch((err) => {
       console.log(err)
@@ -310,7 +310,7 @@ export default {
     },
     getNames () {
       if (this.favorites && this.favorites.length) {
-        this.$axios.$get('/api/v1/calendars/info', { params: { p: this.favorites.join(',') } }).then((data) => {
+        this.$axios.$get('http://localhost:3001/calendars/info', { params: { p: this.favorites.join(',') } }).then((data) => {
           this.planningNames = data
         }).catch(() => {
           this.planningNames = []

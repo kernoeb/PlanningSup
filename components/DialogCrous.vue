@@ -88,7 +88,7 @@ export default {
         someDate.getFullYear() === today.getFullYear()
     },
     getMenus () {
-      this.$axios.$get('/api/v1/crous_menu').then((b) => {
+      this.$axios.$get('http://localhost:3001/crous_menu').then((b) => {
         this.menu = b
         try {
           this.$plausible.trackEvent('crous')

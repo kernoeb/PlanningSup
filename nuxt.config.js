@@ -1,6 +1,8 @@
-import colors from 'vuetify/es5/util/colors'
-import fr from 'vuetify/es5/locale/fr'
+import colors from 'vuetify/lib/util/colors'
+import fr from 'vuetify/lib/locale/fr'
 import minifyTheme from 'minify-css-string'
+
+import { defineNuxtConfig } from '@nuxt/bridge'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
@@ -12,7 +14,7 @@ const DOMAIN = 'planningsup.app'
 const URL = 'https://' + DOMAIN
 const BANNER = `${URL}/banner.png`
 
-export default {
+export default defineNuxtConfig({
   telemetry: false,
   ssr: true,
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -67,9 +69,6 @@ export default {
   /*
   ** Server Middleware
   */
-  serverMiddleware: [
-    { path: '/api/v1', handler: '~/server/' }
-  ],
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -236,7 +235,6 @@ export default {
                     /transition/
                   ]
                 }
-
               },
               'css-byebye': {
                 rulesToRemove: [
@@ -246,4 +244,4 @@ export default {
             }
       }
   }
-}
+})

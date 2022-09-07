@@ -321,7 +321,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+      const events = await this.$axios.$get('http://localhost:3001/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
       this.errorMessage = null
@@ -333,7 +333,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+        const events = await this.$axios.$get('http://localhost:3001/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
         this.setEvents(events)
         this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
         this.errorMessage = null
@@ -491,12 +491,12 @@ export default {
       }
     },
     async getCustomEventContent (e) {
-      const { data } = await this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } })
+      const { data } = await this.$axios.get('http://localhost:3001/custom-event-content', { params: { name: (e.name || '').trim() } })
       return '<b>' + e.name + '</b>' + '<br>' + data
     },
     setSelectedEvent (e) {
       this.selectedEvent = { event: e }
-      this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
+      this.$axios.get('http://localhost:3001/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
         if (d.data && d.data.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
       })
     },
