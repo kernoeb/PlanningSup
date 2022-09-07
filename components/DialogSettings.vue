@@ -174,6 +174,26 @@
               class="ban-word"
               @change="updateBlocklist"
             >
+              <template #selection="{ attrs, item, parent, selected }">
+                <v-chip
+                  v-bind="attrs"
+                  :input-value="selected"
+                  label
+                  small
+                >
+                  <span class="pr-2">
+                    {{ item }}
+                  </span>
+                  <v-btn icon x-small @click="parent.selectItem(item)">
+                    <v-icon
+                      small
+                      color="red"
+                    >
+                      {{ mdiClose }}
+                    </v-icon>
+                  </v-btn>
+                </v-chip>
+              </template>
               <template #item="{ item, on, attrs }">
                 <v-list-item v-bind="attrs" v-on="on">
                   <v-list-item-action>
