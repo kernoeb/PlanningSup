@@ -6112,44 +6112,9 @@
             "title": "Projets",
             "edts": [
               {
-                "id": "bio4t",
-                "title": "BIO4T",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10463&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "coolin",
-                "title": "CoolIn",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14856&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "rrros",
-                "title": "RrrOS",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10464&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "se4ln",
-                "title": "SE4LN",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10262&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
                 "id": "projet",
                 "title": "Projet",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13904&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "fdm-viz",
-                "title": "FDM-Viz",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13898&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "hanot",
-                "title": "Hanot",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13902&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "visit",
-                "title": "Visit",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12153&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
