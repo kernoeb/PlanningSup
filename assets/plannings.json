@@ -1471,32 +1471,32 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=85,4770&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=85&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=334,4838&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=334&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp3",
                 "title": "TP3",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3733,5256&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3733&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp4",
                 "title": "TP4",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3851,4473&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3851&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp5",
                 "title": "TP5",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7198,7204&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7198&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp6",
                 "title": "TP6",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7200,7203&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7200&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1507,32 +1507,32 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2860,4866&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2860&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4517,4848&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4517&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp3",
                 "title": "TP3",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4938,4820&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4938&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp4",
                 "title": "TP4",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4948,4821&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4948&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp5",
                 "title": "TP5",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6024,6102&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6024&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp6",
                 "title": "TP6",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6052,6125&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6052&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1553,11 +1553,21 @@
               {
                 "id": "tp3",
                 "title": "TP3",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4983&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2422&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp4",
                 "title": "TP4",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2424&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "tp5",
+                "title": "TP5",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4983&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "tp6",
+                "title": "TP6",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4989&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
@@ -1575,12 +1585,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1026,5132&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=701,5145&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=701&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1591,12 +1601,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=154,645&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1771&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4176,6371&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1773&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1629,12 +1639,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4426,5258&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4426&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4527,5264&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4527&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1645,12 +1655,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2187,154&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=154&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2239,4176&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4176&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
@@ -1667,12 +1677,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=819,283&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5819&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=141,720&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=141&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1683,12 +1693,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1120,1938&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1120&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1578,1203&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1578&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1708,7 +1718,7 @@
               },
               {
                 "id": "tp2",
-                "title": "TP2",
+                "title": "TP2 (Parcours GI)",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1047&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
@@ -1726,12 +1736,28 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4620,5027&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4579,5105&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4579&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "2emeannee",
+            "title": "2ème année",
+            "edts": [
+              {
+                "id": "tp1",
+                "title": "TP1",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "tp2",
+                "title": "TP2",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2570&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
@@ -1748,12 +1774,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2060,2863&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2060&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2026,4300&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1764,12 +1790,12 @@
               {
                 "id": "tp1",
                 "title": "TP1",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1139,2866&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1139&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp2",
                 "title": "TP2",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2043,2046&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2043&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1786,6 +1812,11 @@
                 "id": "i-mars",
                 "title": "I-MARS",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6280&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "mmgm",
+                "title": "MMGM",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2459&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "tp1",
