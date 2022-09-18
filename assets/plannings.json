@@ -1105,42 +1105,42 @@
             "edts": [
               {
                 "id": "g1a",
-                "title": "G1-A",
+                "title": "CG2P-A (G1-A)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8232&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g1b",
-                "title": "G1-B",
+                "title": "CG2P-B (G1-B)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8231&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g2a",
-                "title": "G2-A",
+                "title": "GC2F-A (G2-A)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8229&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g2b",
-                "title": "G2-B",
+                "title": "GC2F-B (G2-B)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8228&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g3a",
-                "title": "G3-A",
+                "title": "GEMA-Log-A (G3-A)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8220&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g3b",
-                "title": "G3-B",
+                "title": "GEMA-B (G3-B)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8219&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g4a",
-                "title": "G4-A",
+                "title": "GEMA-MD-A (G4-A)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8215&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "g4b",
-                "title": "G4-B",
+                "title": "GEMA-MD-B (G4-B)",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8233&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
@@ -1153,7 +1153,7 @@
         "edts": [
           {
             "id": "but1",
-            "title": "BUT1 TD1/TD2",
+            "title": "BUT1 FI",
             "edts": [
               {
                 "id": "tpa",
@@ -1178,54 +1178,34 @@
             ]
           },
           {
-            "id": "fa",
-            "title": "FA",
+            "id": "but2fa",
+            "title": "BUT2 FA",
             "edts": [
               {
-                "id": "gimfa1_gra",
-                "title": "GIMFA1 GrA",
+                "id": "tpa",
+                "title": "BUT2 FA TPA",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8189&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "gimfa1_grb ",
-                "title": "GIMFA1 GrB",
+                "id": "tpb",
+                "title": "BUT2 FA TPB",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4015&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "gimfa2_gra",
-                "title": "GIMFA2 GrA",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8186&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "gimfa2_grb",
-                "title": "GIMFA2 GrB",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18900&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
           {
-            "id": "gim2",
-            "title": "GIM - Année2 S3/S4",
+            "id": "but2fi",
+            "title": "BUT2 FI",
             "edts": [
               {
-                "id": "gim2ga",
-                "title": "GIM2GA",
+                "id": "tpa",
+                "title": "BUT2 FI TPA",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8249&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "gim2gb",
-                "title": "GIM2GB",
+                "id": "tpb",
+                "title": "BUT2 FI TPB",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1755&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "gim2gc",
-                "title": "GIM2GC",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3664&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "gim2gd",
-                "title": "GIM2GD",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11453&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
@@ -1322,7 +1302,7 @@
               {
                 "id": "ogehrlp",
                 "title": "OGEHR",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1262&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9216&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1365,12 +1345,12 @@
               {
                 "id": "fa1g21",
                 "title": "FA1G21",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8252&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20933&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "fa1g22",
                 "title": "FA1G22",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8251&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20932&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -1449,6 +1429,17 @@
                 "id": "fi2g22",
                 "title": "FI2G22",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11844&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "tssr",
+            "title": "TSSR",
+            "edts": [
+              {
+                "id": "tssr2122",
+                "title": "TSSR 21-22",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22598&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
