@@ -3505,6 +3505,77 @@
             ]
           }
         ]
+      },
+      {
+        "id": "lp",
+        "title": "Licences Pro",
+        "edts": [
+          {
+            "id": "lp-cao",
+            "title": "LP CAO",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "edts": [
+                  {
+                    "id": "lpcao",
+                    "title": "LP CAO",
+                    "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12756&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "lpcao-gr1",
+                    "title": "LP CAO TP GR1",
+                    "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3008&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "lpcao-gr2",
+                    "title": "LP CAO TP GR1",
+                    "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3035&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "lp-cdcpe",
+            "title": "LP CDCPE",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8054&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8373&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "lp-melog",
+            "title": "LP MELOG",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8106&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "lp-mige",
+            "title": "LP MIGE",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8053&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          }          
+        ]
       }
     ]
   },
