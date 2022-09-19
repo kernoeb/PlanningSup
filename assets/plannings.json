@@ -3388,6 +3388,125 @@
         ]
       }
     ]
+  },{
+    "id": "fsa-bethune",
+    "title": "FSA Béthune",
+    "edts": [
+      {
+        "id": "licences",
+        "title": "Licences",
+        "edts": [
+          {
+            "id": "l1-spi",
+            "title": "L1 SPI",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7239&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l2-spi",
+            "title": "L2 SPI",
+            "edts": [
+              {
+                "id": "s3",
+                "title": "Semestre 3",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7251&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-2mls",
+            "title": "L3 SPI 2MLS",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=164&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8075&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-log",
+            "title": "L3 SPI Log",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12799&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12800&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-cg",
+            "title": "L3 SPI CG",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3019&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3020&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-ge",
+            "title": "L3 SPI GE",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12775&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12776&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-geme",
+            "title": "L3 SPI GEME",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7236&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "l3-spi-gm2d",
+            "title": "L3 SPI GM2D",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12766&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "mis-vannes",
