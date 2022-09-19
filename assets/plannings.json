@@ -3668,6 +3668,83 @@
             ]
           }         
         ]
+      },
+      {
+        "id": "m2",
+        "title": "Masters 2",
+        "edts": [
+          {
+            "id": "m2-bdee",
+            "title": "M2 BDEE",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7252&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s2",
+                "title": "Semestre 2",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7253&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "m2-bivrd",
+            "title": "M2 BIVRD",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4623&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "m2-cmi",
+            "title": "M2 CMI",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7254&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "m2-eei",
+            "title": "M2 EEI",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13090&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "m2-icl",
+            "title": "M2 ICL",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3021&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "m2-ise",
+            "title": "M2 ISE",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "Semestre 1",
+                "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7233&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
