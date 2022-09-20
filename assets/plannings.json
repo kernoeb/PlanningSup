@@ -3388,7 +3388,8 @@
         ]
       }
     ]
-  },{
+  },
+  {
     "id": "fsa-bethune",
     "title": "FSA Béthune",
     "edts": [
@@ -3574,7 +3575,7 @@
                 "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8053&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
-          }          
+          }
         ]
       },
       {
@@ -3666,7 +3667,7 @@
                 ]
               }
             ]
-          }         
+          }
         ]
       },
       {
