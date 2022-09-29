@@ -22,11 +22,11 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
  * @returns {string}
  */
 const getColor = (value, location, customColor) => {
-  if (value.includes('CM') || value.includes('Amphi') || location.includes('Amphi')) {
+  if (value.includes('CM') || value.includes('Amphi') || location.toUpperCase().includes('AMPHI')) {
     return customColor?.amphi || '#efd6d8'
-  } else if (value.includes('TP') || value.includes('TDi')) {
+  } else if (value.includes('TP') || value.includes('TDi') || value.match(/G\d\.\d/)) {
     return customColor?.tp || '#bbe0ff'
-  } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
+  } else if ((value.includes('TD') || location.includes('V-B') || value.match(/G\d/)) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
     return customColor?.td || '#d4fbcc'
   } else {
     return customColor?.other || '#EDDD6E'
@@ -54,6 +54,7 @@ const cleanDescription = d => d && d
  */
 const cleanLocation = l => l && l
   .trim().replace('salle joker à distance', 'À distance')
+  .replace(/(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/, 'À distance')
   .split(',').map(v => v.replace(/^V-/, '')).join(', ')
 
 /**
