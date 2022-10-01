@@ -141,9 +141,8 @@
                       {{ item.title }}
                     </div>
                   </div>
-                  <v-hover v-slot="{ hover }">
+                  <v-hover v-if="!item.edts" v-slot="{ hover }">
                     <v-btn
-                      v-if="!item.edts"
                       icon
                       style="margin-top: 2px;"
                       @click="setFavorite(item.fullId)"
@@ -344,11 +343,27 @@ export default {
 
 <style>
 .v-treeview-node__level {
-  width: 8px !important;
+  width: 17px !important;
 }
 .accent--text svg {
   color:#2196F3 !important;
 }
+.treeview_plannings.theme--light .v-treeview-node__root .v-treeview-node__level::before {
+  border: 0.5px dashed rgba(211, 196, 196, 0.7) !important;
+}
+
+.treeview_plannings .v-treeview-node__root .v-treeview-node__level::before {
+  border: 0.5px dashed rgba(211, 196, 196, 0.3) !important;
+}
+
+.treeview_plannings .v-treeview-node__root .v-treeview-node__level::before {
+  height: 38px !important;
+  content: '' !important;
+  margin-left: 10px !important;
+  display: flex !important;
+  width: 0!important;
+}
+
 .treeview_plannings .v-input__slot {
   margin-bottom: 0!important;
   min-height: 40px;
