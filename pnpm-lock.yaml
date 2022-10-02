@@ -29,7 +29,7 @@ specifiers:
   connect-mongodb-session: ^3.1.1
   cookie-parser: ^1.4.6
   cookie-universal-nuxt: ^2.2.2
-  core-js: ^3.25.3
+  core-js: ^3.25.4
   cors: ^2.8.5
   css-byebye: ^3.1.1
   dayjs: ^1.11.5
@@ -79,7 +79,7 @@ dependencies:
   connect-mongodb-session: 3.1.1
   cookie-parser: 1.4.6
   cookie-universal-nuxt: 2.2.2
-  core-js: 3.25.3
+  core-js: 3.25.4
   cors: 2.8.5
   dayjs: 1.11.5
   express: 4.18.1
@@ -4411,8 +4411,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /core-js/3.25.3:
-    resolution: {integrity: sha512-y1hvKXmPHvm5B7w4ln1S4uc9eV/O5+iFExSRUimnvIph11uaizFR8LFMdONN8hG3P2pipUfX4Y/fR8rAEtcHcQ==}
+  /core-js/3.25.4:
+    resolution: {integrity: sha512-JDLxg61lFPFYQ7U0HKoyKwVUV63VbbVTb/K73Yf+k4Mf4ZBZxCjfyrWZjTk1ZM7ZrgFSqhSIOmuzYAxG2f/reQ==}
     requiresBuild: true
     dev: false
 
