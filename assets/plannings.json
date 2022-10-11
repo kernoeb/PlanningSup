@@ -4777,6 +4777,49 @@
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
+          },
+          {
+            "id": "l2pei",
+            "title": "L2 PEI",
+            "edts": [
+              {
+                "id": "cc13temps",
+                "title": "CC 1/3 temps",
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6819&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "l2peisemestre3",
+                "title": "Semestre 3",
+                "edts": [
+                  {
+                    "id": "g1",
+                    "title": "Groupe 1",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1745&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g2",
+                    "title": "Groupe 2",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1980&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "l2peisemestre4",
+                "title": "Semestre 4",
+                "edts": [
+                  {
+                    "id": "g1",
+                    "title": "Groupe 1",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6701&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g2",
+                    "title": "Groupe 2",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6700&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
