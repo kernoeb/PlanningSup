@@ -4789,32 +4789,32 @@
               },
               {
                 "id": "l2peisemestre3",
-                "title": "L2 PEI semestre 3",
+                "title": "Semestre 3",
                 "edts": [
                   {
                     "id": "pei_271mth1309-ele1304-gif1301-sdi1304-mec1304-uepeis3",
-                    "title": "PEI L2 Groupe 1",
+                    "title": "Groupe 1",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1745&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "pei_272mth1309-ele1304-gif1301-sdi1304-mec1304-uepeis3",
-                    "title": "PEI L2 Groupe 2",
+                    "title": "Groupe 2",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1980&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
               {
                 "id": "l2peisemestre4",
-                "title": "L2 PEI semestre 4",
+                "title": "Semestre 4",
                 "edts": [
                   {
                     "id": "a_61-peil2mth1412-ene1403-mec1404-prj1401-inf1404-ele1402",
-                    "title": "PEI L2 Groupe 1",
+                    "title": "Groupe 1",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6701&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "a_62-peil2mth1412-ene1403-mec1404-prj1401-inf1404-ele1402",
-                    "title": "PEI L2 Groupe 2",
+                    "title": "Groupe 2",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6700&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
