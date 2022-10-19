@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': ^7.19.3
   '@babel/eslint-parser': ^7.19.1
-  '@dansmaculotte/nuxt-security': ^0.0.5
+  '@dansmaculotte/nuxt-security': ^0.0.6
   '@fullhuman/postcss-purgecss': ^3.1.3
   '@ladjs/graceful': ^1.1.5
   '@mdi/js': ^6.9.96
@@ -57,11 +57,11 @@ specifiers:
   v-tooltip: ^2.1.3
   vue-plausible: ^1.3.2
   vue-swatches: ^2.1.1
-  vuetify: ^2.6.11
+  vuetify: ^2.6.12
   xml2js: ^0.4.23
 
 dependencies:
-  '@dansmaculotte/nuxt-security': 0.0.5
+  '@dansmaculotte/nuxt-security': 0.0.6
   '@ladjs/graceful': 1.1.5
   '@mdi/js': 6.9.96
   '@nuxtjs/axios': 5.13.6
@@ -99,7 +99,7 @@ dependencies:
   v-tooltip: 2.1.3
   vue-plausible: 1.3.2
   vue-swatches: 2.1.1
-  vuetify: 2.6.11
+  vuetify: 2.6.12
   xml2js: 0.4.23
 
 devDependencies:
@@ -111,7 +111,7 @@ devDependencies:
   '@nuxtjs/eslint-config': 8.0.0_eslint@8.25.0
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.25.0
   ajv: 8.11.0
-  ajv-formats: 2.1.1
+  ajv-formats: 2.1.1_ajv@8.11.0
   chai: 4.3.6
   css-byebye: 3.1.1
   encoding: 0.1.13
@@ -1362,8 +1362,8 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /@dansmaculotte/nuxt-security/0.0.5:
-    resolution: {integrity: sha512-OZqLGjNwQYLPE1PTXBdJGO9mI5nTMNz0SWhwkj+3gurIq+VKtJSm87jrxKgODQHura2UMG/OrvTo57ReVsjxNA==}
+  /@dansmaculotte/nuxt-security/0.0.6:
+    resolution: {integrity: sha512-PPCft0iBOGpd8FGHY5kv/0wwXRLk0iXwpB110rNYGc0TWYbjXMdp4zDY3LTGYkav8Dvy+zOYhjKMqNnlgSzQyQ==}
     dependencies:
       consola: 2.15.3
       feature-policy: 0.6.0
@@ -1892,7 +1892,7 @@ packages:
       vue-client-only: 2.1.0
       vue-meta: 2.4.0
       vue-no-ssr: 1.1.1
-      vue-router: 3.6.5
+      vue-router: 3.6.5_vue@2.7.10
       vue-template-compiler: 2.7.10
       vuex: 3.6.2_vue@2.7.10
     transitivePeerDependencies:
@@ -2129,8 +2129,8 @@ packages:
       deepmerge: 4.2.2
       sass: 1.32.13
       sass-loader: 10.3.1_sass@1.32.13
-      vuetify: 2.6.11
-      vuetify-loader: 1.9.2_vuetify@2.6.11
+      vuetify: 2.6.12
+      vuetify-loader: 1.9.2_vuetify@2.6.12
     transitivePeerDependencies:
       - fibers
       - gm
@@ -2970,8 +2970,10 @@ packages:
       ajv: 6.12.6
     dev: false
 
-  /ajv-formats/2.1.1:
+  /ajv-formats/2.1.1_ajv@8.11.0:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -8507,7 +8509,7 @@ packages:
       vue-client-only: 2.1.0
       vue-meta: 2.4.0
       vue-no-ssr: 1.1.1
-      vue-router: 3.6.5
+      vue-router: 3.6.5_vue@2.7.10
       vuex: 3.6.2_vue@2.7.10
     transitivePeerDependencies:
       - encoding
@@ -11927,8 +11929,12 @@ packages:
       '@babel/runtime': 7.19.0
     dev: false
 
-  /vue-router/3.6.5:
+  /vue-router/3.6.5_vue@2.7.10:
     resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    peerDependencies:
+      vue: ^2
+    dependencies:
+      vue: 2.7.10
     dev: false
 
   /vue-server-renderer/2.7.10:
@@ -11973,7 +11979,7 @@ packages:
       csstype: 3.1.1
     dev: false
 
-  /vuetify-loader/1.9.2_vuetify@2.6.11:
+  /vuetify-loader/1.9.2_vuetify@2.6.12:
     resolution: {integrity: sha512-8PP2w7aAs/rjA+Izec6qY7sHVb75MNrGQrDOTZJ5IEnvl+NiFhVpU2iWdRDZ3eMS842cWxSWStvkr+KJJKy+Iw==}
     peerDependencies:
       gm: ^1.23.0
@@ -11995,11 +12001,11 @@ packages:
       decache: 4.6.1
       file-loader: 6.2.0
       loader-utils: 2.0.2
-      vuetify: 2.6.11
+      vuetify: 2.6.12
     dev: false
 
-  /vuetify/2.6.11:
-    resolution: {integrity: sha512-SX6BzS068t/RMj0d/sxxS/LsKdk9FpkL7CWShLyOMmJa/hiG63L0bvcopEaWYdRzzuQt7Nx174sk+KB6SvmYBw==}
+  /vuetify/2.6.12:
+    resolution: {integrity: sha512-qe3hcMpWmT1O15tp+p65lOS7UKZ/hQYQktCsw9iXx2u3RwVbX6GR82gY2iROrKsiAzYDvMgrYxWQwY/pUfkekw==}
     peerDependencies:
       vue: ^2.6.4
     dev: false
