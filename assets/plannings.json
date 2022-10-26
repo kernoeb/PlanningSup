@@ -4644,6 +4644,47 @@
                 ]
               }
             ]
+          },
+          {
+            "id":"l1pei",
+            "title":"L1 PEI",
+            "edts":
+            [
+              {
+                "id":"l1peisemestre1",
+                "title":"Semestre 1",
+                "edts":
+                [
+                  {
+                    "id":"g1",
+                    "title":"Groupe 1",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id":"g2",
+                    "title":"Groupe 2",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id":"l1peisemestre2",
+                "title":"Semestre 2",
+                "edts":
+                [
+                  {
+                    "id":"g1",
+                    "title":"Groupe 1",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id":"g2",
+                    "title":"Groupe 2",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
