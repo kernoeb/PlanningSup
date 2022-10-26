@@ -4656,14 +4656,14 @@
                 "edts":
                 [
                   {
-                    "id":"pei_171mth1106-sdi1102-inf1109-mth1107-scn1101-sdi1101",
+                    "id":"g1",
                     "title":"Groupe 1",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id":"pei_172mth1106-sdi1102-inf1109-mth1107-scn1101-sdi1101",
+                    "id":"g2",
                     "title":"Groupe 2",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -4673,14 +4673,14 @@
                 "edts":
                 [
                   {
-                    "id":"pei_171mth1206-sdi1209-inf1209-mtx1201-sdi1201-uepeis2",
+                    "id":"g1",
                     "title":"Groupe 1",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id":"pei_172mth1206-sdi1209-inf1209-mtx1201-sdi1201-uepeis2",
+                    "id":"g2",
                     "title":"Groupe 2",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
