@@ -4652,34 +4652,34 @@
             [
               {
                 "id":"l1peisemestre1",
-                "title":"L1 PEI semestre 1",
+                "title":"Semestre 1",
                 "edts":
                 [
                   {
                     "id":"pei_171mth1106-sdi1102-inf1109-mth1107-scn1101-sdi1101",
-                    "title":"PEI_1 / 71   MTH1106-SDI1102-INF1109-MTH1107-SCN1101-SDI1101",
+                    "title":"Groupe 1",
                     "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id":"pei_172mth1106-sdi1102-inf1109-mth1107-scn1101-sdi1101",
-                    "title":"PEI_1 / 72   MTH1106-SDI1102-INF1109-MTH1107-SCN1101-SDI1101",
+                    "title":"Groupe 2",
                     "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
               {
                 "id":"l1peisemestre2",
-                "title":"L1 PEI semestre 2",
+                "title":"Semestre 2",
                 "edts":
                 [
                   {
                     "id":"pei_171mth1206-sdi1209-inf1209-mtx1201-sdi1201-uepeis2",
-                    "title":"PEI_1 71 / MTH1206-SDI1209-INF1209-MTX1201-SDI1201-UE PEI S2",
+                    "title":"Groupe 1",
                     "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id":"pei_172mth1206-sdi1209-inf1209-mtx1201-sdi1201-uepeis2",
-                    "title":"PEI_1 72 / MTH1206-SDI1209-INF1209-MTX1201-SDI1201-UE PEI S2",
+                    "title":"Groupe 2",
                     "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
