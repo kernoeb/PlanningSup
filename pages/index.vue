@@ -299,7 +299,8 @@ export default {
       playing: false,
       skipOk: false,
       tmpP: null,
-      nbHours: null
+      nbHours: null,
+      lastTimestamp: null
     }
   },
   fetchOnServer: false,
@@ -361,7 +362,7 @@ export default {
   computed: {
     // used in watcher
     calculateNbHoursComputed () {
-      return !!this.events?.length && this.skipOk && this.tmpP
+      return !!this.events?.length && this.skipOk && this.lastTimestamp && this.tmpP
     },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
@@ -372,8 +373,8 @@ export default {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
     },
     calculateNbHoursComputed: {
-      handler (n, o) {
-        if (n && JSON.stringify(n) !== JSON.stringify(o)) {
+      handler (n) {
+        if (n) {
           try {
             this.calculateNbHours({ start: n.start.date, end: n.end.date })
           } catch (err) {
@@ -529,7 +530,10 @@ export default {
       this.status = req.status
       this.plannings = (req.plannings || []).map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
 
-      if (window && req.timestamp) window.last_timestamp = req.timestamp
+      if (window && req.timestamp) {
+        window.last_timestamp = req.timestamp
+        this.lastTimestamp = req.timestamp
+      }
       this.start = false
     },
     goToDay (day) {
