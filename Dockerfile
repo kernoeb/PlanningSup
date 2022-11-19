@@ -4,7 +4,7 @@ LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 RUN apk add --no-cache curl bash
 
 # For ARM / Macbook M1 Pro
-# RUN apk add --no-cache python3 python3-dev py3-pip libcurl build-base curl-dev
+RUN apk add --no-cache python3 python3-dev py3-pip libcurl build-base curl-dev
 
 RUN npm install -g pnpm clean-modules@2.0.6
 
