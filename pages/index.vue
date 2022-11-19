@@ -530,8 +530,8 @@ export default {
       this.status = req.status
       this.plannings = (req.plannings || []).map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
 
-      if (window && req.timestamp) {
-        window.last_timestamp = req.timestamp
+      if (req.timestamp) {
+        if (window) window.last_timestamp = req.timestamp
         this.lastTimestamp = req.timestamp
       }
       this.start = false
