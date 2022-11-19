@@ -277,7 +277,7 @@ export default {
       mdiCheckboxMarked,
       mdiClose,
 
-      blocklist: ['Maths', 'Communication'], // Oui, bon...
+      blocklist: ['Maths', 'Communication', 'Férié'], // Oui, bon...
       blocklistSelect: [],
 
       colorTP: '#bbe0ff',

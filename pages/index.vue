@@ -4,7 +4,7 @@
       <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
         <transition name="fade" mode="out-in">
           <div v-if="$refs.calendar" key="date" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
-            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
+            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}<span v-if="nbHours" class="text--secondary text-lowercase" style="font-size: 12px;">&nbsp;{{ nbHours }}</span>
           </div>
           <div v-else key="nodate" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
             ...
@@ -36,7 +36,6 @@
           </div>
         </v-tooltip>
       </div>
-      <lazy-dialog-crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
     <transition name="fade" mode="out-in">
       <error-alert v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
@@ -181,6 +180,7 @@
           show-week
           @click:date="goToDay"
           @click:event="showEvent"
+          @change="calendarChange"
         >
           <template #day-body="{ date, week }">
             <div
@@ -220,6 +220,22 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import humanizeDuration from 'humanize-duration'
+const shortFrenchHumanizer = humanizeDuration.humanizer({
+  language: 'shortFr',
+  languages: {
+    shortFr: {
+      y: () => 'a',
+      mo: () => 'mo',
+      w: () => 's',
+      d: () => 'j',
+      h: () => 'h',
+      m: () => 'm',
+      s: () => 's',
+      ms: () => 'ms'
+    }
+  }
+})
 
 export default {
   middleware: 'vuetify-theme',
@@ -280,7 +296,10 @@ export default {
       dateNow: '',
       width: 0,
       doublePress: false,
-      playing: false
+      playing: false,
+      skipOk: false,
+      tmpP: null,
+      nbHours: null
     }
   },
   fetchOnServer: false,
@@ -321,10 +340,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
-      this.setEvents(events)
-      this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
-      this.errorMessage = null
+      await this.getEvents()
     } catch (e) {
       if (e?.response?.status === 404 && e?.response?.data?.includes('planning')) {
         this.errorMessage = 'unknown'
@@ -333,10 +349,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
-        this.setEvents(events)
-        this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
-        this.errorMessage = null
+        await this.getEvents()
       } catch (err) {
         console.log(err)
         this.loading = false
@@ -346,6 +359,10 @@ export default {
     this.loading = false
   },
   computed: {
+    // used in watcher
+    calculateNbHoursComputed () {
+      return !!this.events?.length && this.skipOk && this.tmpP
+    },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
     }
@@ -353,6 +370,19 @@ export default {
   watch: {
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
+    },
+    calculateNbHoursComputed: {
+      handler (n, o) {
+        if (n && JSON.stringify(n) !== JSON.stringify(o)) {
+          try {
+            this.calculateNbHours({ start: n.start.date, end: n.end.date })
+          } catch (err) {
+            this.nbHours = null
+            console.log(err)
+          }
+        }
+      },
+      immediate: true
     }
   },
   beforeDestroy () {
@@ -420,6 +450,45 @@ export default {
     }, 120000)
   },
   methods: {
+    async getEvents () {
+      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+      this.setEvents(events)
+      this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+      this.errorMessage = null
+    },
+    calendarChange (p) {
+      this.tmpP = p
+    },
+    calculateNbHours ({ start, end }) {
+      if (!this.events || !this.events.length) {
+        this.nbHours = null
+        return
+      }
+
+      const startMoment = new Date(start).setHours(0, 0, 0, 0)
+      const endMoment = new Date(end).setHours(23, 59, 59, 999)
+
+      const eventsSorted = this.events
+        .filter(ev => new Date(ev.start) >= startMoment && new Date(ev.end) <= endMoment)
+        .sort((a, b) => new Date(a.start) - new Date(b.start))
+
+      if (!eventsSorted.length) {
+        this.nbHours = null
+        return
+      }
+
+      const firstEventTime = eventsSorted[0].start
+      const lastEventTime = eventsSorted[eventsSorted.length - 1].end
+
+      // iterate over the minutes of the day and check if there is an event
+      let nbMinutes = 0
+      for (let i = firstEventTime; i < lastEventTime; i += 60000) {
+        if (eventsSorted.some(ev => i >= ev.start && i < ev.end)) nbMinutes++ // add 1 minute if there is an event
+      }
+
+      // calculate the number of hours
+      this.nbHours = shortFrenchHumanizer(nbMinutes * 60000, { round: true, units: ['h', 'm'], spacer: '', delimiter: '' })
+    },
     showCurrentTime (date) {
       try {
         if (!this.$refs.calendar) {
@@ -436,7 +505,7 @@ export default {
     uniqWith (arr, fn) {
       return arr.filter((element, index) => arr.findIndex(step => fn(element, step)) === index)
     },
-    mergeDuplicates () {
+    isMergeDuplicates () {
       try {
         return this.$cookies.get('mergeDuplicates', { parseJSON: false }) !== 'false'
       } catch (err) {
@@ -454,7 +523,7 @@ export default {
       req = req || {}
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
-      if ((req.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
+      if ((req.plannings || []).length > 1 && this.isMergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status
@@ -489,6 +558,9 @@ export default {
         }
       } catch (err) {
       }
+      this.$nextTick(() => {
+        this.skipOk = true
+      })
     },
     async getCustomEventContent (e) {
       const { data } = await this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } })
@@ -497,7 +569,7 @@ export default {
     setSelectedEvent (e) {
       this.selectedEvent = { event: e }
       this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
-        if (d.data && d.data.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
+        if (d.data?.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
       })
     },
     showEvent ({ nativeEvent, event }) {
@@ -509,13 +581,7 @@ export default {
       this.value = ''
     },
     keyboard (event) {
-      if (this.dialogSettings || this.dialogEdt) {
-        return
-      }
-
-      if (event.defaultPrevented) {
-        return
-      }
+      if (this.dialogSettings || this.dialogEdt || event?.defaultPrevented) return
 
       const key = event.key || event.keyCode
 
@@ -542,31 +608,31 @@ export default {
           const audio = new Audio('/sound/security.mp3')
           this.playing = true
           const su = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna give you up'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 0)
           const sd = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna let you down'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 2260)
           const sa = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna run around'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 4440)
-          this.events.forEach((v, i) => {
+          this.events.forEach((v) => {
             v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
           })
           const s = setInterval(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
             })
           }, 500)
