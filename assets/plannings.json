@@ -4646,41 +4646,38 @@
             ]
           },
           {
-            "id":"l1pei",
-            "title":"L1 PEI",
-            "edts":
-            [
+            "id": "l1pei",
+            "title": "L1 PEI",
+            "edts": [
               {
-                "id":"l1peisemestre1",
-                "title":"Semestre 1",
-                "edts":
-                [
+                "id": "l1peisemestre1",
+                "title": "Semestre 1",
+                "edts": [
                   {
-                    "id":"g1",
-                    "title":"Groupe 1",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "id": "g1",
+                    "title": "Groupe 1",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id":"g2",
-                    "title":"Groupe 2",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "id": "g2",
+                    "title": "Groupe 2",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
               {
-                "id":"l1peisemestre2",
-                "title":"Semestre 2",
-                "edts":
-                [
+                "id": "l1peisemestre2",
+                "title": "Semestre 2",
+                "edts": [
                   {
-                    "id":"g1",
-                    "title":"Groupe 1",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "id": "g1",
+                    "title": "Groupe 1",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id":"g2",
-                    "title":"Groupe 2",
-                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "id": "g2",
+                    "title": "Groupe 2",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
@@ -10230,594 +10227,732 @@
       }
     ]
   },
-  
-	{
-		"id": "iaedenantes",
-		"title": "IAE de Nantes",
-		"edts": [{
-			"id": "master",
-			"title": "918-MASTER 2 Management de l'Innovation",
-			"edts": [{
-				"id": "g90461",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90461.ics",
-				"title": "918-MASTER 2 Management de l'Innovation"
-			}, {
-				"id": "g90427",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90427.ics",
-				"title": "MASTER 1  CCA"
-			}, {
-				"id": "g404202",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g404202.ics",
-				"title": "MASTER 1 - Management de l'Innovation"
-			}, {
-				"id": "g353663",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g353663.ics",
-				"title": "MASTER 1 APEME"
-			}, {
-				"id": "g353662",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g353662.ics",
-				"title": "MASTER 1 CAEGR"
-			}, {
-				"id": "g90428",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90428.ics",
-				"title": "MASTER 1 CCA + CGAO"
-			}, {
-				"id": "g1104255",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104255.ics",
-				"title": "MASTER 1 CCPRO - Cap Compétences"
-			}, {
-				"id": "g90430",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90430.ics",
-				"title": "MASTER 1 CCPRO - ESB"
-			}, {
-				"id": "g90429",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90429.ics",
-				"title": "MASTER 1 CGAO"
-			}, {
-				"id": "g90431",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90431.ics",
-				"title": "MASTER 1 CIP"
-			}, {
-				"id": "g353665",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g353665.ics",
-				"title": "MASTER 1 ECAP"
-			}, {
-				"id": "g181826",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g181826.ics",
-				"title": "MASTER 1 FLM-ST"
-			}, {
-				"id": "g90435",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90435.ics",
-				"title": "MASTER 1 GesCo - Gr 1 - parc. Etu. Act. Mark."
-			}, {
-				"id": "g90437",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90437.ics",
-				"title": "MASTER 1 GesCo - Gr 2 - parc. Manag. Ress. Huma."
-			}, {
-				"id": "g96629",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g96629.ics",
-				"title": "MASTER 1 GesCo - Gr3 - parc. Manag. Syst. d'Info."
-			}, {
-				"id": "g90438",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90438.ics",
-				"title": "MASTER 1 GesCo (Groupes EAM-MRH-MSI)"
-			}, {
-				"id": "g90424",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90424.ics",
-				"title": "MASTER 1 GOPAS"
-			}, {
-				"id": "g90434",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90434.ics",
-				"title": "MASTER 1 MANAGEMENT DC FI TEMPS PLEIN"
-			}, {
-				"id": "g90439",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90439.ics",
-				"title": "Master 1 MDC ASIE"
-			}, {
-				"id": "g1002452",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1002452.ics",
-				"title": "MASTER 1 MDC FI Option Chinois"
-			}, {
-				"id": "g90444",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90444.ics",
-				"title": "MASTER 2 APE Spé. GOPAS"
-			}, {
-				"id": "g353664",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g353664.ics",
-				"title": "MASTER 2 APEME"
-			}, {
-				"id": "g359433",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g359433.ics",
-				"title": "MASTER 2 CAEGR"
-			}, {
-				"id": "g90445",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90445.ics",
-				"title": "MASTER 2 CCA"
-			}, {
-				"id": "g496055",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g496055.ics",
-				"title": "MASTER 2 CCA + CGAO"
-			}, {
-				"id": "g1127962",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1127962.ics",
-				"title": "MASTER 2 CCPRO - Cap Compétences"
-			}, {
-				"id": "g90448",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90448.ics",
-				"title": "MASTER 2 CCPRO - ESB"
-			}, {
-				"id": "g90446",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90446.ics",
-				"title": "MASTER 2 CGAO"
-			}, {
-				"id": "g359432",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g359432.ics",
-				"title": "MASTER 2 CIP"
-			}, {
-				"id": "g187553",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g187553.ics",
-				"title": "MASTER 2 EAM ALTERNANCE"
-			}, {
-				"id": "g187552",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g187552.ics",
-				"title": "MASTER 2 EAM FI"
-			}, {
-				"id": "g353666",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g353666.ics",
-				"title": "MASTER 2 ECAP"
-			}, {
-				"id": "g90454",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90454.ics",
-				"title": "MASTER 2 ETUDES ET ACTIONS MARKETING"
-			}, {
-				"id": "g90423",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90423.ics",
-				"title": "Master 2 MAE MDC Chine Asie"
-			}, {
-				"id": "g90456",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90456.ics",
-				"title": "MASTER 2 Management -Métiers du conseil et de la recherche"
-			}, {
-				"id": "g90447",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90447.ics",
-				"title": "MASTER 2 Managt des Ressources Humaines"
-			}, {
-				"id": "g90453",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90453.ics",
-				"title": "MASTER 2 Managt des Systemes d Information"
-			}, {
-				"id": "g90455",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90455.ics",
-				"title": "MASTER 2 Marketing Produits et Services Santé"
-			}, {
-				"id": "g181827",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g181827.ics",
-				"title": "MASTER 2 SHIPPING"
-			}, {
-				"id": "g181828",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g181828.ics",
-				"title": "MASTER 3 FLM-ST"
-			}]
-		}, {
-			"id": "association",
-			"title": "Association ALTEO",
-			"edts": []
-		}, {
-			"id": "diu",
-			"title": "DIU Innovation & Transformation Numérique",
-			"edts": [{
-				"id": "g837691",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g837691.ics",
-				"title": "DIU Innovation & Transformation Numérique"
-			}]
-		}, {
-			"id": "du",
-			"title": "DU CGP - INTER 1",
-			"edts": [{
-				"id": "g331994",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g331994.ics",
-				"title": "DU CGP - INTER 1"
-			}, {
-				"id": "g90362",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90362.ics",
-				"title": "DU GPDE 1"
-			}]
-		}, {
-			"id": "edt",
-			"title": "EDT FILIERES 40-45-50 (gérés par MS)",
-			"edts": [{
-				"id": "g210538",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g210538.ics",
-				"title": "EDT FILIERES 40-45-50 (gérés par MS)"
-			}]
-		}, {
-			"id": "ensemble",
-			"title": "ENSEMBLE ETUDIANTS INSTITUT",
-			"edts": [{
-				"id": "g130501",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g130501.ics",
-				"title": "ENSEMBLE ETUDIANTS INSTITUT"
-			}]
-		}, {
-			"id": "evnementiel",
-			"title": "Evénementiel",
-			"edts": [{
-				"id": "g419849",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g419849.ics",
-				"title": "Evénementiel"
-			}]
-		}, {
-			"id": "l",
-			"title": "L1 EG",
-			"edts": [{
-				"id": "g90364",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90364.ics",
-				"title": "L1 EG"
-			}, {
-				"id": "g90365",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90365.ics",
-				"title": "L1 EG Gpe 1"
-			}, {
-				"id": "g90366",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90366.ics",
-				"title": "L1 EG Gpe 10"
-			}, {
-				"id": "g100530",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g100530.ics",
-				"title": "L1 EG Gpe 11"
-			}, {
-				"id": "g566782",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g566782.ics",
-				"title": "L1 EG Gpe 12"
-			}, {
-				"id": "g90367",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90367.ics",
-				"title": "L1 EG Gpe 2"
-			}, {
-				"id": "g90368",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90368.ics",
-				"title": "L1 EG Gpe 3"
-			}, {
-				"id": "g90369",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90369.ics",
-				"title": "L1 EG Gpe 4"
-			}, {
-				"id": "g90370",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90370.ics",
-				"title": "L1 EG Gpe 5"
-			}, {
-				"id": "g90371",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90371.ics",
-				"title": "L1 EG Gpe 6"
-			}, {
-				"id": "g90372",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90372.ics",
-				"title": "L1 EG Gpe 7"
-			}, {
-				"id": "g90373",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90373.ics",
-				"title": "L1 EG Gpe 8"
-			}, {
-				"id": "g90374",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90374.ics",
-				"title": "L1 EG Gpe 9"
-			}, {
-				"id": "g1104249",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104249.ics",
-				"title": "L1 EG Gpe Omega"
-			}, {
-				"id": "g1104248",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104248.ics",
-				"title": "L1 EG Grpe Alpha"
-			}, {
-				"id": "g1079742",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1079742.ics",
-				"title": "L1 EG LAS"
-			}, {
-				"id": "g90377",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90377.ics",
-				"title": "L1 EG MATHS-ECO"
-			}, {
-				"id": "g926603",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g926603.ics",
-				"title": "L1 EG PAIAE2-1"
-			}, {
-				"id": "g1378906",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1378906.ics",
-				"title": "L1 EG PAIAE2-1-10"
-			}, {
-				"id": "g1104448",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104448.ics",
-				"title": "L1 EG PAIAE2-1-9"
-			}, {
-				"id": "g1079530",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1079530.ics",
-				"title": "L1 EG PAIAE2-2"
-			}, {
-				"id": "g90363",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90363.ics",
-				"title": "L1 EG Parcours International"
-			}, {
-				"id": "g1079741",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1079741.ics",
-				"title": "L1 EG PASS"
-			}, {
-				"id": "g90379",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90379.ics",
-				"title": "L2 EG"
-			}, {
-				"id": "g90378",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90378.ics",
-				"title": "L2 EG + CC"
-			}, {
-				"id": "g90386",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90386.ics",
-				"title": "L2 EG CC"
-			}, {
-				"id": "g90380",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90380.ics",
-				"title": "L2 EG Groupe 1"
-			}, {
-				"id": "g90381",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90381.ics",
-				"title": "L2 EG Groupe 2"
-			}, {
-				"id": "g90382",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90382.ics",
-				"title": "L2 EG Groupe 3"
-			}, {
-				"id": "g90383",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90383.ics",
-				"title": "L2 EG Groupe 4"
-			}, {
-				"id": "g90384",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90384.ics",
-				"title": "L2 EG Groupe 5"
-			}, {
-				"id": "g90385",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90385.ics",
-				"title": "L2 EG Groupe 6"
-			}, {
-				"id": "g206492",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g206492.ics",
-				"title": "L2 EG Groupe 7"
-			}, {
-				"id": "g931084",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g931084.ics",
-				"title": "L2 EG Groupe 8"
-			}, {
-				"id": "g90387",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90387.ics",
-				"title": "L2 EG MATHS-ECO"
-			}, {
-				"id": "g134757",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g134757.ics",
-				"title": "L2 EG Parcours International"
-			}, {
-				"id": "g1104252",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104252.ics",
-				"title": "L3  EGO (tous les groupes)"
-			}, {
-				"id": "g90398",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90398.ics",
-				"title": "L3  EGO 5 groupes"
-			}, {
-				"id": "g90399",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90399.ics",
-				"title": "L3  EGO groupe 1"
-			}, {
-				"id": "g90400",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90400.ics",
-				"title": "L3  EGO groupe 2"
-			}, {
-				"id": "g90401",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90401.ics",
-				"title": "L3  EGO groupe 3"
-			}, {
-				"id": "g90396",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90396.ics",
-				"title": "L3  EGO+AE"
-			}, {
-				"id": "g1104251",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104251.ics",
-				"title": "L3 AE"
-			}, {
-				"id": "g1104253",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104253.ics",
-				"title": "L3 AE groupe 1"
-			}, {
-				"id": "g1104254",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104254.ics",
-				"title": "L3 AE Groupe 2"
-			}, {
-				"id": "g90389",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90389.ics",
-				"title": "L3 CC"
-			}, {
-				"id": "g1319968",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1319968.ics",
-				"title": "L3 CC + L3 PI"
-			}, {
-				"id": "g1088248",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1088248.ics",
-				"title": "L3 CC1"
-			}, {
-				"id": "g1088249",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1088249.ics",
-				"title": "L3 CC2"
-			}, {
-				"id": "g90395",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90395.ics",
-				"title": "L3 MATHS- ECO"
-			}, {
-				"id": "g90394",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90394.ics",
-				"title": "L3 SG"
-			}, {
-				"id": "g90392",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90392.ics",
-				"title": "L3 SG - Gp 1"
-			}, {
-				"id": "g90393",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90393.ics",
-				"title": "L3 SG - Gp 2"
-			}, {
-				"id": "g90391",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90391.ics",
-				"title": "L3 SG + CC"
-			}, {
-				"id": "g179810",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g179810.ics",
-				"title": "L3 SG Parcours International"
-			}, {
-				"id": "g1104246",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104246.ics",
-				"title": "L3 SG+SG PI+CC"
-			}]
-		}, {
-			"id": "le",
-			"title": "LE SAUX Jean-Baptiste",
-			"edts": []
-		}, {
-			"id": "licence",
-			"title": "LICENCE 2 ECO GESTION Parc ALP",
-			"edts": [{
-				"id": "g90388",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90388.ics",
-				"title": "LICENCE 3  BANQUE"
-			}, {
-				"id": "g187161",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g187161.ics",
-				"title": "LICENCE 3 BANQUE - G1"
-			}, {
-				"id": "g187165",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g187165.ics",
-				"title": "LICENCE 3 BANQUE - G2"
-			}, {
-				"id": "g181825",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g181825.ics",
-				"title": "LICENCE 3 LOGISTIQUE"
-			}, {
-				"id": "g897297",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g897297.ics",
-				"title": "LICENCE PRO CCP - CAP - ALT"
-			}, {
-				"id": "g90406",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90406.ics",
-				"title": "LICENCE PRO CCP - ESB - G1"
-			}, {
-				"id": "g90407",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90407.ics",
-				"title": "LICENCE PRO CCP - ESB - G2"
-			}, {
-				"id": "g176387",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g176387.ics",
-				"title": "LICENCE PRO CCP - ESB - G3"
-			}, {
-				"id": "g1149045",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1149045.ics",
-				"title": "LICENCE PRO CREDIT MUTUEL PROMO 39"
-			}, {
-				"id": "g1149048",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1149048.ics",
-				"title": "LICENCE PRO CREDIT MUTUEL PROMO 40"
-			}, {
-				"id": "g1339681",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1339681.ics",
-				"title": "LICENCE PRO CREDIT MUTUEL PROMO 41"
-			}, {
-				"id": "g230988",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g230988.ics",
-				"title": "LICENCE PRO E-COMMERCE"
-			}]
-		}, {
-			"id": "m",
-			"title": "M1 HOMER",
-			"edts": [{
-				"id": "g1104256",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104256.ics",
-				"title": "M1 HOMER"
-			}, {
-				"id": "g90440",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90440.ics",
-				"title": "M1 MAE MDC FC 1ère année"
-			}, {
-				"id": "g90441",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90441.ics",
-				"title": "M1 MAE MDC FC 2ème année"
-			}, {
-				"id": "g1176962",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1176962.ics",
-				"title": "M2 HOMER"
-			}, {
-				"id": "g90421",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90421.ics",
-				"title": "M2 MAE MDC Design"
-			}, {
-				"id": "g90408",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90408.ics",
-				"title": "M2 MAE MDC FC 1 Gp1"
-			}, {
-				"id": "g90409",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90409.ics",
-				"title": "M2 MAE MDC FC 1 Gp2"
-			}, {
-				"id": "g90410",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90410.ics",
-				"title": "M2 MAE MDC FC 1ère année"
-			}, {
-				"id": "g90411",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90411.ics",
-				"title": "M2 MAE MDC FC 2 Gp 1"
-			}, {
-				"id": "g90412",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90412.ics",
-				"title": "M2 MAE MDC FC 2 Gp 2"
-			}, {
-				"id": "g90413",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90413.ics",
-				"title": "M2 MAE MDC FC 2ème année"
-			}, {
-				"id": "g1089734",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1089734.ics",
-				"title": "M2 MAE MDC MOS FC"
-			}]
-		}, {
-			"id": "mae",
-			"title": "MAE ALTERNANCE",
-			"edts": [{
-				"id": "g90417",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90417.ics",
-				"title": "MAE ALTERNANCE"
-			}]
-		}, {
-			"id": "management",
-			"title": "Management double compétence",
-			"edts": []
-		}, {
-			"id": "mpie",
-			"title": "MPIE ANGLAIS Groupe 1",
-			"edts": []
-		}, {
-			"id": "option",
-			"title": "OPTION Management et Ressources Humaines",
-			"edts": [{
-				"id": "g90469",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90469.ics",
-				"title": "OPTION Management et Ressources Humaines"
-			}, {
-				"id": "g90471",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g90471.ics",
-				"title": "OPTION Projet d'Innovation et Entrepreneuriat"
-			}]
-		}, {
-			"id": "tutoratiae",
-			"title": "TUTORAT-IAE",
-			"edts": [{
-				"id": "g1104257",
-				"url": "https://edt.univ-nantes.fr/iemn_iae/g1104257.ics",
-				"title": "TUTORAT-IAE"
-			}]
-		}]
-	}
+  {
+    "id": "iaedenantes",
+    "title": "IAE de Nantes",
+    "edts": [
+      {
+        "id": "master",
+        "title": "918-MASTER 2 Management de l'Innovation",
+        "edts": [
+          {
+            "id": "g90461",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90461.ics",
+            "title": "918-MASTER 2 Management de l'Innovation"
+          },
+          {
+            "id": "g90427",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90427.ics",
+            "title": "MASTER 1  CCA"
+          },
+          {
+            "id": "g404202",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g404202.ics",
+            "title": "MASTER 1 - Management de l'Innovation"
+          },
+          {
+            "id": "g353663",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g353663.ics",
+            "title": "MASTER 1 APEME"
+          },
+          {
+            "id": "g353662",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g353662.ics",
+            "title": "MASTER 1 CAEGR"
+          },
+          {
+            "id": "g90428",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90428.ics",
+            "title": "MASTER 1 CCA + CGAO"
+          },
+          {
+            "id": "g1104255",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104255.ics",
+            "title": "MASTER 1 CCPRO - Cap Compétences"
+          },
+          {
+            "id": "g90430",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90430.ics",
+            "title": "MASTER 1 CCPRO - ESB"
+          },
+          {
+            "id": "g90429",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90429.ics",
+            "title": "MASTER 1 CGAO"
+          },
+          {
+            "id": "g90431",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90431.ics",
+            "title": "MASTER 1 CIP"
+          },
+          {
+            "id": "g353665",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g353665.ics",
+            "title": "MASTER 1 ECAP"
+          },
+          {
+            "id": "g181826",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g181826.ics",
+            "title": "MASTER 1 FLM-ST"
+          },
+          {
+            "id": "g90435",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90435.ics",
+            "title": "MASTER 1 GesCo - Gr 1 - parc. Etu. Act. Mark."
+          },
+          {
+            "id": "g90437",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90437.ics",
+            "title": "MASTER 1 GesCo - Gr 2 - parc. Manag. Ress. Huma."
+          },
+          {
+            "id": "g96629",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g96629.ics",
+            "title": "MASTER 1 GesCo - Gr3 - parc. Manag. Syst. d'Info."
+          },
+          {
+            "id": "g90438",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90438.ics",
+            "title": "MASTER 1 GesCo (Groupes EAM-MRH-MSI)"
+          },
+          {
+            "id": "g90424",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90424.ics",
+            "title": "MASTER 1 GOPAS"
+          },
+          {
+            "id": "g90434",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90434.ics",
+            "title": "MASTER 1 MANAGEMENT DC FI TEMPS PLEIN"
+          },
+          {
+            "id": "g90439",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90439.ics",
+            "title": "Master 1 MDC ASIE"
+          },
+          {
+            "id": "g1002452",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1002452.ics",
+            "title": "MASTER 1 MDC FI Option Chinois"
+          },
+          {
+            "id": "g90444",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90444.ics",
+            "title": "MASTER 2 APE Spé. GOPAS"
+          },
+          {
+            "id": "g353664",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g353664.ics",
+            "title": "MASTER 2 APEME"
+          },
+          {
+            "id": "g359433",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g359433.ics",
+            "title": "MASTER 2 CAEGR"
+          },
+          {
+            "id": "g90445",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90445.ics",
+            "title": "MASTER 2 CCA"
+          },
+          {
+            "id": "g496055",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g496055.ics",
+            "title": "MASTER 2 CCA + CGAO"
+          },
+          {
+            "id": "g1127962",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1127962.ics",
+            "title": "MASTER 2 CCPRO - Cap Compétences"
+          },
+          {
+            "id": "g90448",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90448.ics",
+            "title": "MASTER 2 CCPRO - ESB"
+          },
+          {
+            "id": "g90446",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90446.ics",
+            "title": "MASTER 2 CGAO"
+          },
+          {
+            "id": "g359432",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g359432.ics",
+            "title": "MASTER 2 CIP"
+          },
+          {
+            "id": "g187553",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g187553.ics",
+            "title": "MASTER 2 EAM ALTERNANCE"
+          },
+          {
+            "id": "g187552",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g187552.ics",
+            "title": "MASTER 2 EAM FI"
+          },
+          {
+            "id": "g353666",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g353666.ics",
+            "title": "MASTER 2 ECAP"
+          },
+          {
+            "id": "g90454",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90454.ics",
+            "title": "MASTER 2 ETUDES ET ACTIONS MARKETING"
+          },
+          {
+            "id": "g90423",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90423.ics",
+            "title": "Master 2 MAE MDC Chine Asie"
+          },
+          {
+            "id": "g90456",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90456.ics",
+            "title": "MASTER 2 Management -Métiers du conseil et de la recherche"
+          },
+          {
+            "id": "g90447",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90447.ics",
+            "title": "MASTER 2 Managt des Ressources Humaines"
+          },
+          {
+            "id": "g90453",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90453.ics",
+            "title": "MASTER 2 Managt des Systemes d Information"
+          },
+          {
+            "id": "g90455",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90455.ics",
+            "title": "MASTER 2 Marketing Produits et Services Santé"
+          },
+          {
+            "id": "g181827",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g181827.ics",
+            "title": "MASTER 2 SHIPPING"
+          },
+          {
+            "id": "g181828",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g181828.ics",
+            "title": "MASTER 3 FLM-ST"
+          }
+        ]
+      },
+      {
+        "id": "diu",
+        "title": "DIU Innovation & Transformation Numérique",
+        "edts": [
+          {
+            "id": "g837691",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g837691.ics",
+            "title": "DIU Innovation & Transformation Numérique"
+          }
+        ]
+      },
+      {
+        "id": "du",
+        "title": "DU CGP - INTER 1",
+        "edts": [
+          {
+            "id": "g331994",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g331994.ics",
+            "title": "DU CGP - INTER 1"
+          },
+          {
+            "id": "g90362",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90362.ics",
+            "title": "DU GPDE 1"
+          }
+        ]
+      },
+      {
+        "id": "edt",
+        "title": "EDT FILIERES 40-45-50 (gérés par MS)",
+        "edts": [
+          {
+            "id": "g210538",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g210538.ics",
+            "title": "EDT FILIERES 40-45-50 (gérés par MS)"
+          }
+        ]
+      },
+      {
+        "id": "ensemble",
+        "title": "ENSEMBLE ETUDIANTS INSTITUT",
+        "edts": [
+          {
+            "id": "g130501",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g130501.ics",
+            "title": "ENSEMBLE ETUDIANTS INSTITUT"
+          }
+        ]
+      },
+      {
+        "id": "evnementiel",
+        "title": "Evénementiel",
+        "edts": [
+          {
+            "id": "g419849",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g419849.ics",
+            "title": "Evénementiel"
+          }
+        ]
+      },
+      {
+        "id": "l",
+        "title": "L1 EG",
+        "edts": [
+          {
+            "id": "g90364",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90364.ics",
+            "title": "L1 EG"
+          },
+          {
+            "id": "g90365",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90365.ics",
+            "title": "L1 EG Gpe 1"
+          },
+          {
+            "id": "g90366",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90366.ics",
+            "title": "L1 EG Gpe 10"
+          },
+          {
+            "id": "g100530",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g100530.ics",
+            "title": "L1 EG Gpe 11"
+          },
+          {
+            "id": "g566782",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g566782.ics",
+            "title": "L1 EG Gpe 12"
+          },
+          {
+            "id": "g90367",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90367.ics",
+            "title": "L1 EG Gpe 2"
+          },
+          {
+            "id": "g90368",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90368.ics",
+            "title": "L1 EG Gpe 3"
+          },
+          {
+            "id": "g90369",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90369.ics",
+            "title": "L1 EG Gpe 4"
+          },
+          {
+            "id": "g90370",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90370.ics",
+            "title": "L1 EG Gpe 5"
+          },
+          {
+            "id": "g90371",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90371.ics",
+            "title": "L1 EG Gpe 6"
+          },
+          {
+            "id": "g90372",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90372.ics",
+            "title": "L1 EG Gpe 7"
+          },
+          {
+            "id": "g90373",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90373.ics",
+            "title": "L1 EG Gpe 8"
+          },
+          {
+            "id": "g90374",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90374.ics",
+            "title": "L1 EG Gpe 9"
+          },
+          {
+            "id": "g1104249",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104249.ics",
+            "title": "L1 EG Gpe Omega"
+          },
+          {
+            "id": "g1104248",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104248.ics",
+            "title": "L1 EG Grpe Alpha"
+          },
+          {
+            "id": "g1079742",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1079742.ics",
+            "title": "L1 EG LAS"
+          },
+          {
+            "id": "g90377",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90377.ics",
+            "title": "L1 EG MATHS-ECO"
+          },
+          {
+            "id": "g926603",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g926603.ics",
+            "title": "L1 EG PAIAE2-1"
+          },
+          {
+            "id": "g1378906",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1378906.ics",
+            "title": "L1 EG PAIAE2-1-10"
+          },
+          {
+            "id": "g1104448",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104448.ics",
+            "title": "L1 EG PAIAE2-1-9"
+          },
+          {
+            "id": "g1079530",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1079530.ics",
+            "title": "L1 EG PAIAE2-2"
+          },
+          {
+            "id": "g90363",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90363.ics",
+            "title": "L1 EG Parcours International"
+          },
+          {
+            "id": "g1079741",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1079741.ics",
+            "title": "L1 EG PASS"
+          },
+          {
+            "id": "g90379",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90379.ics",
+            "title": "L2 EG"
+          },
+          {
+            "id": "g90378",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90378.ics",
+            "title": "L2 EG + CC"
+          },
+          {
+            "id": "g90386",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90386.ics",
+            "title": "L2 EG CC"
+          },
+          {
+            "id": "g90380",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90380.ics",
+            "title": "L2 EG Groupe 1"
+          },
+          {
+            "id": "g90381",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90381.ics",
+            "title": "L2 EG Groupe 2"
+          },
+          {
+            "id": "g90382",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90382.ics",
+            "title": "L2 EG Groupe 3"
+          },
+          {
+            "id": "g90383",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90383.ics",
+            "title": "L2 EG Groupe 4"
+          },
+          {
+            "id": "g90384",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90384.ics",
+            "title": "L2 EG Groupe 5"
+          },
+          {
+            "id": "g90385",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90385.ics",
+            "title": "L2 EG Groupe 6"
+          },
+          {
+            "id": "g206492",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g206492.ics",
+            "title": "L2 EG Groupe 7"
+          },
+          {
+            "id": "g931084",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g931084.ics",
+            "title": "L2 EG Groupe 8"
+          },
+          {
+            "id": "g90387",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90387.ics",
+            "title": "L2 EG MATHS-ECO"
+          },
+          {
+            "id": "g134757",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g134757.ics",
+            "title": "L2 EG Parcours International"
+          },
+          {
+            "id": "g1104252",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104252.ics",
+            "title": "L3  EGO (tous les groupes)"
+          },
+          {
+            "id": "g90398",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90398.ics",
+            "title": "L3  EGO 5 groupes"
+          },
+          {
+            "id": "g90399",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90399.ics",
+            "title": "L3  EGO groupe 1"
+          },
+          {
+            "id": "g90400",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90400.ics",
+            "title": "L3  EGO groupe 2"
+          },
+          {
+            "id": "g90401",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90401.ics",
+            "title": "L3  EGO groupe 3"
+          },
+          {
+            "id": "g90396",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90396.ics",
+            "title": "L3  EGO+AE"
+          },
+          {
+            "id": "g1104251",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104251.ics",
+            "title": "L3 AE"
+          },
+          {
+            "id": "g1104253",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104253.ics",
+            "title": "L3 AE groupe 1"
+          },
+          {
+            "id": "g1104254",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104254.ics",
+            "title": "L3 AE Groupe 2"
+          },
+          {
+            "id": "g90389",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90389.ics",
+            "title": "L3 CC"
+          },
+          {
+            "id": "g1319968",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1319968.ics",
+            "title": "L3 CC + L3 PI"
+          },
+          {
+            "id": "g1088248",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1088248.ics",
+            "title": "L3 CC1"
+          },
+          {
+            "id": "g1088249",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1088249.ics",
+            "title": "L3 CC2"
+          },
+          {
+            "id": "g90395",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90395.ics",
+            "title": "L3 MATHS- ECO"
+          },
+          {
+            "id": "g90394",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90394.ics",
+            "title": "L3 SG"
+          },
+          {
+            "id": "g90392",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90392.ics",
+            "title": "L3 SG - Gp 1"
+          },
+          {
+            "id": "g90393",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90393.ics",
+            "title": "L3 SG - Gp 2"
+          },
+          {
+            "id": "g90391",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90391.ics",
+            "title": "L3 SG + CC"
+          },
+          {
+            "id": "g179810",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g179810.ics",
+            "title": "L3 SG Parcours International"
+          },
+          {
+            "id": "g1104246",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104246.ics",
+            "title": "L3 SG+SG PI+CC"
+          }
+        ]
+      },
+      {
+        "id": "licence",
+        "title": "LICENCE 2 ECO GESTION Parc ALP",
+        "edts": [
+          {
+            "id": "g90388",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90388.ics",
+            "title": "LICENCE 3  BANQUE"
+          },
+          {
+            "id": "g187161",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g187161.ics",
+            "title": "LICENCE 3 BANQUE - G1"
+          },
+          {
+            "id": "g187165",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g187165.ics",
+            "title": "LICENCE 3 BANQUE - G2"
+          },
+          {
+            "id": "g181825",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g181825.ics",
+            "title": "LICENCE 3 LOGISTIQUE"
+          },
+          {
+            "id": "g897297",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g897297.ics",
+            "title": "LICENCE PRO CCP - CAP - ALT"
+          },
+          {
+            "id": "g90406",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90406.ics",
+            "title": "LICENCE PRO CCP - ESB - G1"
+          },
+          {
+            "id": "g90407",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90407.ics",
+            "title": "LICENCE PRO CCP - ESB - G2"
+          },
+          {
+            "id": "g176387",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g176387.ics",
+            "title": "LICENCE PRO CCP - ESB - G3"
+          },
+          {
+            "id": "g1149045",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1149045.ics",
+            "title": "LICENCE PRO CREDIT MUTUEL PROMO 39"
+          },
+          {
+            "id": "g1149048",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1149048.ics",
+            "title": "LICENCE PRO CREDIT MUTUEL PROMO 40"
+          },
+          {
+            "id": "g1339681",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1339681.ics",
+            "title": "LICENCE PRO CREDIT MUTUEL PROMO 41"
+          },
+          {
+            "id": "g230988",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g230988.ics",
+            "title": "LICENCE PRO E-COMMERCE"
+          }
+        ]
+      },
+      {
+        "id": "m",
+        "title": "M1 HOMER",
+        "edts": [
+          {
+            "id": "g1104256",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104256.ics",
+            "title": "M1 HOMER"
+          },
+          {
+            "id": "g90440",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90440.ics",
+            "title": "M1 MAE MDC FC 1ère année"
+          },
+          {
+            "id": "g90441",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90441.ics",
+            "title": "M1 MAE MDC FC 2ème année"
+          },
+          {
+            "id": "g1176962",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1176962.ics",
+            "title": "M2 HOMER"
+          },
+          {
+            "id": "g90421",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90421.ics",
+            "title": "M2 MAE MDC Design"
+          },
+          {
+            "id": "g90408",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90408.ics",
+            "title": "M2 MAE MDC FC 1 Gp1"
+          },
+          {
+            "id": "g90409",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90409.ics",
+            "title": "M2 MAE MDC FC 1 Gp2"
+          },
+          {
+            "id": "g90410",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90410.ics",
+            "title": "M2 MAE MDC FC 1ère année"
+          },
+          {
+            "id": "g90411",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90411.ics",
+            "title": "M2 MAE MDC FC 2 Gp 1"
+          },
+          {
+            "id": "g90412",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90412.ics",
+            "title": "M2 MAE MDC FC 2 Gp 2"
+          },
+          {
+            "id": "g90413",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90413.ics",
+            "title": "M2 MAE MDC FC 2ème année"
+          },
+          {
+            "id": "g1089734",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1089734.ics",
+            "title": "M2 MAE MDC MOS FC"
+          }
+        ]
+      },
+      {
+        "id": "mae",
+        "title": "MAE ALTERNANCE",
+        "edts": [
+          {
+            "id": "g90417",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90417.ics",
+            "title": "MAE ALTERNANCE"
+          }
+        ]
+      },
+      {
+        "id": "option",
+        "title": "OPTION Management et Ressources Humaines",
+        "edts": [
+          {
+            "id": "g90469",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90469.ics",
+            "title": "OPTION Management et Ressources Humaines"
+          },
+          {
+            "id": "g90471",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g90471.ics",
+            "title": "OPTION Projet d'Innovation et Entrepreneuriat"
+          }
+        ]
+      },
+      {
+        "id": "tutoratiae",
+        "title": "TUTORAT-IAE",
+        "edts": [
+          {
+            "id": "g1104257",
+            "url": "https://edt.univ-nantes.fr/iemn_iae/g1104257.ics",
+            "title": "TUTORAT-IAE"
+          }
+        ]
+      }
+    ]
+  }
 ]
