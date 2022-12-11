@@ -7033,11 +7033,6 @@
             "title": "S5",
             "edts": [
               {
-                "id": "s5-infoprojetlangues",
-                "title": "S5 INFO projet langues",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=160&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
                 "id": "s5-info-g1",
                 "title": "GR 1",
                 "edts": [
@@ -7068,21 +7063,91 @@
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "id": "s6-info",
+            "title": "S6",
+            "edts": [
+              {
+                "id": "s6-info-option",
+                "title": "OPTIONS",
+                "edts": [
+                  {
+                    "id": "s6-info-clouds",
+                    "title": "Clouds",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3170&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-data",
+                    "title": "Data Science",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3169&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-mi",
+                    "title": "Médias & Interactions",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3168&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-secu",
+                    "title": "Sécurité",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3171&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               },
               {
-                "id": "s5-info-rem1",
-                "title": "Remédiation Maths",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1368&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "id": "s6-info-ouverture",
+                "title": "Ouverture",
+                "edts": [
+                  {
+                    "id": "s6-info-ia",
+                    "title": "IA pour les jeux",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3165&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-pm",
+                    "title": "Programmation Mobile",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3166&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-robo",
+                    "title": "Robotique",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1666&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               },
               {
-                "id": "s5-info-rem2",
-                "title": "Remédiation Java",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2326&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "id": "s6-info-g1",
+                "title": "GR 1",
+                "edts": [
+                  {
+                    "id": "s6-info-g11",
+                    "title": "GR 1.1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1952&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-g12",
+                    "title": "GR 1.2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1961&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               },
               {
-                "id": "s5-info-rem3",
-                "title": "Remédiation Base de données",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2339&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "id": "s6-info-g2",
+                "title": "GR 2",
+                "edts": [
+                  {
+                    "id": "s6-info-g21",
+                    "title": "GR 2.1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1959&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-info-g22",
+                    "title": "GR 2.2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1964&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               }
             ]
           }
