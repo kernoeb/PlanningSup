@@ -14,7 +14,7 @@
     "dev:darwin-arm64": "docker-compose -f docker-compose-dev-arm64.yml up -d --remove-orphans && NO_BREE=true node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "generate": "nuxt generate",
     "preinstall": "npx only-allow pnpm",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "lint": "eslint --ext .js,.vue,.mjs --ignore-path .gitignore .",
     "start": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js start",
     "test": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js",
     "test:darwin-arm64": "docker-compose -f docker-compose-dev-arm64.yml up -d --remove-orphans && NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js"
@@ -51,12 +51,12 @@
     "nuxt-json-config": "^0.0.2",
     "nuxt-start": "^2.15.8",
     "route-cache": "^0.4.7",
-    "sanitize-html": "^2.7.3",
+    "sanitize-html": "^2.8.0",
     "signale": "^1.4.0",
     "v-tooltip": "^2.1.3",
     "vue-plausible": "^1.3.2",
     "vue-swatches": "^2.1.1",
-    "vuetify": "^2.6.12",
+    "vuetify": "^2.6.13",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
@@ -74,13 +74,13 @@
     "chai": "^4.3.7",
     "css-byebye": "^3.1.1",
     "encoding": "^0.1.13",
-    "eslint": "8.29.0",
+    "eslint": "8.30.0",
     "eslint-plugin-nuxt": "^3.2.0",
     "humanize-duration": "^3.27.3",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.20",
     "sass-loader": "10",
-    "supertest": "^6.3.2"
+    "supertest": "^6.3.3"
   },
   "engines": {
     "node": "16"
