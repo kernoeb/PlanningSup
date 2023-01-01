@@ -30,7 +30,7 @@ COPY --chown=node:node . ./
 RUN node ./resources/check-plannings-json && rm -rf ./resources
 
 # Install dependencies
-RUN pnpm install -r --offline
+RUN pnpm install --offline
 
 # Nuxt.js build
 RUN pnpm build --standalone
@@ -40,7 +40,7 @@ RUN rm -rf ./node_modules/
 
 # Only production dependencies
 RUN pnpm fetch --prod
-RUN pnpm install -r --prod --offline
+RUN pnpm install --prod --offline
 
 # This ensure the file exists, ls will exit with an error if it doesn't
 RUN ls node_modules/node-libcurl/lib/binding/
