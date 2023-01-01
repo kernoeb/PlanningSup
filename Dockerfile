@@ -1,4 +1,4 @@
-FROM node:16.18.1-alpine3.16 as build-tools
+FROM node:16.19.0-alpine3.17 as build-tools
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 RUN apk add --no-cache curl bash
@@ -48,7 +48,7 @@ RUN ls node_modules/node-libcurl/lib/binding/
 # Clean node_modules, one of the heaviest object in the universe
 RUN clean-modules --yes --exclude "**/*.mustache"
 
-FROM node:16.18.1-alpine3.16 as app
+FROM node:16.19.0-alpine3.17 as app
 
 RUN apk --no-cache add dumb-init curl bash
 
