@@ -4848,12 +4848,12 @@
                   {
                     "id": "g1",
                     "title": "Groupe 1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6701&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7420&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "g2",
                     "title": "Groupe 2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6700&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7421&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
