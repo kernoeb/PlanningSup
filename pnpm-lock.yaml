@@ -58,7 +58,7 @@ specifiers:
   v-tooltip: ^2.1.3
   vue-plausible: ^1.3.2
   vue-swatches: ^2.1.1
-  vuetify: ^2.6.13
+  vuetify: ^2.6.14
   xml2js: ^0.4.23
 
 dependencies:
@@ -98,7 +98,7 @@ dependencies:
   v-tooltip: 2.1.3
   vue-plausible: 1.3.2
   vue-swatches: 2.1.1
-  vuetify: 2.6.13
+  vuetify: 2.6.14
   xml2js: 0.4.23
 
 devDependencies:
@@ -2931,8 +2931,8 @@ packages:
       deepmerge: 4.2.2
       sass: 1.32.13
       sass-loader: 10.4.1_sass@1.32.13
-      vuetify: 2.6.13
-      vuetify-loader: 1.9.2_vuetify@2.6.13
+      vuetify: 2.6.14
+      vuetify-loader: 1.9.2_vuetify@2.6.14
     transitivePeerDependencies:
       - fibers
       - gm
@@ -12785,7 +12785,7 @@ packages:
       csstype: 3.1.1
     dev: false
 
-  /vuetify-loader/1.9.2_vuetify@2.6.13:
+  /vuetify-loader/1.9.2_vuetify@2.6.14:
     resolution: {integrity: sha512-8PP2w7aAs/rjA+Izec6qY7sHVb75MNrGQrDOTZJ5IEnvl+NiFhVpU2iWdRDZ3eMS842cWxSWStvkr+KJJKy+Iw==}
     peerDependencies:
       gm: ^1.23.0
@@ -12807,11 +12807,11 @@ packages:
       decache: 4.6.1
       file-loader: 6.2.0
       loader-utils: 2.0.4
-      vuetify: 2.6.13
+      vuetify: 2.6.14
     dev: false
 
-  /vuetify/2.6.13:
-    resolution: {integrity: sha512-HhJi52IzhfrmWFwcYFUiA1GRIzz9smbR06Lj61Ml5HgD5PBcMiDywUnNPVid1VsXO4qWpBU6kO3O89uTxH1yzw==}
+  /vuetify/2.6.14:
+    resolution: {integrity: sha512-nr6wU3uTzhhEPssH23cW0Ee/hCrayp7cjl3nNjM2OmNwiJlV91tZiL1VO3597SqZyjh1xIa+m9J2rpKTSdIlrA==}
     peerDependencies:
       vue: ^2.6.4
     dev: false
