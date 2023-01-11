@@ -7117,32 +7117,32 @@
               {
                 "id":"grprojetburritos",
                 "title":"BurritOS",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10262&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10262&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id":"grprojetfdm-viz2",
                 "title":"FDM-VIZ2",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14856&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14856&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id":"grprojetforek",
                 "title":"ForeK",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10463&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10463&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id":"grprojethast",
                 "title":"HAST",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10464&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10464&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id":"grprojetbio4t",
                 "title":"Gr. projet BIO4T",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12153&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12153&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id":"grprojetdemoj",
                 "title":"DemoJ",
-                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13898&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13898&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           }
