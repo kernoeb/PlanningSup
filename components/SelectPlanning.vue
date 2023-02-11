@@ -39,6 +39,35 @@
           </div>
         </v-card-title>
         <v-spacer />
+        <v-menu v-model="menuGroup" :close-on-content-click="false" offset-y left>
+          <template #activator="{ on: menu, attrs }">
+            <v-btn
+              v-tooltip="'Créer un groupe de favoris'"
+              icon
+              v-bind="attrs"
+              v-on="menu"
+            >
+              <v-icon>{{ mdiFormatListGroup }}</v-icon>
+            </v-btn>
+          </template>
+          <v-card width="300">
+            <v-card-text>
+              <v-text-field
+                v-model="newFavoriteGroupName"
+                autofocus
+                label="Nom du groupe"
+                @keyup.enter="createFavoriteGroup"
+              />
+              {{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn text :disabled="!newFavoriteGroupName" @click="createFavoriteGroup">
+                Créer
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
         <v-btn
           v-tooltip="'Copier la sélection actuelle sous forme d\'URL dans le presse-papier'"
           icon
@@ -69,7 +98,7 @@
       </v-btn>
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
-          <div v-if="filteredFavorites && filteredFavorites.length" class="pa-2">
+          <div v-if="favorites?.length || groupFavorites?.length" class="pa-2">
             <v-card rounded>
               <v-card-title>
                 <v-icon color="orange" class="mt-n1 mr-1">
@@ -81,18 +110,44 @@
                 <v-list rounded dense>
                   <transition-group name="list-complete" tag="div">
                     <v-list-item
-                      v-for="(favorite, i) in filteredFavorites"
+                      v-for="(groupFavorite, i) in groupFavorites"
+                      :key="`group-${i}-${groupFavorite.name}`"
+                      dense
+                      style="height: 20px;"
+                      class="list-complete-item"
+                      link
+                      @click="localPlannings = groupFavorite.plannings || []; updatePlannings(); $emit('close');"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          <v-icon x-small color="primary" class="mr-1">
+                            {{ mdiFormatListGroup }}
+                          </v-icon>{{ groupFavorite.name }}
+                        </v-list-item-title>
+                        <v-list-item-subtitle>
+                          {{ groupFavorite.plannings?.length || 0 }} plannings
+                        </v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action>
+                        <v-btn small icon @click="deleteFavoriteGroup(i)">
+                          <v-icon small color="red">
+                            {{ mdiDelete }}
+                          </v-icon>
+                        </v-btn>
+                      </v-list-item-action>
+                    </v-list-item>
+
+                    <v-list-item
+                      v-for="(favorite, i) in favorites"
                       :key="`${i}-${favorite}`"
                       dense
+                      style="height: 20px;"
                       class="list-complete-item"
                       link
                       @click="localPlannings = [favorite]; updatePlannings(); $emit('close');"
                     >
                       <v-list-item-content>
                         <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
-                        <v-list-item-subtitle class="text--disabled">
-                          {{ favorite }}
-                        </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
                         <v-btn small icon @click="setFavorite(favorite)">
@@ -176,7 +231,20 @@
 </template>
 
 <script>
-import { mdiDelete, mdiStarHalfFull, mdiStar, mdiStarOutline, mdiClose, mdiContentCopy, mdiCalendar, mdiMenuDown, mdiMinusBox, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import {
+  mdiDelete,
+  mdiStarHalfFull,
+  mdiStar,
+  mdiStarOutline,
+  mdiClose,
+  mdiContentCopy,
+  mdiCalendar,
+  mdiMenuDown,
+  mdiMinusBox,
+  mdiCheckboxBlankOutline,
+  mdiCheckboxMarked,
+  mdiFormatListGroup
+} from '@mdi/js'
 
 export default {
   name: 'SelectPlanning',
@@ -207,25 +275,27 @@ export default {
       mdiStarHalfFull,
       mdiStar,
       mdiStarOutline,
+      mdiFormatListGroup,
+
+      menuGroup: false,
 
       showSnackbar: false,
       showSnackbarError: false,
       searchCalendar: '',
+      newFavoriteGroupName: '',
 
       activatedPlanning: null,
       urls: null,
 
       localPlannings: [],
       favorites: [],
+      groupFavorites: [],
 
       planningNames: null
     }
   },
   computed: {
-    filteredFavorites () {
-      if (!this.favorites) return null
-      return [...this.favorites].filter(v => v)
-    },
+
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
     }
@@ -241,11 +311,7 @@ export default {
     }
   },
   created () {
-    try {
-      this.favorites = this.$cookies?.get('favorites')?.split(',') || []
-      this.getNames()
-      if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
-    } catch (err) {}
+    this.refreshFavorites()
   },
   mounted () {
     window.addEventListener('keyup', this.keyup)
@@ -308,8 +374,9 @@ export default {
       })
     },
     getNames () {
-      if (this.favorites && this.favorites.length) {
-        this.$axios.$get('/api/v1/calendars/info', { params: { p: this.favorites.join(',') } }).then((data) => {
+      const list = [...(this.favorites || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
+      if (list?.length) {
+        this.$axios.$get('/api/v1/calendars/info', { params: { p: list.join(',') } }).then((data) => {
           this.planningNames = data
         }).catch(() => {
           this.planningNames = []
@@ -319,6 +386,7 @@ export default {
     reset () {
       this.localPlannings = []
       this.searchCalendar = ''
+      this.newFavoriteGroupName = ''
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {
@@ -328,14 +396,55 @@ export default {
       let tmp = [...(this.favorites || [])]
       if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
       else tmp.push(id)
-      const final = [...new Set(tmp)]
+      const final = [...new Set(tmp)].filter(v => !!v)
       this.favorites = final
       this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
       this.getNames()
+      this.$nextTick(() => {
+        this.refreshFavorites()
+      })
     },
     getFavoriteName (favorite) {
       if (this.planningNames === null) return ''
       return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
+    },
+    createFavoriteGroup () {
+      if (!this.newFavoriteGroupName) return
+      // take all current plannings and add them to the new group
+      const tmp = [...this.localPlannings]
+      const currentGroupFavoriteList = this.$cookies.get('group-favorites') || []
+      const newGroupFavoriteList = [...currentGroupFavoriteList, { name: this.newFavoriteGroupName, plannings: tmp }]
+        .filter(v => !!v && !!v.name && !!v.plannings && v.plannings.length)
+      this.$cookies.set('group-favorites', newGroupFavoriteList, { maxAge: 2147483646 })
+      this.newFavoriteGroupName = ''
+      this.refreshFavorites()
+      this.menuGroup = false
+    },
+    deleteFavoriteGroup (index) {
+      const currentGroupFavoriteList = this.$cookies.get('group-favorites') || []
+      const newGroupFavoriteList = currentGroupFavoriteList
+        .filter((v, i) => i !== index)
+        .filter(v => !!v && !!v.name && !!v.plannings && v.plannings.length)
+      this.$cookies.set('group-favorites', newGroupFavoriteList, { maxAge: 2147483646 })
+      this.refreshFavorites()
+      this.menuGroup = false
+    },
+    refreshFavorites () {
+      try {
+        this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
+
+        try {
+          this.groupFavorites = this.$cookies?.get('group-favorites').filter(v => !!v && !!v.name && !!v.plannings) || []
+        } catch (err) {
+          console.log('Error parsing group favorites', err)
+          this.groupFavorites = []
+        }
+
+        this.getNames()
+
+        if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
+        if (this.$cookies?.get('groupFavorites') === '') this.$cookies.remove('groupFavorites')
+      } catch (err) {}
     }
   }
 }
