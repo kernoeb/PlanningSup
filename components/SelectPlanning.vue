@@ -34,12 +34,12 @@
               {{ $config.i18n.chooseEdt }}
             </div>
             <div style="font-size: 12px;">
-              {{ (localPlannings && localPlannings.length) || 0 }} sélectionnés
+              {{ (localPlannings && localPlannings.length) || 0 }} sélectionné{{ (localPlannings && localPlannings.length) > 1 ? 's' : '' }}
             </div>
           </div>
         </v-card-title>
         <v-spacer />
-        <v-menu v-model="menuGroup" :close-on-content-click="false" offset-y left>
+        <v-menu v-model="menuGroup" :close-on-content-click="false" offset-y left :close-on-click="false">
           <template #activator="{ on: menu, attrs }">
             <v-btn
               v-tooltip="'Créer un groupe de favoris'"
@@ -56,13 +56,14 @@
                 v-model="newFavoriteGroupName"
                 autofocus
                 label="Nom du groupe"
+                :rules="favoriteGroupNameRules"
                 @keyup.enter="createFavoriteGroup"
               />
-              {{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe
+              <span v-if="localPlannings?.length > 1">{{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe</span>
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn text :disabled="!newFavoriteGroupName" @click="createFavoriteGroup">
+              <v-btn text :disabled="!isRulesOk" @click="createFavoriteGroup">
                 Créer
               </v-btn>
             </v-card-actions>
@@ -295,7 +296,19 @@ export default {
     }
   },
   computed: {
-
+    favoriteGroupNameRules () {
+      return [
+        (this.newFavoriteGroupName?.length || 0) > 0 || 'Le nom du groupe est requis',
+        (this.newFavoriteGroupName?.length || 0) < 40 || 'Le nom du groupe doit faire moins de 50 caractères',
+        !!this.localPlannings || 'Aucun planning sélectionné',
+        this.localPlannings?.length !== 0 || 'Aucun planning sélectionné',
+        this.localPlannings?.length > 1 || 'Sélectionnez au moins 2 plannings',
+        !this.groupFavorites?.some(group => group.name === this.newFavoriteGroupName) || 'Ce nom de groupe est déjà utilisé'
+      ]
+    },
+    isRulesOk () {
+      return this.favoriteGroupNameRules.every(rule => rule === true)
+    },
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
     }
