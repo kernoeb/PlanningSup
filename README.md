@@ -10,9 +10,11 @@
 
 <p align="center">
   <a href="https://github.com/kernoeb/PlanningSup/releases"><img src="https://img.shields.io/github/v/release/kernoeb/planningsup"></a>
+  <!--
   <a href="https://betteruptime.com/?utm_source=status_badge">
     <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
   </a>
+  -->
   <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=22093&bid=649211">
     <img src="https://deepscan.io/api/teams/12018/projects/22093/branches/649211/badge/grade.svg" alt="DeepScan grade">
   </a>
