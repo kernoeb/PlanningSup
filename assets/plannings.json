@@ -9369,44 +9369,6 @@
         "title": "INFO",
         "edts": [
           {
-            "id": "s5-info",
-            "title": "S5",
-            "edts": [
-              {
-                "id": "s5-info-g1",
-                "title": "GR 1",
-                "edts": [
-                  {
-                    "id": "s5-info-g11",
-                    "title": "GR 1.1",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1356&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s5-info-g12",
-                    "title": "GR 1.2",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2203&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "s5-info-g2",
-                "title": "GR 2",
-                "edts": [
-                  {
-                    "id": "s5-info-g21",
-                    "title": "GR 2.1",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1357&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s5-info-g22",
-                    "title": "GR 2.2",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
             "id": "s6-info",
             "title": "S6",
             "edts": [
