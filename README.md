@@ -120,6 +120,7 @@ services:
 - [Atao](https://github.com/Ataaoo)
 - [PandAmiral](https://github.com/PandAmiral)
 - [ShockedPlot](https://github.com/ShockedPlot7560)
+- [BatLeDev](https://github.com/BatLeDev)
 
 (merci à vous ! ❤️)
 
