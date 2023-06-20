@@ -9403,6 +9403,27 @@
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
+              },
+              {
+                "id": "s5-info-rem",
+                "title": "Remédiations",
+                "edts": [
+                  {
+                    "id": "s5-info-rem1",
+                    "title": "Remédiation Maths",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1368&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-info-rem2",
+                    "title": "Remédiation Java",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2326&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-info-rem3",
+                    "title": "Remédiation BDD",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2339&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               }
             ]
           },
