@@ -447,7 +447,7 @@ export default {
         this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
 
         try {
-          this.groupFavorites = this.$cookies?.get('group-favorites').filter(v => !!v && !!v.name && !!v.plannings) || []
+          this.groupFavorites = this.$cookies?.get('group-favorites')?.filter(v => !!v && !!v.name && !!v.plannings) || []
         } catch (err) {
           console.log('Error parsing group favorites', err)
           this.groupFavorites = []
