@@ -1783,7 +1783,7 @@
                   {
                     "id": "tp2",
                     "title": "TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5264&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4096&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
@@ -1834,22 +1834,6 @@
               {
                 "id": "semestre9s9",
                 "title": "Semestre 9 (S9)",
-                "edts": [
-                  {
-                    "id": "tp1",
-                    "title": "TP1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=154&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "tp2",
-                    "title": "TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4176&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "semestre8s8",
-                "title": "Semestre 8 (S8)",
                 "edts": [
                   {
                     "id": "tp1",
