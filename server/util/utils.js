@@ -46,6 +46,7 @@ const cleanDescription = d => d && d
   .replace(/\(Exported :.*\)/, '')
   .replace(/\(Updated :.*\)/, '')
   .replace(/\(Modifié le:.*\)/, '')
+  .replace(/^\s+-/, '')
   .trim()
 
 /**
