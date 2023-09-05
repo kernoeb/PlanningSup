@@ -438,10 +438,8 @@
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4296&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
-          }
-        ]
-      },
-      {
+          },
+          {
             "id": "3emeannee",
             "title": "3ème année",
             "edts": [
@@ -478,6 +476,8 @@
                 ]
               }
             ]
+          }
+        ]
       },
       {
         "id": "lpro",
