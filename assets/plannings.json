@@ -9429,32 +9429,32 @@
             "edts": [
               {
                 "id": "s5-info-g1",
-                "title": "G1",
+                "title": "GR 1",
                 "edts": [
                   {
                     "id": "s5-info-g11",
-                    "title": "G1.1",
+                    "title": "GR 1.1",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1356&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "s5-info-g12",
-                    "title": "G1.2",
+                    "title": "GR 1.2",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2203&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
               {
                 "id": "s5-info-g2",
-                "title": "G2",
+                "title": "GR 2",
                 "edts": [
                   {
                     "id": "s5-info-g21",
-                    "title": "G2.1",
+                    "title": "GR 2.1",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1357&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "s5-info-g22",
-                    "title": "G2.2",
+                    "title": "GR 2.2",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=355&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
@@ -9639,11 +9639,6 @@
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=899&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id": "s7-info-miv",
-                    "title": "MIV",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1681&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
                     "id": "s7-info-opt",
                     "title": "Optimisation numérique",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1682&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -9652,11 +9647,6 @@
                     "id": "s7-info-sante",
                     "title": "Applis innovantes santé",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2614&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s7-info-specif",
-                    "title": "SPECIF",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1680&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
@@ -9668,12 +9658,12 @@
             "edts": [
               {
                 "id": "s8-info-g1",
-                "title": "G1",
+                "title": "GR 1",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3439&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "s8-info-g2",
-                "title": "G2",
+                "title": "GR 2",
                 "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3440&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
