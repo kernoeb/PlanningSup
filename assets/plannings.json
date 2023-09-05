@@ -9288,27 +9288,34 @@
         "edts": [
           {
             "id": "isticmil2",
-            "title": "Master IL",
+            "title": "M2 IL",
             "edts": [
               {
-                "id": "isticil2g1",
-                "title": "IL 1",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8356&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "id": "isticmila2",
+                "title": "M2 IL-ALternants",
+                "edts": [
+                  {
+                    "id": "m2infoila-g1",
+                    "title": "M2 INFO ILA-G1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3802&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "m2infoila-g2",
+                    "title": "M2 INFO ILA-G2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3791&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               },
               {
-                "id": "isticil2g2",
-                "title": "IL 2",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8440&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "isticil2all",
-                "title": "Tout IL",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11742&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "isticil2a",
-                "title": "ILA",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12161&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "id": "isticmilc2",
+                "title": "M2 IL-Classiques",
+                "edts": [
+                  {
+                    "id": "m2infoil-classiques",
+                    "title": "M2 INFO IL-Classiques",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3741&projectId=6&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               }
             ]
           },
