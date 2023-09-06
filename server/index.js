@@ -80,7 +80,7 @@ app.use(require('./routes/calendar'))
 app.use(require('./routes/urls'))
 app.use(require('./routes/crous'))
 app.use(require('./routes/metrics'))
-// app.use('/sync', require('./routes/sync')) // Work in progress
+app.use('/subscriptions', require('./routes/subscriptions'))
 
 // Export express app
 module.exports = app

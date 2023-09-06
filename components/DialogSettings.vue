@@ -50,6 +50,31 @@
           @change="$emit('change_settings', $event)"
         >
           <v-subheader>{{ $config.i18n.ui }}</v-subheader>
+
+          <v-list-item inactive style="cursor:pointer;" :disabled="loadingSubscription || notifications === undefined">
+            <v-list-item-action v-if="loadingSubscription">
+              <v-progress-circular
+                indeterminate
+                size="20"
+                color="primary"
+              />
+            </v-list-item-action>
+            <v-list-item-action v-else>
+              <v-checkbox
+                v-model="checkedNotifications"
+                :disabled="loadingSubscription || notifications === undefined"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+
+            <v-list-item-content @click="subscriptions()">
+              <v-list-item-title>Activer les notifications des favoris</v-list-item-title>
+              <v-list-item-subtitle>Web Push notifications</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
           <v-list-item inactive style="cursor:pointer;">
             <v-list-item-action>
               <v-checkbox
@@ -286,7 +311,9 @@ export default {
       colorOthers: '#eddd6e',
 
       fullDark: false,
-      mergeDuplicates: true
+      mergeDuplicates: true,
+      notifications: undefined,
+      loadingSubscription: false
     }
   },
   computed: {
@@ -313,6 +340,14 @@ export default {
       set () {
         this.switchMergeDuplicates()
       }
+    },
+    checkedNotifications: {
+      get () {
+        return this.notifications
+      },
+      set () {
+        this.subscriptions()
+      }
     }
   },
   created () {
@@ -328,7 +363,7 @@ export default {
       this.mergeDuplicates = true
     }
   },
-  mounted () {
+  async mounted () {
     if (this.$cookies.get('blocklist') !== undefined) {
       try {
         const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
@@ -349,8 +384,97 @@ export default {
       if (c.tp) this.colorTP = c.tp
       if (c.other) this.colorOthers = c.other
     } catch (err) {}
+
+    if ('serviceWorker' in navigator) {
+      console.log('Service worker OK')
+      this.notifications = !!(navigator.serviceWorker.ready && await navigator.serviceWorker.ready.then(registration => registration.pushManager.getSubscription()))
+      console.log('Is subscribed', this.notifications)
+    }
   },
   methods: {
+    urlBase64ToUint8Array (base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4)
+      const base64 = (base64String + padding)
+        .replace(/-/g, '+')
+        .replace(/_/g, '/')
+
+      const rawData = window.atob(base64)
+      const outputArray = new Uint8Array(rawData.length)
+
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i)
+      }
+      return outputArray
+    },
+    async subscriptions () {
+      console.log('Running push')
+      if (!('serviceWorker' in navigator)) return console.log('Service workers are not supported by this browser')
+
+      this.loadingSubscription = true
+      try {
+        const registration = await navigator.serviceWorker.ready
+
+        // if already subscribed, unsubscribe
+        if (this.notifications) {
+          console.log('Unregistering push')
+          const subscription = await registration.pushManager.getSubscription()
+          await subscription.unsubscribe()
+
+          await fetch('/api/v1/subscriptions/unsubscribe', {
+            method: 'POST',
+            body: JSON.stringify(subscription),
+            headers: {
+              'content-type': 'application/json'
+            }
+          })
+
+          console.log('Unregistered push')
+          this.notifications = false
+          this.loadingSubscription = false
+          return
+        }
+
+        // ask for permission
+        if (Notification.permission !== 'granted') await Notification.requestPermission()
+
+        console.log('Registering push')
+        const publicVapidKey = this.$config.publicVapidKey
+        if (!publicVapidKey) {
+          this.loadingSubscription = false
+          return console.log('Vapid key is not defined')
+        }
+
+        const subscription = (await registration.pushManager
+          .subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: this.urlBase64ToUint8Array(publicVapidKey)
+          })).toJSON()
+
+        console.log('Registered push')
+
+        try {
+          subscription.plannings = this.$cookies.get('favorites', { parseJSON: false }) || []
+        } catch (err) {
+          subscription.plannings = []
+        }
+
+        console.log('Sending push')
+        await fetch('/api/v1/subscriptions/subscribe', {
+          method: 'POST',
+          body: JSON.stringify(subscription),
+          headers: {
+            'content-type': 'application/json'
+          }
+        })
+
+        this.notifications = true
+
+        console.log('Sent push')
+      } catch (err) {
+        console.log('Error', err)
+      }
+      this.loadingSubscription = false
+    },
     forceFullMode () {
       this.fullDark = !this.fullDark
       this.$cookies.set('fullDark', this.fullDark, { maxAge: 2147483646 })

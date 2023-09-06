@@ -19,6 +19,7 @@ specifiers:
   '@nuxtjs/vuetify': 1.12.3
   ajv: 8.12.0
   ajv-formats: 2.1.1
+  async-wrapper-express-ts: ^3.1.6
   axios: 0.27.2
   bip39: 3.1.0
   body-parser: 1.20.2
@@ -48,7 +49,6 @@ specifiers:
   node-libcurl: 3.0.0
   nodemon: 2.0.22
   nuxt: 2.15.8
-  nuxt-json-config: 0.0.2
   nuxt-start: 2.15.8
   route-cache: 0.5.0
   sanitize-html: 2.11.0
@@ -59,6 +59,7 @@ specifiers:
   vue-plausible: 1.3.2
   vue-swatches: 2.1.1
   vuetify: 2.7.0
+  web-push: ^3.6.5
   xml2js: 0.6.0
 
 dependencies:
@@ -69,6 +70,7 @@ dependencies:
   '@nuxtjs/component-cache': 1.1.6
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/vuetify': 1.12.3
+  async-wrapper-express-ts: 3.1.6
   axios: 0.27.2
   bip39: 3.1.0
   body-parser: 1.20.2
@@ -90,7 +92,6 @@ dependencies:
   ms: 2.1.3
   node-libcurl: 3.0.0_encoding@0.1.13
   nuxt: 2.15.8_encoding@0.1.13
-  nuxt-json-config: 0.0.2
   nuxt-start: 2.15.8_encoding@0.1.13
   route-cache: 0.5.0
   sanitize-html: 2.11.0
@@ -99,6 +100,7 @@ dependencies:
   vue-plausible: 1.3.2
   vue-swatches: 2.1.1
   vuetify: 2.7.0
+  web-push: 3.6.5
   xml2js: 0.6.0
 
 devDependencies:
@@ -3877,6 +3879,15 @@ packages:
       - supports-color
     dev: false
 
+  /agent-base/7.1.0:
+    resolution: {integrity: sha512-o/zjMZRhJxny7OyEF+Op8X+efiELC7k7yOjMzgfzVqOzXqkBkWI79YoTdOtsuWd5BWhAGAuOY/Xa6xpiaWXiNg==}
+    engines: {node: '>= 14'}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /agentkeepalive/4.2.1:
     resolution: {integrity: sha512-Zn4cw2NEqd+9fiSVWMscnjyQ1a8Yfoc5oBajLeo5w+YBHgDUcEBY2hS4YpTz6iN5f/2zQiktcuM6tS8x1p9dpA==}
     engines: {node: '>= 8.0.0'}
@@ -4150,6 +4161,14 @@ packages:
     resolution: {integrity: sha512-z/WhQ5FPySLdvREByI2vZiTWwCnF0moMJ1hK9YQwDTHKh6I7/uSckMetoRGb5UBZPC1z0jlw+n/XCgjeH7y1AQ==}
     dev: false
     optional: true
+
+  /async-wrapper-express-ts/3.1.6:
+    resolution: {integrity: sha512-N6ip8AM7QcDfyrOEj2pMm3l/6/6wSreZ1M91hT4Cs3QpSExJCLwh8Vi57L0EZeov/BiW5VCcrls9rfMABmGPVA==}
+    dependencies:
+      express: 4.18.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -4539,6 +4558,10 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       buffer: 5.7.1
+    dev: false
+
+  /buffer-equal-constant-time/1.0.1:
+    resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
     dev: false
 
   /buffer-from/1.1.2:
@@ -6121,6 +6144,12 @@ packages:
       inherits: 2.0.4
       readable-stream: 2.3.7
       stream-shift: 1.0.1
+    dev: false
+
+  /ecdsa-sig-formatter/1.0.11:
+    resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
+    dependencies:
+      safe-buffer: 5.2.1
     dev: false
 
   /ee-first/1.1.1:
@@ -7708,6 +7737,13 @@ packages:
       resolve-alpn: 1.2.1
     dev: true
 
+  /http_ece/1.1.0:
+    resolution: {integrity: sha512-bptAfCDdPJxOs5zYSe7Y3lpr772s1G346R4Td5LgRUeCwIGpCGDUTJxRrhTNcAXbx37spge0kWEIH7QAYWNTlA==}
+    engines: {node: '>=4'}
+    dependencies:
+      urlsafe-base64: 1.0.0
+    dev: false
+
   /https-browserify/1.0.0:
     resolution: {integrity: sha512-J+FkSdyD+0mA0N+81tMotaRMfSL9SGi+xpD3T6YApKsc3bGSXJlfXri3VyFOeYkfLRQisDk1W+jIFFKBeUBbBg==}
     dev: false
@@ -7717,6 +7753,16 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /https-proxy-agent/7.0.2:
+    resolution: {integrity: sha512-NmLNjm6ucYwtcUmL7JQC1ZQ57LmHP4lT15FQ8D61nak1rO6DH+fz5qNK2Ap5UN4ZapYICE3/0KodcLYSPsPbaA==}
+    engines: {node: '>= 14'}
+    dependencies:
+      agent-base: 7.1.0
       debug: 4.3.4
     transitivePeerDependencies:
       - supports-color
@@ -8388,6 +8434,21 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.10
+
+  /jwa/2.0.0:
+    resolution: {integrity: sha512-jrZ2Qx916EA+fq9cEAeCROWPTfCwi1IVHqT2tapuqLEVVDKFDENFw1oL+MwrTvH6msKxsd1YTDVw6uKEcsrLEA==}
+    dependencies:
+      buffer-equal-constant-time: 1.0.1
+      ecdsa-sig-formatter: 1.0.11
+      safe-buffer: 5.2.1
+    dev: false
+
+  /jws/4.0.0:
+    resolution: {integrity: sha512-KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==}
+    dependencies:
+      jwa: 2.0.0
+      safe-buffer: 5.2.1
+    dev: false
 
   /kareem/2.5.1:
     resolution: {integrity: sha512-7jFxRVm+jD+rkq3kY0iZDJfsO2/t4BBPeEb2qKn2lR/9KhuksYk5hxzfRYWMPV8P/x2d0kHD306YyWLzjjH+uA==}
@@ -9515,12 +9576,6 @@ packages:
 
   /numbered/1.1.0:
     resolution: {integrity: sha512-pv/ue2Odr7IfYOO0byC1KgBI10wo5YDauLhxY6/saNzAdAs0r1SotGCPzzCLNPL0xtrAwWRialLu23AAu9xO1g==}
-    dev: false
-
-  /nuxt-json-config/0.0.2:
-    resolution: {integrity: sha512-WrmOvR2v46Ult6pWWPXJ2vi7cPFYGlYp66HvqqFpyxWZT2bWt3NKgERkbzhUaLGj1zjyazhSBMDVXYjZHG11lw==}
-    dependencies:
-      config: 3.3.9
     dev: false
 
   /nuxt-start/2.15.8_encoding@0.1.13:
@@ -12687,6 +12742,10 @@ packages:
       querystring: 0.2.0
     dev: false
 
+  /urlsafe-base64/1.0.0:
+    resolution: {integrity: sha512-RtuPeMy7c1UrHwproMZN9gN6kiZ0SvJwRaEzwZY0j9MypEkFqyBaKv176jvlPtg58Zh36bOkS0NFABXMHvvGCA==}
+    dev: false
+
   /use/3.1.1:
     resolution: {integrity: sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==}
     engines: {node: '>=0.10.0'}
@@ -13021,6 +13080,20 @@ packages:
     optionalDependencies:
       chokidar: 3.5.3
       watchpack-chokidar2: 2.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /web-push/3.6.5:
+    resolution: {integrity: sha512-rc/i0LRwA4EAeajRVHQp6+RW+NlCMuk3CgFLb+IR/NJ1RleeNzQ9iwayVHgc4LmcxaaWeslHBM1qLUq1yi0O6A==}
+    engines: {node: '>= 16'}
+    hasBin: true
+    dependencies:
+      asn1.js: 5.4.1
+      http_ece: 1.1.0
+      https-proxy-agent: 7.0.2
+      jws: 4.0.0
+      minimist: 1.2.7
     transitivePeerDependencies:
       - supports-color
     dev: false
