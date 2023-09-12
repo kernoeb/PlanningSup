@@ -213,6 +213,20 @@
               </template>
             </v-combobox>
           </v-list-item>
+          <v-list-item inactive style="cursor:pointer;" class="mb-2">
+            <v-list-item-action>
+              <v-checkbox
+                v-model="checkedHighlightTeacher"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+            <v-list-item-content @click="setHighlightTeacher()">
+              <v-list-item-title>Mettre en évidence les événements qui ont un professeur associé</v-list-item-title>
+              <v-list-item-subtitle>Les cours sans professeur associé seront grisés</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
 
           <v-divider />
 
@@ -286,7 +300,8 @@ export default {
       colorOthers: '#eddd6e',
 
       fullDark: false,
-      mergeDuplicates: true
+      mergeDuplicates: true,
+      highlightTeacher: false
     }
   },
   computed: {
@@ -312,6 +327,14 @@ export default {
       },
       set () {
         this.switchMergeDuplicates()
+      }
+    },
+    checkedHighlightTeacher: {
+      get () {
+        return this.highlightTeacher
+      },
+      set () {
+        this.setHighlightTeacher()
       }
     }
   },
@@ -349,6 +372,14 @@ export default {
       if (c.tp) this.colorTP = c.tp
       if (c.other) this.colorOthers = c.other
     } catch (err) {}
+
+    try {
+      const highlightTeacher = this.$cookies.get('highlightTeacher', { parseJSON: true })
+      if (typeof highlightTeacher === 'boolean') this.highlightTeacher = highlightTeacher
+      else this.highlightTeacher = false
+    } catch (err) {
+      this.highlightTeacher = false
+    }
   },
   methods: {
     forceFullMode () {
@@ -365,6 +396,11 @@ export default {
     switchMergeDuplicates () {
       this.mergeDuplicates = !this.mergeDuplicates
       this.$cookies.set('mergeDuplicates', this.mergeDuplicates, { maxAge: 2147483646 })
+      this.delayedFetch()
+    },
+    setHighlightTeacher () {
+      this.highlightTeacher = !this.highlightTeacher
+      this.$cookies.set('highlightTeacher', this.highlightTeacher, { maxAge: 2147483646 })
       this.delayedFetch()
     },
     reset () {

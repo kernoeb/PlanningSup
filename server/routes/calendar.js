@@ -44,6 +44,13 @@ router.get('/calendars', async (req, res) => {
     if (Object.keys(customColorList)?.length === 0) customColorList = null
   } catch (e) {}
 
+  // Highlight courses with teachers
+  let highlightTeacher = false
+  try {
+    if (req.cookies?.highlightTeacher === 'true') highlightTeacher = true
+  } catch (e) {
+  }
+
   try {
     const calendars = (req.query?.p && req.query.p.split(',')) || (req.cookies?.plannings && req.cookies.plannings.split(',')) || null
     if (calendars == null) return res.status(400).send('No cookie or no parameter found')
@@ -54,18 +61,27 @@ router.get('/calendars', async (req, res) => {
 
     const plannings = await Promise.all(tmpIds.map(async (id) => {
       const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
-      if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColorList) }
-      const backed = await getBackedPlanning(id)
-      if (backed?.backup) {
+      if (fetched) {
         return {
           id,
-          status: 'backup',
+          status: 'ok',
           title: allPlannings[id].title,
-          timestamp: backed.timestamp || undefined,
-          events: getFormattedEvents(backed.backup, blocklist, customColorList)
+          timestamp: new Date().toISOString(),
+          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, highlightTeacher })
         }
       } else {
-        return { id, title: allPlannings[id].title, status: 'off' }
+        const backed = await getBackedPlanning(id)
+        if (backed?.backup) {
+          return {
+            id,
+            status: 'backup',
+            title: allPlannings[id].title,
+            timestamp: backed.timestamp || undefined,
+            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, highlightTeacher })
+          }
+        } else {
+          return { id, title: allPlannings[id].title, status: 'off' }
+        }
       }
     }))
 
