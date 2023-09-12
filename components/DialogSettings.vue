@@ -258,7 +258,7 @@
             </div>
           </v-list-item>
           <v-list-item inactive>
-            <div><small><b>❤️ Donateurs :</b> W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev</small></div>
+            <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev</small></div>
           </v-list-item>
         </v-list-item-group>
       </v-card>
