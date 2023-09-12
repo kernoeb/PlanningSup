@@ -125,6 +125,7 @@
         <lazy-dialog-settings
           :dialog-settings="dialogSettings"
           :settings="settings"
+          :selected-plannings-ids="selectedPlanningsIds || []"
           @fetch="$fetch()"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"

@@ -213,10 +213,11 @@
               </template>
             </v-combobox>
           </v-list-item>
-          <v-list-item inactive style="cursor:pointer;" class="mb-2">
+          <v-list-item inactive style="cursor:pointer;" class="mb-2" :disabled="disabledHighlightTeacher">
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedHighlightTeacher"
+                :disabled="disabledHighlightTeacher"
                 :indeterminate-icon="mdiCheckboxBlankOutline"
                 :off-icon="mdiCheckboxBlankOutline"
                 :on-icon="mdiCheckboxMarked"
@@ -278,6 +279,10 @@ export default {
     settings: {
       type: Array,
       default: () => []
+    },
+    selectedPlanningsIds: {
+      type: Array,
+      default: () => []
     }
   },
   data () {
@@ -336,6 +341,12 @@ export default {
       set () {
         this.setHighlightTeacher()
       }
+    },
+    disabledHighlightTeacher () {
+      if (this.selectedPlanningsIds && this.selectedPlanningsIds.length) {
+        return !this.selectedPlanningsIds.every(id => id.startsWith('iutdenantes.info.')) // special case for iutdenantes.info
+      }
+      return true
     }
   },
   created () {
