@@ -1,5 +1,9 @@
 <template>
   <div v-if="mounted">
+    <client-only>
+      <lazy-snackbar />
+    </client-only>
+
     <div class="d-flex justify-space-between">
       <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
         <transition name="fade" mode="out-in">

@@ -6,7 +6,9 @@
       <script value="dev:darwin-arm64" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+    <envs>
+      <env name="HOST" value="0" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>
