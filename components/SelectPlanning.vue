@@ -443,6 +443,8 @@ export default {
       this.menuGroup = false
     },
     refreshFavorites () {
+      // TODO update push notifications
+
       try {
         this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
 

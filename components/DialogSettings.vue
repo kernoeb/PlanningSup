@@ -397,7 +397,9 @@ export default {
       this.mergeDuplicates = true
     }
   },
-  async mounted () {
+  mounted () {
+    console.log('Mounted settings')
+
     if (this.$cookies.get('blocklist') !== undefined) {
       try {
         const tmp = JSON.parse(this.$cookies.get('blocklist', { parseJSON: false }))
@@ -427,10 +429,17 @@ export default {
       this.highlightTeacher = false
     }
 
-    if ('serviceWorker' in navigator) {
-      console.log('Service worker OK')
-      this.notifications = !!(navigator.serviceWorker.ready && await navigator.serviceWorker.ready.then(registration => registration.pushManager.getSubscription()))
-      console.log('Is subscribed', this.notifications)
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      setTimeout(async () => {
+        if ('serviceWorker' in navigator) {
+          console.log('Service worker exists')
+          await navigator.serviceWorker.register('/notifications-worker.js', { scope: '/' })
+          console.log('Service worker ready')
+          this.notifications = !!(navigator.serviceWorker.ready && await navigator.serviceWorker.ready.then(registration => registration.pushManager.getSubscription()))
+          console.log('Is subscribed', this.notifications)
+        }
+      }, 10)
     }
   },
   methods: {
@@ -495,7 +504,7 @@ export default {
         console.log('Registered push')
 
         try {
-          subscription.plannings = this.$cookies.get('favorites', { parseJSON: false }) || []
+          subscription.plannings = this.$cookies.get('favorites', { parseJSON: false })?.split(',') || []
         } catch (err) {
           subscription.plannings = []
         }
@@ -513,7 +522,8 @@ export default {
 
         console.log('Sent push')
       } catch (err) {
-        console.log('Error', err)
+        alert(JSON.stringify(err, ['message', 'arguments', 'type', 'name']))
+        console.error(err)
       }
       this.loadingSubscription = false
     },

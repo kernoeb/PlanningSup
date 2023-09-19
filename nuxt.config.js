@@ -150,10 +150,7 @@ export default {
       display: 'standalone'
     },
     workbox: {
-      cleanupOutdatedCaches: true,
-      importScripts: [
-        'notifications-worker.js'
-      ]
+      cleanupOutdatedCaches: true
     }
   },
 

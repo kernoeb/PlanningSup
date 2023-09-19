@@ -7,7 +7,7 @@ const { fetchAndGetJSON } = require('../server/util/utils')
 const { Planning } = require('../server/models/planning')
 
 mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(async (v) => {
-  logger.info('BREE Mongo initialized !')
+  logger.info('BREE UpdatePlanning - Mongo initialized !')
 
   const instance = axios.create({
     timeout: 5000,

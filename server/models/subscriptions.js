@@ -11,7 +11,12 @@ const schemaSubscription = new Schema({
     p256dh: String,
     auth: String
   },
-  plannings: [String]
+  plannings: [String],
+  nextNotifications: [{
+    id: String,
+    date: Date,
+    status: String
+  }]
 })
 
 schemaSubscription.index({ endpoint: 1 }, { unique: true })

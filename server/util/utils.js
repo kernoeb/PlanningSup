@@ -86,6 +86,9 @@ const cleanName = (name) => {
 }
 
 module.exports = {
+  cleanDescription,
+  cleanLocation,
+  cleanName,
   /**
    * Get custom events for a planning
    * @param name
