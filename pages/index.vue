@@ -1,5 +1,9 @@
 <template>
   <div v-if="mounted">
+    <client-only>
+      <lazy-snackbar />
+    </client-only>
+
     <div class="d-flex justify-space-between">
       <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
         <transition name="fade" mode="out-in">
@@ -125,6 +129,7 @@
         <lazy-dialog-settings
           :dialog-settings="dialogSettings"
           :settings="settings"
+          :selected-plannings-ids="selectedPlanningsIds || []"
           @fetch="$fetch()"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"

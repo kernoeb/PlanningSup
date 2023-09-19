@@ -112,6 +112,7 @@ services:
 
 ## Donateurs
 
+- [Ewennn](https://github.com/Ewennnn) (merci️, le goat)
 - [W00dy](https://github.com/0xW00dy)
 - [Rick](https://github.com/rick-gnous)
 - [Lahgolz](https://twitter.com/lahgolzmiin)
@@ -121,6 +122,8 @@ services:
 - [PandAmiral](https://github.com/PandAmiral)
 - [ShockedPlot](https://github.com/ShockedPlot7560)
 - [BatLeDev](https://github.com/BatLeDev)
+- Louanne M.
+- RidzArt
 
 (merci à vous ! ❤️)
 

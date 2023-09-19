@@ -238,6 +238,21 @@
               </template>
             </v-combobox>
           </v-list-item>
+          <v-list-item inactive style="cursor:pointer;" class="mb-2" :disabled="disabledHighlightTeacher">
+            <v-list-item-action>
+              <v-checkbox
+                v-model="checkedHighlightTeacher"
+                :disabled="disabledHighlightTeacher"
+                :indeterminate-icon="mdiCheckboxBlankOutline"
+                :off-icon="mdiCheckboxBlankOutline"
+                :on-icon="mdiCheckboxMarked"
+              />
+            </v-list-item-action>
+            <v-list-item-content @click="setHighlightTeacher()">
+              <v-list-item-title>Mettre en évidence les événements qui ont un professeur associé</v-list-item-title>
+              <v-list-item-subtitle>Les cours sans professeur associé seront grisés</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
 
           <v-divider />
 
@@ -268,7 +283,7 @@
             </div>
           </v-list-item>
           <v-list-item inactive>
-            <div><small><b>❤️ Donateurs :</b> W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev</small></div>
+            <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev, Louanne M., RidzArt</small></div>
           </v-list-item>
         </v-list-item-group>
       </v-card>
@@ -287,6 +302,10 @@ export default {
       default: false
     },
     settings: {
+      type: Array,
+      default: () => []
+    },
+    selectedPlanningsIds: {
       type: Array,
       default: () => []
     }
@@ -311,9 +330,10 @@ export default {
       colorOthers: '#eddd6e',
 
       fullDark: false,
-      mergeDuplicates: true,
       notifications: undefined,
       loadingSubscription: false
+      mergeDuplicates: true,
+      highlightTeacher: false
     }
   },
   computed: {
@@ -348,6 +368,20 @@ export default {
       set () {
         this.subscriptions()
       }
+    },
+    checkedHighlightTeacher: {
+      get () {
+        return this.highlightTeacher
+      },
+      set () {
+        this.setHighlightTeacher()
+      }
+    },
+    disabledHighlightTeacher () {
+      if (this.selectedPlanningsIds && this.selectedPlanningsIds.length) {
+        return !this.selectedPlanningsIds.every(id => id.startsWith('iutdenantes.info.')) // special case for iutdenantes.info
+      }
+      return true
     }
   },
   created () {
@@ -384,6 +418,14 @@ export default {
       if (c.tp) this.colorTP = c.tp
       if (c.other) this.colorOthers = c.other
     } catch (err) {}
+
+    try {
+      const highlightTeacher = this.$cookies.get('highlightTeacher', { parseJSON: true })
+      if (typeof highlightTeacher === 'boolean') this.highlightTeacher = highlightTeacher
+      else this.highlightTeacher = false
+    } catch (err) {
+      this.highlightTeacher = false
+    }
 
     if ('serviceWorker' in navigator) {
       console.log('Service worker OK')
@@ -489,6 +531,11 @@ export default {
     switchMergeDuplicates () {
       this.mergeDuplicates = !this.mergeDuplicates
       this.$cookies.set('mergeDuplicates', this.mergeDuplicates, { maxAge: 2147483646 })
+      this.delayedFetch()
+    },
+    setHighlightTeacher () {
+      this.highlightTeacher = !this.highlightTeacher
+      this.$cookies.set('highlightTeacher', this.highlightTeacher, { maxAge: 2147483646 })
       this.delayedFetch()
     },
     reset () {
