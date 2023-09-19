@@ -331,7 +331,7 @@ export default {
 
       fullDark: false,
       notifications: undefined,
-      loadingSubscription: false
+      loadingSubscription: false,
       mergeDuplicates: true,
       highlightTeacher: false
     }
