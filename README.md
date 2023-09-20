@@ -124,6 +124,7 @@ services:
 - [BatLeDev](https://github.com/BatLeDev)
 - Louanne M.
 - RidzArt
+- [EDM115](https://github.com/EDM115)
 
 (merci à vous ! ❤️)
 
