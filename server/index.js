@@ -84,7 +84,7 @@ if (process.env.NODE_ENV !== 'test') {
 
               // Get distinct of subscriptions plannings
               const subscriptions = await Subscription.distinct('plannings')
-              console.log('Number of active subscriptions', subscriptions.length)
+              logger.info('[Subscriptions] Number of active plannings', subscriptions.length)
 
               if (subscriptions.length) {
                 for (const planning of subscriptions) {
@@ -107,6 +107,7 @@ if (process.env.NODE_ENV !== 'test') {
 
                       const diff = dtstart - now
                       const tenMinutes = 1000 * 60 * 10
+                      // const thirtyMinutes = 1000 * 60 * 30
                       // const twelveHours = 1000 * 60 * 60 * 12
 
                       if (diff <= tenMinutes) {
@@ -116,7 +117,7 @@ if (process.env.NODE_ENV !== 'test') {
                         const payload = JSON.stringify({
                           title: `Cours dans ${Math.round(diff / 1000 / 60)} minutes`,
                           body: `- ${cleanName(nextEvent.summary.value)}\n- ${cleanLocation(nextEvent.location.value)}\n- ${cleanDescription(nextEvent.description.value)}`,
-                          icon: 'https://planningsup.app/favicon.ico'
+                          icon: '/favicon.ico'
                         })
                         const date = new Date(dtstart)
 
@@ -130,9 +131,7 @@ if (process.env.NODE_ENV !== 'test') {
                             continue
                           }
 
-                          await retry(async () => {
-                            await sendNotification(subscription, payload, true)
-                          }, 3) // Retry 3 times
+                          await retry(async () => await sendNotification(subscription, payload, true), 2) // Retry 2 times
                             .then(() => updateSubscription(subscription, { id, date, status: 'sent' }))
                             .catch(() => updateSubscription(subscription, { id, date, status: 'error' }))
                         }

@@ -412,7 +412,6 @@ export default {
       const final = [...new Set(tmp)].filter(v => !!v)
       this.favorites = final
       this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
-      this.getNames()
       this.$nextTick(() => {
         this.refreshFavorites()
       })
@@ -443,8 +442,6 @@ export default {
       this.menuGroup = false
     },
     refreshFavorites () {
-      // TODO update push notifications
-
       try {
         this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
 
@@ -456,6 +453,18 @@ export default {
         }
 
         this.getNames()
+
+        try {
+          const subscription = JSON.parse(localStorage.getItem('subscription') || '{}')
+          if (subscription && subscription.endpoint) {
+            const plannings = [...this.favorites || []]
+            this.$axios.$put('/api/v1/subscriptions/update-plannings  ', { subscription, plannings }).catch((err) => {
+              console.log('Error updating favorites for notifications', err)
+            })
+          }
+        } catch (err) {
+          console.log('Error updating favorites for notifications', err)
+        }
 
         if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
         if (this.$cookies?.get('groupFavorites') === '') this.$cookies.remove('groupFavorites')

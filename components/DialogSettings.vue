@@ -471,13 +471,13 @@ export default {
           const subscription = await registration.pushManager.getSubscription()
           await subscription.unsubscribe()
 
-          await fetch('/api/v1/subscriptions/unsubscribe', {
-            method: 'POST',
-            body: JSON.stringify(subscription),
+          await this.$axios.$post('/api/v1/subscriptions/unsubscribe', subscription, {
             headers: {
               'content-type': 'application/json'
             }
           })
+
+          localStorage.removeItem('subscription')
 
           console.log('Unregistered push')
           this.notifications = false
@@ -509,10 +509,10 @@ export default {
           subscription.plannings = []
         }
 
+        localStorage.setItem('subscription', JSON.stringify(subscription))
+
         console.log('Sending push')
-        await fetch('/api/v1/subscriptions/subscribe', {
-          method: 'POST',
-          body: JSON.stringify(subscription),
+        await this.$axios.$post('/api/v1/subscriptions/subscribe', subscription, {
           headers: {
             'content-type': 'application/json'
           }
