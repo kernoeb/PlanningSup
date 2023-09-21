@@ -27,7 +27,7 @@ RUN pnpm fetch
 COPY --chown=node:node . ./
 
 # Check JSON is valid
-RUN node ./resources/check-plannings-json && rm -rf ./resources
+RUN node ./resources/check-plannings-json.mjs && rm -rf ./resources
 
 # Install dependencies
 RUN pnpm install --offline

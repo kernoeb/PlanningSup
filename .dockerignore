@@ -26,4 +26,4 @@
 !.npmrc
 
 # Other stuff
-!resources/check-plannings-json.js
+!resources/check-plannings-json.mjs

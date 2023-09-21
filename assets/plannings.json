@@ -6369,11 +6369,6 @@
                         "id": "d2",
                         "title": "D2",
                         "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11545&projectId=13&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "d3",
-                        "title": "D3",
-                        "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11546&projectId=42&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   }
