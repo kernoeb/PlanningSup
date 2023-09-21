@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import Ajv from 'ajv'
 import addFormats from 'ajv-formats'
-import axios from 'axios'
+// import axios from 'axios'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
