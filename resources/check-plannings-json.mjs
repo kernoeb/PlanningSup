@@ -62,8 +62,7 @@ if (!valid) {
 
 console.log('JSON is valid')
 
-/*
-const today = new Date()
+/* const today = new Date()
 const inSixMonths = new Date()
 inSixMonths.setMonth(today.getMonth() + 6)
 
@@ -73,7 +72,7 @@ const formattedInSixMonths = inSixMonths.toISOString().split('T')[0]
 console.log(formattedToday)
 console.log(formattedInSixMonths)
 
-const allUrls = []
+let allUrls = []
 JSON.parse(content, (key, value) => {
   if (key === 'url') allUrls.push(value.replace('{date-start}', formattedToday).replace('{date-end}', formattedInSixMonths))
 })
@@ -100,17 +99,18 @@ async function processUrlsInChunks (urls, chunkSize) {
         }
       })
     )
-    process.stdout.write(`\r${i + chunkSize}/${urls.length}`)
+    process.stdout.write(`\r${Math.min(i + chunkSize, urls.length)}/${urls.length}`)
     await new Promise(resolve => setTimeout(resolve, 1000))
   }
 }
 
 process.stdout.write(`\r0/${allUrls.length}`)
 
-// const blacklist = []
-const whitelist = []
+const blacklist = []
+// const whitelist = []
 
-allUrls = allUrls.filter(url => whitelist.some(domain => url.includes(domain)))
+allUrls = allUrls.filter(url => !blacklist.some(domain => url.includes(domain)))
+// allUrls = allUrls.filter(url => whitelist.some(domain => url.includes(domain)))
 
 const chunkSize = 10
 
@@ -127,8 +127,15 @@ if (errorUrls.length) {
 
   console.error('\n\nEmpty URLs:')
   console.error('Length:', errorUrls.filter(({ empty }) => empty).length)
+
+  const error404 = errorUrls.filter(({ error }) => error === '404')
+  if (error404.length) {
+    console.error('\n\n404 URLs:')
+    console.error('Length:', error404.length)
+    console.error(error404)
+  }
+
   process.exit(1)
-}
-*/
+} */
 
 process.exit(0)
