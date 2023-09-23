@@ -36,13 +36,13 @@ const getColor = (value, location, description, options = {}) => {
   if (options.highlightTeacher && checkHighlightTeacher({ description })) {
     return '#676767'
   } else if (value.includes('CM') || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
-    return options?.customColor?.amphi || '#efd6d8'
+    return options.customColor?.amphi || '#efd6d8'
   } else if (value.includes('TP') || value.includes('TDi') || value.trim().match(/\sG\d\.\d$/)) {
-    return options?.customColor?.tp || '#bbe0ff'
+    return options.customColor?.tp || '#bbe0ff'
   } else if ((value.includes('TD') || location.includes('V-B') || value.trim().match(/\sG\d$/)) && !/^S\d\.\d\d/.test(value) && !/contr[ôo]le/i.test(value)) {
-    return options?.customColor?.td || '#d4fbcc'
+    return options.customColor?.td || '#d4fbcc'
   } else {
-    return options?.customColor?.other || '#EDDD6E'
+    return options.customColor?.other || '#EDDD6E'
   }
 }
 

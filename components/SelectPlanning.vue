@@ -388,7 +388,7 @@ export default {
     },
     getNames () {
       const list = [...(this.favorites || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
-      if (list?.length) {
+      if (list.length) {
         this.$axios.$get('/api/v1/calendars/info', { params: { p: list.join(',') } }).then((data) => {
           this.planningNames = data
         }).catch(() => {

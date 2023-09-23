@@ -41,7 +41,7 @@ router.get('/calendars', async (req, res) => {
     for (const c in customColorList) {
       if (typeof customColorList[c] !== 'string') delete customColorList[c]
     }
-    if (Object.keys(customColorList)?.length === 0) customColorList = null
+    if (Object.keys(customColorList).length === 0) customColorList = null
   } catch (e) {}
 
   // Highlight courses with teachers
