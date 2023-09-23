@@ -156,6 +156,7 @@ module.exports = {
       logger.info('Initializing curl')
       curl = require('./curl')
     }
+
     try {
       const { data } = instance ? await instance.get(url) : await curl.get(url)
       if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
@@ -167,6 +168,7 @@ module.exports = {
         logger.debug(data)
       }
     } catch (e) {
+      console.error('Error', url)
       logger.debug(e)
     }
   }
