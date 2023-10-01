@@ -33,6 +33,31 @@ if (process.env.NODE_ENV !== 'test') {
         logger.info('Initializing Bree.js...')
         initBree()
       }
+
+      setTimeout(async () => {
+        try {
+          const { Agenda } = require('@hokify/agenda')
+          const agenda = new Agenda({ name: 'notifications' })
+
+          // Remove old jobs
+          await mongoose.connection.db.collection('notifications').deleteMany({ nextRunAt: { $lt: new Date() } })
+
+          await agenda.mongo(mongoose.connection.db, 'notifications')
+
+          agenda.define('send notification', async () => {
+            logger.info('[Subscriptions] Sending notifications...')
+            await require('./util/notifications').notificationsLoop()
+            logger.info('[Subscriptions] Notifications sent !')
+          })
+
+          await agenda.every('1 minute', 'send notification', {}, { skipImmediate: false })
+          await agenda.start()
+
+          logger.info('Agenda initialized !')
+        } catch (e) {
+          logger.error('Error while initializing agenda', e)
+        }
+      }, 10)
     })
   }).catch((err) => {
     logger.error('Error while initializing mongo', err)
@@ -80,7 +105,7 @@ app.use(require('./routes/calendar'))
 app.use(require('./routes/urls'))
 app.use(require('./routes/crous'))
 app.use(require('./routes/metrics'))
-// app.use('/sync', require('./routes/sync')) // Work in progress
+app.use('/subscriptions', require('./routes/subscriptions'))
 
 // Export express app
 module.exports = app
