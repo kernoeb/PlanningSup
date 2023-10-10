@@ -12236,9 +12236,20 @@
     "title": "IUT Lyon 1",
     "edts": [
       {
-        "id": "lp-devops",
-        "title": "LP DevOps",
-        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9319&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        "id": "deptinfo-doua",
+        "title": "Departement Info-Doua",
+        "edts": [
+          {
+            "id": "lp-devops",
+            "title": "LP DevOps",
+            "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9319&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          },
+          {
+            "id": "lp-essir",
+            "title": "LP ESSIR",
+            "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5700&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          }
+        ]
       }
     ]
   }
