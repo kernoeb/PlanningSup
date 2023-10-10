@@ -87,28 +87,16 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ### Nécessaire
 
 - [Node.js](https://github.com/nodejs/node) 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
-- [pnpm](https://pnpm.io/) : Gestionnaire de paquets
+- [pnpm 7](https://pnpm.io/) : Gestionnaire de paquets (installation : `npm i -g pnpm@7`)
 
 ### Commandes utiles
 
-- Lancement en local : `pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
-- Build du projet : `pnpm run build`
-- Démarrage de MongoDB (en local) : `docker-compose up -f docker-compose-dev.yml up -d --remove-orphans`
+Lancement en local : 
 
-```
-version: '2'
+- Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
+- `pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 
-services:
-  mongodb:
-    image: docker.io/bitnami/mongodb:5.0
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - '/opt/planning_v2:/bitnami/mongodb'
-```
-
-> For MacOS M1, you can use `zcube/bitnami-compat-mongodb:5.0`
+> For MacOS M1, you can use `pnpm run dev:darwin-arm64`
 
 ## Donateurs
 
