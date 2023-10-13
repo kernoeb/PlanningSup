@@ -12631,8 +12631,7 @@
         ]
       }
     ]
-  },
-  {
+  }, {
     "id": "univ_saint_etienne",
     "title": "Université de Saint-Etienne",
     "edts": [
@@ -13070,7 +13069,23 @@
               {
                 "id": "de-ipa-2a-pathologies-renales",
                 "title": "DE IPA 2A Pathologies Renales",
-                "edts": []
+                "edts": [
+                  {
+                    "id": "de-ipa-2a-visu",
+                    "title": "DE IPA 2A (visu)",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1031&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-2a-gen",
+                    "title": "DE IPA 2A GEN",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1028&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-2a-spe",
+                    "title": "DE IPA 2A SPE",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1029&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
               }
             ]
           },
