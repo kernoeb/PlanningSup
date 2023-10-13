@@ -12629,9 +12629,256 @@
             ]
           }
         ]
+      },
+      {
+        "id": "deptinfo-bourg",
+        "title": "Departement Info-Bourg",
+        "edts": [
+          {
+            "id": "but-informatique-1-ere-annee-bourg",
+            "title": "BUT Informatique 1ère année Bourg",
+            "edts": [
+              {
+                "id": "s1",
+                "title": "S1",
+                "edts": [
+                  {
+                    "id": "s1g1",
+                    "title": "S1G1",
+                    "edts": [
+                      {
+                        "id": "s1g1-1",
+                        "title": "S1G1.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9426&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s1g1-2",
+                        "title": "S1G1.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9425&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s1g2",
+                    "title": "S1G2",
+                    "edts": [
+                      {
+                        "id": "s1g2-1",
+                        "title": "S1G2.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9428&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s1g2-2",
+                        "title": "S1G2.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9429&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s1g3",
+                    "title": "S1G3",
+                    "edts": [
+                      {
+                        "id": "s1g3-1",
+                        "title": "S1G3.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9431&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s1g3-2",
+                        "title": "S1G3.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9432&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "s2",
+                "title": "S2",
+                "edts": [
+                  {
+                    "id": "s2g1",
+                    "title": "S2G1",
+                    "edts": [
+                      {
+                        "id": "s2g1-1",
+                        "title": "S2G1.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6889&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s2g1-2",
+                        "title": "S2G1.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6890&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s2g2",
+                    "title": "S2G2",
+                    "edts": [
+                      {
+                        "id": "s2g2-1",
+                        "title": "S2G2.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6895&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s2g2-2",
+                        "title": "S2G2.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6897&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s2g3",
+                    "title": "S2G3",
+                    "edts": [
+                      {
+                        "id": "s2g3-1",
+                        "title": "S2G3.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6901&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s2g3-2",
+                        "title": "S2G3.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6902&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "but-informatique-2-eme-annee-bourg",
+            "title": "BUT Informatique 2ème année Bourg",
+            "edts": [
+              {
+                "id": "s3",
+                "title": "S3",
+                "edts": [
+                  {
+                    "id": "s3g1",
+                    "title": "S3G1",
+                    "edts": [
+                      {
+                        "id": "s3g1-1",
+                        "title": "S3G1.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9435&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s3g1-2",
+                        "title": "S3G1.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9436&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s3g2",
+                    "title": "S3G2",
+                    "edts": [
+                      {
+                        "id": "s3g2-1",
+                        "title": "S3G2.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9438&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s3g2-2",
+                        "title": "S3G2.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9439&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "s4",
+                "title": "S4",
+                "edts": [
+                  {
+                    "id": "s4g1",
+                    "title": "S4G1",
+                    "edts": [
+                      {
+                        "id": "s4g1-1",
+                        "title": "S4G1.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6908&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s4g1-2",
+                        "title": "S4G1.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6909&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "s4g2",
+                    "title": "S4G2",
+                    "edts": [
+                      {
+                        "id": "s4g2-1",
+                        "title": "S4G2.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6911&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "s4g2-2",
+                        "title": "S4G2.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6912&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "but-informatique-3-eme-anneebourg",
+            "title": "BUT Informatique 3ème année Bourg",
+            "edts": [
+              {
+                "id": "but3",
+                "title": "BUT3",
+                "edts": [
+                  {
+                    "id": "mobile",
+                    "title": "Mobile",
+                    "edts": [
+                      {
+                        "id": "mob-1",
+                        "title": "Mob.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8313&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mob-2",
+                        "title": "Mob.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8314&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "web",
+                    "title": "Web",
+                    "edts": [
+                      {
+                        "id": "web-1",
+                        "title": "Web.1",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8213&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "web-2",
+                        "title": "Web.2",
+                        "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8214&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]        
       }
     ]
-  }, {
+  },
+  {
     "id": "univ_saint_etienne",
     "title": "Université de Saint-Etienne",
     "edts": [
