@@ -12631,5 +12631,585 @@
         ]
       }
     ]
+  }, {
+    "id": "univ_saint_etienne",
+    "title": "Université de Saint-Etienne",
+    "edts": [
+      {
+        "id": "medecine",
+        "title": "Medecine",
+        "edts": [
+          {
+            "id": "scolarite-1-cycle",
+            "title": "Scolarité 1er Cycle",
+            "edts": [
+              {
+                "id": "las",
+                "title": "LAS",
+                "edts": [
+                  {
+                    "id": "las-se",
+                    "title": "LAS SE",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5127&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "las-shs",
+                    "title": "LAS SHS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5129&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "pass",
+                "title": "PASS",
+                "edts": [
+                  {
+                    "id": "cm-pass",
+                    "title": "CM PASS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=607&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "exp-ifsi",
+                    "title": "Expérimentation IFSI",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10874&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "exp-imrt",
+                    "title": "Expérimentation IMRT",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=243&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "grp-a-presentiel-grp-b-distanciel",
+                    "title": "Groupe A (Présentiel) - GROUPE B (Distanciel)",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11775&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "grp-b-presentiel-grp-a-distanciel",
+                    "title": "Groupe B (Présentiel) - GROUPE A (Distanciel)",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7725&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "option-droit",
+                    "title": "Option Droit",
+                    "edts": [
+                      {
+                        "id": "grp-a",
+                        "title": "Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "grp-b",
+                        "title": "Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "grp-c",
+                        "title": "Groupe C",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=411&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "grp-d",
+                        "title": "Groupe D",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5046&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "grp-e",
+                        "title": "Groupe E",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4858&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-droit",
+                        "title": "Option Droit",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8152&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "options-fst",
+                    "title": "Options FST",
+                    "edts": [
+                      {
+                        "id": "option-biomecanique-et-activites-physiques-et-sportives",
+                        "title": "Option Biomécanique et Activités Physiques et Sportives",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8396&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-geosciences-et-environnement-chimie",
+                        "title": "Option Géosciences et Environnement Chimie",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8399&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-mathematiques",
+                        "title": "Option Mathématiques",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7724&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-physique",
+                        "title": "Option Physique",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8395&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-physique-chimie",
+                        "title": "Option Physique-Chimie",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8401&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-psychologie-cognitive-et-activites-physiques-et-sportives",
+                        "title": "Option Psychologie cognitive et Activités Physiques et Sportives",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8414&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "option-sciences-de-la-vie",
+                        "title": "Option Sciences de la vie",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2178&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "option-sciences-de-l-education",
+                    "title": "Option Sciences de l'éducation",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8394&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "td-pass",
+                    "title": "TD PASS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11975&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "dfgsm2",
+                "title": "DFGSM2",
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2343&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "dfgsm3",
+                "title": "DFGSM3",
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3160&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "scolarite-2-cycle",
+            "title": "Scolarité 2eme Cycle",
+            "edts": [
+              {
+                "id": "dfasm1",
+                "title": "DFASM1",
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7303&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "dfasm2",
+                "title": "DFASM2",
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7726&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "dfasm3",
+                "title": "DFASM3",
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5060&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "scolarite-sps",
+            "title": "Scolarité SPS",
+            "edts": [
+              {
+                "id": "l1-sciences-pour-la-sante",
+                "title": "L1 Sciences pour la Santé",
+                "edts": [
+                  {
+                    "id": "groupes",
+                    "title": "Groupes",
+                    "edts": [
+                      {
+                        "id": "groupe-a",
+                        "title": "Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10713&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-b",
+                        "title": "Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-c",
+                        "title": "Groupe C",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10715&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-d",
+                        "title": "Groupe D",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10716&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-e",
+                        "title": "Groupe E",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11349&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-f",
+                        "title": "Groupe F",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11351&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "groupes-1-2-3-4",
+                    "title": "Groupes 1, 2, 3, 4",
+                    "edts": [
+                      {
+                        "id": "groupe-1",
+                        "title": "Groupe 1",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10858&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-2",
+                        "title": "Groupe 2",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10859&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-3",
+                        "title": "Groupe 3",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1358&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-4",
+                        "title": "Groupe 4",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1406&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "l1-sps",
+                    "title": "L1 SPS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=876&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "l2-sciences-pour-la-sante",
+                "title": "L2 Sciences pour la Santé",
+                "edts": [
+                  {
+                    "id": "groupes-td",
+                    "title": "Groupes TD",
+                    "edts": [
+                      {
+                        "id": "groupe-a",
+                        "title": "Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1199&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-b",
+                        "title": "Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1173&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-c",
+                        "title": "Groupe C",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3825&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-groupe1-1-4",
+                        "title": "L2 SPS - Groupe 1 (1/4)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1295&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-groupe-2-2-4",
+                        "title": "L2 SPS - Groupe 2 (2/4)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1258&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-groupe-3-3-4",
+                        "title": "L2 SPS - Groupe 3 (3/4)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1247&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-groupe-4-4-4",
+                        "title": "L2 SPS - Groupe 4 (4/4)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1206&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "groupes-td-math-chimie",
+                    "title": "Groupes TD - Math Chimie",
+                    "edts": [
+                      {
+                        "id": "groupe-1",
+                        "title": "Groupe 1",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1383&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-2",
+                        "title": "Groupe 2",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1384&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-3",
+                        "title": "Groupe 3",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1392&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "l2-sps",
+                    "title": "L2 SPS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1378&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "l2-sps-ingenierie-en-sante",
+                    "title": "L2 SPS Ingénierie en Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1162&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "l2-sps-prevention-en-sante",
+                    "title": "L2 SPS Prévention en Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1160&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "spe-ingenierie-groupe-a-b",
+                    "title": "Spé. Ingénierie - Groupe A - B",
+                    "edts": [
+                      {
+                        "id": "l2-sps-spe-ingenierie-groupe-a",
+                        "title": "L2 SPS - Spé. Ingénierie - Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1363&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-spe-ingenierie-groupe-b",
+                        "title": "L2 SPS - Spé. Ingénierie - Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "spe-prevention-groupe-a-b",
+                    "title": "Spé. Prévention - Groupe A - B",
+                    "edts": [
+                      {
+                        "id": "l2-sps-spe-prevention-groupe-a",
+                        "title": "L2 SPS - Spé. Prévention - Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1310&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "l2-sps-spe-prevention-groupe-b",
+                        "title": "L2 SPS - Spé. Prévention - Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1300&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "l3-sciences-pour-la-sante",
+                "title": "L3 Sciences pour la Santé",
+                "edts": [
+                  {
+                    "id": "groupes-td",
+                    "title": "GROUPES TD",
+                    "edts": [
+                      {
+                        "id": "groupe-a",
+                        "title": "Groupe A",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5236&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "groupe-b",
+                        "title": "Groupe B",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5238&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "l3-sps",
+                    "title": "L3 SPS",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4582&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "l3-sps-ingenierie-en-sante",
+                    "title": "L3 SPS Ingénierie en Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11345&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "l3-sps-prevention-en-sante",
+                    "title": "L3 SPS Prévention en Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "dsts",
+            "title": "DSTS",
+            "edts": [
+              {
+                "id": "de-ipa-1a",
+                "title": "DE IPA 1A",
+                "edts": [
+                  {
+                    "id": "de-ipa-1a-visu",
+                    "title": "DE IPA 1A (visu)",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1024&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-1a-gen",
+                    "title": "DE IPA 1A GEN",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1025&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-1a-spe",
+                    "title": "DE IPA 1A SPE",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1027&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "de-ipa-2a-pathologies-renales",
+                "title": "DE IPA 2A Pathologies Renales",
+                "edts": [
+                  {
+                    "id": "de-ipa-2a-visu",
+                    "title": "DE IPA 2A (visu)",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1031&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-2a-gen",
+                    "title": "DE IPA 2A GEN",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1028&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "de-ipa-2a-spe",
+                    "title": "DE IPA 2A SPE",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1029&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "master",
+            "title": "Master",
+            "edts": [
+              {
+                "id": "du-pre-master",
+                "title": "DU Pre Master",
+                "edts": [
+                  {
+                    "id": "du-pre-master-1a",
+                    "title": "DU Pre Master 1A",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11152&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "du-pre-master-2a",
+                    "title": "DU Pre Master 2A",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11158&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "licence-bio",
+                    "title": "Licence Bio",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11159&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "licence-droit-sante",
+                    "title": "Licence Droit / Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3007&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "sciences-humaines",
+                    "title": "Sciences Humaines",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7502&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "m1-ingenierie-sante",
+                "title": "M1 Ingénierie Santé",
+                "edts": [
+                  {
+                    "id": "m1-ingenierie-sante",
+                    "title": "M1 Ingénierie Santé",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8171&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "m2-ingenierie-tissulaire",
+                "title": "M2 Ingénierie Tissulaire",
+                "edts": [
+                  {
+                    "id": "m2-ingenierie-tissulaire",
+                    "title": "M2 Ingénierie Tissulaire",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2038&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "m2-inm",
+                "title": "M2 iNm",
+                "edts": [
+                  {
+                    "id": "m2-inm",
+                    "title": "M2 iNm",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7500&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "master-environnement-juridique",
+                "title": "Master Environnement Juridique",
+                "edts": [
+                  {
+                    "id": "master-environnement-juridique",
+                    "title": "Master Environnement Juridique",
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6459&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "master-live",
+                "title": "Master Live",
+                "edts": [
+                  {
+                    "id": "master-live-1a",
+                    "title": "Master Live 1A",
+                    "edts": [
+                      {
+                        "id": "m1-live-visu",
+                        "title": "M1 Live (visu)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1012&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "m1-live-gen",
+                        "title": "M1 Live Gen",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1017&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "m1-live-spe",
+                        "title": "M1 Live Spe",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1018&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "master-live-2a",
+                    "title": "Master Live 2A",
+                    "edts": [
+                      {
+                        "id": "m2-live-visu",
+                        "title": "M2 Live (visu)",
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1020&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
