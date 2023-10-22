@@ -146,7 +146,8 @@ export default {
       short_name: TITLE,
       description: DESCRIPTION,
       lang: 'fr',
-      display: 'standalone'
+      display: 'standalone',
+      background_color: '#000000'
     },
     workbox: {
       cleanupOutdatedCaches: true
