@@ -1,5 +1,5 @@
 <template>
-  <div v-if="mounted">
+  <div v-if="mounted" :class="{hideWeekends}">
     <!--    <client-only>
       <lazy-snackbar />
     </client-only>-->
@@ -371,6 +371,9 @@ export default {
     },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
+    },
+    hideWeekends () {
+      return this.$config.hideWeekends
     }
   },
   watch: {
@@ -713,27 +716,35 @@ export default {
   border-bottom: none !important;
 }
 
-.v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+.hideWeekends .v-calendar-daily .v-calendar-daily__day:nth-child(8) {
   border-right: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(6) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
   border-right: none !important;
 }
 
-.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
+.hideWeekends .v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+  border-right: none !important;
+}
+
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(6) {
+  border-right: none !important;
+}
+
+.hideWeekends .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
   display: none !important;
 }
 
-.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
+.hideWeekends .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
   display: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
   display: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
   display: none !important;
 }
 
