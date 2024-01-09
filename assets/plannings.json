@@ -8947,8 +8947,69 @@
                     ]
                   }
                 ]
-              }
-            ]
+              },
+
+                {
+                  "id": "l3info-mineuress6",
+                  "title": "L3 INFO-MINEURES S6",
+                  "edts": [
+                    {
+                      "id": "groupesmineure2ia",
+                      "title": "Groupes mineure 2IA",
+                      "edts": [
+                        {
+                          "id": "l3info-g12ia",
+                          "title": "L3 INFO-G1 2IA",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15241&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        },
+                        {
+                          "id": "l3info-g22ia",
+                          "title": "L3 INFO-G2 2IA",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15247&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "groupesmineurescr",
+                      "title": "Groupes mineure SCR",
+                      "edts": [
+                        {
+                          "id": "l3info-g1scr",
+                          "title": "L3 INFO-G1 SCR",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15248&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        },
+                        {
+                          "id": "l3info-g2scr",
+                          "title": "L3 INFO-G2 SCR",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15253&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "groupesmineuresecu",
+                      "title": "Groupes mineure SECU",
+                      "edts": [
+                        {
+                          "id": "l3info-g1secu",
+                          "title": "L3 INFO-G1 SECU",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15219&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        },
+                        {
+                          "id": "l3info-g11secu",
+                          "title": "L3 INFO-G1.1 SECU",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15230&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        },
+                        {
+                          "id": "l3info-g12secu",
+                          "title": "L3 INFO-G1.2 SECU",
+                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15232&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+
           },
           {
             "id": "l3info-parcoursmiage",
@@ -12891,7 +12952,7 @@
               }
             ]
           }
-        ]        
+        ]
       }
     ]
   },
