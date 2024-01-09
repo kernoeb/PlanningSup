@@ -11561,6 +11561,23 @@
     ]
   },
   {
+    "id": "nantesuniversité",
+    "title": "Nantes Université",
+    "edts": [
+      {
+        "id": "l3",
+        "title": "Licence 3",
+        "edts": [
+          {
+            "id": "g908226",
+            "url": "https://edt.univ-nantes.fr/sciences/g908226.ics",
+            "title": "Licence 3 Miage - Alternance"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "iaedenantes",
     "title": "IAE de Nantes",
     "edts": [
