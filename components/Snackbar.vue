@@ -41,7 +41,10 @@ export default {
       style="margin-left: 0!important;"
       @click="close()"
     >
-      <icons-paypal class="mr-1" style="width: 15px; height: 15px; fill: currentColor;" />paypal.me/kernoeb
+      <icons-paypal
+        class="mr-1"
+        style="width: 15px; height: 15px; fill: currentColor;"
+      />paypal.me/kernoeb
     </v-btn><br><br>Merci ! 🤍
     <template #action="{ attrs }">
       <v-btn

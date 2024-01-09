@@ -73,8 +73,6 @@ export default {
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     // https://github.com/nuxt-community/moment-module
@@ -86,8 +84,7 @@ export default {
       }
     }],
     // https://github.com/moritzsternemann/vue-plausible
-    'vue-plausible',
-    '@nuxt/postcss8'
+    'vue-plausible'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -252,45 +249,47 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     extractCSS: true,
-    postcss:
-      {
-        // disable postcss plugins in development
-        plugins: isDev
-          ? {}
-          : {
-              '@fullhuman/postcss-purgecss': {
-                content: [
-                  'components/**/*.vue',
-                  'layouts/**/*.vue',
-                  'pages/**/*.vue',
-                  'plugins/**/*.js',
-                  'node_modules/vuetify/src/**/*.ts'
-                ],
-                styleExtensions: ['.css'],
-                safelist: {
-                  standard: [
-                    'body',
-                    'html',
-                    'nuxt-progress',
-                    /progress-circular/,
-                    /col-*/, // enable if using v-col for layout,
-                    /swatches/,
-                    /[a-z]+--text/
+    postcss: {
+      postcssOptions:
+        {
+          // disable postcss plugins in development
+          plugins: isDev
+            ? {}
+            : {
+                '@fullhuman/postcss-purgecss': {
+                  content: [
+                    'components/**/*.vue',
+                    'layouts/**/*.vue',
+                    'pages/**/*.vue',
+                    'plugins/**/*.js',
+                    'node_modules/vuetify/src/**/*.ts'
                   ],
-                  deep: [
-                    /page-enter/,
-                    /page-leave/,
-                    /transition/
+                  styleExtensions: ['.css'],
+                  safelist: {
+                    standard: [
+                      'body',
+                      'html',
+                      'nuxt-progress',
+                      /progress-circular/,
+                      /col-*/, // enable if using v-col for layout,
+                      /swatches/,
+                      /[a-z]+--text/
+                    ],
+                    deep: [
+                      /page-enter/,
+                      /page-leave/,
+                      /transition/
+                    ]
+                  }
+
+                },
+                'css-byebye': {
+                  rulesToRemove: [
+                    /.*\.v-application--is-rtl.*/
                   ]
                 }
-
-              },
-              'css-byebye': {
-                rulesToRemove: [
-                  /.*\.v-application--is-rtl.*/
-                ]
               }
-            }
-      }
+        }
+    }
   }
 }

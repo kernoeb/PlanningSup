@@ -15,7 +15,10 @@
       :hide-overlay="$vuetify.breakpoint.smAndDown"
       :width="$vuetify.breakpoint.smAndDown ? null : 500"
     >
-      <v-card min-height="544" height="100%">
+      <v-card
+        min-height="544"
+        height="100%"
+      >
         <v-toolbar :style="$vuetify.breakpoint.smAndDown ? 'position: fixed; z-index: 1500; width: 100%;' : null">
           <v-progress-linear
             v-if="menu === null"
@@ -53,8 +56,14 @@
                   class="mt-2 menu_content"
                   style="width: 100%; font-size: 10px;"
                 >
-                  <div class="pa-2" v-html="c" />
-                  <v-divider v-if="$vuetify.breakpoint.smAndDown && j !== m.content.length - 1" class="mt-2" />
+                  <div
+                    class="pa-2"
+                    v-html="c"
+                  />
+                  <v-divider
+                    v-if="$vuetify.breakpoint.smAndDown && j !== m.content.length - 1"
+                    class="mt-2"
+                  />
                 </v-col>
               </v-row>
             </v-expansion-panel-content>

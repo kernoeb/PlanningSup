@@ -1,4 +1,7 @@
-FROM node:16.20.1-alpine3.17 as build-tools
+# Node base image
+FROM node:20.10.0-alpine3.19 as node-base
+
+FROM node-base as build-tools
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 RUN apk add --no-cache curl bash
@@ -6,7 +9,7 @@ RUN apk add --no-cache curl bash
 # For ARM / Macbook M1 Pro
 RUN apk add --no-cache python3 python3-dev py3-pip libcurl build-base curl-dev
 
-RUN npm install -g pnpm@7 clean-modules@2.0.6
+RUN npm install -g clean-modules@3
 
 FROM build-tools as builder
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
@@ -20,8 +23,8 @@ RUN chown -R node:node /home/node/build
 USER node
 
 # Only copy the files we need for the moment
-COPY --chown=node:node pnpm-lock.yaml .npmrc ./
-RUN pnpm fetch
+COPY --chown=node:node package.json package-lock.json .npmrc ./
+RUN npm ci
 
 # Copy all files
 COPY --chown=node:node . ./
@@ -29,26 +32,20 @@ COPY --chown=node:node . ./
 # Check JSON is valid
 RUN node ./resources/check-plannings-json.mjs && rm -rf ./resources
 
-# Install dependencies
-RUN pnpm install --offline
-
 # Nuxt.js build
-RUN pnpm build --standalone
+RUN npm run build
 
 # Now we remove the node_modules, as we only need production dependencies in the docker image
 RUN rm -rf ./node_modules/
 
 # Only production dependencies
-RUN pnpm fetch --prod
-RUN pnpm install --prod --offline
-
-# This ensure the file exists, ls will exit with an error if it doesn't
-RUN ls node_modules/node-libcurl/lib/binding/
+RUN npm prune --omit=dev && npm cache clean --force
+RUN rm -rf node_modules/.cache
 
 # Clean node_modules, one of the heaviest object in the universe
-RUN clean-modules --yes --exclude "**/*.mustache"
+RUN clean-modules --yes "!**/*.mustache"
 
-FROM node:16.20.1-alpine3.17 as app
+FROM node-base as app
 
 RUN apk --no-cache add dumb-init curl bash
 

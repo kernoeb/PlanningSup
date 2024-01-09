@@ -5,11 +5,12 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: '@babel/eslint-parser',
-    requireConfigFile: false
+    ecmaVersion: 'latest'
   },
   extends: [
-    '@nuxtjs',
+    'eslint:recommended',
+    'standard',
+    'plugin:vue/recommended',
     'plugin:nuxt/recommended'
   ],
   plugins: [

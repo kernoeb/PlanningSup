@@ -6,7 +6,8 @@ const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
 const logger = require('../util/signale')
-const curl = require('../util/curl')
+const http = require('../util/http')
+const asyncWrapper = require('async-wrapper-express-ts')
 
 const router = Router()
 
@@ -16,13 +17,13 @@ router.get('/crous', (req, res) => {
   return res.json(villes)
 })
 
-router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), async (req, res) => {
+router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 60 * 10 : 0), asyncWrapper(async (req, res) => {
   try {
     if (!villes.includes(req.params.ville)) {
       return res.status(400).json({ title: 'Nope! Are U tryna hak PlanningSup???!!' })
     }
-    const d = await curl.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/resto.xml`)
-    const d2 = await curl.get(`http://webservices-v2.crous-mobile.fr/feed/${req.params.ville}/externe/menu.xml`)
+    const d = await http.get(`http://webservices-v2.crous-mobile.fr/feed/${encodeURIComponent(req.params.ville)}/externe/resto.xml`)
+    const d2 = await http.get(`http://webservices-v2.crous-mobile.fr/feed/${encodeURIComponent(req.params.ville)}/externe/menu.xml`)
 
     const json = {}
     xml2js.parseString(d.data, (err, result) => {
@@ -60,12 +61,12 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
   } catch (err) {
     return res.json({ title: err })
   }
-})
+}))
 
 // Cache 10 minutes
-router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 600 : 0), async (req, res) => {
+router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'production' ? 600 : 0), asyncWrapper(async (req, res) => {
   try {
-    const d = await curl.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
+    const d = await http.get('https://www.crous-rennes.fr/restaurant/restou-et-cafet-kercado/')
     const dom = new JSDOM(d.data)
     const el = dom.window.document.getElementById('menu-repas').childNodes
     const allEls = []
@@ -86,6 +87,6 @@ router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'prod
     logger.error('crous_menu : ' + err)
     return res.status(500).json([])
   }
-})
+}))
 
 module.exports = router

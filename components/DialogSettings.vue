@@ -50,7 +50,10 @@
           @change="$emit('change_settings', $event)"
         >
           <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-          <v-list-item inactive style="cursor:pointer;">
+          <v-list-item
+            inactive
+            style="cursor:pointer;"
+          >
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedTheme"
@@ -65,7 +68,10 @@
               <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item inactive style="cursor:pointer;">
+          <v-list-item
+            inactive
+            style="cursor:pointer;"
+          >
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedFullDark"
@@ -79,7 +85,10 @@
               <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item inactive style="cursor:pointer;">
+          <v-list-item
+            inactive
+            style="cursor:pointer;"
+          >
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedMergeDuplicates"
@@ -158,7 +167,11 @@
               <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <div class="pl-4 mb-2" style="font-weight: 300; font-size: 15px;" @click="reset()">
+          <div
+            class="pl-4 mb-2"
+            style="font-weight: 300; font-size: 15px;"
+            @click="reset()"
+          >
             <a class="hover_reset">Réinitialiser</a>
           </div>
           <v-divider />
@@ -184,7 +197,11 @@
                   <span class="pr-2">
                     {{ item }}
                   </span>
-                  <v-btn icon x-small @click="parent.selectItem(item)">
+                  <v-btn
+                    icon
+                    x-small
+                    @click="parent.selectItem(item)"
+                  >
                     <v-icon
                       small
                       color="red"
@@ -195,7 +212,10 @@
                 </v-chip>
               </template>
               <template #item="{ item, on, attrs }">
-                <v-list-item v-bind="attrs" v-on="on">
+                <v-list-item
+                  v-bind="attrs"
+                  v-on="on"
+                >
                   <v-list-item-action>
                     <v-checkbox
                       :indeterminate-icon="mdiCheckboxBlankOutline"
@@ -213,7 +233,12 @@
               </template>
             </v-combobox>
           </v-list-item>
-          <v-list-item inactive style="cursor:pointer;" class="mb-2" :disabled="disabledHighlightTeacher">
+          <v-list-item
+            inactive
+            style="cursor:pointer;"
+            class="mb-2"
+            :disabled="disabledHighlightTeacher"
+          >
             <v-list-item-action>
               <v-checkbox
                 v-model="checkedHighlightTeacher"
@@ -244,16 +269,28 @@
           <v-list-item inactive>
             <div class="d-flex flex-column mb-4">
               <div>
-                <v-icon class="mr-2 mt-n1" size="15">
+                <v-icon
+                  class="mr-2 mt-n1"
+                  size="15"
+                >
                   {{ mdiTwitter }}
                 </v-icon>
-                Twitter : <a href="https://twitter.com/kernoeb" target="_blank">@kernoeb</a>
+                Twitter : <a
+                  href="https://twitter.com/kernoeb"
+                  target="_blank"
+                >@kernoeb</a>
               </div>
               <div>
-                <v-icon class="mr-2 mt-n1" size="15">
+                <v-icon
+                  class="mr-2 mt-n1"
+                  size="15"
+                >
                   {{ mdiMail }}
                 </v-icon>
-                Mail : <a href="mailto:kernoeb@protonmail.com" target="_blank">kernoeb@protonmail.com</a>
+                Mail : <a
+                  href="mailto:kernoeb@protonmail.com"
+                  target="_blank"
+                >kernoeb@protonmail.com</a>
               </div>
             </div>
           </v-list-item>

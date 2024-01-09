@@ -2,13 +2,13 @@ version: '3'
 
 services:
   web:
-    # build: .
-    image: ghcr.io/kernoeb/planningsup/planning
+    build: .
+    # image: test-planning
     restart: always
     stdin_open: true
     tty: true
     ports:
-      - "31020:3000"
+      - "31021:3000"
     networks:
       - planning
     volumes:
@@ -19,11 +19,11 @@ services:
     env_file:
       - .env
   mongodb:
-    image: docker.io/bitnami/mongodb:5.0
-    # image: ghcr.io/zcube/bitnami-compat/mongodb:5.0
+    # image: docker.io/bitnami/mongodb:5.0
+    image: arm64v8/mongo:5.0
     restart: always
     volumes:
-      - '/opt/planning_v2:/bitnami/mongodb'
+      - '.mongo-planning:/bitnami/mongodb'
     networks:
       - planning
 

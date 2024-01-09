@@ -1,23 +1,55 @@
 <template>
-  <div v-if="mounted" :class="{hideWeekends}">
+  <div
+    v-if="mounted"
+    :class="{hideWeekends}"
+  >
     <!--    <client-only>
       <lazy-snackbar />
     </client-only>-->
 
     <div class="d-flex justify-space-between">
-      <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
-        <transition name="fade" mode="out-in">
-          <div v-if="$refs.calendar" key="date" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
-            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}<span v-if="nbHours" class="text--secondary text-lowercase" style="font-size: 12px;">&nbsp;{{ nbHours }}</span>
+      <div
+        :class="titleCss"
+        style="transition: margin 500ms"
+        class="text-truncate"
+      >
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <div
+            v-if="$refs.calendar"
+            key="date"
+            class="title_month text-truncate"
+            style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;"
+          >
+            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}<span
+              v-if="nbHours"
+              class="text--secondary text-lowercase"
+              style="font-size: 12px;"
+            >&nbsp;{{ nbHours }}</span>
           </div>
-          <div v-else key="nodate" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
+          <div
+            v-else
+            key="nodate"
+            class="title_month text-truncate"
+            style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;"
+          >
             ...
           </div>
         </transition>
         <v-tooltip bottom>
           <template #activator="{ on, attrs }">
-            <transition name="fade" mode="out-in">
-              <div v-if="plannings && plannings.length === 1" key="one_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
+            <transition
+              name="fade"
+              mode="out-in"
+            >
+              <div
+                v-if="plannings && plannings.length === 1"
+                key="one_planning"
+                style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;"
+                class="text-truncate"
+              >
                 {{ plannings[0].title }}
               </div>
               <div
@@ -30,21 +62,42 @@
               >
                 {{ plannings.length + ' ' + $config.i18n.selectedPlannings }}
               </div>
-              <div v-else key="no_current_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
+              <div
+                v-else
+                key="no_current_planning"
+                style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;"
+                class="text-truncate"
+              >
                 ...
               </div>
             </transition>
           </template>
-          <div v-for="(p, i) in (plannings || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`" style="font-size: 12px;">
+          <div
+            v-for="(p, i) in (plannings || []).filter(v => v && v.title)"
+            :key="`selectedPlanning_${i}`"
+            style="font-size: 12px;"
+          >
             {{ p.title }}
           </div>
         </v-tooltip>
       </div>
     </div>
-    <transition name="fade" mode="out-in">
-      <error-alert v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
+    <transition
+      name="fade"
+      mode="out-in"
+    >
+      <error-alert
+        v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'"
+        :plannings="plannings"
+        :status="status"
+      />
     </transition>
-    <event-bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
+    <event-bottom
+      :selected-event="selectedEvent"
+      :bottom="bottom"
+      @change="bottom = $event"
+      @close="bottom = false"
+    />
     <v-progress-linear
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -87,7 +140,10 @@
         </template>
       </v-select>
       <v-spacer />
-      <div class="d-flex justify-space-between" style="align-self: center; width: 125px;">
+      <div
+        class="d-flex justify-space-between"
+        style="align-self: center; width: 125px;"
+      >
         <v-tooltip top>
           <template #activator="{ on, attrs }">
             <v-btn
@@ -109,7 +165,13 @@
           v-model="dialogEdt"
           width="500"
         >
-          <lazy-select-planning v-if="selectedPlanningsIds" :dialog="dialogEdt" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
+          <lazy-select-planning
+            v-if="selectedPlanningsIds"
+            :dialog="dialogEdt"
+            :selected-plannings="selectedPlanningsIds"
+            @selected-plannings="selectedPlanningsIds = $event; $fetch();"
+            @close="dialogEdt = false"
+          />
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
@@ -143,12 +205,22 @@
         <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet height="710" :style="$vuetify.theme.dark ? 'background-color: #121212' : null">
-      <div v-if="$fetchState.error" style="text-align: center">
+    <v-sheet
+      height="710"
+      :style="$vuetify.theme.dark ? 'background-color: #121212' : null"
+    >
+      <div
+        v-if="$fetchState.error"
+        style="text-align: center"
+      >
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
-      <div v-else-if="errorMessage" class="title" style="text-align: center">
+      <div
+        v-else-if="errorMessage"
+        class="title"
+        style="text-align: center"
+      >
         <br>
         <div v-if="errorMessage === 'unknown'">
           <span>Planning inexistant :(</span>
@@ -157,7 +229,10 @@
         </div>
         <span v-else>{{ errorMessage }}</span>
         <br><br>
-        <div id="interrogation" style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;">
+        <div
+          id="interrogation"
+          style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;"
+        >
           ?
         </div>
         <br><br><v-btn @click="resetNewPlanning()">
@@ -196,7 +271,13 @@
             />
           </template>
           <template #event="{event}">
-            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :class="(event.end && event.start && ((event.end - event.start) <= 3600000)) ? '' : 'justify-center'" :style="{'background-color':event.color,color:'white'}" class="event_custom fill-height ml-3 roboto-font black--text d-flex flex-column" style="margin-top: -2px;">
+            <div
+              v-tooltip.bottom="{content: () => getCustomEventContent(event)}"
+              :class="(event.end && event.start && ((event.end - event.start) <= 3600000)) ? '' : 'justify-center'"
+              :style="{'background-color':event.color,color:'white'}"
+              class="event_custom fill-height ml-3 roboto-font black--text d-flex flex-column"
+              style="margin-top: -2px;"
+            >
               <div class="text-truncate font-weight-bold text-body-2 flex-shrink-0">
                 {{ event.name }}
               </div>
@@ -215,7 +296,10 @@
       </transition>
     </v-sheet>
   </div>
-  <div v-else class="d-flex justify-center mt-3">
+  <div
+    v-else
+    class="d-flex justify-center mt-3"
+  >
     <v-progress-circular
       color="primary"
       indeterminate

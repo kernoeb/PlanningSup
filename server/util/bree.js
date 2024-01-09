@@ -3,7 +3,7 @@ const Graceful = require('@ladjs/graceful')
 const ms = require('ms')
 
 module.exports = {
-  initBree: () => {
+  initBree: async () => {
     const bree = new Bree({
       jobs: [
         {
@@ -18,6 +18,6 @@ module.exports = {
     const graceful = new Graceful({ brees: [bree] })
     graceful.listen()
 
-    bree.start()
+    await bree.start()
   }
 }

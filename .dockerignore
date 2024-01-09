@@ -3,6 +3,7 @@
 
 # Modules
 !package.json
+!package-lock.json
 !pnpm-lock.yaml
 
 # UI files
