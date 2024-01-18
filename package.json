@@ -3,7 +3,7 @@
   "version": "2.14.12",
   "private": true,
   "scripts": {
-    "build": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js build",
+    "build": "bun run --bun --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js build",
     "dev": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "dev-server": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true nodemon --inspect --max-old-space-size=2048 server/",
     "dev-server:bree": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && nodemon --inspect --max-old-space-size=2048 server/",
