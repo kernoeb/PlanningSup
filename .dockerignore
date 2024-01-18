@@ -5,6 +5,7 @@
 !package.json
 !package-lock.json
 !pnpm-lock.yaml
+!bun.lockb
 
 # UI files
 !nuxt.config.js
