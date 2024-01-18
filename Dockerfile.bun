@@ -26,6 +26,8 @@ ENV NODE_ENV=production
 # in node_modules/decache/decache.js, replace "module.constructor._pathCache" with "module.constructor._pathCache || {}"
 RUN sed -i 's/module\.constructor\._pathCache/module\.constructor\._pathCache \|\| {}/g' node_modules/decache/decache.js
 
+RUN bun run ./resources/check-plannings-json.mjs && rm -rf ./resources
+
 RUN bun run build
 
 # copy production dependencies and source code into final image
