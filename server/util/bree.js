@@ -18,6 +18,6 @@ module.exports = {
     const graceful = new Graceful({ brees: [bree] })
     graceful.listen()
 
-    await bree.start()
+    await bree.start('updatePlannings')
   }
 }

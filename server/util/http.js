@@ -1,4 +1,4 @@
-const { Agent } = require('undici')
+const { Agent, request } = require('undici')
 
 async function fetchWithTimeout (resource, options = {}) {
   const { timeout = parseInt(process.env.CURL_TIMEOUT) || 5000 } = options
@@ -6,7 +6,7 @@ async function fetchWithTimeout (resource, options = {}) {
   const controller = new AbortController()
   const id = setTimeout(() => controller.abort(), timeout)
 
-  const response = await fetch(resource, {
+  const response = await request(resource, {
     ...options,
     dispatcher: new Agent({
       connect: {
@@ -23,7 +23,7 @@ async function fetchWithTimeout (resource, options = {}) {
 module.exports = {
   async get (url) {
     const b = await fetchWithTimeout(url)
-    return { data: await b.text(), headers: b.headers, status: b.status }
+    return { data: await b.body.text(), headers: b.headers, status: b.statusCode }
   },
   fetchWithTimeout
 }
