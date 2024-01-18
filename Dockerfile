@@ -28,7 +28,7 @@ RUN sed -i 's/module\.constructor\._pathCache/module\.constructor\._pathCache \|
 
 RUN bun run ./resources/check-plannings-json.mjs && rm -rf ./resources
 
-RUN bun run build
+RUN bun run --bun node_modules/nuxt/bin/nuxt.js build
 
 # copy production dependencies and source code into final image
 FROM base AS release
