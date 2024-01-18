@@ -1,6 +1,4 @@
-const https = require('https')
 const mongoose = require('mongoose')
-const axios = require('axios')
 const logger = require('../server/util/signale')
 const { fetchAndGetJSON } = require('../server/util/utils')
 
