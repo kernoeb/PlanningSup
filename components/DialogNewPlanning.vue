@@ -16,7 +16,11 @@
           et change de nom de domaine :
           <br>
           <br>
-          <v-btn style="text-transform: none" href="https://planningsup.app" outlined>
+          <v-btn
+            style="text-transform: none"
+            href="https://planningsup.app"
+            outlined
+          >
             PlanningSup.app
           </v-btn>
           <br><br>

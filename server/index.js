@@ -10,6 +10,8 @@ const logger = require('./util/signale')
 const { initDB } = require('./util/db')
 const { initBree } = require('./util/bree')
 
+mongoose.set('strictQuery', true)
+
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
 logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
@@ -31,7 +33,7 @@ if (process.env.NODE_ENV !== 'test') {
       // Initialize Bree.js when the database is ready
       if (!process.env.NO_BREE) {
         logger.info('Initializing Bree.js...')
-        initBree()
+        initBree().catch(console.error)
       }
     })
   }).catch((err) => {
@@ -87,6 +89,7 @@ module.exports = app
 
 // Start standalone server if directly running
 if (require.main === module) {
+  console.log('Starting standalone server')
   const port = process.env.PORT || 3001
   app.listen(port, () => {
     logger.info(`API server listening on port ${port}`)

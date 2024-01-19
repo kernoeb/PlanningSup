@@ -1,3 +1,4 @@
+const asyncWrapper = require('async-wrapper-express-ts')
 const { Router } = require('express')
 const router = Router()
 
@@ -27,7 +28,7 @@ urls.forEach((univ) => {
  * Calendars GET route
  * From `p` parameter or `plannings` cookie
  */
-router.get('/calendars', async (req, res) => {
+router.get('/calendars', asyncWrapper(async (req, res) => {
   // Get blocklist courses
   let blocklist = []
   try {
@@ -60,7 +61,7 @@ router.get('/calendars', async (req, res) => {
     if (!tmpIds?.length) return res.status(404).send('No plannings found !')
 
     const plannings = await Promise.all(tmpIds.map(async (id) => {
-      const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
+      const fetched = await fetchAndGetJSON(allPlannings[id].url)
       if (fetched) {
         return {
           id,
@@ -105,9 +106,9 @@ router.get('/calendars', async (req, res) => {
     logger.error(err)
     res.status(500).send('Oof, the server encountered a error :\'(')
   }
-})
+}))
 
-router.get('/calendars/info', (req, res) => {
+router.get('/calendars/info', asyncWrapper((req, res) => {
   if (!req.query.p) return res.status(400).send('No parameter found')
   try {
     return res.json(req.query.p.split(',').map(planning => ({ planning, title: allPlannings[planning]?.title?.replace(/ \| /gi, ' ') })))
@@ -115,11 +116,11 @@ router.get('/calendars/info', (req, res) => {
     logger.error(err)
     return res.status(500).send('Oof, the server encountered a error :\'(')
   }
-})
+}))
 
-router.get('/custom-event-content', async (req, res) => {
+router.get('/custom-event-content', asyncWrapper(async (req, res) => {
   if (req.query.name) return res.send(await getCustomEventContent(req.query.name) || '')
   else return res.send('')
-})
+}))
 
 module.exports = router

@@ -39,7 +39,13 @@
           </div>
         </v-card-title>
         <v-spacer />
-        <v-menu v-model="menuGroup" :close-on-content-click="false" offset-y left :close-on-click="false">
+        <v-menu
+          v-model="menuGroup"
+          :close-on-content-click="false"
+          offset-y
+          left
+          :close-on-click="false"
+        >
           <template #activator="{ on: menu, attrs }">
             <v-btn
               v-tooltip="'Créer un groupe de favoris'"
@@ -63,7 +69,11 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn text :disabled="!isRulesOk" @click="createFavoriteGroup">
+              <v-btn
+                text
+                :disabled="!isRulesOk"
+                @click="createFavoriteGroup"
+              >
                 Créer
               </v-btn>
             </v-card-actions>
@@ -94,22 +104,39 @@
         hide-details
         dense
       />
-      <v-btn text small color="green" @click="reset">
+      <v-btn
+        text
+        small
+        color="green"
+        @click="reset"
+      >
         Réinitialiser
       </v-btn>
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
-          <div v-if="favorites?.length || groupFavorites?.length" class="pa-2">
+          <div
+            v-if="favorites?.length || groupFavorites?.length"
+            class="pa-2"
+          >
             <v-card rounded>
               <v-card-title>
-                <v-icon color="orange" class="mt-n1 mr-1">
+                <v-icon
+                  color="orange"
+                  class="mt-n1 mr-1"
+                >
                   {{ mdiStar }}
                 </v-icon>
                 <span class="text-h6 font-weight-bold">Favoris</span>
               </v-card-title>
               <v-card-text>
-                <v-list rounded dense>
-                  <transition-group name="list-complete" tag="div">
+                <v-list
+                  rounded
+                  dense
+                >
+                  <transition-group
+                    name="list-complete"
+                    tag="div"
+                  >
                     <v-list-item
                       v-for="(groupFavorite, i) in groupFavorites"
                       :key="`group-${i}-${groupFavorite.name}`"
@@ -121,7 +148,11 @@
                     >
                       <v-list-item-content>
                         <v-list-item-title>
-                          <v-icon x-small color="primary" class="mr-1">
+                          <v-icon
+                            x-small
+                            color="primary"
+                            class="mr-1"
+                          >
                             {{ mdiFormatListGroup }}
                           </v-icon>{{ groupFavorite.name }}
                         </v-list-item-title>
@@ -130,8 +161,15 @@
                         </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn small icon @click="deleteFavoriteGroup(i)">
-                          <v-icon small color="red">
+                        <v-btn
+                          small
+                          icon
+                          @click="deleteFavoriteGroup(i)"
+                        >
+                          <v-icon
+                            small
+                            color="red"
+                          >
                             {{ mdiDelete }}
                           </v-icon>
                         </v-btn>
@@ -151,8 +189,15 @@
                         <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn small icon @click="setFavorite(favorite)">
-                          <v-icon small color="red">
+                        <v-btn
+                          small
+                          icon
+                          @click="setFavorite(favorite)"
+                        >
+                          <v-icon
+                            small
+                            color="red"
+                          >
                             {{ mdiDelete }}
                           </v-icon>
                         </v-btn>
@@ -165,7 +210,10 @@
           </div>
         </transition>
         <div>
-          <div v-if="urls" class="mb-2">
+          <div
+            v-if="urls"
+            class="mb-2"
+          >
             <v-treeview
               :expand-icon="mdiMenuDown"
               :filter="filter"
@@ -181,7 +229,10 @@
             >
               <template #label="{ item }">
                 <div class="d-flex justify-space-between">
-                  <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''" style="width: 100%;">
+                  <div
+                    :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''"
+                    style="width: 100%;"
+                  >
                     <v-checkbox
                       v-if="!item.edts"
                       v-model="localPlannings"
@@ -197,16 +248,25 @@
                       {{ item.title }}
                     </div>
                   </div>
-                  <v-hover v-if="!item.edts" v-slot="{ hover }">
+                  <v-hover
+                    v-if="!item.edts"
+                    v-slot="{ hover }"
+                  >
                     <v-btn
                       icon
                       style="margin-top: 2px;"
                       @click="setFavorite(item.fullId)"
                     >
-                      <v-icon v-if="(favorites || []).includes(item.fullId)" color="orange">
+                      <v-icon
+                        v-if="(favorites || []).includes(item.fullId)"
+                        color="orange"
+                      >
                         {{ mdiStar }}
                       </v-icon>
-                      <v-icon v-else :color="hover ? 'orange' : 'grey lighten-2'">
+                      <v-icon
+                        v-else
+                        :color="hover ? 'orange' : 'grey lighten-2'"
+                      >
                         {{ mdiStarOutline }}
                       </v-icon>
                     </v-btn>
@@ -215,7 +275,11 @@
               </template>
             </v-treeview>
           </div>
-          <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
+          <div
+            v-else
+            style="min-height: 330px;"
+            class="d-flex justify-center align-center"
+          >
             <v-progress-circular
               indeterminate
               color="yellow darken-2"
@@ -224,7 +288,11 @@
         </div>
       </div>
 
-      <v-btn block :disabled="disabledValidate" @click="updatePlannings()">
+      <v-btn
+        block
+        :disabled="disabledValidate"
+        @click="updatePlannings()"
+      >
         Valider
       </v-btn>
     </v-card>

@@ -86,17 +86,16 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 ### Nécessaire
 
-- [Node.js](https://github.com/nodejs/node) 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
-- [pnpm 7](https://pnpm.io/) : Gestionnaire de paquets (installation : `npm i -g pnpm@7`)
+- [Node.js](https://github.com/nodejs/node) 20.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
 
 ### Commandes utiles
 
 Lancement en local : 
 
 - Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
-- `pnpm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
+- `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 
-> For MacOS M1, you can use `pnpm run dev:darwin-arm64`
+> For MacOS M1, you can use `npm run dev:darwin-arm64`
 
 ## Donateurs
 

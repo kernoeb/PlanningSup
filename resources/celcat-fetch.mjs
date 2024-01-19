@@ -1,6 +1,6 @@
 import jsdom from 'jsdom'
-import { curly } from 'node-libcurl'
 import ical from 'cal-parser'
+import { fetchWithTimeout } from '../server/util/http.js'
 const { JSDOM } = jsdom
 
 async function pbcopy (data) {
@@ -46,7 +46,7 @@ const TODAY = new Date()
 
 for (const g of EDTS.edts) {
   for (const e of g.edts) {
-    const { data } = await curly.get(e.url)
+    const { data } = await fetchWithTimeout(e.url)
     const ics = ical.parseString(data)
     const next = ics.events.find(v => new Date(v.dtstart.value).getTime() > TODAY.getTime() &&
       v.summary &&
