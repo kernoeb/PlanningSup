@@ -250,6 +250,11 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    loaders: {
+      css: {
+        modules: false
+      }
+    },
     extractCSS: true,
     postcss: {
       postcssOptions:
