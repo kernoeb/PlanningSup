@@ -4,6 +4,7 @@ const { Planning } = require('../models/planning')
 const { CustomEvent } = require('../models/customevent')
 const http = require('./http')
 const logger = require('./signale')
+const { DateTime } = require('luxon')
 
 const dateStartTemplate = '{date-start}'
 const dateEndTemplate = '{date-end}'
@@ -84,6 +85,23 @@ const cleanName = (name) => {
   return (name && name.replace(/([A-Za-z])\?([A-Za-z])/gi, (_, b, c) => b + "'" + c).trim()) || ''
 }
 
+/**
+ * Get date
+ * @param {Date} date
+ * @param {{newTZ: string, oldTZ: string}|null} localeUtils
+ * @returns {number}
+ */
+const getDate = (date, localeUtils) => {
+  if (!localeUtils || !localeUtils.oldTZ || !localeUtils.newTZ) return date.getTime() // default behavior
+  try {
+    const tmpDate = DateTime.fromJSDate(date, { zone: localeUtils.oldTZ }).setZone(localeUtils.newTZ, { keepLocalTime: true }).toMillis()
+    if (!isNaN(tmpDate)) return tmpDate
+    return date.getTime()
+  } catch (err) {
+    return date.getTime()
+  }
+}
+
 module.exports = {
   /**
    * Get custom events for a planning
@@ -117,17 +135,18 @@ module.exports = {
    * @param {object} j
    * @param {string[]} blocklist
    * @param {object} colors
+   * @param {object|null} localeUtils
    * @param {boolean} highlightTeacher
    * @returns {[]}
    */
-  getFormattedEvents: ({ data: j, blocklist, colors, highlightTeacher }) => {
+  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher }) => {
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
         events.push({
           name: cleanName(i.summary.value),
-          start: new Date(i.dtstart.value).getTime(),
-          end: new Date(i.dtend.value).getTime(),
+          start: getDate(new Date(i.dtstart.value), localeUtils),
+          end: getDate(new Date(i.dtend.value), localeUtils),
           color: getColor(i.summary.value, i.location.value, i.description.value, { customColor: colors, highlightTeacher }),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),

@@ -45,6 +45,14 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
     if (Object.keys(customColorList).length === 0) customColorList = null
   } catch (e) {}
 
+  // Get custom timezone and locale
+  let localeUtils = null
+  try {
+    const { oldTZ, newTZ } = JSON.parse(req.cookies['locale-utils'])
+    if (oldTZ && newTZ) localeUtils = { oldTZ, newTZ }
+  } catch (e) {
+  }
+
   // Highlight courses with teachers
   let highlightTeacher = false
   try {
@@ -68,7 +76,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
           status: 'ok',
           title: allPlannings[id].title,
           timestamp: new Date().toISOString(),
-          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, highlightTeacher })
+          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, localeUtils, highlightTeacher })
         }
       } else {
         const backed = await getBackedPlanning(id)
@@ -78,7 +86,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
             status: 'backup',
             title: allPlannings[id].title,
             timestamp: backed.timestamp || undefined,
-            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, highlightTeacher })
+            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, localeUtils, highlightTeacher })
           }
         } else {
           return { id, title: allPlannings[id].title, status: 'off' }
