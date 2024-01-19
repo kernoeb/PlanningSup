@@ -256,6 +256,45 @@
 
           <v-divider />
 
+          <v-subheader
+            class="mt-3"
+            style="height: 20px"
+          >
+            Utiliser une timezone personnalisée
+          </v-subheader>
+          <v-list-item
+            inactive
+            :ripple="false"
+            class="mb-2"
+          >
+            <v-list-item-content class="pt-0">
+              <div class="d-flex flex-row">
+                <v-text-field
+                  v-model="localeUtils.oldTZ"
+                  hide-details
+                  placeholder="Europe/Paris"
+                  class="mr-2"
+                  @change="$nextTick(() => updateLocaleUtils({oldTZ: $event || null, newTZ: localeUtils.newTZ || null}))"
+                />
+                <v-icon
+                  small
+                  :disabled="!localeUtils.oldTZ"
+                  class="align-self-end mr-2"
+                >
+                  {{ mdiArrowRightCircleOutline }}
+                </v-icon>
+                <v-text-field
+                  v-model="localeUtils.newTZ"
+                  hide-details
+                  placeholder="America/New_York"
+                  @change="$nextTick(() => updateLocaleUtils({oldTZ: localeUtils.oldTZ || null, newTZ: $event || null}))"
+                />
+              </div>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-divider />
+
           <div>
             <v-subheader>FAQ / Aide</v-subheader>
             <lazy-help-info style="width: 98%;" />
@@ -304,7 +343,7 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter } from '@mdi/js'
+import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter, mdiArrowRightCircleOutline } from '@mdi/js'
 
 export default {
   name: 'DialogSettings',
@@ -332,9 +371,12 @@ export default {
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
       mdiClose,
+      mdiArrowRightCircleOutline,
 
       blocklist: ['Maths', 'Communication', 'Férié'], // Oui, bon...
       blocklistSelect: [],
+
+      localeUtils: {},
 
       colorTP: '#bbe0ff',
       colorTD: '#d4fbcc',
@@ -421,6 +463,19 @@ export default {
       if (c.other) this.colorOthers = c.other
     } catch (err) {}
 
+    if (this.$cookies.get('locale-utils') !== undefined) {
+      try {
+        const tmp = this.$cookies.get('locale-utils', { parseJSON: true })
+        if (tmp && Object.keys(tmp).length > 0 && tmp.oldTZ && tmp.newTZ) {
+          this.localeUtils = tmp
+        } else {
+          this.$cookies.remove('locale-utils')
+        }
+      } catch (e) {
+        this.$cookies.remove('locale-utils')
+      }
+    }
+
     try {
       const highlightTeacher = this.$cookies.get('highlightTeacher', { parseJSON: true })
       if (typeof highlightTeacher === 'boolean') this.highlightTeacher = highlightTeacher
@@ -468,6 +523,13 @@ export default {
       try {
         this.$cookies.set('blocklist', JSON.stringify(event), { maxAge: 2147483646 })
         this.delayedFetch()
+      } catch (err) {
+      }
+    },
+    updateLocaleUtils (event) {
+      try {
+        this.$cookies.set('locale-utils', JSON.stringify(event), { maxAge: 2147483646 })
+        if ((event.oldTZ && event.newTZ) || (!event.oldTZ && !event.newTZ)) this.delayedFetch()
       } catch (err) {
       }
     },
