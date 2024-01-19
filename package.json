@@ -3,7 +3,7 @@
   "version": "2.14.12",
   "private": true,
   "scripts": {
-    "build": "bun run --bun node_modules/nuxt/bin/nuxt.js build",
+    "build": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js build",
     "dev": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "dev-server": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true nodemon --inspect --max-old-space-size=2048 server/",
     "dev-server:bree": "docker-compose -f docker-compose-dev.yml up -d --remove-orphans && nodemon --inspect --max-old-space-size=2048 server/",
@@ -84,8 +84,7 @@
     "mocha": "10.2.0",
     "nodemon": "3.0.3",
     "sass-loader": "10",
-    "supertest": "6.3.4",
-    "@types/bun": "latest"
+    "supertest": "6.3.4"
   },
   "engines": {
     "node": "20"
