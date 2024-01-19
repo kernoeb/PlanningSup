@@ -1,19 +1,55 @@
 <template>
-  <div v-if="mounted">
+  <div
+    v-if="mounted"
+    :class="{hideWeekends}"
+  >
+    <!--    <client-only>
+      <lazy-snackbar />
+    </client-only>-->
+
     <div class="d-flex justify-space-between">
-      <div :class="titleCss" style="transition: margin 500ms" class="text-truncate">
-        <transition name="fade" mode="out-in">
-          <div v-if="$refs.calendar" key="date" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
-            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}
+      <div
+        :class="titleCss"
+        style="transition: margin 500ms"
+        class="text-truncate"
+      >
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <div
+            v-if="$refs.calendar"
+            key="date"
+            class="title_month text-truncate"
+            style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;"
+          >
+            {{ $refs.calendar.title }} {{ currentWeek ? `- ${currentWeek}` : '' }}<span
+              v-if="nbHours"
+              class="text--secondary text-lowercase"
+              style="font-size: 12px;"
+            >&nbsp;{{ nbHours }}</span>
           </div>
-          <div v-else key="nodate" class="title_month text-truncate" style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;">
+          <div
+            v-else
+            key="nodate"
+            class="title_month text-truncate"
+            style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: 500;"
+          >
             ...
           </div>
         </transition>
         <v-tooltip bottom>
           <template #activator="{ on, attrs }">
-            <transition name="fade" mode="out-in">
-              <div v-if="plannings && plannings.length === 1" key="one_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
+            <transition
+              name="fade"
+              mode="out-in"
+            >
+              <div
+                v-if="plannings && plannings.length === 1"
+                key="one_planning"
+                style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;"
+                class="text-truncate"
+              >
                 {{ plannings[0].title }}
               </div>
               <div
@@ -26,22 +62,42 @@
               >
                 {{ plannings.length + ' ' + $config.i18n.selectedPlannings }}
               </div>
-              <div v-else key="no_current_planning" style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;" class="text-truncate">
+              <div
+                v-else
+                key="no_current_planning"
+                style="font-size: 11px; font-family: Roboto, sans-serif; font-weight: 300;"
+                class="text-truncate"
+              >
                 ...
               </div>
             </transition>
           </template>
-          <div v-for="(p, i) in (plannings || []).filter(v => v && v.title)" :key="`selectedPlanning_${i}`" style="font-size: 12px;">
+          <div
+            v-for="(p, i) in (plannings || []).filter(v => v && v.title)"
+            :key="`selectedPlanning_${i}`"
+            style="font-size: 12px;"
+          >
             {{ p.title }}
           </div>
         </v-tooltip>
       </div>
-      <crous v-if="(plannings || []).some(v => (v.title || '').toUpperCase().includes('VANNES'))" />
     </div>
-    <transition name="fade" mode="out-in">
-      <error-alert v-if="plannings != null && (selectedPlanningsIds != null || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'" :plannings="plannings" :status="status" />
+    <transition
+      name="fade"
+      mode="out-in"
+    >
+      <error-alert
+        v-if="plannings != null && ((selectedPlanningsIds !== undefined && selectedPlanningsIds !== null) || (selectedPlanningsIds && selectedPlanningsIds.length !== 0)) && status !== 'ok'"
+        :plannings="plannings"
+        :status="status"
+      />
     </transition>
-    <bottom :selected-event="selectedEvent" :bottom="bottom" @change="bottom = $event" @close="bottom = false" />
+    <event-bottom
+      :selected-event="selectedEvent"
+      :bottom="bottom"
+      @change="bottom = $event"
+      @close="bottom = false"
+    />
     <v-progress-linear
       :active="loading || $fetchState.pending"
       :indeterminate="loading || $fetchState.pending"
@@ -84,7 +140,10 @@
         </template>
       </v-select>
       <v-spacer />
-      <div class="d-flex justify-space-between" style="align-self: center; width: 125px;">
+      <div
+        class="d-flex justify-space-between"
+        style="align-self: center; width: 125px;"
+      >
         <v-tooltip top>
           <template #activator="{ on, attrs }">
             <v-btn
@@ -106,7 +165,13 @@
           v-model="dialogEdt"
           width="500"
         >
-          <select-planning v-if="selectedPlanningsIds" :dialog="dialogEdt" :selected-plannings="selectedPlanningsIds" @selected-plannings="selectedPlanningsIds = $event; $fetch();" @close="dialogEdt = false" />
+          <lazy-select-planning
+            v-if="selectedPlanningsIds"
+            :dialog="dialogEdt"
+            :selected-plannings="selectedPlanningsIds"
+            @selected-plannings="selectedPlanningsIds = $event; $fetch();"
+            @close="dialogEdt = false"
+          />
         </v-dialog>
         <v-tooltip top>
           <template #activator="{ on, attrs }">
@@ -123,9 +188,10 @@
           </template>
           <span style="margin-right: 2px">{{ $config.i18n.today }}</span><span style="color: lightgrey; font-size: 10px">(t)</span>
         </v-tooltip>
-        <settings
+        <lazy-dialog-settings
           :dialog-settings="dialogSettings"
           :settings="settings"
+          :selected-plannings-ids="selectedPlanningsIds || []"
           @fetch="$fetch()"
           @change_dialog="dialogSettings = $event"
           @change_settings="settings = $event"
@@ -139,12 +205,22 @@
         <v-icon>{{ mdiChevronRight }}</v-icon>
       </v-btn>
     </v-sheet>
-    <v-sheet height="710" :style="$vuetify.theme.dark ? 'background-color: #121212' : null">
-      <div v-if="$fetchState.error" style="text-align: center">
+    <v-sheet
+      height="710"
+      :style="$vuetify.theme.dark ? 'background-color: #121212' : null"
+    >
+      <div
+        v-if="$fetchState.error"
+        style="text-align: center"
+      >
         <span><br><v-icon class="mr-2 mb-1">{{ mdiWifiOff }}</v-icon>
           {{ $config.i18n.error1 }}<br>{{ $config.i18n.error2 }}</span>
       </div>
-      <div v-else-if="errorMessage" class="title" style="text-align: center">
+      <div
+        v-else-if="errorMessage"
+        class="title"
+        style="text-align: center"
+      >
         <br>
         <div v-if="errorMessage === 'unknown'">
           <span>Planning inexistant :(</span>
@@ -153,7 +229,10 @@
         </div>
         <span v-else>{{ errorMessage }}</span>
         <br><br>
-        <div id="interrogation" style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;">
+        <div
+          id="interrogation"
+          style="font-size: 80px; cursor: pointer; display: inline-block; width: 100px;"
+        >
           ?
         </div>
         <br><br><v-btn @click="resetNewPlanning()">
@@ -181,16 +260,24 @@
           show-week
           @click:date="goToDay"
           @click:event="showEvent"
+          @change="calendarChange"
         >
           <template #day-body="{ date, week }">
             <div
+              v-if="showCurrentTime(date)"
               :class="{ first: date === week[0].date }"
               :style="{ top: nowY }"
               class="v-current-time"
             />
           </template>
           <template #event="{event}">
-            <div v-tooltip.bottom="{content: () => getCustomEventContent(event)}" :class="(event.end && event.start && ((event.end - event.start) <= 3600000)) ? '' : 'justify-center'" :style="{'background-color':event.color,color:'white'}" class="event_custom fill-height ml-3 roboto-font black--text d-flex flex-column" style="margin-top: -2px;">
+            <div
+              v-tooltip.bottom="{content: () => getCustomEventContent(event)}"
+              :class="(event.end && event.start && ((event.end - event.start) <= 3600000)) ? '' : 'justify-center'"
+              :style="{'background-color':event.color,color:'white'}"
+              class="event_custom fill-height ml-3 roboto-font black--text d-flex flex-column"
+              style="margin-top: -2px;"
+            >
               <div class="text-truncate font-weight-bold text-body-2 flex-shrink-0">
                 {{ event.name }}
               </div>
@@ -209,7 +296,10 @@
       </transition>
     </v-sheet>
   </div>
-  <div v-else class="d-flex justify-center mt-3">
+  <div
+    v-else
+    class="d-flex justify-center mt-3"
+  >
     <v-progress-circular
       color="primary"
       indeterminate
@@ -219,17 +309,24 @@
 
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
-import Bottom from '@/components/Bottom'
-import ErrorAlert from '@/components/ErrorAlert'
+import humanizeDuration from 'humanize-duration'
+const shortFrenchHumanizer = humanizeDuration.humanizer({
+  language: 'shortFr',
+  languages: {
+    shortFr: {
+      y: () => 'a',
+      mo: () => 'mo',
+      w: () => 's',
+      d: () => 'j',
+      h: () => 'h',
+      m: () => 'm',
+      s: () => 's',
+      ms: () => 'ms'
+    }
+  }
+})
 
 export default {
-  components: {
-    Crous: () => import('@/components/Crous'),
-    Settings: () => import('@/components/Settings'),
-    Bottom,
-    ErrorAlert,
-    SelectPlanning: () => import('@/components/SelectPlanning')
-  },
   middleware: 'vuetify-theme',
   data () {
     return {
@@ -285,9 +382,14 @@ export default {
       currentWeek: '',
       lastTimeFetch: 0,
       nowY: '-10px',
+      dateNow: '',
       width: 0,
       doublePress: false,
-      playing: false
+      playing: false,
+      skipOk: false,
+      tmpP: null,
+      nbHours: null,
+      lastTimestamp: null
     }
   },
   fetchOnServer: false,
@@ -311,10 +413,10 @@ export default {
     }
 
     if (this.selectedPlanningsIds == null) {
-      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.a1'
+      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1'
       let planningString
       try {
-        planningString = this.$route.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
+        planningString = this.$route?.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
       } catch (err) {
         console.log(err)
         planningString = defaultPlanning
@@ -328,10 +430,7 @@ export default {
     }
 
     try {
-      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] !== undefined ? 'true' : 'false' } })
-      this.setEvents(events)
-      this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
-      this.errorMessage = null
+      await this.getEvents()
     } catch (e) {
       if (e?.response?.status === 404 && e?.response?.data?.includes('planning')) {
         this.errorMessage = 'unknown'
@@ -340,10 +439,7 @@ export default {
       // Let's try again, just to be sure
       console.log(e)
       try {
-        const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route.query['ignore-statistics'] !== undefined ? 'true' : 'false' } })
-        this.setEvents(events)
-        this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
-        this.errorMessage = null
+        await this.getEvents()
       } catch (err) {
         console.log(err)
         this.loading = false
@@ -353,13 +449,33 @@ export default {
     this.loading = false
   },
   computed: {
+    // used in watcher
+    calculateNbHoursComputed () {
+      return !!this.events?.length && this.skipOk && this.lastTimestamp && this.tmpP
+    },
     titleCss () {
       return this.$vuetify.breakpoint.lgAndDown ? 'ml-4 mr-4 mb-3' : 'ma-4'
+    },
+    hideWeekends () {
+      return this.$config.hideWeekends
     }
   },
   watch: {
     '$vuetify.theme.dark' () {
       this.$cookies.set('theme', this.$vuetify.theme.dark ? 'true' : 'false', { maxAge: 2147483646 })
+    },
+    calculateNbHoursComputed: {
+      handler (n) {
+        if (n) {
+          try {
+            this.calculateNbHours({ start: n.start.date, end: n.end.date })
+          } catch (err) {
+            this.nbHours = null
+            console.log(err)
+          }
+        }
+      },
+      immediate: true
     }
   },
   beforeDestroy () {
@@ -427,10 +543,62 @@ export default {
     }, 120000)
   },
   methods: {
+    async getEvents () {
+      const events = await this.$axios.$get('/api/v1/calendars', { params: { p: [...(this.selectedPlanningsIds || [])].join(',') }, headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' } })
+      this.setEvents(events)
+      this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
+      this.errorMessage = null
+    },
+    calendarChange (p) {
+      this.tmpP = p
+    },
+    calculateNbHours ({ start, end }) {
+      if (!this.events || !this.events.length) {
+        this.nbHours = null
+        return
+      }
+
+      const startMoment = new Date(start).setHours(0, 0, 0, 0)
+      const endMoment = new Date(end).setHours(23, 59, 59, 999)
+
+      const eventsSorted = this.events
+        .filter(ev => new Date(ev.start) >= startMoment && new Date(ev.end) <= endMoment)
+        .sort((a, b) => new Date(a.start) - new Date(b.start))
+
+      if (!eventsSorted.length) {
+        this.nbHours = null
+        return
+      }
+
+      const firstEventTime = eventsSorted[0].start
+      const lastEventTime = eventsSorted[eventsSorted.length - 1].end
+
+      // iterate over the minutes of the day and check if there is an event
+      let nbMinutes = 0
+      for (let i = firstEventTime; i < lastEventTime; i += 60000) {
+        if (eventsSorted.some(ev => i >= ev.start && i < ev.end)) nbMinutes++ // add 1 minute if there is an event
+      }
+
+      // calculate the number of hours
+      this.nbHours = shortFrenchHumanizer(nbMinutes * 60000, { round: true, units: ['h', 'm'], spacer: '', delimiter: '' })
+    },
+    showCurrentTime (date) {
+      try {
+        if (!this.$refs.calendar) {
+          return false
+        }
+        if (this.type === 'week') return this.$moment(date).week() === this.$moment(this.$refs.calendar.start).week()
+        else if (this.type === 'month') return false
+        else return this.dateNow === '' || date === this.dateNow
+      } catch (e) {
+        // you can never be too careful
+        return false
+      }
+    },
     uniqWith (arr, fn) {
       return arr.filter((element, index) => arr.findIndex(step => fn(element, step)) === index)
     },
-    mergeDuplicates () {
+    isMergeDuplicates () {
       try {
         return this.$cookies.get('mergeDuplicates', { parseJSON: false }) !== 'false'
       } catch (err) {
@@ -445,15 +613,19 @@ export default {
       })
     },
     setEvents (req) {
+      req = req || {}
       // Merge planning and remove duplicates events
       const tmpEvents = [].concat.apply([], (req.plannings || []).map(v => v.events).filter(v => v))
-      if ((req.plannings || []).length > 1 && this.mergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
+      if ((req.plannings || []).length > 1 && this.isMergeDuplicates()) this.events = this.uniqWith(tmpEvents, (a, b) => a.name === b.name && a.start === b.start && a.end === b.end && a.location === b.location && a.description === b.description)
       else this.events = tmpEvents
 
       this.status = req.status
-      this.plannings = req.plannings.map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
+      this.plannings = (req.plannings || []).map(v => ({ id: v.id, title: v.title, timestamp: v.timestamp, status: v.status }))
 
-      if (window && req.timestamp) window.last_timestamp = req.timestamp
+      if (req.timestamp) {
+        if (window) window.last_timestamp = req.timestamp
+        this.lastTimestamp = req.timestamp
+      }
       this.start = false
     },
     goToDay (day) {
@@ -462,6 +634,7 @@ export default {
     },
     updateTime () {
       const tmp = new Date()
+      this.dateNow = this.$moment(tmp).format('YYYY-MM-DD')
       this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY((tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes()) + 'px' : '-10px'
     },
     skipWeekend () {
@@ -481,6 +654,9 @@ export default {
         }
       } catch (err) {
       }
+      this.$nextTick(() => {
+        this.skipOk = true
+      })
     },
     async getCustomEventContent (e) {
       const { data } = await this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } })
@@ -489,7 +665,7 @@ export default {
     setSelectedEvent (e) {
       this.selectedEvent = { event: e }
       this.$axios.get('/api/v1/custom-event-content', { params: { name: (e.name || '').trim() } }).then((d) => {
-        if (d.data && d.data.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
+        if (d.data?.length && this.selectedEvent) this.$set(this.selectedEvent, 'content', d.data)
       })
     },
     showEvent ({ nativeEvent, event }) {
@@ -501,13 +677,7 @@ export default {
       this.value = ''
     },
     keyboard (event) {
-      if (this.dialogSettings || this.dialogEdt) {
-        return
-      }
-
-      if (event.defaultPrevented) {
-        return
-      }
+      if (this.dialogSettings || this.dialogEdt || event?.defaultPrevented) return
 
       const key = event.key || event.keyCode
 
@@ -534,31 +704,31 @@ export default {
           const audio = new Audio('/sound/security.mp3')
           this.playing = true
           const su = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna give you up'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 0)
           const sd = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna let you down'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 2260)
           const sa = setTimeout(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.name = 'Never gonna run around'
               v.location = 'YouTube'
               v.description = 'Rick Astley'
             })
           }, 4440)
-          this.events.forEach((v, i) => {
+          this.events.forEach((v) => {
             v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
           })
           const s = setInterval(() => {
-            this.events.forEach((v, i) => {
+            this.events.forEach((v) => {
               v.color = (Math.floor(Math.random() * 2)) === 0 ? '#e28b6f' : '#c3bde7'
             })
           }, 500)
@@ -630,27 +800,35 @@ export default {
   border-bottom: none !important;
 }
 
-.v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+.hideWeekends .v-calendar-daily .v-calendar-daily__day:nth-child(8) {
   border-right: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(6) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
   border-right: none !important;
 }
 
-.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
+.hideWeekends .v-calendar-daily .v-calendar-daily__day:nth-child(6) {
+  border-right: none !important;
+}
+
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(6) {
+  border-right: none !important;
+}
+
+.hideWeekends .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(8) {
   display: none !important;
 }
 
-.v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
+.hideWeekends .v-calendar-daily__day-container .v-calendar-daily__day:nth-child(7) {
   display: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(7) {
   display: none !important;
 }
 
-.v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
+.hideWeekends .v-calendar-daily__head .v-calendar-daily_head-day:nth-child(8) {
   display: none !important;
 }
 
@@ -665,6 +843,16 @@ export default {
   left: -1px;
   right: 0;
   pointer-events: none;
+}
+.v-current-time.first::before {
+  content: '';
+  position: absolute;
+  background-color: rgba(210, 78, 78, 0.8);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: -5px;
+  margin-left: -6.5px;
 }
 
 .v-event-timed-container {

@@ -1,5 +1,8 @@
 <template>
-  <v-expansion-panels accordion focusable>
+  <v-expansion-panels
+    accordion
+    focusable
+  >
     <v-expansion-panel>
       <v-expansion-panel-header>Le planning n'est pas à l'heure ! :(</v-expansion-panel-header>
       <v-expansion-panel-content>
@@ -16,7 +19,10 @@
       <v-expansion-panel-header>Faire un don</v-expansion-panel-header>
       <v-expansion-panel-content>
         <div class="pl-1 pr-1 pt-3">
-          PayPal :&nbsp;<a target="_blank" href="https://paypal.me/kernoeb">https://paypal.me/kernoeb</a>
+          PayPal :&nbsp;<a
+            target="_blank"
+            href="https://paypal.me/kernoeb"
+          >https://paypal.me/kernoeb</a>
         </div>
       </v-expansion-panel-content>
     </v-expansion-panel>

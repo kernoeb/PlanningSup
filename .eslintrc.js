@@ -5,16 +5,19 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 'latest'
   },
   extends: [
-    '@nuxtjs',
+    'eslint:recommended',
+    'standard',
+    'plugin:vue/recommended',
     'plugin:nuxt/recommended'
   ],
   plugins: [
   ],
   // add your custom rules here
   rules: {
+    'vue/multi-word-component-names': 'off',
     curly: 'off',
     'no-console': 'off'
   }

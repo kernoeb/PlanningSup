@@ -129,7 +129,7 @@ function listener () {
         tTemp.push({
           id: cleanText(childLabel),
           title: childLabel,
-          url: `${URL}?resources=${childId}&projectId=0&calType=ical&firstDate=2021-11-01&lastDate=2025-12-31`
+          url: `${URL}?resources=${childId}&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}`
         })
       }
 

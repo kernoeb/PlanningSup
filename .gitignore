@@ -79,16 +79,13 @@ typings/
 .nuxt
 
 # Nuxt generate
-#dist
+dist
 
 # vuepress build output
 .vuepress/dist
 
 # Serverless directories
 .serverless
-
-# IDE / Editor
-.idea
 
 # Service worker
 sw.*
@@ -100,3 +97,8 @@ sw.*
 *.swp
 
 dev/
+
+.mongo-planning
+
+assets/css/fonts.css
+assets/fonts

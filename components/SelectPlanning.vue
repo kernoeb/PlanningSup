@@ -34,11 +34,51 @@
               {{ $config.i18n.chooseEdt }}
             </div>
             <div style="font-size: 12px;">
-              {{ (localPlannings && localPlannings.length) || 0 }} sélectionnés
+              {{ (localPlannings && localPlannings.length) || 0 }} sélectionné{{ (localPlannings && localPlannings.length) > 1 ? 's' : '' }}
             </div>
           </div>
         </v-card-title>
         <v-spacer />
+        <v-menu
+          v-model="menuGroup"
+          :close-on-content-click="false"
+          offset-y
+          left
+          :close-on-click="false"
+        >
+          <template #activator="{ on: menu, attrs }">
+            <v-btn
+              v-tooltip="'Créer un groupe de favoris'"
+              icon
+              v-bind="attrs"
+              v-on="menu"
+            >
+              <v-icon>{{ mdiFormatListGroup }}</v-icon>
+            </v-btn>
+          </template>
+          <v-card width="300">
+            <v-card-text>
+              <v-text-field
+                v-model="newFavoriteGroupName"
+                autofocus
+                label="Nom du groupe"
+                :rules="favoriteGroupNameRules"
+                @keyup.enter="createFavoriteGroup"
+              />
+              <span v-if="localPlannings?.length > 1">{{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe</span>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn
+                text
+                :disabled="!isRulesOk"
+                @click="createFavoriteGroup"
+              >
+                Créer
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
         <v-btn
           v-tooltip="'Copier la sélection actuelle sous forme d\'URL dans le presse-papier'"
           icon
@@ -64,39 +104,100 @@
         hide-details
         dense
       />
-      <v-btn text small color="green" @click="reset">
+      <v-btn
+        text
+        small
+        color="green"
+        @click="reset"
+      >
         Réinitialiser
       </v-btn>
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
-          <div v-if="filteredFavorites && filteredFavorites.length" class="pa-2">
+          <div
+            v-if="favorites?.length || groupFavorites?.length"
+            class="pa-2"
+          >
             <v-card rounded>
               <v-card-title>
-                <v-icon color="orange" class="mt-n1 mr-1">
+                <v-icon
+                  color="orange"
+                  class="mt-n1 mr-1"
+                >
                   {{ mdiStar }}
                 </v-icon>
                 <span class="text-h6 font-weight-bold">Favoris</span>
               </v-card-title>
               <v-card-text>
-                <v-list rounded dense>
-                  <transition-group name="list-complete" tag="div">
+                <v-list
+                  rounded
+                  dense
+                >
+                  <transition-group
+                    name="list-complete"
+                    tag="div"
+                  >
                     <v-list-item
-                      v-for="(favorite, i) in filteredFavorites"
+                      v-for="(groupFavorite, i) in groupFavorites"
+                      :key="`group-${i}-${groupFavorite.name}`"
+                      dense
+                      style="height: 20px;"
+                      class="list-complete-item"
+                      link
+                      @click="localPlannings = groupFavorite.plannings || []; updatePlannings(); $emit('close');"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title>
+                          <v-icon
+                            x-small
+                            color="primary"
+                            class="mr-1"
+                          >
+                            {{ mdiFormatListGroup }}
+                          </v-icon>{{ groupFavorite.name }}
+                        </v-list-item-title>
+                        <v-list-item-subtitle>
+                          {{ groupFavorite.plannings?.length || 0 }} plannings
+                        </v-list-item-subtitle>
+                      </v-list-item-content>
+                      <v-list-item-action>
+                        <v-btn
+                          small
+                          icon
+                          @click="deleteFavoriteGroup(i)"
+                        >
+                          <v-icon
+                            small
+                            color="red"
+                          >
+                            {{ mdiDelete }}
+                          </v-icon>
+                        </v-btn>
+                      </v-list-item-action>
+                    </v-list-item>
+
+                    <v-list-item
+                      v-for="(favorite, i) in favorites"
                       :key="`${i}-${favorite}`"
                       dense
+                      style="height: 20px;"
                       class="list-complete-item"
                       link
                       @click="localPlannings = [favorite]; updatePlannings(); $emit('close');"
                     >
                       <v-list-item-content>
                         <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
-                        <v-list-item-subtitle class="text--disabled">
-                          {{ favorite }}
-                        </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn small icon @click="setFavorite(favorite)">
-                          <v-icon small color="red">
+                        <v-btn
+                          small
+                          icon
+                          @click="setFavorite(favorite)"
+                        >
+                          <v-icon
+                            small
+                            color="red"
+                          >
                             {{ mdiDelete }}
                           </v-icon>
                         </v-btn>
@@ -109,7 +210,10 @@
           </div>
         </transition>
         <div>
-          <div v-if="urls" class="mb-2">
+          <div
+            v-if="urls"
+            class="mb-2"
+          >
             <v-treeview
               :expand-icon="mdiMenuDown"
               :filter="filter"
@@ -125,7 +229,10 @@
             >
               <template #label="{ item }">
                 <div class="d-flex justify-space-between">
-                  <div :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''" style="width: 100%;">
+                  <div
+                    :class="(item && item.fullId && localPlannings.some(v => v.startsWith(item.fullId))) ? 'selected_planning' : ''"
+                    style="width: 100%;"
+                  >
                     <v-checkbox
                       v-if="!item.edts"
                       v-model="localPlannings"
@@ -141,17 +248,25 @@
                       {{ item.title }}
                     </div>
                   </div>
-                  <v-hover v-slot="{ hover }">
+                  <v-hover
+                    v-if="!item.edts"
+                    v-slot="{ hover }"
+                  >
                     <v-btn
-                      v-if="!item.edts"
                       icon
                       style="margin-top: 2px;"
                       @click="setFavorite(item.fullId)"
                     >
-                      <v-icon v-if="(favorites || []).includes(item.fullId)" color="orange">
+                      <v-icon
+                        v-if="(favorites || []).includes(item.fullId)"
+                        color="orange"
+                      >
                         {{ mdiStar }}
                       </v-icon>
-                      <v-icon v-else :color="hover ? 'orange' : 'grey lighten-2'">
+                      <v-icon
+                        v-else
+                        :color="hover ? 'orange' : 'grey lighten-2'"
+                      >
                         {{ mdiStarOutline }}
                       </v-icon>
                     </v-btn>
@@ -160,7 +275,11 @@
               </template>
             </v-treeview>
           </div>
-          <div v-else style="min-height: 330px;" class="d-flex justify-center align-center">
+          <div
+            v-else
+            style="min-height: 330px;"
+            class="d-flex justify-center align-center"
+          >
             <v-progress-circular
               indeterminate
               color="yellow darken-2"
@@ -169,7 +288,11 @@
         </div>
       </div>
 
-      <v-btn block :disabled="disabledValidate" @click="updatePlannings()">
+      <v-btn
+        block
+        :disabled="disabledValidate"
+        @click="updatePlannings()"
+      >
         Valider
       </v-btn>
     </v-card>
@@ -177,7 +300,20 @@
 </template>
 
 <script>
-import { mdiDelete, mdiStarHalfFull, mdiStar, mdiStarOutline, mdiClose, mdiContentCopy, mdiCalendar, mdiMenuDown, mdiMinusBox, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
+import {
+  mdiDelete,
+  mdiStarHalfFull,
+  mdiStar,
+  mdiStarOutline,
+  mdiClose,
+  mdiContentCopy,
+  mdiCalendar,
+  mdiMenuDown,
+  mdiMinusBox,
+  mdiCheckboxBlankOutline,
+  mdiCheckboxMarked,
+  mdiFormatListGroup
+} from '@mdi/js'
 
 export default {
   name: 'SelectPlanning',
@@ -208,24 +344,38 @@ export default {
       mdiStarHalfFull,
       mdiStar,
       mdiStarOutline,
+      mdiFormatListGroup,
+
+      menuGroup: false,
 
       showSnackbar: false,
       showSnackbarError: false,
       searchCalendar: '',
+      newFavoriteGroupName: '',
 
       activatedPlanning: null,
       urls: null,
 
       localPlannings: [],
       favorites: [],
+      groupFavorites: [],
 
       planningNames: null
     }
   },
   computed: {
-    filteredFavorites () {
-      if (!this.favorites) return null
-      return [...this.favorites].filter(v => v)
+    favoriteGroupNameRules () {
+      return [
+        (this.newFavoriteGroupName?.length || 0) > 0 || 'Le nom du groupe est requis',
+        (this.newFavoriteGroupName?.length || 0) < 40 || 'Le nom du groupe doit faire moins de 50 caractères',
+        !!this.localPlannings || 'Aucun planning sélectionné',
+        this.localPlannings?.length !== 0 || 'Aucun planning sélectionné',
+        this.localPlannings?.length > 1 || 'Sélectionnez au moins 2 plannings',
+        !this.groupFavorites?.some(group => group.name === this.newFavoriteGroupName) || 'Ce nom de groupe est déjà utilisé'
+      ]
+    },
+    isRulesOk () {
+      return this.favoriteGroupNameRules.every(rule => rule === true)
     },
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
@@ -242,18 +392,10 @@ export default {
     }
   },
   created () {
-    try {
-      this.favorites = this.$cookies?.get('favorites')?.split(',') || []
-      this.getNames()
-      if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
-    } catch (err) {}
+    this.refreshFavorites()
   },
   mounted () {
-    window.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter' || event.keyCode === 13) {
-        if (!this.disabledValidate && this.dialog) this.updatePlannings()
-      }
-    })
+    window.addEventListener('keyup', this.keyup)
 
     this.$axios.$get('/api/v1/urls').then((data) => {
       this.urls = data
@@ -261,7 +403,15 @@ export default {
       console.log(err)
     })
   },
+  beforeDestroy () {
+    window.removeEventListener('keyup', this.keyup)
+  },
   methods: {
+    keyup (event) {
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        if (!this.disabledValidate && this.dialog) this.updatePlannings()
+      }
+    },
     // https://stackoverflow.com/questions/400212/how-do-i-copy-to-the-clipboard-in-javascript
     fallbackCopyTextToClipboard (text) {
       const textArea = document.createElement('textarea')
@@ -305,8 +455,9 @@ export default {
       })
     },
     getNames () {
-      if (this.favorites && this.favorites.length) {
-        this.$axios.$get('/api/v1/calendars/info', { params: { p: (this.favorites || []).join(',') } }).then((data) => {
+      const list = [...(this.favorites || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
+      if (list.length) {
+        this.$axios.$get('/api/v1/calendars/info', { params: { p: list.join(',') } }).then((data) => {
           this.planningNames = data
         }).catch(() => {
           this.planningNames = []
@@ -316,23 +467,65 @@ export default {
     reset () {
       this.localPlannings = []
       this.searchCalendar = ''
+      this.newFavoriteGroupName = ''
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {
       this.$emit('selected-plannings', this.localPlannings)
     },
     setFavorite (id) {
-      let tmp = [...this.favorites]
+      let tmp = [...(this.favorites || [])]
       if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
       else tmp.push(id)
-      const final = [...new Set(tmp)]
+      const final = [...new Set(tmp)].filter(v => !!v)
       this.favorites = final
-      this.$cookies.set('favorites', (final || []).join(','), { maxAge: 2147483646 })
+      this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
       this.getNames()
+      this.$nextTick(() => {
+        this.refreshFavorites()
+      })
     },
     getFavoriteName (favorite) {
       if (this.planningNames === null) return ''
       return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
+    },
+    createFavoriteGroup () {
+      if (!this.newFavoriteGroupName) return
+      // take all current plannings and add them to the new group
+      const tmp = [...this.localPlannings]
+      const currentGroupFavoriteList = this.$cookies.get('group-favorites') || []
+      const newGroupFavoriteList = [...currentGroupFavoriteList, { name: this.newFavoriteGroupName, plannings: tmp }]
+        .filter(v => !!v && !!v.name && !!v.plannings && v.plannings.length)
+      this.$cookies.set('group-favorites', newGroupFavoriteList, { maxAge: 2147483646 })
+      this.newFavoriteGroupName = ''
+      this.refreshFavorites()
+      this.menuGroup = false
+    },
+    deleteFavoriteGroup (index) {
+      const currentGroupFavoriteList = this.$cookies.get('group-favorites') || []
+      const newGroupFavoriteList = currentGroupFavoriteList
+        .filter((v, i) => i !== index)
+        .filter(v => !!v && !!v.name && !!v.plannings && v.plannings.length)
+      this.$cookies.set('group-favorites', newGroupFavoriteList, { maxAge: 2147483646 })
+      this.refreshFavorites()
+      this.menuGroup = false
+    },
+    refreshFavorites () {
+      try {
+        this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
+
+        try {
+          this.groupFavorites = this.$cookies?.get('group-favorites')?.filter(v => !!v && !!v.name && !!v.plannings) || []
+        } catch (err) {
+          console.log('Error parsing group favorites', err)
+          this.groupFavorites = []
+        }
+
+        this.getNames()
+
+        if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
+        if (this.$cookies?.get('groupFavorites') === '') this.$cookies.remove('groupFavorites')
+      } catch (err) {}
     }
   }
 }
@@ -340,11 +533,27 @@ export default {
 
 <style>
 .v-treeview-node__level {
-  width: 8px !important;
+  width: 17px !important;
 }
 .accent--text svg {
   color:#2196F3 !important;
 }
+.treeview_plannings.theme--light .v-treeview-node__root .v-treeview-node__level::before {
+  border: 0.5px dashed rgba(211, 196, 196, 0.7) !important;
+}
+
+.treeview_plannings .v-treeview-node__root .v-treeview-node__level::before {
+  border: 0.5px dashed rgba(211, 196, 196, 0.3) !important;
+}
+
+.treeview_plannings .v-treeview-node__root .v-treeview-node__level::before {
+  height: 38px !important;
+  content: '' !important;
+  margin-left: 10px !important;
+  display: flex !important;
+  width: 0!important;
+}
+
 .treeview_plannings .v-input__slot {
   margin-bottom: 0!important;
   min-height: 40px;

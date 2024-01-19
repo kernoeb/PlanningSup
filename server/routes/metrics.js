@@ -1,19 +1,21 @@
+const asyncWrapper = require('async-wrapper-express-ts')
 const { Router } = require('express')
 const router = Router()
-const mongoose = require('mongoose')
 
-router.get('/analytics/today', async (req, res) => {
+const { Metric } = require('../models/metric')
+
+router.get('/analytics/today', asyncWrapper(async (req, res) => {
   const date = new Date()
   date.setHours(2, 0, 0, 0)
 
-  const nbSession = await mongoose.model('Metrics').aggregate([
+  const nbSession = await Metric.aggregate([
     { $match: { timestamp: date } },
     { $group: { _id: '$sessionId' } },
     { $group: { _id: null, nb: { $sum: 1 } } }
   ])
 
   // mongo sum of all the count of date
-  const nbRequests = await mongoose.model('Metrics').aggregate([
+  const nbRequests = await Metric.aggregate([
     { $match: { timestamp: date } },
     { $group: { _id: null, nb: { $sum: '$count' } } }
   ])
@@ -22,15 +24,15 @@ router.get('/analytics/today', async (req, res) => {
     nbUsers: nbSession?.[0]?.nb || 0,
     nbPlanningRequests: nbRequests?.[0]?.nb || 0
   })
-})
+}))
 
-router.get('/metrics/today', async (req, res) => {
+router.get('/metrics/today', asyncWrapper(async (req, res) => {
   // get all metrics
   const date = new Date()
   date.setHours(2, 0, 0, 0)
 
   try {
-    const ret = await mongoose.model('Metrics').aggregate([
+    const ret = await Metric.aggregate([
       {
         $match: {
           timestamp: date
@@ -51,6 +53,6 @@ router.get('/metrics/today', async (req, res) => {
       message: err.message || err || 'Internal server error'
     })
   }
-})
+}))
 
 module.exports = router

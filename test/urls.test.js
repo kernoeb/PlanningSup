@@ -4,7 +4,7 @@ const { describe, it } = require('mocha')
 
 const app = require('../server/index.js')
 
-const plannings = require('../assets/url.json')
+const plannings = require('../assets/plannings.json')
 
 describe('API : /urls', function () {
   it('Return json and compare to local json', function () {

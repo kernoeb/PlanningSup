@@ -4,7 +4,10 @@
       height="30"
     >
       <transition name="fade">
-        <div v-if="!connected" style="position: absolute; left: 50%;">
+        <div
+          v-if="!connected"
+          style="position: absolute; left: 50%;"
+        >
           <div style="color: grey; position: relative; left: -50%; font-size: 10px">
             {{ $config.i18n.offline }}
           </div>
@@ -12,13 +15,24 @@
       </transition>
       <v-tooltip left>
         <template #activator="{ on, attrs }">
-          <v-icon small v-bind="attrs" v-on="on">
+          <v-icon
+            small
+            v-bind="attrs"
+            v-on="on"
+          >
             {{ mdiCalendar }}
           </v-icon>
         </template>
         {{ version }}
       </v-tooltip>
-      {{ $config.name }} <span v-if="development" class="ml-1" style="color:orange;">Dév</span><span v-else class="ml-1">{{ version }}</span>
+      {{ $config.name }} <span
+        v-if="development"
+        class="ml-1"
+        style="color:orange;"
+      >Dév</span><span
+        v-else
+        class="ml-1"
+      >{{ version }}</span>
       <v-spacer />
       <span>{{ time }}</span>
     </v-system-bar>
@@ -31,7 +45,10 @@
       absolute
       app
     >
-      <span class="text--disabled">Noéwen (<a :style="$vuetify.theme.dark ? 'color: gray' : 'color: gray'" href="https://twitter.com/kernoeb">@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
+      <span class="text--disabled">Noéwen (<a
+        style="color: gray"
+        href="https://twitter.com/kernoeb"
+      >@kernoeb</a>) | {{ new Date().getFullYear() }}</span>
       <v-spacer />
       <v-tooltip top>
         <template #activator="{ on, attrs }">
@@ -43,7 +60,10 @@
             target="_blank"
             v-on="on"
           >
-            <v-icon color="#00acee" class="mr-3 mt-n3">{{ mdiTwitter }}</v-icon>
+            <v-icon
+              color="#00acee"
+              class="mr-3 mt-n3"
+            >{{ mdiTwitter }}</v-icon>
           </a>
         </template>
         <span>Mon Twitter</span>
@@ -127,10 +147,12 @@ export default {
     window.addEventListener('online', this.setConnectedOn)
   },
   created () {
-    this.time = this.getTime()
-    this.timer = setInterval(() => {
+    if (process.client) { // We don't want to run this on the server, memory leak ?
       this.time = this.getTime()
-    }, 1000)
+      this.timer = setInterval(() => {
+        this.time = this.getTime()
+      }, 1000)
+    }
   },
   beforeDestroy () {
     clearInterval(this.timer)

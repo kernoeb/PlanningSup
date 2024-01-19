@@ -1,7 +1,8 @@
+const asyncWrapper = require('async-wrapper-express-ts')
 const { Router } = require('express')
 const router = Router()
 
-const urls = require('../../assets/url.json')
+const urls = require('../../assets/plannings.json')
 const logger = require('../util/signale')
 const { fetchAndGetJSON, getFormattedEvents, getBackedPlanning, getCustomEventContent } = require('../util/utils')
 const { trackPlannings } = require('../util/analytics')
@@ -27,7 +28,7 @@ urls.forEach((univ) => {
  * Calendars GET route
  * From `p` parameter or `plannings` cookie
  */
-router.get('/calendars', async (req, res) => {
+router.get('/calendars', asyncWrapper(async (req, res) => {
   // Get blocklist courses
   let blocklist = []
   try {
@@ -41,8 +42,15 @@ router.get('/calendars', async (req, res) => {
     for (const c in customColorList) {
       if (typeof customColorList[c] !== 'string') delete customColorList[c]
     }
-    if (Object.keys(customColorList)?.length === 0) customColorList = null
+    if (Object.keys(customColorList).length === 0) customColorList = null
   } catch (e) {}
+
+  // Highlight courses with teachers
+  let highlightTeacher = false
+  try {
+    if (req.cookies?.highlightTeacher === 'true') highlightTeacher = true
+  } catch (e) {
+  }
 
   try {
     const calendars = (req.query?.p && req.query.p.split(',')) || (req.cookies?.plannings && req.cookies.plannings.split(',')) || null
@@ -53,11 +61,29 @@ router.get('/calendars', async (req, res) => {
     if (!tmpIds?.length) return res.status(404).send('No plannings found !')
 
     const plannings = await Promise.all(tmpIds.map(async (id) => {
-      const fetched = await fetchAndGetJSON(allPlannings[id].url, null)
-      if (fetched) return { id, status: 'ok', title: allPlannings[id].title, timestamp: new Date().toISOString(), events: getFormattedEvents(fetched, blocklist, customColorList) }
-      const backed = await getBackedPlanning(id)
-      if (backed?.backup) return { id, status: 'backup', title: allPlannings[id].title, timestamp: backed?.timestamp || undefined, events: getFormattedEvents(backed.backup, blocklist, customColorList) }
-      else return { id, title: allPlannings[id].title, status: 'off' }
+      const fetched = await fetchAndGetJSON(allPlannings[id].url)
+      if (fetched) {
+        return {
+          id,
+          status: 'ok',
+          title: allPlannings[id].title,
+          timestamp: new Date().toISOString(),
+          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, highlightTeacher })
+        }
+      } else {
+        const backed = await getBackedPlanning(id)
+        if (backed?.backup) {
+          return {
+            id,
+            status: 'backup',
+            title: allPlannings[id].title,
+            timestamp: backed.timestamp || undefined,
+            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, highlightTeacher })
+          }
+        } else {
+          return { id, title: allPlannings[id].title, status: 'off' }
+        }
+      }
     }))
 
     // Analytics and session management
@@ -80,9 +106,9 @@ router.get('/calendars', async (req, res) => {
     logger.error(err)
     res.status(500).send('Oof, the server encountered a error :\'(')
   }
-})
+}))
 
-router.get('/calendars/info', (req, res) => {
+router.get('/calendars/info', asyncWrapper((req, res) => {
   if (!req.query.p) return res.status(400).send('No parameter found')
   try {
     return res.json(req.query.p.split(',').map(planning => ({ planning, title: allPlannings[planning]?.title?.replace(/ \| /gi, ' ') })))
@@ -90,11 +116,11 @@ router.get('/calendars/info', (req, res) => {
     logger.error(err)
     return res.status(500).send('Oof, the server encountered a error :\'(')
   }
-})
+}))
 
-router.get('/custom-event-content', async (req, res) => {
+router.get('/custom-event-content', asyncWrapper(async (req, res) => {
   if (req.query.name) return res.send(await getCustomEventContent(req.query.name) || '')
   else return res.send('')
-})
+}))
 
 module.exports = router

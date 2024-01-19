@@ -1,3 +1,31 @@
-node_modules/
-dist/
-.nuxt/
+# Ignore everything, except...
+*
+
+# Modules
+!package.json
+!package-lock.json
+!pnpm-lock.yaml
+!bun.lockb
+
+# UI files
+!nuxt.config.js
+!pages/
+!assets/
+!components/
+!config/
+!layouts/
+!middleware/
+!plugins/
+!static/sound/
+!static/banner.png
+!static/favicon.ico
+!static/icon.png
+
+# Server files
+!server/
+!jobs/
+
+!.npmrc
+
+# Other stuff
+!resources/check-plannings-json.mjs

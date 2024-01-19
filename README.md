@@ -1,22 +1,28 @@
-# PlanningSup
+<h1 align="center">
+  <br>
+  <a href="https://planningsup.app"><img src="https://raw.githubusercontent.com/kernoeb/PlanningSup/main/static/icon.png" alt="PlanningSup" width="200"></a>
+  <br>
+  PlanningSup
+  <br>
+</h1>
 
-Un planning universitaire moderne réalisé par [@kernoeb](https://github.com/kernoeb).  
+<h4 align="center">Un planning universitaire moderne réalisé par <a href="https://github.com/kernoeb" target="_blank">@kernoeb</a>.</h4>
 
-[![Depfu](https://badges.depfu.com/badges/01919e6a50135b1fa0c82c303dd44fec/status.svg)](https://depfu.com)
-[![DeepScan grade](https://deepscan.io/api/teams/12018/projects/14979/branches/290903/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12018&pid=14979&bid=290903)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/kernoeb/planningsup)
-[![Better Uptime Badge](https://betteruptime.com/status-badges/v1/monitor/4xs1.svg)](https://betteruptime.com/?utm_source=status_badge)
+<p align="center">
+  <a href="https://github.com/kernoeb/PlanningSup/releases"><img src="https://img.shields.io/github/v/release/kernoeb/planningsup"></a>
+  <!--
+  <a href="https://betteruptime.com/?utm_source=status_badge">
+    <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
+  </a>
+  -->
+  <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=22093&bid=649211">
+    <img src="https://deepscan.io/api/teams/12018/projects/22093/branches/649211/badge/grade.svg" alt="DeepScan grade">
+  </a>
+</p>
 
-### Ajouter une spécialité ou une université
+![img.png](img/planning_mac.png)
 
-Si votre université (ou autre!) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une pull request en modifiant le fichier `assets/url.json` - en respectant à la lettre le schéma déjà présent ! :wink:
-
-Avec l'aide de [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un script pour automatiquement générer un tableau au format JSON dans la bonne forme, situé dans le dossier `resources` du projet.
-
-> Note : dans la plupart des cas, vous devrez exporter votre calendrier au format iCalendar, et récupérer l'url obtenue (veillez à mettre un calendrier qui dure longtemps!).  
-> Si vous ne maîtrisez pas Git, envoyez moi un message privé (voir ci-dessous) :)
-
-### Fonctionnalités
+## Fonctionnalités
 
 - **Hors connexion** / installation en mode **PWA**
 - Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.) et choix des couleurs
@@ -25,47 +31,43 @@ Avec l'aide de [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](
 - Changement d'université / spécialité (cookie ou paramètre)
 - Thème clair / thème sombre (cookie)
 - Sélection **multiple** de plannings
-- Actualisation du planning au chargement, au focus de la page, et toutes les 2 minutes
-- Liste noire (cacher un cours)
+- Actualisation du planning au chargement, au focus de la page et toutes les 2 minutes
+- Liste de bloquage (cacher un cours)
 
-> N'hésitez pas à créér une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
+> N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
-### Comment ça marche ?
+
+## Ajouter une spécialité ou une université
+
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `assets/plannings.json` :)
+
+> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `resources` du projet.  
+
+## Comment ça marche ?
 
 Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockerisé !
 
 #### APIs :
 
 - `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : `./assets/url.json`, mais sans les URLs
+- `/api/urls` (en cache côté serveur) : `./assets/plannings.json`, mais sans les URLs
 
-Pour finir, afin d'éviter les erreurs serveurs *(http 500)* côté université, les fichiers json sont sauvegardés dans une base de donnée PostgreSQL. J'utilise pour cela un Node.js worker (threads) qui fetch les plannings toutes les 10 minutes.  
-Si une erreur est présente (serveur down, par exemple), les données seront donc récupérées dans cette base de donnée.
+Chaque planning est sauvegardé dans une base de données `MongoDB`, à un intervalle régulier. En cas de lenteur ou de coupure serveur (côté université), le dernier planning enregistré est alors utilisé.
 
-### Captures
+## Captures (mobile)
 
-![desktop](img/desktop.png)  
 <img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
 <br>
 <img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
 <br>
 
-### Installation
+## Installation
 
-#### Heroku
-
-Config Vars :
-- MONGODB_URL | mongodb://....
-- TZ | Europe/Paris
-- HOST | 0.0.0.0
-- NODE_ENV | production
-- NPM_CONFIG_PRODUCTION | false
-
-#### Docker
+### Docker
 
 Créez un fichier `.env` avec les variables suivantes :  
 
-> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et unique.
+> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et **unique**.
 
 ```
 SESSION_SECRET=secret
@@ -73,41 +75,48 @@ MONGODB_URL=mongodb:27017
 TZ=Europe/Paris
 ```
 
-Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les containers.
+Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les conteneurs.
 
 Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ```
 */30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d --remove-orphans
 ```
 
-### Développement
+## Développement
 
-#### Nécessaire
+### Nécessaire
 
-- Yarn 3 : [Site officiel](https://yarnpkg.com/)
-- Node.js 16.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- [Node.js](https://github.com/nodejs/node) 20.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
 
-#### Commandes utiles
+### Commandes utiles
 
-- Lancement en local : `NO_MONGO=true NO_UPDATE=true yarn dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
-- Build du projet : `yarn build`
-- Démarrage de MongoDB
+Lancement en local : 
 
-```
-version: '2'
+- Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
+- `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 
-services:
-  mongodb:
-    image: docker.io/bitnami/mongodb:5.0
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - '/opt/planning_v2:/bitnami/mongodb'
-```
+> For MacOS M1, you can use `npm run dev:darwin-arm64`
 
-### Dons
+## Donateurs
 
-Si vous souhaitez me faire un petit don :  
-[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb) [![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/kernoeb)
+- [Ewennn](https://github.com/Ewennnn) (merci️, le goat)
+- [W00dy](https://github.com/0xW00dy)
+- [Rick](https://github.com/rick-gnous)
+- [Lahgolz](https://twitter.com/lahgolzmiin)
+- [Dyskal](https://github.com/Dyskal)
+- [Mimipepin](https://github.com/mimipepin)
+- [Atao](https://github.com/Ataaoo)
+- [PandAmiral](https://github.com/PandAmiral)
+- [ShockedPlot](https://github.com/ShockedPlot7560)
+- [BatLeDev](https://github.com/BatLeDev)
+- Louanne M.
+- RidzArt
+- [EDM115](https://github.com/EDM115)
 
+(merci à vous ! ❤️)
+
+Si vous souhaitez me faire un petit don :
+
+[![PayPal](https://img.shields.io/badge/Donate-💵-yellow.svg?style=for-the-badge&label=PayPal)](https://www.paypal.com/paypalme/kernoeb)
+
+[![Support me on Buy Me a Coffee](https://img.shields.io/badge/Support%20me-☕-orange.svg?style=for-the-badge&label=Buy%20me%20a%20coffee)](https://www.buymeacoffee.com/kernoeb)

@@ -1,25 +1,47 @@
 const ical = require('cal-parser')
-const mongoose = require('mongoose')
-const { DateTime } = require('luxon')
-const axios = require('./axios')
+const dayjs = require('dayjs')
+const { Planning } = require('../models/planning')
+const { CustomEvent } = require('../models/customevent')
+const http = require('./http')
 const logger = require('./signale')
+
+const dateStartTemplate = '{date-start}'
+const dateEndTemplate = '{date-end}'
+
+/**
+ * Check if includes template
+ */
+const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(dateEndTemplate))
+
+/**
+ * Check if event is a teacher
+ * @param {string} description
+ * @returns {boolean}
+ */
+const checkHighlightTeacher = ({ description }) => {
+  // Special case for IUT Nantes
+  return description.includes('Matière : ') && !description.includes('Personnel : ')
+}
 
 /**
  * Get appropriate color for event
- * @param value
- * @param location
- * @param customColor
+ * @param {string} value
+ * @param {string} location
+ * @param {string} description
+ * @param {{customColor: {amphi?: string, tp?: string, td?: string, other?: string}, highlightTeacher?: boolean}} options
  * @returns {string}
  */
-const getColor = (value, location, customColor) => {
-  if (value.includes('CM') || value.includes('Amphi') || location.includes('Amphi')) {
-    return customColor?.amphi || '#efd6d8'
-  } else if (value.includes('TP') || value.includes('TDi')) {
-    return customColor?.tp || '#bbe0ff'
-  } else if ((value.includes('TD') || location.includes('V-B')) && !/^S[0-9]\.[0-9][0-9]/.test(value) && !/contr[ôo]le/i.test(value)) {
-    return customColor?.td || '#d4fbcc'
+const getColor = (value, location, description, options = {}) => {
+  if (options.highlightTeacher && checkHighlightTeacher({ description })) {
+    return '#676767'
+  } else if (value.includes('CM') || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
+    return options.customColor?.amphi || '#efd6d8'
+  } else if (value.includes('TP') || value.includes('TDi') || value.trim().match(/\sG\d\.\d$/)) {
+    return options.customColor?.tp || '#bbe0ff'
+  } else if ((value.includes('TD') || location.includes('V-B') || value.trim().match(/\sG\d$/)) && !/^S\d\.\d\d/.test(value) && !/contr[ôo]le/i.test(value)) {
+    return options.customColor?.td || '#d4fbcc'
   } else {
-    return customColor?.other || '#EDDD6E'
+    return options.customColor?.other || '#EDDD6E'
   }
 }
 
@@ -28,23 +50,39 @@ const getColor = (value, location, customColor) => {
  * @param d
  * @returns {string}
  */
-const cleanDescription = d => d && d
-  .replace(/Grp \d/g, '')
-  .replace(/GR \d.?\d?/g, '')
-  .replace(/LP (DLIS|CYBER)/g, '')
-  .replace(/\(Exporté.*\)/, '')
-  .replace(/\(Exported :.*\)/, '')
-  .replace(/\(Updated :.*\)/, '')
-  .trim()
+const cleanDescription = (d) => {
+  return d && d
+    .replace(/Grp \d/g, '')
+    .replace(/GR \d.?\d?/g, '')
+    .replace(/LP (DLIS|CYBER)/g, '')
+    .replace(/\(Exporté.*\)/, '')
+    .replace(/\(Exported :.*\)/, '')
+    .replace(/\(Updated :.*\)/, '')
+    .replace(/\(Modifié le:.*\)/, '')
+    .replace(/^\s+-/, '')
+    .trim()
+}
 
 /**
  * Sanitize description
  * @param l
  * @returns {string}
  */
-const cleanLocation = l => l && l
-  .trim().replace('salle joker à distance', 'À distance')
-  .split(',').map(v => v.replace(/^V-/, '')).join(', ')
+const cleanLocation = (l) => {
+  return l && l.trim()
+    .replace('salle joker à distance', 'À distance')
+    .replace(/(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/, 'À distance')
+    .split(',').map(v => v.replace(/^V-/, '')).join(', ')
+}
+
+/**
+ * Sanitize event name
+ * @param name
+ * @returns {*}
+ */
+const cleanName = (name) => {
+  return (name && name.replace(/([A-Za-z])\?([A-Za-z])/gi, (_, b, c) => b + "'" + c).trim()) || ''
+}
 
 module.exports = {
   /**
@@ -54,9 +92,10 @@ module.exports = {
    */
   getCustomEventContent: async (name) => {
     try {
-      const data = await mongoose.models.CustomEvents.findOne({ name })
-      return data && data.content && data.content.length ? data.content : ''
+      const data = await CustomEvent.findOne({ name })
+      return data?.content || ''
     } catch (err) {
+      logger.error(err)
       return ''
     }
   },
@@ -67,7 +106,7 @@ module.exports = {
    */
   getBackedPlanning: async (fullId) => {
     try {
-      const tmpPlanning = await mongoose.models.Planning.findOne({ fullId })
+      const tmpPlanning = await Planning.findOne({ fullId })
       return tmpPlanning && tmpPlanning.backup && { backup: tmpPlanning.backup, timestamp: tmpPlanning.timestamp }
     } catch (err) {
       return null
@@ -75,23 +114,21 @@ module.exports = {
   },
   /**
    * Get formatted json
-   * @param j
-   * @param blocklist
-   * @param colors
-   * @returns {*[]}
+   * @param {object} j
+   * @param {string[]} blocklist
+   * @param {object} colors
+   * @param {boolean} highlightTeacher
+   * @returns {[]}
    */
-  getFormattedEvents: (j, blocklist, colors) => {
-    const TZ = 'Europe/Paris'
-    const locale = 'fr'
-
+  getFormattedEvents: ({ data: j, blocklist, colors, highlightTeacher }) => {
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
         events.push({
-          name: i.summary.value.trim(),
-          start: DateTime.fromJSDate(i.dtstart.value, { zone: TZ }).setLocale(locale).toMillis(),
-          end: DateTime.fromJSDate(i.dtend.value, { zone: TZ }).setLocale(locale).toMillis(),
-          color: getColor(i.summary.value, i.location.value, colors),
+          name: cleanName(i.summary.value),
+          start: new Date(i.dtstart.value).getTime(),
+          end: new Date(i.dtend.value).getTime(),
+          color: getColor(i.summary.value, i.location.value, i.description.value, { customColor: colors, highlightTeacher }),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),
           distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined,
@@ -104,20 +141,27 @@ module.exports = {
   /**
    * Fetch planning from URL, convert ICS to JSON
    * @param {String} url
-   * @param instance
    * @returns {Promise<*>}
    */
-  fetchAndGetJSON: async (url, instance) => {
+  fetchAndGetJSON: async (url) => {
+    if (includesTemplate(url)) {
+      url = url
+        .replace(dateStartTemplate, encodeURIComponent(dayjs().subtract(1, 'month').format('YYYY-MM-DD')))
+        .replace(dateEndTemplate, encodeURIComponent(dayjs().add(2, 'years').format('YYYY-MM-DD')))
+    }
+
     try {
-      const response = instance ? await instance.get(url) : await axios.get(url)
-      const { data } = response
-      if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah that's perfectible
+      const { data } = await http.get(url)
+      if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
         const ics = ical.parseString(data)
         if (ics && Object.entries(ics).length) {
           return ics
         }
+      } else {
+        logger.debug('data', data)
       }
     } catch (e) {
+      console.error('Error', url)
       logger.debug(e)
     }
   }
