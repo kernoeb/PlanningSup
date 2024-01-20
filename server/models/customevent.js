@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose')
 
-const schemaCustomEvent = new Schema({
+const schemaCustomEvent = new mongoose.Schema({
   name: {
     type: 'String',
     unique: true,
@@ -9,5 +9,5 @@ const schemaCustomEvent = new Schema({
   content: String
 })
 
-const CustomEvent = model('CustomEvent', schemaCustomEvent)
+const CustomEvent = mongoose.model('CustomEvent', schemaCustomEvent)
 module.exports = { CustomEvent }

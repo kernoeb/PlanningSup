@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mongodb:
-    image: arm64v8/mongo:5.0
+    image: mongo:7.0
     restart: always
     ports:
       - "27017:27017"

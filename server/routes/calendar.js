@@ -101,7 +101,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
     if (req.header('ignore-statistics') !== 'true') {
       req.session.plannings = tmpIds
       tmpIds.forEach((id) => {
-        trackPlannings(id, req.session.id)
+        trackPlannings(id, req.session.id).catch((err) => logger.error(err))
       })
     } else {
       logger.log('Ignoring statistics', new Date().toISOString(), req.session.id, req.ip, req.headers['user-agent'])

@@ -4058,32 +4058,27 @@
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3669&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "l1-mmi_ip",
+                "id": "l1-mmi_ip-1",
                 "title": "L1-MMI_IP",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4529&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "l1-mmi_mp",
+                "id": "l1-mmi_mp-1",
                 "title": "L1-MMI_MP",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4292&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "l1-mmi_im",
+                "id": "l1-mmi_im-1",
                 "title": "L1-MmI_IM",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1910&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1910,4080&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "l1-mmi_im",
-                "title": "L1-MmI_IM",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4080&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l1-mmi_ip",
+                "id": "l1-mmi_ip-2",
                 "title": "L1-MmI_IP",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3666&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "l1-mmi_mp",
+                "id": "l1-mmi_mp-2",
                 "title": "L1-MmI_MP",
                 "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3502&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
@@ -9589,12 +9584,12 @@
             "title": "Master MEEF",
             "edts": [
               {
-                "id": "isticmeef2s1",
+                "id": "isticmeef2s1-s1",
                 "title": "Semestre 1",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9648&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
-                "id": "isticmeef2s1",
+                "id": "isticmeef2s1-s2",
                 "title": "Semestre 2",
                 "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9651&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }

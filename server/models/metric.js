@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose')
 
-const metricSchema = new Schema({
+const metricSchema = new mongoose.Schema({
   timestamp: { type: Date, required: true },
   planning: { type: String, required: true },
   sessionId: { type: String, required: true },
@@ -19,5 +19,5 @@ metricSchema.index({ timestamp: 1, sessionId: 1 })
 metricSchema.index({ planning: 1 })
 metricSchema.index({ timestamp: 1 })
 
-const Metric = model('Metric', metricSchema)
+const Metric = mongoose.model('Metric', metricSchema)
 module.exports = { Metric }

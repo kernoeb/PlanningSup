@@ -37,21 +37,21 @@ module.exports = {
       try {
         const tmpPlanning = new Planning(p)
         await tmpPlanning.save()
-        logger.log('Added : ' + tmpPlanning.fullId)
+        logger.log(`Added : ${tmpPlanning.fullId}`)
         cAdded++
       } catch (err) {
       }
     }
 
     logger.info('------------------')
-    logger.info(cAdded + ' added elements')
+    logger.info(`${cAdded} added elements`)
     let cDeleted = 0
 
     let cEdited = 0
     for (const p of (await Planning.find({}))) {
       const newPlanning = newPlannings.find(v => v.fullId === p.fullId)
       if (!newPlanning) {
-        logger.log('Deleted : ' + p.fullId)
+        logger.log(`Deleted : ${p.fullId}`)
         try {
           await Planning.deleteOne({ _id: p._id })
           cDeleted++
