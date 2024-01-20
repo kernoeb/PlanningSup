@@ -1,10 +1,11 @@
 const asyncWrapper = require('async-wrapper-express-ts')
+const routeCache = require('route-cache')
 const { Router } = require('express')
 const router = Router()
 
 const { Metric } = require('../models/metric')
 
-router.get('/analytics/today', asyncWrapper(async (req, res) => {
+router.get('/analytics/today', routeCache.cacheSeconds(60), asyncWrapper(async (req, res) => {
   const date = new Date()
   date.setHours(2, 0, 0, 0)
 
@@ -26,7 +27,7 @@ router.get('/analytics/today', asyncWrapper(async (req, res) => {
   })
 }))
 
-router.get('/metrics/today', asyncWrapper(async (req, res) => {
+router.get('/metrics/today', routeCache.cacheSeconds(60), asyncWrapper(async (req, res) => {
   // get all metrics
   const date = new Date()
   date.setHours(2, 0, 0, 0)
