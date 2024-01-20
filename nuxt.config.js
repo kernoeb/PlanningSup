@@ -154,10 +154,6 @@ export default {
     locales: ['fr']
   },
 
-  axios: {
-    proxy: true
-  },
-
   plausible: { // Use as fallback if no runtime config is available at runtime
     domain: DOMAIN,
     enableAutoPageviews: true,
@@ -250,6 +246,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    transpile: [
+      /^axios/
+    ],
     loaders: {
       css: {
         modules: false

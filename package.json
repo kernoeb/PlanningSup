@@ -23,14 +23,15 @@
     "@nuxtjs/moment": "1.6.1",
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/vuetify": "1.12.3",
+    "@types/dompurify": "3.0.5",
     "async-wrapper-express-ts": "3.1.6",
-    "axios": "0.27.2",
-    "bip39": "3.1.0",
+    "axios": "1.6.5",
+    "axios-retry": "4.0.0",
     "body-parser": "1.20.2",
     "bree": "9.2.2",
     "cal-parser": "1.0.2",
     "config": "3.3.10",
-    "connect-mongodb-session": "3.1.1",
+    "connect-mongodb-session": "4.0.0",
     "cookie-parser": "1.4.6",
     "cookie-universal-nuxt": "2.2.2",
     "core-js": "3.35.0",
@@ -40,20 +41,17 @@
     "express": "4.18.2",
     "express-session": "1.17.3",
     "humanize-duration": "3.31.0",
+    "isomorphic-dompurify": "^2.2.0",
     "jsdom": "23.2.0",
     "luxon": "3.4.4",
     "minify-css-string": "1.0.0",
-    "mocha": "10.2.0",
-    "moment": "^2.30.1",
+    "moment": "2.30.1",
     "mongoose": "8.1.0",
     "ms": "2.1.3",
-    "nuxt": "2.17.3",
     "nuxt-start": "2.17.3",
     "route-cache": "0.7.0",
-    "sanitize-html": "2.11.0",
     "signale": "1.4.0",
     "undici": "6.4.0",
-    "v-tooltip": "2.1.3",
     "vue-plausible": "1.3.2",
     "vue-swatches": "2.1.1",
     "vuetify": "2.7.1",
@@ -64,6 +62,7 @@
     "@babel/eslint-parser": "7.23.3",
     "@fullhuman/postcss-purgecss": "5.0.0",
     "@nuxt/types": "2.17.3",
+    "@types/connect-mongodb-session": "2.4.7",
     "@types/signale": "1.4.7",
     "@types/supertest": "6.0.2",
     "css-byebye": "4.0.1",
@@ -78,8 +77,24 @@
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-standard": "4.1.0",
     "eslint-plugin-vue": "9.20.1",
+    "mocha": "10.2.0",
+    "nuxt": "2.17.3",
     "sass-loader": "10",
-    "supertest": "6.3.4"
+    "supertest": "6.3.4",
+    "v-tooltip": "2.1.3"
+  },
+  "overrides": {
+    "@nuxtjs/axios": {
+      "axios": "$axios",
+      "axios-retry": "$axios-retry"
+    },
+    "eslint-config-vuetify": {
+      "@release-it/conventional-changelog": {
+        "release-it": {
+          "shelljs": "0.8.5"
+        }
+      }
+    }
   },
   "engines": {
     "node": "20"

@@ -1,17 +1,19 @@
 const { Router } = require('express')
 const jsdom = require('jsdom')
 const { JSDOM } = jsdom
-const sanitizeHtml = require('sanitize-html')
 const { DateTime } = require('luxon')
 const routeCache = require('route-cache')
 const xml2js = require('xml2js')
-const logger = require('../util/signale')
 const http = require('../util/http')
 const asyncWrapper = require('async-wrapper-express-ts')
 
 const router = Router()
 
 const villes = ['versailles', 'toulouse', 'starsbourg', 'normandie', 'reunion', 'rennes', 'reims', 'poitiers', 'paris', 'orleans.tours', 'nice', 'nantes', 'nancy.metz', 'montpellier', 'lyon', 'limoges', 'lille', 'grenoble', 'creteil', 'corte', 'clermont.ferrand', 'bordeaux', 'bfc', 'antilles.guyane', 'amiens', 'aix.marseille']
+
+function escapeHTML (s) {
+  return require('isomorphic-dompurify').sanitize(s)
+}
 
 router.get('/crous', (req, res) => {
   return res.json(villes)
@@ -31,26 +33,25 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
         throw err
       }
       for (const elem of result.root.resto) {
-        const id = (elem.$.id)
-        json[id] = ({
+        const id = elem.$.id
+        json[id] = {
           description: elem.$,
-          infos: sanitizeHtml(elem.infos[0]),
-          contact: sanitizeHtml(elem.contact[0])
-        })
+          infos: escapeHTML(elem.infos[0]),
+          contact: escapeHTML(elem.contact[0])
+        }
       }
       xml2js.parseString(d2.data, (err, result) => {
         if (err) {
           throw err
         }
         for (const elem of result.root.resto) {
-          const id = (elem.$.id)
-
+          const id = elem.$.id
           json[id].menu = []
           if (elem.menu != null) {
             for (const repas of elem.menu) {
               json[id].menu.push({
-                data: sanitizeHtml(repas.$.date),
-                repas: sanitizeHtml(repas._)
+                data: escapeHTML(repas.$.date),
+                repas: escapeHTML(repas._)
               })
             }
           }
@@ -59,6 +60,7 @@ router.get('/crous/:ville', routeCache.cacheSeconds(process.env.NODE_ENV === 'pr
       })
     })
   } catch (err) {
+    console.error(err)
     return res.json({ title: err })
   }
 }))
@@ -74,7 +76,7 @@ router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'prod
     Array.from(el[1].childNodes).forEach((b) => {
       const tmp = Array.from(b.childNodes).filter(v => v.innerHTML)
       if (tmp[0] && tmp[0].textContent && tmp[1] && tmp[1].innerHTML) {
-        const dej = sanitizeHtml(tmp[1].innerHTML.trim())
+        const dej = escapeHTML(tmp[1].innerHTML.trim())
         allEls.push({
           title: tmp[0].textContent,
           content: dej.split('\n'),
@@ -84,7 +86,7 @@ router.get('/crous_menu', routeCache.cacheSeconds(process.env.NODE_ENV === 'prod
     })
     return res.json(allEls)
   } catch (err) {
-    logger.error('crous_menu : ' + err)
+    console.error(err)
     return res.status(500).json([])
   }
 }))

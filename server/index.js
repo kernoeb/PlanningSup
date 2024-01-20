@@ -51,7 +51,8 @@ app.use(bodyParser.json())
 
 // Create session store for express-session
 const store = new MongoDBStore({
-  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`, collection: 'sessions'
+  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`,
+  collection: 'sessions'
 })
 
 // Catch errors
