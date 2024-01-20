@@ -154,6 +154,10 @@ export default {
     locales: ['fr']
   },
 
+  axios: {
+    proxy: true
+  },
+
   plausible: { // Use as fallback if no runtime config is available at runtime
     domain: DOMAIN,
     enableAutoPageviews: true,
