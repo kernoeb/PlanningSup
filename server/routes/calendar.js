@@ -78,7 +78,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
           status: 'ok',
           title: allPlannings[id].title,
           timestamp: new Date().toISOString(),
-          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, localeUtils, highlightTeacher })
+          events: getFormattedEvents({ data: fetched, blocklist, colors: customColorList, localeUtils, highlightTeacher, id })
         }
       } else {
         const backed = await getBackedPlanning(id)
@@ -88,7 +88,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
             status: 'backup',
             title: allPlannings[id].title,
             timestamp: backed.timestamp || undefined,
-            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, localeUtils, highlightTeacher })
+            events: getFormattedEvents({ data: backed.backup, blocklist, colors: customColorList, localeUtils, highlightTeacher, id })
           }
         } else {
           return { id, title: allPlannings[id].title, status: 'off' }

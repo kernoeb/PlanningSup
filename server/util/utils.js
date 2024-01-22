@@ -19,9 +19,12 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
  * @param {string} description
  * @returns {boolean}
  */
-const checkHighlightTeacher = ({ description }) => {
+const checkHighlightTeacher = ({ description, id }) => {
   // Special case for IUT Nantes
-  return description.includes('Matière : ') && !description.includes('Personnel : ')
+  if (id.startsWith('iutdenantes.info')) return description.includes('Matière : ') && !description.includes('Personnel : ')
+  // Special case for IUT Vannes
+  if (id.startsWith('iutdevannes.butdutinfo')) return !description.includes('.')
+  return false
 }
 
 /**
@@ -32,8 +35,8 @@ const checkHighlightTeacher = ({ description }) => {
  * @param {{customColor: {amphi?: string, tp?: string, td?: string, other?: string}, highlightTeacher?: boolean}} options
  * @returns {string}
  */
-const getColor = (value, location, description, options = {}) => {
-  if (options.highlightTeacher && checkHighlightTeacher({ description })) {
+const getColor = (value, location, description, id, options = {}) => {
+  if (options.highlightTeacher && checkHighlightTeacher({ description, id })) {
     return '#676767'
   } else if (value.includes('CM') || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
     return options.customColor?.amphi || '#efd6d8'
@@ -139,7 +142,7 @@ module.exports = {
    * @param {boolean} highlightTeacher
    * @returns {[]}
    */
-  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher }) => {
+  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher, id }) => {
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
@@ -147,7 +150,7 @@ module.exports = {
           name: cleanName(i.summary.value),
           start: getDate(new Date(i.dtstart.value), localeUtils),
           end: getDate(new Date(i.dtend.value), localeUtils),
-          color: getColor(i.summary.value, i.location.value, i.description.value, { customColor: colors, highlightTeacher }),
+          color: getColor(i.summary.value, i.location.value, i.description.value, id, { customColor: colors, highlightTeacher }),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),
           distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined,

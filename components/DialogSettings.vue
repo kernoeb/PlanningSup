@@ -423,7 +423,7 @@ export default {
     },
     disabledHighlightTeacher () {
       if (this.selectedPlanningsIds && this.selectedPlanningsIds.length) {
-        return !this.selectedPlanningsIds.every(id => id.startsWith('iutdenantes.info.')) // special case for iutdenantes.info
+        return !this.selectedPlanningsIds.every(id => id.startsWith('iutdenantes.info.') || id.startsWith('iutdevannes.butdutinfo.')) // special case for iutdenantes.info and iutdevannes.butdutinfo
       }
       return true
     }
