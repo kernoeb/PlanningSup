@@ -17,6 +17,7 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
 /**
  * Check if event is a teacher
  * @param {string} description
+ * @param {string} id
  * @returns {boolean}
  */
 const checkHighlightTeacher = ({ description, id, value, location }) => {
@@ -39,6 +40,7 @@ const checkHighlightTeacher = ({ description, id, value, location }) => {
  * @param {string} value
  * @param {string} location
  * @param {string} description
+ * @param {string} id
  * @param {{customColor: {amphi?: string, tp?: string, td?: string, other?: string}, highlightTeacher?: boolean}} options
  * @returns {string}
  */
@@ -147,6 +149,7 @@ module.exports = {
    * @param {object} colors
    * @param {object|null} localeUtils
    * @param {boolean} highlightTeacher
+   * @param {string} id
    * @returns {[]}
    */
   getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher, id }) => {
