@@ -17,11 +17,24 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
 /**
  * Check if event is a teacher
  * @param {string} description
+ * @param {string} id
+ * @param {string} value
+ * @param {string} location
  * @returns {boolean}
  */
-const checkHighlightTeacher = ({ description }) => {
+const checkHighlightTeacher = ({ description, id, value, location }) => {
   // Special case for IUT Nantes
-  return description.includes('Matière : ') && !description.includes('Personnel : ')
+  if (id.startsWith('iutdenantes.info')) return description.includes('Matière : ') && !description.includes('Personnel : ')
+  // Special case for IUT Vannes
+  if (id.startsWith('iutdevannes.butdutinfo')) {
+    let slicedDescription = description
+    if (description.slice(-28, -20) === 'Exported') {
+      slicedDescription = description.slice(0, -29)
+    }
+    return !slicedDescription.match(/.*[a-z].*/) && !value.toLowerCase().includes('amphi') && !location.toLowerCase().includes('amphi')
+  }
+
+  return false
 }
 
 /**
@@ -29,11 +42,12 @@ const checkHighlightTeacher = ({ description }) => {
  * @param {string} value
  * @param {string} location
  * @param {string} description
+ * @param {string} id
  * @param {{customColor: {amphi?: string, tp?: string, td?: string, other?: string}, highlightTeacher?: boolean}} options
  * @returns {string}
  */
-const getColor = (value, location, description, options = {}) => {
-  if (options.highlightTeacher && checkHighlightTeacher({ description })) {
+const getColor = (value, location, description, id, options = {}) => {
+  if (options.highlightTeacher && checkHighlightTeacher({ description, id, value, location })) {
     return '#676767'
   } else if (value.includes('CM') || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
     return options.customColor?.amphi || '#efd6d8'
@@ -137,9 +151,10 @@ module.exports = {
    * @param {object} colors
    * @param {object|null} localeUtils
    * @param {boolean} highlightTeacher
+   * @param {string} id
    * @returns {[]}
    */
-  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher }) => {
+  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher, id }) => {
     const events = []
     for (const i of j.events || j) {
       if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
@@ -147,7 +162,7 @@ module.exports = {
           name: cleanName(i.summary.value),
           start: getDate(new Date(i.dtstart.value), localeUtils),
           end: getDate(new Date(i.dtend.value), localeUtils),
-          color: getColor(i.summary.value, i.location.value, i.description.value, { customColor: colors, highlightTeacher }),
+          color: getColor(i.summary.value, i.location.value, i.description.value, id, { customColor: colors, highlightTeacher }),
           location: cleanLocation(i.location.value),
           description: cleanDescription(i.description.value),
           distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined,
