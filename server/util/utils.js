@@ -19,11 +19,18 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
  * @param {string} description
  * @returns {boolean}
  */
-const checkHighlightTeacher = ({ description, id }) => {
+const checkHighlightTeacher = ({ description, id, value, location }) => {
   // Special case for IUT Nantes
   if (id.startsWith('iutdenantes.info')) return description.includes('Matière : ') && !description.includes('Personnel : ')
   // Special case for IUT Vannes
-  if (id.startsWith('iutdevannes.butdutinfo')) return !description.includes('.')
+  if (id.startsWith('iutdevannes.butdutinfo')) {
+    let slicedDescription = description
+    if (description.slice(-28, -20) === 'Exported') {
+      slicedDescription = description.slice(0, -29)
+    }
+    return !slicedDescription.match(/.*[a-z].*/) && !value.toLowerCase().includes('amphi') && !location.toLowerCase().includes('amphi')
+  }
+
   return false
 }
 
@@ -36,7 +43,7 @@ const checkHighlightTeacher = ({ description, id }) => {
  * @returns {string}
  */
 const getColor = (value, location, description, id, options = {}) => {
-  if (options.highlightTeacher && checkHighlightTeacher({ description, id })) {
+  if (options.highlightTeacher && checkHighlightTeacher({ description, id, value, location })) {
     return '#676767'
   } else if (value.includes('CM') || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
     return options.customColor?.amphi || '#efd6d8'
