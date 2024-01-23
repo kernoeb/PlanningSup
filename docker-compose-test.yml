@@ -9,9 +9,6 @@ services:
       - "31021:3000"
     networks:
       - planning
-    volumes:
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
     depends_on:
       - mongodb
     env_file:
@@ -22,7 +19,7 @@ services:
     image: mongo:7.0
     restart: always
     volumes:
-      - '/opt/planning_v2:/data/db'
+      - '.mongo-planning:/data/db'
     networks:
       - planning
 
