@@ -18,6 +18,8 @@ const includesTemplate = v => v && (v.includes(dateStartTemplate) || v.includes(
  * Check if event is a teacher
  * @param {string} description
  * @param {string} id
+ * @param {string} value
+ * @param {string} location
  * @returns {boolean}
  */
 const checkHighlightTeacher = ({ description, id, value, location }) => {
