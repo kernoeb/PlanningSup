@@ -35,11 +35,11 @@ RUN npm run build
 RUN rm -rf ./node_modules/
 
 # Only production dependencies
-RUN npm prune --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 RUN rm -rf node_modules/.cache
 
 # Clean node_modules, one of the heaviest object in the universe
-RUN clean-modules --yes "**/*.d.ts" "**/@types/**" "!**/*.mustache"
+RUN clean-modules --yes "**/*.d.ts" "**/@types/**" "prettier/esm/*" "rxjs/src/**" "rxjs/bundles/**" "rxjs/_esm5/**" "rxjs/_esm2015/**" "!**/*.mustache"
 
 FROM node-base as app
 

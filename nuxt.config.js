@@ -9,16 +9,6 @@ const DOMAIN = 'planningsup.app'
 const URL = 'https://' + DOMAIN
 const BANNER = `${URL}/banner.png`
 
-const themeColors = {
-  primary: '#1976d2',
-  accent: '#424242',
-  secondary: '#ff8f00',
-  info: '#26a69a',
-  warning: '#ffc107',
-  error: '#dd2c00',
-  success: '#00e676'
-}
-
 export default {
   telemetry: false,
   ssr: true,
@@ -232,14 +222,6 @@ export default {
     treeShake: true,
     defaultAssets: false,
     customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: true,
-      options: { customProperties: true },
-      themes: {
-        dark: themeColors,
-        light: themeColors
-      }
-    },
     optionsPath: './vuetify.options.js'
   },
 
