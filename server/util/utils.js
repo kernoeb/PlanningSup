@@ -1,5 +1,4 @@
 const ical = require('cal-parser')
-const dayjs = require('dayjs')
 const { Planning } = require('../models/planning')
 const { CustomEvent } = require('../models/customevent')
 const http = require('./http')
@@ -180,8 +179,8 @@ module.exports = {
   fetchAndGetJSON: async (url) => {
     if (includesTemplate(url)) {
       url = url
-        .replace(dateStartTemplate, encodeURIComponent(dayjs().subtract(1, 'month').format('YYYY-MM-DD')))
-        .replace(dateEndTemplate, encodeURIComponent(dayjs().add(2, 'years').format('YYYY-MM-DD')))
+        .replace(dateStartTemplate, encodeURIComponent(DateTime.now().minus({ month: 1 }).toFormat('yyyy-MM-dd')))
+        .replace(dateEndTemplate, encodeURIComponent(DateTime.now().plus({ year: 2 }).toFormat('yyyy-MM-dd')))
     }
 
     try {

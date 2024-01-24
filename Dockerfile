@@ -19,7 +19,7 @@ RUN chown -R node:node /home/node/build
 USER node
 
 # Only copy the files we need for the moment
-COPY --chown=node:node package.json package-lock.json .npmrc ./
+COPY --chown=node:node package.json package-lock.json ./
 RUN npm ci
 
 # Copy all files
@@ -39,7 +39,7 @@ RUN npm prune --omit=dev && npm cache clean --force
 RUN rm -rf node_modules/.cache
 
 # Clean node_modules, one of the heaviest object in the universe
-RUN clean-modules --yes "!**/*.mustache"
+RUN clean-modules --yes "**/*.d.ts" "**/@types/**" "!**/*.mustache"
 
 FROM node-base as app
 

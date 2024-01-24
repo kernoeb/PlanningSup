@@ -1,6 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-import fr from 'vuetify/es5/locale/fr'
-import minifyTheme from 'minify-css-string'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
@@ -11,6 +8,16 @@ const META_TITLE = `${TITLE} | Calendrier universitaire`
 const DOMAIN = 'planningsup.app'
 const URL = 'https://' + DOMAIN
 const BANNER = `${URL}/banner.png`
+
+const themeColors = {
+  primary: '#1976d2',
+  accent: '#424242',
+  secondary: '#ff8f00',
+  info: '#26a69a',
+  warning: '#ffc107',
+  error: '#dd2c00',
+  success: '#00e676'
+}
 
 export default {
   telemetry: false,
@@ -222,31 +229,21 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
+    treeShake: true,
     defaultAssets: false,
     customVariables: ['~/assets/variables.scss'],
-    treeShake: true,
     theme: {
       dark: true,
-      options: { minifyTheme },
-      lang: {
-        locales: { fr },
-        current: 'fr'
-      },
+      options: { customProperties: true },
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
-        }
+        dark: themeColors,
+        light: themeColors
       }
-    }
+    },
+    optionsPath: './vuetify.options.js'
   },
 
-  modern: true,
+  modern: NODE_ENV === 'production',
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

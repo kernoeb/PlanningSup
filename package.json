@@ -7,6 +7,7 @@
     "dev": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "dev-server": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && NO_BREE=true node --watch --inspect --max-old-space-size=2048 server/",
     "dev-server:bree": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && node --watch --inspect --max-old-space-size=2048 server/",
+    "dev-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans",
     "dev:bree": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && node --inspect --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue,.mjs --ignore-path .gitignore .",
@@ -19,11 +20,7 @@
     "@mdi/js": "6.9.96",
     "@nuxtjs/axios": "5.13.6",
     "@nuxtjs/component-cache": "1.1.6",
-    "@nuxtjs/google-fonts": "3.1.3",
-    "@nuxtjs/moment": "1.6.1",
     "@nuxtjs/pwa": "3.3.5",
-    "@nuxtjs/vuetify": "1.12.3",
-    "@types/dompurify": "3.0.5",
     "async-wrapper-express-ts": "3.1.6",
     "axios": "1.6.5",
     "axios-retry": "4.0.0",
@@ -34,14 +31,12 @@
     "connect-mongodb-session": "4.0.0",
     "cookie-parser": "1.4.6",
     "cookie-universal-nuxt": "2.2.2",
-    "core-js": "3.35.0",
+    "core-js": "3.35.1",
     "cors": "2.8.5",
-    "dayjs": "1.11.10",
-    "encoding": "0.1.13",
     "express": "4.18.2",
     "express-session": "1.17.3",
     "humanize-duration": "3.31.0",
-    "isomorphic-dompurify": "^2.2.0",
+    "isomorphic-dompurify": "2.3.0",
     "jsdom": "23.2.0",
     "luxon": "3.4.4",
     "minify-css-string": "1.0.0",
@@ -54,7 +49,6 @@
     "undici": "6.4.0",
     "vue-plausible": "1.3.2",
     "vue-swatches": "2.1.1",
-    "vuetify": "2.7.1",
     "xml2js": "0.6.2"
   },
   "devDependencies": {
@@ -62,7 +56,11 @@
     "@babel/eslint-parser": "7.23.3",
     "@fullhuman/postcss-purgecss": "5.0.0",
     "@nuxt/types": "2.17.3",
+    "@nuxtjs/google-fonts": "3.1.3",
+    "@nuxtjs/moment": "1.6.1",
+    "@nuxtjs/vuetify": "1.12.3",
     "@types/connect-mongodb-session": "2.4.7",
+    "@types/dompurify": "3.0.5",
     "@types/signale": "1.4.7",
     "@types/supertest": "6.0.2",
     "css-byebye": "4.0.1",
@@ -81,7 +79,11 @@
     "nuxt": "2.17.3",
     "sass-loader": "10",
     "supertest": "6.3.4",
-    "v-tooltip": "2.1.3"
+    "v-tooltip": "2.1.3",
+    "vuetify": "2.7.1"
+  },
+  "engines": {
+    "node": "20"
   },
   "overrides": {
     "@nuxtjs/axios": {
@@ -95,8 +97,5 @@
         }
       }
     }
-  },
-  "engines": {
-    "node": "20"
   }
 }
