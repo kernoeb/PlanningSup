@@ -118,7 +118,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
   }
 }))
 
-router.get('/calendars/info', asyncWrapper((req, res) => {
+router.get('/calendars/info', asyncWrapper(async (req, res) => {
   if (!req.query.p) return res.status(400).send('No parameter found')
   try {
     return res.json(req.query.p.split(',').map(planning => ({ planning, title: allPlannings[planning]?.title?.replace(/ \| /gi, ' ') })))
