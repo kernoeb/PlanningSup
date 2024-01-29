@@ -8,6 +8,11 @@ cd "$SCRIPT_DIR"/../../ || exit 1
 SED_CMD="sed"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   SED_CMD="/opt/homebrew/opt/gnu-sed/libexec/gnubin/sed"
+  if ! command -v $SED_CMD &> /dev/null
+  then
+      echo "GNU sed could not be found, please install it with 'brew install gnu-sed' and add it to your PATH"
+      exit 1
+  fi
 fi
 
 # If arg, replace "build: ." with image: $1 in docker-compose-test.yml
