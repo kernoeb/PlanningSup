@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+# Build the first image in the background for speed
+pids=( )
+(cd "$SCRIPT_DIR" && docker buildx build -t test-playwright .) & pids+=($!)
+
 export BASE_URL="http://localhost:31022/api/v1"
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$SCRIPT_DIR"/../../ || exit 1
 
 SED_CMD="sed"
@@ -107,8 +112,19 @@ fi
 echo "CALENDAR INFO working!"
 
 # Playwright tests
+# https://stackoverflow.com/questions/36316040/exit-a-bash-script-if-an-error-occurs-in-it-or-any-of-the-background-jobs-it-cre
 cd "$SCRIPT_DIR" || exit 1
-docker buildx build -t test-playwright --load --cache-from type=gha --cache-to type=gha,mode=max . || exit 1
+while (( ${#pids[@]} )); do
+  for pid_idx in "${!pids[@]}"; do
+    pid=${pids[$pid_idx]}
+    if ! kill -0 "$pid" 2>/dev/null; then # kill -0 checks for process existance
+      # we know this pid has exited; retrieve its exit status
+      wait "$pid" || exit
+      unset "pids[$pid_idx]"
+    fi
+  done
+  sleep 1 # in bash, consider a shorter non-integer interval, ie. 0.2
+done
 docker run --rm --ipc=host --network=host --init test-playwright:latest || exit 1
 
 echo "Tests passed!"
