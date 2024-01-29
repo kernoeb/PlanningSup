@@ -147,6 +147,7 @@
         <v-tooltip top>
           <template #activator="{ on, attrs }">
             <v-btn
+              id="change-planning-button"
               v-bind="attrs"
               icon
               v-on="on"

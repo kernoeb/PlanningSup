@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_URL="http://localhost:31022/api/v1"
+export BASE_URL="http://localhost:31022/api/v1"
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$SCRIPT_DIR"/../../ || exit 1
@@ -101,3 +101,9 @@ fi
 
 echo "CALENDAR INFO working!"
 
+# Playwright tests
+cd "$SCRIPT_DIR" || exit 1
+docker build -t test-playwright . || exit 1
+docker run -it --rm --ipc=host --network=host --init test-playwright:latest || exit 1
+
+echo "Tests passed!"
