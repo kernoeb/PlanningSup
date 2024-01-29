@@ -4,7 +4,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Build the first image in the background for speed
 pids=( )
-(cd "$SCRIPT_DIR" && docker buildx build -t test-playwright .) & pids+=($!)
+(cd "$SCRIPT_DIR" && docker build -t test-playwright .) & pids+=($!)
 
 export BASE_URL="http://localhost:31022/api/v1"
 
