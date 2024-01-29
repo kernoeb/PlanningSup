@@ -103,7 +103,7 @@ echo "CALENDAR INFO working!"
 
 # Playwright tests
 cd "$SCRIPT_DIR" || exit 1
-docker build -t test-playwright . || exit 1
+docker build -t test-playwright --cache-from type=gha --cache-to type=gha,mode=max . || exit 1
 docker run --rm --ipc=host --network=host --init test-playwright:latest || exit 1
 
 echo "Tests passed!"
