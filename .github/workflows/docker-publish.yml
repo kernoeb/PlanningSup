@@ -38,7 +38,7 @@ jobs:
 
       # Uppercase to lowercase image name
       - id: string
-        uses: ASzc/change-string-case-action@v5
+        uses: ASzc/change-string-case-action@v6
         with:
           string: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
 
