@@ -12,6 +12,11 @@ const { initBree } = require('./util/bree')
 
 mongoose.set('strictQuery', true)
 
+const health = {
+  db: false,
+  bree: false
+}
+
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
 logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
@@ -30,10 +35,17 @@ if (process.env.NODE_ENV !== 'test') {
       logger.info('Database initialized !')
       logger.info('Database initialization time : ' + (t2 - t1) / 1000 + 's')
 
+      health.db = true
+
       // Initialize Bree.js when the database is ready
       if (!process.env.NO_BREE) {
         logger.info('Initializing Bree.js...')
-        initBree().catch(console.error)
+        initBree()
+          .then(() => {
+            logger.info('Bree.js initialized !')
+            health.bree = true
+          })
+          .catch(console.error)
       }
     })
   }).catch((err) => {
@@ -83,6 +95,7 @@ app.use(require('./routes/calendar'))
 app.use(require('./routes/urls'))
 app.use(require('./routes/crous'))
 app.use(require('./routes/metrics'))
+app.get('/health', (req, res) => res.json(health))
 // app.use('/sync', require('./routes/sync')) // Work in progress
 
 // Export express app

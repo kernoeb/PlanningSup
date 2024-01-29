@@ -1,7 +1,6 @@
 services:
   web:
     build: .
-    platform: linux/amd64
     restart: always
     stdin_open: true
     tty: true
@@ -11,9 +10,10 @@ services:
       - planning
     depends_on:
       - mongodb
-    env_file:
-      - .env
     environment:
+      - SESSION_SECRET=secret
+      - TZ=Europe/Paris
+      - HIDE_WEEKENDS=true
       - MONGODB_URL=mongodb:27017
   mongodb:
     image: mongo:7.0
