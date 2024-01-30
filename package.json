@@ -75,7 +75,7 @@
     "eslint-plugin-nuxt": "4.0.0",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-standard": "4.1.0",
-    "eslint-plugin-vue": "9.20.1",
+    "eslint-plugin-vue": "9.21.0",
     "mocha": "10.2.0",
     "nuxt": "2.17.3",
     "sass-loader": "10",
