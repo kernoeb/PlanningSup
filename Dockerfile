@@ -19,6 +19,7 @@ RUN chown -R node:node /home/node/build
 USER node
 
 # Only copy the files we need for the moment
+COPY --chown=node:node patches patches
 COPY --chown=node:node package.json package-lock.json ./
 RUN npm ci
 

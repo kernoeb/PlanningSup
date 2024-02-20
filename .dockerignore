@@ -28,3 +28,6 @@
 
 # Other stuff
 !resources/check-plannings-json.mjs
+
+# Patches
+!patches

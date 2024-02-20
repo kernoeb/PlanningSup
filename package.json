@@ -13,7 +13,8 @@
     "lint": "eslint --ext .js,.vue,.mjs --ignore-path .gitignore .",
     "start": "node --max-old-space-size=2048 node_modules/nuxt/bin/nuxt.js start",
     "test": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js",
-    "real-world-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans"
+    "real-world-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@dansmaculotte/nuxt-security": "0.0.6",
@@ -78,6 +79,7 @@
     "eslint-plugin-vue": "9.21.0",
     "mocha": "10.2.0",
     "nuxt": "2.17.3",
+    "patch-package": "^8.0.0",
     "sass-loader": "10",
     "supertest": "6.3.4",
     "v-tooltip": "2.1.3",

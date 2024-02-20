@@ -1,0 +1,12 @@
+diff --git a/node_modules/cal-parser/index.js b/node_modules/cal-parser/index.js
+index ccbe1b5..8333aa5 100644
+--- a/node_modules/cal-parser/index.js
++++ b/node_modules/cal-parser/index.js
+@@ -177,6 +177,7 @@ function getLines(icalString) {
+ }
+ 
+ function getDate(type, value) {
++    if (!value.endsWith('Z')) value += 'Z'
+     return type ? new Date(value.substring(0, 4), parseInt(value.substring(4, 6)) - 1, value.substring(6, 8)) : iCalDateParser(value);
+ }
+ 
