@@ -1,0 +1,5 @@
+{
+  "target": "minor",
+  "packageManager": "npm",
+  "concurrency": 30
+}
