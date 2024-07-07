@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@localhost">
-  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.52">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.53">
     <root id="1"/>
     <schema id="2" parent="1" name="admin"/>
     <schema id="3" parent="1" name="config"/>
@@ -13,32 +13,32 @@
     <table id="8" parent="5" name="plannings"/>
     <table id="9" parent="5" name="sessions"/>
     <column id="10" parent="8" name="_id">
-      <DasType>ObjectId|12s</DasType>
       <Position>1</Position>
+      <StoredType>ObjectId|12s</StoredType>
     </column>
     <column id="11" parent="8" name="__v">
-      <DasType>Int32|4s</DasType>
       <Position>2</Position>
+      <StoredType>Int32|4s</StoredType>
     </column>
     <column id="12" parent="8" name="backup">
-      <DasType>list|4999545s</DasType>
       <Position>3</Position>
+      <StoredType>list|4999545s</StoredType>
     </column>
     <column id="13" parent="8" name="fullId">
-      <DasType>String|12s</DasType>
       <Position>4</Position>
+      <StoredType>String|12s</StoredType>
     </column>
     <column id="14" parent="8" name="timestamp">
-      <DasType>ISODate|91s</DasType>
       <Position>5</Position>
+      <StoredType>ISODate|91s</StoredType>
     </column>
     <column id="15" parent="8" name="title">
-      <DasType>String|12s</DasType>
       <Position>6</Position>
+      <StoredType>String|12s</StoredType>
     </column>
     <column id="16" parent="8" name="url">
-      <DasType>String|12s</DasType>
       <Position>7</Position>
+      <StoredType>String|12s</StoredType>
     </column>
   </database-model>
 </dataSource>
