@@ -1,14 +1,13 @@
 # Node base image
-FROM node:20.15.0-alpine3.20 as node-base
+FROM node:20.15.1-alpine3.20 as node-base
+LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 FROM node-base as build-tools
-LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 RUN apk add --no-cache curl bash
 RUN npm install -g clean-modules@3
 
 FROM build-tools as builder
-LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 # https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
