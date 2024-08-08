@@ -1,13 +1,13 @@
 # Node base image
-FROM node:20.16.0-alpine3.20 as node-base
+FROM node:20.16.0-alpine3.20 AS node-base
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
-FROM node-base as build-tools
+FROM node-base AS build-tools
 
 RUN apk add --no-cache curl bash
 RUN npm install -g clean-modules@3
 
-FROM build-tools as builder
+FROM build-tools AS builder
 
 # https://github.com/hadolint/hadolint/wiki/DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -41,7 +41,7 @@ RUN rm -rf node_modules/.cache
 # Clean node_modules, one of the heaviest object in the universe
 RUN clean-modules --yes "**/*.d.ts" "**/@types/**" "prettier/esm/*" "rxjs/src/**" "rxjs/bundles/**" "rxjs/_esm5/**" "rxjs/_esm2015/**" "!**/*.mustache"
 
-FROM node-base as app
+FROM node-base AS app
 
 RUN apk --no-cache add dumb-init curl bash
 
