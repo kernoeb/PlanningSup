@@ -61,7 +61,7 @@ COPY --chown=node:node --from=builder /home/node/build/static/ ./static/
 HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
   CMD ["curl", "-H", "ignore-statistics: true", "http://localhost:3000"]
 
-ENV NODE_ENV production
-ENV HOST 0.0.0.0
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
 EXPOSE 3000
 CMD ["dumb-init", "node", "--max-old-space-size=2048", "node_modules/nuxt-start/bin/nuxt-start.js", "--port", "3000"]
