@@ -8721,37 +8721,37 @@
                   {
                     "id": "anglaisgra",
                     "title": "Anglais Gr A",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13750&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13750&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgrb",
                     "title": "Anglais Gr B",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13751&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13751&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgrc",
                     "title": "Anglais Gr C",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13760&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13760&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgrd",
                     "title": "Anglais Gr D",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13766&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13766&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgre",
                     "title": "Anglais Gr E",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13774&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13774&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgrf",
                     "title": "Anglais Gr F",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13776&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13776&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "anglaisgrg",
                     "title": "Anglais Gr G",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13780&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13780&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8762,12 +8762,12 @@
                   {
                     "id": "l3info-tpg11",
                     "title": "L3 INFO-TP G1.1",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11132&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11132&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-tpg12",
                     "title": "L3 INFO-TP G1.2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11133&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11133&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8778,12 +8778,12 @@
                   {
                     "id": "l3info-tpg21",
                     "title": "L3 INFO-TP G2.1",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11136&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11136&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-tpg22",
                     "title": "L3 INFO-TP G2.2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11138&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11138&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8794,12 +8794,12 @@
                   {
                     "id": "l3info-tpg31",
                     "title": "L3 INFO-TP G3.1",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11144&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11144&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-tpg32",
                     "title": "L3 INFO-TP G3.2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11145&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11145&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8810,12 +8810,12 @@
                   {
                     "id": "l3info-tpg41",
                     "title": "L3 INFO-TP G4.1",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11156&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11156&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-tpg42",
                     "title": "L3 INFO-TP G4.2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11157&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11157&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8826,12 +8826,12 @@
                   {
                     "id": "l3info-gmane",
                     "title": "L3 INFO-G MANE",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12598&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12598&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g13en",
                     "title": "L3 INFO-G1 3EN",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12601&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12601&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g1esec",
@@ -8840,44 +8840,44 @@
                       {
                         "id": "l3info-g11esec",
                         "title": "L3 INFO-G1.1 ESEC",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14186&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14186&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g12esec",
                         "title": "L3 INFO-G1.2 ESEC",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14191&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
                   {
                     "id": "l3info-g1fun",
                     "title": "L3 INFO-G1 FUN",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12599&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12599&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g1pfo",
                     "title": "L3 INFO-G1 PFO",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12606&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12606&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g1psad",
                     "title": "L3 INFO-G1 PSAD",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12617&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12617&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g11pfo",
                     "title": "L3 INFO-G1.1 PFO",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12607&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12607&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g12pfo",
                     "title": "L3 INFO-G1.2 PFO",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12608&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12608&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g23en",
                     "title": "L3 INFO-G2 3EN",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12602&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12602&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g2esec",
@@ -8886,24 +8886,24 @@
                       {
                         "id": "l3info-g21esec",
                         "title": "L3 INFO-G2.1 ESEC",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14192&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14192&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g22esec",
                         "title": "L3 INFO-G2.2 ESEC",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14197&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14197&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
                   {
                     "id": "l3info-g2fun",
                     "title": "L3 INFO-G2 FUN",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12600&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "l3info-g2psad",
                     "title": "L3 INFO-G2 PSAD",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12624&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12624&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -8918,17 +8918,17 @@
                       {
                         "id": "l3info-g12ia",
                         "title": "L3 INFO-G1 2IA",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15241&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15241&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g22ia",
                         "title": "L3 INFO-G2 2IA",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15247&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15247&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g32ia",
                         "title": "L3 INFO-G3 2IA",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17721&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17721&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -8939,27 +8939,27 @@
                       {
                         "id": "l3info-td1scr",
                         "title": "L3 INFO-TD1 SCR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15248&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15248&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-td2scr",
                         "title": "L3 INFO-TD2 SCR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15253&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15253&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-tp1scr",
                         "title": "L3 INFO-TP1 SCR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18026&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-tp2scr",
                         "title": "L3 INFO-TP2 SCR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18025&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18025&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-tp3scr",
                         "title": "L3 INFO-TP3 SCR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13614&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13614&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -8970,17 +8970,17 @@
                       {
                         "id": "l3info-g1secu",
                         "title": "L3 INFO-G1 SECU",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15219&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15219&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g11secu",
                         "title": "L3 INFO-G1.1 SECU",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15230&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15230&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l3info-g12secu",
                         "title": "L3 INFO-G1.2 SECU",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15232&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15232&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   }
@@ -9069,12 +9069,12 @@
                   {
                     "id": "m1info-ilalternants1",
                     "title": "M1 INFO - IL Alternants 1",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4472&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4472&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "m1info-ilalternants2",
                     "title": "M1 INFO - IL Alternants 2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4473&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4473&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "mineureacf",
@@ -9083,17 +9083,17 @@
                       {
                         "id": "mineureacfalt1",
                         "title": "Mineure ACF Alt 1",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4713&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4713&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "mineureacfcla",
                         "title": "Mineure ACF Cla",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "mineureacfalt2",
                         "title": "mineure ACF Alt 2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -9104,7 +9104,7 @@
                       {
                         "id": "mineureiatr",
                         "title": "mineure IATR",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4343&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4343&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -9115,7 +9115,7 @@
                       {
                         "id": "mineuresct",
                         "title": "mineure SCT",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4344&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4344&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -9126,17 +9126,17 @@
                       {
                         "id": "mineurewealt1",
                         "title": "Mineure WE Alt 1",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4715&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4715&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "mineurewealt2",
                         "title": "Mineure WE Alt 2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4345&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4345&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "mineurewecla",
                         "title": "Mineure WE Cla",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4716&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4716&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   }
