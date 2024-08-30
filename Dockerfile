@@ -26,7 +26,7 @@ RUN npm ci
 COPY --chown=node:node . ./
 
 # Check JSON is valid
-RUN node ./resources/check-plannings-json.mjs && rm -rf ./resources
+RUN node ./scripts/check-plannings-json.mjs && rm -rf ./scripts
 
 # Nuxt.js build
 RUN npm run build
