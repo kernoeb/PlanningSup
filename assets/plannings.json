@@ -267,13 +267,7 @@
               {
                 "id": "gema-fi2",
                 "title": "GEMA-FI2",
-                "edts": [
-                  {
-                    "id": "gema-fi2",
-                    "title": "GEMA-FI2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1290&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
+                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1290&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "gprh",
@@ -490,15 +484,9 @@
         ]
       },
       {
-        "id": "lpro",
-        "title": "LPRO",
-        "edts": [
-          {
-            "id": "lpcd",
-            "title": "LP CD",
-            "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3508&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-          }
-        ]
+        "id": "lpcd",
+        "title": "LP CD",
+        "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3508&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
       },
       {
         "id": "butdutstid",
@@ -629,8 +617,8 @@
             ]
           },
           {
-            "id": "but3sd",
-            "title": "BUT3 SD",
+            "id": "3emeannee",
+            "title": "3ème année",
             "edts": [
               {
                 "id": "gra-ems",
@@ -639,7 +627,7 @@
                   {
                     "id": "gra-ems-fa",
                     "title": "GrA-EMS-FA",
-                    "url": "https: //planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8976&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8976&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "gra-ems-fi",
