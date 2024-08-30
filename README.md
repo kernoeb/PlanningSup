@@ -41,7 +41,7 @@
 
 Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `assets/plannings.json` :)
 
-> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `resources` du projet.  
+> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.  
 
 ## Comment ça marche ?
 

@@ -27,7 +27,7 @@
 !jobs/
 
 # Other stuff
-!resources/check-plannings-json.mjs
+!scripts/check-plannings-json.mjs
 
 # Patches
 !patches
