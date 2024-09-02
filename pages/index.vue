@@ -3,9 +3,9 @@
     v-if="mounted"
     :class="{hideWeekends}"
   >
-    <!--    <client-only>
+    <client-only>
       <lazy-snackbar />
-    </client-only>-->
+    </client-only>
 
     <div class="d-flex justify-space-between">
       <div
