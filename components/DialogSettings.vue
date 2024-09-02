@@ -180,6 +180,7 @@
             <v-combobox
               v-model="blocklistSelect"
               :append-icon="mdiMenuDown"
+              :search-input.sync="blocklistSelectSearch"
               :items="blocklist"
               :label="$config.i18n.blocklistDesc"
               chips
@@ -230,6 +231,15 @@
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
+              </template>
+              <template #append>
+                <v-btn
+                  :disabled="!blocklistSelectSearch || blocklistSelect.includes(blocklistSelectSearch)"
+                  icon
+                  @click="blocklistSelect.push(blocklistSelectSearch); blocklistSelectSearch = ''; updateBlocklist(blocklistSelect)"
+                >
+                  <v-icon>{{ mdiPlus }}</v-icon>
+                </v-btn>
               </template>
             </v-combobox>
           </v-list-item>
@@ -343,7 +353,7 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter, mdiArrowRightCircleOutline } from '@mdi/js'
+import { mdiPlus, mdiClose, mdiCheckboxBlankOutline, mdiCheckboxMarked, mdiCogOutline, mdiMail, mdiMenuDown, mdiTwitter, mdiArrowRightCircleOutline } from '@mdi/js'
 
 export default {
   name: 'DialogSettings',
@@ -372,9 +382,11 @@ export default {
       mdiCheckboxMarked,
       mdiClose,
       mdiArrowRightCircleOutline,
+      mdiPlus,
 
       blocklist: ['Maths', 'Communication', 'Férié'], // Oui, bon...
       blocklistSelect: [],
+      blocklistSelectSearch: '',
 
       localeUtils: {},
 
