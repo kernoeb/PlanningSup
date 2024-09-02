@@ -10415,6 +10415,17 @@
                 ]
               }
             ]
+          },
+          {
+            "id": "perso",
+            "title": "Perso",
+            "edts": [
+              {
+                "id": "clement",
+                "title": "Clément",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2147&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
           }
         ]
       }
