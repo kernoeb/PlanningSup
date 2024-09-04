@@ -3,6 +3,7 @@ const isDev = NODE_ENV === 'development'
 
 const TITLE = process.env.DEPLOY_TITLE || 'PlanningSup'
 const DESCRIPTION = process.env.DEPLOY_DESCRIPTION || 'Un planning universitaire moderne réalisé par @kernoeb'
+const KEYWORDS = process.env.DEPLOY_KEYWORDS || ['planning', 'planningedt', 'planninguniv', 'edt', 'emploi du temps', 'université', 'calendrier', 'universitaire', 'planningiut', 'planningiut.fr', 'edtuniv', 'planningapp', 'app planning', 'site planning', 'planning sup', 'planning iut', 'dut informatique', 'dut', 'iutvannes', 'iut de vannes', 'iut vannes'].join(',')
 const PLAUSIBLE_DOMAIN = process.env.DEPLOY_PLAUSIBLE_DOMAIN || 'plausible.noewen.com'
 const META_TITLE = process.env.DEPLOY_META_TITLE || `${TITLE} | Calendrier universitaire`
 const DOMAIN = process.env.DEPLOY_DOMAIN || 'planningsup.app'
@@ -23,7 +24,7 @@ export default {
       { hid: 'apple-mobile-web-app-title', name: 'apple-mobile-web-app-title', content: TITLE },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: DESCRIPTION },
-      { name: 'keywords', content: 'planning,planningedt,planninguniv,edt,emploi du temps,université,calendrier,universitaire,planningiut,planningiut.fr,edtuniv,planningapp,app planning,site planning,planning sup,planning iut,dut informatique,dut,iutvannes,iut de vannes,iut vannes' },
+      { name: 'keywords', content: KEYWORDS },
       { name: 'author', content: 'kernoeb' },
       { name: 'language', content: 'French' },
       { name: 'robots', content: 'index,follow' },
@@ -167,7 +168,7 @@ export default {
       enableAutoPageviews: true,
       enableAutoOutboundTracking: true
     },
-    name: 'PlanningSup',
+    name: TITLE,
     hideWeekends: process.env.HIDE_WEEKENDS !== 'false',
     defaultPlanning: process.env.DEFAULT_PLANNING_ID || 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1',
     i18n: {
