@@ -414,13 +414,12 @@ export default {
     }
 
     if (this.selectedPlanningsIds == null) {
-      const defaultPlanning = 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1'
       let planningString
       try {
-        planningString = this.$route?.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || defaultPlanning
+        planningString = this.$route?.query?.p || this.$cookies.get('plannings', { parseJSON: false }) || this.$config.defaultPlanning
       } catch (err) {
         console.log(err)
-        planningString = defaultPlanning
+        planningString = this.$config.defaultPlanning
       }
       this.selectedPlanningsIds = planningString.split(',')
     } else if (this.selectedPlanningsIds && this.selectedPlanningsIds.length === 0) {

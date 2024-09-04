@@ -1,12 +1,12 @@
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
-const PLAUSIBLE_DOMAIN = 'plausible.noewen.com'
-const DESCRIPTION = 'Un planning universitaire moderne réalisé par @kernoeb'
-const TITLE = 'PlanningSup'
-const META_TITLE = `${TITLE} | Calendrier universitaire`
-const DOMAIN = 'planningsup.app'
-const URL = 'https://' + DOMAIN
+const TITLE = process.env.DEPLOY_TITLE || 'PlanningSup'
+const DESCRIPTION = process.env.DEPLOY_DESCRIPTION || 'Un planning universitaire moderne réalisé par @kernoeb'
+const PLAUSIBLE_DOMAIN = process.env.DEPLOY_PLAUSIBLE_DOMAIN || 'plausible.noewen.com'
+const META_TITLE = process.env.DEPLOY_META_TITLE || `${TITLE} | Calendrier universitaire`
+const DOMAIN = process.env.DEPLOY_DOMAIN || 'planningsup.app'
+const URL = `https://${DOMAIN}`
 const BANNER = `${URL}/banner.png`
 
 export default {
@@ -169,6 +169,7 @@ export default {
     },
     name: 'PlanningSup',
     hideWeekends: process.env.HIDE_WEEKENDS !== 'false',
+    defaultPlanning: process.env.DEFAULT_PLANNING_ID || 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1',
     i18n: {
       week: 'Semaine',
       weeks: 'Semaines',
