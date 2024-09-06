@@ -7852,7 +7852,7 @@
                       {
                         "id": "g2",
                         "title": "G2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17082&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17082&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "g3",
@@ -7877,7 +7877,7 @@
                       {
                         "id": "g7",
                         "title": "G7",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17121&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17121&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "g8",
@@ -8097,7 +8097,7 @@
                   {
                     "id": "m2",
                     "title": "m2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2132&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2132&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ],
                 "id": "maths",
@@ -8255,7 +8255,7 @@
                       {
                         "id": "g3",
                         "title": "G3",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2151&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2151&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "g4",
@@ -8338,7 +8338,7 @@
                       {
                         "id": "g1",
                         "title": "G1",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15260&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15260&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "g2",
@@ -8435,7 +8435,7 @@
                       {
                         "id": "gtd4",
                         "title": "Gtd4",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17863&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17863&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "gtp1",
@@ -8559,7 +8559,7 @@
                   {
                     "id": "miage2",
                     "title": "miage2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14420&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14420&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ],
                 "id": "miage",
@@ -8598,7 +8598,7 @@
                       {
                         "id": "g1",
                         "title": "G1",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14148&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14148&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "g2",
@@ -8948,7 +8948,7 @@
                   {
                     "id": "sta-statistiques",
                     "title": "STA-Statistiques",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14015&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14015&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "edts": [
@@ -9004,7 +9004,7 @@
               {
                 "id": "verspro",
                 "title": "versPro",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2027&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2027&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ],
             "id": "semestre4",
@@ -9550,7 +9550,7 @@
               {
                 "id": "isticccn1s2",
                 "title": "S2 CCN",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17270&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17270&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -9706,7 +9706,7 @@
                   {
                     "id": "isticm1opt1-msaasr",
                     "title": "Marketing Strategie AASR",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12653&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12653&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "isticm1opt1-plcgroupe1",
@@ -9956,7 +9956,7 @@
               {
                 "id": "isticcni2scs",
                 "title": "SCS",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17058&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17058&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -13578,12 +13578,12 @@
                   {
                     "id": "las-se",
                     "title": "LAS SE",
-                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5127&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5127&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "las-shs",
                     "title": "LAS SHS",
-                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5129&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5129&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -13623,27 +13623,27 @@
                       {
                         "id": "grp-a",
                         "title": "Groupe A",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "grp-b",
                         "title": "Groupe B",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "grp-c",
                         "title": "Groupe C",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=411&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=411&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "grp-d",
                         "title": "Groupe D",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5046&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5046&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "grp-e",
                         "title": "Groupe E",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4858&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4858&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "option-droit",
