@@ -13620,7 +13620,7 @@
                   {
                     "id": "cm-pass",
                     "title": "CM PASS",
-                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=607&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=607&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "exp-ifsi",
@@ -13674,7 +13674,7 @@
                       {
                         "id": "option-droit",
                         "title": "Option Droit",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8152&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8152&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -13685,7 +13685,7 @@
                       {
                         "id": "option-biomecanique-et-activites-physiques-et-sportives",
                         "title": "Option Biomécanique et Activités Physiques et Sportives",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8396&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8396&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "option-geosciences-et-environnement-chimie",
