@@ -10526,6 +10526,470 @@
         ]
       },
       {
+        "id": "gpm",
+        "title": "GPM",
+        "edts": [
+          {
+            "id": "s5-GPM",
+            "title": "S5",
+            "edts": [
+              {
+                "id": "s5-gpm-ab1",
+                "title": "GR AB1",
+                "edts":[
+                  {
+                    "id": "s5-gpm-a",
+                    "title": "GR A",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1248&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-gpm-ab1",
+                    "title": "GR AB1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=739&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-gpm-b1",
+                    "title": "GR B1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3373&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s5-gpm-b2c",
+                "title": "GR B2C",
+                "edts":[
+                  {
+                    "id": "s5-gpm-b2",
+                    "title": "GR B2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3374&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-gpm-b2c",
+                    "title": "GR B2C",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=741&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s5-gpm-c",
+                    "title": "GR C",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1250&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "s6-GPM",
+            "title": "S6",
+            "edts": [
+              {
+                "id": "s6-gpm-a",
+                "title": "GR A",
+                "edts":[
+                  {
+                    "id": "s6-gpm-a1",
+                    "title": "GR A1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1224&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-a2",
+                    "title": "GR A2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1225&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-a3",
+                    "title": "GR A3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=915&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-a4",
+                    "title": "GR A4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=119&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s6-gpm-b",
+                "title": "GR B",
+                "edts":[
+                  {
+                    "id": "s6-gpm-b1",
+                    "title": "GR B1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1343&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-b2",
+                    "title": "GR B2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1231&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-b3",
+                    "title": "GR B3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=964&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-b4",
+                    "title": "GR B4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=965&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s6-gpm-c",
+                "title": "GR C",
+                "edts":[
+                  {
+                    "id": "s6-gpm-c1",
+                    "title": "GR C1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1233&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-c2",
+                    "title": "GR C2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1302&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s6-gpm-c3",
+                    "title": "GR C3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=971&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s6-gpm-ab1",
+                "title": "GR AB1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=743&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s6-gpm-b2c",
+                "title": "GR B2C",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=744&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "s7-GPM",
+            "title": "S7",
+            "edts": [
+              {
+                "id": "s7-gpm-ab",
+                "title": "GR A",
+                "edts":[
+                  {
+                    "id": "s7-gpm-a1",
+                    "title": "GR A1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1256&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s7-gpm-a2",
+                    "title": "GR A2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3053&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s7-gpm-a3",
+                    "title": "GR A3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=453&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s7-gpm-b",
+                "title": "GR B",
+                "edts":[
+                  {
+                    "id": "s7-gpm-b1",
+                    "title": "GR B1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1257&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s7-gpm-b2",
+                    "title": "GR B2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1158&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s7-gpm-b3",
+                    "title": "GR B3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=456&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s7-gpm-tp-sb-fisp",
+                "title": "TP SB FISP",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3794&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s7-gpm-projet-langues",
+                "title": "PROJET LANGUES",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=392&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "s8-GPM",
+            "title": "S8",
+            "edts": [
+              {
+                "id": "s8-gpm-a",
+                "title": "GR A",
+                "edts": [
+                  {
+                    "id": "s8-gpm-a1",
+                    "title": "GR A1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3206&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-a2",
+                    "title": "GR A2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3207&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-a3",
+                    "title": "GR A3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3208&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-a4",
+                    "title": "GR A4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3209&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s8-gpm-B",
+                "title": "GR B",
+                "edts": [
+                  {
+                    "id": "s8-gpm-b1",
+                    "title": "GR B1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3210&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-b2",
+                    "title": "GR B2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3211&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-b3",
+                    "title": "GR B3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3212&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s8-gpm-b4",
+                    "title": "GR B4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3213&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s8-gpm-tp-sb-fisp",
+                "title": "TP SB FISP",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3795&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "s9-GPM",
+            "title": "S9",
+            "edts": [
+              {
+                "id": "s9-gpm-a",
+                "title": "GR A",
+                "edts":[
+                  {
+                    "id": "s9-gpm-a1",
+                    "title": "GR A1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=123&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a2",
+                    "title": "GR A2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=130&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a3",
+                    "title": "GR A3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1346&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a4",
+                    "title": "GR A4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=140&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a5",
+                    "title": "GR A5",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=143&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a6",
+                    "title": "GR A6",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=170&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a7",
+                    "title": "GR A7",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=240&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a8",
+                    "title": "GR A8",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=262&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a9",
+                    "title": "GR A9",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=264&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-a10",
+                    "title": "GR A10",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=268&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s9-gpm-b",
+                "title": "GR B",
+                "edts":[
+                  {
+                    "id": "s9-gpm-b1",
+                    "title": "GR B1",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=344&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b2",
+                    "title": "GR B2",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=349&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b3",
+                    "title": "GR B3",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=353&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b4",
+                    "title": "GR B4",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=359&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b5",
+                    "title": "GR B5",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=865&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b6",
+                    "title": "GR B6",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2730&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b7",
+                    "title": "GR B7",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2734&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b8",
+                    "title": "GR B8",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2736&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b9",
+                    "title": "GR B9",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2737&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-b10",
+                    "title": "GR B10",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2738&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s9-gpm-management",
+                "title": "MANAGEMENT",
+                "edts": [
+                  {
+                    "id": "s9-gpm-management-a",
+                    "title": "A",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2999&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-b",
+                    "title": "B",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3000&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-c",
+                    "title": "C",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3001&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-c-bis",
+                    "title": "C bis",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3004&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-d",
+                    "title": "D",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3005&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-e",
+                    "title": "E",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3002&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-f",
+                    "title": "F",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3003&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "s9-gpm-management-g",
+                    "title": "G",
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2196&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "s9-gpm-entreprendre-innover",
+                "title": "ENTREPRENDRE INNOVER",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2131&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s9-gpm-toeic",
+                "title": "TOEIC",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1619&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s9-gpm-convers-english",
+                "title": "CONVERS ENGLISH",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1577&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "s9-gpm-master-photonique",
+            "title": "MASTER PHOTONIQUE",
+            "edts":[
+              {
+                "id": "s9-gpm-master-photonique-a",
+                "title": "A",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=146&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s9-gpm-master-photonique-b",
+                "title": "B",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1745&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s9-gpm-master-photonique-c",
+                "title": "C",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=553&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id":"eii",
         "title":"EII",
         "edts": [
