@@ -10614,8 +10614,8 @@
                 "title": "GR A",
                 "edts": [
                   {
-                    "id": "s7-eii-gra-lnr",
-                    "title": "GR A LNR",
+                    "id": "s7-eii-gra-inr",
+                    "title": "GR A INR",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1477&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
@@ -10635,8 +10635,8 @@
                 "title": "GR B",
                 "edts": [
                   {
-                    "id": "s7-eii-grb-lnr",
-                    "title": "GR B LNR",
+                    "id": "s7-eii-grb-inr",
+                    "title": "GR B INR",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1481&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
@@ -10662,8 +10662,8 @@
                 "title": "GR A",
                 "edts": [
                   {
-                    "id": "s8-eii-gra-lnr",
-                    "title": "GR A LNR",
+                    "id": "s8-eii-gra-inr",
+                    "title": "GR A INR",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1223&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
@@ -10678,8 +10678,8 @@
                 "title": "GR B",
                 "edts": [
                   {
-                    "id": "s8-eii-grb-lnr",
-                    "title": "GR B LNR",
+                    "id": "s8-eii-grb-inr",
+                    "title": "GR B INR",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1002&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
