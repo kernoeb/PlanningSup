@@ -85,7 +85,15 @@
           @click="copyTextToClipboard()"
         >
           <v-icon>{{ mdiContentCopy }}</v-icon>
-        </v-btn><v-btn
+        </v-btn>
+        <v-btn
+          v-tooltip="'Reinitialiser la sélection'"
+          icon
+          @click="reset()"
+        >
+          <v-icon>{{ mdiRestore }}</v-icon>
+        </v-btn>
+        <v-btn
           icon
           @click="$emit('close')"
         >
@@ -104,14 +112,6 @@
         hide-details
         dense
       />
-      <v-btn
-        text
-        small
-        color="green"
-        @click="reset"
-      >
-        Réinitialiser
-      </v-btn>
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
           <div
@@ -389,19 +389,20 @@
 
 <script>
 import {
-  mdiDelete,
-  mdiStarHalfFull,
-  mdiStar,
-  mdiStarOutline,
-  mdiClose,
-  mdiContentCopy,
   mdiCalendar,
-  mdiMenuDown,
-  mdiMinusBox,
-  mdiPencil,
   mdiCheckboxBlankOutline,
   mdiCheckboxMarked,
-  mdiFormatListGroup
+  mdiClose,
+  mdiContentCopy,
+  mdiDelete,
+  mdiFormatListGroup,
+  mdiMenuDown,
+  mdiMinusBox,
+  mdiStar,
+  mdiStarHalfFull,
+  mdiStarOutline,
+  mdiPencil,
+  mdiRestore
 } from '@mdi/js'
 
 export default {
@@ -422,19 +423,20 @@ export default {
   },
   data () {
     return {
-      mdiDelete,
+      mdiCalendar,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
-      mdiMinusBox,
-      mdiMenuDown,
-      mdiCalendar,
       mdiClose,
       mdiContentCopy,
-      mdiStarHalfFull,
-      mdiStar,
-      mdiStarOutline,
+      mdiDelete,
       mdiFormatListGroup,
+      mdiMenuDown,
+      mdiMinusBox,
+      mdiStar,
+      mdiStarHalfFull,
+      mdiStarOutline,
       mdiPencil,
+      mdiRestore,
 
       menuGroup: false,
 
