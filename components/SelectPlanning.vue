@@ -8,7 +8,7 @@
       color="teal"
       right
     >
-      Copié dans le presse-papier !
+      {{ $config.i18n.copiedToClipboard }}
     </v-snackbar>
     <v-snackbar
       v-model="showSnackbarError"
@@ -18,7 +18,7 @@
       color="error"
       right
     >
-      Une erreur s'est produite, désolé.
+      {{ $config.i18n.error }}
     </v-snackbar>
     <v-card>
       <v-toolbar
@@ -48,7 +48,7 @@
         >
           <template #activator="{ on: menu, attrs }">
             <v-btn
-              v-tooltip="'Créer un groupe de favoris'"
+              v-tooltip="$config.i18n.createFavoritesGroup"
               icon
               v-bind="attrs"
               v-on="menu"
@@ -74,20 +74,20 @@
                 :disabled="!isFavoriteGroupRulesOk"
                 @click="createFavoriteGroup"
               >
-                Créer
+                {{ $config.i18n.create }}
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
         <v-btn
-          v-tooltip="'Copier la sélection actuelle sous forme d\'URL dans le presse-papier'"
+          v-tooltip="$config.i18n.copySelection"
           icon
           @click="copyTextToClipboard()"
         >
           <v-icon>{{ mdiContentCopy }}</v-icon>
         </v-btn>
         <v-btn
-          v-tooltip="'Reinitialiser la sélection'"
+          v-tooltip="$config.i18n.resetSelection"
           icon
           @click="reset()"
         >
@@ -199,7 +199,7 @@
                                   :disabled="!isFavoriteNameRulesOk"
                                   @click="renameFavoriteGroup(groupFavorite)"
                                 >
-                                  Renommer
+                                  {{ $config.i18n.rename }}
                                 </v-btn>
                               </v-card-actions>
                             </v-card>
@@ -259,7 +259,7 @@
                                 <v-text-field
                                   v-model="newFavoriteName"
                                   autofocus
-                                  label="Nom du favori"
+                                  :label="$config.i18n.favoriteName"
                                   :rules="favoriteNameRules"
                                   @keyup.enter="() => { if (isFavoriteNameRulesOk) { renameFavorite(favorite) } }"
                                 />
@@ -271,7 +271,7 @@
                                   :disabled="!isFavoriteNameRulesOk"
                                   @click="renameFavorite(favorite)"
                                 >
-                                  Renommer
+                                  {{ $config.i18n.rename }}
                                 </v-btn>
                               </v-card-actions>
                             </v-card>
@@ -651,17 +651,23 @@ export default {
     refreshFavorites () {
       try {
         try {
-          this.favorites = this.$cookies?.get('favorites') || {}
+          let favorites = this.$cookies?.get('favorites') || {}
 
           // Convert old favorites to new format
-          if (typeof this.favorites === 'string') {
-            const oldFavorites = this.favorites.split(',')
-            this.favorites = {}
-            oldFavorites.forEach(favorite => {
-              this.favorites[favorite] = null
-            })
-            this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
+          if (typeof favorites === 'string') {
+            const oldFavorites = favorites.split(',')
+
+            if (oldFavorites.length) {
+              favorites = oldFavorites.reduce((acc, favorite) => {
+                acc[favorite] = null
+                return acc
+              }, {})
+
+              this.$cookies.set('favorites', favorites, { maxAge: 2147483646 })
+            }
           }
+
+          this.favorites = favorites
         } catch (err) {
           console.log('Error parsing favorites names', err)
           this.favorites = {}
