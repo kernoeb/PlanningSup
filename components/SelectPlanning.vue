@@ -115,7 +115,7 @@
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
           <div
-            v-if="favorites?.length || groupFavorites?.length"
+            v-if="Object.keys(favorites).length || groupFavorites?.length"
             class="pa-2"
           >
             <v-card flat>
@@ -222,8 +222,8 @@
 
                     <!-- Favorites list -->
                     <v-list-item
-                      v-for="(favorite, i) in favorites"
-                      :key="`${i}-${favorite}`"
+                      v-for="(favorite, i) in Object.keys(favorites)"
+                      :key="`${i}-${favorites[favorite]}`"
                       dense
                       style="height: 20px;"
                       class="list-complete-item"
@@ -346,7 +346,7 @@
                       @click="toggleFavorite(item.fullId)"
                     >
                       <v-icon
-                        v-if="(favorites || []).includes(item.fullId)"
+                        v-if="(Object.keys(favorites) || []).includes(item.fullId)"
                         color="orange"
                       >
                         {{ mdiStar }}
@@ -452,8 +452,7 @@ export default {
       urls: null,
 
       localPlannings: [],
-      favorites: [],
-      favoritesNames: {},
+      favorites: {},
       groupFavorites: [],
 
       planningNames: null
@@ -560,7 +559,8 @@ export default {
       })
     },
     getNames () {
-      const list = [...(this.favorites || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
+      const favoritesIds = Object.keys(this.favorites)
+      const list = [...(favoritesIds || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
       if (list.length) {
         this.$axios.$get('/api/v1/calendars/info', { params: { p: list.join(',') } }).then((data) => {
           this.planningNames = data
@@ -582,10 +582,9 @@ export default {
       this.$emit('selected-plannings', this.localPlannings)
     },
     addFavorite (id) {
-      if (!this.favorites.includes(id)) {
-        const tmp = [...this.favorites, id]
-        this.favorites = [...new Set(tmp)].filter(v => !!v)
-        this.$cookies.set('favorites', this.favorites.join(','), { maxAge: 2147483646 })
+      if (!(id in this.favorites)) {
+        this.favorites[id] = null
+        this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
         this.getNames()
         this.$nextTick(() => {
           this.refreshFavorites()
@@ -593,15 +592,9 @@ export default {
       }
     },
     removeFavorite (id) {
-      if (this.favorites.includes(id)) {
-        const tmp = this.favorites.filter(v => v !== id)
-        this.favorites = [...new Set(tmp)].filter(v => !!v)
-        this.$cookies.set('favorites', this.favorites.join(','), { maxAge: 2147483646 })
-
-        if (this.favoritesNames[id]) {
-          this.$delete(this.favoritesNames, id)
-          this.$cookies.set('favorites-names', this.favoritesNames, { maxAge: 2147483646 })
-        }
+      if (id in this.favorites) {
+        this.$delete(this.favorites, id)
+        this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
 
         this.getNames()
         this.$nextTick(() => {
@@ -610,20 +603,20 @@ export default {
       }
     },
     toggleFavorite (id) {
-      if (this.favorites.includes(id)) {
+      if (id in this.favorites) {
         this.removeFavorite(id)
       } else {
         this.addFavorite(id)
       }
     },
     getFavoriteName (favorite) {
-      if (this.favoritesNames[favorite]) return this.favoritesNames[favorite]
+      if (this.favorites[favorite]) return this.favorites[favorite]
       if (this.planningNames === null) return ''
       return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
     },
     renameFavorite (favorite) {
-      this.$set(this.favoritesNames, favorite, this.newFavoriteName)
-      this.$cookies.set('favorites-names', this.favoritesNames, { maxAge: 2147483646 })
+      this.$set(this.favorites, favorite, this.newFavoriteName)
+      this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
       this.newFavoriteName = ''
       this.favoriteRenameMenus[favorite] = false
     },
@@ -657,13 +650,21 @@ export default {
     },
     refreshFavorites () {
       try {
-        this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
-
         try {
-          this.favoritesNames = this.$cookies?.get('favorites-names') || {}
+          this.favorites = this.$cookies?.get('favorites') || {}
+
+          // Convert old favorites to new format
+          if (typeof this.favorites === 'string') {
+            const oldFavorites = this.favorites.split(',')
+            this.favorites = {}
+            oldFavorites.forEach(favorite => {
+              this.favorites[favorite] = null
+            })
+            this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
+          }
         } catch (err) {
           console.log('Error parsing favorites names', err)
-          this.favoritesNames = {}
+          this.favorites = {}
         }
 
         try {
@@ -676,7 +677,6 @@ export default {
         this.getNames()
 
         if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
-        if (this.$cookies?.get('favorites-names') === '%7B%7D') this.$cookies.remove('favorites-names')
         if (this.$cookies?.get('groupFavorites') === '') this.$cookies.remove('groupFavorites')
       } catch (err) {}
     }
