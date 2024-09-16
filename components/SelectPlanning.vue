@@ -63,7 +63,7 @@
                 autofocus
                 label="Nom du groupe"
                 :rules="favoriteGroupNameRules"
-                @keyup.enter="createFavoriteGroup"
+                @keyup.enter="() => { if (isFavoriteGroupRulesOk) createFavoriteGroup }"
               />
               <span v-if="localPlannings?.length > 1">{{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe</span>
             </v-card-text>
@@ -162,18 +162,61 @@
                         </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn
-                          small
-                          icon
-                          @click="deleteFavoriteGroup(i)"
-                        >
-                          <v-icon
-                            small
-                            color="red"
+                        <div>
+                          <v-menu
+                            v-model="favoriteRenameMenus[groupFavorite]"
+                            :close-on-content-click="false"
+                            offset-y
+                            left
                           >
-                            {{ mdiDelete }}
-                          </v-icon>
-                        </v-btn>
+                            <template #activator="{ on: menu, attrs }">
+                              <v-btn
+                                small
+                                icon
+                                v-bind="attrs"
+                                v-on="menu"
+                                @click="newFavoriteName = groupFavorite.name"
+                              >
+                                <v-icon small>
+                                  {{ mdiPencil }}
+                                </v-icon>
+                              </v-btn>
+                            </template>
+                            <v-card width="300">
+                              <v-card-text>
+                                <v-text-field
+                                  v-model="newFavoriteName"
+                                  autofocus
+                                  label="Nom du favori"
+                                  :rules="favoriteNameRules"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) renameFavoriteGroup(groupFavorite) }"
+                                />
+                              </v-card-text>
+                              <v-card-actions>
+                                <v-spacer />
+                                <v-btn
+                                  text
+                                  :disabled="!isFavoriteNameRulesOk"
+                                  @click="renameFavoriteGroup(groupFavorite)"
+                                >
+                                  Renommer
+                                </v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-menu>
+                          <v-btn
+                            small
+                            icon
+                            @click="deleteFavoriteGroup(i)"
+                          >
+                            <v-icon
+                              small
+                              color="red"
+                            >
+                              {{ mdiDelete }}
+                            </v-icon>
+                          </v-btn>
+                        </div>
                       </v-list-item-action>
                     </v-list-item>
 
@@ -581,6 +624,13 @@ export default {
       this.$cookies.set('favorites-names', this.favoritesNames, { maxAge: 2147483646 })
       this.newFavoriteName = ''
       this.favoriteRenameMenus[favorite] = false
+    },
+    renameFavoriteGroup (favoriteGroup) {
+      const index = this.groupFavorites.findIndex(v => v.name === favoriteGroup.name)
+      this.$set(this.groupFavorites[index], 'name', this.newFavoriteName)
+      this.$cookies.set('group-favorites', this.groupFavorites, { maxAge: 2147483646 })
+      this.newFavoriteName = ''
+      this.favoriteRenameMenus[favoriteGroup] = false
     },
     createFavoriteGroup () {
       if (!this.newFavoriteGroupName) return
