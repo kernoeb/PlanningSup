@@ -14911,5 +14911,27 @@
         ]
       }
     ]
+  },
+  {
+    "id": "polytech_nantes",
+    "title": "Polytech Nantes",
+    "edts": [
+      {
+        "id": "idia",
+        "title": "IDIA",
+        "edts": [
+          {
+            "id": "g1137366",
+            "title": "3A",
+            "url": "https://edt.univ-nantes.fr/chantrerie-gavy/g1137366.ics"
+          },
+          {
+            "id": "g1326546",
+            "title": "4A",
+            "url": "https://edt.univ-nantes.fr/chantrerie-gavy/g1326546.ics"
+          }
+        ]
+      }
+    ]
   }
 ]
