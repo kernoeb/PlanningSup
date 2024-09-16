@@ -71,7 +71,7 @@
               <v-spacer />
               <v-btn
                 text
-                :disabled="!isRulesOk"
+                :disabled="!isFavoriteGroupRulesOk"
                 @click="createFavoriteGroup"
               >
                 Créer
@@ -118,7 +118,7 @@
             v-if="favorites?.length || groupFavorites?.length"
             class="pa-2"
           >
-            <v-card rounded>
+            <v-card flat>
               <v-card-title>
                 <v-icon
                   color="orange"
@@ -137,6 +137,7 @@
                     name="list-complete"
                     tag="div"
                   >
+                    <!-- Group favorites list -->
                     <v-list-item
                       v-for="(groupFavorite, i) in groupFavorites"
                       :key="`group-${i}-${groupFavorite.name}`"
@@ -176,6 +177,7 @@
                       </v-list-item-action>
                     </v-list-item>
 
+                    <!-- Favorites list -->
                     <v-list-item
                       v-for="(favorite, i) in favorites"
                       :key="`${i}-${favorite}`"
@@ -189,18 +191,61 @@
                         <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn
-                          small
-                          icon
-                          @click="setFavorite(favorite)"
-                        >
-                          <v-icon
-                            small
-                            color="red"
+                        <div>
+                          <v-menu
+                            v-model="favoriteRenameMenus[favorite]"
+                            :close-on-content-click="false"
+                            offset-y
+                            left
                           >
-                            {{ mdiDelete }}
-                          </v-icon>
-                        </v-btn>
+                            <template #activator="{ on: menu, attrs }">
+                              <v-btn
+                                small
+                                icon
+                                v-bind="attrs"
+                                v-on="menu"
+                                @click="newFavoriteName = getFavoriteName(favorite)"
+                              >
+                                <v-icon small>
+                                  {{ mdiPencil }}
+                                </v-icon>
+                              </v-btn>
+                            </template>
+                            <v-card width="300">
+                              <v-card-text>
+                                <v-text-field
+                                  v-model="newFavoriteName"
+                                  autofocus
+                                  label="Nom du favori"
+                                  :rules="favoriteNameRules"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) renameFavorite(favorite) }"
+                                />
+                              </v-card-text>
+                              <v-card-actions>
+                                <v-spacer />
+                                <v-btn
+                                  text
+                                  :disabled="!isFavoriteNameRulesOk"
+                                  @click="renameFavorite(favorite)"
+                                >
+                                  Renommer
+                                </v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-menu>
+                          <v-btn
+                            small
+                            icon
+                            @click="removeFavorite(favorite)"
+                          >
+                            <v-icon
+                              small
+                              color="red"
+                            >
+                              {{ mdiDelete }}
+                            </v-icon>
+                          </v-btn>
+                        </div>
                       </v-list-item-action>
                     </v-list-item>
                   </transition-group>
@@ -255,7 +300,7 @@
                     <v-btn
                       icon
                       style="margin-top: 2px;"
-                      @click="setFavorite(item.fullId)"
+                      @click="toggleFavorite(item.fullId)"
                     >
                       <v-icon
                         v-if="(favorites || []).includes(item.fullId)"
@@ -310,6 +355,7 @@ import {
   mdiCalendar,
   mdiMenuDown,
   mdiMinusBox,
+  mdiPencil,
   mdiCheckboxBlankOutline,
   mdiCheckboxMarked,
   mdiFormatListGroup
@@ -345,6 +391,7 @@ export default {
       mdiStar,
       mdiStarOutline,
       mdiFormatListGroup,
+      mdiPencil,
 
       menuGroup: false,
 
@@ -353,11 +400,15 @@ export default {
       searchCalendar: '',
       newFavoriteGroupName: '',
 
+      favoriteRenameMenus: {},
+      newFavoriteName: '',
+
       activatedPlanning: null,
       urls: null,
 
       localPlannings: [],
       favorites: [],
+      favoritesNames: {},
       groupFavorites: [],
 
       planningNames: null
@@ -374,8 +425,17 @@ export default {
         !this.groupFavorites?.some(group => group.name === this.newFavoriteGroupName) || 'Ce nom de groupe est déjà utilisé'
       ]
     },
-    isRulesOk () {
+    isFavoriteGroupRulesOk () {
       return this.favoriteGroupNameRules.every(rule => rule === true)
+    },
+    favoriteNameRules () {
+      return [
+        (this.newFavoriteName?.length || 0) > 0 || 'Le nom du favori est requis',
+        (this.newFavoriteName?.length || 0) < 40 || 'Le nom du favori doit faire moins de 50 caractères'
+      ]
+    },
+    isFavoriteNameRulesOk () {
+      return this.favoriteNameRules.every(rule => rule === true)
     },
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
@@ -468,26 +528,59 @@ export default {
       this.localPlannings = []
       this.searchCalendar = ''
       this.newFavoriteGroupName = ''
+      this.newFavoriteName = ''
+
+      this.updatePlannings()
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {
       this.$emit('selected-plannings', this.localPlannings)
     },
-    setFavorite (id) {
-      let tmp = [...(this.favorites || [])]
-      if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
-      else tmp.push(id)
-      const final = [...new Set(tmp)].filter(v => !!v)
-      this.favorites = final
-      this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
-      this.getNames()
-      this.$nextTick(() => {
-        this.refreshFavorites()
-      })
+    addFavorite (id) {
+      if (!this.favorites.includes(id)) {
+        const tmp = [...this.favorites, id]
+        this.favorites = [...new Set(tmp)].filter(v => !!v)
+        this.$cookies.set('favorites', this.favorites.join(','), { maxAge: 2147483646 })
+        this.getNames()
+        this.$nextTick(() => {
+          this.refreshFavorites()
+        })
+      }
+    },
+    removeFavorite (id) {
+      if (this.favorites.includes(id)) {
+        const tmp = this.favorites.filter(v => v !== id)
+        this.favorites = [...new Set(tmp)].filter(v => !!v)
+        this.$cookies.set('favorites', this.favorites.join(','), { maxAge: 2147483646 })
+
+        if (this.favoritesNames[id]) {
+          this.$delete(this.favoritesNames, id)
+          this.$cookies.set('favorites-names', this.favoritesNames, { maxAge: 2147483646 })
+        }
+
+        this.getNames()
+        this.$nextTick(() => {
+          this.refreshFavorites()
+        })
+      }
+    },
+    toggleFavorite (id) {
+      if (this.favorites.includes(id)) {
+        this.removeFavorite(id)
+      } else {
+        this.addFavorite(id)
+      }
     },
     getFavoriteName (favorite) {
+      if (this.favoritesNames[favorite]) return this.favoritesNames[favorite]
       if (this.planningNames === null) return ''
       return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
+    },
+    renameFavorite (favorite) {
+      this.$set(this.favoritesNames, favorite, this.newFavoriteName)
+      this.$cookies.set('favorites-names', this.favoritesNames, { maxAge: 2147483646 })
+      this.newFavoriteName = ''
+      this.favoriteRenameMenus[favorite] = false
     },
     createFavoriteGroup () {
       if (!this.newFavoriteGroupName) return
@@ -515,6 +608,13 @@ export default {
         this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
 
         try {
+          this.favoritesNames = this.$cookies?.get('favorites-names') || {}
+        } catch (err) {
+          console.log('Error parsing favorites names', err)
+          this.favoritesNames = {}
+        }
+
+        try {
           this.groupFavorites = this.$cookies?.get('group-favorites')?.filter(v => !!v && !!v.name && !!v.plannings) || []
         } catch (err) {
           console.log('Error parsing group favorites', err)
@@ -524,6 +624,7 @@ export default {
         this.getNames()
 
         if (this.$cookies?.get('favorites') === '') this.$cookies.remove('favorites')
+        if (this.$cookies?.get('favorites-names') === '%7B%7D') this.$cookies.remove('favorites-names')
         if (this.$cookies?.get('groupFavorites') === '') this.$cookies.remove('groupFavorites')
       } catch (err) {}
     }
