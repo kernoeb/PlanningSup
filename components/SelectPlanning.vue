@@ -80,6 +80,7 @@
           </v-card>
         </v-menu>
         <v-btn
+          v-if="!$vuetify.breakpoint.mobile"
           v-tooltip="$config.i18n.copySelection"
           icon
           @click="copyTextToClipboard()"
