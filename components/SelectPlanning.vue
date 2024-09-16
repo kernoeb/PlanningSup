@@ -63,7 +63,7 @@
                 autofocus
                 label="Nom du groupe"
                 :rules="favoriteGroupNameRules"
-                @keyup.enter="() => { if (isFavoriteGroupRulesOk) createFavoriteGroup }"
+                @keyup.enter="() => { if (isFavoriteGroupRulesOk) { createFavoriteGroup() } }"
               />
               <span v-if="localPlannings?.length > 1">{{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe</span>
             </v-card-text>
@@ -189,7 +189,7 @@
                                   autofocus
                                   label="Nom du favori"
                                   :rules="favoriteNameRules"
-                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) renameFavoriteGroup(groupFavorite) }"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) { renameFavoriteGroup(groupFavorite) } }"
                                 />
                               </v-card-text>
                               <v-card-actions>
@@ -261,7 +261,7 @@
                                   autofocus
                                   label="Nom du favori"
                                   :rules="favoriteNameRules"
-                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) renameFavorite(favorite) }"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) { renameFavorite(favorite) } }"
                                 />
                               </v-card-text>
                               <v-card-actions>
