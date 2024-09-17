@@ -8,7 +8,7 @@
       color="teal"
       right
     >
-      Copié dans le presse-papier !
+      {{ $config.i18n.copiedToClipboard }}
     </v-snackbar>
     <v-snackbar
       v-model="showSnackbarError"
@@ -18,7 +18,7 @@
       color="error"
       right
     >
-      Une erreur s'est produite, désolé.
+      {{ $config.i18n.error }}
     </v-snackbar>
     <v-card>
       <v-toolbar
@@ -48,7 +48,7 @@
         >
           <template #activator="{ on: menu, attrs }">
             <v-btn
-              v-tooltip="'Créer un groupe de favoris'"
+              v-tooltip="$config.i18n.createFavoritesGroup"
               icon
               v-bind="attrs"
               v-on="menu"
@@ -63,7 +63,7 @@
                 autofocus
                 label="Nom du groupe"
                 :rules="favoriteGroupNameRules"
-                @keyup.enter="createFavoriteGroup"
+                @keyup.enter="() => { if (isFavoriteGroupRulesOk) { createFavoriteGroup() } }"
               />
               <span v-if="localPlannings?.length > 1">{{ localPlannings?.length || 0 }} plannings seront ajoutés au groupe</span>
             </v-card-text>
@@ -71,21 +71,30 @@
               <v-spacer />
               <v-btn
                 text
-                :disabled="!isRulesOk"
+                :disabled="!isFavoriteGroupRulesOk"
                 @click="createFavoriteGroup"
               >
-                Créer
+                {{ $config.i18n.create }}
               </v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
         <v-btn
-          v-tooltip="'Copier la sélection actuelle sous forme d\'URL dans le presse-papier'"
+          v-if="!$vuetify.breakpoint.mobile"
+          v-tooltip="$config.i18n.copySelection"
           icon
           @click="copyTextToClipboard()"
         >
           <v-icon>{{ mdiContentCopy }}</v-icon>
-        </v-btn><v-btn
+        </v-btn>
+        <v-btn
+          v-tooltip="$config.i18n.resetSelection"
+          icon
+          @click="reset()"
+        >
+          <v-icon>{{ mdiRestore }}</v-icon>
+        </v-btn>
+        <v-btn
           icon
           @click="$emit('close')"
         >
@@ -104,21 +113,13 @@
         hide-details
         dense
       />
-      <v-btn
-        text
-        small
-        color="green"
-        @click="reset"
-      >
-        Réinitialiser
-      </v-btn>
       <div style="max-height: calc(90vh - 300px); overflow: auto;">
         <transition name="fade">
           <div
-            v-if="favorites?.length || groupFavorites?.length"
+            v-if="Object.keys(favorites).length || groupFavorites?.length"
             class="pa-2"
           >
-            <v-card rounded>
+            <v-card flat>
               <v-card-title>
                 <v-icon
                   color="orange"
@@ -137,6 +138,7 @@
                     name="list-complete"
                     tag="div"
                   >
+                    <!-- Group favorites list -->
                     <v-list-item
                       v-for="(groupFavorite, i) in groupFavorites"
                       :key="`group-${i}-${groupFavorite.name}`"
@@ -161,24 +163,68 @@
                         </v-list-item-subtitle>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn
-                          small
-                          icon
-                          @click="deleteFavoriteGroup(i)"
-                        >
-                          <v-icon
-                            small
-                            color="red"
+                        <div>
+                          <v-menu
+                            v-model="favoriteRenameMenus[groupFavorite]"
+                            :close-on-content-click="false"
+                            offset-y
+                            left
                           >
-                            {{ mdiDelete }}
-                          </v-icon>
-                        </v-btn>
+                            <template #activator="{ on: menu, attrs }">
+                              <v-btn
+                                small
+                                icon
+                                v-bind="attrs"
+                                v-on="menu"
+                                @click="newFavoriteName = groupFavorite.name"
+                              >
+                                <v-icon small>
+                                  {{ mdiPencil }}
+                                </v-icon>
+                              </v-btn>
+                            </template>
+                            <v-card width="300">
+                              <v-card-text>
+                                <v-text-field
+                                  v-model="newFavoriteName"
+                                  autofocus
+                                  label="Nom du favori"
+                                  :rules="favoriteNameRules"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) { renameFavoriteGroup(groupFavorite) } }"
+                                />
+                              </v-card-text>
+                              <v-card-actions>
+                                <v-spacer />
+                                <v-btn
+                                  text
+                                  :disabled="!isFavoriteNameRulesOk"
+                                  @click="renameFavoriteGroup(groupFavorite)"
+                                >
+                                  {{ $config.i18n.rename }}
+                                </v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-menu>
+                          <v-btn
+                            small
+                            icon
+                            @click="deleteFavoriteGroup(i)"
+                          >
+                            <v-icon
+                              small
+                              color="red"
+                            >
+                              {{ mdiDelete }}
+                            </v-icon>
+                          </v-btn>
+                        </div>
                       </v-list-item-action>
                     </v-list-item>
 
+                    <!-- Favorites list -->
                     <v-list-item
-                      v-for="(favorite, i) in favorites"
-                      :key="`${i}-${favorite}`"
+                      v-for="(favorite, i) in Object.keys(favorites)"
+                      :key="`${i}-${favorites[favorite]}`"
                       dense
                       style="height: 20px;"
                       class="list-complete-item"
@@ -189,18 +235,61 @@
                         <v-list-item-title>{{ getFavoriteName(favorite) }}</v-list-item-title>
                       </v-list-item-content>
                       <v-list-item-action>
-                        <v-btn
-                          small
-                          icon
-                          @click="setFavorite(favorite)"
-                        >
-                          <v-icon
-                            small
-                            color="red"
+                        <div>
+                          <v-menu
+                            v-model="favoriteRenameMenus[favorite]"
+                            :close-on-content-click="false"
+                            offset-y
+                            left
                           >
-                            {{ mdiDelete }}
-                          </v-icon>
-                        </v-btn>
+                            <template #activator="{ on: menu, attrs }">
+                              <v-btn
+                                small
+                                icon
+                                v-bind="attrs"
+                                v-on="menu"
+                                @click="newFavoriteName = getFavoriteName(favorite)"
+                              >
+                                <v-icon small>
+                                  {{ mdiPencil }}
+                                </v-icon>
+                              </v-btn>
+                            </template>
+                            <v-card width="300">
+                              <v-card-text>
+                                <v-text-field
+                                  v-model="newFavoriteName"
+                                  autofocus
+                                  :label="$config.i18n.favoriteName"
+                                  :rules="favoriteNameRules"
+                                  @keyup.enter="() => { if (isFavoriteNameRulesOk) { renameFavorite(favorite) } }"
+                                />
+                              </v-card-text>
+                              <v-card-actions>
+                                <v-spacer />
+                                <v-btn
+                                  text
+                                  :disabled="!isFavoriteNameRulesOk"
+                                  @click="renameFavorite(favorite)"
+                                >
+                                  {{ $config.i18n.rename }}
+                                </v-btn>
+                              </v-card-actions>
+                            </v-card>
+                          </v-menu>
+                          <v-btn
+                            small
+                            icon
+                            @click="removeFavorite(favorite)"
+                          >
+                            <v-icon
+                              small
+                              color="red"
+                            >
+                              {{ mdiDelete }}
+                            </v-icon>
+                          </v-btn>
+                        </div>
                       </v-list-item-action>
                     </v-list-item>
                   </transition-group>
@@ -255,10 +344,10 @@
                     <v-btn
                       icon
                       style="margin-top: 2px;"
-                      @click="setFavorite(item.fullId)"
+                      @click="toggleFavorite(item.fullId)"
                     >
                       <v-icon
-                        v-if="(favorites || []).includes(item.fullId)"
+                        v-if="(Object.keys(favorites) || []).includes(item.fullId)"
                         color="orange"
                       >
                         {{ mdiStar }}
@@ -301,18 +390,20 @@
 
 <script>
 import {
-  mdiDelete,
-  mdiStarHalfFull,
-  mdiStar,
-  mdiStarOutline,
-  mdiClose,
-  mdiContentCopy,
   mdiCalendar,
-  mdiMenuDown,
-  mdiMinusBox,
   mdiCheckboxBlankOutline,
   mdiCheckboxMarked,
-  mdiFormatListGroup
+  mdiClose,
+  mdiContentCopy,
+  mdiDelete,
+  mdiFormatListGroup,
+  mdiMenuDown,
+  mdiMinusBox,
+  mdiStar,
+  mdiStarHalfFull,
+  mdiStarOutline,
+  mdiPencil,
+  mdiRestore
 } from '@mdi/js'
 
 export default {
@@ -333,18 +424,20 @@ export default {
   },
   data () {
     return {
-      mdiDelete,
+      mdiCalendar,
       mdiCheckboxBlankOutline,
       mdiCheckboxMarked,
-      mdiMinusBox,
-      mdiMenuDown,
-      mdiCalendar,
       mdiClose,
       mdiContentCopy,
-      mdiStarHalfFull,
-      mdiStar,
-      mdiStarOutline,
+      mdiDelete,
       mdiFormatListGroup,
+      mdiMenuDown,
+      mdiMinusBox,
+      mdiStar,
+      mdiStarHalfFull,
+      mdiStarOutline,
+      mdiPencil,
+      mdiRestore,
 
       menuGroup: false,
 
@@ -353,11 +446,14 @@ export default {
       searchCalendar: '',
       newFavoriteGroupName: '',
 
+      favoriteRenameMenus: {},
+      newFavoriteName: '',
+
       activatedPlanning: null,
       urls: null,
 
       localPlannings: [],
-      favorites: [],
+      favorites: {},
       groupFavorites: [],
 
       planningNames: null
@@ -374,8 +470,17 @@ export default {
         !this.groupFavorites?.some(group => group.name === this.newFavoriteGroupName) || 'Ce nom de groupe est déjà utilisé'
       ]
     },
-    isRulesOk () {
+    isFavoriteGroupRulesOk () {
       return this.favoriteGroupNameRules.every(rule => rule === true)
+    },
+    favoriteNameRules () {
+      return [
+        (this.newFavoriteName?.length || 0) > 0 || 'Le nom du favori est requis',
+        (this.newFavoriteName?.length || 0) < 40 || 'Le nom du favori doit faire moins de 50 caractères'
+      ]
+    },
+    isFavoriteNameRulesOk () {
+      return this.favoriteNameRules.every(rule => rule === true)
     },
     disabledValidate () {
       return JSON.stringify(this.localPlannings) === JSON.stringify(this.selectedPlannings)
@@ -455,7 +560,8 @@ export default {
       })
     },
     getNames () {
-      const list = [...(this.favorites || []), ...(this.groupFavorites || []).map(v => v.plannings).flat()]
+      const favoritesIds = Object.keys(this.favorites ?? {})
+      const list = [...favoritesIds, ...(this.groupFavorites || []).map(v => v.plannings).flat()]
       if (list.length) {
         this.$axios.$get('/api/v1/calendars/info', { params: { p: list.join(',') } }).then((data) => {
           this.planningNames = data
@@ -468,26 +574,59 @@ export default {
       this.localPlannings = []
       this.searchCalendar = ''
       this.newFavoriteGroupName = ''
+      this.newFavoriteName = ''
+
+      this.updatePlannings()
     },
     filter: (item, search, textKey) => item[textKey].toUpperCase().includes(search.toUpperCase()),
     updatePlannings () {
       this.$emit('selected-plannings', this.localPlannings)
     },
-    setFavorite (id) {
-      let tmp = [...(this.favorites || [])]
-      if ((this.favorites || []).includes(id)) tmp = tmp.filter(v => v !== id)
-      else tmp.push(id)
-      const final = [...new Set(tmp)].filter(v => !!v)
-      this.favorites = final
-      this.$cookies.set('favorites', final.join(','), { maxAge: 2147483646 })
-      this.getNames()
-      this.$nextTick(() => {
-        this.refreshFavorites()
-      })
+    addFavorite (id) {
+      if (!(id in this.favorites)) {
+        this.favorites[id] = null
+        this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
+        this.getNames()
+        this.$nextTick(() => {
+          this.refreshFavorites()
+        })
+      }
+    },
+    removeFavorite (id) {
+      if (id in this.favorites) {
+        this.$delete(this.favorites, id)
+        this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
+
+        this.getNames()
+        this.$nextTick(() => {
+          this.refreshFavorites()
+        })
+      }
+    },
+    toggleFavorite (id) {
+      if (id in this.favorites) {
+        this.removeFavorite(id)
+      } else {
+        this.addFavorite(id)
+      }
     },
     getFavoriteName (favorite) {
+      if (this.favorites[favorite]) return this.favorites[favorite]
       if (this.planningNames === null) return ''
       return this.planningNames?.find(v => v.planning === favorite)?.title || favorite
+    },
+    renameFavorite (favorite) {
+      this.$set(this.favorites, favorite, this.newFavoriteName)
+      this.$cookies.set('favorites', this.favorites, { maxAge: 2147483646 })
+      this.newFavoriteName = ''
+      this.favoriteRenameMenus[favorite] = false
+    },
+    renameFavoriteGroup (favoriteGroup) {
+      const index = this.groupFavorites.findIndex(v => v.name === favoriteGroup.name)
+      this.$set(this.groupFavorites[index], 'name', this.newFavoriteName)
+      this.$cookies.set('group-favorites', this.groupFavorites, { maxAge: 2147483646 })
+      this.newFavoriteName = ''
+      this.favoriteRenameMenus[favoriteGroup] = false
     },
     createFavoriteGroup () {
       if (!this.newFavoriteGroupName) return
@@ -512,7 +651,28 @@ export default {
     },
     refreshFavorites () {
       try {
-        this.favorites = (this.$cookies?.get('favorites')?.split(',') || []).filter(v => !!v)
+        try {
+          let favorites = this.$cookies?.get('favorites') || {}
+
+          // Convert old favorites to new format
+          if (typeof favorites === 'string') {
+            const oldFavorites = favorites.split(',')
+
+            if (oldFavorites.length) {
+              favorites = oldFavorites.reduce((acc, favorite) => {
+                acc[favorite] = null
+                return acc
+              }, {})
+
+              this.$cookies.set('favorites', favorites, { maxAge: 2147483646 })
+            }
+          }
+
+          this.favorites = favorites
+        } catch (err) {
+          console.log('Error parsing favorites names', err)
+          this.favorites = {}
+        }
 
         try {
           this.groupFavorites = this.$cookies?.get('group-favorites')?.filter(v => !!v && !!v.name && !!v.plannings) || []
