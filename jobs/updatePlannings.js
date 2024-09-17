@@ -17,10 +17,10 @@ mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/plan
   // Here we fetch all the plannings
   // We only show error if there is a problem with the fetching, to avoid massive logs
   for await (const p of Planning.find({})) {
-    const j = await fetchAndGetJSON(p.url)
-    if (j?.events?.length) {
+    const allEvents = await fetchAndGetJSON(p.url)
+    if (allEvents?.length) {
       p.timestamp = new Date()
-      p.backup = j.events
+      p.backup = allEvents
       await p.save()
     }
     await new Promise(resolve => setTimeout(resolve, 600))

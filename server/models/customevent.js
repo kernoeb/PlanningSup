@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schemaCustomEvent = new mongoose.Schema({
   name: {
-    type: 'String',
+    type: String,
     unique: true,
     index: true
   },
