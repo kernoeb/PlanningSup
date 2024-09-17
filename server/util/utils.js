@@ -1,4 +1,4 @@
-const ical = require('cal-parser')
+const icalJs = require('ical.js')
 const { Planning } = require('../models/planning')
 const { CustomEvent } = require('../models/customevent')
 const http = require('./http')
@@ -7,6 +7,15 @@ const { DateTime } = require('luxon')
 
 const dateStartTemplate = '{date-start}'
 const dateEndTemplate = '{date-end}'
+
+/**
+ * @typedef {Object} MyEvent
+ * @property {string} summary - Event name
+ * @property {Date} startDate - Event start date
+ * @property {Date} endDate - Event end date
+ * @property {string} location - Event location
+ * @property {string} description - Event description
+ */
 
 /**
  * Check if includes template
@@ -61,7 +70,7 @@ const getColor = (value, location, description, id, options = {}) => {
 
 /**
  * Sanitize description
- * @param d
+ * @param {string} d
  * @returns {string}
  */
 const cleanDescription = (d) => {
@@ -79,7 +88,7 @@ const cleanDescription = (d) => {
 
 /**
  * Sanitize description
- * @param l
+ * @param {string} l
  * @returns {string}
  */
 const cleanLocation = (l) => {
@@ -91,8 +100,8 @@ const cleanLocation = (l) => {
 
 /**
  * Sanitize event name
- * @param name
- * @returns {*}
+ * @param {string} name
+ * @returns {string}
  */
 const cleanName = (name) => {
   return (name && name.replace(/([A-Za-z])\?([A-Za-z])/gi, (_, b, c) => b + "'" + c).trim()) || ''
@@ -145,7 +154,7 @@ module.exports = {
   },
   /**
    * Get formatted json
-   * @param {object} j
+   * @param {MyEvent[]} allEvents
    * @param {string[]} blocklist
    * @param {object} colors
    * @param {object|null} localeUtils
@@ -153,18 +162,18 @@ module.exports = {
    * @param {string} id
    * @returns {[]}
    */
-  getFormattedEvents: ({ data: j, blocklist, colors, localeUtils, highlightTeacher, id }) => {
+  getFormattedEvents: ({ allEvents, blocklist, colors, localeUtils, highlightTeacher, id }) => {
     const events = []
-    for (const i of j.events || j) {
-      if (!blocklist.some(str => i.summary.value.toUpperCase().includes(str))) {
+    for (const i of allEvents) {
+      if (!blocklist.some(str => i.summary.toUpperCase().includes(str))) {
         events.push({
-          name: cleanName(i.summary.value),
-          start: getDate(new Date(i.dtstart.value), localeUtils),
-          end: getDate(new Date(i.dtend.value), localeUtils),
-          color: getColor(i.summary.value, i.location.value, i.description.value, id, { customColor: colors, highlightTeacher }),
-          location: cleanLocation(i.location.value),
-          description: cleanDescription(i.description.value),
-          distance: /à distance$|EAD/.test(i.location.value.trim()) || undefined,
+          name: cleanName(i.summary),
+          start: getDate(i.startDate, localeUtils),
+          end: getDate(i.endDate, localeUtils),
+          color: getColor(i.summary, i.location, i.description, id, { customColor: colors, highlightTeacher }),
+          location: cleanLocation(i.location),
+          description: cleanDescription(i.description),
+          distance: /à distance$|EAD/.test(i.location.trim()) || undefined,
           timed: true
         })
       }
@@ -174,7 +183,7 @@ module.exports = {
   /**
    * Fetch planning from URL, convert ICS to JSON
    * @param {String} url
-   * @returns {Promise<*>}
+   * @returns {Promise<MyEvent[]|undefined>}
    */
   fetchAndGetJSON: async (url) => {
     if (includesTemplate(url)) {
@@ -186,10 +195,25 @@ module.exports = {
     try {
       const { data } = await http.get(url)
       if (data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
-        const ics = ical.parseString(data)
-        if (ics && Object.entries(ics).length) {
-          return ics
+        const comp = new icalJs.Component(icalJs.parse(data))
+
+        const vEvents = comp.getAllSubcomponents('vevent')
+
+        /** @type {MyEvent[]} */
+        const allEvents = []
+
+        for (const vEvent of vEvents) {
+          const tmpEvent = new icalJs.Event(vEvent)
+          allEvents.push({
+            summary: tmpEvent.summary,
+            startDate: tmpEvent.startDate.toJSDate(),
+            endDate: tmpEvent.endDate.toJSDate(),
+            location: tmpEvent.location,
+            description: tmpEvent.description
+          })
         }
+
+        return allEvents
       } else {
         logger.debug('data', data)
       }

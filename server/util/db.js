@@ -6,6 +6,8 @@ module.exports = {
   initDB: async () => {
     const { Planning } = require('../models/planning')
 
+    await Planning.init()
+
     const j = JSON.parse(fs.readFileSync(path.join(process.cwd(), '/assets/plannings.json'), { encoding: 'utf8' }))
 
     const newPlannings = []
@@ -14,9 +16,13 @@ module.exports = {
 
     function recursiveEdts (j, id, title) {
       if (j.edts) {
-        j.edts.forEach((edts) => {
-          recursiveEdts(edts, id ? (id + idSeparator + j.id) : j.id, title ? (title + titleSeparator + j.title) : j.title)
-        })
+        for (const edts of j.edts) {
+          recursiveEdts(
+            edts,
+            id ? (id + idSeparator + j.id) : j.id,
+            title ? (title + titleSeparator + j.title) : j.title
+          )
+        }
       } else {
         const tmp = { ...j }
         tmp.fullId = id + idSeparator + tmp.id
@@ -28,9 +34,9 @@ module.exports = {
       }
     }
 
-    j.forEach((univ) => {
+    for (const univ of j) {
       recursiveEdts(univ)
-    })
+    }
 
     let cAdded = 0
     for (const p of newPlannings) {
@@ -67,8 +73,41 @@ module.exports = {
         cEdited++
       }
     }
+
     logger.info(cDeleted + ' deleted elements')
     logger.info(cEdited + ' edited elements')
     logger.info('------------------')
+
+    // Check if there is a planning with 'backup.dstart.value'
+    logger.info('Checking if a data migration is needed')
+    const tmp = await Planning.findOne({ 'backup.dtstart.value': { $exists: true } })
+    logger.info('Migration needed : ' + !!tmp)
+    if (tmp) {
+      for await (const p of Planning.find({ 'backup.dtstart.value': { $exists: true } })) {
+        try {
+          const newBackup = []
+          for (const e of p.backup) {
+            const newFormat = {
+              summary: e.summary.value,
+              startDate: new Date(e.dtstart.value),
+              endDate: new Date(e.dtend.value),
+              location: e.location.value,
+              description: e.description.value
+            }
+
+            newBackup.push(newFormat)
+          }
+
+          await Planning.updateOne({ fullId: p.fullId }, {
+            $set: {
+              backup: newBackup
+            }
+          })
+        } catch (err) {
+          console.error('Error while updating planning ' + p.fullId, err)
+        }
+      }
+    }
+    logger.info('Migration done')
   }
 }

@@ -1,5 +1,5 @@
 import jsdom from 'jsdom'
-import ical from 'cal-parser'
+import icalJs from 'ical.js'
 import { fetchWithTimeout } from '../server/util/http.js'
 const { JSDOM } = jsdom
 
@@ -47,11 +47,15 @@ const TODAY = new Date()
 for (const g of EDTS.edts) {
   for (const e of g.edts) {
     const { data } = await fetchWithTimeout(e.url)
-    const ics = ical.parseString(data)
-    const next = ics.events.find(v => new Date(v.dtstart.value).getTime() > TODAY.getTime() &&
+    const comp = new icalJs.Component(icalJs.parse(data))
+    const vEvents = comp.getAllSubcomponents('vevent')
+    const events = vEvents.map(v => new icalJs.Event(v))
+
+    const next = events.find(v => v.startDate.toJSDate().getTime() > TODAY.getTime() &&
       v.summary &&
-      !v.summary.value.toLowerCase().includes('fermeture') &&
-      !v.summary.value.toLowerCase().includes('férié'))
+      !v.summary.toLowerCase().includes('fermeture') &&
+      !v.summary.toLowerCase().includes('férié'))
+
     if (!next) {
       console.log('No next event :,' + e.title)
       g.edts = g.edts.filter(v => v.id !== e.id)
@@ -59,4 +63,4 @@ for (const g of EDTS.edts) {
   }
 }
 
-pbcopy(JSON.stringify(EDTS))
+pbcopy(JSON.stringify(EDTS)).then(console.log).catch(console.error)
