@@ -6,8 +6,6 @@ import { parseArgs } from 'node:util'
 
 const { values: { fetch, whitelist } } = parseArgs({ options: { fetch: { type: 'boolean' }, whitelist: { type: 'boolean' } } })
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
-
 const ajv = new Ajv()
 
 const element = {
@@ -50,7 +48,7 @@ const schema = {
 
 const validate = ajv.compile(schema)
 
-const JSON_FILE = path.join(__dirname, '../assets/plannings.json')
+const JSON_FILE = path.join(import.meta.dirname, '../assets/plannings.json')
 
 let content = fs.readFileSync(JSON_FILE, { encoding: 'utf8' })
 const data = JSON.parse(content)
