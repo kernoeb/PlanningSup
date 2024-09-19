@@ -59,7 +59,7 @@ const getColor = (value, location, description, id, options = {}) => {
     return '#676767'
   } else if (/\bCM\b/.test(value) || value.toUpperCase().includes('AMPHI') || location.toUpperCase().includes('AMPHI')) {
     return options.customColor?.amphi || '#efd6d8'
-  } else if (/\bTP\b/.test(value) || value.includes('TDi') || value.trim().match(/\sG\d\.\d$/)) {
+  } else if (/\bTP\b/.test(value) || value.includes('TPi') || value.includes('TDi') || value.trim().match(/\sG\d\.\d$/)) {
     return options.customColor?.tp || '#bbe0ff'
   } else if ((/\bTD\b/.test(value) || location.includes('V-B') || value.trim().match(/\sG\d$/)) && !/^S\d\.\d\d/.test(value) && !/contr[ôo]le/i.test(value)) {
     return options.customColor?.td || '#d4fbcc'
