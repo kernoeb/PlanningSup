@@ -7681,7 +7681,7 @@
                       {
                         "id": "g7",
                         "title": "G7",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18201&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18201&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ],
                     "id": "ang-anglais",
@@ -9772,7 +9772,7 @@
                   {
                     "id": "isticm1opt1-plcgroupe2",
                     "title": "PLC groupe 2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14636&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14636&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "isticm1cropt1ppar",
@@ -15379,7 +15379,7 @@
                       {
                         "id": "option-mathematiques",
                         "title": "Option Mathématiques",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7724&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7724&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "option-physique",
@@ -15399,19 +15399,19 @@
                       {
                         "id": "option-sciences-de-la-vie",
                         "title": "Option Sciences de la vie",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2178&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2178&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
                   {
                     "id": "option-sciences-de-l-education",
                     "title": "Option Sciences de l'éducation",
-                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8394&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8394&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "td-pass",
                     "title": "TD PASS",
-                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11975&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11975&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -15444,7 +15444,7 @@
               {
                 "id": "dfasm3",
                 "title": "DFASM3",
-                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5060&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5060&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
               }
             ]
           },
@@ -15546,7 +15546,7 @@
                       {
                         "id": "groupe-c",
                         "title": "Groupe C",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3825&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3825&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l2-sps-groupe1-1-4",
@@ -15561,12 +15561,12 @@
                       {
                         "id": "l2-sps-groupe-3-3-4",
                         "title": "L2 SPS - Groupe 3 (3/4)",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1247&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1247&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       },
                       {
                         "id": "l2-sps-groupe-4-4-4",
                         "title": "L2 SPS - Groupe 4 (4/4)",
-                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1206&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1206&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
