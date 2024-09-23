@@ -4871,26 +4871,26 @@
                 "id": "l1peisemestre1",
                 "title": "Semestre 1",
                 "edts": [
-                    {
-                      "id": "g1",
-                      "title": "Groupe TP1",
-                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=959&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2",
-                      "title": "Groupe TP2",
-                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3",
-                      "title": "Groupe TP3",
-                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=333&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4",
-                      "title": "Groupe TP4",
-                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1051&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
+                  {
+                    "id": "g1",
+                    "title": "Groupe TP1",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=959&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g2",
+                    "title": "Groupe TP2",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g3",
+                    "title": "Groupe TP3",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=333&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g4",
+                    "title": "Groupe TP4",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1051&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
                 ]
               },
               {
@@ -9469,9 +9469,19 @@
                     "title": "Mineure ACF",
                     "edts": [
                       {
+                        "id": "mineureacfcla1",
+                        "title": "Mineure ACF Cla 1",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
                         "id": "mineureacf",
                         "title": "mineure ACF",
                         "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineureacfcla2",
+                        "title": "mineure ACF Cla 2",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -9502,9 +9512,50 @@
                     "title": "Mineure WE",
                     "edts": [
                       {
-                        "id": "mineurewe",
-                        "title": "mineure WE",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4349&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "id": "mineurewecla1",
+                        "title": "Mineure WE Cla 1",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4345&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineurewecla2",
+                        "title": "Mineure WE Cla 2",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4716&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "projets",
+                    "title": "PROJETS",
+                    "edts": [
+                      {
+                        "id": "projetbio4t",
+                        "title": "Projet BIO4T",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18104&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "projetbingolive",
+                        "title": "Projet BingoLive",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18095&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "projetdemojcpu",
+                        "title": "Projet DemoJCpu",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18112&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "projetemimop",
+                        "title": "Projet EMIMOP",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18120&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "projetpg-code",
+                        "title": "Projet PG-code",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18122&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "projettempest",
+                        "title": "Projet Tempest",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18123&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   }
@@ -9557,7 +9608,7 @@
           {
             "id": "m1inforssi",
             "title": "Master RSSI",
-            "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4809&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4809&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
           },
           {
             "id": "isticm1optionS1",
@@ -10021,16 +10072,16 @@
     "id": "insa-rennes",
     "title": "INSA Rennes",
     "edts": [
-      { 
+      {
         "id": "ma",
         "title": "MA",
         "edts": [
-          { 
+          {
             "id": "s5-ma",
             "title": "S5",
             "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3767&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
           },
-          { 
+          {
             "id": "s6-ma",
             "title": "S6",
             "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -10541,7 +10592,7 @@
               {
                 "id": "s5-gpm-ab1",
                 "title": "GR AB1",
-                "edts":[
+                "edts": [
                   {
                     "id": "s5-gpm-a",
                     "title": "GR A",
@@ -10562,7 +10613,7 @@
               {
                 "id": "s5-gpm-b2c",
                 "title": "GR B2C",
-                "edts":[
+                "edts": [
                   {
                     "id": "s5-gpm-b2",
                     "title": "GR B2",
@@ -10589,7 +10640,7 @@
               {
                 "id": "s6-gpm-a",
                 "title": "GR A",
-                "edts":[
+                "edts": [
                   {
                     "id": "s6-gpm-a1",
                     "title": "GR A1",
@@ -10615,7 +10666,7 @@
               {
                 "id": "s6-gpm-b",
                 "title": "GR B",
-                "edts":[
+                "edts": [
                   {
                     "id": "s6-gpm-b1",
                     "title": "GR B1",
@@ -10641,7 +10692,7 @@
               {
                 "id": "s6-gpm-c",
                 "title": "GR C",
-                "edts":[
+                "edts": [
                   {
                     "id": "s6-gpm-c1",
                     "title": "GR C1",
@@ -10678,7 +10729,7 @@
               {
                 "id": "s7-gpm-ab",
                 "title": "GR A",
-                "edts":[
+                "edts": [
                   {
                     "id": "s7-gpm-a1",
                     "title": "GR A1",
@@ -10699,7 +10750,7 @@
               {
                 "id": "s7-gpm-b",
                 "title": "GR B",
-                "edts":[
+                "edts": [
                   {
                     "id": "s7-gpm-b1",
                     "title": "GR B1",
@@ -10799,7 +10850,7 @@
               {
                 "id": "s9-gpm-a",
                 "title": "GR A",
-                "edts":[
+                "edts": [
                   {
                     "id": "s9-gpm-a1",
                     "title": "GR A1",
@@ -10855,7 +10906,7 @@
               {
                 "id": "s9-gpm-b",
                 "title": "GR B",
-                "edts":[
+                "edts": [
                   {
                     "id": "s9-gpm-b1",
                     "title": "GR B1",
@@ -10974,7 +11025,7 @@
           {
             "id": "s9-gpm-master-photonique",
             "title": "MASTER PHOTONIQUE",
-            "edts":[
+            "edts": [
               {
                 "id": "s9-gpm-master-photonique-a",
                 "title": "A",
@@ -10995,8 +11046,8 @@
         ]
       },
       {
-        "id":"eii",
-        "title":"EII",
+        "id": "eii",
+        "title": "EII",
         "edts": [
           {
             "id": "s5-eii",
@@ -11120,7 +11171,7 @@
                   }
                 ]
               }
-            ] 
+            ]
           },
           {
             "id": "s8-eii",
@@ -11871,7 +11922,7 @@
                     "title": "GRP A.7",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1401&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
-                  { 
+                  {
                     "id": "s8-gcu-a8",
                     "title": "GRP A.8",
                     "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1582&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -12157,7 +12208,7 @@
             ]
           }
         ]
-      }           
+      }
     ]
   },
   {
