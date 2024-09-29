@@ -9375,33 +9375,18 @@
                 "title": "M1 IL Alternants",
                 "edts": [
                   {
-                    "id": "m1info-ilalternants1",
-                    "title": "M1 INFO - IL Alternants 1",
+                    "id": "m1info-ilalternants",
+                    "title": "M1 INFO - IL Alternants",
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4472&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "m1info-ilalternants2",
-                    "title": "M1 INFO - IL Alternants 2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4473&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "mineureacf",
                     "title": "Mineure ACF",
                     "edts": [
                       {
-                        "id": "mineureacfalt1",
-                        "title": "Mineure ACF Alt 1",
+                        "id": "mineureacfalt",
+                        "title": "Mineure ACF Alt",
                         "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4713&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineureacfcla",
-                        "title": "Mineure ACF Cla",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineureacfalt2",
-                        "title": "mineure ACF Alt 2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
@@ -9435,16 +9420,6 @@
                         "id": "mineurewealt1",
                         "title": "Mineure WE Alt 1",
                         "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4715&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineurewealt2",
-                        "title": "Mineure WE Alt 2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4345&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineurewecla",
-                        "title": "Mineure WE Cla",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4716&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   }
