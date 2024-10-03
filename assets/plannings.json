@@ -10069,6 +10069,391 @@
     ]
   },
   {
+    "id": "ufr-mathematique-rennes",
+    "title": "UFR Mathématique de Rennes",
+    "edts": [
+      {
+        "id": "l2-portailmathematiquesetapplications",
+        "title": "L2-Portail mathématiques et applications",
+        "edts": [
+          {
+            "id": "langues",
+            "title": "LANGUES",
+            "edts": [
+              {
+                "id": "allemand2l2maths",
+                "title": "Allemand 2 L2 Maths",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12299&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "anglais2-1",
+                "title": "Anglais2-1",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12292&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "anglais2-2",
+                "title": "Anglais2-2",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12290&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "anglais2-3",
+                "title": "Anglais2-3",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12283&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "anglais2-4",
+                "title": "Anglais2-4",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1751&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "anglais2-5",
+                "title": "Anglais2-5",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17623&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "espagnol2maths",
+                "title": "Espagnol 2 Maths",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12271&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "parmoduless3",
+            "title": "Par MODULES S3",
+            "edts": [
+              {
+                "id": "aco-algebreetcomplexite",
+                "title": "ACO-Algèbre et complexité",
+                "edts": [
+                  {
+                    "id": "aco-gr1",
+                    "title": "ACO-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14506&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "aco-gr2",
+                    "title": "ACO-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "al3-algebre3",
+                "title": "AL3-Algèbre 3",
+                "edts": [
+                  {
+                    "id": "al3-gr1",
+                    "title": "AL3-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12437&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "al3-gr2",
+                    "title": "AL3-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12436&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "al3-gr3",
+                    "title": "AL3-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12435&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ap3-analyseetprobabilites3",
+                "title": "AP3-Analyse et probabilités 3",
+                "edts": [
+                  {
+                    "id": "ap3-gr1",
+                    "title": "AP3-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12432&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "ap3-gr2",
+                    "title": "AP3-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12431&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "ap3-gr3",
+                    "title": "AP3-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3820&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "cmd3-complementsmathematiquesdefi3",
+                "title": "CMD3-Compléments mathématiques Défi 3",
+                "edts": [
+                  {
+                    "id": "cmd3",
+                    "title": "CMD3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1984&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "dmm2-decouvertedesmetiersdesmathematiques2",
+                "title": "DMM2-Découverte des métiers des mathématiques 2",
+                "edts": [
+                  {
+                    "id": "dmm2",
+                    "title": "DMM2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2715&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "i3a-introductionauxapplicationsdel'arithmetiqueetdel'algebre",
+                "title": "I3A-Introduction aux applications de l'arithmétique et de l'algèbre",
+                "edts": [
+                  {
+                    "id": "i3a-gr1",
+                    "title": "I3A-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9067&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "i3a-gr2",
+                    "title": "I3A-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11258&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "i3a-gr3",
+                    "title": "I3A-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11297&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ph3-physique3",
+                "title": "PH3-Physique 3",
+                "edts": [
+                  {
+                    "id": "ph3-gr1",
+                    "title": "PH3-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4611&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "ph3-gr2",
+                    "title": "PH3-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8730&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ppa1-miseaniveauenmathematiquespost-pass1",
+                "title": "PPA1-Mise à niveau en mathématiques Post-Pass 1",
+                "edts": [
+                  {
+                    "id": "ppa1",
+                    "title": "PPA1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5755&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "resoudre",
+                "title": "RESOUDRE",
+                "edts": [
+                  {
+                    "id": "resoudre",
+                    "title": "RESOUDRE",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8834&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "parmoduless4",
+            "title": "Par MODULES S4",
+            "edts": [
+              {
+                "id": "al4-algebre4",
+                "title": "AL4-Algèbre 4",
+                "edts": [
+                  {
+                    "id": "al4-gr1",
+                    "title": "AL4-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12219&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "al4-gr2",
+                    "title": "AL4-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11442&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "al4-gr3",
+                    "title": "AL4-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3852&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "an4-analyse4",
+                "title": "AN4-Analyse 4",
+                "edts": [
+                  {
+                    "id": "an4-gr1",
+                    "title": "AN4-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12224&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "an4-gr2",
+                    "title": "AN4-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12223&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "an4-gr3",
+                    "title": "AN4-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3876&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "cal-calculabilite",
+                "title": "CAL-Calculabilité",
+                "edts": [
+                  {
+                    "id": "cal",
+                    "title": "CAL",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14808&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "cmd4-complementsmathematiquesdefi4",
+                "title": "CMD4-Compléments mathématiques Défi 4",
+                "edts": [
+                  {
+                    "id": "cmd4",
+                    "title": "CMD4",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12503&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "did1-didactiquedesmathematiques1",
+                "title": "DID1-Didactique des mathématiques 1",
+                "edts": [
+                  {
+                    "id": "did",
+                    "title": "DID",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=932&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ed1-equationsdifferentielles1",
+                "title": "ED1-Equations différentielles 1",
+                "edts": [
+                  {
+                    "id": "ed1-gr1",
+                    "title": "ED1-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13758&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "ed1-gr2",
+                    "title": "ED1-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3757&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "ed1-gr3",
+                    "title": "ED1-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3164&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "imia-introductionauxmathematiquesdel'intelligenceartificielle",
+                "title": "IMIA-Introduction aux mathématiques de l'intelligence artificielle",
+                "edts": [
+                  {
+                    "id": "imia-gr1",
+                    "title": "IMIA-Gr1",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14155&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "imia-gr2",
+                    "title": "IMIA-Gr2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14140&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "imia-gr3",
+                    "title": "IMIA-Gr3",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5335&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ph4-physique4",
+                "title": "PH4-Physique 4",
+                "edts": [
+                  {
+                    "id": "ph4",
+                    "title": "PH4",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12214&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              },
+              {
+                "id": "ppa2-miseaniveauenmathematiquespost-pass2",
+                "title": "PPA2-Mise à niveau en mathématiques Post-Pass 2",
+                "edts": [
+                  {
+                    "id": "ppa2",
+                    "title": "PPA2",
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10095&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "parparcours",
+            "title": "Par PARCOURS",
+            "edts": [
+              {
+                "id": "l2-math-cpes",
+                "title": "L2-Math-CPES",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1753&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "l2-math-defi",
+                "title": "L2-Math-DEFI",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2412&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "l2-math-ma",
+                "title": "L2-Math-MA",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12336&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "l2-math-postpass",
+                "title": "L2-Math-PostPass",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5753&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          },
+          {
+            "id": "reunionsderentree",
+            "title": "Réunions de rentrée",
+            "edts": [
+              {
+                "id": "l2defimathematiques",
+                "title": "L2 Défi mathématiques",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3546&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "l2mathsetapplications",
+                "title": "L2 Maths et applications",
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3323&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "insa-rennes",
     "title": "INSA Rennes",
     "edts": [
