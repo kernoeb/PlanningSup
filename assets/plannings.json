@@ -8543,7 +8543,7 @@
                   {
                     "id": "m2",
                     "title": "m2",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14639&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14639&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ],
                 "id": "maths",
@@ -9752,12 +9752,12 @@
                   {
                     "id": "isticm1cropt1ppar",
                     "title": "CR opt PPAR",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18345&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18345&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "isticm1ilopt1ppar",
                     "title": "IL opt PPAR",
-                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18344&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18344&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -9982,7 +9982,7 @@
               {
                 "id": "isticcni2pqn",
                 "title": "PQN",
-                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9077&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
               },
               {
                 "id": "isticcni2scs",
