@@ -10922,7 +10922,7 @@
                   {
                     "id": "s9-info-toeic",
                     "title": "TOEIC",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1626&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3007&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
