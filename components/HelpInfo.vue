@@ -6,7 +6,7 @@
     <v-expansion-panel>
       <v-expansion-panel-header>Le planning n'est pas à l'heure ! :(</v-expansion-panel-header>
       <v-expansion-panel-content>
-        <small>Ce n'est probablement pas la faute du planning <i>(toujours la faute des autres)</i>, mais plutôt du navigateur ou de l'ordinateur&nbsp;(<code>{{ new Date().toLocaleString() }}</code>)</small>
+        <small>Ce n'est probablement pas la faute du planning <i>(toujours la faute des autres)</i>, mais plutôt du navigateur ou de l'ordinateur&nbsp;(<code>{{ new Date().toLocaleString() }}</code>). Tu peux choisir un fuseau horaire pour corriger les heures du planning.</small>
       </v-expansion-panel-content>
     </v-expansion-panel>
     <v-expansion-panel>
