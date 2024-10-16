@@ -503,16 +503,16 @@ export default {
       this.$vuetify.theme.dark = true
     }
 
-    if (this.$cookies.get('locale-utils') !== undefined) {
+    if (this.$cookies.get('timezone') !== undefined) {
       try {
-        const tmp = this.$cookies.get('locale-utils', { parseJSON: true })
-        if (tmp && Object.keys(tmp).length > 0 && tmp.oldTZ && tmp.newTZ) {
+        const tmp = this.$cookies.get('timezone', { parseJSON: true })
+        if (tmp && Object.keys(tmp).length > 0 && tmp.target && tmp.browser) {
           this.localeUtils = tmp
         } else {
-          this.$cookies.remove('locale-utils')
+          this.$cookies.remove('timezone')
         }
       } catch (e) {
-        this.$cookies.remove('locale-utils')
+        this.$cookies.remove('timezone')
       }
     }
 
@@ -660,7 +660,7 @@ export default {
       this.value = this.$refs.calendar.timestampToDate(day)
     },
     updateTime() {
-      const timezone = this.localeUtils.oldTZ || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
+      const timezone = this.localeUtils.browser || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
 
       const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
       const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
