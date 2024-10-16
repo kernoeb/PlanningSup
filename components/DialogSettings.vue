@@ -266,40 +266,13 @@
 
           <v-divider />
 
-          <v-subheader
-            class="mt-3"
-            style="height: 20px"
-          >
-            Utiliser une timezone personnalisée
-          </v-subheader>
           <v-list-item
             inactive
             :ripple="false"
             class="mb-2"
           >
             <v-list-item-content class="pt-0">
-              <div class="d-flex flex-row">
-                <v-text-field
-                  v-model="localeUtils.oldTZ"
-                  hide-details
-                  placeholder="Europe/Paris"
-                  class="mr-2"
-                  @change="$nextTick(() => updateLocaleUtils({oldTZ: $event || null, newTZ: localeUtils.newTZ || null}))"
-                />
-                <v-icon
-                  small
-                  :disabled="!localeUtils.oldTZ"
-                  class="align-self-end mr-2"
-                >
-                  {{ mdiArrowRightCircleOutline }}
-                </v-icon>
-                <v-text-field
-                  v-model="localeUtils.newTZ"
-                  hide-details
-                  placeholder="America/New_York"
-                  @change="$nextTick(() => updateLocaleUtils({oldTZ: localeUtils.oldTZ || null, newTZ: $event || null}))"
-                />
-              </div>
+                <LazyTimezoneSelector />
             </v-list-item-content>
           </v-list-item>
 
