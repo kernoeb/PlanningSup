@@ -272,9 +272,7 @@
             class="mb-2"
           >
             <v-list-item-content class="pt-0">
-              <LazyTimezoneSelector
-                @fetch="delayedFetch"
-              />
+              <LazyTimezoneSelector @fetch="delayedFetch" />
             </v-list-item-content>
           </v-list-item>
 
@@ -510,13 +508,6 @@ export default {
       try {
         this.$cookies.set('blocklist', JSON.stringify(event), { maxAge: 2147483646 })
         this.delayedFetch()
-      } catch (err) {
-      }
-    },
-    updateLocaleUtils (event) {
-      try {
-        this.$cookies.set('locale-utils', JSON.stringify(event), { maxAge: 2147483646 })
-        if ((event.oldTZ && event.newTZ) || (!event.oldTZ && !event.newTZ)) this.delayedFetch()
       } catch (err) {
       }
     },

@@ -48,8 +48,8 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
   // Get custom timezone and locale
   let localeUtils = null
   try {
-    if (req.cookies?.['timezone']) {
-      const { target, browser } = JSON.parse(req.cookies['timezone'])
+    if (req.cookies?.timezone) {
+      const { target, browser } = JSON.parse(req.cookies.timezone)
       if (target && browser) localeUtils = { target, browser }
     }
   } catch (e) {

@@ -312,6 +312,7 @@
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import humanizeDuration from 'humanize-duration'
+
 const shortFrenchHumanizer = humanizeDuration.humanizer({
   language: 'shortFr',
   languages: {
@@ -396,7 +397,6 @@ export default {
       tmpP: null,
       nbHours: null,
       lastTimestamp: null,
-
       localeUtils: {}
     }
   },
@@ -669,17 +669,10 @@ export default {
       this.value = this.$refs.calendar.timestampToDate(day)
     },
     updateTime () {
-      const timezone = this.localeUtils?.target || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
+      const timeZone = this.localeUtils.target || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris'
 
-      const tzDate = new Date(new Date().toLocaleString('en-US', {
-        timeZone: timezone,
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      })) // convert it to defined timezone
+      // convert it to defined timezone
+      const tzDate = new Date(new Date().toLocaleString('en-US', { timeZone }))
       this.dateNow = this.$moment(tzDate).format('YYYY-MM-DD')
 
       if (this.$refs.calendar && tzDate.getHours() >= 7) {
