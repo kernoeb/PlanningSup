@@ -111,11 +111,6 @@ export default {
       ]
     }
   },
-  mounted () {
-    if (!this.targetTz) {
-      this.targetTz = Intl.DateTimeFormat().resolvedOptions().timeZone
-    }
-  },
   computed: {
     targetTz: {
       get () {
@@ -127,7 +122,13 @@ export default {
           target: value,
           browser: browserTz
         }), { maxAge: 2147483646 })
+        this.$emit('fetch')
       }
+    }
+  },
+  mounted () {
+    if (!this.targetTz) {
+      this.targetTz = Intl.DateTimeFormat().resolvedOptions().timeZone
     }
   }
 }
