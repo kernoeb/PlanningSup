@@ -390,7 +390,9 @@ export default {
       skipOk: false,
       tmpP: null,
       nbHours: null,
-      lastTimestamp: null
+      lastTimestamp: null,
+
+      localeUtils: {}
     }
   },
   fetchOnServer: false,
@@ -494,6 +496,19 @@ export default {
       this.$vuetify.theme.dark = JSON.parse(this.$cookies.get('theme'))
     } catch (e) {
       this.$vuetify.theme.dark = true
+    }
+
+    if (this.$cookies.get('locale-utils') !== undefined) {
+      try {
+        const tmp = this.$cookies.get('locale-utils', { parseJSON: true })
+        if (tmp && Object.keys(tmp).length > 0 && tmp.oldTZ && tmp.newTZ) {
+          this.localeUtils = tmp
+        } else {
+          this.$cookies.remove('locale-utils')
+        }
+      } catch (e) {
+        this.$cookies.remove('locale-utils')
+      }
     }
 
     this.$nextTick(function () {
@@ -640,9 +655,23 @@ export default {
       this.value = this.$refs.calendar.timestampToDate(day)
     },
     updateTime () {
-      const tmp = new Date()
-      this.dateNow = this.$moment(tmp).format('YYYY-MM-DD')
-      this.nowY = this.$refs.calendar ? this.$refs.calendar.timeToY((tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes()) + 'px' : '-10px'
+      const timezone = this.localeUtils.oldTZ || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris'
+
+      const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
+      const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
+      this.dateNow = this.$moment(tzDate).format('YYYY-MM-DD')
+
+      // format the current time in the defined timezone
+      const timeString = tzDate.toLocaleString('fr-FR', {
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+
+      if (this.$refs.calendar) {
+        this.nowY = this.$refs.calendar.timeToY(timeString) + 'px'
+      } else {
+        this.nowY = '-10px'
+      }
     },
     skipWeekend () {
       try {
