@@ -436,6 +436,19 @@ export default {
       return
     }
 
+    if (this.$cookies.get('timezone') !== undefined) {
+      try {
+        const tmp = this.$cookies.get('timezone', { parseJSON: true })
+        if (tmp && Object.keys(tmp).length > 0 && tmp.target && tmp.browser) {
+          this.localeUtils = tmp
+        } else {
+          this.$cookies.remove('timezone')
+        }
+      } catch (e) {
+        this.$cookies.remove('timezone')
+      }
+    }
+
     try {
       await this.getEvents()
     } catch (e) {
@@ -452,6 +465,8 @@ export default {
         this.loading = false
       }
     }
+
+    this.updateTime()
 
     this.loading = false
   },
@@ -510,19 +525,6 @@ export default {
         target: oldTzCookie.oldTz,
         browser: oldTzCookie.newTz
       }, { maxAge: 2147483646 })
-    }
-
-    if (this.$cookies.get('timezone') !== undefined) {
-      try {
-        const tmp = this.$cookies.get('timezone', { parseJSON: true })
-        if (tmp && Object.keys(tmp).length > 0 && tmp.target && tmp.browser) {
-          this.localeUtils = tmp
-        } else {
-          this.$cookies.remove('timezone')
-        }
-      } catch (e) {
-        this.$cookies.remove('timezone')
-      }
     }
 
     this.$nextTick(function () {
