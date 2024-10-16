@@ -257,6 +257,7 @@
           event-overlap-mode="stack"
           first-time="07:00"
           locale="fr"
+          :now="dateNow"
           show-month-on-first
           show-week
           @click:date="goToDay"
@@ -383,7 +384,11 @@ export default {
       currentWeek: '',
       lastTimeFetch: 0,
       nowY: '-10px',
-      dateNow: '',
+      dateNow: (new Date()).toLocaleDateString('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }),
       width: 0,
       doublePress: false,
       playing: false,
@@ -654,8 +659,8 @@ export default {
       this.type = 'day'
       this.value = this.$refs.calendar.timestampToDate(day)
     },
-    updateTime () {
-      const timezone = this.localeUtils.oldTZ || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris'
+    updateTime() {
+      const timezone = this.localeUtils.oldTZ || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
 
       const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
       const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
@@ -667,7 +672,7 @@ export default {
         minute: '2-digit'
       })
 
-      if (this.$refs.calendar) {
+      if (this.$refs.calendar && tzDate.getHours() >= 7) {
         this.nowY = this.$refs.calendar.timeToY(timeString) + 'px'
       } else {
         this.nowY = '-10px'
