@@ -272,9 +272,9 @@
             class="mb-2"
           >
             <v-list-item-content class="pt-0">
-                <LazyTimezoneSelector
-                    @fetch="delayedFetch"
-                />
+              <LazyTimezoneSelector
+                @fetch="delayedFetch"
+              />
             </v-list-item-content>
           </v-list-item>
 
