@@ -162,8 +162,12 @@ export default {
   },
   methods: {
     getTime () {
-      const tmp = new Date()
-      return (tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes() + ':' + (tmp.getSeconds() < 10 ? '0' : '') + tmp.getSeconds()
+      const timezone = this.$cookies.get('timezone', { parseJSON: true })?.target || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
+
+      const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
+      const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
+
+      return this.$moment(tzDate).format('HH:mm:ss')
     },
     setConnectedOn () {
       this.connected = true
