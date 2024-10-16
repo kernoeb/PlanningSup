@@ -164,8 +164,15 @@ export default {
     getTime () {
       const timezone = this.$cookies.get('timezone', { parseJSON: true })?.target || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
 
-      const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
-      const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
+      const tzDate = new Date(new Date().toLocaleString('en-US', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })) // convert it to defined timezone
 
       return this.$moment(tzDate).format('HH:mm:ss')
     },

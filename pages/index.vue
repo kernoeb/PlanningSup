@@ -503,6 +503,15 @@ export default {
       this.$vuetify.theme.dark = true
     }
 
+    const oldTzCookie = this.$cookies.get('locale-utils')
+    if (oldTzCookie !== undefined) {
+      this.$cookies.remove('locale-utils')
+      this.$cookies.set('timezone', {
+        target: oldTzCookie.oldTz,
+        browser: oldTzCookie.newTz
+      }, { maxAge: 2147483646 })
+    }
+
     if (this.$cookies.get('timezone') !== undefined) {
       try {
         const tmp = this.$cookies.get('timezone', { parseJSON: true })
@@ -659,21 +668,23 @@ export default {
       this.type = 'day'
       this.value = this.$refs.calendar.timestampToDate(day)
     },
-    updateTime() {
-      const timezone = this.localeUtils.browser || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
+    updateTime () {
+      const timezone = this.localeUtils?.target || Intl?.DateTimeFormat()?.resolvedOptions()?.timeZone || 'Europe/Paris'
 
-      const utcDate = new Date((new Date()).toLocaleString('en-US', { timeZone: 'UTC' })) // get the current date in UTC
-      const tzDate = new Date(utcDate.toLocaleString('en-US', { timeZone: timezone })) // convert it to defined timezone
+      const tzDate = new Date(new Date().toLocaleString('en-US', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      })) // convert it to defined timezone
       this.dateNow = this.$moment(tzDate).format('YYYY-MM-DD')
 
-      // format the current time in the defined timezone
-      const timeString = tzDate.toLocaleString('fr-FR', {
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-
       if (this.$refs.calendar && tzDate.getHours() >= 7) {
-        this.nowY = this.$refs.calendar.timeToY(timeString) + 'px'
+        const hhmm = this.$moment(tzDate).format('HH:mm')
+        this.nowY = this.$refs.calendar.timeToY(hhmm) + 'px'
       } else {
         this.nowY = '-10px'
       }
