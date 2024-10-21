@@ -107,17 +107,19 @@ export default {
         { label: '(GMT+11:00) Magadan, Solomon Is., New Caledonia', value: 'Asia/Magadan' },
         { label: '(GMT+12:00) Auckland, Wellington', value: 'Pacific/Auckland' },
         { label: '(GMT+12:00) Fiji, Kamchatka, Marshall Is.', value: 'Pacific/Fiji' },
-        { label: '(GMT+13:00) Nuku\'alofa', value: 'Pacific/Tongatapu' }
+        { label: "(GMT+13:00) Nuku'alofa", value: 'Pacific/Tongatapu' }
       ]
     }
   },
   computed: {
     targetTz: {
       get () {
-        return this.$cookies.get('timezone', { parseJSON: true })?.target || ''
+        let cookieTz = this.$cookies.get('timezone', { parseJSON: true })?.target
+        return this.timezones.find(t => cookieTz === t.value)?.value || ''
       },
       set (value) {
         const browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone
+        value = value ?? browserTz
         this.$cookies.set('timezone', JSON.stringify({
           target: value,
           browser: browserTz
