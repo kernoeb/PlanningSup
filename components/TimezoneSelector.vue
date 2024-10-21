@@ -159,10 +159,8 @@ export default {
         this.$delete(this.infos, 'target')
         this.$cookies.remove('timezone')
       } else {
-        const browser = Intl.DateTimeFormat().resolvedOptions().timeZone
-        const target = tz ?? browser
-        this.$set(this.infos, 'target', target)
-        this.$cookies.set('timezone', target, { maxAge: 2147483646 })
+        this.$set(this.infos, 'target', tz)
+        this.$cookies.set('timezone', tz, { maxAge: 2147483646 })
       }
 
       this.$emit('fetch')
