@@ -12,19 +12,33 @@
       item-text="label"
       item-value="value"
       label="Chercher un fuseau horaire"
+      clearable
+      :clear-icon="mdiClose"
+      hide-details
+    />
+    <div
+      v-if="infos"
+      class="text-caption mt-1"
     >
-      <template #item="{ item }">
-        {{ item.label }}
-      </template>
-    </v-autocomplete>
+      Navigateur: <code>{{ infos.browser }}</code><span v-if="infos.target">, Cible: <code>{{ infos.target }}</code></span>
+    </div>
   </div>
 </template>
 
 <script>
+import { mdiClose } from '@mdi/js'
+
 export default {
   name: 'TimezoneSelector',
   data () {
     return {
+      // Icons
+      mdiClose,
+
+      loaded: false,
+
+      targetTz: null,
+      infos: null,
       timezones: [ // Merci StackOverflow pour la liste
         { label: '(GMT-12:00) International Date Line West', value: 'Etc/GMT+12' },
         { label: '(GMT-11:00) Midway Island, Samoa', value: 'Pacific/Midway' },
@@ -111,26 +125,47 @@ export default {
       ]
     }
   },
-  computed: {
-    targetTz: {
-      get () {
-        let cookieTz = this.$cookies.get('timezone', { parseJSON: true })?.target
-        return this.timezones.find(t => cookieTz === t.value)?.value || ''
-      },
-      set (value) {
-        const browserTz = Intl.DateTimeFormat().resolvedOptions().timeZone
-        value = value ?? browserTz
-        this.$cookies.set('timezone', JSON.stringify({
-          target: value,
-          browser: browserTz
-        }), { maxAge: 2147483646 })
-        this.$emit('fetch')
-      }
+  watch: {
+    targetTz (tz) {
+      if (!this.loaded) return
+      this.updateTz(tz)
     }
   },
   mounted () {
-    if (!this.targetTz) {
-      this.targetTz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    this.infos = {
+      browser: Intl.DateTimeFormat().resolvedOptions().timeZone
+    }
+
+    const timezoneCookie = this.$cookies.get('timezone', { parseJSON: false })
+    if (!this.targetTz && timezoneCookie) {
+      if (this.timezones.find(tz => tz.value === timezoneCookie)) {
+        this.targetTz = timezoneCookie
+        this.$set(this.infos, 'target', timezoneCookie)
+      } else {
+        console.warn('Invalid timezone stored in cookies')
+        this.$cookies.remove('timezone')
+      }
+    }
+
+    this.$nextTick(() => {
+      this.loaded = true
+    })
+  },
+  methods: {
+    updateTz (tz) {
+      console.log('updateTz', tz)
+
+      if (!tz) {
+        this.$delete(this.infos, 'target')
+        this.$cookies.remove('timezone')
+      } else {
+        const browser = Intl.DateTimeFormat().resolvedOptions().timeZone
+        const target = tz ?? browser
+        this.$set(this.infos, 'target', target)
+        this.$cookies.set('timezone', target, { maxAge: 2147483646 })
+      }
+
+      this.$emit('fetch')
     }
   }
 }

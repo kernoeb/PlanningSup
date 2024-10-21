@@ -171,6 +171,7 @@ export default {
     name: TITLE,
     hideWeekends: process.env.HIDE_WEEKENDS !== 'false',
     defaultPlanning: process.env.DEFAULT_PLANNING_ID || 'iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1',
+    defaultTimezone: process.env.DEFAULT_TIMEZONE || 'Europe/Paris',
     i18n: {
       week: 'Semaine',
       weeks: 'Semaines',

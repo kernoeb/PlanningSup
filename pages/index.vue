@@ -312,6 +312,7 @@
 <script>
 import { mdiMinusBox, mdiTwitter, mdiClose, mdiMail, mdiChevronLeft, mdiChevronDown, mdiFormatListBulleted, mdiCalendar, mdiCalendarToday, mdiCogOutline, mdiChevronRight, mdiSchool, mdiWifiOff, mdiMenuDown, mdiCheckboxBlankOutline, mdiCheckboxMarked } from '@mdi/js'
 import humanizeDuration from 'humanize-duration'
+import { AxiosHeaders } from 'axios'
 
 const shortFrenchHumanizer = humanizeDuration.humanizer({
   language: 'shortFr',
@@ -397,13 +398,16 @@ export default {
       tmpP: null,
       nbHours: null,
       lastTimestamp: null,
-      localeUtils: {}
+      timezone: undefined
     }
   },
   fetchOnServer: false,
   async fetch () {
     if (this.loading) return
     this.loading = true
+
+    // ====================
+    // UPGRADE
     // Planning v1 migration
     this.$cookies.remove('edt')
     this.$cookies.remove('customColors')
@@ -419,6 +423,21 @@ export default {
         console.log(err)
       }
     }
+
+    // Remove old timezone cookie
+    try {
+      const oldTzCookie = this.$cookies.get('locale-utils')
+      if (oldTzCookie !== undefined) {
+        this.$cookies.remove('locale-utils')
+        if (oldTzCookie.newTZ && typeof oldTzCookie.newTZ === 'string') {
+          console.info('Removed old timezone cookie, migrating to new one with value:', oldTzCookie.newTZ)
+          this.$cookies.set('timezone', oldTzCookie.newTZ, { maxAge: 2147483646 })
+        }
+      }
+    } catch (err) {
+      console.error(err)
+    }
+    // ====================
 
     if (this.selectedPlanningsIds == null) {
       let planningString
@@ -438,16 +457,13 @@ export default {
 
     if (this.$cookies.get('timezone') !== undefined) {
       try {
-        const tmp = this.$cookies.get('timezone', { parseJSON: true })
-        if (tmp && Object.keys(tmp).length > 0 && tmp.target && tmp.browser) {
-          this.localeUtils = tmp
-        } else {
-          this.$cookies.remove('timezone')
-        }
+        const tmp = this.$cookies.get('timezone', { parseJSON: false })
+        if (tmp) this.timezone = tmp
       } catch (e) {
         this.$cookies.remove('timezone')
       }
     }
+    if (!this.timezone) this.timezone = this.getBrowserTimezone()
 
     try {
       await this.getEvents()
@@ -518,15 +534,6 @@ export default {
       this.$vuetify.theme.dark = true
     }
 
-    const oldTzCookie = this.$cookies.get('locale-utils')
-    if (oldTzCookie !== undefined) {
-      this.$cookies.remove('locale-utils')
-      this.$cookies.set('timezone', {
-        target: oldTzCookie.oldTz,
-        browser: oldTzCookie.newTz
-      }, { maxAge: 2147483646 })
-    }
-
     this.$nextTick(function () {
       try {
         const start = this.$moment(this.$refs.calendar.start).week().toString()
@@ -574,11 +581,21 @@ export default {
     }, 120000)
   },
   methods: {
+    getBrowserTimezone () {
+      try {
+        return Intl.DateTimeFormat().resolvedOptions().timeZone || this.$config.defaultTimezone
+      } catch (err) {
+        return this.$config.defaultTimezone
+      }
+    },
     async getEvents () {
       const events = await this.$axios.$get('/api/v1/calendars',
         {
           params: { p: [...(this.selectedPlanningsIds || [])].join(',') },
-          headers: { 'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false' }
+          headers: new AxiosHeaders({
+            'ignore-statistics': this.$route?.query?.['ignore-statistics'] !== undefined ? 'true' : 'false',
+            'x-timezone': this.getBrowserTimezone()
+          })
         })
       this.setEvents(events)
       this.$cookies.set('plannings', this.selectedPlanningsIds.join(','), { maxAge: 2147483646 })
@@ -671,10 +688,17 @@ export default {
       this.value = this.$refs.calendar.timestampToDate(day)
     },
     updateTime () {
-      const timeZone = this.localeUtils.target || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris'
-
       // convert it to defined timezone
-      const tzDate = new Date(new Date().toLocaleString('en-US', { timeZone }))
+      /** @type {Date} */
+      let tzDate
+      try {
+        tzDate = new Date(new Date().toLocaleString('en-US', { timeZone: this.timezone }))
+      } catch (err) {
+        console.error(err)
+        this.timezone = this.$config.defaultTimezone
+        tzDate = new Date(new Date().toLocaleString('en-US', { timeZone: this.timezone }))
+      }
+
       this.dateNow = this.$moment(tzDate).format('YYYY-MM-DD')
 
       if (this.$refs.calendar && tzDate.getHours() >= 7) {
