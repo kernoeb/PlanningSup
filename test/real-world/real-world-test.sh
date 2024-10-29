@@ -71,7 +71,6 @@ fi
 
 echo "URLS working!"
 
-export #DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
 export DEFAULT_PLANNING_FULL_ID="insa-rennes.ma.s5-ma"
 
 function get_calendar() {
@@ -92,6 +91,9 @@ if [ "$i" -ge $max_retries ]; then
 fi
 
 echo "CALENDAR working!"
+
+# Temp
+export DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
 
 function get_calendar_info() {
   curl -s -X GET "${BASE_URL}/calendars/info?p=${DEFAULT_PLANNING_FULL_ID}"
