@@ -71,11 +71,11 @@ fi
 
 echo "URLS working!"
 
-#DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
-DEFAULT_PLANNING_FULL_ID="insa-rennes.ma.s5-ma"
+export #DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
+export DEFAULT_PLANNING_FULL_ID="insa-rennes.ma.s5-ma"
 
 function get_calendar() {
-  curl -s -X GET ${BASE_URL}/calendars?p="$DEFAULT_PLANNING_FULL_ID"
+  curl -s -X GET "${BASE_URL}/calendars?p=${DEFAULT_PLANNING_FULL_ID}"
 }
 
 i=0
@@ -94,7 +94,7 @@ fi
 echo "CALENDAR working!"
 
 function get_calendar_info() {
-  curl -s -X GET ${BASE_URL}/calendars/info?p="$DEFAULT_PLANNING_FULL_ID"
+  curl -s -X GET "${BASE_URL}/calendars/info?p=${DEFAULT_PLANNING_FULL_ID}"
 }
 
 i=0
