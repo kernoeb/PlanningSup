@@ -110,13 +110,13 @@ const cleanName = (name) => {
 /**
  * Get date
  * @param {Date} date
- * @param {{newTZ: string, oldTZ: string}|null} localeUtils
+ * @param {{target: string, browser: string}|null} localeUtils
  * @returns {number}
  */
 const getDate = (date, localeUtils) => {
-  if (!localeUtils || !localeUtils.oldTZ || !localeUtils.newTZ) return date.getTime() // default behavior
+  if (!localeUtils || !localeUtils.target || !localeUtils.browser) return date.getTime() // default behavior
   try {
-    const tmpDate = DateTime.fromJSDate(date, { zone: localeUtils.oldTZ }).setZone(localeUtils.newTZ, { keepLocalTime: true }).toMillis()
+    const tmpDate = DateTime.fromJSDate(date, { zone: localeUtils.target }).setZone(localeUtils.browser, { keepLocalTime: true }).toMillis()
     if (!isNaN(tmpDate)) return tmpDate
     return date.getTime()
   } catch (err) {

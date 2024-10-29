@@ -162,8 +162,12 @@ export default {
   },
   methods: {
     getTime () {
-      const tmp = new Date()
-      return (tmp.getHours() < 10 ? '0' : '') + tmp.getHours() + ':' + (tmp.getMinutes() < 10 ? '0' : '') + tmp.getMinutes() + ':' + (tmp.getSeconds() < 10 ? '0' : '') + tmp.getSeconds()
+      const timeZone = this.$cookies.get('timezone', { parseJSON: true })?.target || Intl.DateTimeFormat().resolvedOptions().timeZone || 'Europe/Paris'
+
+      // convert it to defined timezone
+      const tzDate = new Date(new Date().toLocaleString('en-US', { timeZone }))
+
+      return this.$moment(tzDate).format('HH:mm:ss')
     },
     setConnectedOn () {
       this.connected = true
