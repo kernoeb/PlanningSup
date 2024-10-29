@@ -461,9 +461,11 @@ export default {
         if (tmp) this.timezone = tmp
       } catch (e) {
         this.$cookies.remove('timezone')
+        this.timezone = this.getBrowserTimezone()
       }
+    } else {
+      this.timezone = this.getBrowserTimezone()
     }
-    if (!this.timezone) this.timezone = this.getBrowserTimezone()
 
     try {
       await this.getEvents()
