@@ -45,281 +45,294 @@
         <v-list-item-group
           :value="settings"
           multiple
-          class="pa-2"
           :class="$vuetify.theme.dark ? 'custom_swatch-dark' : 'custom_swatch-light'"
           @change="$emit('change_settings', $event)"
         >
-          <v-subheader>{{ $config.i18n.ui }}</v-subheader>
-          <v-list-item
-            inactive
-            style="cursor:pointer;"
-          >
-            <v-list-item-action>
-              <v-checkbox
-                v-model="checkedTheme"
-                :indeterminate-icon="mdiCheckboxBlankOutline"
-                :off-icon="mdiCheckboxBlankOutline"
-                :on-icon="mdiCheckboxMarked"
-              />
-            </v-list-item-action>
-
-            <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
-              <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
-              <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            inactive
-            style="cursor:pointer;"
-          >
-            <v-list-item-action>
-              <v-checkbox
-                v-model="checkedFullDark"
-                :indeterminate-icon="mdiCheckboxBlankOutline"
-                :off-icon="mdiCheckboxBlankOutline"
-                :on-icon="mdiCheckboxMarked"
-              />
-            </v-list-item-action>
-            <v-list-item-content @click="forceFullMode()">
-              <v-list-item-title>Événements sombres</v-list-item-title>
-              <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            inactive
-            style="cursor:pointer;"
-          >
-            <v-list-item-action>
-              <v-checkbox
-                v-model="checkedMergeDuplicates"
-                :indeterminate-icon="mdiCheckboxBlankOutline"
-                :off-icon="mdiCheckboxBlankOutline"
-                :on-icon="mdiCheckboxMarked"
-              />
-            </v-list-item-action>
-            <v-list-item-content @click="switchMergeDuplicates()">
-              <v-list-item-title>Fusionner les événements identiques</v-list-item-title>
-              <v-list-item-subtitle>Pour les utilisateurs qui doivent sélectionner plusieurs plannings</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-subheader>{{ $config.i18n.colors }}</v-subheader>
-          <v-list-item inactive>
-            <v-list-item-action>
-              <v-swatches
-                v-model="colorTD"
-                :background-color="$vuetify.theme.dark ? '#151515' : '#fff'"
-                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-                show-fallback
-                fallback-input-type="color"
-                @input="setColor('td', $event)"
-              />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>TD</v-list-item-title>
-              <v-list-item-subtitle>{{ $config.i18n.types.td }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item inactive>
-            <v-list-item-action>
-              <v-swatches
-                v-model="colorTP"
-                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-                show-fallback
-                fallback-input-type="color"
-                @input="setColor('tp', $event)"
-              />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>TP</v-list-item-title>
-              <v-list-item-subtitle>{{ $config.i18n.types.tp }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item inactive>
-            <v-list-item-action>
-              <v-swatches
-                v-model="colorAmphi"
-                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-                show-fallback
-                fallback-input-type="color"
-                @input="setColor('amphi', $event)"
-              />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>Amphis</v-list-item-title>
-              <v-list-item-subtitle>{{ $config.i18n.types.amphi }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item inactive>
-            <v-list-item-action>
-              <v-swatches
-                v-model="colorOthers"
-                :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
-                :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
-                show-fallback
-                fallback-input-type="color"
-                @input="setColor('other', $event)"
-              />
-            </v-list-item-action>
-            <v-list-item-content>
-              <v-list-item-title>{{ $config.i18n.others }}</v-list-item-title>
-              <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <div
-            class="pl-4 mb-2"
-            style="font-weight: 300; font-size: 15px;"
-            @click="reset()"
-          >
-            <a class="hover_reset">Réinitialiser</a>
-          </div>
-          <v-divider />
-          <v-subheader>{{ $config.i18n.blocklist }}</v-subheader>
-          <v-list-item inactive>
-            <v-combobox
-              v-model="blocklistSelect"
-              :append-icon="mdiMenuDown"
-              :search-input.sync="blocklistSelectSearch"
-              :items="blocklist"
-              :label="$config.i18n.blocklistDesc"
-              chips
-              multiple
-              class="ban-word"
-              @change="updateBlocklist"
+          <div class="pa-2">
+            <v-subheader>{{ $config.i18n.ui }}</v-subheader>
+            <v-list-item
+              inactive
+              style="cursor:pointer;"
             >
-              <template #selection="{ attrs, item, parent, selected }">
-                <v-chip
-                  v-bind="attrs"
-                  :input-value="selected"
-                  label
-                  small
-                >
-                  <span class="pr-2">
-                    {{ item }}
-                  </span>
-                  <v-btn
-                    icon
-                    x-small
-                    @click="parent.selectItem(item)"
-                  >
-                    <v-icon
-                      small
-                      color="red"
-                    >
-                      {{ mdiClose }}
-                    </v-icon>
-                  </v-btn>
-                </v-chip>
-              </template>
-              <template #item="{ item, on, attrs }">
-                <v-list-item
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <v-list-item-action>
-                    <v-checkbox
-                      :indeterminate-icon="mdiCheckboxBlankOutline"
-                      :input-value="attrs.inputValue"
-                      :off-icon="mdiCheckboxBlankOutline"
-                      :on-icon="mdiCheckboxMarked"
-                    />
-                  </v-list-item-action>
-                  <v-list-item-content>
-                    <v-list-item-title>
-                      {{ item }}
-                    </v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-              </template>
-              <template #append>
-                <v-btn
-                  :disabled="!blocklistSelectSearch || blocklistSelect.includes(blocklistSelectSearch)"
-                  icon
-                  @click="blocklistSelect.push(blocklistSelectSearch); blocklistSelectSearch = ''; updateBlocklist(blocklistSelect)"
-                >
-                  <v-icon>{{ mdiPlus }}</v-icon>
-                </v-btn>
-              </template>
-            </v-combobox>
-          </v-list-item>
-          <v-list-item
-            inactive
-            style="cursor:pointer;"
-            class="mb-2"
-            :disabled="disabledHighlightTeacher"
-          >
-            <v-list-item-action>
-              <v-checkbox
-                v-model="checkedHighlightTeacher"
-                :disabled="disabledHighlightTeacher"
-                :indeterminate-icon="mdiCheckboxBlankOutline"
-                :off-icon="mdiCheckboxBlankOutline"
-                :on-icon="mdiCheckboxMarked"
-              />
-            </v-list-item-action>
-            <v-list-item-content @click="setHighlightTeacher()">
-              <v-list-item-title>Mettre en évidence les événements qui ont un professeur associé</v-list-item-title>
-              <v-list-item-subtitle>Les cours sans professeur associé seront grisés</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="checkedTheme"
+                  :indeterminate-icon="mdiCheckboxBlankOutline"
+                  :off-icon="mdiCheckboxBlankOutline"
+                  :on-icon="mdiCheckboxMarked"
+                />
+              </v-list-item-action>
 
-          <v-divider />
-
-          <v-list-item
-            inactive
-            :ripple="false"
-            class="mb-2"
-          >
-            <v-list-item-content class="pt-0">
-              <lazy-timezone-selector @fetch="delayedFetch" />
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-divider />
-
-          <div>
-            <v-subheader>FAQ / Aide</v-subheader>
-            <lazy-help-info style="width: 98%;" />
+              <v-list-item-content @click="$vuetify.theme.dark = !$vuetify.theme.dark">
+                <v-list-item-title>{{ $config.i18n.lightThemeMsg }}</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.lightThemeDesc }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item
+              inactive
+              style="cursor:pointer;"
+            >
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="checkedFullDark"
+                  :indeterminate-icon="mdiCheckboxBlankOutline"
+                  :off-icon="mdiCheckboxBlankOutline"
+                  :on-icon="mdiCheckboxMarked"
+                />
+              </v-list-item-action>
+              <v-list-item-content @click="forceFullMode()">
+                <v-list-item-title>Événements sombres</v-list-item-title>
+                <v-list-item-subtitle>Encore plus dark (mode forcé)</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item
+              inactive
+              style="cursor:pointer;"
+            >
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="checkedMergeDuplicates"
+                  :indeterminate-icon="mdiCheckboxBlankOutline"
+                  :off-icon="mdiCheckboxBlankOutline"
+                  :on-icon="mdiCheckboxMarked"
+                />
+              </v-list-item-action>
+              <v-list-item-content @click="switchMergeDuplicates()">
+                <v-list-item-title>Fusionner les événements identiques</v-list-item-title>
+                <v-list-item-subtitle>Pour les utilisateurs qui doivent sélectionner plusieurs plannings</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-subheader>{{ $config.i18n.colors }}</v-subheader>
+            <v-list-item inactive>
+              <v-list-item-action>
+                <v-swatches
+                  v-model="colorTD"
+                  :background-color="$vuetify.theme.dark ? '#151515' : '#fff'"
+                  :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                  show-fallback
+                  fallback-input-type="color"
+                  @input="setColor('td', $event)"
+                />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>TD</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.types.td }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item inactive>
+              <v-list-item-action>
+                <v-swatches
+                  v-model="colorTP"
+                  :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                  :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                  show-fallback
+                  fallback-input-type="color"
+                  @input="setColor('tp', $event)"
+                />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>TP</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.types.tp }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item inactive>
+              <v-list-item-action>
+                <v-swatches
+                  v-model="colorAmphi"
+                  :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                  :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                  show-fallback
+                  fallback-input-type="color"
+                  @input="setColor('amphi', $event)"
+                />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>Amphis</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.types.amphi }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item inactive>
+              <v-list-item-action>
+                <v-swatches
+                  v-model="colorOthers"
+                  :background-color="$vuetify.theme.dark ? '#000' : '#fff'"
+                  :trigger-style="{ width: '30px', height: '30px', borderRadius: '5px' }"
+                  show-fallback
+                  fallback-input-type="color"
+                  @input="setColor('other', $event)"
+                />
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ $config.i18n.others }}</v-list-item-title>
+                <v-list-item-subtitle>{{ $config.i18n.types.other }}</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+            <div
+              class="pl-4 mb-2"
+              style="font-weight: 300; font-size: 15px;"
+              @click="reset()"
+            >
+              <a class="hover_reset">Réinitialiser</a>
+            </div>
           </div>
 
-          <br>
-
           <v-divider />
 
-          <v-subheader>{{ $config.i18n.contact }}</v-subheader>
-          <v-list-item inactive>
-            <div class="d-flex flex-column mb-4">
-              <div>
-                <v-icon
-                  class="mr-2 mt-n1"
-                  size="15"
-                >
-                  {{ mdiTwitter }}
-                </v-icon>
-                Twitter : <a
-                  href="https://twitter.com/kernoeb"
-                  target="_blank"
-                >@kernoeb</a>
-              </div>
-              <div>
-                <v-icon
-                  class="mr-2 mt-n1"
-                  size="15"
-                >
-                  {{ mdiMail }}
-                </v-icon>
-                Mail : <a
-                  href="mailto:kernoeb@protonmail.com"
-                  target="_blank"
-                >kernoeb@protonmail.com</a>
+          <div class="pa-2 mt-3">
+            <v-subheader style="height: 20px">
+              {{ $config.i18n.blocklist }}
+            </v-subheader>
+            <v-list-item inactive>
+              <v-combobox
+                v-model="blocklistSelect"
+                :append-icon="mdiMenuDown"
+                :search-input.sync="blocklistSelectSearch"
+                :items="blocklist"
+                :label="$config.i18n.blocklistDesc"
+                chips
+                multiple
+                class="ban-word pt-0"
+                @change="updateBlocklist"
+              >
+                <template #selection="{ attrs, item, parent, selected }">
+                  <v-chip
+                    v-bind="attrs"
+                    :input-value="selected"
+                    label
+                    small
+                  >
+                    <span class="pr-2">
+                      {{ item }}
+                    </span>
+                    <v-btn
+                      icon
+                      x-small
+                      @click="parent.selectItem(item)"
+                    >
+                      <v-icon
+                        small
+                        color="red"
+                      >
+                        {{ mdiClose }}
+                      </v-icon>
+                    </v-btn>
+                  </v-chip>
+                </template>
+                <template #item="{ item, on, attrs }">
+                  <v-list-item
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <v-list-item-action>
+                      <v-checkbox
+                        :indeterminate-icon="mdiCheckboxBlankOutline"
+                        :input-value="attrs.inputValue"
+                        :off-icon="mdiCheckboxBlankOutline"
+                        :on-icon="mdiCheckboxMarked"
+                      />
+                    </v-list-item-action>
+                    <v-list-item-content>
+                      <v-list-item-title>
+                        {{ item }}
+                      </v-list-item-title>
+                    </v-list-item-content>
+                  </v-list-item>
+                </template>
+                <template #append>
+                  <v-btn
+                    :disabled="!blocklistSelectSearch || blocklistSelect.includes(blocklistSelectSearch)"
+                    icon
+                    @click="blocklistSelect.push(blocklistSelectSearch); blocklistSelectSearch = ''; updateBlocklist(blocklistSelect)"
+                  >
+                    <v-icon>{{ mdiPlus }}</v-icon>
+                  </v-btn>
+                </template>
+              </v-combobox>
+            </v-list-item>
+            <v-list-item
+              inactive
+              style="cursor:pointer;"
+              class="mb-2"
+              :disabled="disabledHighlightTeacher"
+            >
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="checkedHighlightTeacher"
+                  :disabled="disabledHighlightTeacher"
+                  :indeterminate-icon="mdiCheckboxBlankOutline"
+                  :off-icon="mdiCheckboxBlankOutline"
+                  :on-icon="mdiCheckboxMarked"
+                />
+              </v-list-item-action>
+              <v-list-item-content @click="setHighlightTeacher()">
+                <v-list-item-title>Mettre en évidence les événements qui ont un professeur associé</v-list-item-title>
+                <v-list-item-subtitle>Les cours sans professeur associé seront grisés</v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </div>
+        </v-list-item-group>
+
+        <v-divider />
+
+        <div>
+          <div class="pa-2 mt-3">
+            <v-subheader style="height: 20px">
+              Utiliser un fuseau horaire personnalisé
+            </v-subheader>
+            <lazy-timezone-selector
+              class="px-4"
+              @fetch="delayedFetch()"
+            />
+          </div>
+
+          <v-divider class="mt-4" />
+
+          <div class="pa-2">
+            <v-subheader>
+              FAQ / Aide
+            </v-subheader>
+            <lazy-help-info />
+          </div>
+
+          <v-divider class="mt-4" />
+
+          <div class="pa-2">
+            <v-subheader>{{ $config.i18n.contact }}</v-subheader>
+            <div class="px-4">
+              <div class="d-flex flex-column">
+                <div>
+                  <v-icon
+                    class="mr-2 mt-n1"
+                    size="15"
+                  >
+                    {{ mdiTwitter }}
+                  </v-icon>
+                  Twitter : <a
+                    href="https://twitter.com/kernoeb"
+                    target="_blank"
+                  >@kernoeb</a>
+                </div>
+                <div>
+                  <v-icon
+                    class="mr-2 mt-n1"
+                    size="15"
+                  >
+                    {{ mdiMail }}
+                  </v-icon>
+                  Mail : <a
+                    href="mailto:kernoeb@protonmail.com"
+                    target="_blank"
+                  >kernoeb@protonmail.com</a>
+                </div>
               </div>
             </div>
-          </v-list-item>
-          <v-list-item inactive>
-            <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev, Louanne M., RidzArt, EDM115</small></div>
-          </v-list-item>
-        </v-list-item-group>
+            <v-card elevation="0">
+              <v-card-text>
+                <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev, Louanne M., RidzArt, EDM115</small></div>
+              </v-card-text>
+            </v-card>
+          </div>
+        </div>
       </v-card>
     </v-dialog>
   </div>

@@ -1,20 +1,15 @@
 <template>
   <div>
-    <v-subheader
-      class="my-3 pl-0"
-      style="height: 20px"
-    >
-      Utiliser un fuseau horaire personnalisé
-    </v-subheader>
     <v-autocomplete
       v-model="targetTz"
       :items="timezones"
       item-text="label"
       item-value="value"
-      label="Chercher un fuseau horaire"
+      placeholder="Chercher un fuseau horaire"
       clearable
       :clear-icon="mdiClose"
       hide-details
+      class="pt-0"
     />
     <div
       v-if="infos"
