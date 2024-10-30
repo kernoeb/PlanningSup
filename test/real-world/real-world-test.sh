@@ -2,6 +2,9 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+# Default planning
+export DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
+
 # Build the first image in the background for speed
 pids=( )
 (cd "$SCRIPT_DIR" && docker build -t test-playwright .) & pids+=($!)
@@ -71,8 +74,6 @@ fi
 
 echo "URLS working!"
 
-export DEFAULT_PLANNING_FULL_ID="insa-rennes.ma.s5-ma"
-
 function get_calendar() {
   curl -s -X GET "${BASE_URL}/calendars?p=${DEFAULT_PLANNING_FULL_ID}"
 }
@@ -91,9 +92,6 @@ if [ "$i" -ge $max_retries ]; then
 fi
 
 echo "CALENDAR working!"
-
-# Temp
-export DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
 
 function get_calendar_info() {
   curl -s -X GET "${BASE_URL}/calendars/info?p=${DEFAULT_PLANNING_FULL_ID}"
