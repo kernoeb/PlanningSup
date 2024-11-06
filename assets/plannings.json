@@ -12568,6 +12568,108 @@
             ]
           }
         ]
+      },
+      {
+        "id": "gma",
+        "title": "GMA",
+        "edts": [{
+          "id": "s5-gma",
+          "title": "S5 GMA",
+          "edts": [
+            {
+              "id": "s5-gma-a",
+              "title": "S5 GMA A",
+              "edts":[{
+                "id": "s5-gma-a1",
+                "title": "S5 GMA A1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=316&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s5-gma-a2",
+                "title": "S5 GMA A2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=981&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }]
+            },
+            {
+              "id": "s5-gma-b",
+              "title": "S5 GMA B",
+              "edts":[{
+                "id": "s5-gma-b1",
+                "title": "S5 GMA B1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1096&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s5-gma-b2",
+                "title": "S5 GMA B2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1097&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }]
+            },
+            {
+              "id": "s5-gma-c",
+              "title": "S5 GMA C",
+              "edts":[{
+                "id": "s5-gma-c1",
+                "title": "S5 GMA C1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s5-gma-c2",
+                "title": "S5 GMA C2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }]
+            },
+            {
+              "id": "s5-gma-projet-langues",
+              "title": "S5 GMA Projet Langues",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=111&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "s6-gma",
+          "title": "S6 GMA",
+          "edts": [
+            {
+              "id": "s6-gma-a",
+              "title": "S6 GMA A",
+              "edts":[{
+                "id": "s6-gma-a1",
+                "title": "S6 GMA A1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1278&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s6-gma-a2",
+                "title": "S6 GMA A2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1279&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }]
+            },
+            {
+              "id": "s6-gma-b",
+              "title": "S6 GMA B",
+              "edts":[{
+                "id": "s6-gma-b1",
+                "title": "S6 GMA B1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1281&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s6-gma-b2",
+                "title": "S6 GMA B2",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1282&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              }]
+            },
+            {
+              "id": "s6-gma-c",
+              "title": "S6 GMA C",
+              "edts":[{
+                "id": "s6-gma-c1",
+                "title": "S6 GMA C1",
+                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              },
+              {
+                "id": "s6-gma-c2",
+                "
+        }
+      ]
       }
     ]
   },
