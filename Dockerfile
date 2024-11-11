@@ -1,5 +1,5 @@
 # Node base image
-FROM node:20.18.0-alpine3.20 AS node-base
+FROM node:22.11.0-alpine3.20 AS node-base
 LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
 
 FROM node-base AS build-tools
