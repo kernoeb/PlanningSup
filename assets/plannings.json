@@ -1742,7 +1742,7 @@
                   {
                     "id": "tp2",
                     "title": "TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4527&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8954&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -1758,7 +1758,7 @@
                   {
                     "id": "tp2",
                     "title": "TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4096&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8955&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
