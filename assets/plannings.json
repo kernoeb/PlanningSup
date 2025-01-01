@@ -4899,13 +4899,23 @@
                 "edts": [
                   {
                     "id": "g1",
-                    "title": "Groupe 1",
+                    "title": "Groupe TP1",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "g2",
-                    "title": "Groupe 2",
+                    "title": "Groupe TP2",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g3",
+                    "title": "Groupe TP3",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5502&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  },
+                  {
+                    "id": "g4",
+                    "title": "Groupe TP4",
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5340&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               }
