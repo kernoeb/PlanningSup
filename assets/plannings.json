@@ -9401,6 +9401,28 @@
                     ]
                   },
                   {
+                    "id": "mineuregui",
+                    "title": "Mineure GUI",
+                    "edts": [
+                      {
+                        "id": "mineureguialt",
+                        "title": "Mineure GUI Alt",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13923&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "mineureia",
+                    "title": "Mineure IA",
+                    "edts": [
+                      {
+                        "id": "mineureiaalt",
+                        "title": "Mineure IA Alt",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13949&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
                     "id": "mineureiatr",
                     "title": "Mineure IATR",
                     "edts": [
@@ -9412,6 +9434,28 @@
                     ]
                   },
                   {
+                    "id": "mineureplc",
+                    "title": "Mineure PLC",
+                    "edts": [
+                      {
+                        "id": "mineureplcalt",
+                        "title": "Mineure PLC Alt",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13975&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "mineurersf",
+                    "title": "Mineure RSF",
+                    "edts": [
+                      {
+                        "id": "mineurersf",
+                        "title": "Mineure RSF",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14771&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
                     "id": "mineuresct",
                     "title": "Mineure SCT",
                     "edts": [
@@ -9419,6 +9463,17 @@
                         "id": "mineuresct",
                         "title": "mineure SCT",
                         "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4344&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "mineuresea",
+                    "title": "Mineure SEA",
+                    "edts": [
+                      {
+                        "id": "mineureseaalt",
+                        "title": "Mineure SEA Alt",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13984&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
