@@ -17078,5 +17078,28 @@
         ]
       }
     ]
+  },
+  {
+    "id": "isel",
+    "title": "ISEL",
+    "edts": [
+      {
+        "id": "imp",
+        "title": "IMP",
+        "edts": [
+          {
+            "id": "4a",
+            "title": "4A",
+            "edts": [
+              {
+                "id": "a",
+                "title": "Groupe A",
+                "url": "https://cfai-eure.net/netypareo/index.php/planning/ical/EED01406-848F-464E-9DCC-ECD830E16294/"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
