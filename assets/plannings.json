@@ -9505,26 +9505,102 @@
                     "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4479&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
-                    "id": "mineureacf",
-                    "title": "Mineure ACF",
-                    "edts": [
+                    "id":"opppar",
+                    "title":"OP PPAR",
+                    "edts":
+                    [
                       {
-                        "id": "mineureacfcla1",
-                        "title": "Mineure ACF Cla 1",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineureacf",
-                        "title": "mineure ACF",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                      },
-                      {
-                        "id": "mineureacfcla2",
-                        "title": "mineure ACF Cla 2",
-                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                        "id":"opppar",
+                        "title":
+                        "OP PPAR",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19173&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
+                  {
+                    "id":"oppa",
+                    "title":"OP PA",
+                    "edts":
+                    [
+                      {
+                        "id":"oppa",
+                        "title":"OP PA",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19166&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"opbif",
+                    "title":"OP BIF",
+                    "edts":
+                    [
+                      {
+                        "id":"opbif",
+                        "title":"OP BIF",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19096&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"mineuregui",
+                    "title":"Mineure GUI",
+                    "edts":
+                    [
+                      {
+                        "id":"mineuregui",
+                        "title":"Mineure GUI",
+                        "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14044&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"mineureia",
+                    "title":"Mineure IA",
+                    "edts":
+                    [
+                      {
+                        "id":"mineureia",
+                        "title":"Mineure IA",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14127&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"mineureplc",
+                    "title":"Mineure PLC",
+                    "edts":
+                    [
+                      {
+                        "id":"mineureplc",
+                        "title":"Mineure PLC",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14131&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"mineurersf",
+                    "title":"Mineure RSF",
+                    "edts":
+                    [
+                      {
+                        "id":"mineurersf",
+                        "title":"Mineure RSF",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14643&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id":"mineuresea",
+                    "title":"Mineure SEA",
+                    "edts":
+                    [
+                      {
+                        "id":"mineuresea",
+                        "title":"Mineure SEA",
+                        "url":"https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14679&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },                 
                   {
                     "id": "mineureiatr",
                     "title": "Mineure IATR",
@@ -9560,6 +9636,48 @@
                         "id": "mineurewecla2",
                         "title": "Mineure WE Cla 2",
                         "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4716&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "mineureacf",
+                    "title": "Mineure ACF",
+                    "edts": [
+                      {
+                        "id": "mineureacfcla1",
+                        "title": "Mineure ACF Cla 1",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineureacf",
+                        "title": "mineure ACF",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineureacfcla2",
+                        "title": "mineure ACF Cla 2",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "mineureacf",
+                    "title": "Mineure ACF",
+                    "edts": [
+                      {
+                        "id": "mineureacfcla1",
+                        "title": "Mineure ACF Cla 1",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineureacf",
+                        "title": "mineure ACF",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4346&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      },
+                      {
+                        "id": "mineureacfcla2",
+                        "title": "mineure ACF Cla 2",
+                        "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                       }
                     ]
                   },
