@@ -3,6 +3,6 @@ services:
     image: mongo:7.0
     restart: always
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - '.mongo-planning:/data/db'

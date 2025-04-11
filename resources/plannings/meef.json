@@ -1,0 +1,90 @@
+{
+  "title": "MEEF",
+  "edts": [
+    {
+      "id": "bme-meef",
+      "title": "BME - MEEF",
+      "edts": [
+        {
+          "id": "bme-meef1",
+          "title": "BME - MEEF1",
+          "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1189&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "bme-meef2",
+          "title": "BME - MEEF2",
+          "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6231&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        }
+      ]
+    },
+    {
+      "id": "plp-meef",
+      "title": "PLP - MEEF",
+      "edts": [
+        {
+          "id": "td1",
+          "title": "TD 1",
+          "edts": [
+            {
+              "id": "biotech",
+              "title": "BIOTECH",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2156&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "mspc",
+              "title": "MSPC",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2134&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "sti",
+              "title": "STI",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2152&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "td2",
+          "title": "TD 2",
+          "edts": [
+            {
+              "id": "artsapp",
+              "title": "ARTS APP",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2396&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "eco-gestion",
+              "title": "ECO-GESTION",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2251&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "lettres-hg",
+              "title": "LETTRES - HG",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2280&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "lettres-langues",
+              "title": "LETTRES - LANGUES",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2328&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2ime-meef",
+      "title": "S2IME - MEEF",
+      "edts": [
+        {
+          "id": "s2ime-meef1",
+          "title": "S2IME - MEEF 1",
+          "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=442&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "s2ime-meef2",
+          "title": "S2IME - MEEF 2",
+          "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1285&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        }
+      ]
+    }
+  ]
+}
