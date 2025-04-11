@@ -1,17 +1,17 @@
 services:
   web:
-    #build: .
+    #    build: .
     image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     stdin_open: true
     tty: true
     ports:
-      - "31021:3000"
+      - '31021:3000'
     networks:
       - planning
     volumes:
-      - "/etc/timezone:/etc/timezone:ro"
-      - "/etc/localtime:/etc/localtime:ro"
+      - '/etc/timezone:/etc/timezone:ro'
+      - '/etc/localtime:/etc/localtime:ro'
     depends_on:
       - mongodb
     env_file:
@@ -20,6 +20,7 @@ services:
       - MONGODB_URL=mongodb:27017
   mongodb:
     image: mongo:7.0
+    platform: linux/arm64
     restart: always
     volumes:
       - '/opt/planning_v2:/data/db'

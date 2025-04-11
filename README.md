@@ -36,12 +36,11 @@
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
-
 ## Ajouter une spécialité ou une université
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `assets/plannings.json` :)
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `.json` de votre université dans `./resources/plannings` :)
 
-> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.  
+> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.
 
 ## Comment ça marche ?
 
@@ -50,7 +49,7 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockeris
 #### APIs :
 
 - `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : `./assets/plannings.json`, mais sans les URLs
+- `/api/urls` (en cache côté serveur) : liste des plannings disponibles
 
 Chaque planning est sauvegardé dans une base de données `MongoDB`, à un intervalle régulier. En cas de lenteur ou de coupure serveur (côté université), le dernier planning enregistré est alors utilisé.
 
@@ -65,7 +64,7 @@ Chaque planning est sauvegardé dans une base de données `MongoDB`, à un inter
 
 ### Docker
 
-Créez un fichier `.env` avec les variables suivantes :  
+Créez un fichier `.env` avec les variables suivantes :
 
 > Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et **unique**.
 
@@ -90,7 +89,7 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 ### Commandes utiles
 
-Lancement en local : 
+Lancement en local :
 
 - Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
 - `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)

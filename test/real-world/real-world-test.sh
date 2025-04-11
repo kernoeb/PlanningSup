@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Default planning
-export DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
+export DEFAULT_PLANNING_FULL_ID="iut-de-vannes.butdutinfo.1ereannee.gr1a.gr1a1"
 
 # Build the first image in the background for speed
 pids=( )
@@ -23,10 +23,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 fi
 
-# If arg, replace "build: ." with image: $1 in docker-compose-test.yml
+# If arg, replace build with image: $1 in docker-compose-test.yml
 if [ $# -eq 1 ]; then
-  echo "Replacing \"build: .\" with \"image: $1\" in docker-compose-test.yml"
-  $SED_CMD -i "s/build: \./image: $1/g" docker-compose-test.yml || exit 1
+  echo "Replacing build with \"image: $1\" in docker-compose-test.yml"
+  $SED_CMD -i "s|build: apps/web-app|image: $1|g" docker-compose-test.yml || exit 1
   docker compose -f docker-compose-test.yml up -d || exit 1
 else
   docker compose -f docker-compose-test.yml up -d --build || exit 1

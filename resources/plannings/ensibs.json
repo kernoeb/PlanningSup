@@ -1,0 +1,698 @@
+{
+  "title": "ENSIBS",
+  "edts": [
+    {
+      "id": "cyberdefense",
+      "title": "CyberDéfense",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=85&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=334&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp3",
+                  "title": "TP3",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3733&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp4",
+                  "title": "TP4",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3851&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp5",
+                  "title": "TP5",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7198&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp6",
+                  "title": "TP6",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7200&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4770&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4838&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp3",
+                  "title": "TP3",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5256&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp4",
+                  "title": "TP4",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4473&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp5",
+                  "title": "TP5",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7204&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp6",
+                  "title": "TP6",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7203&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2860&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4517&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp3",
+                  "title": "TP3",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4938&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp4",
+                  "title": "TP4",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4948&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp5",
+                  "title": "TP5",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6024&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp6",
+                  "title": "TP6",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6052&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4866&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4848&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp3",
+                  "title": "TP3",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4820&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp4",
+                  "title": "TP4",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4821&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp5",
+                  "title": "TP5",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6102&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp6",
+                  "title": "TP6",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6125&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5emeannee",
+          "title": "5ème année",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4965&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4958&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp3",
+              "title": "TP3",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2422&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp4",
+              "title": "TP4",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2424&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp5",
+              "title": "TP5",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4983&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp6",
+              "title": "TP6",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4989&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cyberlog",
+      "title": "CyberLog",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=701&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5132&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5145&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1771&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1773&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=645&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6371&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5emeannee",
+          "title": "5ème année",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=887&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2764&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cyberdata",
+      "title": "CyberData",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4426&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8954&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5258&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8955&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=154&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4176&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2187&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2239&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5emeannee",
+          "title": "5ème année",
+          "edts": [
+            {
+              "id": "semestre9s9",
+              "title": "Semestre 9 (S9)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6371&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genieindustriel",
+      "title": "Génie Industriel",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5819&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=141&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2835&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7205&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1120&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1578&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1938&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1203&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5emeannee",
+          "title": "5ème année",
+          "edts": [
+            {
+              "id": "m2oppi",
+              "title": "M2OPPI",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp1contratpro",
+              "title": "TP1 (Contrat Pro)",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=155&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2 (Parcours GI)",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1047&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geniecivil",
+      "title": "Génie Civil",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4579&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5027&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5105&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2570&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2635&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2698&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mecatronique",
+      "title": "Mécatronique",
+      "edts": [
+        {
+          "id": "3emeannee",
+          "title": "3ème année",
+          "edts": [
+            {
+              "id": "semestre5s5",
+              "title": "Semestre 5 (S5)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2060&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre6s6",
+              "title": "Semestre 6 (S6)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2863&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4300&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4emeannee",
+          "title": "4ème année",
+          "edts": [
+            {
+              "id": "semestre7s7",
+              "title": "Semestre 7 (S7)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1139&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2043&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "semestre8s8",
+              "title": "Semestre 8 (S8)",
+              "edts": [
+                {
+                  "id": "tp1",
+                  "title": "TP1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2866&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "tp2",
+                  "title": "TP2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2046&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5emeannee",
+          "title": "5ème année",
+          "edts": [
+            {
+              "id": "cpro",
+              "title": "CPro",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5069&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "i-mars",
+              "title": "I-MARS",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6280&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "mmgm",
+              "title": "MMGM",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2459&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7819&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6233&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

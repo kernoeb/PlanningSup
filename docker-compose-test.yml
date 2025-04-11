@@ -1,11 +1,11 @@
 services:
   web:
-    build: .
+    build: apps/web-app
     restart: always
     stdin_open: true
     tty: true
     ports:
-      - "31022:3000"
+      - '31022:3000'
     networks:
       - planning
     depends_on:

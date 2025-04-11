@@ -18,14 +18,16 @@ RUN chown -R node:node /home/node/build
 USER node
 
 # Only copy the files we need for the moment
-COPY --chown=node:node package.json package-lock.json ./
+COPY --chown=node:node apps/web-app/package.json apps/web-app/package-lock.json ./
 RUN npm ci
 
 # Copy all files
-COPY --chown=node:node . ./
+COPY --chown=node:node apps/web-app ./
 
 # Check JSON is valid
-RUN node ./scripts/check-plannings-json.mjs && rm -rf ./scripts
+COPY ./scripts ./scripts
+COPY resources/plannings ./resources/plannings
+RUN node ./scripts/check-plannings-json.js
 
 # Nuxt.js build
 RUN npm run build
@@ -51,10 +53,11 @@ RUN rm -rf /usr/local/lib/node_modules/npm/ /usr/local/bin/npm /opt/yarn-*
 USER node
 WORKDIR /app
 
-COPY --chown=node:node . ./
+COPY --chown=node:node apps/web-app ./
 COPY --chown=node:node --from=builder /home/node/build/node_modules ./node_modules
 COPY --chown=node:node --from=builder /home/node/build/.nuxt ./.nuxt
 COPY --chown=node:node --from=builder /home/node/build/static/ ./static/
+COPY --chown=node:node resources/plannings ./resources/plannings
 
 # The planning never falls, but you never know
 HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
