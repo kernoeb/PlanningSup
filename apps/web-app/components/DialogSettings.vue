@@ -421,7 +421,8 @@ export default {
     },
     disabledHighlightTeacher () {
       if (this.selectedPlanningsIds && this.selectedPlanningsIds.length) {
-        return !this.selectedPlanningsIds.every(id => id.startsWith('iut-de-nantes.info.') || id.startsWith('iut-de-vannes.butdutinfo.')) // special case for iut-de-nantes.info and iut-de-vannes.butdutinfo
+        const allowedPrefixes = ['iut-de-nantes.info.', 'iut-de-vannes.butdutinfo.'];
+        return !this.selectedPlanningsIds.every(id => allowedPrefixes.some(prefix => id.startsWith(prefix))); // Validate against allowed prefixes
       }
       return true
     }
