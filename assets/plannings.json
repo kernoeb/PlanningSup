@@ -11407,7 +11407,7 @@
                   {
                     "id": "s9-gpm-a3",
                     "title": "GR A3",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1346&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=134&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "s9-gpm-a4",
@@ -12212,7 +12212,7 @@
                   {
                     "id": "s6-gcu-c9",
                     "title": "GRP C.9",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2574&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2754&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
               },
@@ -13074,7 +13074,7 @@
             {
               "id": "s8-gma-projet-langues",
               "title": "S8 GMA Projet Langues",
-              "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=149&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=153&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
