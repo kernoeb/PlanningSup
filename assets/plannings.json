@@ -4862,64 +4862,6 @@
                 ]
               }
             ]
-          },
-          {
-            "id": "l1pei",
-            "title": "L1 PEI",
-            "edts": [
-              {
-                "id": "l1peisemestre1",
-                "title": "Semestre 1",
-                "edts": [
-                  {
-                    "id": "g1",
-                    "title": "Groupe TP1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=959&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g2",
-                    "title": "Groupe TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4039&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g3",
-                    "title": "Groupe TP3",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=333&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g4",
-                    "title": "Groupe TP4",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1051&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "l1peisemestre2",
-                "title": "Semestre 2",
-                "edts": [
-                  {
-                    "id": "g1",
-                    "title": "Groupe TP1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g2",
-                    "title": "Groupe TP2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6619&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g3",
-                    "title": "Groupe TP3",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5502&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "g4",
-                    "title": "Groupe TP4",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5340&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              }
-            ]
           }
         ]
       },
@@ -5083,11 +5025,6 @@
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2045&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   }
                 ]
-              },
-              {
-                "id": "l2peisemestre4",
-                "title": "L2 PEI semestre 4",
-                "edts": []
               }
             ]
           }
