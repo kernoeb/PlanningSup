@@ -25,8 +25,8 @@ fi
 
 # If arg, replace build with image: $1 in docker-compose-test.yml
 if [ $# -eq 1 ]; then
-  echo "Replacing build with \"image: $1\" in docker-compose-test.yml"
-  $SED_CMD -i "s|build: .|image: $1|g" docker-compose-test.yml || exit 1
+  echo "Replacing \"build: .\" with \"image: $1\" in docker-compose-test.yml"
+  $SED_CMD -i "s/build: \./image: $1/g" docker-compose-test.yml || exit 1
   docker compose -f docker-compose-test.yml up -d || exit 1
 else
   docker compose -f docker-compose-test.yml up -d --build || exit 1
