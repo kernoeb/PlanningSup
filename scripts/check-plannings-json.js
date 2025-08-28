@@ -125,7 +125,7 @@ for (const file of allJson) {
         const { data } = await axios.get(url, {
           timeout,
           headers: {
-            'Accept-Language': 'en-US,en;', // "The project is invalid"
+            'Accept-Language': 'en-US,en', // "The project is invalid"
           },
         })
         return { success: true, data }

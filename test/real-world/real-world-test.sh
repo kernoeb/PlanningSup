@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 fi
 
-# If arg, replace build with image: $1 in docker-compose-test.yml
+# If arg, replace "build: ." with "image: $1" in docker-compose-test.yml
 if [ $# -eq 1 ]; then
   echo "Replacing \"build: .\" with \"image: $1\" in docker-compose-test.yml"
   $SED_CMD -i "s/build: \./image: $1/g" docker-compose-test.yml || exit 1
