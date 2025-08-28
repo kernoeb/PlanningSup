@@ -115,6 +115,6 @@ module.exports = {
 
     if (tmp) logger.info('Migration done')
 
-    logger.success('Number of plannings : ' + (await Planning.count()))
+    logger.success('Number of plannings : ' + (await Planning.countDocuments()))
   }
 }
