@@ -11603,7 +11603,7 @@
                   {
                     "id": "s5-eii-gra-1",
                     "title": "GR A.1",
-                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1466&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-start}"
+                    "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1466&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                   },
                   {
                     "id": "s5-eii-gra-2",
