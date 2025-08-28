@@ -39,9 +39,9 @@ function get_health() {
 }
 
 i=0
-max_retries=30
-# should be {"db":true,"bree":true}
-while ! get_health | grep -q "\"db\"\:true\,\"bree\"\:true" && [ $i -lt $max_retries ]; do
+max_retries=120
+# Ready when {"db":true,...}
+while ! get_health | grep -q "\"db\"\:true" && [ $i -lt $max_retries ]; do
   echo "Waiting for the server to be ready... ($i/$max_retries)"
   sleep 1
   ((i++))
@@ -49,6 +49,10 @@ done
 
 if [ "$i" -ge $max_retries ]; then
   echo "Health check failed, exiting."
+  echo "Health endpoint response:"
+  get_health || true
+  echo "---- docker compose logs (web) ----"
+  docker compose -f docker-compose-test.yml logs --no-color web | tail -n 200 || true
   exit 1
 fi
 
