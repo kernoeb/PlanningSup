@@ -4862,11 +4862,6 @@
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2010&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
-                    "id": "pregroupe",
-                    "title": "prégroupe",
-                    "edts": []
-                    },
-                    {
                     "id": "xxbp4-aenlever",
                     "title": "xx BP4 - a enlever",
                     "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4077&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
