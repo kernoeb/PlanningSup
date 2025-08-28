@@ -86,7 +86,7 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 ### Nécessaire
 
-- [Node.js](https://github.com/nodejs/node) 20.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- [Node.js](https://github.com/nodejs/node) 22.X : Installation via [nvm](https://github.com/nvm-sh/nvm) ou [fnm](https://github.com/Schniz/fnm)
 
 ### Commandes utiles
 
