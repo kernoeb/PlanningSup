@@ -83,7 +83,7 @@ COPY --chown=node:node --from=builder /home/node/build/apps/web-app/static ./app
 
 # The planning never falls, but you never know
 HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
-  CMD ["curl", "-H", "ignore-statistics: true", "http://localhost:3000"]
+  CMD ["curl", "-H", "ignore-statistics: true", "http://localhost:3000/api/v1/health"]
 
 ENV NODE_ENV=production
 ENV NODE_OPTIONS="--max-old-space-size=2048"

@@ -2,7 +2,7 @@ const path = require('node:path');
 const fs = require('node:fs');
 const assert = require('node:assert');
 
-let planningsDir = process.env.PLANNINGS_DIR || path.join(process.cwd(), 'resources/plannings')
+let planningsDir = process.env.PLANNINGS_DIR || path.join(__dirname, '../../../../resources/plannings') // TODO do this better
 if (!fs.existsSync(planningsDir)) throw new Error(`The plannings directory does not exist: ${planningsDir}`)
 
 const allPlanningFiles = fs.readdirSync(planningsDir).filter(file => file.endsWith('.json'))
@@ -77,7 +77,8 @@ structuredClone(allPlannings).forEach((univ) => {
 })
 
 const allCalendarIds = allPlanningFiles.map((file) => file.replace('.json', ''))
-console.log(allCalendarIds)
+
+assert(Object.keys(planningsPerFullId).length > 0, 'No planning found in planningsPerFullId')
 
 module.exports = {
   idSeparator,

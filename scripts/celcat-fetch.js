@@ -48,7 +48,8 @@ const TODAY = new Date()
 
 for (const g of EDTS.edts) {
   for (const e of g.edts) {
-    const { data } = await fetchWithTimeout(e.url)
+    const { body } = await fetchWithTimeout(e.url)
+    const data = body.text()
     const comp = new icalJs.Component(icalJs.parse(data))
     const vEvents = comp.getAllSubcomponents('vevent')
     const events = vEvents.map(v => new icalJs.Event(v))
