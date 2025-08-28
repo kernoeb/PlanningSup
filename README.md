@@ -20,12 +20,12 @@
   </a>
 </p>
 
-![img.png](img/planning_mac.png)
+![img.png](resources/images/planning_mac.png)
 
 ## Fonctionnalités
 
 - **Hors connexion** / installation en mode **PWA**
-- Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.) et choix des couleurs
+- Couleurs par catégorie _ou_ par UE (Amphi, TD, TP, etc.) et choix des couleurs
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie ou paramètre)
@@ -55,9 +55,9 @@ Chaque planning est sauvegardé dans une base de données `MongoDB`, à un inter
 
 ## Captures (mobile)
 
-<img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
+<img src="resources/images/phone1.png" height="300" /><img src="resources/images/phone4.png" height="300"/>
 <br>
-<img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
+<img src="resources/images/phone2.png" height="300" /><img src="resources/images/phone3.png" height="300"/>
 <br>
 
 ## Installation
@@ -77,6 +77,7 @@ TZ=Europe/Paris
 Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les conteneurs.
 
 Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
+
 ```
 */30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d --remove-orphans
 ```
