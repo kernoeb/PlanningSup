@@ -1,0 +1,6 @@
+{
+  "concurrency": 30,
+  "packageManager": "npm",
+  "root": true,
+  "workspaces": true
+}

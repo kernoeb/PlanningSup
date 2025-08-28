@@ -11,6 +11,9 @@
     "planning",
     "university"
   ],
+  "workspaces": [
+    "apps/*"
+  ],
   "engines": {
     "node": ">=20"
   },
@@ -21,13 +24,29 @@
     "real-world-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.10.1",
+    "@antfu/eslint-config": "^5",
     "ajv": "^8.17.1",
-    "axios": "^1.8.3",
-    "eslint": "^9.22.0",
-    "ical.js": "^2.1.0",
-    "jsdom": "^26.0.0",
-    "mocha": "^11.1.0",
-    "supertest": "^7.0.0"
+    "axios": "^1.11.0",
+    "eslint": "^9.34.0",
+    "ical.js": "^2.2.1",
+    "jsdom": "^26.1.0",
+    "mocha": "^11.7.1",
+    "supertest": "^7.1.4"
+  },
+  "overrides": {
+    "@nuxtjs/axios": {
+      "axios": "$axios",
+      "axios-retry": "$axios-retry"
+    },
+    "eslint-config-vuetify": {
+      "@release-it/conventional-changelog": {
+        "release-it": {
+          "shelljs": "0.8.5"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "axios-retry": "^4.5.0"
   }
 }
