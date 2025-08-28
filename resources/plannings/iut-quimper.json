@@ -16,12 +16,12 @@
                 {
                   "id": "g101",
                   "title": "G1.01",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3350&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3350&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g102",
                   "title": "G1.02",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3346&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g103",
@@ -30,24 +30,24 @@
                     {
                       "id": "g103a",
                       "title": "G1.03A",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=782&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=782&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g103b",
                       "title": "G1.03B",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3343&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3343&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
                 {
                   "id": "g104",
                   "title": "G1.04",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3340&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3340&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g105",
                   "title": "G1.05",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3337&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3337&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -58,7 +58,7 @@
                 {
                   "id": "g106",
                   "title": "G1.06",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3334&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3334&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g107",
@@ -67,24 +67,24 @@
                     {
                       "id": "g107a",
                       "title": "G1.07a",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3331&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3331&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g107b",
                       "title": "G1.07b",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3325&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3325&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
                 {
                   "id": "g108",
                   "title": "G1.08",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3328&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3328&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g109",
                   "title": "G1.09",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2629&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -101,22 +101,22 @@
                 {
                   "id": "g201",
                   "title": "G2.01",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3303&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3303&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g202",
                   "title": "G2.02",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3300&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3300&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g203",
                   "title": "G2.03",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3295&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3295&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g204",
                   "title": "G2.04",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3292&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3292&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -127,17 +127,17 @@
                 {
                   "id": "g205",
                   "title": "G2.05",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6513&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6513&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g206",
                   "title": "G2.06",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3318&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3318&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g207alt",
                   "title": "G2.07Alt",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7133&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7133&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -154,22 +154,22 @@
                 {
                   "id": "g301",
                   "title": "G3.01",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=213&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=213&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g302",
                   "title": "G3.02",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=212&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=212&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g303alt",
                   "title": "G3.03 Alt",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=220&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=220&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g304acp",
                   "title": "G3.04 ACP",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=196&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=196&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -180,12 +180,12 @@
                 {
                   "id": "g305prod",
                   "title": "G3.05 (Prod)",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=296&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=296&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "g306innov",
                   "title": "G3.06 (Innov)",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=327&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=327&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -208,12 +208,12 @@
                 {
                   "id": "c1-a",
                   "title": "C1-A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10790&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10790&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "c1-b",
                   "title": "C1-B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10791&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10791&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -224,12 +224,12 @@
                 {
                   "id": "c2-a",
                   "title": "C2-A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11148&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11148&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "c2-b",
                   "title": "C2-B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11147&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11147&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -240,12 +240,12 @@
                 {
                   "id": "c3-a",
                   "title": "C3-A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10796&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10796&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "c3-b",
                   "title": "C3-B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10794&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10794&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -256,12 +256,12 @@
                 {
                   "id": "c4-a",
                   "title": "C4-A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11144&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11144&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "c4-b",
                   "title": "C4-B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11145&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11145&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -278,12 +278,12 @@
                 {
                   "id": "d1a",
                   "title": "D1 A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10001&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10001&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "d1b",
                   "title": "D1 B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2450&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2450&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -294,12 +294,12 @@
                 {
                   "id": "d2a",
                   "title": "D2 A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=241&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=241&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "d2b",
                   "title": "D2 B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=191&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -310,12 +310,12 @@
                 {
                   "id": "d3-gema",
                   "title": "D3-GEMA",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1072&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1072&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "d3-gprh",
                   "title": "D3-GPRH",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11595&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -326,12 +326,12 @@
                 {
                   "id": "d4a",
                   "title": "D4 A",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11599&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11599&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "d4b",
                   "title": "D4 B",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2451&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2451&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -348,7 +348,7 @@
                 {
                   "id": "gc2f",
                   "title": "GC2F",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2586&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2586&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -359,12 +359,12 @@
                 {
                   "id": "gema",
                   "title": "GEMA",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2620&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "gprh",
                   "title": "GPRH",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2633&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2633&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -473,12 +473,12 @@
                 {
                   "id": "a1",
                   "title": "A1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3279&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3279&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "a2",
                   "title": "A2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3278&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3278&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -489,12 +489,12 @@
                 {
                   "id": "b1",
                   "title": "B1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3276&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3276&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "b2",
                   "title": "B2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3275&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3275&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -505,12 +505,12 @@
                 {
                   "id": "c1",
                   "title": "C1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3273&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3273&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "c2",
                   "title": "C2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3272&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3272&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -527,7 +527,7 @@
                 {
                   "id": "d",
                   "title": "D",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2197&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2197&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -538,14 +538,14 @@
                 {
                   "id": "e",
                   "title": "E",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2209&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2209&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
             {
               "id": "f",
               "title": "F",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2083&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2083&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tp",
@@ -554,17 +554,17 @@
                 {
                   "id": "tp1",
                   "title": "TP1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2115&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2115&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "tp2",
                   "title": "TP2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2143&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2143&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "tp3",
                   "title": "TP3",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2162&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2162&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -585,12 +585,12 @@
                     {
                       "id": "g1",
                       "title": "G1",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1823&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1823&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g2",
                       "title": "G2",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1822&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1822&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -601,12 +601,12 @@
                     {
                       "id": "h1",
                       "title": "H1",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2179&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2179&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "h2",
                       "title": "H2",
-                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2191&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -631,12 +631,12 @@
                 {
                   "id": "1a1",
                   "title": "1A1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3744&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3744&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1a2",
                   "title": "1A2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3940&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3940&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -647,12 +647,12 @@
                 {
                   "id": "1b1",
                   "title": "1B1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3753&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3753&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1b2",
                   "title": "1B2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3941&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3941&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -663,12 +663,12 @@
                 {
                   "id": "1c1",
                   "title": "1C1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3757&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3757&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1c2",
                   "title": "1C2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3942&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3942&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -679,12 +679,12 @@
                 {
                   "id": "1d1",
                   "title": "1D1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3761&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3761&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1d2",
                   "title": "1D2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3944&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3944&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -695,12 +695,12 @@
                 {
                   "id": "1e1",
                   "title": "1E1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3762&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3762&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1e2",
                   "title": "1E2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3947&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3947&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -717,12 +717,12 @@
                 {
                   "id": "2a1",
                   "title": "2A1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3792&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3792&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2a2",
                   "title": "2A2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6070&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6070&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -733,12 +733,12 @@
                 {
                   "id": "2b1",
                   "title": "2B1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3811&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3811&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2b2",
                   "title": "2B2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10738&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10738&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -749,12 +749,12 @@
                 {
                   "id": "2c1",
                   "title": "2C1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7530&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7530&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2c2",
                   "title": "2C2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9199&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9199&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -765,12 +765,12 @@
                 {
                   "id": "2d1",
                   "title": "2D1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2412&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2412&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2d2",
                   "title": "2D2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2285&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2285&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -786,7 +786,7 @@
                 {
                   "id": "2e2",
                   "title": "2E2",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11718&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11718&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -803,12 +803,12 @@
                 {
                   "id": "bi",
                   "title": "BI",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=892&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=892&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "mmpv",
                   "title": "MMPV",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=948&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=948&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -819,12 +819,12 @@
                 {
                   "id": "mdeea",
                   "title": "MDEEa",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=965&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=965&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "mmpvb",
                   "title": "MMPVb",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=957&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=957&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -840,7 +840,7 @@
                 {
                   "id": "mmpvd",
                   "title": "MMPVd",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2945&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2945&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -859,27 +859,27 @@
             {
               "id": "2aabdmrc-bq",
               "title": "2aA BDMRC - BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12013&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12013&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2aabdmrcgene",
               "title": "2aA BDMRC géné",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12012&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12012&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2aamdee-gpe1",
               "title": "2aA MDEE - Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3041&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3041&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2aamdee-gpe2",
               "title": "2aA MDEE -Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12011&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12011&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tc2aa",
               "title": "TC 2aA",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6527&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6527&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -890,27 +890,27 @@
             {
               "id": "2abbdmrc-bq",
               "title": "2aB BDMRC - BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1405&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1405&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2abbdmrcgene",
               "title": "2aB BDMRC géné",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1414&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1414&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2abmdee-gpe1",
               "title": "2aB MDEE - Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1458&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1458&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2abmdee-gpe2",
               "title": "2aB MDEE - Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3059&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3059&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tc2ab",
               "title": "TC 2aB",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1449&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1449&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -921,27 +921,27 @@
             {
               "id": "2acbdmrc-bq",
               "title": "2aC BDMRC - BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9595&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2acbdmrcgene",
               "title": "2aC BDMRC géné",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9561&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9561&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2acmdee-gpe1",
               "title": "2aC MDEE -Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3075&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3075&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "2acmdee-gpe2",
               "title": "2aC MDEE-Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6996&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6996&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tc2ac",
               "title": "TC 2aC",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10293&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10293&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -957,17 +957,17 @@
             {
               "id": "3aabiav",
               "title": "3aA BIAV",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1595&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3aamdee-gpe1",
               "title": "3aA MDEE- Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1159&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1159&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3aamdee-gpe2",
               "title": "3aA MDEE- Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1579&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1579&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3aamdee-gpe3",
@@ -993,17 +993,17 @@
             {
               "id": "3abbiav",
               "title": "3aB BIAV",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3287&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3287&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3abmdee-gpe1",
               "title": "3aB MDEE -Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1167&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1167&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3abmdee-gpe2",
               "title": "3aB MDEE -Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3267&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3267&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3abmdee-gpe3",
@@ -1029,17 +1029,17 @@
             {
               "id": "3acbiav",
               "title": "3aC BIAV",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3372&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3372&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3acmdee-gpe1",
               "title": "3aC MDEE-Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3352&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3352&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3acmdee-gpe2",
               "title": "3aC MDEE-Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5671&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5671&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3acmdee-gpe3",
@@ -1070,12 +1070,12 @@
             {
               "id": "3admdee-gpe1",
               "title": "3aD MDEE-Gpe 1",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5673&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5673&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3admdee-gpe2",
               "title": "3aD MDEE-Gpe 2",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5674&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5674&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3admdee-gpe3",
@@ -1092,7 +1092,7 @@
         {
           "id": "tca_1aa",
           "title": "TCA_1aA",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6544&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6544&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
         },
         {
           "id": "tca_1ab",

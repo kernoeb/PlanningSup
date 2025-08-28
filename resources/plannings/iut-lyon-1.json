@@ -12,7 +12,7 @@
             {
               "id": "aspe_a",
               "title": "ASPE_A",
-              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9272&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9272&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "aspe_b",
@@ -36,12 +36,12 @@
                     {
                       "id": "g1s1a",
                       "title": "G1S1A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12096&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12096&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g1s1b",
                       "title": "G1S1B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12102&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12102&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -52,12 +52,12 @@
                     {
                       "id": "g2s1a",
                       "title": "G2S1A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12403&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12403&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g2s1b",
                       "title": "G2S1B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12406&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12406&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -68,12 +68,12 @@
                     {
                       "id": "g3s1a",
                       "title": "G3S1A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12419&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12419&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g3s1b",
                       "title": "G3S1B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12425&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12425&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -84,12 +84,12 @@
                     {
                       "id": "g4s1a",
                       "title": "G4S1A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12424&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12424&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g4s1b",
                       "title": "G4S1B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12444&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12444&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -100,12 +100,12 @@
                     {
                       "id": "g5s1a",
                       "title": "G5S1A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12460&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12460&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g5s1b",
                       "title": "G5S1B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12461&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12461&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -210,7 +210,7 @@
                 {
                   "id": "g3s3s4",
                   "title": "G3S3S4",
-                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35714&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35714&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -225,12 +225,12 @@
                     {
                       "id": "g1s3a",
                       "title": "G1S3A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35708&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35708&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g1s3b",
                       "title": "G1S3B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35709&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35709&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -241,12 +241,12 @@
                     {
                       "id": "g2s3a",
                       "title": "G2S3A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35710&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35710&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g2s3b",
                       "title": "G2S3B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35713&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35713&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -257,12 +257,12 @@
                     {
                       "id": "g4s3a",
                       "title": "G4S3A",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35717&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35717&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g4s3b",
                       "title": "G4S3B",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35718&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=35718&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -331,12 +331,12 @@
             {
               "id": "but3aged",
               "title": "BUT3 AGED",
-              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6048&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6048&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "but3dacs",
               "title": "BUT3 DACS",
-              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6136&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6136&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "but3ra1",
@@ -345,12 +345,12 @@
                 {
                   "id": "but3ra1a",
                   "title": "BUT3 RA1A",
-                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6161&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6161&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "but3ra1b",
                   "title": "BUT3 RA1B",
-                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6163&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6163&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -361,12 +361,12 @@
                 {
                   "id": "but3ra2a",
                   "title": "BUT3 RA2A",
-                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6165&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6165&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "but3ra2b",
                   "title": "BUT3 RA2B",
-                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6168&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6168&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -379,7 +379,7 @@
             {
               "id": "lp-devops",
               "title": "LP DevOps",
-              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9319&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9319&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -390,7 +390,7 @@
             {
               "id": "lp-essir",
               "title": "LP ESSIR",
-              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5700&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5700&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
@@ -415,12 +415,12 @@
                     {
                       "id": "s1g1-1",
                       "title": "S1G1.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9426&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9426&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s1g1-2",
                       "title": "S1G1.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9425&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9425&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -431,12 +431,12 @@
                     {
                       "id": "s1g2-1",
                       "title": "S1G2.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9428&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9428&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s1g2-2",
                       "title": "S1G2.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9429&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9429&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -447,12 +447,12 @@
                     {
                       "id": "s1g3-1",
                       "title": "S1G3.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9431&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9431&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s1g3-2",
                       "title": "S1G3.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9432&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9432&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -529,12 +529,12 @@
                     {
                       "id": "s3g1-1",
                       "title": "S3G1.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9435&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9435&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s3g1-2",
                       "title": "S3G1.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9436&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9436&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -545,12 +545,12 @@
                     {
                       "id": "s3g2-1",
                       "title": "S3G2.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9438&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9438&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s3g2-2",
                       "title": "S3G2.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9439&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9439&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -583,12 +583,12 @@
                     {
                       "id": "s4g2-1",
                       "title": "S4G2.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6911&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6911&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "s4g2-2",
                       "title": "S4G2.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6912&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6912&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -611,12 +611,12 @@
                     {
                       "id": "mob-1",
                       "title": "Mob.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8313&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8313&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "mob-2",
                       "title": "Mob.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8314&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8314&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
@@ -627,12 +627,12 @@
                     {
                       "id": "web-1",
                       "title": "Web.1",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8213&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8213&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "web-2",
                       "title": "Web.2",
-                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8214&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://adelb.univ-lyon1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8214&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
