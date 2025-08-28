@@ -5,7 +5,12 @@ import { parseArgs } from 'node:util'
 import Ajv from 'ajv'
 import axios from 'axios'
 
-const { values: { fetch, whitelist } } = parseArgs({ options: { fetch: { type: 'boolean' }, whitelist: { type: 'string' } } })
+const { values: { fetch, whitelist } } = parseArgs({
+  options: {
+    fetch: { type: 'boolean', default: false },
+    whitelist: { type: 'string', short: 'w' },
+  },
+})
 
 const WHITELIST = whitelist ? whitelist.split(',') : null
 console.log('Whitelist:', WHITELIST)
@@ -210,22 +215,21 @@ for (const file of allJson) {
     }
 
     if (errorUrls.length) {
-      console.error('\n\nError URLs:')
-      const errorLength = errorUrls.filter(({ empty }) => !empty).length
-      console.error('Length:', errorLength)
-      console.error(errorUrls.filter(({ empty }) => !empty))
-
-      console.error('\nEmpty URLs:')
-      console.error('Length:', errorUrls.filter(({ empty }) => empty).length)
-
+      // Store filtered results to avoid redundant iterations
+      const nonEmptyErrorUrls = errorUrls.filter(({ empty }) => !empty)
+      const emptyErrorUrls = errorUrls.filter(({ empty }) => empty)
       const error404 = errorUrls.filter(({ error }) => error === '404')
+      console.error('\n\nError URLs:')
+      console.error('Length:', nonEmptyErrorUrls.length)
+      console.error(nonEmptyErrorUrls)
+      console.error('\nEmpty URLs:')
+      console.error('Length:', emptyErrorUrls.length)
       if (error404.length) {
         console.error('\n\n404 URLs:')
         console.error('Length:', error404.length)
         console.error(error404)
       }
-
-      if (errorLength) process.exit(1)
+      if (nonEmptyErrorUrls.length) process.exit(1)
     }
   }
 

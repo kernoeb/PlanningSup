@@ -2,7 +2,7 @@ const assert = require('node:assert')
 const { describe, it } = require('mocha')
 const request = require('supertest')
 
-const app = require('../server/index.js')
+const app = require('../apps/web-app/server/index.js')
 
 const p = 'iut-de-vannes.butdutgea.1ereannee.groupe1.gr1g'
 const p2 = 'iut-de-vannes.butdutgea.1ereannee.groupe2.gr2g'
