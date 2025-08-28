@@ -1,6 +1,5 @@
 services:
   web:
-    #    build: .
     image: ghcr.io/kernoeb/planningsup/planning
     restart: always
     stdin_open: true
@@ -15,7 +14,7 @@ services:
     depends_on:
       - mongodb
     env_file:
-      - .env
+      - apps/web-app/.env
     environment:
       - MONGODB_URL=mongodb:27017
   mongodb:

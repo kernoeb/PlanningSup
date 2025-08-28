@@ -11,10 +11,10 @@
     "dev-server": "cross-env NO_BREE=true NODE_OPTIONS='--watch --inspect --max-old-space-size=2048' node server/",
     "dev-server:bree": "NODE_OPTIONS='--watch --inspect --max-old-space-size=2048' node server/",
     "dev-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans",
-    "dev:bree": "NODE_OPTIONS='--inspect --max-old-space-size=2048' nuxt.js",
+    "dev:bree": "NODE_OPTIONS='--inspect --max-old-space-size=2048' nuxt",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue,.mjs --ignore-path .gitignore .",
-    "start": "NODE_OPTIONS='--max-old-space-size=2048' nuxt.js start"
+    "start": "NODE_OPTIONS='--max-old-space-size=2048' nuxt-start"
   },
   "dependencies": {
     "@dansmaculotte/nuxt-security": "0.0.6",

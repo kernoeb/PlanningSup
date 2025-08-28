@@ -84,6 +84,7 @@ module.exports = {
     // Check if there is a planning with 'backup.dstart.value'
     logger.info('Checking if a data migration is needed')
     const tmp = await Planning.findOne({ 'backup.dtstart.value': { $exists: true } })
+
     logger.info('Migration needed : ' + !!tmp)
     if (tmp) {
       for await (const p of Planning.find({ 'backup.dtstart.value': { $exists: true } })) {
@@ -111,6 +112,9 @@ module.exports = {
         }
       }
     }
-    logger.info('Migration done')
+
+    if (tmp) logger.info('Migration done')
+
+    logger.success('Number of plannings : ' + (await Planning.count()))
   }
 }

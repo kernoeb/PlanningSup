@@ -4,6 +4,10 @@
 !resources/plannings/
 !scripts/check-plannings-json.js
 
+# Node files
+!package.json
+!package-lock.json
+
 # Modules
 !apps/web-app/package.json
 !apps/web-app/package-lock.json

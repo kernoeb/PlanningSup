@@ -2,26 +2,8 @@ const path = require('node:path');
 const fs = require('node:fs');
 const assert = require('node:assert');
 
-let planningsDir = process.env.PLANNINGS_DIR
-
-if (!planningsDir) {
-  // Recursively find the resources/plannings directory
-  const findPlanningsDir = (dir) => {
-    if (dir === '/') throw new Error('The plannings directory does not exist')
-
-    const planningsDir = path.join(dir, 'resources/plannings')
-    if (fs.existsSync(planningsDir)) {
-      return planningsDir
-    }
-    return findPlanningsDir(path.join(dir, '..'))
-  }
-
-  planningsDir = findPlanningsDir(__dirname)
-}
-
-if (!fs.existsSync(planningsDir)) {
-  throw new Error(`The plannings directory does not exist: ${planningsDir}`)
-}
+let planningsDir = process.env.PLANNINGS_DIR || path.join(process.cwd(), 'resources/plannings')
+if (!fs.existsSync(planningsDir)) throw new Error(`The plannings directory does not exist: ${planningsDir}`)
 
 const allPlanningFiles = fs.readdirSync(planningsDir).filter(file => file.endsWith('.json'))
 

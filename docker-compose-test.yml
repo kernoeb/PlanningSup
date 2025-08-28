@@ -1,6 +1,6 @@
 services:
   web:
-    build: apps/web-app
+    build: .
     restart: always
     stdin_open: true
     tty: true

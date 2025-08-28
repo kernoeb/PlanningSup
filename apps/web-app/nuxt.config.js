@@ -262,7 +262,7 @@ export default {
                     'layouts/**/*.vue',
                     'pages/**/*.vue',
                     'plugins/**/*.js',
-                    'node_modules/vuetify/src/**/*.ts'
+                    '../../node_modules/vuetify/src/**/*.ts' // well...
                   ],
                   styleExtensions: ['.css'],
                   safelist: {
