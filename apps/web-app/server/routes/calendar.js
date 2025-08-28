@@ -70,7 +70,7 @@ router.get('/calendars', asyncWrapper(async (req, res) => {
           return {
             id,
             status: 'backup',
-            title: allPlanningsplanningsPerFullId[id].title,
+            title: planningsPerFullId[id].title,
             timestamp: backed.timestamp || undefined,
             events: getFormattedEvents({ allEvents: backed.backup, blocklist, colors: customColorList, localeUtils, highlightTeacher, id })
           }
