@@ -4029,47 +4029,52 @@
           {
             "id": "l2",
             "title": "L2",
-            "edts": [
-              {
-                "id": "l2-cmi",
-                "title": "L2-CMI",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3660&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-cupge_i",
-                "title": "L2-CUPGE_I",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4783&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-cupge_ms",
-                "title": "L2-CUPGE_MS",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5344&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-info-phy",
-                "title": "L2-INFO-PHY",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3038&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-info-stat",
-                "title": "L2-INFO-STAT",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5419&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-math-info",
-                "title": "L2-MATH-INFO",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2896&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-math-phy",
-                "title": "L2-MATH-PHY",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2867&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "l2-math-stat",
-                "title": "L2-MATH-STAT",
-                "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4118&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              }
+            "edts":[
+                {
+                    "id":"l2-cmi",
+                    "title":"L2-CMI",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3660&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-cupge_i",
+                    "title":"L2-CUPGE_I",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4783&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-cupge_ms",
+                    "title":"L2-CUPGE_MS",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5344&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-info-phy",
+                    "title":"L2-INFO-PHY",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3038&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-info-stat",
+                    "title":"L2-INFO-STAT",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5419&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-math-info",
+                    "title":"L2-MATH-INFO",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2896&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-math-phy",
+                    "title":"L2-MATH-PHY",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2867&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"l2-math-stat",
+                    "title":"L2-MATH-STAT",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4118&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                    "id":"pei-avannes",
+                    "title":"PEI-A Vannes",
+                    "url":"https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8670&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
             ]
           },
           {
