@@ -89,7 +89,7 @@
 
 <script>
 import { mdiCalendar, mdiApps, mdiGithub, mdiTwitter } from '@mdi/js'
-const { version } = require('../package.json')
+const { version } = require('../../../package.json')
 
 export default {
   data () {
