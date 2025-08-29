@@ -1,0 +1,27 @@
+{
+  "title": "ENSSAT",
+  "edts": [
+    {
+      "id": "fisa1",
+      "title": "FISA1",
+      "edts": [
+        {
+          "id": "iai1",
+          "title": "IAI1",
+          "edts": [
+            {
+              "id": "iai1g1",
+              "title": "IAI1 G1",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1488&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "iai1g2",
+              "title": "IAI1 G2",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1499&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

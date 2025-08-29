@@ -1,5 +1,6 @@
 {
-  "target": "minor",
+  "concurrency": 30,
   "packageManager": "npm",
-  "concurrency": 30
+  "root": true,
+  "workspaces": true
 }

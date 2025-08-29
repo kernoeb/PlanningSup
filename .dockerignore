@@ -1,30 +1,34 @@
 # Ignore everything, except...
 *
 
-# Modules
+!resources/plannings/
+!scripts/check-plannings-json.js
+
+# Node files
 !package.json
 !package-lock.json
-!pnpm-lock.yaml
-!bun.lockb
+
+# Modules
+!apps/web-app/package.json
+!apps/web-app/package-lock.json
+!apps/web-app/pnpm-lock.yaml
+!apps/web-app/bun.lockb
 
 # UI files
-!vuetify.options.js
-!nuxt.config.js
-!pages/
-!assets/
-!components/
-!config/
-!layouts/
-!middleware/
-!plugins/
-!static/sound/
-!static/banner.png
-!static/favicon.ico
-!static/icon.png
+!apps/web-app/vuetify.options.js
+!apps/web-app/nuxt.config.js
+!apps/web-app/pages/
+!apps/web-app/assets/
+!apps/web-app/components/
+!apps/web-app/config/
+!apps/web-app/layouts/
+!apps/web-app/middleware/
+!apps/web-app/plugins/
+!apps/web-app/static/sound/
+!apps/web-app/static/banner.png
+!apps/web-app/static/favicon.ico
+!apps/web-app/static/icon.png
 
 # Server files
-!server/
-!jobs/
-
-# Other stuff
-!scripts/check-plannings-json.mjs
+!apps/web-app/server/
+!apps/web-app/jobs/

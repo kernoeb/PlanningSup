@@ -99,3 +99,6 @@ sw.*
 dev/
 
 .mongo-planning
+
+assets/css/fonts.css
+assets/fonts

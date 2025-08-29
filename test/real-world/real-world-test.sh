@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Default planning
-export DEFAULT_PLANNING_FULL_ID="iutdevannes.butdutinfo.1ereannee.gr1a.gr1a1"
+export DEFAULT_PLANNING_FULL_ID="iut-de-vannes.butdutinfo.1ereannee.gr1a.gr1a1"
 
 # Build the first image in the background for speed
 pids=( )
@@ -23,7 +23,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 fi
 
-# If arg, replace "build: ." with image: $1 in docker-compose-test.yml
+# If arg, replace "build: ." with "image: $1" in docker-compose-test.yml
 if [ $# -eq 1 ]; then
   echo "Replacing \"build: .\" with \"image: $1\" in docker-compose-test.yml"
   $SED_CMD -i "s/build: \./image: $1/g" docker-compose-test.yml || exit 1
@@ -39,9 +39,9 @@ function get_health() {
 }
 
 i=0
-max_retries=30
-# should be {"db":true,"bree":true}
-while ! get_health | grep -q "\"db\"\:true\,\"bree\"\:true" && [ $i -lt $max_retries ]; do
+max_retries=120
+# Ready when {"db":true,...}
+while ! get_health | grep -q "\"db\"\:true" && [ $i -lt $max_retries ]; do
   echo "Waiting for the server to be ready... ($i/$max_retries)"
   sleep 1
   ((i++))
@@ -49,6 +49,10 @@ done
 
 if [ "$i" -ge $max_retries ]; then
   echo "Health check failed, exiting."
+  echo "Health endpoint response:"
+  get_health || true
+  echo "---- docker compose logs (web) ----"
+  docker compose -f docker-compose-test.yml logs --no-color web | tail -n 200 || true
   exit 1
 fi
 

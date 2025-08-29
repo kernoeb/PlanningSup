@@ -1,0 +1,247 @@
+{
+  "title": "Fac de Sciences",
+  "edts": [
+    {
+      "id": "licenceinfomatique",
+      "title": "Licence Infomatique",
+      "edts": [
+        {
+          "id": "l2",
+          "title": "L2",
+          "edts": [
+            {
+              "id": "info1",
+              "title": "INFO 1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4087,4675&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "info2",
+              "title": "INFO 2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3721,2353&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "info3",
+              "title": "INFO 3",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5994&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3",
+          "title": "L3",
+          "edts": [
+            {
+              "id": "info1",
+              "title": "INFO 1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=427,2234&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "info2",
+              "title": "INFO 2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4796,6555&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "info3",
+              "title": "INFO 3",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4389,2544&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "info4",
+              "title": "INFO 4",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4434,2615&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "licencemathematiquesspecialisees",
+      "title": "Licence Mathématiques spécialisées",
+      "edts": [
+        {
+          "id": "l2",
+          "title": "L2",
+          "edts": [
+            {
+              "id": "groupe1",
+              "title": "Groupe 1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4118,4566&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3",
+          "title": "L3",
+          "edts": [
+            {
+              "id": "groupe1",
+              "title": "Groupe 1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2022,732&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "licencestatistique",
+      "title": "Licence Statistique",
+      "edts": [
+        {
+          "id": "l2",
+          "title": "L2",
+          "edts": [
+            {
+              "id": "statinfo",
+              "title": "Stat Info",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2896,2672&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "statmath",
+              "title": "Stat Math",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5419,6514&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3",
+          "title": "L3",
+          "edts": [
+            {
+              "id": "stat1",
+              "title": "Stat 1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4545,2722&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "stat2",
+              "title": "Stat 2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2118,7094&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "licencesvt",
+      "title": "Licence SVT",
+      "edts": [
+        {
+          "id": "l3biotechnologies",
+          "title": "L3 Biotechnologies",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1901&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2223&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3bio-sante",
+          "title": "L3 Bio-Santé",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1920&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1945&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3tacb",
+          "title": "L3 TACB",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1894&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1895&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "licencesciencesecologieetsociete",
+      "title": "Licence Sciences, Ecologie et Société",
+      "edts": [
+        {
+          "id": "l1",
+          "title": "L1",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=636&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6702&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l2",
+          "title": "L2",
+          "edts": [
+            {
+              "id": "gr1",
+              "title": "Gr1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1569&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "gr2",
+              "title": "Gr2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1570&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "gr3",
+              "title": "Gr3",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2472&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "me",
+              "title": "ME",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5119&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "pc",
+              "title": "PC",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5111&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3",
+          "title": "L3",
+          "edts": [
+            {
+              "id": "tp1",
+              "title": "TP1",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5417&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "tp2",
+              "title": "TP2",
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5421&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -20,12 +20,12 @@
   </a>
 </p>
 
-![img.png](img/planning_mac.png)
+![img.png](resources/images/planning_mac.png)
 
 ## Fonctionnalités
 
 - **Hors connexion** / installation en mode **PWA**
-- Couleurs par catégorie *ou* par UE (Amphi, TD, TP, etc.) et choix des couleurs
+- Couleurs par catégorie _ou_ par UE (Amphi, TD, TP, etc.) et choix des couleurs
 - Mode jour / semaine / mois
 - Zoom sur un cours
 - Changement d'université / spécialité (cookie ou paramètre)
@@ -36,12 +36,11 @@
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
-
 ## Ajouter une spécialité ou une université
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `assets/plannings.json` :)
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `.json` de votre université dans `./resources/plannings` :)
 
-> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.  
+> Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.
 
 ## Comment ça marche ?
 
@@ -50,22 +49,22 @@ Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockeris
 #### APIs :
 
 - `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : `./assets/plannings.json`, mais sans les URLs
+- `/api/urls` (en cache côté serveur) : liste des plannings disponibles
 
 Chaque planning est sauvegardé dans une base de données `MongoDB`, à un intervalle régulier. En cas de lenteur ou de coupure serveur (côté université), le dernier planning enregistré est alors utilisé.
 
 ## Captures (mobile)
 
-<img src="img/phone1.png" height="300" /><img src="img/phone4.png" height="300"/>
+<img src="resources/images/phone1.png" height="300" /><img src="resources/images/phone4.png" height="300"/>
 <br>
-<img src="img/phone2.png" height="300" /><img src="img/phone3.png" height="300"/>
+<img src="resources/images/phone2.png" height="300" /><img src="resources/images/phone3.png" height="300"/>
 <br>
 
 ## Installation
 
 ### Docker
 
-Créez un fichier `.env` avec les variables suivantes :  
+Créez un fichier `.env` avec les variables suivantes :
 
 > Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et **unique**.
 
@@ -78,6 +77,7 @@ TZ=Europe/Paris
 Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les conteneurs.
 
 Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
+
 ```
 */30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d --remove-orphans
 ```
@@ -86,11 +86,11 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 
 ### Nécessaire
 
-- [Node.js](https://github.com/nodejs/node) 20.X : Installation via [nvm](https://github.com/nvm-sh/nvm)
+- [Node.js](https://github.com/nodejs/node) 22.X : Installation via [nvm](https://github.com/nvm-sh/nvm) ou [fnm](https://github.com/Schniz/fnm)
 
 ### Commandes utiles
 
-Lancement en local : 
+Lancement en local :
 
 - Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
 - `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)

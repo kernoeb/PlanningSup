@@ -5,7 +5,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-      - "31022:3000"
+      - '31022:3000'
     networks:
       - planning
     depends_on:
