@@ -40,8 +40,6 @@ module.exports.cookieBackwardMiddleware = (req, res, next) => {
             if (!planningsPerFullId[fixedPartId]) {
               console.log(`Planning ${fixedPartId} not found`)
               res.clearCookie('plannings')
-            } else {
-              console.log(`Adding ${fixedPartId} to planningsPerFullId`)
             }
 
             plannings[i] = fixedPartId

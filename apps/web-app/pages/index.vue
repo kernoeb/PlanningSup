@@ -598,14 +598,19 @@ export default {
 
       this.setEvents(events)
 
+      const planningIds = events.plannings.map(pl => pl.id)
+
       try {
-        this.$cookies.set('plannings', events.plannings.map(pl => pl.id).join(','), { maxAge: 34560000 })
+        this.$cookies.set('plannings', planningIds.join(','), { maxAge: 34560000 })
         if (this.$route?.query?.p) {
-          this.$router.replace({ query: { ...this.$route.query, p: events.plannings.map(pl => pl.id).join(',') } })
+          this.$router.replace({ query: { ...this.$route.query, p: planningIds.join(',') } })
         }
       } catch (error) {
         console.error('Error setting cookie:', error)
       }
+
+      // Refresh selected plannings ids in case some were invalid
+      this.selectedPlanningsIds = planningIds
 
       this.errorMessage = null
     },
