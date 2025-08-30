@@ -252,8 +252,8 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=601&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "s7-info-iot",
-                  "title": "Internet des objets",
+                  "id": "s7-info-robo",
+                  "title": "Robotique",
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=899&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
@@ -417,8 +417,8 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=615&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "s9-info-iot",
-                  "title": "Internet des objets",
+                  "id": "s9-info-robo",
+                  "title": "Robotique",
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=908&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
