@@ -2547,27 +2547,6 @@
                   ]
                 },
                 {
-                  "id": "mineureacf",
-                  "title": "Mineure ACF",
-                  "edts": [
-                    {
-                      "id": "mineureacfcla1",
-                      "title": "Mineure ACF Cla 1",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4714&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "mineureacf",
-                      "title": "mineure ACF",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "mineureacfcla2",
-                      "title": "mineure ACF Cla 2",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4071&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
                   "id": "projets",
                   "title": "PROJETS",
                   "edts": [
