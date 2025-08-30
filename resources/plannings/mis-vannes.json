@@ -12,57 +12,57 @@
             {
               "id": "l1-cmi-sd0",
               "title": "L1-CMI-SD",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7155&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7155&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-cupge",
               "title": "L1-CUPGE",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3669&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3669&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-las-mi",
               "title": "L1-LAS-MI",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3533&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3533&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-las-mp",
               "title": "L1-LAS-MP",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3451&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3451&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_im",
               "title": "L1-MMI_IM",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4080&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4080&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_ip",
               "title": "L1-MMI_IP",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4529&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4529&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_mp",
               "title": "L1-MMI_MP",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4292&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4292&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_im-1",
               "title": "L1-MmI_IM-1",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1910&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1910&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_ip",
               "title": "L1-MmI_IP",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3666&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3666&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-mmi_mp",
               "title": "L1-MmI_MP",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3502&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3502&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l1-parcoursspecialiseouisi-2",
               "title": "L1-parcours spécialisé (Oui Si-2)",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2476&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2476&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -73,47 +73,47 @@
             {
               "id": "l2-cmi",
               "title": "L2-CMI",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3660&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3660&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-cupge_i",
               "title": "L2-CUPGE_I",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4783&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4783&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-cupge_ms",
               "title": "L2-CUPGE_MS",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5344&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5344&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-info-phy",
               "title": "L2-INFO-PHY",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3038&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3038&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-info-stat",
               "title": "L2-INFO-STAT",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5419&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5419&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-math-info",
               "title": "L2-MATH-INFO",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2896&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2896&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-math-phy",
               "title": "L2-MATH-PHY",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2867&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2867&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "l2-math-stat",
               "title": "L2-MATH-STAT",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4118&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4118&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "pei-avannes",
               "title": "PEI-A Vannes",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8670&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8670&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -124,32 +124,32 @@
                 {
                     "id": "l3-cmi",
                     "title": "L3-CMI",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2434&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2434&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "l3-info-1",
                     "title": "L3-INFO-1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=427&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=427&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "l3-info-2",
                     "title": "L3-INFO-2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4796&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4796&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "l3-math",
                     "title": "L3-MATH",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2022&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2022&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "l3-stat-1",
                     "title": "L3-STAT-1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4545&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4545&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "l3-stat-2",
                     "title": "L3-STAT-2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2118&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2118&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
             ]
         },
@@ -160,22 +160,22 @@
                 {
                     "id": "m1-dsms",
                     "title": "M1-DSMS",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1397&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1397&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m1-info_1-aidn",
                     "title": "M1-INFO_1-AIDN",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4807&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4807&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m1-info_2-saim",
                     "title": "M1-INFO_2-SAIM",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2625&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2625&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m1-sdd",
                     "title": "M1-SDD",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3767&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3767&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
             ]
         },
@@ -186,37 +186,37 @@
                 {
                     "id": "m2-cmi",
                     "title": "M2-CMI",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2817&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2817&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-copernicus",
                     "title": "M2-COPERNICUS",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4986&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4986&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-dsms",
                     "title": "M2-DSMS",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=830&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=830&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-info-aidn-1",
                     "title": "M2-INFO-AIDN-1",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4778&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4778&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-info-aidn-2",
                     "title": "M2-INFO-AIDN-2",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7857&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7857&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-info-saim",
                     "title": "M2-INFO-SAIM",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=775&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=775&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                     "id": "m2-sdd",
                     "title": "M2-SDD",
-                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3596&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3596&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
             ]
         }
