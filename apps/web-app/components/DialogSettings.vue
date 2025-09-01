@@ -328,7 +328,7 @@
             </div>
             <v-card elevation="0">
               <v-card-text>
-                <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev, Louanne M., RidzArt, EDM115</small></div>
+                <div><small><b>❤️ Donateurs :</b> Ewennn ⭐, W00dy, Rick, Lahgolz, Dyskal, Mimipepin, Atao, PandAmiral, ShockedPlot, BatLeDev, Louanne M., RidzArt, EDM115, Xotak</small></div>
               </v-card-text>
             </v-card>
           </div>
