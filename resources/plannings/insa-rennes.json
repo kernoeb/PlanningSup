@@ -2740,234 +2740,235 @@
       ]
     },
     {
-        "id": "stpi-1",
-        "title": "STPI 1er Année",
-        "edts":[
-          {
-            "id": "s1-stpi-harmonisation",
-            "title": "Harmonisation",
-            "edts":[
-              {
-                "id": "s1-stpi-harmonisation-a",
-                "title": "Groupe A",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=846&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"            },
-              {
-                "id": "s1-stpi-harmonisation-b",
-                "title": "Groupe B",
-                "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=870&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "s1-stpi-harmonisation-c",
-                "title": "Groupe C",
-                "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=869&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "s1-stpi-harmonisation-d",
-                "title": "Groupe D",
-                "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=885&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "s1-stpi-harmonisation-e",
-                "title": "Groupe E",
-                "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2788&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              },
-              {
-                "id": "s1-stpi-harmonisation-f",
-                "title": "Groupe F",
-                "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-              }
-            ]
-          },
-          {
-            "id": "s1-stpi",
-            "title": "Semestre 1",
-            "edts":[
-              {
-                "id": "s1-internationale",
-                "title": "Filière Internationale",
-                "edts":[
-                  {
-                    "id": "s1-internationale-i",
-                    "title": "Groupe I",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-internationale-j",
-                    "title": "Groupe J",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=892&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "s1-classique",
-                "title": "Filière Classique",
-                "edts":[
-                  {
-                    "id": "s1-classique-a",
-                    "title": "Groupe A",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2444&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-b",
-                    "title": "Groupe B",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2445&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-c",
-                    "title": "Groupe C",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2446&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-d",
-                    "title": "Groupe D",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=358&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-e",
-                    "title": "Groupe E",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2454&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-f",
-                    "title": "Groupe F",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2433&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-g",
-                    "title": "Groupe G",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2451&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-h",
-                    "title": "Groupe H",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2434&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-k",
-                    "title": "Groupe K",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2455&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-classique-l",
-                    "title": "Groupe L",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=795&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "s1-bicu",
-                "title": "Filière Sciences Politiques",
-                "edts":[
-                  {
-                    "id": "s1-bicu-emir",
-                    "title": "EMIR",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=409&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s1-bicu-mica",
-                    "title": "MICA",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2216&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "id": "s2-stpi",
-            "title": "Semestre 2",
-            "edts":[
-              {
-                "id": "s2-internationale",
-                "title": "Filière Internationale",
-                "edts":[
-                  {
-                    "id": "s2-internationale-i",
-                    "title": "Groupe I",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1275&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-internationale-j",
-                    "title": "Groupe J",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1274&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "s2-classique",
-                "title": "Filière Classique",
-                "edts":[
-                  {
-                    "id": "s2-classique-a",
-                    "title": "Groupe A",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=396&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-b",
-                    "title": "Groupe B",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=460&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-c",
-                    "title": "Groupe C",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=466&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-d",
-                    "title": "Groupe D",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=467&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-e",
-                    "title": "Groupe E",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=468&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-f",
-                    "title": "Groupe F",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=469&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-g",
-                    "title": "Groupe G",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=491&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-h",
-                    "title": "Groupe H",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=495&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-k",
-                    "title": "Groupe K",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=496&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-classique-l",
-                    "title": "Groupe L",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1584&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              },
-              {
-                "id": "s2-bicu",
-                "title": "Filière Sciences Politiques",
-                "edts":[
-                  {
-                    "id": "s2-bicu-emir",
-                    "title": "EMIR",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2138&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  },
-                  {
-                    "id": "s2-bicu-mica",
-                    "title": "MICA",
-                    "url":"https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2136&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
+      "id": "stpi-1",
+      "title": "STPI 1er Année",
+      "edts": [
+        {
+          "id": "s1-stpi-harmonisation",
+          "title": "Harmonisation",
+          "edts": [
+            {
+              "id": "s1-stpi-harmonisation-a",
+              "title": "Groupe A",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=846&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "s1-stpi-harmonisation-b",
+              "title": "Groupe B",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=870&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "s1-stpi-harmonisation-c",
+              "title": "Groupe C",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=869&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "s1-stpi-harmonisation-d",
+              "title": "Groupe D",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=885&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "s1-stpi-harmonisation-e",
+              "title": "Groupe E",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2788&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "s1-stpi-harmonisation-f",
+              "title": "Groupe F",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "s1-stpi",
+          "title": "Semestre 1",
+          "edts": [
+            {
+              "id": "s1-internationale",
+              "title": "Filière Internationale",
+              "edts": [
+                {
+                  "id": "s1-internationale-i",
+                  "title": "Groupe I",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-internationale-j",
+                  "title": "Groupe J",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=892&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "s1-classique",
+              "title": "Filière Classique",
+              "edts": [
+                {
+                  "id": "s1-classique-a",
+                  "title": "Groupe A",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2444&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-b",
+                  "title": "Groupe B",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2445&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-c",
+                  "title": "Groupe C",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2446&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-d",
+                  "title": "Groupe D",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=358&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-e",
+                  "title": "Groupe E",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2454&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-f",
+                  "title": "Groupe F",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2433&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-g",
+                  "title": "Groupe G",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2451&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-h",
+                  "title": "Groupe H",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2434&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-k",
+                  "title": "Groupe K",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2455&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-classique-l",
+                  "title": "Groupe L",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=795&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "s1-bicu",
+              "title": "Filière Sciences Politiques",
+              "edts": [
+                {
+                  "id": "s1-bicu-emir",
+                  "title": "EMIR",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=409&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s1-bicu-mica",
+                  "title": "MICA",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2216&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "s2-stpi",
+          "title": "Semestre 2",
+          "edts": [
+            {
+              "id": "s2-internationale",
+              "title": "Filière Internationale",
+              "edts": [
+                {
+                  "id": "s2-internationale-i",
+                  "title": "Groupe I",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1275&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-internationale-j",
+                  "title": "Groupe J",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1274&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "s2-classique",
+              "title": "Filière Classique",
+              "edts": [
+                {
+                  "id": "s2-classique-a",
+                  "title": "Groupe A",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=396&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-b",
+                  "title": "Groupe B",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=460&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-c",
+                  "title": "Groupe C",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=466&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-d",
+                  "title": "Groupe D",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=467&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-e",
+                  "title": "Groupe E",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=468&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-f",
+                  "title": "Groupe F",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=469&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-g",
+                  "title": "Groupe G",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=491&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-h",
+                  "title": "Groupe H",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=495&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-k",
+                  "title": "Groupe K",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=496&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-classique-l",
+                  "title": "Groupe L",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1584&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "s2-bicu",
+              "title": "Filière Sciences Politiques",
+              "edts": [
+                {
+                  "id": "s2-bicu-emir",
+                  "title": "EMIR",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2138&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "s2-bicu-mica",
+                  "title": "MICA",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2136&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "stpi-2",
       "title": "STPI 2ème Année",
