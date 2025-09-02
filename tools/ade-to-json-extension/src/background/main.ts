@@ -21,8 +21,8 @@ let creating: Promise<void> | null
 
 async function canUseOffscreen(): Promise<boolean> {
   // @ts-expect-error offscreen not in types in some channels
-  const hasOffscreen = !!browser?.offscreen?.createDocument
-  const hasGetContexts = typeof (browser.runtime as any)?.getContexts === 'function'
+  const hasOffscreen = !!browser.offscreen?.createDocument
+  const hasGetContexts = typeof browser.runtime?.getContexts === 'function'
   return hasOffscreen && hasGetContexts
 }
 
