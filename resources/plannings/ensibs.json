@@ -1,18 +1,18 @@
 {
   "title": "ENSIBS",
-  "edts": [
+  "children": [
     {
       "id": "cyberdefense",
       "title": "CyberDéfense",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -48,7 +48,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -86,11 +86,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -126,7 +126,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -164,7 +164,7 @@
         {
           "id": "5emeannee",
           "title": "5ème année",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -202,15 +202,15 @@
     {
       "id": "cyberlog",
       "title": "CyberLog",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -226,7 +226,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -244,11 +244,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -264,7 +264,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -282,7 +282,7 @@
         {
           "id": "5emeannee",
           "title": "5ème année",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -300,15 +300,15 @@
     {
       "id": "cyberdata",
       "title": "CyberData",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -324,7 +324,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -342,11 +342,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -362,7 +362,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -380,11 +380,11 @@
         {
           "id": "5emeannee",
           "title": "5ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre9s9",
               "title": "Semestre 9 (S9)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -399,15 +399,15 @@
     {
       "id": "genieindustriel",
       "title": "Génie Industriel",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -423,7 +423,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -441,11 +441,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -461,7 +461,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -479,7 +479,7 @@
         {
           "id": "5emeannee",
           "title": "5ème année",
-          "edts": [
+          "children": [
             {
               "id": "m2oppi",
               "title": "M2OPPI",
@@ -502,15 +502,15 @@
     {
       "id": "geniecivil",
       "title": "Génie Civil",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -526,7 +526,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -544,11 +544,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -564,7 +564,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -584,15 +584,15 @@
     {
       "id": "mecatronique",
       "title": "Mécatronique",
-      "edts": [
+      "children": [
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre5s5",
               "title": "Semestre 5 (S5)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -608,7 +608,7 @@
             {
               "id": "semestre6s6",
               "title": "Semestre 6 (S6)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -626,11 +626,11 @@
         {
           "id": "4emeannee",
           "title": "4ème année",
-          "edts": [
+          "children": [
             {
               "id": "semestre7s7",
               "title": "Semestre 7 (S7)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -646,7 +646,7 @@
             {
               "id": "semestre8s8",
               "title": "Semestre 8 (S8)",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -664,7 +664,7 @@
         {
           "id": "5emeannee",
           "title": "5ème année",
-          "edts": [
+          "children": [
             {
               "id": "cpro",
               "title": "CPro",

@@ -1,0 +1,41 @@
+{
+  "name": "web",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "bunx --bun vite --port 4444",
+    "build": "vue-tsc -b && bunx --bun vite build",
+    "preview": "bunx --bun vite preview",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@schedule-x/calendar": "^3.1.0",
+    "@schedule-x/calendar-controls": "^3.1.0",
+    "@schedule-x/event-modal": "^3.1.0",
+    "@schedule-x/theme-default": "^3.1.0",
+    "@schedule-x/timezone-select": "^3.1.0",
+    "@schedule-x/translations": "^3.1.0",
+    "@schedule-x/vue": "^3.1.0",
+    "temporal-polyfill": "^0.3.0",
+    "vue": "^3.5.21"
+  },
+  "devDependencies": {
+    "@schedule-x/current-time": "^3.1.0",
+    "@schedule-x/events-service": "^3.1.0",
+    "@tailwindcss/vite": "^4.1.12",
+    "@types/bun": "^1.2.21",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "config": "workspace:*",
+    "daisyui": "^5.1.5",
+    "elysia": "^1",
+    "sass-embedded": "^1.91.0",
+    "tailwindcss": "^4.1.12",
+    "theme-change": "^2.5.0",
+    "typescript": "~5.9.2",
+    "vite": "npm:rolldown-vite@latest",
+    "vue-tsc": "^3.0.6"
+  }
+}

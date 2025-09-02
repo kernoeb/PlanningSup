@@ -1,6 +1,6 @@
 {
   "name": "planningsup",
-  "version": "2.19.1",
+  "version": "2.19.5",
   "private": "true",
   "type": "module",
   "repository": {
@@ -13,41 +13,27 @@
     "university"
   ],
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "fix-plannings-project-ids": "node ./scripts/check-plannings-json.js --fetch",
-    "dev": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && npm run dev -w apps/web-app",
-    "test": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && cross-env NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js",
-    "real-world-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans"
+    "dev": "bun scripts/run dev",
+    "build": "bun scripts/run build",
+    "test": "bun scripts/run test",
+    "test:unit": "bun scripts/run test:unit",
+    "coverage": "bun scripts/run coverage",
+    "test:e2e": "bun scripts/run test:e2e",
+    "lint": "bun scripts/run lint",
+    "lint-fix": "bun scripts/run lint-fix",
+    "docker": "bun scripts/run docker"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5",
-    "ajv": "^8.17.1",
-    "axios": "^1.11.0",
-    "eslint": "^9.34.0",
-    "ical.js": "^2.2.1",
-    "jsdom": "^26.1.0",
-    "mocha": "^11.7.1",
-    "supertest": "^7.1.4"
-  },
-  "overrides": {
-    "@nuxtjs/axios": {
-      "axios": "$axios",
-      "axios-retry": "$axios-retry"
-    },
-    "eslint-config-vuetify": {
-      "@release-it/conventional-changelog": {
-        "release-it": {
-          "shelljs": "0.8.5"
-        }
-      }
-    }
-  },
-  "dependencies": {
-    "axios-retry": "^4.5.0"
+    "@antfu/eslint-config": "^5.2.1",
+    "@types/bun": "^1",
+    "concurrently": "^9",
+    "eslint": "^9.34.0"
   }
 }

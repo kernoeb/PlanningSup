@@ -1,10 +1,10 @@
 {
   "title": "Nantes Université",
-  "edts": [
+  "children": [
     {
       "id": "l3",
       "title": "Licence 3",
-      "edts": [
+      "children": [
         {
           "id": "g908226",
           "url": "https://edt.univ-nantes.fr/sciences/g908226.ics",

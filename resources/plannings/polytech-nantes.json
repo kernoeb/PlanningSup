@@ -1,19 +1,24 @@
 {
   "title": "Polytech Nantes",
-  "edts": [
+  "children": [
     {
       "id": "idia",
       "title": "IDIA",
-      "edts": [
+      "children": [
         {
-          "id": "g1137366",
+          "id": "idia-3a",
           "title": "3A",
-          "url": "https://edt.univ-nantes.fr/chantrerie-gavy/g1137366.ics"
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105303"
         },
         {
-          "id": "g1326546",
+          "id": "idia-4a",
           "title": "4A",
-          "url": "https://edt.univ-nantes.fr/chantrerie-gavy/g1326546.ics"
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105346"
+        },
+        {
+          "id": "idia-5a",
+          "title": "5A",
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105167"
         }
       ]
     }

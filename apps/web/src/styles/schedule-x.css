@@ -1,0 +1,63 @@
+:root {
+  /* Light theme */
+  --sx-color-primary: #5c6bc0;
+  --sx-color-on-primary: #ffffff;
+  --sx-color-primary-container: #c5cae9;
+  --sx-color-on-primary-container: #1a237e;
+  --sx-color-surface: #f5f5f5;
+  --sx-color-on-surface: #1b1c1f;
+  --sx-color-background: #ffffff;
+  --sx-color-on-background: #1b1c1f;
+}
+
+/* Dark theme */
+.is-dark,
+.sx__theme--dark {
+  /* The absolute base is pure black. No compromises. */
+  --sx-color-background: #000;
+  /* Content on black should be pure white for maximum contrast. */
+  --sx-color-on-background: #fff;
+
+  /* Primary, Secondary, and Tertiary are now a very dark charcoal.
+       On a black background, they act as subtle, interactive surfaces. */
+  --sx-color-primary: #444;
+  --sx-color-on-primary: #fff;
+  --sx-color-primary-container: #1a1a1a;
+  --sx-color-on-primary-container: #fff;
+
+  --sx-color-secondary: #222; /* As requested, secondary is "black" too */
+  --sx-color-on-secondary: #fff;
+  --sx-color-secondary-container: #1a1a1a;
+  --sx-color-on-secondary-container: #fff;
+
+  --sx-color-tertiary: #222;
+  --sx-color-on-tertiary: #fff;
+  --sx-color-tertiary-container: #1a1a1a;
+  --sx-color-on-tertiary-container: #fff;
+
+  /* Surfaces provide subtle layers over the pure black background */
+  --sx-color-surface: #111; /* A barely-there off-black */
+  --sx-color-surface-dim: #000;
+  --sx-color-surface-bright: #222;
+  --sx-color-on-surface: #fff;
+  --sx-color-surface-container: #1a1a1a; /* A slightly more visible layer */
+  --sx-color-surface-container-low: #111;
+  --sx-color-surface-container-high: #111;
+
+  /* Outlines are a slightly lighter dark gray for subtle definition */
+  --sx-color-outline: #666;
+  --sx-color-outline-variant: #333;
+  --sx-color-shadow: #000;
+  --sx-color-surface-tint: #fff; /* Tint is white for a high-contrast overlay effect */
+  --sx-color-neutral: var(--sx-color-outline);
+  --sx-color-neutral-variant: var(--sx-color-outline-variant);
+
+  /* Internally defined colors, adapted for the ultra-black theme */
+  --sx-internal-color-gray-ripple-background: #333; /* Ripple is a visible gray */
+  --sx-internal-color-light-gray: #1a1a1a; /* "light-gray" is now "darkest-gray" */
+  --sx-internal-color-text: #fff; /* Main text is pure white */
+}
+
+.is-dark .sx__calendar {
+  border: none;
+}

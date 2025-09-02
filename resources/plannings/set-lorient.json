@@ -1,14 +1,14 @@
 {
   "title": "SSI SET - Lorient",
-  "edts": [
+  "children": [
     {
       "id": "l1",
       "title": "L1",
-      "edts": [
+      "children": [
         {
           "id": "l1cupge",
           "title": "L1 CUPGE",
-          "edts": [
+          "children": [
             {
               "id": "l1cupge13temps",
               "title": "L1 CUPGE 1/3 temps",
@@ -17,7 +17,7 @@
             {
               "id": "l1cupgesemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "cupge_11amth1106-phy1112-chi1104-phy1113-mth1107-mph1102",
                   "title": "CUPGE_1 / 1a",
@@ -33,7 +33,7 @@
             {
               "id": "l1cupgesemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "cupge_11amth1206-phy1212-chi1207-mth1207-phy1213-mph1202",
                   "title": "CUPGE_1 / 1a",
@@ -51,7 +51,7 @@
         {
           "id": "l1eemte",
           "title": "L1 EE / MTE",
-          "edts": [
+          "children": [
             {
               "id": "l1eemte13temps",
               "title": "L1 EE / MTE 1/3 temps",
@@ -60,7 +60,7 @@
             {
               "id": "l1eemtesemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "ee_13mth1106-phy1112-etd1101-phy1113-sdi1101",
                   "title": "EE_1 / 3",
@@ -76,7 +76,7 @@
             {
               "id": "l1eemtesemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "ee_13mth1206-phy1212-een1201-mtx1201-ers1201",
                   "title": "EE_1 / 3",
@@ -94,7 +94,7 @@
         {
           "id": "l1meca-gc",
           "title": "L1 Méca-GC",
-          "edts": [
+          "children": [
             {
               "id": "l1meca-gc13temps",
               "title": "L1 Méca-GC 1/3 temps",
@@ -103,11 +103,11 @@
             {
               "id": "l1meca-gcsemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "meca-gc_15amth1106-sdi1102-chi1104-phy1113-sdi1101",
                   "title": "Méca-GC_1 / 5a",
-                  "edts": [
+                  "children": [
                     {
                       "id": "meca-gc_15a1mth1106-sdi1102-chi1104-phy1113-sdi1101",
                       "title": "Méca-GC_1 / 5a1",
@@ -123,7 +123,7 @@
                 {
                   "id": "meca-gc_15bmth1106-sdi1102-inf1109-phy1113-sdi1101",
                   "title": "Méca-GC_1 / 5b",
-                  "edts": [
+                  "children": [
                     {
                       "id": "meca-gc_15b1mth1106-sdi1102-inf1109-phy1113-sdi1101",
                       "title": "Méca-GC_1 / 5b1",
@@ -141,7 +141,7 @@
             {
               "id": "l1meca-gcsemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "meca-gc_15amth1206-sdi1202-chi1207-mtx1201-sdi1201",
                   "title": "Méca-GC_1 / 5a",
@@ -155,7 +155,7 @@
                 {
                   "id": "meca-gc_15cmth1206-sdi1202-igc1201-mtx1201-sdi1201",
                   "title": "Méca-GC_1 / 5",
-                  "edts": [
+                  "children": [
                     {
                       "id": "meca-gc_15c1mth1206-sdi1202-igc1201-mtx1201-sdi1201",
                       "title": "Méca-GC_1 / 5c1",
@@ -175,7 +175,7 @@
         {
           "id": "l1pei",
           "title": "L1 PEI",
-          "edts": [
+          "children": [
             {
               "id": "l1pei13temps",
               "title": "L1 PEI 1/3 temps",
@@ -184,7 +184,7 @@
             {
               "id": "l1peisemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "pei_171mth1106-sdi1102-inf1109-mth1107-scn1101-sdi1101",
                   "title": "Groupe TP1",
@@ -210,7 +210,7 @@
             {
               "id": "l1peisemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "pei_171mth1206-scn1201-inf1210-inf1209-sdi1201-uepeis2",
                   "title": "Groupe TP1",
@@ -238,7 +238,7 @@
         {
           "id": "l1physique",
           "title": "L1 Physique",
-          "edts": [
+          "children": [
             {
               "id": "l1physique13temps",
               "title": "L1 Physique 1/3 temps",
@@ -247,11 +247,11 @@
             {
               "id": "l1physiquesemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "physique_12amth1106-phy1112-chi1104-phy1113-mth1107",
                   "title": "Physique_1 / 2a",
-                  "edts": [
+                  "children": [
                     {
                       "id": "physique_12a1mth1106-phy1112-chi1104-phy1113-mth1107",
                       "title": "Physique_1 / 2a1",
@@ -267,7 +267,7 @@
                 {
                   "id": "physique_12bmth1106-phy1112-inf1109-phy1113-mth1107",
                   "title": "Physique_1 / 2b",
-                  "edts": [
+                  "children": [
                     {
                       "id": "physique_12b1mth1106-phy1112-inf1109-phy1113-mth1107",
                       "title": "Physique_1 / 2b1",
@@ -285,11 +285,11 @@
             {
               "id": "l1physiquesemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "physique_12amth1206-phy1212-chi1207-mth1207-phy1213",
                   "title": "Physique_1 / 2a",
-                  "edts": [
+                  "children": [
                     {
                       "id": "physique_12a1mth1206-phy1212-chi1207-mth1207-phy1213",
                       "title": "Physique_1 / 2a1",
@@ -305,7 +305,7 @@
                 {
                   "id": "physique_12bmth1206-phy1212-inf1210-mth1207-phy1213",
                   "title": "Physique_1 / 2b",
-                  "edts": [
+                  "children": [
                     {
                       "id": "physique_12b1mth1206-phy1212-inf1210-mth1207-phy1213",
                       "title": "Physique_1 / 2b1",
@@ -325,7 +325,7 @@
         {
           "id": "l1ses",
           "title": "L1 SES",
-          "edts": [
+          "children": [
             {
               "id": "l1sestp1",
               "title": "L1 SES TP1",
@@ -341,7 +341,7 @@
         {
           "id": "l1snio",
           "title": "L1 SNIO",
-          "edts": [
+          "children": [
             {
               "id": "l1snio13temps",
               "title": "L1 SNIO 1/3 temps",
@@ -350,7 +350,7 @@
             {
               "id": "l1sniosemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "snio_16mth1106-inf1107-inf1109-phy1113-scn1101",
                   "title": "SNIO_1 / 6",
@@ -361,7 +361,7 @@
             {
               "id": "l1sniosemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "snio_161mth1206-scn1201-inf1210-inf1209-sdi1201",
                   "title": "SNIO_1 / 61",
@@ -379,11 +379,11 @@
         {
           "id": "l1svtletudiant",
           "title": "L1 SVT",
-          "edts": [
+          "children": [
             {
               "id": "l1svtletudiantsemestre1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "bp1",
                   "title": "BP1",
@@ -464,7 +464,7 @@
             {
               "id": "l1svtletudiantsemestre2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "bg1",
                   "title": "BG1",
@@ -549,11 +549,11 @@
     {
       "id": "l2",
       "title": "L2",
-      "edts": [
+      "children": [
         {
           "id": "l2ses",
           "title": "L2 SES",
-          "edts": [
+          "children": [
             {
               "id": "l2sesgr1",
               "title": "Gr1",
@@ -584,7 +584,7 @@
         {
           "id": "l2svtl",
           "title": "L2 SVT L",
-          "edts": [
+          "children": [
             {
               "id": "abc1a",
               "title": "ABC1a",
@@ -680,7 +680,7 @@
         {
           "id": "l2pei",
           "title": "L2 PEI-A",
-          "edts": [
+          "children": [
             {
               "id": "l2pei13temps",
               "title": "L2 PEI 1/3 temps",
@@ -689,7 +689,7 @@
             {
               "id": "l2peisemestre3",
               "title": "L2 PEI semestre 3",
-              "edts": [
+              "children": [
                 {
                   "id": "pei_271mth1309-ele1304-gif1301-sdi1304-mec1304-uepeis3",
                   "title": "Groupe TP1",
@@ -714,11 +714,11 @@
     {
       "id": "l3",
       "title": "L3",
-      "edts": [
+      "children": [
         {
           "id": "l3biosante",
           "title": "L3 BIO SANTÉ",
-          "edts": [
+          "children": [
             {
               "id": "biosantetp1",
               "title": "TP1",
@@ -734,7 +734,7 @@
         {
           "id": "l3biotechnologies",
           "title": "L3 BIOTECHNOLOGIES",
-          "edts": [
+          "children": [
             {
               "id": "biotechtp1",
               "title": "TP1",
@@ -750,7 +750,7 @@
         {
           "id": "l3tacb",
           "title": "L3 TACB",
-          "edts": [
+          "children": [
             {
               "id": "tacbtp1",
               "title": "TP1",
@@ -766,7 +766,7 @@
         {
           "id": "l3ses",
           "title": "L3 SES",
-          "edts": [
+          "children": [
             {
               "id": "l3sestp1",
               "title": "TP1",
@@ -782,7 +782,7 @@
         {
           "id": "l3ens",
           "title": "L3 ENS",
-          "edts": [
+          "children": [
             {
               "id": "l3ens-spipe",
               "title": "ENS-SPI PE",
@@ -808,7 +808,7 @@
         {
           "id": "l3protacb",
           "title": "L3 pro TACB",
-          "edts": [
+          "children": [
             {
               "id": "tacbprotp1",
               "title": "TP1",
@@ -824,7 +824,7 @@
         {
           "id": "l3-pronautisme",
           "title": "L3-pro NAUTISME",
-          "edts": [
+          "children": [
             {
               "id": "l3-pro-nautismegr1",
               "title": "L3-pro-NAUTISME gr 1",
@@ -840,7 +840,7 @@
         {
           "id": "l3-proemec",
           "title": "L3-pro EMEC",
-          "edts": [
+          "children": [
             {
               "id": "l3-pro-emec1",
               "title": "L3-pro-EMEC 1",
@@ -858,11 +858,11 @@
     {
       "id": "autre",
       "title": "Autre",
-      "edts": [
+      "children": [
         {
           "id": "dui3dsante",
           "title": "DU Impression Santé",
-          "edts": [
+          "children": [
             {
               "id": "dui3dsante",
               "title": "I3D Santé",
@@ -873,7 +873,7 @@
         {
           "id": "i3dmci",
           "title": "DU Impression MCI",
-          "edts": [
+          "children": [
             {
               "id": "i3dmci",
               "title": "I3D MCI",
@@ -884,7 +884,7 @@
         {
           "id": "cpeml",
           "title": "CPEM L",
-          "edts": [
+          "children": [
             {
               "id": "cpeml",
               "title": "CPEM L",
@@ -895,7 +895,7 @@
         {
           "id": "duimpression3d",
           "title": "DU Impression 3D",
-          "edts": [
+          "children": [
             {
               "id": "dui3dsante",
               "title": "DU I3D Santé",
@@ -918,15 +918,15 @@
     {
       "id": "m1",
       "title": "M1",
-      "edts": [
+      "children": [
         {
           "id": "m1bio-bmb",
           "title": "M1 BIO - BMB",
-          "edts": [
+          "children": [
             {
               "id": "s7-m1biobmb",
               "title": "S7 - M1 BIO BMB",
-              "edts": [
+              "children": [
                 {
                   "id": "s7grouperoscoff",
                   "title": "Groupe Roscoff",
@@ -947,7 +947,7 @@
             {
               "id": "s8-m1biobmb",
               "title": "S8 - M1 BIO BMB",
-              "edts": [
+              "children": [
                 {
                   "id": "s8grouperoscoff",
                   "title": "Groupe Roscoff",
@@ -995,7 +995,7 @@
         {
           "id": "m1-csse",
           "title": "M1-CSSE",
-          "edts": [
+          "children": [
             {
               "id": "m1csse-alternants",
               "title": "Alternants",
@@ -1011,11 +1011,11 @@
         {
           "id": "m1-materiaux",
           "title": "M1-Matériaux",
-          "edts": [
+          "children": [
             {
               "id": "m1mtx1",
               "title": "M1-Matériaux 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-mtx1a",
                   "title": "Groupe A",
@@ -1031,7 +1031,7 @@
             {
               "id": "m1mtx2",
               "title": "M1-Matériaux 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-mtx2a",
                   "title": "Groupe A",
@@ -1049,7 +1049,7 @@
         {
           "id": "m1-gmm",
           "title": "M1-GMM",
-          "edts": [
+          "children": [
             {
               "id": "m1-gmm-tp1",
               "title": "TP1",
@@ -1070,11 +1070,11 @@
         {
           "id": "m1-gcamp;mp",
           "title": "M1-GC & MP",
-          "edts": [
+          "children": [
             {
               "id": "m1-gcamp;mp-td1",
               "title": "TD1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-gcamp;mp-tp1",
                   "title": "TP1",
@@ -1090,7 +1090,7 @@
             {
               "id": "m1-gcamp;mp-td2",
               "title": "TD2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-gcamp;mp-tp1",
                   "title": "TP1",
@@ -1118,11 +1118,11 @@
         {
           "id": "m1-ene",
           "title": "M1-ENE",
-          "edts": [
+          "children": [
             {
               "id": "m1-ene1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-ene1a",
                   "title": "M1 - ENE 1a",
@@ -1138,7 +1138,7 @@
             {
               "id": "m1-ene2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-ene2a",
                   "title": "Groupe A",
@@ -1173,11 +1173,11 @@
     {
       "id": "m2",
       "title": "M2",
-      "edts": [
+      "children": [
         {
           "id": "m2isccsse",
           "title": "M2 ISC CSSE",
-          "edts": [
+          "children": [
             {
               "id": "m2isc-csse-alternants",
               "title": "Alternants",
@@ -1193,7 +1193,7 @@
         {
           "id": "m2-opamp;pi",
           "title": "M2-OP&PI",
-          "edts": [
+          "children": [
             {
               "id": "m2-opamp;pi-alt",
               "title": "Alternant",
@@ -1209,7 +1209,7 @@
         {
           "id": "m2-bio-bmb",
           "title": "M2-BIO-BMB",
-          "edts": [
+          "children": [
             {
               "id": "m2-bio-bmb-1",
               "title": "Groupe 1",
@@ -1250,11 +1250,11 @@
         {
           "id": "m2-ene",
           "title": "M2-ENE",
-          "edts": [
+          "children": [
             {
               "id": "m2-ene1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ene1a_p",
                   "title": "Groupe A",
@@ -1270,7 +1270,7 @@
             {
               "id": "m2-ene2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ene2a_p",
                   "title": "Groupe A",
@@ -1298,11 +1298,11 @@
         {
           "id": "m2-gc",
           "title": "M2-GC",
-          "edts": [
+          "children": [
             {
               "id": "td1",
               "title": "TD1",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "Esp. TP1",
@@ -1311,7 +1311,7 @@
                 {
                   "id": "tp2a",
                   "title": "TP2a",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2gcpalltp2a",
                       "title": "All. TP2a",
@@ -1329,7 +1329,7 @@
             {
               "id": "td2",
               "title": "TD2",
-              "edts": [
+              "children": [
                 {
                   "id": "tp2b",
                   "title": "Esp. TP2b",
@@ -1347,15 +1347,15 @@
         {
           "id": "m2-gcalt",
           "title": "M2-GC Alt.",
-          "edts": [
+          "children": [
             {
               "id": "td1alt",
               "title": "TD1 Alt.",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1alt",
                   "title": "TP1 Alt.",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2gcaalltp1",
                       "title": "All. TP1",
@@ -1390,7 +1390,7 @@
         {
           "id": "m2-gmm",
           "title": "M2-GMM",
-          "edts": [
+          "children": [
             {
               "id": "m2gm-double",
               "title": "Double",
@@ -1426,11 +1426,11 @@
         {
           "id": "m2-ecpc",
           "title": "M2-ECPC",
-          "edts": [
+          "children": [
             {
               "id": "m2-ecpc1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ecpc-1a_p",
                   "title": "Groupe A",
@@ -1446,7 +1446,7 @@
             {
               "id": "m2-ecpc2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ecpc-2a_p",
                   "title": "Groupe A",
@@ -1464,11 +1464,11 @@
         {
           "id": "m2r-mmgc",
           "title": "M2R-MMGC",
-          "edts": [
+          "children": [
             {
               "id": "m2r-gc",
               "title": "M2R-GC",
-              "edts": [
+              "children": [
                 {
                   "id": "m2gcrall",
                   "title": "All.",

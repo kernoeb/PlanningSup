@@ -1,14 +1,14 @@
 {
   "title": "UFR Mathématique de Rennes",
-  "edts": [
+  "children": [
     {
       "id": "l2-portailmathematiquesetapplications",
       "title": "L2-Portail mathématiques et applications",
-      "edts": [
+      "children": [
         {
           "id": "langues",
           "title": "LANGUES",
-          "edts": [
+          "children": [
             {
               "id": "allemand2l2maths",
               "title": "Allemand 2 L2 Maths",
@@ -49,11 +49,11 @@
         {
           "id": "parmoduless3",
           "title": "Par MODULES S3",
-          "edts": [
+          "children": [
             {
               "id": "aco-algebreetcomplexite",
               "title": "ACO-Algèbre et complexité",
-              "edts": [
+              "children": [
                 {
                   "id": "aco-gr1",
                   "title": "ACO-Gr1",
@@ -69,7 +69,7 @@
             {
               "id": "al3-algebre3",
               "title": "AL3-Algèbre 3",
-              "edts": [
+              "children": [
                 {
                   "id": "al3-gr1",
                   "title": "AL3-Gr1",
@@ -90,7 +90,7 @@
             {
               "id": "ap3-analyseetprobabilites3",
               "title": "AP3-Analyse et probabilités 3",
-              "edts": [
+              "children": [
                 {
                   "id": "ap3-gr1",
                   "title": "AP3-Gr1",
@@ -111,7 +111,7 @@
             {
               "id": "cmd3-complementsmathematiquesdefi3",
               "title": "CMD3-Compléments mathématiques Défi 3",
-              "edts": [
+              "children": [
                 {
                   "id": "cmd3",
                   "title": "CMD3",
@@ -122,7 +122,7 @@
             {
               "id": "dmm2-decouvertedesmetiersdesmathematiques2",
               "title": "DMM2-Découverte des métiers des mathématiques 2",
-              "edts": [
+              "children": [
                 {
                   "id": "dmm2",
                   "title": "DMM2",
@@ -133,7 +133,7 @@
             {
               "id": "i3a-introductionauxapplicationsdel'arithmetiqueetdel'algebre",
               "title": "I3A-Introduction aux applications de l'arithmétique et de l'algèbre",
-              "edts": [
+              "children": [
                 {
                   "id": "i3a-gr1",
                   "title": "I3A-Gr1",
@@ -154,7 +154,7 @@
             {
               "id": "ph3-physique3",
               "title": "PH3-Physique 3",
-              "edts": [
+              "children": [
                 {
                   "id": "ph3-gr1",
                   "title": "PH3-Gr1",
@@ -170,7 +170,7 @@
             {
               "id": "ppa1-miseaniveauenmathematiquespost-pass1",
               "title": "PPA1-Mise à niveau en mathématiques Post-Pass 1",
-              "edts": [
+              "children": [
                 {
                   "id": "ppa1",
                   "title": "PPA1",
@@ -181,7 +181,7 @@
             {
               "id": "resoudre",
               "title": "RESOUDRE",
-              "edts": [
+              "children": [
                 {
                   "id": "resoudre",
                   "title": "RESOUDRE",
@@ -194,11 +194,11 @@
         {
           "id": "parmoduless4",
           "title": "Par MODULES S4",
-          "edts": [
+          "children": [
             {
               "id": "al4-algebre4",
               "title": "AL4-Algèbre 4",
-              "edts": [
+              "children": [
                 {
                   "id": "al4-gr1",
                   "title": "AL4-Gr1",
@@ -219,7 +219,7 @@
             {
               "id": "an4-analyse4",
               "title": "AN4-Analyse 4",
-              "edts": [
+              "children": [
                 {
                   "id": "an4-gr1",
                   "title": "AN4-Gr1",
@@ -240,7 +240,7 @@
             {
               "id": "cal-calculabilite",
               "title": "CAL-Calculabilité",
-              "edts": [
+              "children": [
                 {
                   "id": "cal",
                   "title": "CAL",
@@ -251,7 +251,7 @@
             {
               "id": "cmd4-complementsmathematiquesdefi4",
               "title": "CMD4-Compléments mathématiques Défi 4",
-              "edts": [
+              "children": [
                 {
                   "id": "cmd4",
                   "title": "CMD4",
@@ -262,7 +262,7 @@
             {
               "id": "did1-didactiquedesmathematiques1",
               "title": "DID1-Didactique des mathématiques 1",
-              "edts": [
+              "children": [
                 {
                   "id": "did",
                   "title": "DID",
@@ -273,7 +273,7 @@
             {
               "id": "ed1-equationsdifferentielles1",
               "title": "ED1-Equations différentielles 1",
-              "edts": [
+              "children": [
                 {
                   "id": "ed1-gr1",
                   "title": "ED1-Gr1",
@@ -294,7 +294,7 @@
             {
               "id": "imia-introductionauxmathematiquesdel'intelligenceartificielle",
               "title": "IMIA-Introduction aux mathématiques de l'intelligence artificielle",
-              "edts": [
+              "children": [
                 {
                   "id": "imia-gr1",
                   "title": "IMIA-Gr1",
@@ -315,7 +315,7 @@
             {
               "id": "ph4-physique4",
               "title": "PH4-Physique 4",
-              "edts": [
+              "children": [
                 {
                   "id": "ph4",
                   "title": "PH4",
@@ -326,7 +326,7 @@
             {
               "id": "ppa2-miseaniveauenmathematiquespost-pass2",
               "title": "PPA2-Mise à niveau en mathématiques Post-Pass 2",
-              "edts": [
+              "children": [
                 {
                   "id": "ppa2",
                   "title": "PPA2",
@@ -339,7 +339,7 @@
         {
           "id": "parparcours",
           "title": "Par PARCOURS",
-          "edts": [
+          "children": [
             {
               "id": "l2-math-cpes",
               "title": "L2-Math-CPES",
@@ -365,7 +365,7 @@
         {
           "id": "reunionsderentree",
           "title": "Réunions de rentrée",
-          "edts": [
+          "children": [
             {
               "id": "l2defimathematiques",
               "title": "L2 Défi mathématiques",

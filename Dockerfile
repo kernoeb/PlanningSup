@@ -1,96 +1,62 @@
-##################################################
-FROM node:22.18.0-alpine3.22 AS node-base
-LABEL maintainer="kernoeb <kernoeb@protonmail.com>"
+FROM oven/bun:1.2.21 AS build
 
-##################################################
-FROM node-base AS build-tools
+#RUN apt update && apt install python3 python3-pip make g++ -y
 
-RUN apk add --no-cache curl bash
-RUN npm install -g clean-modules@3
-
-##################################################
-FROM build-tools AS builder
-
-# https://github.com/hadolint/hadolint/wiki/DL4006
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-WORKDIR /home/node/build
-RUN chown -R node:node /home/node/build
-
-USER node
-
-# Only copy the files we need for the moment
-COPY --chown=node:node package.json package.json
-COPY --chown=node:node package-lock.json package-lock.json
-COPY --chown=node:node apps/web-app/package.json apps/web-app/package.json
-RUN npm ci
-
-# Copy all files
-COPY --chown=node:node apps/web-app apps/web-app
-
-# Check JSON is valid
-COPY ./scripts ./scripts
-COPY resources/plannings ./resources/plannings
-RUN node ./scripts/check-plannings-json.js
-
-# Nuxt.js build
-RUN npm run build -w apps/web-app
-
-# Ensure apps/web-app/.nuxt exists
-RUN test -d apps/web-app/.nuxt
-
-# Now we remove the node_modules, as we only need production dependencies in the docker image
-RUN rm -r ./node_modules/ apps/web-app/node_modules/
-
-# Only production dependencies
-RUN npm ci --omit=dev && npm cache clean --force
-
-# Remove caches
-RUN rm -rf node_modules/.cache apps/web-app/node_modules/.cache
-
-# Clean node_modules, one of the heaviest object in the universe
-RUN for dir in node_modules apps/web-app/node_modules; do \
-  echo "Cleaning modules in $dir..."; \
-  clean-modules --directory "$dir" --yes \
-  "**/*.d.ts" \
-  "**/@types/**" \
-  "prettier/esm/*" \
-  "rxjs/src/**" \
-  "rxjs/bundles/**" \
-  "rxjs/_esm5/**" \
-  "rxjs/_esm2015/**" \
-  "!**/*.mustache"; \
-  done
-
-##################################################
-FROM node-base AS app
-RUN apk --no-cache add dumb-init curl bash
-
-# Remove some useless stuff
-RUN rm -rf /opt/yarn-*
-
-# No evil root access
-USER node
 WORKDIR /app
 
-COPY --chown=node:node package.json package.json
-COPY --chown=node:node package-lock.json package-lock.json
-COPY --chown=node:node apps/web-app apps/web-app
-COPY --chown=node:node --from=builder /home/node/build/node_modules ./node_modules
-COPY --chown=node:node --from=builder /home/node/build/apps/web-app/node_modules ./apps/web-app/node_modules
-COPY --chown=node:node --from=builder /home/node/build/apps/web-app/.nuxt ./apps/web-app/.nuxt
-COPY --chown=node:node --from=builder /home/node/build/apps/web-app/static ./apps/web-app/static
+COPY /scripts/run.ts ./scripts/run.ts
 
-# The planning never falls, but you never know
-HEALTHCHECK --interval=15s --timeout=5s --retries=5 \
-  CMD ["curl", "-H", "ignore-statistics: true", "http://localhost:3000/api/v1/health"]
+# Cache packages
+COPY package.json package.json
+COPY bun.lock bun.lock
+
+COPY /packages/config/package.json ./packages/config/package.json
+COPY /packages/libs/package.json ./packages/libs/package.json
+
+COPY /apps/api/package.json ./apps/api/package.json
+COPY /apps/web/package.json ./apps/web/package.json
+
+RUN bun install
+
+COPY /resources/plannings/index.ts ./resources/plannings/index.ts
+COPY /apps/api ./apps/api
+COPY /apps/web ./apps/web
+COPY /packages/config ./packages/config
+COPY /packages/libs ./packages/libs
 
 ENV NODE_ENV=production
-ENV NODE_OPTIONS="--max-old-space-size=2048"
-ENV HOST=0.0.0.0
-EXPOSE 3000
 
-ENV PLANNINGS_DIR="/app/resources/plannings"
-COPY --chown=node:node resources/plannings ./resources/plannings
+RUN bun run build
 
-CMD ["dumb-init", "npm", "run", "-w", "apps/web-app", "start", "--", "--port", "3000"]
+##########################################################
+# Copy json planning files using a simple sh image
+FROM busybox AS copy-plannings
+
+WORKDIR /app
+
+COPY /resources/plannings/ /tmp/plannings/
+
+RUN mkdir -p ./plannings && \
+  cp /tmp/plannings/*.json ./plannings/
+
+##########################################################
+FROM gcr.io/distroless/base
+
+WORKDIR /app
+
+ENV PLANNINGS_LOCATION=/app/plannings
+ENV WEB_DIST_LOCATION=/app/web/dist
+
+COPY /apps/api/drizzle.config.ts ./drizzle.config.ts
+COPY /apps/api/drizzle ./drizzle
+
+COPY --from=build /app/apps/api/server ./server
+COPY --from=build /app/apps/web/dist ./web/dist/
+
+COPY --from=copy-plannings /app/plannings ./plannings
+
+ENV NODE_ENV=production
+
+CMD ["./server"]
+
+EXPOSE 20000

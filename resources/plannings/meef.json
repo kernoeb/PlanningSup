@@ -1,10 +1,10 @@
 {
   "title": "MEEF",
-  "edts": [
+  "children": [
     {
       "id": "bme-meef",
       "title": "BME - MEEF",
-      "edts": [
+      "children": [
         {
           "id": "bme-meef1",
           "title": "BME - MEEF1",
@@ -20,11 +20,11 @@
     {
       "id": "plp-meef",
       "title": "PLP - MEEF",
-      "edts": [
+      "children": [
         {
           "id": "td1",
           "title": "TD 1",
-          "edts": [
+          "children": [
             {
               "id": "biotech",
               "title": "BIOTECH",
@@ -45,7 +45,7 @@
         {
           "id": "td2",
           "title": "TD 2",
-          "edts": [
+          "children": [
             {
               "id": "artsapp",
               "title": "ARTS APP",
@@ -73,7 +73,7 @@
     {
       "id": "s2ime-meef",
       "title": "S2IME - MEEF",
-      "edts": [
+      "children": [
         {
           "id": "s2ime-meef1",
           "title": "S2IME - MEEF 1",

@@ -1,18 +1,18 @@
 {
   "title": "Université de Saint-Etienne",
-  "edts": [
+  "children": [
     {
       "id": "medecine",
       "title": "Medecine",
-      "edts": [
+      "children": [
         {
           "id": "scolarite-1-cycle",
           "title": "Scolarité 1er Cycle",
-          "edts": [
+          "children": [
             {
               "id": "las",
               "title": "LAS",
-              "edts": [
+              "children": [
                 {
                   "id": "las-se",
                   "title": "LAS SE",
@@ -21,18 +21,18 @@
                 {
                   "id": "las-shs",
                   "title": "LAS SHS",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5129&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5129&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
             {
               "id": "pass",
               "title": "PASS",
-              "edts": [
+              "children": [
                 {
                   "id": "cm-pass",
                   "title": "CM PASS",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=607&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=607&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "exp-ifsi",
@@ -42,7 +42,7 @@
                 {
                   "id": "exp-imrt",
                   "title": "Expérimentation IMRT",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=243&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=243&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "grp-a-presentiel-grp-b-distanciel",
@@ -57,26 +57,26 @@
                 {
                   "id": "option-droit",
                   "title": "Option Droit",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grp-a",
                       "title": "Groupe A",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "grp-b",
                       "title": "Groupe B",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "grp-c",
                       "title": "Groupe C",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=411&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=411&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "grp-d",
                       "title": "Groupe D",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5046&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5046&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "grp-e",
@@ -93,7 +93,7 @@
                 {
                   "id": "options-fst",
                   "title": "Options FST",
-                  "edts": [
+                  "children": [
                     {
                       "id": "option-biomecanique-et-activites-physiques-et-sportives",
                       "title": "Option Biomécanique et Activités Physiques et Sportives",
@@ -158,7 +158,7 @@
         {
           "id": "scolarite-2-cycle",
           "title": "Scolarité 2eme Cycle",
-          "edts": [
+          "children": [
             {
               "id": "dfasm1",
               "title": "DFASM1",
@@ -179,15 +179,15 @@
         {
           "id": "scolarite-sps",
           "title": "Scolarité SPS",
-          "edts": [
+          "children": [
             {
               "id": "l1-sciences-pour-la-sante",
               "title": "L1 Sciences pour la Santé",
-              "edts": [
+              "children": [
                 {
                   "id": "groupes",
                   "title": "Groupes",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe-a",
                       "title": "Groupe A",
@@ -223,7 +223,7 @@
                 {
                   "id": "groupes-1-2-3-4",
                   "title": "Groupes 1, 2, 3, 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe-1",
                       "title": "Groupe 1",
@@ -256,11 +256,11 @@
             {
               "id": "l2-sciences-pour-la-sante",
               "title": "L2 Sciences pour la Santé",
-              "edts": [
+              "children": [
                 {
                   "id": "groupes-td",
                   "title": "Groupes TD",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe-a",
                       "title": "Groupe A",
@@ -274,12 +274,12 @@
                     {
                       "id": "groupe-c",
                       "title": "Groupe C",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3825&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3825&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "l2-sps-groupe1-1-4",
                       "title": "L2 SPS - Groupe 1 (1/4)",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1295&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1295&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "l2-sps-groupe-2-2-4",
@@ -301,7 +301,7 @@
                 {
                   "id": "groupes-td-math-chimie",
                   "title": "Groupes TD - Math Chimie",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe-1",
                       "title": "Groupe 1",
@@ -337,7 +337,7 @@
                 {
                   "id": "spe-ingenierie-groupe-a-b",
                   "title": "Spé. Ingénierie - Groupe A - B",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l2-sps-spe-ingenierie-groupe-a",
                       "title": "L2 SPS - Spé. Ingénierie - Groupe A",
@@ -353,7 +353,7 @@
                 {
                   "id": "spe-prevention-groupe-a-b",
                   "title": "Spé. Prévention - Groupe A - B",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l2-sps-spe-prevention-groupe-a",
                       "title": "L2 SPS - Spé. Prévention - Groupe A",
@@ -371,11 +371,11 @@
             {
               "id": "l3-sciences-pour-la-sante",
               "title": "L3 Sciences pour la Santé",
-              "edts": [
+              "children": [
                 {
                   "id": "groupes-td",
                   "title": "GROUPES TD",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe-a",
                       "title": "Groupe A",
@@ -410,11 +410,11 @@
         {
           "id": "dsts",
           "title": "DSTS",
-          "edts": [
+          "children": [
             {
               "id": "de-ipa-1a",
               "title": "DE IPA 1A",
-              "edts": [
+              "children": [
                 {
                   "id": "de-ipa-1a-visu",
                   "title": "DE IPA 1A (visu)",
@@ -435,7 +435,7 @@
             {
               "id": "de-ipa-2a-pathologies-renales",
               "title": "DE IPA 2A Pathologies Renales",
-              "edts": [
+              "children": [
                 {
                   "id": "de-ipa-2a-visu",
                   "title": "DE IPA 2A (visu)",
@@ -458,11 +458,11 @@
         {
           "id": "master",
           "title": "Master",
-          "edts": [
+          "children": [
             {
               "id": "du-pre-master",
               "title": "DU Pre Master",
-              "edts": [
+              "children": [
                 {
                   "id": "du-pre-master-1a",
                   "title": "DU Pre Master 1A",
@@ -493,7 +493,7 @@
             {
               "id": "m1-ingenierie-sante",
               "title": "M1 Ingénierie Santé",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-ingenierie-sante",
                   "title": "M1 Ingénierie Santé",
@@ -504,7 +504,7 @@
             {
               "id": "m2-ingenierie-tissulaire",
               "title": "M2 Ingénierie Tissulaire",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ingenierie-tissulaire",
                   "title": "M2 Ingénierie Tissulaire",
@@ -515,7 +515,7 @@
             {
               "id": "m2-inm",
               "title": "M2 iNm",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-inm",
                   "title": "M2 iNm",
@@ -526,7 +526,7 @@
             {
               "id": "master-environnement-juridique",
               "title": "Master Environnement Juridique",
-              "edts": [
+              "children": [
                 {
                   "id": "master-environnement-juridique",
                   "title": "Master Environnement Juridique",
@@ -537,11 +537,11 @@
             {
               "id": "master-live",
               "title": "Master Live",
-              "edts": [
+              "children": [
                 {
                   "id": "master-live-1a",
                   "title": "Master Live 1A",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m1-live-visu",
                       "title": "M1 Live (visu)",
@@ -562,7 +562,7 @@
                 {
                   "id": "master-live-2a",
                   "title": "Master Live 2A",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2-live-visu",
                       "title": "M2 Live (visu)",

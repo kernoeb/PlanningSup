@@ -1,0 +1,1197 @@
+{
+  "title": "IGR",
+  "children": [
+    {
+      "id": "formationsenfrancais-fi",
+      "title": "Formations en français - FI",
+      "children": [
+        {
+          "id": "duetudiantentrepreneur-fi",
+          "title": "DU ETUDIANT ENTREPRENEUR - FI",
+          "children": [
+            {
+              "id": "duetudiantentrepreneurd2e-fi",
+              "title": "DU Etudiant Entrepreneur (D2E) - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2234&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "durechercheenmanagement-fi",
+          "title": "DU RECHERCHE EN MANAGEMENT - FI",
+          "children": [
+            {
+              "id": "durechercheenmanagement-fi",
+              "title": "DU Recherche en Management - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15735&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "l3sciencesdegestion-fi",
+          "title": "L3 Sciences de gestion  - FI",
+          "children": [
+            {
+              "id": "l3-cmcca-fi",
+              "title": "L3 - CM CCA - FI",
+              "children": [
+                {
+                  "id": "l3cca-fi",
+                  "title": "L3 CCA - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2250&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "l3-cmsgm-fi",
+              "title": "L3 - CM SGM - FI",
+              "children": [
+                {
+                  "id": "l3sgm-fi",
+                  "title": "L3 SGM  - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3219&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "l3-groupestd-fi",
+              "title": "L3 - groupes TD - FI",
+              "children": [
+                {
+                  "id": "g1-l3cca-fi",
+                  "title": "G1 - L3 CCA - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2031&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2-l3cca-fi",
+                  "title": "G2 - L3 CCA - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3222&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3-l3sgm-fi",
+                  "title": "G3 - L3 SGM - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3226&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4-l3sgm-fi",
+                  "title": "G4 - L3 SGM - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3228&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5-l3sgm-fi",
+                  "title": "G5 - L3 SGM - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5362&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6-l3sgm-fi",
+                  "title": "G6 - L3 SGM - FI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5363&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "l3-groupeslangueslv2-ficca",
+              "title": "L3 - groupes langues LV2 - FI (CCA)",
+              "children": [
+                {
+                  "id": "l3-lv2allemandcca",
+                  "title": "L3 - LV2 Allemand (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3662&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaistoeic_1cca",
+                  "title": "L3 - LV2-ANGLAIS TOEIC_1  (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10519&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaistoeic_2cca",
+                  "title": "L3 - LV2-ANGLAIS TOEIC_2 (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisavance_1cca",
+                  "title": "L3 - LV2-ANGLAIS avancé_1 (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1815&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisavance_2cca",
+                  "title": "L3 - LV2-ANGLAIS avancé_2 (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10521&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisintermediaire_1cca",
+                  "title": "L3 - LV2-ANGLAIS intermédiaire_1 (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8668&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisintermediaire_2cca",
+                  "title": "L3 - LV2-ANGLAIS intermédiaire_2 (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9293&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-chinoisdebutantcca",
+                  "title": "L3 - LV2-Chinois débutant (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-espagnolgroupeavancecca",
+                  "title": "L3 - LV2-Espagnol Groupe avancé (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4407&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-espagnolgroupeintermediairecca",
+                  "title": "L3 - LV2-Espagnol Groupe intermédiaire (CCA)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3887&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "l3-groupeslangueslv2-fisgm",
+              "title": "L3 - groupes langues LV2 - FI (SGM)",
+              "children": [
+                {
+                  "id": "l3-lv2allemandsgm",
+                  "title": "L3 - LV2 Allemand (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2173&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaistoeic_1sgm",
+                  "title": "L3 - LV2-ANGLAIS TOEIC_1 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2971&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaistoeic_2sgm",
+                  "title": "L3 - LV2-ANGLAIS TOEIC_2 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18201&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisavance_1sgm",
+                  "title": "L3 - LV2-ANGLAIS avancé_1 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8844&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisavance_2sgm",
+                  "title": "L3 - LV2-ANGLAIS avancé_2 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2071&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisintermediaire_1sgm",
+                  "title": "L3 - LV2-ANGLAIS intermédiaire_1 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2920&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-anglaisintermediaire_2sgm",
+                  "title": "L3 - LV2-ANGLAIS intermédiaire_2 (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2391&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-chinoisdebutantsgm",
+                  "title": "L3 - LV2-Chinois débutant (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2347&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-espagnolgroupeavancesgm",
+                  "title": "L3 - LV2-Espagnol Groupe avancé (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2249&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "l3-lv2-espagnolgroupeintermediairesgm",
+                  "title": "L3 - LV2-Espagnol Groupe intermédiaire (SGM)",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2175&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1cgaoparcourssicg-fi",
+          "title": "M1 CGAO parcours SICG - FI",
+          "children": [
+            {
+              "id": "groupestdsemestre7",
+              "title": "Groupes TD semestre 7",
+              "children": [
+                {
+                  "id": "g1cgaosicg",
+                  "title": "G1 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2274&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2cgaosicg",
+                  "title": "G2 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2272&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3cgaosicg",
+                  "title": "G3 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2270&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4cgaosicg",
+                  "title": "G4 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2302&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5cgaosicg",
+                  "title": "G5 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2135&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6cgaosicg",
+                  "title": "G6 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2411&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupestdsemestre8",
+              "title": "Groupes TD semestre 8",
+              "children": [
+                {
+                  "id": "g1cgaosicg",
+                  "title": "G1 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2098&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2cgaosicg",
+                  "title": "G2 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3cgaosicg",
+                  "title": "G3 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22192&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4cgaosicg",
+                  "title": "G4 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22193&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5cgaosicg",
+                  "title": "G5 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22194&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6cgaosicg",
+                  "title": "G6 CGAO SICG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22195&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "m1cgao-sicg-fi",
+              "title": "M1 CGAO - SICG  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2153&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "options",
+              "title": "Options",
+              "children": [
+                {
+                  "id": "gpe1techinternet",
+                  "title": "Gpe 1 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2260&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpe2techinternet",
+                  "title": "Gpe 2 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2259&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeallemand",
+                  "title": "Gpe Allemand",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2265&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpechinoisdebutant\"2emeannee\"",
+                  "title": "Gpe Chinois débutant \"2ème année\"",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2263&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeculturegenerale",
+                  "title": "Gpe Culture Générale",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2212&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnol",
+                  "title": "Gpe Espagnol",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2017&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondi",
+                  "title": "Gpe Espagnol approfondi",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2264&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondietelyte",
+                  "title": "Gpe Espagnol approfondi et Elyte",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14237&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpegestiondeprojetassociatif",
+                  "title": "Gpe Gestion de projet associatif",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10722&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpetechinternet",
+                  "title": "Gpe Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2258&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1maeparcoursmej-fi",
+          "title": "M1 MAE parcours MEJ - FI",
+          "children": [
+            {
+              "id": "m1mae-mej-fiparcourseurope",
+              "title": "M1 MAE - MEJ  -FI (parcours Europe)",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=677&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-mej-fi",
+              "title": "M1 MAE - MEJ - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=616&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-mej-fiparcoursmarche",
+              "title": "M1 MAE - MEJ - FI (parcours Marché)",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=643&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-mej-fi-td",
+              "title": "M1 MAE - MEJ - FI - TD",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=625&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-mej-fi-td",
+              "title": "M1 MAE - MEJ - FI - TD",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=631&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "m1maeparcoursmanagement-fi",
+          "title": "M1 MAE parcours Management - FI",
+          "children": [
+            {
+              "id": "m1mae-ma-fi",
+              "title": "M1 MAE - MA - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15520&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-ma-fiparcourseurope",
+              "title": "M1 MAE - MA - FI (parcours Europe)",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12446&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-ma-fiparcoursmarche",
+              "title": "M1 MAE - MA - FI (parcours Marché)",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12447&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-ma-fi-td",
+              "title": "M1 MAE - MA - FI - TD",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2984&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m1mae-ma-fi-td",
+              "title": "M1 MAE - MA - FI - TD",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11651&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "m1biologie-gestion-fisve-igr",
+          "title": "M1 biologie-gestion - FI SVE-IGR",
+          "children": [
+            {
+              "id": "m1biologie-gestion-fisve-igr",
+              "title": "M1 biologie-gestion - FI SVE-IGR",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2904&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "m1comptablitecontroleauditparcourscca-fi",
+          "title": "M1 comptablité contrôle audit parcours CCA - FI",
+          "children": [
+            {
+              "id": "gpegestiondeprojetassociatif",
+              "title": "Gpe Gestion de projet associatif",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10724&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupestdsemestre7",
+              "title": "Groupes TD semestre 7",
+              "children": [
+                {
+                  "id": "g1cca",
+                  "title": "G1 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1528&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2cca",
+                  "title": "G2 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1529&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3cca",
+                  "title": "G3 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1530&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4cca",
+                  "title": "G4 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1531&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5cca",
+                  "title": "G5 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2253&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6cca",
+                  "title": "G6 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2085&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupestdsemestre8",
+              "title": "Groupes TD semestre 8",
+              "children": [
+                {
+                  "id": "g1cca",
+                  "title": "G1 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2315&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2cca",
+                  "title": "G2 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22174&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3cca",
+                  "title": "G3 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22175&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4cca",
+                  "title": "G4 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22176&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5cca",
+                  "title": "G5 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2150&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6cca",
+                  "title": "G6 CCA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22177&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "m1cca-fi",
+              "title": "M1 CCA  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2157&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "m1financeparcoursfinance-fi",
+          "title": "M1 finance parcours finance - FI",
+          "children": [
+            {
+              "id": "groupestdsemestre7",
+              "title": "Groupes TD semestre 7",
+              "children": [
+                {
+                  "id": "g1fin",
+                  "title": "G1 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2148&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2fin",
+                  "title": "G2 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2147&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3fin",
+                  "title": "G3 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2048&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4fin",
+                  "title": "G4 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2305&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5fin",
+                  "title": "G5 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2210&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6fin",
+                  "title": "G6 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2372&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupestdsemestre8",
+              "title": "Groupes TD semestre 8",
+              "children": [
+                {
+                  "id": "g1fin",
+                  "title": "G1 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2080&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2fin",
+                  "title": "G2 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22178&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3fin",
+                  "title": "G3 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22179&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4fin",
+                  "title": "G4 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2078&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5fin",
+                  "title": "G5 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22181&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6fin",
+                  "title": "G6 FIN",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22180&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "m1finance-fi",
+              "title": "M1 Finance  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2156&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "options",
+              "title": "Options",
+              "children": [
+                {
+                  "id": "gpe1techinternet",
+                  "title": "Gpe 1 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2343&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpe2techinternet",
+                  "title": "Gpe 2 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2339&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeallemand",
+                  "title": "Gpe Allemand",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2351&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpechinoisdebutant2emeannee\"",
+                  "title": "Gpe Chinois débutant 2ème année\"",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeculturegenerale",
+                  "title": "Gpe Culture Générale",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2215&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnol",
+                  "title": "Gpe Espagnol",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2026&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondi",
+                  "title": "Gpe Espagnol approfondi",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2348&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondietelyte",
+                  "title": "Gpe Espagnol approfondi et Elyte",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14244&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpegestiondeprojetassociatif",
+                  "title": "Gpe Gestion de projet associatif",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10718&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpetechinternet",
+                  "title": "Gpe Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2338&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1gestiondesressourceshumaines-fi",
+          "title": "M1 gestion des ressources humaines - FI",
+          "children": [
+            {
+              "id": "groupestdsemestre7",
+              "title": "Groupes TD semestre 7",
+              "children": [
+                {
+                  "id": "g1grh",
+                  "title": "G1 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2292&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2grh",
+                  "title": "G2 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2290&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3grh",
+                  "title": "G3 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2289&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4grh",
+                  "title": "G4 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2303&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5grh",
+                  "title": "G5 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2138&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6grh",
+                  "title": "G6 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2377&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupestdsemestre8",
+              "title": "Groupes TD semestre 8",
+              "children": [
+                {
+                  "id": "g1grh",
+                  "title": "G1 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2059&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2grh",
+                  "title": "G2 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22186&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3grh",
+                  "title": "G3 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22187&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4grh",
+                  "title": "G4 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22188&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5grh",
+                  "title": "G5 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22189&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6grh",
+                  "title": "G6 GRH",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22190&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "m1grh-fi",
+              "title": "M1 GRH  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2154&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "options",
+              "title": "Options",
+              "children": [
+                {
+                  "id": "gpe1techinternet",
+                  "title": "Gpe 1 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2281&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpe2techinternet",
+                  "title": "Gpe 2 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2279&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeallemand",
+                  "title": "Gpe Allemand",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2286&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpechinoisdebutant\"2emeannee\"",
+                  "title": "Gpe Chinois débutant \"2ème année\"",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2282&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeculturegenerale",
+                  "title": "Gpe Culture Générale",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2280&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnol",
+                  "title": "Gpe Espagnol",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2020&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondi",
+                  "title": "Gpe Espagnol approfondi",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2285&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondietelyte",
+                  "title": "Gpe Espagnol approfondi et Elyte",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14245&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpegestiondeprojetassociatif",
+                  "title": "Gpe Gestion de projet associatif",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10719&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpetechinternet",
+                  "title": "Gpe Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2277&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m1marketingetventeparcoursmarketing-fi",
+          "title": "M1 marketing et vente parcours marketing - FI",
+          "children": [
+            {
+              "id": "groupestdsemestre7",
+              "title": "Groupes TD semestre 7",
+              "children": [
+                {
+                  "id": "g1mkg",
+                  "title": "G1 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2316&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2mkg",
+                  "title": "G2 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2314&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3mkg",
+                  "title": "G3 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2313&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4mkg",
+                  "title": "G4 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2304&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5mkg",
+                  "title": "G5 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2140&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6mkg",
+                  "title": "G6 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2410&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupestdsemestre8",
+              "title": "Groupes TD semestre 8",
+              "children": [
+                {
+                  "id": "g1mkg",
+                  "title": "G1 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2072&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g2mkg",
+                  "title": "G2 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22182&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g3mkg",
+                  "title": "G3 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22183&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g4mkg",
+                  "title": "G4 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22184&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g5mkg",
+                  "title": "G5 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22185&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "g6mkg",
+                  "title": "G6 MKG",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2068&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "m1mkg-fi",
+              "title": "M1 MKG  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2155&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "options",
+              "title": "Options",
+              "children": [
+                {
+                  "id": "gpe1techinternet",
+                  "title": "Gpe 1 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2320&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpe2techinternet",
+                  "title": "Gpe 2 Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2318&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeallemand",
+                  "title": "Gpe Allemand",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2324&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpechinoisdebutant\"2emeannee\"",
+                  "title": "Gpe Chinois débutant \"2ème année\"",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2321&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeculturegenerale",
+                  "title": "Gpe Culture Générale",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2354&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnol",
+                  "title": "Gpe Espagnol",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2023&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondi",
+                  "title": "Gpe Espagnol approfondi",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2322&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpeespagnolapprofondietelyte",
+                  "title": "Gpe Espagnol approfondi et Elyte",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14246&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpegestiondeprojetassociatif",
+                  "title": "Gpe Gestion de projet associatif",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10720&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gpetechinternet",
+                  "title": "Gpe Tech Internet",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2317&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "m2cca-comptabilitecontroleaudit-fi",
+          "title": "M2 CCA - Comptabilité Contrôle Audit - FI",
+          "children": [
+            {
+              "id": "m2cca-anglaisdesaffairesg1-fi",
+              "title": "M2 CCA - Anglais des Affaires G1  - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m2cca-anglaisdesaffairesg2-fi",
+              "title": "M2 CCA - Anglais des Affaires G2 - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13192&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "m2cca-fi",
+              "title": "M2 CCA - FI",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2180&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "m2cgao-avpp-fi",
+          "title": "M2 CGAO - AVPP - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1746&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2cgao-sicg-fi",
+          "title": "M2 CGAO - SICG  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2379&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2grh-sdrh-fi",
+          "title": "M2 GRH - SDRH  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2245&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-ei-fi",
+          "title": "M2 MAE - EI  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2697&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-ei-fitd",
+          "title": "M2 MAE - EI - FI (TD)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4036&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-ei-fi-tdg1",
+          "title": "M2 MAE - EI - FI - TD G1",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4041&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-ei-fi-tdg2",
+          "title": "M2 MAE - EI - FI - TD G2",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5990&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fi",
+          "title": "M2 MAE - MEJ  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2713&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fimi",
+          "title": "M2 MAE - MEJ - FI (MI)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3389&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fiscm",
+          "title": "M2 MAE - MEJ - FI (SCM)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fitd",
+          "title": "M2 MAE - MEJ - FI (TD)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7945&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fi-tdg1",
+          "title": "M2 MAE - MEJ - FI - TD G1",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1162&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-mej-fi-tdg2",
+          "title": "M2 MAE - MEJ - FI - TD G2",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1205&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fi",
+          "title": "M2 MAE - PSDI  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2744&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fimi",
+          "title": "M2 MAE - PSDI - FI (MI)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4806&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fiscm",
+          "title": "M2 MAE - PSDI - FI (SCM)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3234&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fitd",
+          "title": "M2 MAE - PSDI - FI (TD)",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7971&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fi-tdg1",
+          "title": "M2 MAE - PSDI - FI - TD G1",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9041&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mae-psdi-fi-tdg2",
+          "title": "M2 MAE - PSDI - FI - TD G2",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9042&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "anglaisdesaffairesg1cerm-fi",
+          "title": "Anglais des affaires / G1 CERM  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3413&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "anglaisdesaffairesg2cerm-fi",
+          "title": "Anglais des affaires / G2 CERM  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3547&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "g1mkgcerm",
+          "title": "G1 MKG CERM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1945&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "g2mkgcerm",
+          "title": "G2 MKG CERM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1946&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mkg-cerm-fi",
+          "title": "M2 MKG - CERM - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2394&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "anglaisdesaffairesg1mdpm-fi",
+          "title": "Anglais des affaires / G1 MDPM  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3623&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "anglaisdesaffairesg2mdpm-fi",
+          "title": "Anglais des affaires / G2 MDPM  - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3627&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "g1mkgmdpm",
+          "title": "G1 MKG MDPM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12501&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "g2mkgmdpm",
+          "title": "G2 MKG MDPM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12553&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "m2mkg-mdpm-fi",
+          "title": "M2 MKG - MDPM - FI",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2224&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "formationhandimanagementesirigr",
+          "title": "Formation Handimanagement ESIR/IGR",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18711&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "acefjm",
+          "title": "ACEFJM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5279&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "bda",
+          "title": "BDA",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=504&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "bde",
+          "title": "BDE",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=339&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "bds",
+          "title": "BDS",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5251&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "colibr'igr",
+          "title": "Colibr'IGR",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5252&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "epm",
+          "title": "EPM",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5253&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igralumni",
+          "title": "IGR Alumni",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5377&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrdiffusion",
+          "title": "IGR Diffusion",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5254&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrentr'aides",
+          "title": "IGR Entr'Aides",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5255&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igreur'hope",
+          "title": "IGR Eur'Hope",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5259&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrjuniorconsulting",
+          "title": "IGR Junior Consulting",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5269&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrpro",
+          "title": "IGR Pro",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5260&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrsigma",
+          "title": "IGR Sigma",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10680&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "igrss",
+          "title": "IGRSS",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5266&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "maestro",
+          "title": "MAEstro",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5374&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "market'heures",
+          "title": "Market'Heures",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5325&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "martolod",
+          "title": "Martolod",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5265&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "moveandshare",
+          "title": "Move and Share",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5261&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "ressources+",
+          "title": "Ressources +",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5278&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "vieassociative",
+          "title": "Vie associative",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5372&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        }
+      ]
+    }
+  ]
+}

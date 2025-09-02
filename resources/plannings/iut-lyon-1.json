@@ -1,14 +1,14 @@
 {
   "title": "IUT Lyon 1",
-  "edts": [
+  "children": [
     {
       "id": "deptinfo-doua",
       "title": "Departement Info-Doua",
-      "edts": [
+      "children": [
         {
           "id": "but-info-spe",
           "title": "BUT Informatique Année Spéciale",
-          "edts": [
+          "children": [
             {
               "id": "aspe_a",
               "title": "ASPE_A",
@@ -24,15 +24,15 @@
         {
           "id": "but-info-1-annee",
           "title": "BUT informatique 1ère année",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "S1",
-              "edts": [
+              "children": [
                 {
                   "id": "g1s1",
                   "title": "G1S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1s1a",
                       "title": "G1S1A",
@@ -48,7 +48,7 @@
                 {
                   "id": "g2s1",
                   "title": "G2S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g2s1a",
                       "title": "G2S1A",
@@ -64,7 +64,7 @@
                 {
                   "id": "g3s1",
                   "title": "G3S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g3s1a",
                       "title": "G3S1A",
@@ -80,7 +80,7 @@
                 {
                   "id": "g4s1",
                   "title": "G4S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g4s1a",
                       "title": "G4S1A",
@@ -96,7 +96,7 @@
                 {
                   "id": "g5s1",
                   "title": "G5S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g5s1a",
                       "title": "G5S1A",
@@ -114,11 +114,11 @@
             {
               "id": "s2",
               "title": "S2",
-              "edts": [
+              "children": [
                 {
                   "id": "g1s2",
                   "title": "G1S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1s2a",
                       "title": "G1S2A",
@@ -134,7 +134,7 @@
                 {
                   "id": "g2s2",
                   "title": "G2S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g2s2a",
                       "title": "G2S2A",
@@ -150,7 +150,7 @@
                 {
                   "id": "g3s2",
                   "title": "G3S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g3s2a",
                       "title": "G3S2A",
@@ -166,7 +166,7 @@
                 {
                   "id": "g4s2",
                   "title": "G4S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g4s2a",
                       "title": "G4S2A",
@@ -182,7 +182,7 @@
                 {
                   "id": "g5s2",
                   "title": "G5S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g5s2a",
                       "title": "G5S2A",
@@ -202,11 +202,11 @@
         {
           "id": "but-info-2-annee",
           "title": "BUT informatique 2ème année",
-          "edts": [
+          "children": [
             {
               "id": "g3s3s4",
               "title": "G3 S3S4",
-              "edts": [
+              "children": [
                 {
                   "id": "g3s3s4",
                   "title": "G3S3S4",
@@ -217,11 +217,11 @@
             {
               "id": "s3",
               "title": "S3",
-              "edts": [
+              "children": [
                 {
                   "id": "g1s3",
                   "title": "G1S3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1s3a",
                       "title": "G1S3A",
@@ -237,7 +237,7 @@
                 {
                   "id": "g2s3",
                   "title": "G2S3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g2s3a",
                       "title": "G2S3A",
@@ -253,7 +253,7 @@
                 {
                   "id": "g4s3",
                   "title": "G4S3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g4s3a",
                       "title": "G4S3A",
@@ -271,11 +271,11 @@
             {
               "id": "s4",
               "title": "S4",
-              "edts": [
+              "children": [
                 {
                   "id": "g1s4",
                   "title": "G1S4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1s4a",
                       "title": "G1S4A",
@@ -291,7 +291,7 @@
                 {
                   "id": "g2s4",
                   "title": "G2S4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g2s4a",
                       "title": "G2S4A",
@@ -307,7 +307,7 @@
                 {
                   "id": "g4s4",
                   "title": "G4S4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g4s4a",
                       "title": "G4S4A",
@@ -327,7 +327,7 @@
         {
           "id": "but-info-3-annee",
           "title": "BUT informatique 3ème année",
-          "edts": [
+          "children": [
             {
               "id": "but3aged",
               "title": "BUT3 AGED",
@@ -341,7 +341,7 @@
             {
               "id": "but3ra1",
               "title": "BUT3 RA1",
-              "edts": [
+              "children": [
                 {
                   "id": "but3ra1a",
                   "title": "BUT3 RA1A",
@@ -357,7 +357,7 @@
             {
               "id": "but3ra2",
               "title": "BUT3 RA2",
-              "edts": [
+              "children": [
                 {
                   "id": "but3ra2a",
                   "title": "BUT3 RA2A",
@@ -375,7 +375,7 @@
         {
           "id": "lp-devops",
           "title": "LP DevOps",
-          "edts": [
+          "children": [
             {
               "id": "lp-devops",
               "title": "LP DevOps",
@@ -386,7 +386,7 @@
         {
           "id": "lp-essir",
           "title": "LP ESSIR",
-          "edts": [
+          "children": [
             {
               "id": "lp-essir",
               "title": "LP ESSIR",
@@ -399,19 +399,19 @@
     {
       "id": "deptinfo-bourg",
       "title": "Departement Info-Bourg",
-      "edts": [
+      "children": [
         {
           "id": "but-informatique-1-ere-annee-bourg",
           "title": "BUT Informatique 1ère année Bourg",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "S1",
-              "edts": [
+              "children": [
                 {
                   "id": "s1g1",
                   "title": "S1G1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s1g1-1",
                       "title": "S1G1.1",
@@ -427,7 +427,7 @@
                 {
                   "id": "s1g2",
                   "title": "S1G2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s1g2-1",
                       "title": "S1G2.1",
@@ -443,7 +443,7 @@
                 {
                   "id": "s1g3",
                   "title": "S1G3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s1g3-1",
                       "title": "S1G3.1",
@@ -461,11 +461,11 @@
             {
               "id": "s2",
               "title": "S2",
-              "edts": [
+              "children": [
                 {
                   "id": "s2g1",
                   "title": "S2G1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s2g1-1",
                       "title": "S2G1.1",
@@ -481,7 +481,7 @@
                 {
                   "id": "s2g2",
                   "title": "S2G2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s2g2-1",
                       "title": "S2G2.1",
@@ -497,7 +497,7 @@
                 {
                   "id": "s2g3",
                   "title": "S2G3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s2g3-1",
                       "title": "S2G3.1",
@@ -517,15 +517,15 @@
         {
           "id": "but-informatique-2-eme-annee-bourg",
           "title": "BUT Informatique 2ème année Bourg",
-          "edts": [
+          "children": [
             {
               "id": "s3",
               "title": "S3",
-              "edts": [
+              "children": [
                 {
                   "id": "s3g1",
                   "title": "S3G1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s3g1-1",
                       "title": "S3G1.1",
@@ -541,7 +541,7 @@
                 {
                   "id": "s3g2",
                   "title": "S3G2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s3g2-1",
                       "title": "S3G2.1",
@@ -559,11 +559,11 @@
             {
               "id": "s4",
               "title": "S4",
-              "edts": [
+              "children": [
                 {
                   "id": "s4g1",
                   "title": "S4G1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s4g1-1",
                       "title": "S4G1.1",
@@ -579,7 +579,7 @@
                 {
                   "id": "s4g2",
                   "title": "S4G2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s4g2-1",
                       "title": "S4G2.1",
@@ -599,15 +599,15 @@
         {
           "id": "but-informatique-3-eme-anneebourg",
           "title": "BUT Informatique 3ème année Bourg",
-          "edts": [
+          "children": [
             {
               "id": "but3",
               "title": "BUT3",
-              "edts": [
+              "children": [
                 {
                   "id": "mobile",
                   "title": "Mobile",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mob-1",
                       "title": "Mob.1",
@@ -623,7 +623,7 @@
                 {
                   "id": "web",
                   "title": "Web",
-                  "edts": [
+                  "children": [
                     {
                       "id": "web-1",
                       "title": "Web.1",

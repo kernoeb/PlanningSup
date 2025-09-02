@@ -1,10 +1,10 @@
 {
   "title": "ISTIC",
-  "edts": [
+  "children": [
     {
-      "edts": [
+      "children": [
         {
-          "edts": [
+          "children": [
             {
               "id": "g1-s1",
               "title": "G1-S1",
@@ -51,7 +51,7 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18596&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "mat3",
                   "title": "MAT3",
@@ -72,9 +72,9 @@
               "title": "S1-S3 (L1 en 2 ans 2è année)"
             },
             {
-              "edts": [
+              "children": [
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -130,7 +130,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13726&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -181,7 +181,7 @@
                   "title": "COD - Codage"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -232,7 +232,7 @@
                   "title": "DIE - Decouverte Informatique-Electronique"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -283,7 +283,7 @@
                   "title": "FOM - Fondamentaux Mathématiques"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -334,7 +334,7 @@
                   "title": "INF1 - Informatique 1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -385,7 +385,7 @@
                   "title": "MAT1 - Mathématiques 1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -411,7 +411,7 @@
                   "title": "PRR - Processus vers la Réussite"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -432,7 +432,7 @@
                   "title": "SE1 - Spécialité Electronique 1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -486,7 +486,7 @@
           "title": "S1"
         },
         {
-          "edts": [
+          "children": [
             {
               "id": "g1-s2",
               "title": "G1-S2",
@@ -498,7 +498,7 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16343&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "g3a-s2",
                   "title": "G3A-S2",
@@ -519,7 +519,7 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16361&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "g5a-s2",
                   "title": "G5A-S2",
@@ -550,9 +550,9 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -598,7 +598,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19794&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g6",
                       "title": "G6",
@@ -619,7 +619,7 @@
                   "title": "CMS2"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -630,7 +630,7 @@
                   "title": "ECO - Economie"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -681,7 +681,7 @@
                   "title": "INF2 - Informatique 2"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -732,7 +732,7 @@
                   "title": "MAT2 - Mathématiques 2"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -748,7 +748,7 @@
                   "title": "PH1 - Physique 1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -794,7 +794,7 @@
                   "title": "PPC - Projet Professionnel et Communication"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -835,7 +835,7 @@
                   "title": "SEN1 - Spécialité Electronique Numérique 1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1ie",
                       "title": "G1 IE",
@@ -898,16 +898,16 @@
       "title": "L1 Portail IE"
     },
     {
-      "edts": [
+      "children": [
         {
-          "edts": [
+          "children": [
             {
               "id": "ajacl1-l2",
               "title": "AJAC L1-L2",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=932&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "elec1",
                   "title": "elec1",
@@ -923,9 +923,9 @@
               "title": "Elec"
             },
             {
-              "edts": [
+              "children": [
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "info11",
                       "title": "info1.1",
@@ -941,7 +941,7 @@
                   "title": "info1"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "info21",
                       "title": "info2.1",
@@ -957,7 +957,7 @@
                   "title": "info2"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "info31",
                       "title": "info3.1",
@@ -973,7 +973,7 @@
                   "title": "info3"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "info41",
                       "title": "info4.1",
@@ -993,7 +993,7 @@
               "title": "Info"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "m1",
                   "title": "m1",
@@ -1009,7 +1009,7 @@
               "title": "Maths"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "miage1",
                   "title": "miage1",
@@ -1025,9 +1025,9 @@
               "title": "Miage"
             },
             {
-              "edts": [
+              "children": [
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1048,7 +1048,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3027&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "ccins+ph2",
                       "title": "CC INS+PH2",
@@ -1089,7 +1089,7 @@
                   "title": "Contrôles S3 ISTIC"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1110,7 +1110,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2571&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemand",
                       "title": "Allemand",
@@ -1146,7 +1146,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3250&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1182,7 +1182,7 @@
                   "title": "MAT3-Mathématiques 3"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1223,7 +1223,7 @@
                   "title": "OFI-Outils formels pour l'informatique"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1239,7 +1239,7 @@
                   "title": "PH2-Physique 2"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1290,7 +1290,7 @@
                   "title": "PO-Programmation objet"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1321,7 +1321,7 @@
                   "title": "PRB-Probabilités"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "gtd1",
                       "title": "Gtd1",
@@ -1367,7 +1367,7 @@
                   "title": "RES-Réseaux informatiques"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "gtd1",
                       "title": "Gtd1",
@@ -1406,14 +1406,14 @@
           "title": "Semestre 3"
         },
         {
-          "edts": [
+          "children": [
             {
               "id": "elec",
               "title": "Elec",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14427&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "info1",
                   "title": "info1",
@@ -1439,7 +1439,7 @@
               "title": "Info"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "m1",
                   "title": "m1",
@@ -1455,7 +1455,7 @@
               "title": "Maths"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "miage1",
                   "title": "miage1",
@@ -1471,7 +1471,7 @@
               "title": "Miage"
             },
             {
-              "edts": [
+              "children": [
                 {
                   "id": "bio",
                   "title": "BIO",
@@ -1497,9 +1497,9 @@
               "title": "Par Options"
             },
             {
-              "edts": [
+              "children": [
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1535,7 +1535,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14683&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1571,7 +1571,7 @@
                   "title": "CAL-Calculabilité"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1607,7 +1607,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15500&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1628,7 +1628,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14646&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "ccari",
                       "title": "CC ARI",
@@ -1654,7 +1654,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15585&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1695,7 +1695,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14318&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1726,7 +1726,7 @@
                   "title": "GEN-Génie logiciel"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1752,7 +1752,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13783&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemand",
                       "title": "Allemand",
@@ -1778,7 +1778,7 @@
                   "title": "Langues"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1799,7 +1799,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14767&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1825,7 +1825,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20713&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1856,7 +1856,7 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14015&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdg1",
                       "title": "tdG1",
@@ -1887,7 +1887,7 @@
                   "title": "TEL-Télécom"
                 },
                 {
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -1922,15 +1922,15 @@
     {
       "id": "l3informatique",
       "title": "L3 INFORMATIQUE",
-      "edts": [
+      "children": [
         {
           "id": "l3info-parcoursinformatique",
           "title": "L3 INFO-Parcours Informatique",
-          "edts": [
+          "children": [
             {
               "id": "anglais",
               "title": "ANGLAIS",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgra",
                   "title": "Anglais Gr A",
@@ -1971,7 +1971,7 @@
             {
               "id": "l3info-g1",
               "title": "L3 INFO-G1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg11",
                   "title": "L3 INFO-TP G1.1",
@@ -1987,7 +1987,7 @@
             {
               "id": "l3info-g2",
               "title": "L3 INFO-G2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg21",
                   "title": "L3 INFO-TP G2.1",
@@ -2003,7 +2003,7 @@
             {
               "id": "l3info-g3",
               "title": "L3 INFO-G3",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg31",
                   "title": "L3 INFO-TP G3.1",
@@ -2019,7 +2019,7 @@
             {
               "id": "l3info-g4",
               "title": "L3 INFO-G4",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg41",
                   "title": "L3 INFO-TP G4.1",
@@ -2035,7 +2035,7 @@
             {
               "id": "l3info-mineuress5",
               "title": "L3 INFO-MINEURES S5",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-gmane",
                   "title": "L3 INFO-G MANE",
@@ -2049,7 +2049,7 @@
                 {
                   "id": "l3info-g1esec",
                   "title": "L3 INFO-G1 ESEC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-g11esec",
                       "title": "L3 INFO-G1.1 ESEC",
@@ -2095,7 +2095,7 @@
                 {
                   "id": "l3info-g2esec",
                   "title": "L3 INFO-G2 ESEC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-g21esec",
                       "title": "L3 INFO-G2.1 ESEC",
@@ -2123,11 +2123,11 @@
             {
               "id": "l3info-mineuress6",
               "title": "L3 INFO-MINEURES S6",
-              "edts": [
+              "children": [
                 {
                   "id": "groupesmineure2ia",
                   "title": "Groupes mineure 2IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-g12ia",
                       "title": "L3 INFO-G1 2IA",
@@ -2148,7 +2148,7 @@
                 {
                   "id": "groupesmineurescr",
                   "title": "Groupes mineure SCR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-td1scr",
                       "title": "L3 INFO-TD1 SCR",
@@ -2179,7 +2179,7 @@
                 {
                   "id": "groupesmineuresecu",
                   "title": "Groupes mineure SECU",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-g1secu",
                       "title": "L3 INFO-G1 SECU",
@@ -2204,11 +2204,11 @@
         {
           "id": "l3info-parcoursmiage",
           "title": "L3 INFO-Parcours MIAGE",
-          "edts": [
+          "children": [
             {
               "id": "l3miage-g1",
               "title": "L3 MIAGE-G1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3miage-tp1mineure",
                   "title": "L3 MIAGE- TP 1 mineure",
@@ -2229,7 +2229,7 @@
             {
               "id": "l3miage-g2",
               "title": "L3 MIAGE-G2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3miage-tp2mineure",
                   "title": "L3 MIAGE- TP 2 mineure",
@@ -2252,7 +2252,7 @@
         {
           "id": "l3info-parcourssif",
           "title": "L3 INFO-Parcours SIF",
-          "edts": [
+          "children": [
             {
               "id": "l3infosif",
               "title": "L3 INFO SIF",
@@ -2270,15 +2270,15 @@
     {
       "id": "isticm1info",
       "title": "Masters 1 Informatique",
-      "edts": [
+      "children": [
         {
           "id": "isticmil1",
           "title": "Master IL",
-          "edts": [
+          "children": [
             {
               "id": "m1ilalternants",
               "title": "M1 IL Alternants",
-              "edts": [
+              "children": [
                 {
                   "id": "m1info-ilalternants",
                   "title": "M1 INFO - IL Alternants",
@@ -2287,7 +2287,7 @@
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacfalt",
                       "title": "Mineure ACF Alt",
@@ -2298,7 +2298,7 @@
                 {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureguialt",
                       "title": "Mineure GUI Alt",
@@ -2309,7 +2309,7 @@
                 {
                   "id": "mineureia",
                   "title": "Mineure IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiaalt",
                       "title": "Mineure IA Alt",
@@ -2320,7 +2320,7 @@
                 {
                   "id": "mineureiatr",
                   "title": "Mineure IATR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiatr",
                       "title": "mineure IATR",
@@ -2331,7 +2331,7 @@
                 {
                   "id": "mineureplc",
                   "title": "Mineure PLC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureplcalt",
                       "title": "Mineure PLC Alt",
@@ -2342,7 +2342,7 @@
                 {
                   "id": "mineurersf",
                   "title": "Mineure RSF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurersf",
                       "title": "Mineure RSF",
@@ -2353,7 +2353,7 @@
                 {
                   "id": "mineuresct",
                   "title": "Mineure SCT",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresct",
                       "title": "mineure SCT",
@@ -2364,7 +2364,7 @@
                 {
                   "id": "mineuresea",
                   "title": "Mineure SEA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureseaalt",
                       "title": "Mineure SEA Alt",
@@ -2375,7 +2375,7 @@
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewealt1",
                       "title": "Mineure WE Alt 1",
@@ -2388,7 +2388,7 @@
             {
               "id": "m1ilclassiques",
               "title": "M1 IL Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "m1info-ilclassiques2",
                   "title": "M1 INFO - IL Classiques 2",
@@ -2402,7 +2402,7 @@
                 {
                   "id": "opppar",
                   "title": "OP PPAR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "opppar",
                       "title": "OP PPAR",
@@ -2413,7 +2413,7 @@
                 {
                   "id": "oppa",
                   "title": "OP PA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "oppa",
                       "title": "OP PA",
@@ -2424,7 +2424,7 @@
                 {
                   "id": "opbif",
                   "title": "OP BIF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "opbif",
                       "title": "OP BIF",
@@ -2435,7 +2435,7 @@
                 {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuregui",
                       "title": "Mineure GUI",
@@ -2446,7 +2446,7 @@
                 {
                   "id": "mineureia",
                   "title": "Mineure IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureia",
                       "title": "Mineure IA",
@@ -2457,7 +2457,7 @@
                 {
                   "id": "mineureplc",
                   "title": "Mineure PLC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureplc",
                       "title": "Mineure PLC",
@@ -2468,7 +2468,7 @@
                 {
                   "id": "mineurersf",
                   "title": "Mineure RSF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurersf",
                       "title": "Mineure RSF",
@@ -2479,7 +2479,7 @@
                 {
                   "id": "mineuresea",
                   "title": "Mineure SEA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresea",
                       "title": "Mineure SEA",
@@ -2490,7 +2490,7 @@
                 {
                   "id": "mineureiatr",
                   "title": "Mineure IATR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiatr",
                       "title": "mineure IATR",
@@ -2501,7 +2501,7 @@
                 {
                   "id": "mineuresct",
                   "title": "Mineure SCT",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresct",
                       "title": "mineure SCT",
@@ -2512,7 +2512,7 @@
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewecla1",
                       "title": "Mineure WE Cla 1",
@@ -2528,7 +2528,7 @@
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacfcla1",
                       "title": "Mineure ACF Cla 1",
@@ -2549,7 +2549,7 @@
                 {
                   "id": "projets",
                   "title": "PROJETS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "projetbio4t",
                       "title": "Projet BIO4T",
@@ -2589,7 +2589,7 @@
         {
           "id": "isticmcr1",
           "title": "Master Cloud et Réseaux",
-          "edts": [
+          "children": [
             {
               "id": "isticcr1",
               "title": "CR",
@@ -2615,7 +2615,7 @@
         {
           "id": "isticmccn1",
           "title": "Master CCN",
-          "edts": [
+          "children": [
             {
               "id": "isticccn1s1",
               "title": "S1 CCN",
@@ -2636,7 +2636,7 @@
         {
           "id": "isticm1optionS1",
           "title": "Options Master Semestre1",
-          "edts": [
+          "children": [
             {
               "id": "isticm1cseopt-isr",
               "title": "M1 CSE Opt-ISR",
@@ -2742,11 +2742,11 @@
         {
           "id": "isticm1optionS2",
           "title": "Options Master 1 Semestre 2",
-          "edts": [
+          "children": [
             {
               "id": "isticm1optionS21",
               "title": "Option 1",
-              "edts": [
+              "children": [
                 {
                   "id": "isticm1opt1-ia-gr-a",
                   "title": "IA - Gr.A",
@@ -2812,7 +2812,7 @@
             {
               "id": "isticm1optionS22",
               "title": "Option 2",
-              "edts": [
+              "children": [
                 {
                   "id": "cmcobra",
                   "title": "CM COBRA",
@@ -2868,7 +2868,7 @@
             {
               "id": "isticm1optionS23",
               "title": "Option 3",
-              "edts": [
+              "children": [
                 {
                   "id": "m1cropt3-meps",
                   "title": "CR opt- MEPS",
@@ -2911,7 +2911,7 @@
         {
           "id": "isticm1projets",
           "title": "Projets",
-          "edts": [
+          "children": [
             {
               "id": "projet",
               "title": "Projet",
@@ -2954,15 +2954,15 @@
     {
       "id": "isticm2info",
       "title": "Masters 2 Informatique",
-      "edts": [
+      "children": [
         {
           "id": "isticmil2",
           "title": "M2 IL",
-          "edts": [
+          "children": [
             {
               "id": "isticmila2",
               "title": "M2 IL-ALternants",
-              "edts": [
+              "children": [
                 {
                   "id": "m2infoila-g1",
                   "title": "M2 INFO ILA-G1",
@@ -2978,7 +2978,7 @@
             {
               "id": "isticmilc2",
               "title": "M2 IL-Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "m2infoil-classiques",
                   "title": "M2 INFO IL-Classiques",
@@ -3001,7 +3001,7 @@
         {
           "id": "isticmcni2",
           "title": "Master CNI",
-          "edts": [
+          "children": [
             {
               "id": "isticcni2",
               "title": "Tout CNI",
@@ -3042,7 +3042,7 @@
         {
           "id": "isticmcyber2",
           "title": "Master Cyber",
-          "edts": [
+          "children": [
             {
               "id": "isticcyber2",
               "title": "Cyber",
@@ -3058,7 +3058,7 @@
         {
           "id": "isticmmeef2",
           "title": "Master MEEF",
-          "edts": [
+          "children": [
             {
               "id": "isticmeef2s1-s1",
               "title": "Semestre 1",
@@ -3074,7 +3074,7 @@
         {
           "id": "isticmccn2",
           "title": "Master CCN",
-          "edts": [
+          "children": [
             {
               "id": "isticccn2",
               "title": "CCN",

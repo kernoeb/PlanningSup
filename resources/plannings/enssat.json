@@ -1,14 +1,14 @@
 {
   "title": "ENSSAT",
-  "edts": [
+  "children": [
     {
       "id": "fisa1",
       "title": "FISA1",
-      "edts": [
+      "children": [
         {
           "id": "iai1",
           "title": "IAI1",
-          "edts": [
+          "children": [
             {
               "id": "iai1g1",
               "title": "IAI1 G1",
@@ -18,6 +18,28 @@
               "id": "iai1g2",
               "title": "IAI1 G2",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1499&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fisa2",
+      "title": "FISA2",
+      "children": [
+        {
+          "id": "iai2",
+          "title": "IAI2",
+          "children": [
+            {
+              "id": "iai2g1",
+              "title": "IAI2 G1",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18359&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "iai2g2",
+              "title": "IAI2 G2",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
