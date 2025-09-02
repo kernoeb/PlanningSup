@@ -1,14 +1,14 @@
 {
   "title": "IUT de Rennes",
-  "children": [
+  "edts": [
     {
       "id": "carrieressociales",
       "title": "Carrières Sociales",
-      "children": [
+      "edts": [
         {
           "id": "but1cs",
           "title": "BUT 1 CS",
-          "children": [
+          "edts": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -44,7 +44,7 @@
         {
           "id": "but2cs",
           "title": "BUT 2 CS",
-          "children": [
+          "edts": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -70,7 +70,7 @@
         {
           "id": "but3cs",
           "title": "BUT 3 CS",
-          "children": [
+          "edts": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -91,7 +91,7 @@
         {
           "id": "but3fcre",
           "title": "BUT 3 FC RE",
-          "children": [
+          "edts": [
             {
               "id": "but3fcre",
               "title": "BUT 3 FC RE",
@@ -104,19 +104,19 @@
     {
       "id": "chimie",
       "title": "Chimie",
-      "children": [
+      "edts": [
         {
           "id": "but1",
           "title": "BUT1",
-          "children": [
+          "edts": [
             {
               "id": "s1",
               "title": "S1",
-              "children": [
+              "edts": [
                 {
                   "id": "a",
                   "title": "A",
-                  "children": [
+                  "edts": [
                     {
                       "id": "a1",
                       "title": "A1",
@@ -132,7 +132,7 @@
                 {
                   "id": "b",
                   "title": "B",
-                  "children": [
+                  "edts": [
                     {
                       "id": "b1",
                       "title": "B1",
@@ -148,7 +148,7 @@
                 {
                   "id": "c",
                   "title": "C",
-                  "children": [
+                  "edts": [
                     {
                       "id": "c1",
                       "title": "C1",
@@ -164,7 +164,7 @@
                 {
                   "id": "d",
                   "title": "D",
-                  "children": [
+                  "edts": [
                     {
                       "id": "d1",
                       "title": "D1",
@@ -182,11 +182,11 @@
             {
               "id": "s2",
               "title": "S2",
-              "children": [
+              "edts": [
                 {
                   "id": "a",
                   "title": "A",
-                  "children": [
+                  "edts": [
                     {
                       "id": "a1",
                       "title": "A1",
@@ -202,7 +202,7 @@
                 {
                   "id": "b",
                   "title": "B",
-                  "children": [
+                  "edts": [
                     {
                       "id": "b1",
                       "title": "B1",
@@ -218,7 +218,7 @@
                 {
                   "id": "c",
                   "title": "C",
-                  "children": [
+                  "edts": [
                     {
                       "id": "c1",
                       "title": "C1",
@@ -234,7 +234,7 @@
                 {
                   "id": "d",
                   "title": "D",
-                  "children": [
+                  "edts": [
                     {
                       "id": "d1",
                       "title": "D1",
@@ -254,19 +254,19 @@
         {
           "id": "but2",
           "title": "BUT2",
-          "children": [
+          "edts": [
             {
               "id": "s3",
               "title": "S3",
-              "children": [
+              "edts": [
                 {
                   "id": "e",
                   "title": "E",
-                  "children": [
+                  "edts": [
                     {
                       "id": "e1",
                       "title": "E1",
-                      "children": [
+                      "edts": [
                         {
                           "id": "e1-ana",
                           "title": "E1-ANA",
@@ -287,7 +287,7 @@
                     {
                       "id": "e2",
                       "title": "E2",
-                      "children": [
+                      "edts": [
                         {
                           "id": "e2-ana",
                           "title": "E2-ANA",
@@ -310,11 +310,11 @@
                 {
                   "id": "f",
                   "title": "F",
-                  "children": [
+                  "edts": [
                     {
                       "id": "f1",
                       "title": "F1",
-                      "children": [
+                      "edts": [
                         {
                           "id": "f1-ana",
                           "title": "F1-ANA",
@@ -335,7 +335,7 @@
                     {
                       "id": "f2",
                       "title": "F2",
-                      "children": [
+                      "edts": [
                         {
                           "id": "f2-ana",
                           "title": "F2-ANA",
@@ -358,11 +358,11 @@
                 {
                   "id": "g",
                   "title": "G",
-                  "children": [
+                  "edts": [
                     {
                       "id": "g1",
                       "title": "G1",
-                      "children": [
+                      "edts": [
                         {
                           "id": "g1-ana",
                           "title": "G1-ANA",
@@ -383,7 +383,7 @@
                     {
                       "id": "g2",
                       "title": "G2",
-                      "children": [
+                      "edts": [
                         {
                           "id": "g2-ana",
                           "title": "G2-ANA",
@@ -408,11 +408,11 @@
             {
               "id": "s4",
               "title": "S4",
-              "children": [
+              "edts": [
                 {
                   "id": "s4-ana",
                   "title": "S4-ANA",
-                  "children": [
+                  "edts": [
                     {
                       "id": "s4-ana1",
                       "title": "S4-ANA1",
@@ -428,7 +428,7 @@
                 {
                   "id": "s4-ind",
                   "title": "S4-IND",
-                  "children": [
+                  "edts": [
                     {
                       "id": "s4-ind1",
                       "title": "S4-IND1",
@@ -444,7 +444,7 @@
                 {
                   "id": "s4-syn",
                   "title": "S4-SYN",
-                  "children": [
+                  "edts": [
                     {
                       "id": "s4-syn1",
                       "title": "S4-SYN1",
@@ -464,19 +464,19 @@
         {
           "id": "but3",
           "title": "BUT3",
-          "children": [
+          "edts": [
             {
               "id": "t3-mixes",
               "title": "T3-Mixés",
-              "children": [
+              "edts": [
                 {
                   "id": "fa",
                   "title": "FA",
-                  "children": [
+                  "edts": [
                     {
                       "id": "fa1",
                       "title": "FA1",
-                      "children": [
+                      "edts": [
                         {
                           "id": "fa1-ana",
                           "title": "FA1-ANA",
@@ -497,7 +497,7 @@
                     {
                       "id": "fa2",
                       "title": "FA2",
-                      "children": [
+                      "edts": [
                         {
                           "id": "fa2-ana",
                           "title": "FA2-ANA",
@@ -520,11 +520,11 @@
                 {
                   "id": "fi",
                   "title": "FI",
-                  "children": [
+                  "edts": [
                     {
                       "id": "fi1",
                       "title": "FI1",
-                      "children": [
+                      "edts": [
                         {
                           "id": "fi1-ana",
                           "title": "FI1-ANA",
@@ -545,7 +545,7 @@
                     {
                       "id": "fi2",
                       "title": "FI2",
-                      "children": [
+                      "edts": [
                         {
                           "id": "fi2-ana",
                           "title": "FI2-ANA",
@@ -570,11 +570,11 @@
             {
               "id": "t3-parcours",
               "title": "T3-Parcours",
-              "children": [
+              "edts": [
                 {
                   "id": "t3-ana",
                   "title": "T3-ANA",
-                  "children": [
+                  "edts": [
                     {
                       "id": "t3-ana1",
                       "title": "T3-ANA1",
@@ -590,7 +590,7 @@
                 {
                   "id": "t3-ind",
                   "title": "T3-IND",
-                  "children": [
+                  "edts": [
                     {
                       "id": "t3-ind1",
                       "title": "T3-IND1",
@@ -606,7 +606,7 @@
                 {
                   "id": "t3-syn",
                   "title": "T3-SYN",
-                  "children": [
+                  "edts": [
                     {
                       "id": "t3-syn1",
                       "title": "T3-SYN1",
@@ -633,15 +633,15 @@
     {
       "id": "departementgea",
       "title": "Département GEA",
-      "children": [
+      "edts": [
         {
           "id": "archives",
           "title": "Archives",
-          "children": [
+          "edts": [
             {
               "id": "apear",
               "title": "APEAR",
-              "children": [
+              "edts": [
                 {
                   "id": "apear01",
                   "title": "APEAR 01",
@@ -682,7 +682,7 @@
             {
               "id": "as",
               "title": "AS",
-              "children": [
+              "edts": [
                 {
                   "id": "as",
                   "title": "AS",
@@ -783,7 +783,7 @@
             {
               "id": "duee",
               "title": "DUEE",
-              "children": [
+              "edts": [
                 {
                   "id": "duee",
                   "title": "DUEE",
@@ -794,7 +794,7 @@
             {
               "id": "duo",
               "title": "DUO",
-              "children": [
+              "edts": [
                 {
                   "id": "duo",
                   "title": "DUO",
@@ -840,7 +840,7 @@
             {
               "id": "gema4",
               "title": "GEMA4",
-              "children": [
+              "edts": [
                 {
                   "id": "gema4",
                   "title": "GEMA4",
@@ -861,7 +861,7 @@
             {
               "id": "mc",
               "title": "MC",
-              "children": [
+              "edts": [
                 {
                   "id": "gmomemoires",
                   "title": "GMO Mémoires",
@@ -992,7 +992,7 @@
             {
               "id": "mc",
               "title": "MC",
-              "children": [
+              "edts": [
                 {
                   "id": "mc301fccreaiut",
                   "title": "MC301 FC CREA IUT",
@@ -1100,11 +1100,11 @@
         {
           "id": "but1gea",
           "title": "BUT 1 GEA",
-          "children": [
+          "edts": [
             {
               "id": "g1",
               "title": "G1",
-              "children": [
+              "edts": [
                 {
                   "id": "g1",
                   "title": "G1",
@@ -1130,7 +1130,7 @@
             {
               "id": "g2",
               "title": "G2",
-              "children": [
+              "edts": [
                 {
                   "id": "g2",
                   "title": "G2",
@@ -1151,7 +1151,7 @@
             {
               "id": "g3",
               "title": "G3",
-              "children": [
+              "edts": [
                 {
                   "id": "g3",
                   "title": "G3",
@@ -1172,7 +1172,7 @@
             {
               "id": "g4",
               "title": "G4",
-              "children": [
+              "edts": [
                 {
                   "id": "g4",
                   "title": "G4",
@@ -1193,7 +1193,7 @@
             {
               "id": "g5",
               "title": "G5",
-              "children": [
+              "edts": [
                 {
                   "id": "g5",
                   "title": "G5",
@@ -1219,7 +1219,7 @@
             {
               "id": "g6",
               "title": "G6",
-              "children": [
+              "edts": [
                 {
                   "id": "g6",
                   "title": "G6",
@@ -1250,7 +1250,7 @@
             {
               "id": "g7",
               "title": "G7",
-              "children": [
+              "edts": [
                 {
                   "id": "g7",
                   "title": "G7",
@@ -1288,7 +1288,7 @@
         {
           "id": "but2gea",
           "title": "BUT 2 GEA",
-          "children": [
+          "edts": [
             {
               "id": "but2crea",
               "title": "BUT 2 CREA",
@@ -1302,7 +1302,7 @@
             {
               "id": "butgeaparcoursgc2f",
               "title": "BUT.GEA.parcours.GC2F",
-              "children": [
+              "edts": [
                 {
                   "id": "but2gc2f",
                   "title": "BUT2.GC2F",
@@ -1311,7 +1311,7 @@
                 {
                   "id": "gc2f1",
                   "title": "GC2F1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gc2f1",
                       "title": "BUT2.GC2F1",
@@ -1342,7 +1342,7 @@
                 {
                   "id": "gc2f2",
                   "title": "GC2F2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gc2f2",
                       "title": "BUT2.GC2F2",
@@ -1393,7 +1393,7 @@
                 {
                   "id": "gc2f3",
                   "title": "GC2F3",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gc2f3",
                       "title": "BUT2.GC2F3",
@@ -1446,7 +1446,7 @@
             {
               "id": "butgeaparcoursgema",
               "title": "BUT.GEA.parcours.GEMA",
-              "children": [
+              "edts": [
                 {
                   "id": "but2gema",
                   "title": "BUT2.GEMA",
@@ -1455,7 +1455,7 @@
                 {
                   "id": "gema1",
                   "title": "GEMA1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gema1",
                       "title": "BUT2.GEMA1",
@@ -1491,7 +1491,7 @@
                 {
                   "id": "gema2",
                   "title": "GEMA2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gema2",
                       "title": "BUT2.GEMA2",
@@ -1532,7 +1532,7 @@
                 {
                   "id": "gema3",
                   "title": "GEMA3",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gema3",
                       "title": "BUT2.GEMA3",
@@ -1580,11 +1580,11 @@
             {
               "id": "butgeaparcoursgprh",
               "title": "BUT.GEA.parcours.GPRH",
-              "children": [
+              "edts": [
                 {
                   "id": "gprh",
                   "title": "GPRH",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but2gprh",
                       "title": "BUT2.GPRH",
@@ -1644,7 +1644,7 @@
         {
           "id": "but3gea",
           "title": "BUT 3 GEA",
-          "children": [
+          "edts": [
             {
               "id": "but3gc2fgemagprh",
               "title": "BUT3 GC2F GEMA GPRH",
@@ -1653,7 +1653,7 @@
             {
               "id": "but3gc2f",
               "title": "BUT3.GC2F",
-              "children": [
+              "edts": [
                 {
                   "id": "but3gc2f1-2",
                   "title": "BUT3 GC2F 1-2",
@@ -1662,7 +1662,7 @@
                 {
                   "id": "but3gc2fgc2f1",
                   "title": "BUT3.GC2F.GC2F1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but3gc2f1",
                       "title": "BUT3.GC2F1",
@@ -1683,7 +1683,7 @@
                 {
                   "id": "but3gc2fgc2f2",
                   "title": "BUT3.GC2F.GC2F2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but3gc2f2",
                       "title": "BUT3.GC2F2",
@@ -1706,7 +1706,7 @@
             {
               "id": "but3gema",
               "title": "BUT3.GEMA",
-              "children": [
+              "edts": [
                 {
                   "id": "but3gema1-2",
                   "title": "BUT3.GEMA 1-2",
@@ -1715,7 +1715,7 @@
                 {
                   "id": "but3gemagema1",
                   "title": "BUT3.GEMA.GEMA1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but3gema1",
                       "title": "BUT3.GEMA1",
@@ -1736,7 +1736,7 @@
                 {
                   "id": "but3gemagema2",
                   "title": "BUT3.GEMA.GEMA2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but3gema2",
                       "title": "BUT3.GEMA2",
@@ -1759,7 +1759,7 @@
             {
               "id": "but3gprh",
               "title": "BUT3.GPRH",
-              "children": [
+              "edts": [
                 {
                   "id": "but3gprh",
                   "title": "BUT3.GPRH",
@@ -1768,7 +1768,7 @@
                 {
                   "id": "but3gprhgprh1",
                   "title": "BUT3.GPRH.GPRH1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "but3gprh1-a",
                       "title": "BUT3.GPRH1-A",
@@ -1793,11 +1793,11 @@
         {
           "id": "lp",
           "title": "LP",
-          "children": [
+          "edts": [
             {
               "id": "lpage",
               "title": "LP AGE",
-              "children": [
+              "edts": [
                 {
                   "id": "lpageallemand",
                   "title": "LP AGE Allemand",
@@ -1818,7 +1818,7 @@
             {
               "id": "lpccc",
               "title": "LP CCC",
-              "children": [
+              "edts": [
                 {
                   "id": "lpccca",
                   "title": "LP CCC A",
@@ -1834,7 +1834,7 @@
             {
               "id": "lpcrh",
               "title": "LP CRH",
-              "children": [
+              "edts": [
                 {
                   "id": "lpcrha",
                   "title": "LP CRH A",
@@ -1848,7 +1848,7 @@
                 {
                   "id": "lpcrhbloc1paienavison",
                   "title": "LP CRH Bloc 1 Paie Navison",
-                  "children": [
+                  "edts": [
                     {
                       "id": "lpcrhbloccompetences",
                       "title": "LP CRH Bloc Compétences",
@@ -1859,7 +1859,7 @@
                 {
                   "id": "lpcrhbloccompetences",
                   "title": "LP CRH Bloc Compétences",
-                  "children": [
+                  "edts": [
                     {
                       "id": "lpcrhbloccompetences",
                       "title": "LP CRH Bloc Compétences",
@@ -1872,7 +1872,7 @@
             {
               "id": "lpgeae",
               "title": "LP GEAE",
-              "children": [
+              "edts": [
                 {
                   "id": "lpgeaea",
                   "title": "LP GEAE A",
@@ -1883,7 +1883,7 @@
             {
               "id": "lpgean",
               "title": "LP GEAN",
-              "children": [
+              "edts": [
                 {
                   "id": "lpgpamea",
                   "title": "LP GPAME A",
@@ -1903,15 +1903,15 @@
     {
       "id": "gccd",
       "title": "GCCD",
-      "children": [
+      "edts": [
         {
           "id": "1a",
           "title": "1A",
-          "children": [
+          "edts": [
             {
               "id": "g1",
               "title": "G1",
-              "children": [
+              "edts": [
                 {
                   "id": "g11",
                   "title": "G11",
@@ -1927,7 +1927,7 @@
             {
               "id": "g2",
               "title": "G2",
-              "children": [
+              "edts": [
                 {
                   "id": "g21",
                   "title": "G21",
@@ -1943,7 +1943,7 @@
             {
               "id": "g3",
               "title": "G3",
-              "children": [
+              "edts": [
                 {
                   "id": "g31",
                   "title": "G31",
@@ -1959,7 +1959,7 @@
             {
               "id": "g4",
               "title": "G4",
-              "children": [
+              "edts": [
                 {
                   "id": "g41",
                   "title": "G41",
@@ -1975,7 +1975,7 @@
             {
               "id": "g5",
               "title": "G5",
-              "children": [
+              "edts": [
                 {
                   "id": "g51",
                   "title": "G51",
@@ -1991,7 +1991,7 @@
             {
               "id": "g6",
               "title": "G6",
-              "children": [
+              "edts": [
                 {
                   "id": "g61",
                   "title": "G61",
@@ -2004,11 +2004,11 @@
         {
           "id": "2a",
           "title": "2A",
-          "children": [
+          "edts": [
             {
               "id": "bat2",
               "title": "BAT2",
-              "children": [
+              "edts": [
                 {
                   "id": "bat21",
                   "title": "BAT2.1",
@@ -2024,7 +2024,7 @@
             {
               "id": "bec2",
               "title": "BEC2",
-              "children": [
+              "edts": [
                 {
                   "id": "bec21",
                   "title": "BEC2.1",
@@ -2040,7 +2040,7 @@
             {
               "id": "rapeb2",
               "title": "RAPEB2",
-              "children": [
+              "edts": [
                 {
                   "id": "rapeb21",
                   "title": "RAPEB2.1",
@@ -2056,7 +2056,7 @@
             {
               "id": "tpbec2",
               "title": "TP/BEC2",
-              "children": [
+              "edts": [
                 {
                   "id": "tpbec21",
                   "title": "TP/BEC2.1",
@@ -2074,11 +2074,11 @@
         {
           "id": "3a",
           "title": "3A",
-          "children": [
+          "edts": [
             {
               "id": "bat3",
               "title": "BAT3",
-              "children": [
+              "edts": [
                 {
                   "id": "bat31",
                   "title": "BAT3.1",
@@ -2094,7 +2094,7 @@
             {
               "id": "bec3",
               "title": "BEC3",
-              "children": [
+              "edts": [
                 {
                   "id": "bec31",
                   "title": "BEC3.1",
@@ -2110,7 +2110,7 @@
             {
               "id": "rapeb3",
               "title": "RAPEB3",
-              "children": [
+              "edts": [
                 {
                   "id": "rapeb31",
                   "title": "RAPEB3.1",
@@ -2126,7 +2126,7 @@
             {
               "id": "tp3",
               "title": "TP3",
-              "children": [
+              "edts": [
                 {
                   "id": "tp31",
                   "title": "TP3.1",
@@ -2144,11 +2144,11 @@
         {
           "id": "groupemixtetpbec",
           "title": "Groupe Mixte TP/BEC",
-          "children": [
+          "edts": [
             {
               "id": "tpbec21",
               "title": "TP/BEC2.1",
-              "children": [
+              "edts": [
                 {
                   "id": "tpbec21-*bec*",
                   "title": "TP/BEC2.1-*BEC*",
@@ -2164,7 +2164,7 @@
             {
               "id": "tpbec22",
               "title": "TP/BEC2.2",
-              "children": [
+              "edts": [
                 {
                   "id": "tpbec22-*bec*",
                   "title": "TP/BEC2.2-*BEC*",
@@ -2182,7 +2182,7 @@
         {
           "id": "lpcagclim",
           "title": "LP CAGCLIM",
-          "children": [
+          "edts": [
             {
               "id": "cagclim",
               "title": "CAGCLIM",
@@ -2193,7 +2193,7 @@
         {
           "id": "lprtif",
           "title": "LP RTIF",
-          "children": [
+          "edts": [
             {
               "id": "rtif",
               "title": "RTIF",
@@ -2206,15 +2206,15 @@
     {
       "id": "geii",
       "title": "GEII",
-      "children": [
+      "edts": [
         {
           "id": "but1geii",
           "title": "BUT1 GEII",
-          "children": [
+          "edts": [
             {
               "id": "a1",
               "title": "A1",
-              "children": [
+              "edts": [
                 {
                   "id": "a11",
                   "title": "A11",
@@ -2230,7 +2230,7 @@
             {
               "id": "a2",
               "title": "A2",
-              "children": [
+              "edts": [
                 {
                   "id": "a21",
                   "title": "A21",
@@ -2246,7 +2246,7 @@
             {
               "id": "a3",
               "title": "A3",
-              "children": [
+              "edts": [
                 {
                   "id": "a31",
                   "title": "A31",
@@ -2262,7 +2262,7 @@
             {
               "id": "a4",
               "title": "A4",
-              "children": [
+              "edts": [
                 {
                   "id": "a41",
                   "title": "A41",
@@ -2278,7 +2278,7 @@
             {
               "id": "a5",
               "title": "A5",
-              "children": [
+              "edts": [
                 {
                   "id": "a51",
                   "title": "A51",
@@ -2296,11 +2296,11 @@
         {
           "id": "but2geii",
           "title": "BUT2 GEII",
-          "children": [
+          "edts": [
             {
               "id": "b1",
               "title": "B1",
-              "children": [
+              "edts": [
                 {
                   "id": "b1-1",
                   "title": "B1-1",
@@ -2316,7 +2316,7 @@
             {
               "id": "b2",
               "title": "B2",
-              "children": [
+              "edts": [
                 {
                   "id": "b2-1",
                   "title": "B2-1",
@@ -2332,7 +2332,7 @@
             {
               "id": "b3",
               "title": "B3",
-              "children": [
+              "edts": [
                 {
                   "id": "b3-1",
                   "title": "B3-1",
@@ -2348,7 +2348,7 @@
             {
               "id": "b4",
               "title": "B4",
-              "children": [
+              "edts": [
                 {
                   "id": "b4-1",
                   "title": "B4-1",
@@ -2364,7 +2364,7 @@
             {
               "id": "b5",
               "title": "B5",
-              "children": [
+              "edts": [
                 {
                   "id": "b5-1",
                   "title": "B5-1",
@@ -2377,11 +2377,11 @@
         {
           "id": "but3geii",
           "title": "BUT3 GEII",
-          "children": [
+          "edts": [
             {
               "id": "c1",
               "title": "C1",
-              "children": [
+              "edts": [
                 {
                   "id": "c1-1",
                   "title": "C1-1",
@@ -2397,7 +2397,7 @@
             {
               "id": "c2",
               "title": "C2",
-              "children": [
+              "edts": [
                 {
                   "id": "c2-1",
                   "title": "C2-1",
@@ -2413,7 +2413,7 @@
             {
               "id": "c3",
               "title": "C3",
-              "children": [
+              "edts": [
                 {
                   "id": "c3-1",
                   "title": "C3-1",
@@ -2429,7 +2429,7 @@
             {
               "id": "c4",
               "title": "C4",
-              "children": [
+              "edts": [
                 {
                   "id": "c4-1",
                   "title": "C4-1",
@@ -2447,11 +2447,11 @@
         {
           "id": "licencepro",
           "title": "Licence Pro",
-          "children": [
+          "edts": [
             {
               "id": "lpacteer",
               "title": "LP ACTEER",
-              "children": [
+              "edts": [
                 {
                   "id": "acteer",
                   "title": "ACTEER",
@@ -2462,15 +2462,15 @@
             {
               "id": "lpmecatronique",
               "title": "LP Mecatronique",
-              "children": [
+              "edts": [
                 {
                   "id": "isar",
                   "title": "ISAR",
-                  "children": [
+                  "edts": [
                     {
                       "id": "isar-a",
                       "title": "ISAR-A",
-                      "children": [
+                      "edts": [
                         {
                           "id": "isar-a1",
                           "title": "ISAR-A1",
@@ -2486,7 +2486,7 @@
                     {
                       "id": "isar-b",
                       "title": "ISAR-B",
-                      "children": [
+                      "edts": [
                         {
                           "id": "isar-b1",
                           "title": "ISAR-B1",
@@ -2504,7 +2504,7 @@
                 {
                   "id": "pastel",
                   "title": "Pastel",
-                  "children": [
+                  "edts": [
                     {
                       "id": "pastela",
                       "title": "Pastel A",
@@ -2529,11 +2529,11 @@
         {
           "id": "masterearlp",
           "title": "Mastere ARLP",
-          "children": [
+          "edts": [
             {
               "id": "mastere-1-d",
               "title": "Mastere-1-D",
-              "children": [
+              "edts": [
                 {
                   "id": "mastere-d1",
                   "title": "MASTERE-D1",
@@ -2549,7 +2549,7 @@
             {
               "id": "mastere-2-e",
               "title": "Mastere-2-E",
-              "children": [
+              "edts": [
                 {
                   "id": "mastere-e1",
                   "title": "Mastere-E1",
@@ -2567,7 +2567,7 @@
         {
           "id": "reunion",
           "title": "Réunion",
-          "children": [
+          "edts": [
             {
               "id": "portesouvertes",
               "title": "Portes ouvertes",
@@ -2580,19 +2580,19 @@
     {
       "id": "gmp",
       "title": "GMP",
-      "children": [
+      "edts": [
         {
           "id": "1gmp",
           "title": "1GMP",
-          "children": [
+          "edts": [
             {
               "id": "1a",
               "title": "1A",
-              "children": [
+              "edts": [
                 {
                   "id": "1a1",
                   "title": "1A1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1a1",
                       "title": "1A1",
@@ -2603,7 +2603,7 @@
                 {
                   "id": "1a2",
                   "title": "1A2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1a2",
                       "title": "1A2",
@@ -2616,11 +2616,11 @@
             {
               "id": "1b",
               "title": "1B",
-              "children": [
+              "edts": [
                 {
                   "id": "1b1",
                   "title": "1B1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1b1",
                       "title": "1B1",
@@ -2631,7 +2631,7 @@
                 {
                   "id": "1b2",
                   "title": "1B2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1b2",
                       "title": "1B2",
@@ -2644,11 +2644,11 @@
             {
               "id": "1c",
               "title": "1C",
-              "children": [
+              "edts": [
                 {
                   "id": "1c1",
                   "title": "1C1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1c1",
                       "title": "1C1",
@@ -2659,7 +2659,7 @@
                 {
                   "id": "1c2",
                   "title": "1C2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1c2",
                       "title": "1C2",
@@ -2672,11 +2672,11 @@
             {
               "id": "1d",
               "title": "1D",
-              "children": [
+              "edts": [
                 {
                   "id": "1d1",
                   "title": "1D1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1d1",
                       "title": "1D1",
@@ -2687,7 +2687,7 @@
                 {
                   "id": "1d2",
                   "title": "1D2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "1d2",
                       "title": "1D2",
@@ -2702,15 +2702,15 @@
         {
           "id": "2gmp",
           "title": "2GMP",
-          "children": [
+          "edts": [
             {
               "id": "2a",
               "title": "2A",
-              "children": [
+              "edts": [
                 {
                   "id": "2a1",
                   "title": "2A1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2a1",
                       "title": "2A1",
@@ -2721,7 +2721,7 @@
                 {
                   "id": "2a2",
                   "title": "2A2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2a2",
                       "title": "2A2",
@@ -2734,11 +2734,11 @@
             {
               "id": "2b",
               "title": "2B",
-              "children": [
+              "edts": [
                 {
                   "id": "2b1",
                   "title": "2B1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2b1",
                       "title": "2B1",
@@ -2749,7 +2749,7 @@
                 {
                   "id": "2b2",
                   "title": "2B2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2b2",
                       "title": "2B2",
@@ -2762,11 +2762,11 @@
             {
               "id": "2c",
               "title": "2C",
-              "children": [
+              "edts": [
                 {
                   "id": "2c1",
                   "title": "2C1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2c1",
                       "title": "2C1",
@@ -2777,7 +2777,7 @@
                 {
                   "id": "2c2",
                   "title": "2C2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2c2",
                       "title": "2C2",
@@ -2790,11 +2790,11 @@
             {
               "id": "2d",
               "title": "2D",
-              "children": [
+              "edts": [
                 {
                   "id": "2d1",
                   "title": "2D1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2d1",
                       "title": "2D1",
@@ -2805,7 +2805,7 @@
                 {
                   "id": "2d2",
                   "title": "2D2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "2d2",
                       "title": "2D2",
@@ -2820,15 +2820,15 @@
         {
           "id": "3gmp",
           "title": "3GMP",
-          "children": [
+          "edts": [
             {
               "id": "3a",
               "title": "3A",
-              "children": [
+              "edts": [
                 {
                   "id": "3a1",
                   "title": "3A1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3a1",
                       "title": "3A1",
@@ -2839,7 +2839,7 @@
                 {
                   "id": "3a2",
                   "title": "3A2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3a2",
                       "title": "3A2",
@@ -2852,11 +2852,11 @@
             {
               "id": "3b",
               "title": "3B",
-              "children": [
+              "edts": [
                 {
                   "id": "3b1",
                   "title": "3B1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3b1",
                       "title": "3B1",
@@ -2867,7 +2867,7 @@
                 {
                   "id": "3b2",
                   "title": "3B2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3b2",
                       "title": "3B2",
@@ -2880,11 +2880,11 @@
             {
               "id": "3c",
               "title": "3C",
-              "children": [
+              "edts": [
                 {
                   "id": "3c1",
                   "title": "3C1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3c1",
                       "title": "3C1",
@@ -2895,7 +2895,7 @@
                 {
                   "id": "3c2",
                   "title": "3C2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "3c2",
                       "title": "3C2",
@@ -2910,7 +2910,7 @@
         {
           "id": "lpecosym",
           "title": "LPEcoSyM",
-          "children": [
+          "edts": [
             {
               "id": "lpecosym-e",
               "title": "LPECOSYM-E",
@@ -2926,7 +2926,7 @@
         {
           "id": "lpmecatro",
           "title": "LPMECATRO",
-          "children": [
+          "edts": [
             {
               "id": "mecarobot-1",
               "title": "MecaRobot-1",
@@ -2942,7 +2942,7 @@
         {
           "id": "qse1-lpaqse",
           "title": "QSE1 - LPAQSE",
-          "children": [
+          "edts": [
             {
               "id": "lpaqsegroupea",
               "title": "LPAQSE groupe A",
@@ -2958,7 +2958,7 @@
         {
           "id": "qse2-m1qse",
           "title": "QSE2 - M1QSE",
-          "children": [
+          "edts": [
             {
               "id": "m1qsegroupea",
               "title": "M1 QSE groupe A",
@@ -2974,7 +2974,7 @@
         {
           "id": "qse3-m2qse",
           "title": "QSE3 - M2QSE",
-          "children": [
+          "edts": [
             {
               "id": "m2qsegroupea",
               "title": "M2 QSE groupe A",

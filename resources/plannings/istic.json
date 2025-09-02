@@ -2996,6 +2996,11 @@
         {
           "id": "isticmcr2",
           "title": "Master Cloud et Réseaux",
+          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18089&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "isticmrssi2",
+          "title": "Master RSSI (option mémoire)",
           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11685&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
         },
         {
