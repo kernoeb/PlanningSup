@@ -1,4 +1,5 @@
 import { onMessage, sendMessage } from 'webext-bridge/background'
+import browser from 'webextension-polyfill'
 
 // @ts-expect-error - sidePanel is available in Chromium but not typed in polyfill
 browser.sidePanel
@@ -19,7 +20,8 @@ browser.sidePanel
 let creating: Promise<void> | null
 
 async function canUseOffscreen(): Promise<boolean> {
-  const hasOffscreen = !!(browser as any)?.offscreen?.createDocument
+  // @ts-expect-error offscreen not in types in some channels
+  const hasOffscreen = !!browser?.offscreen?.createDocument
   const hasGetContexts = typeof (browser.runtime as any)?.getContexts === 'function'
   return hasOffscreen && hasGetContexts
 }

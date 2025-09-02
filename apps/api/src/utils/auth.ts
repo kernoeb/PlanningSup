@@ -18,7 +18,6 @@ export const auth = betterAuth({
     disableNotice: true,
   },
   trustedOrigins: ['http://localhost:4444'],
-  baseURL: Bun.env.BETTER_AUTH_BASE_URL || 'http://localhost:20000',
   plugins: [anonymous()],
 })
 
