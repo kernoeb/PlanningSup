@@ -1,4 +1,5 @@
 import type { Database } from '@api/db'
+import { jobsLogger } from '@api/utils/logger'
 
 const pause = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -8,11 +9,20 @@ export async function run(db: Database) {
   const { planningsBackupTable } = await import('@api/db/schemas/plannings')
   const { sql } = await import('drizzle-orm')
 
+  const nbPlannings = flattenedPlannings.length
+  jobsLogger.info('Starting plannings backup job for {count} planning(s)', { count: nbPlannings })
+
+  let index = 0
   for (const planning of flattenedPlannings) {
+    index++
+
     try {
       const events = await fetchEvents(planning.url)
       if (!events || events.length === 0) {
-        console.warn(`No events fetched for planning ${planning.fullId} (${planning.url})`)
+        jobsLogger.warn(
+          `[${index}/${nbPlannings}] No events fetched for planning {fullId}, skipping backup.`,
+          { fullId: planning.fullId },
+        )
         await pause(300)
         continue
       }
@@ -55,17 +65,25 @@ export async function run(db: Database) {
         .returning()
 
       if (details.length === 0) {
-        console.log(`No changes for planning ${planning.fullId} (${planning.url}), skipping refresh`)
+        jobsLogger.info(
+          `[${index}/${nbPlannings}] No changes for planning {fullId}, skipping backup save.`,
+          { fullId: planning.fullId },
+        )
         await pause(300)
         continue
       } else {
-        console.log(`Saved latest backup for planning ${planning.fullId} with ${payload.length} event(s)`)
+        jobsLogger.info(
+          `[${index}/${nbPlannings}] Saved backup for planning {fullId}, {count} event(s).`,
+          { fullId: planning.fullId, count: payload.length },
+        )
       }
     } catch (error) {
-      console.error(`Error processing planning ${planning.fullId} (${planning.url}):`, error)
+      jobsLogger.error(
+        `[${index}/${nbPlannings}] Error backing up planning {fullId}: {error}`,
+        { fullId: planning.fullId, error },
+      )
     }
 
-    // Delay between requests to avoid overwhelming the server
     await pause(300)
   }
 }

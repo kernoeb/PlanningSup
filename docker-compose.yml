@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: planningsup_db
+    environment:
+      POSTGRES_USER: planningsup
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: planningsup
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - planningsup_network
+
+volumes:
+  pgdata:
+
+networks:
+  planningsup_network:
+    driver: bridge

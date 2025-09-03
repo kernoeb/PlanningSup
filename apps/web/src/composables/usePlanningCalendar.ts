@@ -1,0 +1,152 @@
+import type { CalendarConfig } from '@schedule-x/calendar'
+import type { Ref } from 'vue'
+import { client } from '@libs'
+import {
+  createCalendar,
+  createViewDay,
+  createViewMonthAgenda,
+  createViewMonthGrid,
+  createViewWeek,
+} from '@schedule-x/calendar'
+import { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
+import { createCurrentTimePlugin } from '@schedule-x/current-time'
+import { createEventModalPlugin } from '@schedule-x/event-modal'
+import { createEventsServicePlugin } from '@schedule-x/events-service'
+import { mergeLocales, translations } from '@schedule-x/translations'
+import { shallowRef, watch } from 'vue'
+
+type AllowedTimezones = CalendarConfig['timezone']
+
+interface ApiEvent {
+  uid: string
+  summary: string
+  startDate: unknown
+  endDate: unknown
+  categoryId: string
+}
+
+function mapApiEventToCalendarEvent(
+  event: ApiEvent,
+  fullId: string,
+  timezone: NonNullable<AllowedTimezones>,
+) {
+  const start = (event.startDate as any).toTemporalInstant().toZonedDateTimeISO(timezone)
+  const end = (event.endDate as any).toTemporalInstant().toZonedDateTimeISO(timezone)
+
+  return {
+    ...event,
+    id: `${fullId}_${event.uid}`.replace(/[^\w-]/g, '_'),
+    title: event.summary,
+    start,
+    end,
+    calendarId: event.categoryId,
+  }
+}
+
+/**
+ * usePlanningCalendar
+ *
+ * Initializes the ScheduleX calendar once and updates its events whenever the provided
+ * planning `fullId` changes. Returns the calendar instance ref and useful plugins.
+ *
+ * Example:
+ * const fullId = ref('some-planning-id')
+ * const { calendarApp, reload } = usePlanningCalendar({ fullId, timezone })
+ */
+export function usePlanningCalendar(options: {
+  fullId: Ref<string>
+  timezone: NonNullable<AllowedTimezones>
+}) {
+  const { fullId, timezone } = options
+
+  const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
+  const eventsServicePlugin = createEventsServicePlugin()
+  const eventModal = createEventModalPlugin()
+  const calendarControls = createCalendarControlsPlugin()
+
+  async function fetchEvents() {
+    const { data } = await client.api.plannings({ fullId: fullId.value }).get({
+      query: { events: 'true' },
+    })
+    if (!data || !('events' in data) || !data.events) return []
+    return (data.events as ApiEvent[]).map(e => mapApiEventToCalendarEvent(e, fullId.value, timezone))
+  }
+
+  async function initOrUpdate() {
+    const mapped = await fetchEvents()
+    if (!calendarApp.value) {
+      calendarApp.value = createCalendar({
+        views: [
+          createViewDay(),
+          createViewWeek(),
+          createViewMonthGrid(),
+          createViewMonthAgenda(),
+        ],
+        locale: 'fr-FR',
+        isDark: true,
+        timezone,
+        showWeekNumbers: true,
+        dayBoundaries: { start: '07:00', end: '20:00' },
+        weekOptions: { nDays: 5, gridHeight: 800 },
+        calendars: {
+          'lecture': {
+            colorName: 'lecture',
+            lightColors: { main: '#efd6d8', container: '#efd6d8', onContainer: '#ffffff' },
+            darkColors: { main: '#efd6d8', container: '#efd6d8', onContainer: '#000000' },
+          },
+          'lab': {
+            colorName: 'lab',
+            lightColors: { main: '#bbe0ff', container: '#bbe0ff', onContainer: '#ffffff' },
+            darkColors: { main: '#bbe0ff', container: '#bbe0ff', onContainer: '#000000' },
+          },
+          'tutorial': {
+            colorName: 'tutorial',
+            lightColors: { main: '#d4fbcc', container: '#d4fbcc', onContainer: '#ffffff' },
+            darkColors: { main: '#d4fbcc', container: '#d4fbcc', onContainer: '#000000' },
+          },
+          'other': {
+            colorName: 'other',
+            lightColors: { main: '#EDDD6E', container: '#EDDD6E', onContainer: '#ffffff' },
+            darkColors: { main: '#EDDD6E', container: '#EDDD6E', onContainer: '#000000' },
+          },
+          'no-teacher': {
+            colorName: 'no-teacher',
+            lightColors: { main: '#676767', container: '#676767', onContainer: '#ffffff' },
+            darkColors: { main: '#676767', container: '#676767', onContainer: '#000000' },
+          },
+        },
+        events: mapped,
+        plugins: [
+          calendarControls,
+          eventsServicePlugin,
+          eventModal,
+          createCurrentTimePlugin(),
+        ],
+        translations: mergeLocales(translations),
+      })
+    } else {
+      eventsServicePlugin.set(mapped)
+    }
+  }
+
+  // Reload on planning change
+  watch(fullId, () => {
+    if (calendarApp.value) void initOrUpdate()
+  })
+
+  // Manual reload if needed by UI
+  async function reload() {
+    await initOrUpdate()
+  }
+
+  // Initial load
+  void initOrUpdate()
+
+  return {
+    calendarApp,
+    calendarControls,
+    eventsServicePlugin,
+    eventModal,
+    reload,
+  }
+}
