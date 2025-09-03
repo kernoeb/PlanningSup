@@ -60,11 +60,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Test ./test/real-world/real-world-test.sh
-      - name: Test
-        run: |
-          ./test/real-world/real-world-test.sh test-planning
-
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image

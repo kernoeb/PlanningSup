@@ -8,7 +8,6 @@ test-results
 **/dist
 **/.vscode
 tools/
-test/
 .idea/
 .github/
 scripts/*.js

@@ -23,14 +23,13 @@ COPY /apps/api ./apps/api
 COPY /apps/web ./apps/web
 COPY /packages/config ./packages/config
 COPY /packages/libs ./packages/libs
-
 ENV NODE_ENV=production
 
 RUN bun run build
 
 ##########################################################
 # Copy json planning files using a simple sh image
-FROM busybox AS copy-plannings
+FROM build AS copy-and-test-plannings
 
 WORKDIR /app
 
@@ -38,6 +37,11 @@ COPY /resources/plannings/ /tmp/plannings/
 
 RUN mkdir -p ./plannings && \
   cp /tmp/plannings/*.json ./plannings/
+
+ENV PLANNINGS_LOCATION=/app/plannings
+
+COPY /test ./test
+RUN bun test
 
 ##########################################################
 FROM gcr.io/distroless/base
@@ -53,7 +57,7 @@ COPY /apps/api/drizzle ./drizzle
 COPY --from=build /app/apps/api/server ./server
 COPY --from=build /app/apps/web/dist ./web/dist/
 
-COPY --from=copy-plannings /app/plannings ./plannings
+COPY --from=copy-and-test-plannings /app/plannings ./plannings
 
 ENV NODE_ENV=production
 

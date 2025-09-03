@@ -8,7 +8,7 @@ import { run as runPlanningsBackup } from './plannings-backup'
 // Environment variable names supported:
 // - RUN_JOBS: "false" | "0" disables the job runner, everything else enables it (default: enabled)
 // - DELAY_BETWEEN_JOBS: delay between cycles (supports ms number or "60s", "1m", "500ms", "1h")
-// - ALLOWED_JOBS | JOBS_ALLOWLIST | JOBS_WHITELIST: comma-separated list of job IDs to run, or "*" for all registered jobs.
+// - ALLOWED_JOBS: comma-separated list of job IDs to run, or "*" for all registered jobs.
 //   Example: ALLOWED_JOBS="plannings-backup,another-job"
 //
 // A "job" is any module that exports an async `run(db: Database): Promise<void>` function.

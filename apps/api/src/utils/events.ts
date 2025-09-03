@@ -16,6 +16,8 @@ const dateEndTemplate = '{date-end}'
 
 const includesTemplate = (v: string) => v && (v.includes(dateStartTemplate) || v.includes(dateEndTemplate))
 
+const randomString = () => crypto.randomUUID()
+
 export interface CalEvent {
   uid: string
   summary: string
@@ -50,12 +52,12 @@ export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
     for (const vEvent of vEvents) {
       const tmpEvent = new icalJs.Event(vEvent)
       allEvents.push({
-        uid: tmpEvent.uid,
-        summary: tmpEvent.summary,
+        uid: tmpEvent.uid || randomString(),
+        summary: tmpEvent.summary || '',
         startDate: tmpEvent.startDate.toJSDate(),
         endDate: tmpEvent.endDate.toJSDate(),
-        location: tmpEvent.location,
-        description: tmpEvent.description,
+        location: tmpEvent.location || '',
+        description: tmpEvent.description || '',
       })
     }
 
