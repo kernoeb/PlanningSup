@@ -1,13 +1,5 @@
 :root {
-  /* Light theme */
-  --sx-color-primary: #5c6bc0;
-  --sx-color-on-primary: #ffffff;
-  --sx-color-primary-container: #c5cae9;
-  --sx-color-on-primary-container: #1a237e;
-  --sx-color-surface: #f5f5f5;
-  --sx-color-on-surface: #1b1c1f;
-  --sx-color-background: #ffffff;
-  --sx-color-on-background: #1b1c1f;
+  --sx-spacing-padding3: 6px;
 }
 
 /* Dark theme */
@@ -60,4 +52,13 @@
 
 .is-dark .sx__calendar {
   border: none;
+}
+
+.sx__calendar-header__week-number {
+  background-color: var(--sx-color-surface-container)!important;
+}
+
+.sx__calendar-header {
+  padding-top: var(--sx-spacing-padding3);
+  padding-bottom: var(--sx-spacing-padding3);
 }

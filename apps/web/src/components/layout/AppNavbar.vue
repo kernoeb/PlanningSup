@@ -6,16 +6,25 @@ const { title } = usePlanningData()
 </script>
 
 <template>
-  <div class="navbar bg-base-100 shadow-sm">
-    <div class="flex-1">
-      <a class="btn btn-ghost text-xl">PlanningSup</a>
-      <div class="ml-4 hidden sm:flex items-center gap-2">
-        <span class="text-xs opacity-70">Planning:</span>
-        <span class="badge badge-outline font-mono text-xs truncate max-w-[22rem] rounded-[4px] border border-solid border-[#333] h-6">{{ title }}</span>
+  <div class="navbar bg-base-100 shadow-sm px-3">
+    <div class="flex-1 flex items-center gap-3">
+      <a class="text-xl flex items-center gap-1 font-bold">
+        <div class="avatar">
+          <div class="w-8 rounded">
+            <img
+              alt="Tailwind-CSS-Avatar-component"
+              src="@web/assets/icon.png"
+            >
+          </div>
+        </div>
+        PlanningSup
+      </a>
+      <div class="sm:flex items-center gap-2">
+        <span class="badge truncate max-w-[22rem] h-6">{{ title }}</span>
         <PlanningPicker>
           <template #trigger="{ open }">
-            <button class="btn btn-outline btn-xs rounded-[4px] border border-solid border-[#333] h-6 min-h-6" type="button" @click="open">
-              Change
+            <button class="btn btn-secondary h-6 min-h-6" type="button" @click="open">
+              Changer de planning
             </button>
           </template>
         </PlanningPicker>

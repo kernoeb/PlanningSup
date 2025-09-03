@@ -18,6 +18,9 @@ useAuth()
 <template>
   <div>
     <AppNavbar />
-    <PlanningCalendar :full-id="fullId" />
+    <PlanningCalendar
+      :full-id="fullId"
+      style="height: calc(100vh - 64px);"
+    />
   </div>
 </template>

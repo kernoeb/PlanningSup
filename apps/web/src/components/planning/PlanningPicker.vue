@@ -88,10 +88,10 @@ onMounted(() => {
         </form>
         <div class="mb-4">
           <h3 class="text-lg font-bold">
-            Select a planning
+            Sélectionner un planning
           </h3>
           <p class="text-sm opacity-70">
-            Current:
+            Planning actuel :
             <span class="font-mono">
               {{ currentTitle }}
             </span>

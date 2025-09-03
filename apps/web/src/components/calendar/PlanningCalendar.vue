@@ -20,6 +20,5 @@ defineExpose({ reload, fullId })
   <ScheduleXCalendar
     v-if="calendarApp"
     :calendar-app="calendarApp"
-    style="height: calc(100vh - 82px);"
   />
 </template>
