@@ -195,7 +195,7 @@
                     {
                       "id": "g3",
                       "title": "G3",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15831&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15831&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "g4",
