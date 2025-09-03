@@ -1,6 +1,7 @@
 # Specific
 duplicates.log.json
 api
+server
 
 # dependencies (bun install)
 node_modules

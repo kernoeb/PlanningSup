@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
-import { onMounted, ref, watch } from 'vue'
 import { client } from '@libs'
+import { onMounted, ref, watch } from 'vue'
 import { useCurrentPlanning } from './useCurrentPlanning'
 
 /**
@@ -60,8 +60,8 @@ export function useCurrentPlanningInfo(): {
       // Ignore outdated responses
       if (requestToken !== lastRequestToken) return
 
-      const fetchedTitle =
-        data && typeof data === 'object' && data !== null && 'title' in data
+      const fetchedTitle
+        = data && typeof data === 'object' && data !== null && 'title' in data
           ? String((data as any).title ?? '')
           : ''
 
