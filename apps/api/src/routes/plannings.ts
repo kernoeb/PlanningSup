@@ -1,6 +1,6 @@
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
 import { fetchEvents, getBackupEvents, getFormattedEvents } from '@api/utils/events'
-import { honoLogger } from '@api/utils/logger'
+import { elysiaLogger } from '@api/utils/logger'
 import { Elysia } from 'elysia'
 
 export default new Elysia({ prefix: '/plannings' })
@@ -44,7 +44,7 @@ export default new Elysia({ prefix: '/plannings' })
 
       const nbEvents = allEvents ? allEvents.length : 0
 
-      honoLogger.info(`Serving events for planning {fullId} : {events} events, blocklist: {blocklist}, colors: {colors}, highlightTeacher: {highlightTeacher}`, {
+      elysiaLogger.info(`Serving events for planning {fullId} : {events} events, blocklist: {blocklist}, colors: {colors}, highlightTeacher: {highlightTeacher}`, {
         fullId,
         nbEvents,
         blocklist,
@@ -60,7 +60,7 @@ export default new Elysia({ prefix: '/plannings' })
         nbEvents,
       }
     } else {
-      honoLogger.info('Serving info for planning {fullId}', { fullId })
+      elysiaLogger.info('Serving info for planning {fullId}', { fullId })
       return partialInfos
     }
   })
