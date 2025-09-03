@@ -44,7 +44,7 @@ COPY /test ./test
 RUN bun test
 
 ##########################################################
-FROM gcr.io/distroless/base
+FROM gcr.io/distroless/base-debian12
 
 WORKDIR /app
 
