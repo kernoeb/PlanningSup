@@ -47,6 +47,10 @@ body {
   height: 100dvh;
 }
 
+body {
+  font-family: 'Plus Jakarta Sans Variable', sans-serif;
+}
+
 #app {
   height: 100%;
 }

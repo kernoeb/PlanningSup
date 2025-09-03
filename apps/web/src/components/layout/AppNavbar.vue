@@ -8,7 +8,7 @@ const { title } = usePlanningData()
 <template>
   <div class="navbar bg-base-100 shadow-sm px-3">
     <div class="flex-1 flex items-center gap-3">
-      <a class="text-xl flex items-center gap-1 font-bold">
+      <a class="text-xl flex items-center gap-1">
         <div class="avatar">
           <div class="w-8 rounded">
             <img
