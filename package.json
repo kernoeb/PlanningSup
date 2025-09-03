@@ -35,5 +35,8 @@
     "@types/bun": "^1",
     "concurrently": "^9",
     "eslint": "^9.34.0"
-  }
+  },
+  "trustedDependencies": [
+    "@tailwindcss/oxide"
+  ]
 }

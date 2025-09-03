@@ -1,6 +1,5 @@
 import type { CalendarConfig } from '@schedule-x/calendar'
 import type { Ref } from 'vue'
-import { client } from '@libs'
 import {
   createCalendar,
   createViewDay,
@@ -14,6 +13,8 @@ import { createEventModalPlugin } from '@schedule-x/event-modal'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 import { shallowRef, watch } from 'vue'
+import { useCurrentPlanning } from './useCurrentPlanning'
+import { usePlanningData } from './usePlanningData'
 
 type AllowedTimezones = CalendarConfig['timezone']
 
@@ -57,23 +58,23 @@ export function usePlanningCalendar(options: {
   fullId: Ref<string>
   timezone: NonNullable<AllowedTimezones>
 }) {
-  const { fullId, timezone } = options
+  const { fullId: propFullId, timezone } = options
 
   const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
   const eventsServicePlugin = createEventsServicePlugin()
   const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
 
-  async function fetchEvents() {
-    const { data } = await client.api.plannings({ fullId: fullId.value }).get({
-      query: { events: 'true' },
-    })
-    if (!data || !('events' in data) || !data.events) return []
-    return (data.events as ApiEvent[]).map(e => mapApiEventToCalendarEvent(e, fullId.value, timezone))
+  const planning = usePlanningData()
+  const { setCurrentPlanning } = useCurrentPlanning()
+  watch(propFullId, id => setCurrentPlanning(id), { immediate: true })
+
+  function getMappedEvents() {
+    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, planning.fullId.value, timezone))
   }
 
-  async function initOrUpdate() {
-    const mapped = await fetchEvents()
+  function initOrUpdate() {
+    const mapped = getMappedEvents()
     if (!calendarApp.value) {
       calendarApp.value = createCalendar({
         views: [
@@ -129,14 +130,19 @@ export function usePlanningCalendar(options: {
     }
   }
 
-  // Reload on planning change
-  watch(fullId, () => {
-    if (calendarApp.value) void initOrUpdate()
+  // Sync on planning change and when new events arrive
+  watch(planning.fullId, () => {
+    void initOrUpdate()
+  })
+  watch(planning.events, () => {
+    if (calendarApp.value) {
+      eventsServicePlugin.set(getMappedEvents())
+    }
   })
 
   // Manual reload if needed by UI
-  async function reload() {
-    await initOrUpdate()
+  function reload() {
+    void planning.refresh()
   }
 
   // Initial load

@@ -76,7 +76,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div class="sm:flex">
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog ref="dialogRef" class="modal">

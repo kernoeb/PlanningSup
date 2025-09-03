@@ -3,7 +3,6 @@ import PlanningCalendar from '@web/components/calendar/PlanningCalendar.vue'
 import AppNavbar from '@web/components/layout/AppNavbar.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useCurrentPlanning } from '@web/composables/useCurrentPlanning'
-import 'temporal-polyfill/global'
 
 import '@schedule-x/theme-default/dist/index.css'
 import './styles/schedule-x.css'

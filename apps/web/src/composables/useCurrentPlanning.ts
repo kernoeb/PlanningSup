@@ -11,7 +11,7 @@ export const DEFAULT_PLANNING_FULL_ID = 'iut-de-vannes.butdutinfo.1ereannee.gr1a
  * Storage key used to persist the current planning fullId.
  * Requested key: 'p'
  */
-export const CURRENT_PLANNING_STORAGE_KEY = 'p'
+export const CURRENT_PLANNING_STORAGE_KEY = 'planning'
 
 /**
  * useCurrentPlanning

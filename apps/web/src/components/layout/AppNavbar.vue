@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
-import { useCurrentPlanningInfo } from '@web/composables/useCurrentPlanningInfo'
+import { usePlanningData } from '@web/composables/usePlanningData'
 
-const { title } = useCurrentPlanningInfo()
+const { title } = usePlanningData()
 </script>
 
 <template>
