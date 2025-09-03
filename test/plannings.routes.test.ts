@@ -126,7 +126,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     // @ts-expect-error bun types
     globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input)
-      if (targetUrl && url === targetUrl) {
+      if (url === targetUrl) {
         if (fetchMode === 'ok') {
           const body = buildICS(sampleEvents)
           return new Response(body, {
