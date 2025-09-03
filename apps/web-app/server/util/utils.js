@@ -205,11 +205,11 @@ module.exports = {
         for (const vEvent of vEvents) {
           const tmpEvent = new icalJs.Event(vEvent)
           allEvents.push({
-            summary: tmpEvent.summary,
+            summary: tmpEvent.summary || '',
             startDate: tmpEvent.startDate.toJSDate(),
             endDate: tmpEvent.endDate.toJSDate(),
-            location: tmpEvent.location,
-            description: tmpEvent.description
+            location: tmpEvent.location || '',
+            description: tmpEvent.description || ''
           })
         }
 
