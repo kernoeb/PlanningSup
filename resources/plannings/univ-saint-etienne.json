@@ -37,7 +37,7 @@
                 {
                   "id": "exp-ifsi",
                   "title": "Expérimentation IFSI",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10874&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10874&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "exp-imrt",
@@ -81,7 +81,7 @@
                     {
                       "id": "grp-e",
                       "title": "Groupe E",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4858&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4858&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
                       "id": "option-droit",
