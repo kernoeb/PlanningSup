@@ -36,6 +36,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # Uppercase to lowercase image name
       - id: string
         uses: ASzc/change-string-case-action@v6
         with:
@@ -49,32 +50,24 @@ jobs:
         with:
           images: ${{ steps.string.outputs.lowercase }}
 
-      # Build a test image (local load) using the same shared cache scope + registry fallback
+      # Build a test Docker image
       - name: Build a test image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           load: true
           tags: test-planning
-          cache-from: |
-            type=gha,scope=planning-build
-            type=registry,ref=${{ steps.string.outputs.lowercase }}:buildcache
-          cache-to: |
-            type=gha,mode=max,scope=planning-build
-            type=registry,ref=${{ steps.string.outputs.lowercase }}:buildcache,mode=max,ignore-error=true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: |
-            type=gha,scope=planning-build
-            type=registry,ref=${{ steps.string.outputs.lowercase }}:buildcache
-          cache-to: |
-            type=gha,mode=max,scope=planning-build
-            type=registry,ref=${{ steps.string.outputs.lowercase }}:buildcache,mode=max,ignore-error=true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
