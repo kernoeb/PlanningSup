@@ -1,10 +1,9 @@
 import path from 'path'
-import process from 'process'
 import planningsRoutes from '@api/routes/plannings'
 import { auth } from '@api/utils/auth'
 import { cors } from '@elysiajs/cors'
+import { openapi } from '@elysiajs/openapi'
 import staticPlugin from '@elysiajs/static'
-import { swagger } from '@elysiajs/swagger'
 import { webLocation } from '@web/expose'
 import { Elysia } from 'elysia'
 
@@ -33,7 +32,7 @@ const app = new Elysia()
     if (import.meta.env.NODE_ENV !== 'production' && !isNotFound) console.error(error)
     return { error, message: isNotFound ? 'Route not found' : 'Internal server error' }
   })
-  .use(swagger())
+  .use(openapi())
   .use(
     cors({
       origin: 'http://localhost:4444',
@@ -49,12 +48,15 @@ const app = new Elysia()
       .use(betterAuth)
       .use(planningsRoutes),
   )
-  .use(staticPlugin({
-    assets: process.env.WEB_DIST_LOCATION || path.join(webLocation),
+
+if (import.meta.env.NODE_ENV === 'production') {
+  app.use(staticPlugin({
+    assets: Bun.env.WEB_DIST_LOCATION || path.join(webLocation),
     indexHTML: true,
     alwaysStatic: false, // spa
-    prefix: import.meta.env.NODE_ENV === 'production' ? '/' : '/dev/',
+    prefix: '/'
   }))
+}
 
 export type App = typeof app
 export default app
