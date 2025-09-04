@@ -617,16 +617,6 @@
                               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=611&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
-                        },
-                        {
-                          "id": "biotech:^formucarac",
-                          "title": "Biotech: ^Formu Carac.",
-                          "edts": []
-                        },
-                        {
-                          "id": "biotech:^formucolloidesetinterfaces",
-                          "title": "Biotech: ^Formu. Colloïdes et interfaces",
-                          "edts": []
                         }
                       ]
                     },
@@ -838,16 +828,6 @@
                               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
-                        },
-                        {
-                          "id": "cm:^ctvnum",
-                          "title": "CM: ^CTV Num",
-                          "edts": []
-                        },
-                        {
-                          "id": "cm:^chimiebiotech",
-                          "title": "CM: ^Chimie & Biotech",
-                          "edts": []
                         }
                       ]
                     }
@@ -861,11 +841,6 @@
                       "id": "@eim2csm#5",
                       "title": "@EI M2 CSM #5",
                       "edts": [
-                        {
-                          "id": "csm^chimverte",
-                          "title": "CSM ^Chim. Verte",
-                          "edts": []
-                        },
                         {
                           "id": "csm^formucarac",
                           "title": "CSM ^Formu. Carac.",
@@ -1075,11 +1050,6 @@
                               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=113&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
-                        },
-                        {
-                          "id": "analenv-^procenv",
-                          "title": "Anal. Env. - ^Proc. env.",
-                          "edts": []
                         }
                       ]
                     },
@@ -1103,11 +1073,6 @@
                       "id": "@eifilierechimnumtcepa#1",
                       "title": "@EI Filière Chim. Num. (TC EPA) #1",
                       "edts": [
-                        {
-                          "id": "epanum:^analyse",
-                          "title": "EPA Num: ^Analyse",
-                          "edts": []
-                        },
                         {
                           "id": "epanum:^genieproc",
                           "title": "EPA Num: ^Génie Proc",
@@ -1137,11 +1102,6 @@
                       "title": "@EI QuaTro -3",
                       "edts": [
                         {
-                          "id": "qt3r=^procenv",
-                          "title": "QT(3R) = ^Proc. Env.",
-                          "edts": []
-                        },
-                        {
                           "id": "qt4r=^analenv",
                           "title": "QT(4R) = ^Anal. Env.",
                           "edts": [
@@ -1161,11 +1121,6 @@
                               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=149&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
-                        },
-                        {
-                          "id": "qt5r=^epanum",
-                          "title": "QT(5R) = ^EPA Num.",
-                          "edts": []
                         }
                       ]
                     },
