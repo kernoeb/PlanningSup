@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
+import { useAuth } from '@web/composables/useAuth'
 import { usePlanningData } from '@web/composables/usePlanningData'
 
 const { title } = usePlanningData()
+const { session, signOut, isAnonymous } = useAuth()
 </script>
 
 <template>
@@ -30,27 +33,49 @@ const { title } = usePlanningData()
         </PlanningPicker>
       </div>
     </div>
-    <div class="flex-none">
+    <div v-if="session.data?.user" class="flex-none">
       <div class="dropdown dropdown-end">
-        <div class="btn btn-ghost btn-circle avatar" role="button" tabindex="0">
-          <div class="w-10 rounded-full">
+        <div
+          class="btn btn-ghost btn-circle avatar"
+          :class="{ 'avatar-placeholder': !session.data.user.image }"
+          role="button" tabindex="0"
+        >
+          <div class="w-10 rounded-full" :class="{ 'bg-neutral text-neutral-content': !session.data.user.image }">
             <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+              v-if="session.data.user.image"
+              :alt="session.data.user.name || 'User avatar'"
+              :src="session.data.user.image"
             >
+            <span v-else>
+              {{ session.data.user.name?.charAt(0).toUpperCase() }}
+            </span>
           </div>
         </div>
-        <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow" tabindex="0">
-          <li>
+        <ul class="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow" tabindex="0">
+          <li v-if="session.data?.user && !isAnonymous">
             <a class="justify-between">
-              Profile
-              <span class="badge">New</span>
+              Profil
             </a>
           </li>
-          <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
+          <!-- Move the SocialLogin trigger outside and just call a function -->
+          <li v-else>
+            <button class="justify-between" onclick="socialLogin.showModal()">
+              Se connecter
+            </button>
+          </li>
+          <li>
+            <a>Paramètres</a>
+          </li>
+          <li v-if="session.data?.user && !isAnonymous">
+            <button @click="signOut()">
+              Se déconnecter
+            </button>
+          </li>
         </ul>
       </div>
     </div>
   </div>
+
+  <!-- Place SocialLogin outside the dropdown structure -->
+  <SocialLogin id="socialLogin" />
 </template>

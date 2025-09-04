@@ -19,6 +19,16 @@ export const auth = betterAuth({
   },
   trustedOrigins: ['http://localhost:4444'],
   plugins: [anonymous()],
+  socialProviders: {
+    discord: {
+      clientId: Bun.env.DISCORD_CLIENT_ID as string,
+      clientSecret: Bun.env.DISCORD_CLIENT_SECRET as string,
+    },
+    github: {
+      clientId: Bun.env.GITHUB_CLIENT_ID as string,
+      clientSecret: Bun.env.GITHUB_CLIENT_SECRET as string,
+    },
+  },
 })
 
 export interface AuthType {
