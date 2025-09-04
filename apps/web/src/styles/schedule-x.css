@@ -1,5 +1,6 @@
 :root {
   --sx-spacing-padding3: 6px;
+  --sx-font-extra-small: 0.82rem;
 }
 
 /* Dark theme */
@@ -52,6 +53,10 @@
 
 .is-dark .sx__calendar {
   border: none;
+}
+
+.sx__time-grid-event-title {
+  font-weight: 700;
 }
 
 .sx__calendar-header__week-number {

@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
+// import { bundleStats } from 'rollup-plugin-bundle-stats'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     vue(),
+    // bundleStats(),
   ],
   server: {
     proxy: {
