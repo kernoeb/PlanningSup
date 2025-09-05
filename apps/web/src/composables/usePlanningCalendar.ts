@@ -14,6 +14,7 @@ import { createEventModalPlugin } from '@schedule-x/event-modal'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 
+import { onKeyStroke } from '@vueuse/core'
 import buildCalendarsUtil from '@web/utils/calendars'
 import { shallowRef, watch } from 'vue'
 import { usePlanningData } from './usePlanningData'
@@ -58,6 +59,33 @@ export function usePlanningCalendar(options: {
 
   const settings = useSettings()
   const planning = usePlanningData()
+
+  // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
+  const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezone).toPlainDate())
+
+  onKeyStroke('ArrowRight', (e) => {
+    e.preventDefault()
+    const nbToAdd = (() => {
+      const view = calendarControls.getView()
+      if (view === 'month-grid' || view === 'month-agenda') return 30
+      else if (view === 'week') return 7
+      else return 1
+    })()
+    currentDate.value = currentDate.value.add({ days: nbToAdd })
+    calendarControls.setDate(currentDate.value)
+  })
+
+  onKeyStroke('ArrowLeft', (e) => {
+    e.preventDefault()
+    const nbToSubtract = (() => {
+      const view = calendarControls.getView()
+      if (view === 'month-grid' || view === 'month-agenda') return 30
+      else if (view === 'week') return 7
+      else return 1
+    })()
+    currentDate.value = currentDate.value.subtract({ days: nbToSubtract })
+    calendarControls.setDate(currentDate.value)
+  })
 
   function getMappedEvents() {
     return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))
