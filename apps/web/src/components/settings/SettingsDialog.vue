@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import TagInput from '@web/components/inputs/TagInput.vue'
 import { getDefaultColors, useSettings } from '@web/composables/useSettings'
-import { ref, watch } from 'vue'
+import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
+import { computed, ref, watch } from 'vue'
 
 defineOptions({ name: 'SettingsDialog' })
 
@@ -15,8 +16,20 @@ const emit = defineEmits<{
   (e: 'update:open', value: boolean): void
 }>()
 
+void TagInput
+
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const settings = useSettings()
+
+// Timezone selector state
+const browserTimezone = ref<string | null>(detectBrowserTimezone())
+const timezones = ref<string[]>(Array.from(getSupportedTimezones()))
+const targetTz = computed({
+  get: () => settings.targetTimezone.value ?? '',
+  set: (v: string) => {
+    settings.targetTimezone.value = v && v.length ? v : null
+  },
+})
 
 function close() {
   const el = dialogRef.value
@@ -119,7 +132,31 @@ watch(() => props.open, (next) => {
           </label>
         </section>
 
-        <!-- 3) Liste de blocage -->
+        <!-- 3) Fuseau horaire cible -->
+        <section>
+          <h4 class="font-semibold mb-2">
+            Fuseau horaire cible
+          </h4>
+          <select
+            v-model="targetTz"
+            class="select select-bordered w-full"
+          >
+            <option value="">
+              Par défaut (désactivé)
+            </option>
+            <option v-for="tz in timezones" :key="tz" :value="tz">
+              {{ tz }}
+            </option>
+          </select>
+          <div
+            v-if="browserTimezone || settings.targetTimezone.value"
+            class="text-xs text-base-content/60 mt-1"
+          >
+            Navigateur: <code>{{ browserTimezone || 'inconnu' }}</code><span v-if="settings.targetTimezone.value">, Cible: <code>{{ settings.targetTimezone.value }}</code></span>
+          </div>
+        </section>
+
+        <!-- 4) Liste de blocage -->
         <section>
           <h4 class="font-semibold mb-2">
             Liste de blocage

@@ -9,10 +9,10 @@ import type { CalendarConfig } from '@schedule-x/calendar'
  *
  * This composable is intentionally non-reactive; timezone is considered static for the app session.
  */
-type AllowedTimezones = CalendarConfig['timezone']
-const FALLBACK_TIMEZONE: NonNullable<AllowedTimezones> = 'Europe/Paris'
+export type AllowedTimezones = CalendarConfig['timezone']
+export const FALLBACK_TIMEZONE: NonNullable<AllowedTimezones> = 'Europe/Paris'
 
-function getSupportedTimezones(): Set<string> {
+export function getSupportedTimezones(): Set<string> {
   // Guard against older environments or unusual runtimes
   try {
     if (typeof Intl.supportedValuesOf === 'function') {
@@ -24,20 +24,28 @@ function getSupportedTimezones(): Set<string> {
   return new Set([FALLBACK_TIMEZONE as string])
 }
 
-function isAllowedTimezone(tz: string, allowed: Set<string>): tz is NonNullable<AllowedTimezones> {
+export function isAllowedTimezone(tz: string, allowed: Set<string>): tz is NonNullable<AllowedTimezones> {
   return allowed.has(tz)
 }
 
+export function detectBrowserTimezone(): string | null {
+  try {
+    const temporalNow = (globalThis as any)?.Temporal?.Now
+    if (temporalNow && typeof temporalNow.timeZoneId === 'function') {
+      return temporalNow.timeZoneId()
+    }
+  } catch {}
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    return tz || null
+  } catch {
+    return null
+  }
+}
 export function useTimezone(): { timezone: NonNullable<AllowedTimezones> } {
   const allowedTimezones = getSupportedTimezones()
 
-  let detected: string | null = null
-  try {
-    // Temporal polyfill should be loaded globally (see usage in App.vue)
-    detected = Temporal.Now.timeZoneId()
-  } catch {
-    detected = null
-  }
+  const detected = detectBrowserTimezone()
 
   const timezone: NonNullable<AllowedTimezones>
     = detected && isAllowedTimezone(detected, allowedTimezones) ? detected : FALLBACK_TIMEZONE

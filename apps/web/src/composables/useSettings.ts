@@ -1,4 +1,5 @@
 import { useLocalStorage } from '@vueuse/core'
+import { detectBrowserTimezone } from '@web/composables/useTimezone'
 import { computed } from 'vue'
 
 export type EventKind = 'lecture' | 'lab' | 'tutorial' | 'other'
@@ -23,11 +24,20 @@ export function getDefaultColors(): ColorMap {
 }
 
 /**
+ * Helper to detect the browser IANA timezone.
+ * Delegates to shared detectBrowserTimezone from useTimezone.
+ */
+function getBrowserTimezone(): string | null {
+  return detectBrowserTimezone()
+}
+
+/**
  * useSettings
  * - Persists:
  *   - colors[lecture|lab|tutorial|other]: string
  *   - highlightTeacher: boolean
  *   - blocklist: string[]
+ *   - targetTimezone: string | null
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - getColorFor(kind)
@@ -45,6 +55,11 @@ export function useSettings() {
   // 3) Blocklist (array of strings)
   const blocklist = useLocalStorage<string[]>('settings.blocklist', [])
 
+  // 4) Target timezone (IANA string or null)
+  const targetTimezone = useLocalStorage<string | null>('settings.targetTimezone', null)
+  // Normalize empty string to null for robustness (e.g., when cleared from UI)
+  if (targetTimezone.value === '') targetTimezone.value = null
+
   /**
    * Computed query params to be appended to backend requests.
    * Shape:
@@ -54,6 +69,8 @@ export function useSettings() {
    * - colors[other]=#xxxxxx
    * - highlightTeacher=true            (only when true)
    * - blocklist=a,b,c                  (only when non-empty)
+   * - browserTimezone=Europe/Paris     (only when targetTimezone is set)
+   * - targetTimezone=UTC               (only when targetTimezone is set)
    */
   const queryParams = computed<Record<string, string>>(() => {
     const qp: Record<string, string> = {}
@@ -69,6 +86,15 @@ export function useSettings() {
 
     if (blocklist.value.length > 0) {
       qp.blocklist = blocklist.value.join(',')
+    }
+
+    // Include timezone query params only when a target timezone is selected
+    if (targetTimezone.value) {
+      const browserTz = getBrowserTimezone()
+      if (browserTz) {
+        qp.browserTimezone = browserTz
+        qp.targetTimezone = targetTimezone.value
+      }
     }
 
     return qp
@@ -94,6 +120,7 @@ export function useSettings() {
     colors,
     highlightTeacher,
     blocklist,
+    targetTimezone,
 
     // derived
     queryParams,
