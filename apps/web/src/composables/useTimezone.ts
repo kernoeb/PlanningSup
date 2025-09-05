@@ -32,10 +32,8 @@ export function isAllowedTimezone(tz: string, allowed: Set<string>): tz is NonNu
 
 export function detectBrowserTimezone(): string | null {
   try {
-    const temporalNow = (globalThis as any)?.Temporal?.Now
-    if (temporalNow && typeof temporalNow.timeZoneId === 'function') {
-      return temporalNow.timeZoneId()
-    }
+    const temporalNow = Temporal.Now
+    return temporalNow.timeZoneId()
   } catch {}
   try {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone

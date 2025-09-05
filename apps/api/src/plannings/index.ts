@@ -140,14 +140,14 @@ function removeUrlFromElement<T>(element: T): RemoveUrl<T> {
   if (element && typeof element === 'object') {
     if ('children' in element && Array.isArray(element.children)) {
       // Handle container elements with children
-      const { ...rest } = element as any
+      const { ...rest } = element
       return {
         ...rest,
         children: element.children.map(removeUrlFromElement),
       } as RemoveUrl<T>
     } else if ('url' in element) {
       // Handle leaf elements with URL - remove the URL property
-      const { url, ...elementWithoutUrl } = element as any
+      const { url, ...elementWithoutUrl } = element
       return elementWithoutUrl as RemoveUrl<T>
     }
   }

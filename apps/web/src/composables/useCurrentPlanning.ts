@@ -1,60 +1,112 @@
 import type { Ref } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
+import { computed } from 'vue'
 
 /**
  * Default planning fullId used when nothing is stored yet.
- * Keep this in sync with the default used by PlanningCalendar.
+ * Keep this in sync with the default used by components depending on the planning selection.
  */
 export const DEFAULT_PLANNING_FULL_ID = 'iut-de-vannes.butdutinfo.1ereannee.gr1a.gr1a1'
+export const DEFAULT_PLANNING_FULL_IDS = [DEFAULT_PLANNING_FULL_ID]
 
 /**
- * Storage key used to persist the current planning fullId.
+ * Storage key used to persist the current planning selection.
  * Storage key value: 'planning'
  */
 export const CURRENT_PLANNING_STORAGE_KEY = 'planning'
 
+function normalizeIds(ids: string[]): string[] {
+  return Array.from(new Set(ids.map(s => s.trim()).filter(Boolean)))
+}
+
 /**
- * useCurrentPlanning
+ * useCurrentPlanning (multi-selection)
  *
- * Persists and exposes the current planning `fullId` using localStorage.
+ * Persists and exposes the current planning selection using localStorage.
  * - Reads/writes from localStorage under the key 'planning'
- * - Returns a Ref<string> that you can pass directly to other composables/components
+ * - Exposes helper methods for toggling and resetting the selection
  *
- * Example:
- * const { fullId, setCurrentPlanning } = useCurrentPlanning()
- * setCurrentPlanning('iut-de-vannes.butdutinfo.1ereannee.gr1a.gr1a2')
+ * Backward compatibility:
+ * - If the stored value is a string (legacy), it will be migrated to [string].
  */
 export function useCurrentPlanning(): {
-  fullId: Ref<string>
-  setCurrentPlanning: (id: string) => void
-  resetCurrentPlanning: () => void
-  isCurrent: (id: string) => boolean
+  planningFullIds: Ref<string[]>
+  setPlanningFullIds: (ids: string[]) => void
+  addPlanning: (id: string) => void
+  removePlanning: (id: string) => void
+  togglePlanning: (id: string) => void
+  resetPlanningSelection: () => void
+  isSelected: (id: string) => boolean
 } {
-  const fullId = useLocalStorage<string>(
+  // Use any here to allow migration from a legacy string value
+  const raw = useLocalStorage<any>(
     CURRENT_PLANNING_STORAGE_KEY,
-    DEFAULT_PLANNING_FULL_ID,
+    DEFAULT_PLANNING_FULL_IDS,
     { writeDefaults: true },
   )
 
-  function setCurrentPlanning(id: string) {
-    // Basic guard to avoid storing empty values
-    if (typeof id === 'string' && id.trim().length > 0) {
-      fullId.value = id.trim()
+  const planningFullIds = computed<string[]>({
+    get() {
+      const v = raw.value
+      if (Array.isArray(v)) return normalizeIds(v)
+      if (typeof v === 'string' && v.trim().length > 0) {
+        // migrate: string -> [string]
+        const migrated = [v.trim()]
+        raw.value = migrated
+        return migrated
+      }
+      // fallback
+      raw.value = DEFAULT_PLANNING_FULL_IDS
+      return DEFAULT_PLANNING_FULL_IDS
+    },
+    set(ids: string[]) {
+      raw.value = normalizeIds(ids)
+    },
+  })
+
+  function setPlanningFullIds(ids: string[]) {
+    planningFullIds.value = ids
+  }
+
+  function addPlanning(id: string) {
+    const norm = id?.trim()
+    if (!norm) return
+    if (!planningFullIds.value.includes(norm)) {
+      planningFullIds.value = [...planningFullIds.value, norm]
     }
   }
 
-  function resetCurrentPlanning() {
-    fullId.value = DEFAULT_PLANNING_FULL_ID
+  function removePlanning(id: string) {
+    const norm = id?.trim()
+    if (!norm) return
+    planningFullIds.value = planningFullIds.value.filter(x => x !== norm)
   }
 
-  function isCurrent(id: string) {
-    return fullId.value === id
+  function togglePlanning(id: string) {
+    const norm = id?.trim()
+    if (!norm) return
+    if (planningFullIds.value.includes(norm)) {
+      removePlanning(norm)
+    } else {
+      addPlanning(norm)
+    }
+  }
+
+  function resetPlanningSelection() {
+    planningFullIds.value = DEFAULT_PLANNING_FULL_IDS
+  }
+
+  function isSelected(id: string) {
+    return planningFullIds.value.includes(id)
   }
 
   return {
-    fullId,
-    setCurrentPlanning,
-    resetCurrentPlanning,
-    isCurrent,
+    planningFullIds,
+    setPlanningFullIds,
+    addPlanning,
+    removePlanning,
+    togglePlanning,
+    resetPlanningSelection,
+    isSelected,
   }
 }

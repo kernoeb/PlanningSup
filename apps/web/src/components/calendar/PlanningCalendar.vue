@@ -12,7 +12,6 @@ defineExpose({ reload })
 <template>
   <ScheduleXCalendar
     v-if="calendarApp"
-
     :calendar-app="calendarApp"
   />
 </template>

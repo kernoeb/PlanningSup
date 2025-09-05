@@ -21,15 +21,15 @@ import { useSettings } from './useSettings'
 
 function mapApiEventToCalendarEvent(
   event: ApiEvent,
-  fullId: string,
   timezone: NonNullable<AllowedTimezones>,
 ) {
-  const start = (event.startDate as any).toTemporalInstant().toZonedDateTimeISO(timezone)
-  const end = (event.endDate as any).toTemporalInstant().toZonedDateTimeISO(timezone)
+  const start = event.startDate.toTemporalInstant().toZonedDateTimeISO(timezone)
+  const end = event.endDate.toTemporalInstant().toZonedDateTimeISO(timezone)
 
+  const srcId = event.sourceFullId ?? 'multi'
   return {
     ...event,
-    id: `${fullId}_${event.uid}`.replace(/[^\w-]/g, '_'),
+    id: `${srcId}_${event.uid}`.replace(/[^\w-]/g, '_'),
     title: event.summary,
     start,
     end,
@@ -60,7 +60,7 @@ export function usePlanningCalendar(options: {
   const planning = usePlanningData()
 
   function getMappedEvents() {
-    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, planning.fullId.value, timezone))
+    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))
   }
 
   function initOrUpdate() {
@@ -96,7 +96,7 @@ export function usePlanningCalendar(options: {
   }
 
   // Sync on planning change and when new events arrive
-  watch(planning.fullId, () => {
+  watch(planning.planningFullIds, () => {
     void initOrUpdate()
   })
   watch(planning.events, () => {
