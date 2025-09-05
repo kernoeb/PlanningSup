@@ -45,7 +45,7 @@ const selectedLeaves = computed(() => leafIds.value.filter(id => props.isSelecte
 const isHugeSubtree = computed(() => totalLeaves.value > MAX_SUBTREE_LEAVES)
 const MAX_BULK_SELECT = 10
 const unselectedLeaves = computed(() => leafIds.value.filter(id => !props.isSelected(id)).length)
-const showParentCheckbox = computed(() => !isHugeSubtree.value && unselectedLeaves.value <= MAX_BULK_SELECT)
+const canBulkSelect = computed(() => unselectedLeaves.value <= MAX_BULK_SELECT)
 
 const isGroupChecked = computed(() => totalLeaves.value > 0 && selectedLeaves.value === totalLeaves.value)
 const isGroupIndeterminate = computed(() => selectedLeaves.value > 0 && selectedLeaves.value < totalLeaves.value)
@@ -95,18 +95,16 @@ function onDetailsToggle(event: Event) {
       @toggle="onDetailsToggle"
     >
       <summary class="font-medium">
-        <div class="flex items-center justify-between gap-3 py-2 px-2 rounded hover:bg-base-100">
+        <div class="flex items-center justify-between gap-3 py-2 px-2 rounded hover:bg-primary/20" :class="{ 'bg-primary/10': selectedLeaves > 0 }">
           <span class="truncate text-left">
             {{ node.title }}
             <span class="opacity-50 text-xs ml-2">({{ selectedLeaves }}/{{ totalLeaves }})</span>
           </span>
           <input
-            v-if="showParentCheckbox"
             ref="parentCheckbox"
             :checked="isGroupChecked"
-            class="checkbox checkbox-sm"
-            :disabled="isHugeSubtree"
-
+            class="checkbox checkbox-sm checkbox-primary"
+            :disabled="isHugeSubtree || !canBulkSelect"
             type="checkbox"
             @click="onParentToggleClick"
           >
@@ -129,13 +127,13 @@ function onDetailsToggle(event: Event) {
   <!-- Leaf node -->
   <li v-else>
     <label
-      class="flex items-center justify-between gap-3 py-2 px-2 rounded hover:bg-base-100"
-      :class="{ 'bg-base-200': isSelected(node.fullId) }"
+      class="flex items-center justify-between gap-3 py-2 px-2 rounded hover:bg-primary/20"
+      :class="{ 'bg-primary/10': isSelected(node.fullId) }"
     >
       <span class="truncate text-left">{{ node.title }}</span>
       <input
         :checked="isSelected(node.fullId)"
-        class="checkbox checkbox-sm"
+        class="checkbox checkbox-sm checkbox-primary"
         type="checkbox"
         @change="toggle(node.fullId)"
         @click.stop

@@ -30,11 +30,16 @@ const { planningFullIds, isSelected, togglePlanning } = useCurrentPlanning()
 const searchQuery = ref('')
 const expanded = ref<Set<string>>(new Set())
 
-function findTitleInTree(nodes: PlanningNode[] | undefined, targetFullId: string): string | null {
+function findPathInTree(
+  nodes: PlanningNode[] | undefined,
+  targetFullId: string,
+  trail: string[] = [],
+): string[] | null {
   if (!nodes) return null
   for (const n of nodes) {
-    if (n.fullId === targetFullId) return n.title
-    const child = findTitleInTree(n.children, targetFullId)
+    const nextTrail = [...trail, n.title]
+    if (n.fullId === targetFullId) return nextTrail
+    const child = findPathInTree(n.children, targetFullId, nextTrail)
     if (child) return child
   }
   return null
@@ -45,7 +50,10 @@ const safePlanningIds = computed<string[]>(() => Array.isArray(planningFullIds.v
 
 const selectedItems = computed(() => {
   const ids = safePlanningIds.value
-  return ids.map(id => ({ id, title: findTitleInTree(tree.value, id) ?? id }))
+  return ids.map((id) => {
+    const path = findPathInTree(tree.value, id)
+    return { id, title: path ? path.join(' > ') : id }
+  })
 })
 
 const selectedTitlesLabel = computed(() => {
