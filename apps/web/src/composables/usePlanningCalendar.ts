@@ -1,5 +1,6 @@
-import type { CalendarConfig } from '@schedule-x/calendar'
-import type { Ref } from 'vue'
+import type { ApiEvent } from './usePlanningData'
+
+import type { AllowedTimezones } from './useTimezone'
 import {
   createCalendar,
   createViewDay,
@@ -12,20 +13,11 @@ import { createCurrentTimePlugin } from '@schedule-x/current-time'
 import { createEventModalPlugin } from '@schedule-x/event-modal'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
+
+import buildCalendarsUtil from '@web/utils/calendars'
 import { shallowRef, watch } from 'vue'
-import { useCurrentPlanning } from './useCurrentPlanning'
 import { usePlanningData } from './usePlanningData'
 import { useSettings } from './useSettings'
-
-type AllowedTimezones = CalendarConfig['timezone']
-
-interface ApiEvent {
-  uid: string
-  summary: string
-  startDate: unknown
-  endDate: unknown
-  categoryId: string
-}
 
 function mapApiEventToCalendarEvent(
   event: ApiEvent,
@@ -48,18 +40,16 @@ function mapApiEventToCalendarEvent(
 /**
  * usePlanningCalendar
  *
- * Initializes the ScheduleX calendar once and updates its events whenever the provided
- * planning `fullId` changes. Returns the calendar instance ref and useful plugins.
+ * Initializes the ScheduleX calendar once and updates its events when the current
+ * planning changes. Returns the calendar instance ref and useful plugins.
  *
  * Example:
- * const fullId = ref('some-planning-id')
- * const { calendarApp, reload } = usePlanningCalendar({ fullId, timezone })
+ * const { calendarApp, reload } = usePlanningCalendar({ timezone })
  */
 export function usePlanningCalendar(options: {
-  fullId: Ref<string>
   timezone: NonNullable<AllowedTimezones>
 }) {
-  const { fullId: propFullId, timezone } = options
+  const { timezone } = options
 
   const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
   const eventsServicePlugin = createEventsServicePlugin()
@@ -68,8 +58,6 @@ export function usePlanningCalendar(options: {
 
   const settings = useSettings()
   const planning = usePlanningData()
-  const { setCurrentPlanning } = useCurrentPlanning()
-  watch(propFullId, id => setCurrentPlanning(id), { immediate: true })
 
   function getMappedEvents() {
     return planning.events.value.map(e => mapApiEventToCalendarEvent(e, planning.fullId.value, timezone))
@@ -91,33 +79,7 @@ export function usePlanningCalendar(options: {
         showWeekNumbers: true,
         dayBoundaries: { start: '07:00', end: '20:00' },
         weekOptions: { nDays: 5, gridHeight: 800 },
-        calendars: {
-          'lecture': {
-            colorName: 'lecture',
-            lightColors: { main: settings.colors.value.lecture, container: settings.colors.value.lecture, onContainer: '#000000' },
-            darkColors: { main: settings.colors.value.lecture, container: settings.colors.value.lecture, onContainer: '#000000' },
-          },
-          'lab': {
-            colorName: 'lab',
-            lightColors: { main: settings.colors.value.lab, container: settings.colors.value.lab, onContainer: '#000000' },
-            darkColors: { main: settings.colors.value.lab, container: settings.colors.value.lab, onContainer: '#000000' },
-          },
-          'tutorial': {
-            colorName: 'tutorial',
-            lightColors: { main: settings.colors.value.tutorial, container: settings.colors.value.tutorial, onContainer: '#000000' },
-            darkColors: { main: settings.colors.value.tutorial, container: settings.colors.value.tutorial, onContainer: '#000000' },
-          },
-          'other': {
-            colorName: 'other',
-            lightColors: { main: settings.colors.value.other, container: settings.colors.value.other, onContainer: '#000000' },
-            darkColors: { main: settings.colors.value.other, container: settings.colors.value.other, onContainer: '#000000' },
-          },
-          'no-teacher': {
-            colorName: 'no-teacher',
-            lightColors: { main: '#676767', container: '#676767', onContainer: '#ffffff' },
-            darkColors: { main: '#676767', container: '#676767', onContainer: '#000000' },
-          },
-        },
+        calendars: buildCalendarsUtil(settings.colors.value),
         events: mapped,
         plugins: [
           calendarControls,
@@ -143,22 +105,15 @@ export function usePlanningCalendar(options: {
     }
   })
 
-  // Reinitialize calendar when settings impacting palettes change
-  function reinitCalendar() {
-    // Drop the instance to rebuild with updated color config
-    calendarApp.value = null
-    void initOrUpdate()
-  }
-
-  // Recreate when color palette changes (deep watch)
-  watch(() => settings.colors.value, () => {
-    reinitCalendar()
-  }, { deep: true })
-
-  // Recreate when highlightTeacher toggles to update 'no-teacher' palette and mapping
-  watch(settings.highlightTeacher, () => {
-    reinitCalendar()
-  })
+  // Update calendars palette in place when colors change (no reinit, no flicker)
+  watch(
+    () => settings.colors.value,
+    () => {
+      if (!calendarApp.value) return
+      calendarControls.setCalendars(buildCalendarsUtil(settings.colors.value))
+    },
+    { deep: true },
+  )
 
   // Manual reload if needed by UI
   function reload() {

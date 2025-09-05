@@ -1,24 +1,18 @@
 <script lang="ts" setup>
 import { ScheduleXCalendar } from '@schedule-x/vue'
-import { DEFAULT_PLANNING_FULL_ID } from '@web/composables/useCurrentPlanning'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
 import { useTimezone } from '@web/composables/useTimezone'
-import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{ fullId?: string }>(), {
-  fullId: DEFAULT_PLANNING_FULL_ID,
-})
-
-const fullId = computed(() => props.fullId as string)
 const { timezone } = useTimezone()
-const { calendarApp, reload } = usePlanningCalendar({ fullId, timezone })
+const { calendarApp, reload } = usePlanningCalendar({ timezone })
 
-defineExpose({ reload, fullId })
+defineExpose({ reload })
 </script>
 
 <template>
   <ScheduleXCalendar
     v-if="calendarApp"
+
     :calendar-app="calendarApp"
   />
 </template>

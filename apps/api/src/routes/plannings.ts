@@ -18,13 +18,6 @@ export default new Elysia({ prefix: '/plannings' })
       // blocklist ?blocklist=string (comma-separated)
       const blocklist = query.blocklist?.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0) || []
 
-      // colors ?colors[lecture|lab|tutorial|other]=string
-      const colors: Record<string, string> = {}
-      for (const key of ['lecture', 'lab', 'tutorial', 'other']) {
-        const color = query[`colors[${key}]`]
-        if (color) colors[key] = color
-      }
-
       // highlightTeacher ?highlightTeacher=boolean
       const highlightTeacher = query.highlightTeacher === 'true'
 
@@ -36,7 +29,7 @@ export default new Elysia({ prefix: '/plannings' })
       const allEvents = events
         ? getFormattedEvents(planning.id, events, {
             blocklist,
-            colors,
+
             highlightTeacher,
             localeUtils,
           })
@@ -44,11 +37,11 @@ export default new Elysia({ prefix: '/plannings' })
 
       const nbEvents = allEvents ? allEvents.length : 0
 
-      elysiaLogger.info(`Serving events for planning {fullId} : {events} events, blocklist: {blocklist}, colors: {colors}, highlightTeacher: {highlightTeacher}`, {
+      elysiaLogger.info(`Serving events for planning {fullId} : {events} events, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
         fullId,
         nbEvents,
         blocklist,
-        colors,
+
         highlightTeacher,
       })
 

@@ -110,7 +110,6 @@ function cleanName(name: string) {
   return (name && name.replace(/([A-Z])\?([A-Z])/gi, (_, b, c) => `${b}'${c}`).trim()) || ''
 }
 function getCategoryId(id: string, event: CalEvent, options: {
-  customColors?: { lecture?: string, lab?: string, tutorial?: string, other?: string }
   highlightTeacher?: boolean
 }) {
   if (options.highlightTeacher && checkHighlightTeacher(id, event)) {
@@ -154,7 +153,6 @@ function isRemoteLocation(location: string) {
 
 export function getFormattedEvents(id: string, eventsList: CalEvent[], options: {
   localeUtils: { target: string, browser: string } | null
-  colors: { lecture?: string, lab?: string, tutorial?: string, other?: string }
   blocklist: string[]
   highlightTeacher: boolean
 }) {
@@ -170,7 +168,7 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
         summary: cleanName(event.summary),
         startDate: getDate(event.startDate, options.localeUtils),
         endDate: getDate(event.endDate, options.localeUtils),
-        categoryId: getCategoryId(id, event, { customColors: options.colors, highlightTeacher: options.highlightTeacher }),
+        categoryId: getCategoryId(id, event, { highlightTeacher: options.highlightTeacher }),
         location: cleanLocation(event.location),
         description: cleanDescription(event.description),
         remoteLocation: isRemoteLocation(event.location),

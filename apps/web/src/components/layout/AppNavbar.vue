@@ -15,12 +15,12 @@ const isSettingsOpen = ref(false)
 <template>
   <div class="navbar bg-base-100 shadow-sm px-3">
     <div class="flex-1 flex items-center gap-3">
-      <a class="text-xl flex items-center gap-1">
+      <a class="text-xl flex items-center gap-1" href="/">
         <div class="avatar">
           <div class="w-8 rounded">
             <img
-              alt="Tailwind-CSS-Avatar-component"
-              src="@web/assets/icon.png"
+              alt="PlanningSup"
+              src="/icon.png"
             >
           </div>
         </div>
@@ -40,9 +40,9 @@ const isSettingsOpen = ref(false)
     <div v-if="session.data?.user" class="flex-none">
       <div class="dropdown dropdown-end">
         <div
-          class="btn btn-ghost btn-circle avatar"
-          :class="{ 'avatar-placeholder': !session.data.user.image }"
-          role="button" tabindex="0"
+          aria-haspopup="menu"
+          aria-label="Ouvrir le menu utilisateur"
+          class="btn btn-ghost btn-circle avatar" :class="{ 'avatar-placeholder': !session.data.user.image }" role="button" tabindex="0"
         >
           <div class="w-10 rounded-full" :class="{ 'bg-neutral text-neutral-content': !session.data.user.image }">
             <img
@@ -55,7 +55,7 @@ const isSettingsOpen = ref(false)
             </span>
           </div>
         </div>
-        <ul class="menu menu-sm dropdown-content bg-base-200 rounded-box z-1 mt-3 w-52 p-2 shadow" tabindex="0">
+        <ul class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2 shadow" tabindex="0">
           <li v-if="session.data?.user && !isAnonymous">
             <a class="justify-between">
               Profil

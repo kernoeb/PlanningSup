@@ -9,7 +9,7 @@ export const DEFAULT_PLANNING_FULL_ID = 'iut-de-vannes.butdutinfo.1ereannee.gr1a
 
 /**
  * Storage key used to persist the current planning fullId.
- * Requested key: 'p'
+ * Storage key value: 'planning'
  */
 export const CURRENT_PLANNING_STORAGE_KEY = 'planning'
 
@@ -17,7 +17,7 @@ export const CURRENT_PLANNING_STORAGE_KEY = 'planning'
  * useCurrentPlanning
  *
  * Persists and exposes the current planning `fullId` using localStorage.
- * - Reads/writes from localStorage under the key 'p'
+ * - Reads/writes from localStorage under the key 'planning'
  * - Returns a Ref<string> that you can pass directly to other composables/components
  *
  * Example:

@@ -238,14 +238,14 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     fetchMode = 'ok'
   })
 
-  it('accepts colors and highlightTeacher query params', async () => {
-    const url = `http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&colors[amphi]=#ff0000&colors[tp]=#00ff00&colors[td]=#0000ff&colors[other]=#aaaaaa&highlightTeacher=true`
+  it('accepts highlightTeacher query param', async () => {
+    const url = `http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&highlightTeacher=true`
     const res = await app.handle(new Request(url))
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.status).toBe('ok')
 
-    // Ensure we still receive categorized events; colors are for consumer UI
+    // Ensure we still receive categorized events
     expect(Array.isArray(body.events)).toBeTrue()
     const cats = (body.events as any[]).map((e: any) => e.categoryId)
     expect(cats.length).toBeGreaterThan(0)

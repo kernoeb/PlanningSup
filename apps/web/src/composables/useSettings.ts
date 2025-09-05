@@ -35,13 +35,14 @@ function getBrowserTimezone(): string | null {
  * useSettings
  * - Persists:
  *   - colors[lecture|lab|tutorial|other]: string
- *   - highlightTeacher: boolean
+ *   - highlightTeacher: boolean (backend-only; affects server response)
  *   - blocklist: string[]
  *   - targetTimezone: string | null
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - getColorFor(kind)
- *   - shouldDimEvent(hasTeacher)
+ *   - highlightTeacher is backend-only (no client-side dimming)
+ *   - colors are client-side only (not included in query params)
  */
 export function useSettings() {
   // 1) Calendar event colors (object)
@@ -49,7 +50,7 @@ export function useSettings() {
     mergeDefaults: true,
   })
 
-  // 2) Highlight events with teacher (boolean)
+  // 2) Highlight events with teacher (backend-only flag; affects server response)
   const highlightTeacher = useLocalStorage<boolean>('settings.highlightTeacher', false)
 
   // 3) Blocklist (array of strings)
@@ -62,11 +63,8 @@ export function useSettings() {
 
   /**
    * Computed query params to be appended to backend requests.
+   * Note: Colors are client-side only and are not sent to the backend.
    * Shape:
-   * - colors[lecture]=#xxxxxx
-   * - colors[lab]=#xxxxxx
-   * - colors[tutorial]=#xxxxxx
-   * - colors[other]=#xxxxxx
    * - highlightTeacher=true            (only when true)
    * - blocklist=a,b,c                  (only when non-empty)
    * - browserTimezone=Europe/Paris     (only when targetTimezone is set)
@@ -75,10 +73,7 @@ export function useSettings() {
   const queryParams = computed<Record<string, string>>(() => {
     const qp: Record<string, string> = {}
 
-    qp['colors[lecture]'] = colors.value.lecture
-    qp['colors[lab]'] = colors.value.lab
-    qp['colors[tutorial]'] = colors.value.tutorial
-    qp['colors[other]'] = colors.value.other
+    // Colors are applied client-side via ScheduleX palettes; not sent to backend.
 
     if (highlightTeacher.value) {
       qp.highlightTeacher = 'true'
@@ -107,14 +102,6 @@ export function useSettings() {
     return colors.value[kind] ?? DEFAULT_COLORS[kind]
   }
 
-  /**
-   * Returns true if an event should be visually dimmed (grayed) based on settings and presence of a teacher.
-   * - When highlightTeacher is enabled, events WITHOUT teacher should be dimmed.
-   */
-  function shouldDimEvent(hasTeacher: boolean): boolean {
-    return highlightTeacher.value && !hasTeacher
-  }
-
   return {
     // state
     colors,
@@ -127,6 +114,6 @@ export function useSettings() {
 
     // helpers
     getColorFor,
-    shouldDimEvent,
+
   }
 }

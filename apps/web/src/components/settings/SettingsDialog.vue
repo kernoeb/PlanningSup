@@ -16,8 +16,6 @@ const emit = defineEmits<{
   (e: 'update:open', value: boolean): void
 }>()
 
-void TagInput
-
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const settings = useSettings()
 

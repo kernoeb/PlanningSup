@@ -8,7 +8,7 @@
 
 
 @plugin "daisyui/theme" {
-  name: "black";
+  name: "rounded-black";
   default: true;
   prefersdark: false;
   color-scheme: "dark";

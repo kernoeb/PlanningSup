@@ -1,6 +1,8 @@
 import type { CalendarConfig } from '@schedule-x/calendar'
 
 /**
+ * Centralized timezone typings and helpers for the web app.
+ *
  * Compute a valid IANA timezone string using Temporal and Intl.
  *
  * - Uses Temporal.Now.timeZoneId() to detect the current zone.
