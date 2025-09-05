@@ -2,6 +2,7 @@ import type { Ref } from 'vue'
 import { client } from '@libs'
 import { ref, watch } from 'vue'
 import { useCurrentPlanning } from './useCurrentPlanning'
+import { useSettings } from './useSettings'
 
 export interface ApiEvent {
   uid: string
@@ -31,6 +32,7 @@ let _instance: PlanningDataStore | null = null
 
 function createPlanningDataStore(): PlanningDataStore {
   const { fullId } = useCurrentPlanning()
+  const settings = useSettings()
 
   const title = ref<string>('')
   const events = ref<ApiEvent[]>([])
@@ -55,7 +57,10 @@ function createPlanningDataStore(): PlanningDataStore {
 
     try {
       const { data } = await client.api.plannings({ fullId: id }).get({
-        query: { events: 'true' },
+        query: {
+          events: 'true',
+          ...settings.queryParams.value,
+        },
       })
 
       if (!data) throw new Error('No data received from server')
@@ -75,8 +80,9 @@ function createPlanningDataStore(): PlanningDataStore {
     }
   }
 
-  // Auto-load and reload on planning changes
+  // Auto-load and reload on planning or settings changes
   watch(fullId, () => refresh(), { immediate: true })
+  watch(settings.queryParams, () => refresh())
 
   return {
     fullId,

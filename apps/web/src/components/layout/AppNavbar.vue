@@ -1,11 +1,15 @@
 <script lang="ts" setup>
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
+import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { usePlanningData } from '@web/composables/usePlanningData'
+import { ref } from 'vue'
 
 const { title } = usePlanningData()
 const { session, signOut, isAnonymous } = useAuth()
+
+const isSettingsOpen = ref(false)
 </script>
 
 <template>
@@ -64,7 +68,9 @@ const { session, signOut, isAnonymous } = useAuth()
             </button>
           </li>
           <li>
-            <a>Paramètres</a>
+            <button class="justify-between" type="button" @click="isSettingsOpen = true">
+              Paramètres
+            </button>
           </li>
           <li v-if="session.data?.user && !isAnonymous">
             <button @click="signOut()">
@@ -78,4 +84,5 @@ const { session, signOut, isAnonymous } = useAuth()
 
   <!-- Place SocialLogin outside the dropdown structure -->
   <SocialLogin id="socialLogin" />
+  <SettingsDialog :open="isSettingsOpen" @update:open="val => isSettingsOpen = val" />
 </template>

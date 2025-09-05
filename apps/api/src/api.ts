@@ -54,7 +54,7 @@ if (import.meta.env.NODE_ENV === 'production') {
     assets: Bun.env.WEB_DIST_LOCATION || path.join(webLocation),
     indexHTML: true,
     alwaysStatic: false, // spa
-    prefix: '/'
+    prefix: '/',
   }))
 }
 

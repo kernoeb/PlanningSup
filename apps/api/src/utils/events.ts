@@ -154,7 +154,7 @@ function isRemoteLocation(location: string) {
 
 export function getFormattedEvents(id: string, eventsList: CalEvent[], options: {
   localeUtils: { target: string, browser: string } | null
-  colors: { amphi?: string, tp?: string, td?: string, other?: string }
+  colors: { lecture?: string, lab?: string, tutorial?: string, other?: string }
   blocklist: string[]
   highlightTeacher: boolean
 }) {

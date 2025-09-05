@@ -15,6 +15,7 @@ import { mergeLocales, translations } from '@schedule-x/translations'
 import { shallowRef, watch } from 'vue'
 import { useCurrentPlanning } from './useCurrentPlanning'
 import { usePlanningData } from './usePlanningData'
+import { useSettings } from './useSettings'
 
 type AllowedTimezones = CalendarConfig['timezone']
 
@@ -65,6 +66,7 @@ export function usePlanningCalendar(options: {
   const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
 
+  const settings = useSettings()
   const planning = usePlanningData()
   const { setCurrentPlanning } = useCurrentPlanning()
   watch(propFullId, id => setCurrentPlanning(id), { immediate: true })
@@ -92,23 +94,23 @@ export function usePlanningCalendar(options: {
         calendars: {
           'lecture': {
             colorName: 'lecture',
-            lightColors: { main: '#efd6d8', container: '#efd6d8', onContainer: '#ffffff' },
-            darkColors: { main: '#efd6d8', container: '#efd6d8', onContainer: '#000000' },
+            lightColors: { main: settings.colors.value.lecture, container: settings.colors.value.lecture, onContainer: '#000000' },
+            darkColors: { main: settings.colors.value.lecture, container: settings.colors.value.lecture, onContainer: '#000000' },
           },
           'lab': {
             colorName: 'lab',
-            lightColors: { main: '#bbe0ff', container: '#bbe0ff', onContainer: '#ffffff' },
-            darkColors: { main: '#bbe0ff', container: '#bbe0ff', onContainer: '#000000' },
+            lightColors: { main: settings.colors.value.lab, container: settings.colors.value.lab, onContainer: '#000000' },
+            darkColors: { main: settings.colors.value.lab, container: settings.colors.value.lab, onContainer: '#000000' },
           },
           'tutorial': {
             colorName: 'tutorial',
-            lightColors: { main: '#d4fbcc', container: '#d4fbcc', onContainer: '#ffffff' },
-            darkColors: { main: '#d4fbcc', container: '#d4fbcc', onContainer: '#000000' },
+            lightColors: { main: settings.colors.value.tutorial, container: settings.colors.value.tutorial, onContainer: '#000000' },
+            darkColors: { main: settings.colors.value.tutorial, container: settings.colors.value.tutorial, onContainer: '#000000' },
           },
           'other': {
             colorName: 'other',
-            lightColors: { main: '#EDDD6E', container: '#EDDD6E', onContainer: '#ffffff' },
-            darkColors: { main: '#EDDD6E', container: '#EDDD6E', onContainer: '#000000' },
+            lightColors: { main: settings.colors.value.other, container: settings.colors.value.other, onContainer: '#000000' },
+            darkColors: { main: settings.colors.value.other, container: settings.colors.value.other, onContainer: '#000000' },
           },
           'no-teacher': {
             colorName: 'no-teacher',
@@ -122,6 +124,7 @@ export function usePlanningCalendar(options: {
           eventsServicePlugin,
           eventModal,
           createCurrentTimePlugin(),
+          // If supported by the calendar library, use event render hooks to add extra grayscale styling to 'no-teacher' events.
         ],
         translations: mergeLocales(translations),
       })
@@ -138,6 +141,23 @@ export function usePlanningCalendar(options: {
     if (calendarApp.value) {
       eventsServicePlugin.set(getMappedEvents())
     }
+  })
+
+  // Reinitialize calendar when settings impacting palettes change
+  function reinitCalendar() {
+    // Drop the instance to rebuild with updated color config
+    calendarApp.value = null
+    void initOrUpdate()
+  }
+
+  // Recreate when color palette changes (deep watch)
+  watch(() => settings.colors.value, () => {
+    reinitCalendar()
+  }, { deep: true })
+
+  // Recreate when highlightTeacher toggles to update 'no-teacher' palette and mapping
+  watch(settings.highlightTeacher, () => {
+    reinitCalendar()
   })
 
   // Manual reload if needed by UI

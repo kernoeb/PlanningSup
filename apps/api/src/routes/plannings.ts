@@ -18,9 +18,9 @@ export default new Elysia({ prefix: '/plannings' })
       // blocklist ?blocklist=string (comma-separated)
       const blocklist = query.blocklist?.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0) || []
 
-      // colors ?colors[amphi|tp|td|other]=string
+      // colors ?colors[lecture|lab|tutorial|other]=string
       const colors: Record<string, string> = {}
-      for (const key of ['amphi', 'tp', 'td', 'other']) {
+      for (const key of ['lecture', 'lab', 'tutorial', 'other']) {
         const color = query[`colors[${key}]`]
         if (color) colors[key] = color
       }
