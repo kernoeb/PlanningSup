@@ -102,7 +102,7 @@ export function usePlanningCalendar(options: {
           createViewMonthAgenda(),
         ],
         locale: 'fr-FR',
-        isDark: true,
+        isDark: true, // TODO it seems to happen too late, so the initial flash is white
         timezone,
         showWeekNumbers: true,
         dayBoundaries: { start: '07:00', end: '20:00' },
@@ -114,7 +114,6 @@ export function usePlanningCalendar(options: {
           eventsServicePlugin,
           eventModal,
           createCurrentTimePlugin(),
-          // If supported by the calendar library, use event render hooks to add extra grayscale styling to 'no-teacher' events.
         ],
         translations: mergeLocales(translations),
       })
