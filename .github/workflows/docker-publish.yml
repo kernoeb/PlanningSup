@@ -52,6 +52,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ steps.string.outputs.lowercase }}
+          # Use the PR head branch as ref when available so branch tags are generated on PRs
+          ref: ${{ github.head_ref || github.ref }}
           flavor: |
             latest=false
           tags: |
@@ -65,7 +67,7 @@ jobs:
             type=sha,format=short
 
       # Build a test Docker image (local load only)
-      - name: Build a test image
+      - name: Build a test Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
