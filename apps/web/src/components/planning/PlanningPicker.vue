@@ -103,14 +103,6 @@ watch(
   },
 )
 
-// Controls
-function clearSelection() {
-  const ids = [...safePlanningIds.value]
-  for (const id of ids) {
-    if (isSelected(id)) togglePlanning(id)
-  }
-}
-
 // fullId -> leafIds[] index for fast counts and bulk selection
 const leafIndex = ref<Record<string, string[]>>({})
 function buildLeafIndex(nodes: PlanningNode[]): Record<string, string[]> {
@@ -126,7 +118,31 @@ function buildLeafIndex(nodes: PlanningNode[]): Record<string, string[]> {
   return map
 }
 
+const branchIds = computed(() => new Set(Object.keys(leafIndex.value)))
+function isTrueLeaf(fullId: string): boolean {
+  return !branchIds.value.has(fullId)
+}
+
+// Controls
+function clearSelection() {
+  const ids = [...safePlanningIds.value]
+  const branch = new Set(Object.keys(leafIndex.value))
+  for (const id of ids) {
+    if (branch.has(id)) continue
+    if (isSelected(id)) togglePlanning(id)
+  }
+}
+
 // Open/Close + data load
+function sortTree(nodes: PlanningNode[]): PlanningNode[] {
+  const collator = new Intl.Collator('fr', { sensitivity: 'base', numeric: true })
+  const clone = nodes.map(n => ({
+    ...n,
+    children: n.children ? sortTree(n.children) : undefined,
+  }))
+  clone.sort((a, b) => collator.compare(a.title, b.title))
+  return clone
+}
 async function loadTree() {
   if (tree.value.length > 0) return
   loading.value = true
@@ -136,8 +152,9 @@ async function loadTree() {
     if (!Array.isArray(data)) {
       throw new TypeError('Unexpected API response while loading plannings')
     }
-    tree.value = data as PlanningNode[]
-    leafIndex.value = buildLeafIndex(tree.value)
+    const nodes = sortTree(data as PlanningNode[])
+    leafIndex.value = buildLeafIndex(nodes)
+    tree.value = nodes
   } catch (e) {
     error.value = e instanceof Error ? e.message : String(e)
   } finally {
@@ -167,7 +184,7 @@ function toggleRowExpand(id: string) {
 }
 
 function onRowClick(row: { fullId: string, isLeaf: boolean }) {
-  if (row.isLeaf) {
+  if (row.isLeaf && isTrueLeaf(row.fullId)) {
     togglePlanning(row.fullId)
   } else {
     toggleRowExpand(row.fullId)
@@ -190,9 +207,9 @@ interface Row {
 
 function flattenVisible(nodes: PlanningNode[], expandedSet: Set<string>, depth = 0, out: Row[] = []): Row[] {
   for (const n of nodes) {
-    const isLeaf = !n.children || n.children.length === 0
+    const isLeaf = isTrueLeaf(n.fullId)
     out.push({ fullId: n.fullId, title: n.title, depth, isLeaf, node: n })
-    if (!isLeaf && expandedSet.has(n.fullId)) {
+    if (!isLeaf && expandedSet.has(n.fullId) && n.children && n.children.length > 0) {
       flattenVisible(n.children!, expandedSet, depth + 1, out)
     }
   }

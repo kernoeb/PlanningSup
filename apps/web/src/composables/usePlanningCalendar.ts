@@ -69,6 +69,8 @@ export function usePlanningCalendar(options: {
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
   const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezone).toPlainDate())
 
+  const loading = computed(() => planning.loading.value)
+
   function nextPeriod() {
     if (!calendarApp.value) return
     const view = currentView.value
@@ -284,5 +286,6 @@ export function usePlanningCalendar(options: {
     nextPeriod,
     prevPeriod,
     reload,
+    loading,
   }
 }
