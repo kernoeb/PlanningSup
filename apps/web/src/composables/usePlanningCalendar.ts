@@ -19,6 +19,7 @@ import buildCalendarsUtil from '@web/utils/calendars'
 import { shallowRef, watch } from 'vue'
 import { usePlanningData } from './usePlanningData'
 import { useSettings } from './useSettings'
+import { useTheme } from './useTheme'
 
 function mapApiEventToCalendarEvent(
   event: ApiEvent,
@@ -59,12 +60,14 @@ export function usePlanningCalendar(options: {
 
   const settings = useSettings()
   const planning = usePlanningData()
+  const { isDark: uiIsDark } = useTheme()
 
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
   const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezone).toPlainDate())
 
   onKeyStroke('ArrowRight', (e) => {
     e.preventDefault()
+    if (!calendarApp.value) return
     const nbToAdd = (() => {
       const view = calendarControls.getView()
       if (view === 'month-grid' || view === 'month-agenda') return 30
@@ -77,6 +80,7 @@ export function usePlanningCalendar(options: {
 
   onKeyStroke('ArrowLeft', (e) => {
     e.preventDefault()
+    if (!calendarApp.value) return
     const nbToSubtract = (() => {
       const view = calendarControls.getView()
       if (view === 'month-grid' || view === 'month-agenda') return 30
@@ -91,9 +95,13 @@ export function usePlanningCalendar(options: {
     return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))
   }
 
-  function initOrUpdate() {
+  function initOrUpdate(forceRecreate = false) {
     const mapped = getMappedEvents()
-    if (!calendarApp.value) {
+    if (!calendarApp.value || forceRecreate) {
+      // Preserve current state (view and date) when recreating
+      const prevView = calendarApp.value ? calendarControls.getView() : undefined
+      const prevDate = currentDate.value
+
       calendarApp.value = createCalendar({
         views: [
           createViewDay(),
@@ -102,7 +110,7 @@ export function usePlanningCalendar(options: {
           createViewMonthAgenda(),
         ],
         locale: 'fr-FR',
-        isDark: true, // TODO it seems to happen too late, so the initial flash is white
+        isDark: uiIsDark.value,
         timezone,
         showWeekNumbers: true,
         dayBoundaries: { start: '07:00', end: '20:00' },
@@ -117,6 +125,10 @@ export function usePlanningCalendar(options: {
         ],
         translations: mergeLocales(translations),
       })
+
+      // Restore previous state if available
+      if (prevView) calendarControls.setView?.(prevView)
+      if (prevDate) calendarControls.setDate?.(prevDate)
     } else {
       eventsServicePlugin.set(mapped)
     }
@@ -141,6 +153,11 @@ export function usePlanningCalendar(options: {
     },
     { deep: true },
   )
+
+  // Re-init calendar when theme darkness changes
+  watch(uiIsDark, () => {
+    initOrUpdate(true)
+  })
 
   // Manual reload if needed by UI
   function reload() {
