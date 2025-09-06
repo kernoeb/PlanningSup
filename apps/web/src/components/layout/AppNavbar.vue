@@ -46,21 +46,19 @@ onKeyStroke(
         </div>
         PlanningSup
       </a>
-      <Transition mode="out-in" name="fade">
-        <div v-if="title" class="sm:flex items-center gap-2">
-          <span class="badge truncate max-w-[22rem] h-6">{{ title }}</span>
-          <PlanningPicker ref="planningPicker">
-            <template #trigger="{ open }">
-              <button class="btn btn-secondary h-6 min-h-6" type="button" @click="open">
-                Changer de planning
-                <kbd
-                  class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100"
-                >u</kbd>
-              </button>
-            </template>
-          </PlanningPicker>
-        </div>
-      </Transition>
+      <div class="sm:flex items-center gap-2">
+        <span v-if="title" class="badge truncate max-w-[22rem] h-6">{{ title }}</span>
+        <PlanningPicker ref="planningPicker">
+          <template #trigger="{ open }">
+            <button class="btn btn-secondary h-6 min-h-6" type="button" @click="open">
+              Changer de planning
+              <kbd
+                class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100"
+              >u</kbd>
+            </button>
+          </template>
+        </PlanningPicker>
+      </div>
     </div>
 
     <div class="flex-none mr-2">
