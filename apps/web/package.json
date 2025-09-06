@@ -41,6 +41,7 @@
     "typescript": "~5.9.2",
     "vite": "npm:rolldown-vite@latest",
     "vite-plugin-pwa": "^1.0.3",
-    "vue-tsc": "^3.0.6"
+    "vue-tsc": "^3.0.6",
+    "workbox-window": "^7.3.0"
   }
 }
