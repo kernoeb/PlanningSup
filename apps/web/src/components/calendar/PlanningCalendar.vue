@@ -7,7 +7,7 @@ import { useTimezone } from '@web/composables/useTimezone'
 import { useTemplateRef } from 'vue'
 
 const { timezone } = useTimezone()
-const { calendarApp, reload, nextPeriod, prevPeriod } = usePlanningCalendar({ timezone })
+const { calendarApp, reload, nextPeriod, prevPeriod, nbHours } = usePlanningCalendar({ timezone })
 const { isDark: uiIsDark } = useTheme()
 
 const el = useTemplateRef('calendarSwipeEl')
@@ -27,6 +27,12 @@ defineExpose({ reload })
       :key="uiIsDark ? 'dark' : 'light'"
       :calendar-app="calendarApp"
       class="h-full"
-    />
+    >
+      <template #headerContentLeftAppend>
+        <div v-if="nbHours != null" class="text-xs text-gray-500 block h-full">
+          {{ nbHours }}
+        </div>
+      </template>
+    </ScheduleXCalendar>
   </div>
 </template>
