@@ -1,11 +1,12 @@
 import path from 'path'
 import planningsRoutes from '@api/routes/plannings'
 import { auth } from '@api/utils/auth'
-import { cors } from '@elysiajs/cors'
 import { openapi } from '@elysiajs/openapi'
 import staticPlugin from '@elysiajs/static'
 import { webLocation } from '@web/expose'
 import { Elysia } from 'elysia'
+
+const FRONTEND_DIST_PATH = Bun.env.WEB_DIST_LOCATION || path.join(webLocation)
 
 const betterAuth = new Elysia({ name: 'better-auth' })
   .mount(auth.handler)
@@ -33,7 +34,7 @@ const app = new Elysia()
     return { error, message: isNotFound ? 'Route not found' : 'Internal server error' }
   })
   .use(openapi())
-  .use(
+  /* .use( // disable CORS temporarily
     cors({
       origin: 'http://localhost:4444',
       allowedHeaders: ['Content-Type', 'Authorization'],
@@ -42,18 +43,18 @@ const app = new Elysia()
       maxAge: 600,
       credentials: true,
     }),
-  )
-  .use(
-    new Elysia({ prefix: '/api' })
-      .use(betterAuth)
-      .use(planningsRoutes),
+  ) */
+
+  .use(new Elysia({ prefix: '/api' })
+    .use(betterAuth)
+    .use(planningsRoutes),
   )
 
 if (import.meta.env.NODE_ENV === 'production') {
   app.use(staticPlugin({
-    assets: Bun.env.WEB_DIST_LOCATION || path.join(webLocation),
+    assets: FRONTEND_DIST_PATH,
     indexHTML: true,
-    alwaysStatic: false, // spa
+    alwaysStatic: true,
     prefix: '/',
   }))
 }

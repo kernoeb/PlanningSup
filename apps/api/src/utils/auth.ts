@@ -5,6 +5,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { anonymous } from 'better-auth/plugins'
 
 export const auth = betterAuth({
+  basePath: '/auth',
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema,
@@ -19,7 +20,9 @@ export const auth = betterAuth({
     enabled: false,
     disableNotice: true,
   },
-  trustedOrigins: ['http://localhost:4444'],
+  trustedOrigins: import.meta.env.NODE_ENV === 'production'
+    ? []
+    : ['http://localhost:4444'],
   plugins: [anonymous()],
   socialProviders: {
     discord: {
