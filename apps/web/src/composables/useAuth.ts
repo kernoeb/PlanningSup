@@ -16,7 +16,6 @@ watch(
 async function signInDiscord() {
   const data = await authClient.signIn.social({
     provider: 'discord',
-    callbackURL: window.location.origin,
   })
   console.log('signInDiscord', data)
 }
@@ -24,7 +23,6 @@ async function signInDiscord() {
 async function signInGithub() {
   const data = await authClient.signIn.social({
     provider: 'github',
-    callbackURL: window.location.origin,
   })
   console.log('signInGithub', data)
 }

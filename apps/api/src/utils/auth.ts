@@ -5,7 +5,6 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { anonymous } from 'better-auth/plugins'
 
 export const auth = betterAuth({
-  basePath: '/auth',
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema,

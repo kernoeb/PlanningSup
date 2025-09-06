@@ -33,10 +33,11 @@ export default defineConfig({
 
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
+        navigateFallbackDenylist: [/^\/api\/auth\/.*/],
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
+            urlPattern: ({ url }) => url.pathname.startsWith('/api/plannings'),
             handler: 'NetworkFirst', // Try network first, fallback to cache
             options: {
               cacheName: 'api-cache',

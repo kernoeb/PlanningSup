@@ -1,3 +1,4 @@
+import type { Context } from 'elysia'
 import path from 'path'
 import planningsRoutes from '@api/routes/plannings'
 import { auth } from '@api/utils/auth'
@@ -7,25 +8,15 @@ import { webLocation } from '@web/expose'
 import { Elysia } from 'elysia'
 
 const FRONTEND_DIST_PATH = Bun.env.WEB_DIST_LOCATION || path.join(webLocation)
+const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
 
-const betterAuth = new Elysia({ name: 'better-auth' })
-  .mount(auth.handler)
-  .macro({
-    auth: {
-      async resolve({ status, request: { headers } }) {
-        const session = await auth.api.getSession({
-          headers,
-        })
-
-        if (!session) return status(401)
-
-        return {
-          user: session.user,
-          session: session.session,
-        }
-      },
-    },
-  })
+function betterAuthView(context: Context) {
+  if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
+    return auth.handler(context.request)
+  } else {
+    context.error(405)
+  }
+}
 
 const app = new Elysia()
   .onError(({ error, code }) => {
@@ -45,8 +36,8 @@ const app = new Elysia()
     }),
   ) */
 
+  .all('/api/auth/*', betterAuthView)
   .use(new Elysia({ prefix: '/api' })
-    .use(betterAuth)
     .use(planningsRoutes),
   )
 
