@@ -1,90 +1,110 @@
-import { useLocalStorage } from '@vueuse/core'
-import { computed, watch, watchEffect } from 'vue'
+import { useColorMode } from '@vueuse/core'
+import { computed } from 'vue'
 
 export type UiTheme = 'light' | 'dracula' | 'black'
-
-const STORAGE_KEY = 'ui.theme'
-const DEFAULT_THEME: UiTheme = 'black'
-const DARK_THEMES = new Set<UiTheme>(['black', 'dracula'])
 export const AVAILABLE_THEMES: readonly UiTheme[] = ['light', 'dracula', 'black'] as const
 
-function isValidTheme(value: string | null | undefined): value is UiTheme {
-  return value === 'light' || value === 'dracula' || value === 'black'
-}
-
-function normalizeTheme(value: string | null | undefined): UiTheme {
-  return isValidTheme(value) ? value : DEFAULT_THEME
-}
+const LEGACY_STORAGE_KEY = 'ui.theme' // old key storing 'black' | 'light' | 'dracula'
 
 /**
- * Apply the theme to the <html> element through:
- * - data-theme attribute (used by DaisyUI)
- * - is-dark class (used by Schedule X and custom CSS)
- */
-function applyThemeToDom(theme: UiTheme) {
-  if (typeof document === 'undefined') return
-  const el = document.documentElement
-  el.setAttribute('data-theme', theme)
-  if (DARK_THEMES.has(theme)) el.classList.add('is-dark')
-  else el.classList.remove('is-dark')
-}
-
-/**
- * useTheme composable
- * - Persists the selected UI theme to localStorage
- * - Applies the theme to the DOM (DaisyUI + .is-dark flag)
- * - Exposes helpers to change the theme and initialize early
+ * Centralized theme management using VueUse's useColorMode
+ *
+ * - data-theme attribute: 'light' | 'black' | 'dracula' (for DaisyUI)
+ * - .is-dark class: added for 'black' and 'dracula' (for Schedule X and custom CSS)
+ * - "auto" mode chooses between dark (mapped to 'black') and light
  */
 export function useTheme() {
-  // Persisted theme
-  const theme = useLocalStorage<UiTheme>(STORAGE_KEY, DEFAULT_THEME)
+  const mode = useColorMode<'dracula'>({
+    selector: 'html',
+    attribute: 'data-theme',
+    storageKey: 'ui.theme.store', // new key; separate from legacy
+    // Map the attribute values directly so DaisyUI receives a valid theme name.
+    // Here, dark -> "black" to match our DaisyUI custom theme.
+    modes: {
+      dark: 'black',
+      light: 'light',
+      dracula: 'dracula',
+    },
+    // Use the default handler to apply the attribute and disable transitions,
+    // then toggle our custom .is-dark flag for dark-like themes.
+    onChanged: (next, defaultHandler) => {
+      defaultHandler(next)
+      if (typeof document === 'undefined') return
+      const el = document.documentElement
+      if (next === 'dark' || next === 'dracula') el.classList.add('is-dark')
+      else el.classList.remove('is-dark')
+    },
+  })
 
-  // Derived darkness flag
-  const isDark = computed<boolean>(() => DARK_THEMES.has(theme.value))
+  // One-time migration from legacy storage (ui.theme) to the new storage key.
+  if (typeof window !== 'undefined') {
+    try {
+      const legacy = localStorage.getItem(LEGACY_STORAGE_KEY) as UiTheme | null
+      const hasNew = localStorage.getItem('ui.theme.store') != null
+      if (legacy && !hasNew) {
+        // Map legacy 'black' to 'dark', others as-is.
+        const mapped: 'dark' | 'light' | 'dracula'
+          = legacy === 'black' ? 'dark' : legacy
+        mode.store.value = mapped
+        mode.value = mapped
+        localStorage.removeItem(LEGACY_STORAGE_KEY)
+      }
+    } catch {
+      // ignore access errors (private mode / disabled storage)
+    }
+  }
 
+  // Applied theme name as used by DaisyUI (light | black | dracula).
+  // Note: when reading, mode.value returns the resolved mode (dark|light|dracula),
+  // so we only need to map 'dark' -> 'black' for display and consumers.
+  const theme = computed<UiTheme>(() =>
+    mode.value === 'dark' ? 'black' : (mode.value as UiTheme),
+  )
+
+  // Darkness flag for consumers like Schedule X.
+  const isDark = computed<boolean>(() => mode.value === 'dark' || mode.value === 'dracula')
+
+  // i18n labels
   const i18nThemes = {
+    system: 'Système',
     light: 'Clair',
     dracula: 'Dracula',
     black: 'Noir',
-  }
+  } as const
 
-  // Keep storage sanitized if someone manually edited localStorage
-  watch(
-    theme,
-    (val) => {
-      const normalized = normalizeTheme(val)
-      if (normalized !== val) theme.value = normalized
-    },
-    { immediate: true },
-  )
-
-  // Reactively apply the theme whenever it changes
-  watchEffect(() => {
-    applyThemeToDom(theme.value)
-  })
-
-  /**
-   * Programmatically set the theme
-   */
+  // Programmatic switching to an explicit theme.
   function setTheme(next: UiTheme) {
-    theme.value = next
+    mode.value = (next === 'black' ? 'dark' : next) as any
   }
 
-  /**
-   * Initialize early (e.g., call in main.ts before mount, or via inline script in index.html)
-   * Ensures the DOM reflects the stored theme ASAP to minimize FOUC.
-   */
+  // Switch back to system preference (auto).
+  function setAuto() {
+    mode.value = 'auto'
+  }
+
+  // Early init to minimize FOUC. Apply the current mode to the DOM immediately.
   function init() {
-    const normalized = normalizeTheme(theme.value)
-    if (normalized !== theme.value) theme.value = normalized
-    applyThemeToDom(normalized)
+    if (typeof document === 'undefined') return
+    const el = document.documentElement
+    const current = mode.value as 'dark' | 'light' | 'dracula'
+    const themeAttr = current === 'dark' ? 'black' : current
+    el.setAttribute('data-theme', themeAttr)
+    if (current === 'dark' || current === 'dracula') el.classList.add('is-dark')
+    else el.classList.remove('is-dark')
   }
 
   return {
+    // Applied theme (light | black | dracula)
     theme,
+    // Darkness flag
     isDark,
-    setTheme,
+    // Labels and helpers
     i18nThemes,
+    setTheme,
+    setAuto,
+    // Expose the underlying useColorMode return for advanced cases
+    mode,
+    // FOUC prevention
     init,
   }
 }
