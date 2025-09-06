@@ -36,7 +36,7 @@ onKeyStroke(
 </script>
 
 <template>
-  <div class="navbar bg-base-100 shadow-sm px-3">
+  <div class="navbar bg-base-100 shadow-sm px-3 gap-2">
     <div class="flex-1 flex items-center gap-3">
       <a class="text-xl flex items-center gap-3" href="/">
         <div class="avatar">
@@ -44,16 +44,21 @@ onKeyStroke(
             <img alt="PlanningSup" src="/icon.png">
           </div>
         </div>
-        PlanningSup
+        <div>
+          <div>PlanningSup</div>
+          <div class="text-xs font-light flex sm:hidden">
+            {{ title || '...' }}
+          </div>
+        </div>
       </a>
-      <div class="sm:flex items-center gap-2">
-        <span v-if="title" class="badge truncate max-w-[22rem] h-6">{{ title }}</span>
+      <div class="flex items-center gap-2">
+        <span v-if="title" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
         <PlanningPicker ref="planningPicker">
           <template #trigger="{ open }">
-            <button class="btn btn-secondary h-6 min-h-6" type="button" @click="open">
+            <button class="btn btn-secondary h-6 min-h-6 hidden sm:inline-flex" type="button" @click="open">
               Changer de planning
               <kbd
-                class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100"
+                class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100 hidden sm:inline-flex"
               >u</kbd>
             </button>
           </template>
@@ -61,7 +66,7 @@ onKeyStroke(
       </div>
     </div>
 
-    <div class="flex-none mr-2">
+    <div class="flex-none mr-2 hidden sm:block">
       <div class="dropdown dropdown-end">
         <div class="btn btn-ghost" role="button" tabindex="0">
           Thème: {{ currentLabel }}
@@ -107,6 +112,14 @@ onKeyStroke(
     </div>
 
     <UserMenu />
+
+    <div class="fab sm:hidden">
+      <button aria-label="Changer de planning" class="btn btn-lg btn-circle btn-primary" type="button" @click="planningPicker && planningPicker.open()">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 

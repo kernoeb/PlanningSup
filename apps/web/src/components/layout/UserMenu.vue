@@ -2,6 +2,7 @@
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
+import { useTheme } from '@web/composables/useTheme'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
@@ -22,6 +23,14 @@ const avatarInitial = computed(() => {
 
 const canOpenMenu = computed(() => !isPending.value && !!user.value)
 const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
+
+// Theme (for small screens, theme controls live here)
+const { theme, i18nThemes, setTheme, setAuto, mode } = useTheme()
+const currentThemeLabel = computed<string>(() => {
+  return mode.store.value === 'auto'
+    ? i18nThemes.system
+    : i18nThemes[theme.value]
+})
 </script>
 
 <template>
@@ -55,9 +64,35 @@ const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' :
 
       <ul
         v-if="canOpenMenu"
-        class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2 shadow"
+        class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2"
         tabindex="0"
       >
+        <!-- Small screens: Theme controls moved here -->
+        <li class="menu-title sm:hidden">
+          <span>Thème: {{ currentThemeLabel }}</span>
+        </li>
+        <li class="sm:hidden">
+          <button type="button" @click="setAuto()">
+            {{ i18nThemes.system }} (auto)
+          </button>
+        </li>
+        <li class="sm:hidden">
+          <button :class="{ active: theme === 'black' }" type="button" @click="setTheme('black')">
+            {{ i18nThemes.black }}
+          </button>
+        </li>
+        <li class="sm:hidden">
+          <button :class="{ active: theme === 'light' }" type="button" @click="setTheme('light')">
+            {{ i18nThemes.light }}
+          </button>
+        </li>
+        <li class="sm:hidden">
+          <button :class="{ active: theme === 'dracula' }" type="button" @click="setTheme('dracula')">
+            {{ i18nThemes.dracula }}
+          </button>
+        </li>
+        <div class="sm:hidden divider m-0" />
+        <!-- End small-screen theme controls -->
         <li v-if="!user || isAnonymous">
           <button class="justify-between" onclick="socialLogin.showModal()">
             Se connecter

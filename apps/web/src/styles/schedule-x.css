@@ -1,6 +1,7 @@
 :root {
   --sx-spacing-padding3: 6px;
   --sx-font-extra-small: 0.82rem;
+  --sx-font-extra-large: 1rem;
 }
 
 /* Dark theme */
@@ -31,12 +32,12 @@ html[data-theme="black"] {
 
     /* Surfaces provide subtle layers over the pure black background */
     --sx-color-surface: #111; /* A barely-there off-black */
-    --sx-color-surface-dim: #000;
+    --sx-color-surface-dim: #111;
     --sx-color-surface-bright: #222;
     --sx-color-on-surface: #fff;
     --sx-color-surface-container: #1a1a1a; /* A slightly more visible layer */
     --sx-color-surface-container-low: #111;
-    --sx-color-surface-container-high: #111;
+    --sx-color-surface-container-high: #000;
 
     /* Outlines are a slightly lighter dark gray for subtle definition */
     --sx-color-outline: #666;
@@ -110,8 +111,16 @@ html[data-theme="dracula"] {
 .sx__calendar-header {
   padding-top: var(--sx-spacing-padding3);
   padding-bottom: var(--sx-spacing-padding3);
+  display: flex;
+  align-items: center;
 }
 
 .sx__week-wrapper {
   padding-right: 12px;
+}
+
+@media (max-width: 640px) {
+  .sx__date-picker-wrapper {
+    display: none;
+  }
 }
