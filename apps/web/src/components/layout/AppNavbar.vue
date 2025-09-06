@@ -59,7 +59,7 @@ onKeyStroke(
               Changer de planning
               <kbd
                 class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100 hidden sm:inline-flex"
-              >u</kbd>
+              >U</kbd>
             </button>
           </template>
         </PlanningPicker>

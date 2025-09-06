@@ -2,6 +2,45 @@
   --sx-spacing-padding3: 6px;
   --sx-font-extra-small: 0.82rem;
   --sx-font-extra-large: 1rem;
+
+  /* Default light theme based on DaisyUI "corporate" palette */
+  --sx-color-background: oklch(100% 0 0);
+  --sx-color-on-background: oklch(22.389% 0.031 278.072);
+
+  --sx-color-surface: oklch(100% 0 0);
+  --sx-color-surface-dim: oklch(93% 0 0);
+  --sx-color-surface-bright: oklch(100% 0 0);
+  --sx-color-on-surface: oklch(22.389% 0.031 278.072);
+  --sx-color-surface-container: oklch(93% 0 0);
+  --sx-color-surface-container-low: oklch(100% 0 0);
+  --sx-color-surface-container-high: oklch(86% 0 0);
+
+  --sx-color-primary: oklch(58% 0.158 241.966);
+  --sx-color-on-primary: oklch(100% 0 0);
+  --sx-color-primary-container: oklch(93% 0 0);
+  --sx-color-on-primary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-secondary: oklch(55% 0.046 257.417);
+  --sx-color-on-secondary: oklch(100% 0 0);
+  --sx-color-secondary-container: oklch(93% 0 0);
+  --sx-color-on-secondary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-tertiary: oklch(60% 0.118 184.704);
+  --sx-color-on-tertiary: oklch(100% 0 0);
+  --sx-color-tertiary-container: oklch(93% 0 0);
+  --sx-color-on-tertiary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-outline: oklch(86% 0 0);
+  --sx-color-outline-variant: oklch(93% 0 0);
+  --sx-color-shadow: oklch(0% 0 0);
+  --sx-color-surface-tint: oklch(58% 0.158 241.966);
+
+  --sx-color-neutral: var(--sx-color-outline);
+  --sx-color-neutral-variant: var(--sx-color-outline-variant);
+
+  --sx-internal-color-gray-ripple-background: oklch(86% 0 0);
+  --sx-internal-color-light-gray: oklch(93% 0 0);
+  --sx-internal-color-text: oklch(22.389% 0.031 278.072);
 }
 
 /* Dark theme */
