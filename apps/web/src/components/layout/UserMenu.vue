@@ -64,7 +64,7 @@ const currentThemeLabel = computed<string>(() => {
 
       <ul
         v-if="canOpenMenu"
-        class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2"
+        class="menu dropdown-content bg-base-200 rounded-box z-10 mt-3 w-52 p-2"
         tabindex="0"
       >
         <!-- Small screens: Theme controls moved here -->
