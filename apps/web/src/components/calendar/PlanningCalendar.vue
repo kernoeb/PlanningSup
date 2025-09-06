@@ -26,6 +26,7 @@ defineExpose({ reload })
       v-if="calendarApp"
       :key="uiIsDark ? 'dark' : 'light'"
       :calendar-app="calendarApp"
+      class="h-full"
     />
   </div>
 </template>
