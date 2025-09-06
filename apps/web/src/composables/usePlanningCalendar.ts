@@ -65,30 +65,40 @@ export function usePlanningCalendar(options: {
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
   const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezone).toPlainDate())
 
+  function nextPeriod() {
+    if (!calendarApp.value) return
+    const view = calendarControls.getView()
+    const days
+      = view === 'month-grid' || view === 'month-agenda'
+        ? 30
+        : view === 'week'
+          ? 7
+          : 1
+    currentDate.value = currentDate.value.add({ days })
+    calendarControls.setDate(currentDate.value)
+  }
+
+  function prevPeriod() {
+    if (!calendarApp.value) return
+    const view = calendarControls.getView()
+    const days
+      = view === 'month-grid' || view === 'month-agenda'
+        ? 30
+        : view === 'week'
+          ? 7
+          : 1
+    currentDate.value = currentDate.value.subtract({ days })
+    calendarControls.setDate(currentDate.value)
+  }
+
   onKeyStroke('ArrowRight', (e) => {
     e.preventDefault()
-    if (!calendarApp.value) return
-    const nbToAdd = (() => {
-      const view = calendarControls.getView()
-      if (view === 'month-grid' || view === 'month-agenda') return 30
-      else if (view === 'week') return 7
-      else return 1
-    })()
-    currentDate.value = currentDate.value.add({ days: nbToAdd })
-    calendarControls.setDate(currentDate.value)
+    nextPeriod()
   }, { dedupe: true })
 
   onKeyStroke('ArrowLeft', (e) => {
     e.preventDefault()
-    if (!calendarApp.value) return
-    const nbToSubtract = (() => {
-      const view = calendarControls.getView()
-      if (view === 'month-grid' || view === 'month-agenda') return 30
-      else if (view === 'week') return 7
-      else return 1
-    })()
-    currentDate.value = currentDate.value.subtract({ days: nbToSubtract })
-    calendarControls.setDate(currentDate.value)
+    prevPeriod()
   }, { dedupe: true })
 
   function getMappedEvents() {
@@ -172,6 +182,8 @@ export function usePlanningCalendar(options: {
     calendarControls,
     eventsServicePlugin,
     eventModal,
+    nextPeriod,
+    prevPeriod,
     reload,
   }
 }
