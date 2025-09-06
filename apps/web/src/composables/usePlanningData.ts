@@ -1,5 +1,6 @@
 import type { Ref } from 'vue'
 import { client } from '@libs'
+import { useIntervalFn, useWindowFocus } from '@vueuse/core'
 import { ref, watch } from 'vue'
 import { useCurrentPlanning } from './useCurrentPlanning'
 import { useSettings } from './useSettings'
@@ -43,6 +44,21 @@ function createPlanningDataStore(): PlanningDataStore {
   // Prevent race conditions when selection changes quickly
   let requestToken = 0
 
+  // Background refresh management
+  const focused = useWindowFocus()
+  const lastRefreshAt = ref<number>(0) // epoch ms of last attempted refresh
+  const BACKGROUND_COOLDOWN_MS = 60_000 // 60s cool-down for background triggers
+  const NATURAL_INTERVAL_MS = 60_000 * 5 // 5 minutes
+
+  async function maybeBackgroundRefresh() {
+    // Avoid overlapping requests
+    if (loading.value) return
+    // Enforce cool-down
+    const now = Date.now()
+    if (now - lastRefreshAt.value < BACKGROUND_COOLDOWN_MS) return
+    await refresh()
+  }
+
   async function refresh() {
     const ids = Array.from(new Set((planningFullIds.value ?? []).map(s => s.trim()).filter(Boolean)))
 
@@ -53,6 +69,7 @@ function createPlanningDataStore(): PlanningDataStore {
       return
     }
 
+    lastRefreshAt.value = Date.now()
     loading.value = true
     error.value = null
     const token = ++requestToken
@@ -120,6 +137,23 @@ function createPlanningDataStore(): PlanningDataStore {
       if (token === requestToken) loading.value = false
     }
   }
+
+  // Natural background refresh every 5 minutes
+  const { pause, resume } = useIntervalFn(() => {
+    void maybeBackgroundRefresh()
+  }, NATURAL_INTERVAL_MS)
+
+  // Start/stop the interval depending on whether we have a valid selection
+  watch(planningFullIds, () => {
+    const hasSelection = (planningFullIds.value ?? []).some(s => !!s && s.trim().length > 0)
+    if (hasSelection) resume()
+    else pause()
+  }, { immediate: true })
+
+  // Trigger background refresh on window focus (respects 60s cooldown and no overlap)
+  watch(focused, (isFocused) => {
+    if (isFocused) void maybeBackgroundRefresh()
+  })
 
   // Auto-load and reload on planning selection or settings changes
   watch(planningFullIds, () => {
