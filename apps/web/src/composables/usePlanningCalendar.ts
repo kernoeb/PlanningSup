@@ -113,6 +113,10 @@ export function usePlanningCalendar(options: {
     return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))
   }
 
+  function getWeekOptions() {
+    return { nDays: settings.weekNDays.value, gridHeight: 800 }
+  }
+
   function initOrUpdate(forceRecreate = false) {
     const mapped = getMappedEvents()
     if (!calendarApp.value || forceRecreate) {
@@ -132,7 +136,7 @@ export function usePlanningCalendar(options: {
         timezone,
         showWeekNumbers: true,
         dayBoundaries: { start: '07:00', end: '20:00' },
-        weekOptions: { nDays: 5, gridHeight: 800 },
+        weekOptions: getWeekOptions(),
         calendars: buildCalendarsUtil(settings.colors.value),
         events: mapped,
         plugins: [
@@ -185,6 +189,11 @@ export function usePlanningCalendar(options: {
     initOrUpdate(true)
   })
 
+  // Re-init calendar when the number of days in week view changes
+  watch(() => settings.weekNDays.value, () => {
+    calendarControls.setWeekOptions(getWeekOptions())
+  })
+
   // Manual reload if needed by UI
   function reload() {
     void planning.refresh()
@@ -203,7 +212,7 @@ export function usePlanningCalendar(options: {
     if (!view) return null
 
     const cd = currentDate.value
-    const N_DAYS = 5 // must match weekOptions.nDays
+    const N_DAYS = settings.weekNDays.value
     let rangeStartMs = 0
     let rangeEndMs = 0
 

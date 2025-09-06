@@ -17,15 +17,15 @@ const emit = defineEmits<{
 }>()
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
-const settings = useSettings()
+const { blocklist, colors, highlightTeacher, showWeekends, targetTimezone } = useSettings()
 
 // Timezone selector state
 const browserTimezone = ref<string | null>(detectBrowserTimezone())
 const timezones = ref<string[]>(Array.from(getSupportedTimezones()))
 const targetTz = computed({
-  get: () => settings.targetTimezone.value ?? '',
+  get: () => targetTimezone.value ?? '',
   set: (v: string) => {
-    settings.targetTimezone.value = v && v.length ? v : null
+    targetTimezone.value = v && v.length ? v : null
   },
 })
 
@@ -70,7 +70,7 @@ watch(() => props.open, (next) => {
             <h4 class="font-semibold m-0">
               Couleurs des événements
             </h4>
-            <button aria-label="Réinitialiser les couleurs" class="btn btn-ghost btn-xs" title="Réinitialiser les couleurs par défaut" type="button" @click="settings.colors.value = getDefaultColors()">
+            <button aria-label="Réinitialiser les couleurs" class="btn btn-ghost btn-xs" title="Réinitialiser les couleurs par défaut" type="button" @click="colors = getDefaultColors()">
               Réinitialiser
             </button>
           </div>
@@ -78,7 +78,7 @@ watch(() => props.open, (next) => {
             <label class="flex items-center gap-2 sm:gap-3">
               <span class="w-24">Amphi</span>
               <input
-                v-model="settings.colors.value.lecture"
+                v-model="colors.lecture"
                 class="input input-bordered w-24 h-10 p-1"
                 type="color"
               >
@@ -86,7 +86,7 @@ watch(() => props.open, (next) => {
             <label class="flex items-center gap-2 sm:gap-3">
               <span class="w-24">TP</span>
               <input
-                v-model="settings.colors.value.lab"
+                v-model="colors.lab"
                 class="input input-bordered w-24 h-10 p-1"
                 type="color"
               >
@@ -94,7 +94,7 @@ watch(() => props.open, (next) => {
             <label class="flex items-center gap-2 sm:gap-3">
               <span class="w-24">TD</span>
               <input
-                v-model="settings.colors.value.tutorial"
+                v-model="colors.tutorial"
                 class="input input-bordered w-24 h-10 p-1"
                 type="color"
               >
@@ -102,7 +102,7 @@ watch(() => props.open, (next) => {
             <label class="flex items-center gap-2 sm:gap-3">
               <span class="w-24">Autre</span>
               <input
-                v-model="settings.colors.value.other"
+                v-model="colors.other"
                 class="input input-bordered w-24 h-10 p-1"
                 type="color"
               >
@@ -120,7 +120,7 @@ watch(() => props.open, (next) => {
           </h4>
           <label class="label cursor-pointer justify-start gap-3">
             <input
-              v-model="settings.highlightTeacher"
+              v-model="highlightTeacher"
               aria-describedby="hl-teacher-desc" class="toggle"
               type="checkbox"
             >
@@ -130,7 +130,24 @@ watch(() => props.open, (next) => {
           </label>
         </section>
 
-        <!-- 3) Fuseau horaire cible -->
+        <!-- 3) Affichage des week-ends -->
+        <section>
+          <h4 class="font-semibold mb-2">
+            Afficher les week-ends
+          </h4>
+          <label class="label cursor-pointer justify-start gap-3">
+            <input
+              v-model="showWeekends"
+              aria-describedby="show-weekends-desc" class="toggle"
+              type="checkbox"
+            >
+            <span id="show-weekends-desc" class="label-text">
+              Inclure samedi et dimanche dans la vue semaine.
+            </span>
+          </label>
+        </section>
+
+        <!-- 4) Fuseau horaire cible -->
         <section>
           <h4 class="font-semibold mb-2">
             Fuseau horaire cible
@@ -147,20 +164,20 @@ watch(() => props.open, (next) => {
             </option>
           </select>
           <div
-            v-if="browserTimezone || settings.targetTimezone.value"
+            v-if="browserTimezone || targetTimezone"
             class="text-xs text-base-content/60 mt-1"
           >
-            Navigateur: <code>{{ browserTimezone || 'inconnu' }}</code><span v-if="settings.targetTimezone.value">, Cible: <code>{{ settings.targetTimezone.value }}</code></span>
+            Navigateur: <code>{{ browserTimezone || 'inconnu' }}</code><span v-if="targetTimezone">, Cible: <code>{{ targetTimezone }}</code></span>
           </div>
         </section>
 
-        <!-- 4) Liste de blocage -->
+        <!-- 5) Liste de blocage -->
         <section>
           <h4 class="font-semibold mb-2">
             Liste de blocage
           </h4>
           <TagInput
-            v-model="settings.blocklist.value"
+            v-model="blocklist"
             helper="Ajoutez des mots ou expressions à exclure du planning. Appuyez sur Entrée ou la virgule pour les ajouter."
             placeholder="Ajouter un élément puis Entrée ou virgule"
           />

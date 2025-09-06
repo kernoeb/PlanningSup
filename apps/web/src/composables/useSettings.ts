@@ -38,8 +38,10 @@ function getBrowserTimezone(): string | null {
  *   - highlightTeacher: boolean (backend-only; affects server response)
  *   - blocklist: string[]
  *   - targetTimezone: string | null
+ *   - showWeekends: boolean (client-only; controls week view nDays)
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
+ *   - weekNDays: number (7 when showWeekends, otherwise 5)
  *   - getColorFor(kind)
  *   - highlightTeacher is backend-only (no client-side dimming)
  *   - colors are client-side only (not included in query params)
@@ -60,6 +62,13 @@ export function useSettings() {
   const targetTimezone = useLocalStorage<string | null>('settings.targetTimezone', null)
   // Normalize empty string to null for robustness (e.g., when cleared from UI)
   if (targetTimezone.value === '') targetTimezone.value = null
+
+  // 5) Show weekends in week view (client-only)
+  // Default false to match current behavior (5-day week)
+  const showWeekends = useLocalStorage<boolean>('settings.showWeekends', false)
+
+  // Derived helper for calendar weekOptions.nDays
+  const weekNDays = computed(() => (showWeekends.value ? 7 : 5))
 
   /**
    * Computed query params to be appended to backend requests.
@@ -108,9 +117,11 @@ export function useSettings() {
     highlightTeacher,
     blocklist,
     targetTimezone,
+    showWeekends,
 
     // derived
     queryParams,
+    weekNDays,
 
     // helpers
     getColorFor,
