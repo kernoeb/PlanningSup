@@ -29,6 +29,17 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Compute branch slug
+        run: |
+          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' | cut -c1-128)
+          echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
+          if [ -n "${GITHUB_HEAD_REF}" ]; then
+            echo "FULL_REF=refs/heads/${GITHUB_HEAD_REF}" >> "$GITHUB_ENV"
+          else
+            echo "FULL_REF=${GITHUB_REF}" >> "$GITHUB_ENV"
+          fi
+
       # Login against GHCR
       # Allow on PR only when PR is from this repo AND the branch is in the whitelist
       - name: Log into registry ${{ env.REGISTRY }}
@@ -53,7 +64,7 @@ jobs:
         with:
           images: ${{ steps.string.outputs.lowercase }}
           # Use the PR head branch as ref when available so branch tags are generated on PRs
-          ref: ${{ github.head_ref || github.ref }}
+          ref: ${{ env.FULL_REF }}
           flavor: |
             latest=false
           tags: |
@@ -82,7 +93,9 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)) }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            ${{ steps.meta.outputs.tags }}
+            ${{ steps.string.outputs.lowercase }}:${{ env.BRANCH_SLUG }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
