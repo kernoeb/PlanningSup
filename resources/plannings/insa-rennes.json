@@ -1,10 +1,10 @@
 {
   "title": "INSA Rennes",
-  "edts": [
+  "children": [
     {
       "id": "ma",
       "title": "MA",
-      "edts": [
+      "children": [
         {
           "id": "s5-ma",
           "title": "S5",
@@ -30,15 +30,15 @@
     {
       "id": "info",
       "title": "INFO",
-      "edts": [
+      "children": [
         {
           "id": "s5-info",
           "title": "S5",
-          "edts": [
+          "children": [
             {
               "id": "s5-info-g1",
               "title": "GR 1",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-info-g11",
                   "title": "GR 1.1",
@@ -54,7 +54,7 @@
             {
               "id": "s5-info-g2",
               "title": "GR 2",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-info-g21",
                   "title": "GR 2.1",
@@ -70,7 +70,7 @@
             {
               "id": "s5-info-rem",
               "title": "Remédiations/Soutien",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-info-rem1",
                   "title": "Remédiation Maths",
@@ -98,11 +98,11 @@
         {
           "id": "s6-info",
           "title": "S6",
-          "edts": [
+          "children": [
             {
               "id": "s6-info-g1",
               "title": "GR 1",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-info-g11",
                   "title": "GR 1.1",
@@ -118,7 +118,7 @@
             {
               "id": "s6-info-g2",
               "title": "GR 2",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-info-g21",
                   "title": "GR 2.1",
@@ -134,7 +134,7 @@
             {
               "id": "s6-info-option",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-info-ia-ga",
                   "title": "IA GR A",
@@ -160,7 +160,7 @@
             {
               "id": "s6-info-ouverture",
               "title": "Ouverture",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-info-iaj",
                   "title": "IA pour les jeux",
@@ -183,11 +183,11 @@
         {
           "id": "s7-info",
           "title": "S7",
-          "edts": [
+          "children": [
             {
               "id": "s7-info-g1",
               "title": "GR 1",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-info-g11",
                   "title": "GR 1.1",
@@ -203,7 +203,7 @@
             {
               "id": "s7-info-g2",
               "title": "GR 2",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-info-g21",
                   "title": "GR 2.1",
@@ -219,7 +219,7 @@
             {
               "id": "s7-info-option",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-info-ia-ga",
                   "title": "IA GR A",
@@ -245,7 +245,7 @@
             {
               "id": "s7-info-ouverture",
               "title": "Ouverture",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-info-ig",
                   "title": "Informatique graphique",
@@ -278,11 +278,11 @@
         {
           "id": "s8-info",
           "title": "S8",
-          "edts": [
+          "children": [
             {
               "id": "s8-info-g1",
               "title": "GR 1",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-info-g11",
                   "title": "GR 1.1",
@@ -298,7 +298,7 @@
             {
               "id": "s8-info-g2",
               "title": "GR 2",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-info-g21",
                   "title": "GR 2.1",
@@ -314,7 +314,7 @@
             {
               "id": "s8-info-option",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-info-ia-ga",
                   "title": "IA GR A",
@@ -330,7 +330,7 @@
             {
               "id": "s8-info-ouverture",
               "title": "Ouverture",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-info-iaj",
                   "title": "IA pour les jeux",
@@ -353,11 +353,11 @@
         {
           "id": "s9-info",
           "title": "S9",
-          "edts": [
+          "children": [
             {
               "id": "s9-info-td",
               "title": "TD",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-td1",
                   "title": "TD 1",
@@ -373,7 +373,7 @@
             {
               "id": "s9-info-tp",
               "title": "TP",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-tp1",
                   "title": "TP 1",
@@ -394,7 +394,7 @@
             {
               "id": "s9-info-option",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-ia-ga",
                   "title": "IA GR A",
@@ -410,7 +410,7 @@
             {
               "id": "s9-info-ouverture",
               "title": "Ouverture",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-ig",
                   "title": "Informatique graphique",
@@ -441,7 +441,7 @@
             {
               "id": "s9-info-management",
               "title": "Parcours de management",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-a",
                   "title": "GR A",
@@ -482,7 +482,7 @@
             {
               "id": "s9-info-anglais",
               "title": "Anglais",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-info-convers-english",
                   "title": "Conversation",
@@ -500,7 +500,7 @@
         {
           "id": "perso",
           "title": "Perso",
-          "edts": [
+          "children": [
             {
               "id": "clement",
               "title": "Clément",
@@ -513,15 +513,15 @@
     {
       "id": "gpm",
       "title": "GPM",
-      "edts": [
+      "children": [
         {
           "id": "s5-GPM",
           "title": "S5",
-          "edts": [
+          "children": [
             {
               "id": "s5-gpm-ab1",
               "title": "GR AB1",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gpm-a",
                   "title": "GR A",
@@ -542,7 +542,7 @@
             {
               "id": "s5-gpm-b2c",
               "title": "GR B2C",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gpm-b2",
                   "title": "GR B2",
@@ -565,11 +565,11 @@
         {
           "id": "s6-GPM",
           "title": "S6",
-          "edts": [
+          "children": [
             {
               "id": "s6-gpm-a",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gpm-a1",
                   "title": "GR A1",
@@ -595,7 +595,7 @@
             {
               "id": "s6-gpm-b",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gpm-b1",
                   "title": "GR B1",
@@ -621,7 +621,7 @@
             {
               "id": "s6-gpm-c",
               "title": "GR C",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gpm-c1",
                   "title": "GR C1",
@@ -654,11 +654,11 @@
         {
           "id": "s7-GPM",
           "title": "S7",
-          "edts": [
+          "children": [
             {
               "id": "s7-gpm-ab",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gpm-a1",
                   "title": "GR A1",
@@ -679,7 +679,7 @@
             {
               "id": "s7-gpm-b",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gpm-b1",
                   "title": "GR B1",
@@ -712,11 +712,11 @@
         {
           "id": "s8-GPM",
           "title": "S8",
-          "edts": [
+          "children": [
             {
               "id": "s8-gpm-a",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gpm-a1",
                   "title": "GR A1",
@@ -742,7 +742,7 @@
             {
               "id": "s8-gpm-B",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gpm-b1",
                   "title": "GR B1",
@@ -775,11 +775,11 @@
         {
           "id": "s9-GPM",
           "title": "S9",
-          "edts": [
+          "children": [
             {
               "id": "s9-gpm-a",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gpm-a1",
                   "title": "GR A1",
@@ -835,7 +835,7 @@
             {
               "id": "s9-gpm-b",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gpm-b1",
                   "title": "GR B1",
@@ -891,7 +891,7 @@
             {
               "id": "s9-gpm-management",
               "title": "MANAGEMENT",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gpm-management-a",
                   "title": "A",
@@ -954,7 +954,7 @@
         {
           "id": "s9-gpm-master-photonique",
           "title": "MASTER PHOTONIQUE",
-          "edts": [
+          "children": [
             {
               "id": "s9-gpm-master-photonique-a",
               "title": "A",
@@ -977,15 +977,15 @@
     {
       "id": "eii",
       "title": "EII",
-      "edts": [
+      "children": [
         {
           "id": "s5-eii",
           "title": "S5",
-          "edts": [
+          "children": [
             {
               "id": "s5-eii-gra",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-eii-gra-1",
                   "title": "GR A.1",
@@ -1001,7 +1001,7 @@
             {
               "id": "s5-eii-grb",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-eii-grb-1",
                   "title": "GR B.1",
@@ -1019,11 +1019,11 @@
         {
           "id": "s6-eii",
           "title": "S6",
-          "edts": [
+          "children": [
             {
               "id": "s6-eii-gra",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-eii-gra-1",
                   "title": "GR A.1",
@@ -1039,7 +1039,7 @@
             {
               "id": "s6-eii-grb",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-eii-grb-1",
                   "title": "GR B.1",
@@ -1057,11 +1057,11 @@
         {
           "id": "s7-eii",
           "title": "S7",
-          "edts": [
+          "children": [
             {
               "id": "s7-eii-gra",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-eii-gra-inr",
                   "title": "GR A INR",
@@ -1082,7 +1082,7 @@
             {
               "id": "s7-eii-grb",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-eii-grb-inr",
                   "title": "GR B INR",
@@ -1105,11 +1105,11 @@
         {
           "id": "s8-eii",
           "title": "S8",
-          "edts": [
+          "children": [
             {
               "id": "s8-eii-gra",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-eii-gra-inr",
                   "title": "GR A INR",
@@ -1125,7 +1125,7 @@
             {
               "id": "s8-eii-grb",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-eii-grb-inr",
                   "title": "GR B INR",
@@ -1143,11 +1143,11 @@
         {
           "id": "s9-eii",
           "title": "S9",
-          "edts": [
+          "children": [
             {
               "id": "s9-eii-gra",
               "title": "GR A",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-eii-gra-1",
                   "title": "GR A.1",
@@ -1163,7 +1163,7 @@
             {
               "id": "s9-eii-grb",
               "title": "GR B",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-eii-grb-1",
                   "title": "GR B.1",
@@ -1194,7 +1194,7 @@
             {
               "id": "s9-eii-management",
               "title": "Parcours de management",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-eii-a",
                   "title": "Groupe A",
@@ -1254,11 +1254,11 @@
     {
       "id": "gcu",
       "title": "GCU",
-      "edts": [
+      "children": [
         {
           "id": "dc-ai",
           "title": "DC AI",
-          "edts": [
+          "children": [
             {
               "id": "dc-ai-s1",
               "title": "S1",
@@ -1289,11 +1289,11 @@
         {
           "id": "s5-gcu",
           "title": "S5",
-          "edts": [
+          "children": [
             {
               "id": "s5-gcu-a",
               "title": "GRP A",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gcu-a1",
                   "title": "GRP A.1",
@@ -1344,7 +1344,7 @@
             {
               "id": "s5-gcu-b",
               "title": "GRP B",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gcu-b1",
                   "title": "GRP B.1",
@@ -1390,7 +1390,7 @@
             {
               "id": "s5-gcu-c",
               "title": "GRP C",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gcu-c1",
                   "title": "GRP C.1",
@@ -1453,11 +1453,11 @@
         {
           "id": "s6-gcu",
           "title": "S6",
-          "edts": [
+          "children": [
             {
               "id": "s6-gcu-a",
               "title": "GRP A",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gcu-a1",
                   "title": "GRP A.1",
@@ -1508,7 +1508,7 @@
             {
               "id": "s6-gcu-b",
               "title": "GRP B",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gcu-b1",
                   "title": "GRP B.1",
@@ -1554,7 +1554,7 @@
             {
               "id": "s6-gcu-c",
               "title": "GRP C",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gcu-c1",
                   "title": "GRP C.1",
@@ -1622,11 +1622,11 @@
         {
           "id": "s7-gcu",
           "title": "S7",
-          "edts": [
+          "children": [
             {
               "id": "s7-gcu-a",
               "title": "GRP A",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gcu-a1",
                   "title": "GRP A.1",
@@ -1692,7 +1692,7 @@
             {
               "id": "s7-gcu-b",
               "title": "GRP B",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gcu-b1",
                   "title": "GRP B.1",
@@ -1758,7 +1758,7 @@
             {
               "id": "s7-gcu-c",
               "title": "GRP C",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gcu-c1",
                   "title": "GRP C.1",
@@ -1811,11 +1811,11 @@
         {
           "id": "s8-gcu",
           "title": "S8",
-          "edts": [
+          "children": [
             {
               "id": "s8-gcu-a",
               "title": "GRP A",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gcu-a1",
                   "title": "GRP A.1",
@@ -1881,7 +1881,7 @@
             {
               "id": "s8-gcu-b",
               "title": "GRP B",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gcu-b1",
                   "title": "GRP B.1",
@@ -1947,7 +1947,7 @@
             {
               "id": "s8-gcu-c",
               "title": "GRP C",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gcu-c1",
                   "title": "GRP C.1",
@@ -2005,7 +2005,7 @@
         {
           "id": "s9-gcu",
           "title": "S9",
-          "edts": [
+          "children": [
             {
               "id": "s9-gcu-batiment",
               "title": "Bâtiment",
@@ -2019,7 +2019,7 @@
             {
               "id": "s9-gcu-genie-urbain",
               "title": "Génie Urbain",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gcu-genie-urbain-a",
                   "title": "A",
@@ -2035,7 +2035,7 @@
             {
               "id": "s9-gcu-parcours-de-management",
               "title": "Parcours de management",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gcu-parcours-de-management-a",
                   "title": "A",
@@ -2103,7 +2103,7 @@
         {
           "id": "s9-master-mmgc",
           "title": "S9 Master MMGC",
-          "edts": [
+          "children": [
             {
               "id": "s9-master-mmgc-sr1",
               "title": "SR1",
@@ -2141,15 +2141,15 @@
     {
       "id": "gma",
       "title": "GMA",
-      "edts": [
+      "children": [
         {
           "id": "s5-gma",
           "title": "S5 GMA",
-          "edts": [
+          "children": [
             {
               "id": "s5-gma-a",
               "title": "S5 GMA A",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gma-a1",
                   "title": "S5 GMA A1",
@@ -2165,7 +2165,7 @@
             {
               "id": "s5-gma-b",
               "title": "S5 GMA B",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gma-b1",
                   "title": "S5 GMA B1",
@@ -2181,7 +2181,7 @@
             {
               "id": "s5-gma-c",
               "title": "S5 GMA C",
-              "edts": [
+              "children": [
                 {
                   "id": "s5-gma-c1",
                   "title": "S5 GMA C1",
@@ -2204,11 +2204,11 @@
         {
           "id": "s6-gma",
           "title": "S6 GMA",
-          "edts": [
+          "children": [
             {
               "id": "s6-gma-a",
               "title": "S6 GMA A",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gma-a1",
                   "title": "S6 GMA A1",
@@ -2224,7 +2224,7 @@
             {
               "id": "s6-gma-b",
               "title": "S6 GMA B",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gma-b1",
                   "title": "S6 GMA B1",
@@ -2240,7 +2240,7 @@
             {
               "id": "s6-gma-c",
               "title": "S6 GMA C",
-              "edts": [
+              "children": [
                 {
                   "id": "s6-gma-c1",
                   "title": "S6 GMA C1",
@@ -2268,11 +2268,11 @@
         {
           "id": "s7-gma",
           "title": "S7 GMA",
-          "edts": [
+          "children": [
             {
               "id": "s7-gma-a",
               "title": "S7 GMA A",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gma-a1",
                   "title": "S7 GMA A1",
@@ -2298,7 +2298,7 @@
             {
               "id": "s7-gma-b",
               "title": "S7 GMA B",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gma-b1",
                   "title": "S7 GMA B1",
@@ -2319,7 +2319,7 @@
             {
               "id": "s7-gma-c",
               "title": "S7 GMA C",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gma-c1",
                   "title": "S7 GMA C1",
@@ -2340,7 +2340,7 @@
             {
               "id": "s7-gma-td1",
               "title": "S7 GMA TD1",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gma-tp1-1",
                   "title": "S7 GMA TP1.1",
@@ -2356,7 +2356,7 @@
             {
               "id": "s7-gma-td2",
               "title": "S7 GMA TD2",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-gma-tp2-1",
                   "title": "S7 GMA TP2.1",
@@ -2374,11 +2374,11 @@
         {
           "id": "s8-gma",
           "title": "S8 GMA",
-          "edts": [
+          "children": [
             {
               "id": "s8-gma-a",
               "title": "S8 GMA A",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gma-a1",
                   "title": "S8 GMA A1",
@@ -2399,7 +2399,7 @@
             {
               "id": "s8-gma-b",
               "title": "S8 GMA B",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gma-b1",
                   "title": "S8 GMA B1",
@@ -2420,7 +2420,7 @@
             {
               "id": "s8-gma-c",
               "title": "S8 GMA C",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gma-c1",
                   "title": "S8 GMA C1",
@@ -2441,7 +2441,7 @@
             {
               "id": "s8-gma-td1",
               "title": "S8 GMA TD1",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gma-tp1-1",
                   "title": "S8 GMA TP1.1",
@@ -2457,7 +2457,7 @@
             {
               "id": "s8-gma-td2",
               "title": "S8 GMA TD2",
-              "edts": [
+              "children": [
                 {
                   "id": "s8-gma-tp2-1",
                   "title": "S8 GMA TP2.1",
@@ -2480,7 +2480,7 @@
         {
           "id": "s9-gma",
           "title": "S9 GMA",
-          "edts": [
+          "children": [
             {
               "id": "s9-gma-convers-english",
               "title": "S9 GMA Convers English",
@@ -2494,7 +2494,7 @@
             {
               "id": "s9-gma-pacours-de-management",
               "title": "S9 GMA Parcours de Management",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gma-parcours-de-management-a",
                   "title": "S9 GMA A",
@@ -2535,7 +2535,7 @@
             {
               "id": "s9-gma-pi",
               "title": "S9 GMA PI",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gma-pi-1",
                   "title": "S9 GMA PI 1",
@@ -2641,7 +2641,7 @@
             {
               "id": "s9-gma-td",
               "title": "S9 GMA TD",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gma-td-a1",
                   "title": "S9 GMA TD A1",
@@ -2672,7 +2672,7 @@
             {
               "id": "s9-gma-tp",
               "title": "S9 GMA TP",
-              "edts": [
+              "children": [
                 {
                   "id": "s9-gma-tp1",
                   "title": "S9 GMA TP1",
@@ -2742,11 +2742,11 @@
     {
       "id": "stpi-1",
       "title": "STPI 1er Année",
-      "edts": [
+      "children": [
         {
           "id": "s1-stpi-harmonisation",
           "title": "Harmonisation",
-          "edts": [
+          "children": [
             {
               "id": "s1-stpi-harmonisation-a",
               "title": "Groupe A",
@@ -2782,11 +2782,11 @@
         {
           "id": "s1-stpi",
           "title": "Semestre 1",
-          "edts": [
+          "children": [
             {
               "id": "s1-internationale",
               "title": "Filière Internationale",
-              "edts": [
+              "children": [
                 {
                   "id": "s1-internationale-i",
                   "title": "Groupe I",
@@ -2802,7 +2802,7 @@
             {
               "id": "s1-classique",
               "title": "Filière Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "s1-classique-a",
                   "title": "Groupe A",
@@ -2858,7 +2858,7 @@
             {
               "id": "s1-bicu",
               "title": "Filière Sciences Politiques",
-              "edts": [
+              "children": [
                 {
                   "id": "s1-bicu-emir",
                   "title": "EMIR",
@@ -2876,11 +2876,11 @@
         {
           "id": "s2-stpi",
           "title": "Semestre 2",
-          "edts": [
+          "children": [
             {
               "id": "s2-internationale",
               "title": "Filière Internationale",
-              "edts": [
+              "children": [
                 {
                   "id": "s2-internationale-i",
                   "title": "Groupe I",
@@ -2896,7 +2896,7 @@
             {
               "id": "s2-classique",
               "title": "Filière Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "s2-classique-a",
                   "title": "Groupe A",
@@ -2952,7 +2952,7 @@
             {
               "id": "s2-bicu",
               "title": "Filière Sciences Politiques",
-              "edts": [
+              "children": [
                 {
                   "id": "s2-bicu-emir",
                   "title": "EMIR",
@@ -2972,15 +2972,15 @@
     {
       "id": "stpi-2",
       "title": "STPI 2ème Année",
-      "edts": [
+      "children": [
         {
           "id": "s3-stpi",
           "title": "Semestre 3",
-          "edts": [
+          "children": [
             {
               "id": "s3-internationale",
               "title": "Filière Internationale",
-              "edts": [
+              "children": [
                 {
                   "id": "s3-internationale-i",
                   "title": "Groupe I",
@@ -2996,7 +2996,7 @@
             {
               "id": "s3-classique",
               "title": "Filière Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "s3-classique-a",
                   "title": "Groupe A",
@@ -3052,7 +3052,7 @@
             {
               "id": "s3-bicu",
               "title": "Filière Sciences Politiques",
-              "edts": [
+              "children": [
                 {
                   "id": "s3-bicu-emir",
                   "title": "EMIR",
@@ -3070,11 +3070,11 @@
         {
           "id": "s4-stpi",
           "title": "Semestre 4",
-          "edts": [
+          "children": [
             {
               "id": "s4-internationale",
               "title": "Filière Internationale",
-              "edts": [
+              "children": [
                 {
                   "id": "s4-internationale-i",
                   "title": "Groupe I",
@@ -3090,7 +3090,7 @@
             {
               "id": "s4-classique",
               "title": "Filière Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "s4-classique-a",
                   "title": "Groupe A",
@@ -3146,7 +3146,7 @@
             {
               "id": "s4-bicu",
               "title": "Filière Sciences Politiques",
-              "edts": [
+              "children": [
                 {
                   "id": "s4-bicu-emir",
                   "title": "EMIR",

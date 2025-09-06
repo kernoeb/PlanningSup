@@ -1,0 +1,8 @@
+{
+  "name": "config",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

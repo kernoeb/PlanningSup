@@ -1,0 +1,11 @@
+{
+  "extends": "config/typescript/base.json",
+  "include": [
+    "src",
+    "test",
+    "scripts",
+    "eslint.config.js",
+    "postcss.config.mjs"
+  ],
+  "exclude": ["node_modules", "dist", "coverage"]
+}

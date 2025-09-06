@@ -1,0 +1,20 @@
+{
+  "name": "libs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "test": "bun run test:unit && bun run coverage",
+    "test:unit": "bun test",
+    "coverage": "bun test --coverage"
+  },
+  "dependencies": {
+    "elysia": "1.3.21"
+  },
+  "devDependencies": {
+    "@elysiajs/eden": "^1",
+    "config": "workspace:*",
+    "typescript": "^5"
+  }
+}
