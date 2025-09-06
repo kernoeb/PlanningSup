@@ -9,9 +9,11 @@ export const auth = betterAuth({
     provider: 'pg',
     schema,
   }),
-  session: { // TODO
-    expiresIn: 60 * 60 * 24 * 7, // 7 days
-    updateAge: 60 * 60 * 24, // 1 day (every 1 day the session expiration is updated)
+  session: {
+    // expires in 30 days
+    maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
+    // session is updated every 7 days
+    updateAge: 7 * 24 * 60 * 60, // 7 days in seconds
   },
   telemetry: {
     enabled: false,

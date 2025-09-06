@@ -73,7 +73,7 @@ export function usePlanningCalendar(options: {
     })()
     currentDate.value = currentDate.value.add({ days: nbToAdd })
     calendarControls.setDate(currentDate.value)
-  })
+  }, { dedupe: true })
 
   onKeyStroke('ArrowLeft', (e) => {
     e.preventDefault()
@@ -85,7 +85,7 @@ export function usePlanningCalendar(options: {
     })()
     currentDate.value = currentDate.value.subtract({ days: nbToSubtract })
     calendarControls.setDate(currentDate.value)
-  })
+  }, { dedupe: true })
 
   function getMappedEvents() {
     return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))

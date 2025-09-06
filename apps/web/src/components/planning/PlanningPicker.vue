@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { client } from '@libs'
-import PlanningTreeNode from '@web/components/planning/PlanningTreeNode.vue'
+import { useVirtualList } from '@vueuse/core'
 import { useCurrentPlanning } from '@web/composables/useCurrentPlanning'
 import { computed, onMounted, ref, watch } from 'vue'
 
@@ -56,12 +56,6 @@ const selectedItems = computed(() => {
   })
 })
 
-const selectedTitlesLabel = computed(() => {
-  const items = selectedItems.value
-  if (items.length === 0) return 'Aucun planning sélectionné'
-  if (items.length === 1) return items[0]?.title ?? ''
-  return `${items.length} plannings: ${items.map(x => x.title).join(', ')}`
-})
 const selectionCount = computed(() => safePlanningIds.value.length)
 
 // Filtering and auto-expansion
@@ -109,25 +103,6 @@ watch(
   },
 )
 
-// Visible leaf ids (used for select/deselect visible)
-function collectVisibleLeafIds(nodes: PlanningNode[], expandedSet: Set<string>): string[] {
-  const out: string[] = []
-  const visit = (n: PlanningNode) => {
-    if (n.children?.length) {
-      if (expandedSet.has(n.fullId)) {
-        n.children.forEach(visit)
-      }
-    } else {
-      out.push(n.fullId)
-    }
-  }
-  nodes.forEach(visit)
-  return out
-}
-const visibleLeafIds = computed(() => collectVisibleLeafIds(filteredTree.value, expanded.value))
-const MAX_VISIBLE_LEAVES = 200
-const tooManyVisible = computed(() => visibleLeafIds.value.length > MAX_VISIBLE_LEAVES)
-
 // Controls
 function clearSelection() {
   const ids = [...safePlanningIds.value]
@@ -136,15 +111,19 @@ function clearSelection() {
   }
 }
 
-function deselectVisible() {
-  if (tooManyVisible.value) {
-    // Prevent expensive operation when too many items are visible
-    return
+// fullId -> leafIds[] index for fast counts and bulk selection
+const leafIndex = ref<Record<string, string[]>>({})
+function buildLeafIndex(nodes: PlanningNode[]): Record<string, string[]> {
+  const map: Record<string, string[]> = {}
+  const visit = (n: PlanningNode): string[] => {
+    if (!n.children?.length) return [n.fullId]
+    const acc: string[] = []
+    for (const c of n.children) acc.push(...visit(c))
+    map[n.fullId] = acc
+    return acc
   }
-  const ids = visibleLeafIds.value
-  for (const id of ids) {
-    if (isSelected(id)) togglePlanning(id)
-  }
+  for (const r of nodes) visit(r)
+  return map
 }
 
 // Open/Close + data load
@@ -158,6 +137,7 @@ async function loadTree() {
       throw new TypeError('Unexpected API response while loading plannings')
     }
     tree.value = data as PlanningNode[]
+    leafIndex.value = buildLeafIndex(tree.value)
   } catch (e) {
     error.value = e instanceof Error ? e.message : String(e)
   } finally {
@@ -165,7 +145,7 @@ async function loadTree() {
   }
 }
 
-function open() {
+async function open() {
   void loadTree()
   dialogRef.value?.showModal()
 }
@@ -182,7 +162,87 @@ function setExpanded(id: string, open: boolean) {
   expanded.value = next
 }
 
+function toggleRowExpand(id: string) {
+  setExpanded(id, !expanded.value.has(id))
+}
+
+function onRowClick(row: { fullId: string, isLeaf: boolean }) {
+  if (row.isLeaf) {
+    togglePlanning(row.fullId)
+  } else {
+    toggleRowExpand(row.fullId)
+  }
+}
 defineExpose({ open, close })
+
+/**
+ * Virtualized tree rows
+ * - Flatten filtered+expanded tree to visible rows
+ * - Build a leaf index for group counts and bulk toggle
+ */
+interface Row {
+  fullId: string
+  title: string
+  depth: number
+  isLeaf: boolean
+  node: PlanningNode
+}
+
+function flattenVisible(nodes: PlanningNode[], expandedSet: Set<string>, depth = 0, out: Row[] = []): Row[] {
+  for (const n of nodes) {
+    const isLeaf = !n.children || n.children.length === 0
+    out.push({ fullId: n.fullId, title: n.title, depth, isLeaf, node: n })
+    if (!isLeaf && expandedSet.has(n.fullId)) {
+      flattenVisible(n.children!, expandedSet, depth + 1, out)
+    }
+  }
+  return out
+}
+const visibleRows = computed<Row[]>(() => flattenVisible(filteredTree.value, expanded.value))
+
+// moved: leafIndex/buildLeafIndex defined above
+
+const selectedSet = computed(() => new Set(safePlanningIds.value))
+function totalLeavesFor(fullId: string): number {
+  const ids = leafIndex.value[fullId]
+  return ids ? ids.length : 1
+}
+function selectedCountFor(fullId: string): number {
+  const ids = leafIndex.value[fullId]
+  if (!ids) return selectedSet.value.has(fullId) ? 1 : 0
+  let count = 0
+  for (const id of ids) {
+    if (selectedSet.value.has(id)) count++
+  }
+  return count
+}
+
+const MAX_SUBTREE_LEAVES = 200
+const MAX_BULK_SELECT = 10
+
+function onGroupToggle(fullId: string) {
+  const ids = leafIndex.value[fullId]
+  const leaves = ids ?? [fullId]
+  if (leaves.length > MAX_SUBTREE_LEAVES) return
+  const selected = leaves.filter(id => isSelected(id))
+  const allSelected = selected.length === leaves.length && leaves.length > 0
+
+  if (allSelected || selected.length > 0) {
+    for (const id of leaves) {
+      if (isSelected(id)) togglePlanning(id)
+    }
+  } else {
+    const unselected = leaves.filter(id => !isSelected(id))
+    if (unselected.length > MAX_BULK_SELECT) return
+    for (const id of unselected) togglePlanning(id)
+  }
+}
+
+const ROW_HEIGHT = 36
+const { list: vlist, containerProps, wrapperProps } = useVirtualList(
+  visibleRows,
+  { itemHeight: ROW_HEIGHT },
+)
 
 onMounted(() => {
   if (props.openOnMount || selectionCount.value === 0) open()
@@ -195,14 +255,13 @@ onMounted(() => {
 
     <dialog ref="dialogRef" class="modal">
       <div class="modal-box max-w-5xl">
-        <form method="dialog">
-          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
-            ✕
-          </button>
-        </form>
-
         <!-- Header -->
         <div class="mb-4 space-y-2 sticky top-0 bg-base-100 z-10 pt-1">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-20" tabindex="-1">
+              ✕
+            </button>
+          </form>
           <h3 class="text-lg font-bold">
             Sélectionner des plannings
           </h3>
@@ -221,75 +280,92 @@ onMounted(() => {
                 Effacer
               </button>
             </div>
-            <div class="flex flex-wrap items-center gap-2">
-              <button
-                class="btn btn-sm btn-outline"
-                :disabled="tooManyVisible"
-                :title="tooManyVisible ? 'Affinez votre recherche pour limiter le nombre d’éléments visibles' : undefined"
-                type="button"
-                @click="deselectVisible"
-              >
-                Désélectionner visibles
-              </button>
-              <div class="divider divider-horizontal" />
-              <button class="btn btn-sm btn-error" type="button" @click="clearSelection">
+            <div class="flex items-center gap-2 flex-wrap min-h-[40px]">
+              <div class="flex flex-wrap gap-2">
+                <div
+                  v-for="item in selectedItems"
+                  :key="item.id"
+                  class="tooltip"
+                  :data-tip="item.title"
+                >
+                  <div
+                    class="badge badge-lg gap-1 bg-base-200"
+                    title="Cliquer pour retirer"
+                  >
+                    <span class="truncate max-w-[240px]">{{ item.title }}</span>
+                    <button
+                      :aria-label="`Retirer ${item.title}`"
+                      class="btn btn-xs btn-circle btn-ghost"
+                      @click="togglePlanning(item.id)"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-sm ml-auto" :disabled="selectionCount === 0" type="button" @click="clearSelection">
                 Tout désélectionner
               </button>
-            </div>
-
-            <!-- Current selection as chips -->
-            <div class="text-sm opacity-70">
-              Sélection actuelle :
-              <span class="font-mono">{{ selectedTitlesLabel }}</span>
-            </div>
-            <div v-if="selectedItems.length" class="flex flex-wrap gap-2">
-              <div
-                v-for="item in selectedItems"
-                :key="item.id"
-                class="badge badge-lg gap-1"
-                title="Cliquer pour retirer"
-              >
-                <span class="truncate max-w-[240px]">{{ item.title }}</span>
-                <button
-                  :aria-label="`Retirer ${item.title}`"
-                  class="btn btn-xs btn-circle btn-ghost"
-                  @click="togglePlanning(item.id)"
-                >
-                  ✕
-                </button>
-              </div>
             </div>
           </div>
         </div>
 
         <!-- Body -->
-        <div v-if="loading" class="flex items-center gap-3">
-          <span class="loading loading-spinner loading-md" />
-          <span>Chargement des plannings…</span>
-        </div>
+        <div class="h-[60vh] bg-base-200 rounded" v-bind="containerProps">
+          <div v-bind="wrapperProps">
+            <div
+              v-for="row in vlist"
+              :key="row.data.fullId"
+              class="flex items-center justify-between px-2 hover:bg-primary/20 rounded transition-all cursor-pointer"
+              :class="{
+                'bg-primary/20': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0) || (row.data.isLeaf && isSelected(row.data.fullId)),
+              }"
+              :style="{
+                height: `${ROW_HEIGHT}px`,
+                paddingLeft: `${(row.data.depth * 16) + 8}px`,
+              }"
+              @click="onRowClick(row.data)"
+            >
+              <template v-if="!row.data.isLeaf">
+                <div class="flex items-center gap-2 min-w-0 w-full">
+                  <span class="inline-flex items-center justify-center w-3 select-none">
+                    {{ expanded.has(row.data.fullId) ? '▾' : '▸' }}
+                  </span>
+                  <span class="truncate text-left">
+                    {{ row.data.title }}
+                    <span class="opacity-50 text-xs ml-2">
+                      ({{ selectedCountFor(row.data.fullId) }}/{{ totalLeavesFor(row.data.fullId) }})
+                    </span>
+                  </span>
+                  <input
+                    :checked="totalLeavesFor(row.data.fullId) > 0 && selectedCountFor(row.data.fullId) === totalLeavesFor(row.data.fullId)"
+                    class="checkbox checkbox-sm checkbox-primary ml-auto"
+                    :disabled="
+                      totalLeavesFor(row.data.fullId) > 200
+                        || (totalLeavesFor(row.data.fullId) - selectedCountFor(row.data.fullId)) > 10
+                    "
+                    title="Tout sélectionner/désélectionner dans ce groupe"
+                    type="checkbox"
+                    @click.stop="onGroupToggle(row.data.fullId)"
+                  >
+                </div>
+              </template>
 
-        <div v-else-if="error" class="alert alert-error">
-          <span>{{ error }}</span>
-          <button class="btn btn-sm ml-auto" type="button" @click="loadTree">
-            Réessayer
-          </button>
-        </div>
-
-        <div v-else class="h-[60vh] overflow-auto">
-          <div v-if="tooManyVisible" class="alert alert-warning">
-            Trop de résultats visibles. Affinez votre recherche pour améliorer les performances.
+              <template v-else>
+                <div class="flex items-center gap-2 min-w-0 w-full">
+                  <span class="inline-flex items-center justify-center w-3 select-none" />
+                  <span class="truncate text-left">{{ row.data.title }}</span>
+                  <input
+                    :checked="isSelected(row.data.fullId)"
+                    class="checkbox checkbox-sm checkbox-primary ml-auto"
+                    type="checkbox"
+                    @change="togglePlanning(row.data.fullId)"
+                    @click.stop
+                  >
+                </div>
+              </template>
+            </div>
           </div>
-          <ul class="menu bg-base-200 rounded-box w-full">
-            <PlanningTreeNode
-              v-for="root in filteredTree"
-              :key="root.fullId"
-              :expanded="expanded"
-              :is-selected="isSelected"
-              :node="root"
-              :set-expanded="setExpanded"
-              :toggle="togglePlanning"
-            />
-          </ul>
         </div>
 
         <!-- Footer -->
@@ -298,11 +374,6 @@ onMounted(() => {
             <span class="text-sm opacity-70">
               {{ selectionCount }} sélectionné(s)
             </span>
-            <form method="dialog">
-              <button class="btn">
-                Fermer
-              </button>
-            </form>
           </div>
         </div>
       </div>

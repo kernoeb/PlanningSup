@@ -67,3 +67,7 @@
   padding-top: var(--sx-spacing-padding3);
   padding-bottom: var(--sx-spacing-padding3);
 }
+
+.sx__week-wrapper {
+  padding-right: 12px;
+}

@@ -1,15 +1,25 @@
 <script lang="ts" setup>
+import { onKeyStroke } from '@vueuse/core'
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 
 const { title } = usePlanningData()
 const { session, signOut, isAnonymous } = useAuth()
 
 const isSettingsOpen = ref(false)
+
+const planningPicker = useTemplateRef('planningPicker')
+
+onKeyStroke('u', (e) => {
+  // Ignore if the target is a text field
+  const target = e.target as HTMLElement
+  if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return
+  planningPicker.value?.open()
+}, { dedupe: true })
 </script>
 
 <template>
@@ -28,10 +38,10 @@ const isSettingsOpen = ref(false)
       </a>
       <div class="sm:flex items-center gap-2">
         <span class="badge truncate max-w-[22rem] h-6">{{ title }}</span>
-        <PlanningPicker>
+        <PlanningPicker ref="planningPicker">
           <template #trigger="{ open }">
             <button class="btn btn-secondary h-6 min-h-6" type="button" @click="open">
-              Changer de planning
+              Changer de planning <kbd class="kbd kbd-xs">u</kbd>
             </button>
           </template>
         </PlanningPicker>
