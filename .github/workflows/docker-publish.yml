@@ -11,9 +11,9 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: planning
-  # Regex whitelist of PR branches allowed to push images (edit as needed)
+  # JSON array of PR branch names allowed to push images
   # Example allows only the branch "refactor/elysia-postgresql"
-  PUBLISH_PR_WHITELIST: '^(refactor/elysia-postgresql)$'
+  PUBLISH_PR_WHITELIST: '["refactor/elysia-postgresql"]'
 
 jobs:
   build:
@@ -30,9 +30,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       # Login against GHCR
-      # Allow on PR only when PR is from this repo AND the branch matches the whitelist
+      # Allow on PR only when PR is from this repo AND the branch is in the whitelist
       - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && github.head_ref matches env.PUBLISH_PR_WHITELIST)
+        if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref))
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -79,7 +79,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && github.head_ref matches env.PUBLISH_PR_WHITELIST) }}
+          push: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)) }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
