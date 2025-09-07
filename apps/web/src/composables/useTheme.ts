@@ -1,6 +1,6 @@
 import { createSharedComposable, useColorMode } from '@vueuse/core'
 import { useUserPrefsSync } from '@web/composables/useUserPrefsSync'
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 
 export const AVAILABLE_THEMES = ['light', 'dracula', 'dark', 'auto'] as const
 export type UiTheme = (typeof AVAILABLE_THEMES)[number]
@@ -32,12 +32,8 @@ function useTheme() {
     },
   })
 
-  watch(theme, (newTheme) => {
-    console.log(`[Theme] Switched to theme: ${newTheme}`)
-  }, { immediate: true, flush: 'sync' })
-
   // Darkness flag for consumers like Schedule X.
-  const isDark = computed<boolean>(() => theme.value === 'dark' || theme.value === 'dracula')
+  const isDark = computed<boolean>(() => theme.state.value === 'dark' || theme.state.value === 'dracula')
 
   // Programmatic switching to an explicit theme.
   function setTheme(newTheme: typeof theme.value) {
