@@ -85,22 +85,22 @@ onKeyStroke(
           tabindex="0"
         >
           <li>
-            <button type="button" @click="setTheme('auto')">
+            <button :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
               {{ i18nThemes.auto }}
             </button>
           </li>
           <li>
-            <button type="button" @click="setTheme('dark')">
+            <button :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
               {{ i18nThemes.dark }}
             </button>
           </li>
           <li>
-            <button type="button" @click="setTheme('light')">
+            <button :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
               {{ i18nThemes.light }}
             </button>
           </li>
           <li>
-            <button type="button" @click="setTheme('dracula')">
+            <button :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
               {{ i18nThemes.dracula }}
             </button>
           </li>
