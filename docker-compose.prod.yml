@@ -3,6 +3,7 @@ services:
     image: postgres:17
     container_name: planningsup_db
     env_file: db.env
+    restart: always
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
@@ -17,6 +18,7 @@ services:
     image: ghcr.io/kernoeb/planningsup/planning:refactor-elysia-postgresql
     container_name: planningsup_webapp
     env_file: webapp.env
+    restart: always
     depends_on:
       postgres:
         condition: service_healthy
