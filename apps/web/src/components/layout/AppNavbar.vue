@@ -7,13 +7,8 @@ import { useSharedTheme } from '@web/composables/useTheme'
 import { computed, useTemplateRef } from 'vue'
 
 const { title } = usePlanningData()
-const { theme, i18nThemes, setTheme, setAuto, mode } = useSharedTheme()
-
-const currentLabel = computed<string>(() => {
-  return mode.store.value === 'auto'
-    ? i18nThemes.system
-    : i18nThemes[theme.value]
-})
+const { theme, i18nThemes, setTheme } = useSharedTheme()
+const currentLabel = computed(() => i18nThemes[theme.value])
 
 const planningPicker = useTemplateRef('planningPicker')
 
@@ -52,7 +47,6 @@ onKeyStroke(
         </div>
       </a>
       <div class="flex items-center gap-2">
-        <span v-if="title" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
         <PlanningPicker ref="planningPicker">
           <template #trigger="{ open }">
             <button class="btn btn-secondary h-6 min-h-6 hidden sm:inline-flex" type="button" @click="open">
@@ -63,6 +57,9 @@ onKeyStroke(
             </button>
           </template>
         </PlanningPicker>
+        <Transition name="fade">
+          <span v-if="title" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
+        </Transition>
       </div>
     </div>
 
@@ -88,13 +85,13 @@ onKeyStroke(
           tabindex="0"
         >
           <li>
-            <button type="button" @click="setAuto()">
-              {{ i18nThemes.system }} (auto)
+            <button type="button" @click="setTheme('auto')">
+              {{ i18nThemes.auto }}
             </button>
           </li>
           <li>
-            <button type="button" @click="setTheme('black')">
-              {{ i18nThemes.black }}
+            <button type="button" @click="setTheme('dark')">
+              {{ i18nThemes.dark }}
             </button>
           </li>
           <li>
@@ -114,7 +111,7 @@ onKeyStroke(
     <UserMenu />
 
     <div class="fab sm:hidden">
-      <button aria-label="Changer de planning" class="btn btn-lg btn-circle btn-primary" type="button" @click="planningPicker?.open()">
+      <button aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPicker?.open()">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" />
         </svg>

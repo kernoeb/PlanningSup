@@ -25,12 +25,8 @@ const canOpenMenu = computed(() => !isPending.value && !!user.value)
 const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
 // Theme (for small screens, theme controls live here)
-const { theme, i18nThemes, setTheme, setAuto, mode } = useSharedTheme()
-const currentThemeLabel = computed<string>(() => {
-  return mode.store.value === 'auto'
-    ? i18nThemes.system
-    : i18nThemes[theme.value]
-})
+const { theme, i18nThemes, setTheme } = useSharedTheme()
+const currentThemeLabel = computed(() => i18nThemes[theme.value])
 </script>
 
 <template>
@@ -72,13 +68,13 @@ const currentThemeLabel = computed<string>(() => {
           <span>Thème: {{ currentThemeLabel }}</span>
         </li>
         <li class="sm:hidden">
-          <button type="button" @click="setAuto()">
-            {{ i18nThemes.system }} (auto)
+          <button type="button" @click="setTheme('auto')">
+            {{ i18nThemes.auto }}
           </button>
         </li>
         <li class="sm:hidden">
-          <button :class="{ active: theme === 'black' }" type="button" @click="setTheme('black')">
-            {{ i18nThemes.black }}
+          <button :class="{ active: theme === 'dark' }" type="button" @click="setTheme('dark')">
+            {{ i18nThemes.dark }}
           </button>
         </li>
         <li class="sm:hidden">

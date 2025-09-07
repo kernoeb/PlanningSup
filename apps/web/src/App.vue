@@ -12,7 +12,7 @@ import './styles/schedule-x.css'
   <div>
     <AppNavbar />
     <PlanningCalendar
-      style="height: calc(100vh - 64px);"
+      style="height: calc(100dvh - 64px);"
     />
     <PWABadge />
   </div>

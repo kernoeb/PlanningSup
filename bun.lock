@@ -63,7 +63,7 @@
         "sass-embedded": "^1.92.1",
         "tailwindcss": "^4.1.13",
         "theme-change": "^2.5.0",
-        "typescript": "~5.9.2",
+        "typescript": "^5.9.2",
         "vite": "npm:rolldown-vite@latest",
         "vite-plugin-pwa": "^1.0.3",
         "vue-tsc": "^3.0.6",

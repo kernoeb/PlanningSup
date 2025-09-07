@@ -55,7 +55,7 @@ export interface BuildCalendarsOptions {
  * - Returns null if invalid
  */
 export function normalizeHex(hex: string): string | null {
-  if (!hex) return null
+  if (!hex || typeof hex !== 'string') return null
   let h = hex.trim().toLowerCase()
   if (!h.startsWith('#')) h = `#${h}`
   if (h.length === 4 && /^#[0-9a-f]{3}$/i.test(h)) {

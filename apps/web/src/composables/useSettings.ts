@@ -150,12 +150,6 @@ export function useSettings() {
     fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
     setLocal: v => (highlightTeacher.value = v),
     debounce: 600,
-    preferServerOnLoad: true,
-    localStorageKey: 'settings.highlightTeacher',
-    isLocalDefault: () => {
-      if (typeof window === 'undefined') return false
-      return window.localStorage.getItem('settings.highlightTeacher') === null
-    },
   })
 
   // showWeekends
@@ -166,12 +160,6 @@ export function useSettings() {
     fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
     setLocal: v => (showWeekends.value = v),
     debounce: 600,
-    preferServerOnLoad: true,
-    localStorageKey: 'settings.showWeekends',
-    isLocalDefault: () => {
-      if (typeof window === 'undefined') return false
-      return window.localStorage.getItem('settings.showWeekends') === null
-    },
   })
 
   // blocklist
@@ -183,12 +171,6 @@ export function useSettings() {
       Array.isArray(raw) && raw.every(x => typeof x === 'string') ? (raw as string[]) : null,
     setLocal: v => (blocklist.value = v),
     debounce: 600,
-    preferServerOnLoad: true,
-    localStorageKey: 'settings.blocklist',
-    isLocalDefault: () => {
-      if (typeof window === 'undefined') return false
-      return window.localStorage.getItem('settings.blocklist') === null
-    },
   })
 
   // colors (stored in DB as JSON string)
@@ -208,12 +190,6 @@ export function useSettings() {
     },
     setLocal: v => (colors.value = v),
     debounce: 600,
-    preferServerOnLoad: true,
-    localStorageKey: 'settings.colors',
-    isLocalDefault: () => {
-      if (typeof window === 'undefined') return false
-      return window.localStorage.getItem('settings.colors') === null
-    },
   })
 
   return {

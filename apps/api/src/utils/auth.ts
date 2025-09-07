@@ -16,7 +16,7 @@ const options = {
       theme: {
         type: 'string',
         validator: {
-          input: z.enum(['black', 'light', 'dracula', 'system']).optional(),
+          input: z.enum(['dark', 'light', 'dracula', 'auto']).optional(),
         },
       },
       highlightTeacher: {

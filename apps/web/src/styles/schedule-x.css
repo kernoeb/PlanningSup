@@ -44,22 +44,22 @@
 }
 
 /* Dark theme */
-html[data-theme="black"] {
+html[data-theme="dark"] {
   .is-dark,
   .sx__theme--dark {
-    /* The absolute base is pure black. No compromises. */
+    /* The absolute base is pure dark. No compromises. */
     --sx-color-background: #000;
-    /* Content on black should be pure white for maximum contrast. */
+    /* Content on dark should be pure white for maximum contrast. */
     --sx-color-on-background: #fff;
 
     /* Primary, Secondary, and Tertiary are now a very dark charcoal.
-        On a black background, they act as subtle, interactive surfaces. */
+        On a dark background, they act as subtle, interactive surfaces. */
     --sx-color-primary: #444;
     --sx-color-on-primary: #fff;
     --sx-color-primary-container: #1a1a1a;
     --sx-color-on-primary-container: #fff;
 
-    --sx-color-secondary: #222; /* As requested, secondary is "black" too */
+    --sx-color-secondary: #222; /* As requested, secondary is "dark" too */
     --sx-color-on-secondary: #fff;
     --sx-color-secondary-container: #1a1a1a;
     --sx-color-on-secondary-container: #fff;
@@ -69,8 +69,8 @@ html[data-theme="black"] {
     --sx-color-tertiary-container: #1a1a1a;
     --sx-color-on-tertiary-container: #fff;
 
-    /* Surfaces provide subtle layers over the pure black background */
-    --sx-color-surface: #111; /* A barely-there off-black */
+    /* Surfaces provide subtle layers over the pure dark background */
+    --sx-color-surface: #111; /* A barely-there off-dark */
     --sx-color-surface-dim: #111;
     --sx-color-surface-bright: #222;
     --sx-color-on-surface: #fff;
@@ -86,7 +86,7 @@ html[data-theme="black"] {
     --sx-color-neutral: var(--sx-color-outline);
     --sx-color-neutral-variant: var(--sx-color-outline-variant);
 
-    /* Internally defined colors, adapted for the ultra-black theme */
+    /* Internally defined colors, adapted for the ultra-dark theme */
     --sx-internal-color-gray-ripple-background: #333; /* Ripple is a visible gray */
     --sx-internal-color-light-gray: #1a1a1a; /* "light-gray" is now "darkest-gray" */
     --sx-internal-color-text: #fff; /* Main text is pure white */
