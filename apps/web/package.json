@@ -9,7 +9,7 @@
     "preview": "bunx --bun vite preview",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "typecheck": "vue-tsc --build --force"
+    "typecheck": "bunx --bun vue-tsc --build --force"
   },
   "dependencies": {
     "@schedule-x/calendar": "^3.1.0",
@@ -33,7 +33,7 @@
     "@vue/tsconfig": "^0.8.1",
     "@vueuse/core": "^13.9.0",
     "config": "workspace:*",
-    "daisyui": "^5.1.7",
+    "daisyui": "^5.1.8",
     "elysia": "^1",
     "rollup-plugin-bundle-stats": "^4.21.3",
     "sass-embedded": "^1.92.1",

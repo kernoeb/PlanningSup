@@ -102,8 +102,8 @@ const options = {
     enabled: false,
   },
   trustedOrigins: import.meta.env.NODE_ENV === 'production'
-    ? []
-    : ['http://localhost:4444'],
+    ? (Bun.env.TRUSTED_ORIGINS as string | undefined)?.split(',').map(s => s.trim()) ?? []
+    : ['chrome-extension://fhepfbdpjmlkkjkfbmhhjakenibnjfgn'],
   socialProviders: {
     discord: {
       clientId: Bun.env.DISCORD_CLIENT_ID as string,

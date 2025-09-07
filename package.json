@@ -28,7 +28,6 @@
     "test:e2e": "bun scripts/run test:e2e",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",
-    "docker": "bun scripts/run docker",
     "typecheck": "bun scripts/run typecheck"
   },
   "devDependencies": {

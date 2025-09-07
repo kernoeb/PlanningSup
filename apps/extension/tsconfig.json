@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "incremental": false,
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@web/*": ["../web/src/*"],
+      "@web/public/*": ["../web/public/*"],
+      "@web/expose": ["../web/expose.ts"],
+      "@web/libs": ["../web/libs/index.ts"],
+      "@api": ["../api/src/index.ts"],
+      "@api/*": ["../api/src/*"],
+      "@libs": ["../../packages/libs/src/index.ts"],
+      "@libs/*": ["../../packages/libs/src/*"],
+      "@plannings": ["../../resources/plannings"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "@types/bun"
+    ],
+    "strict": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["dist", "node_modules"]
+}

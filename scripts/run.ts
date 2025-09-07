@@ -5,6 +5,11 @@ import concurrently from 'concurrently'
 
 const [, , command] = process.argv
 
+// Add the full path of any app or package you want to exclude.
+const blacklist = [
+  'apps/extension',
+]
+
 function mapPrefix(prefix: string) {
   return (folders: string[]) =>
     folders.map(folder => `${prefix}/${folder}`)
@@ -13,7 +18,9 @@ function mapPrefix(prefix: string) {
 const folders = await Promise.all([
   readdir('apps').then(mapPrefix('apps')),
   readdir('packages').then(mapPrefix('packages')),
-]).then(x => x.reduce((x, y) => [...x, ...y], []))
+])
+  .then(x => x.reduce((x, y) => [...x, ...y], []))
+  .then(allFolders => allFolders.filter(folder => !blacklist.includes(folder)))
 
 const paths = await Promise.all(
   folders.map(async (path) => {
@@ -25,9 +32,14 @@ const paths = await Promise.all(
 
     if (packageJson.scripts && command in packageJson.scripts) return path
   }),
-).then(x => x.filter(x => x !== undefined))
+).then(x => x.filter(Boolean)) // Using Boolean is a concise way to filter out undefined/null
 
 const colors = ['blue', 'green', 'magenta', 'yellow', 'red']
+
+if (paths.length === 0) {
+  console.log(`No packages found with a "${command}" script.`)
+  process.exit(0)
+}
 
 concurrently(
   paths.map((path, index) => ({
@@ -36,6 +48,10 @@ concurrently(
     prefixColor: colors[index % colors.length],
   })),
 ).result.catch((error) => {
-  console.error('Error:', error?.message || error)
+  // Concurrently's error is often an array of exit info, not a real Error object
+  // This avoids printing a generic message for a graceful command failure (e.g. exit code 1)
+  if (error.message) {
+    console.error('Error:', error.message)
+  }
   process.exit(1)
 })

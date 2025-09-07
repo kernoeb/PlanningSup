@@ -3,6 +3,7 @@ import { anonymousClient, inferAdditionalFields } from 'better-auth/client/plugi
 import { createAuthClient } from 'better-auth/vue'
 
 export const authClient = createAuthClient({
+  baseURL: import.meta.env.VITE_BACKEND_URL || undefined,
   plugins: [
     inferAdditionalFields<typeof auth>(),
     anonymousClient(),
