@@ -7,6 +7,7 @@ WORKDIR /app
 COPY /scripts/run.ts ./scripts/run.ts
 
 # Cache packages
+COPY patches patches
 COPY package.json package.json
 COPY bun.lock bun.lock
 
@@ -16,15 +17,17 @@ COPY /packages/libs/package.json ./packages/libs/package.json
 COPY /apps/api/package.json ./apps/api/package.json
 COPY /apps/web/package.json ./apps/web/package.json
 
-RUN bun install
+RUN bun install --frozen-lockfile # or `bun ci` but at least it's explicit
 
 COPY /resources/plannings/index.ts ./resources/plannings/index.ts
 COPY /apps/api ./apps/api
 COPY /apps/web ./apps/web
 COPY /packages/config ./packages/config
 COPY /packages/libs ./packages/libs
-ENV NODE_ENV=production
 
+RUN bun run lint && bun run typecheck
+
+ENV NODE_ENV=production
 RUN bun run build
 
 ##########################################################

@@ -28,7 +28,8 @@
     "test:e2e": "bun scripts/run test:e2e",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",
-    "docker": "bun scripts/run docker"
+    "docker": "bun scripts/run docker",
+    "typecheck": "bun scripts/run typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.2",
@@ -37,6 +38,12 @@
     "eslint": "^9.35.0"
   },
   "trustedDependencies": [
-    "@tailwindcss/oxide"
-  ]
+    "@tailwindcss/oxide",
+    "core-js",
+    "esbuild",
+    "sharp"
+  ],
+  "patchedDependencies": {
+    "eslint-plugin-perfectionist@4.15.0": "patches/eslint-plugin-perfectionist@4.15.0.patch"
+  }
 }

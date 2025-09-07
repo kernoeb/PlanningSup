@@ -5,13 +5,12 @@
   "module": "src/index.ts",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "generate-better-auth": "bunx --bun @better-auth/cli generate --output ./src/db/schemas/auth.ts --yes",
-    "generate-drizzle": "bun run --bun drizzle-kit generate",
-    "docker-pg-test": "docker run --name drizzle-postgres -e POSTGRES_DB=planningsup -e POSTGRES_PASSWORD=mypassword -d -p 5432:5432 postgres:17",
-    "stop-docker-pg-test": "docker stop drizzle-postgres && docker rm drizzle-postgres",
+    "generate-better-auth": "NO_MIGRATE=true bunx --bun @better-auth/cli generate --config src/utils/auth.ts --output ./src/db/schemas/auth.ts --yes",
+    "generate-drizzle": "NO_MIGRATE=true bun run --bun drizzle-kit generate",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "build": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts"
+    "build": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.3.3",

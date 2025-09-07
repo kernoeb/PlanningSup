@@ -20,7 +20,7 @@ import buildCalendarsUtil from '@web/utils/calendars'
 import { computed, ref, shallowRef, watch } from 'vue'
 import { usePlanningData } from './usePlanningData'
 import { useSettings } from './useSettings'
-import { useTheme } from './useTheme'
+import { useSharedTheme } from './useTheme'
 
 function mapApiEventToCalendarEvent(
   event: ApiEvent,
@@ -61,7 +61,7 @@ export function usePlanningCalendar(options: {
 
   const settings = useSettings()
   const planning = usePlanningData()
-  const { isDark: uiIsDark } = useTheme()
+  const { isDark: uiIsDark } = useSharedTheme()
 
   // On view change, update our ref
   const currentView = ref<ReturnType<typeof calendarControls.getView> | null>(null)

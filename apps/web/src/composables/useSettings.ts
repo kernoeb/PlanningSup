@@ -1,5 +1,6 @@
-import { useLocalStorage } from '@vueuse/core'
+import { createSharedComposable, useLocalStorage } from '@vueuse/core'
 import { detectBrowserTimezone } from '@web/composables/useTimezone'
+import { useUserPrefsSync } from '@web/composables/useUserPrefsSync'
 import { computed } from 'vue'
 
 export type EventKind = 'lecture' | 'lab' | 'tutorial' | 'other'
@@ -31,6 +32,33 @@ function getBrowserTimezone(): string | null {
   return detectBrowserTimezone()
 }
 
+// Stable normalization of colors for comparison/stringify (ensure key order)
+function normalizeColors(c: ColorMap) {
+  return {
+    lecture: c.lecture,
+    lab: c.lab,
+    tutorial: c.tutorial,
+    other: c.other,
+  }
+}
+function encodeColorsToString(c: ColorMap): string {
+  return JSON.stringify(normalizeColors(c))
+}
+function parseAndNormalizeColors(raw: unknown) {
+  if (typeof raw !== 'string') return null
+  try {
+    const obj = JSON.parse(raw as string)
+    return normalizeColors({
+      lecture: obj.lecture,
+      lab: obj.lab,
+      tutorial: obj.tutorial,
+      other: obj.other,
+    } as ColorMap)
+  } catch {
+    return null
+  }
+}
+
 /**
  * useSettings
  * - Persists:
@@ -38,7 +66,7 @@ function getBrowserTimezone(): string | null {
  *   - highlightTeacher: boolean (backend-only; affects server response)
  *   - blocklist: string[]
  *   - targetTimezone: string | null
- *   - showWeekends: boolean (client-only; controls week view nDays)
+ *   - showWeekends: boolean
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - weekNDays: number (7 when showWeekends, otherwise 5)
@@ -111,6 +139,83 @@ export function useSettings() {
     return colors.value[kind] ?? DEFAULT_COLORS[kind]
   }
 
+  // Local-first sync to DB for user preferences (debounced, only on actual changes)
+  const { syncPref } = useUserPrefsSync()
+
+  // highlightTeacher
+  syncPref('highlightTeacher', highlightTeacher, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
+    setLocal: v => (highlightTeacher.value = v),
+    debounce: 600,
+    preferServerOnLoad: true,
+    localStorageKey: 'settings.highlightTeacher',
+    isLocalDefault: () => {
+      if (typeof window === 'undefined') return false
+      return window.localStorage.getItem('settings.highlightTeacher') === null
+    },
+  })
+
+  // showWeekends
+  syncPref('showWeekends', showWeekends, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
+    setLocal: v => (showWeekends.value = v),
+    debounce: 600,
+    preferServerOnLoad: true,
+    localStorageKey: 'settings.showWeekends',
+    isLocalDefault: () => {
+      if (typeof window === 'undefined') return false
+      return window.localStorage.getItem('settings.showWeekends') === null
+    },
+  })
+
+  // blocklist
+  syncPref('blocklist', blocklist, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw =>
+      Array.isArray(raw) && raw.every(x => typeof x === 'string') ? (raw as string[]) : null,
+    setLocal: v => (blocklist.value = v),
+    debounce: 600,
+    preferServerOnLoad: true,
+    localStorageKey: 'settings.blocklist',
+    isLocalDefault: () => {
+      if (typeof window === 'undefined') return false
+      return window.localStorage.getItem('settings.blocklist') === null
+    },
+  })
+
+  // colors (stored in DB as JSON string)
+  syncPref('colors', colors, {
+    toServer: v => encodeColorsToString(v),
+    normalizeLocal: v => normalizeColors(v),
+    normalizeServer: raw => parseAndNormalizeColors(raw),
+    fromServerToLocal: (raw) => {
+      const parsed = parseAndNormalizeColors(raw)
+      if (!parsed) return null
+      return {
+        lecture: parsed.lecture ?? DEFAULT_COLORS.lecture,
+        lab: parsed.lab ?? DEFAULT_COLORS.lab,
+        tutorial: parsed.tutorial ?? DEFAULT_COLORS.tutorial,
+        other: parsed.other ?? DEFAULT_COLORS.other,
+      }
+    },
+    setLocal: v => (colors.value = v),
+    debounce: 600,
+    preferServerOnLoad: true,
+    localStorageKey: 'settings.colors',
+    isLocalDefault: () => {
+      if (typeof window === 'undefined') return false
+      return window.localStorage.getItem('settings.colors') === null
+    },
+  })
+
   return {
     // state
     colors,
@@ -125,6 +230,6 @@ export function useSettings() {
 
     // helpers
     getColorFor,
-
   }
 }
+export const useSharedSettings = createSharedComposable(useSettings)

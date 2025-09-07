@@ -1,5 +1,5 @@
 {
-  "id": "b6925cae-6926-4e41-b6c9-6bd72312f65b",
+  "id": "b15be481-8bd6-4741-8927-5e46b2c6a8cf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -218,7 +218,8 @@
           "name": "email_verified",
           "type": "boolean",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": false
         },
         "image": {
           "name": "image",
@@ -241,6 +242,42 @@
         "is_anonymous": {
           "name": "is_anonymous",
           "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "theme": {
+          "name": "theme",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "highlight_teacher": {
+          "name": "highlight_teacher",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "show_weekends": {
+          "name": "show_weekends",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "blocklist": {
+          "name": "blocklist",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "colors": {
+          "name": "colors",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prefs_meta": {
+          "name": "prefs_meta",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         }
@@ -293,13 +330,13 @@
           "name": "created_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         }
       },
       "indexes": {},

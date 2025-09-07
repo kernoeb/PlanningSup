@@ -1,16 +1,43 @@
 import { authClient } from '@libs'
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const session = authClient.useSession()
 
-watch(
+// A simple flag to prevent multiple sign-in attempts from ever starting.
+const signInAttempted = ref(false)
+
+// Use a standard watch to precisely control the logic.
+const stopWatch = watch(
   () => session.value.isPending,
   (isPending) => {
-    if (!isPending && !session.value.data) {
-      authClient.signIn.anonymous().catch(console.error)
+    // We only care about the moment the session is no longer pending.
+    if (!isPending) {
+      // Check if there's no session data and we haven't tried to sign in yet.
+      if (!session.value.data && !signInAttempted.value) {
+        console.log('Initial check complete. No session found. Signing in anonymously.')
+
+        // Mark that we are attempting to sign in to prevent loops.
+        signInAttempted.value = true
+
+        authClient.signIn.anonymous().catch((err) => {
+          console.error('Anonymous sign-in failed:', err)
+          // Optional: If you want to allow a retry on a future state change,
+          // you could reset the flag here. For most cases, you don't.
+          // signInAttempted.value = false;
+        })
+      }
+
+      // The initial check is done, so we stop the watcher.
+      // This is the most robust way to avoid loops and unwanted side effects.
+      stopWatch()
     }
   },
-  { immediate: true },
+  {
+    // `immediate: true` is crucial. It ensures the watcher runs right away.
+    // If the session is already loaded (`isPending: false`), the logic
+    // will execute immediately without waiting for a change.
+    immediate: true,
+  },
 )
 
 async function signInDiscord() {

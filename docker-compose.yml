@@ -15,7 +15,9 @@ services:
 
 volumes:
   pgdata:
+    name: planningsup_pgdata
 
 networks:
   planningsup_network:
     driver: bridge
+    name: planningsup_network

@@ -1,7 +1,7 @@
+import { Glob } from 'bun'
 import fs from 'fs'
 import path from 'path'
 import { planningsLocation } from '@plannings'
-import { Glob } from 'bun'
 import { z } from 'zod'
 
 if (!fs.existsSync(planningsLocation)) {

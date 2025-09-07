@@ -2,13 +2,13 @@
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { useSwipe } from '@vueuse/core'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
-import { useTheme } from '@web/composables/useTheme'
+import { useSharedTheme } from '@web/composables/useTheme'
 import { useTimezone } from '@web/composables/useTimezone'
 import { useTemplateRef } from 'vue'
 
 const { timezone } = useTimezone()
 const { calendarApp, reload, nextPeriod, prevPeriod, nbHours, loading } = usePlanningCalendar({ timezone })
-const { isDark: uiIsDark } = useTheme()
+const { isDark: uiIsDark } = useSharedTheme()
 
 const el = useTemplateRef('calendarSwipeEl')
 useSwipe(el, {

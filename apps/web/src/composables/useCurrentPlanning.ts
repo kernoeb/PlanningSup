@@ -11,9 +11,9 @@ export const DEFAULT_PLANNING_FULL_IDS = [DEFAULT_PLANNING_FULL_ID]
 
 /**
  * Storage key used to persist the current planning selection.
- * Storage key value: 'planning'
+ * Storage key value: 'plannings'
  */
-export const CURRENT_PLANNING_STORAGE_KEY = 'planning'
+export const CURRENT_PLANNINGS_STORAGE_KEY = 'plannings'
 
 function normalizeIds(ids: string[]): string[] {
   return Array.from(new Set(ids.map(s => s.trim()).filter(Boolean)))
@@ -23,7 +23,7 @@ function normalizeIds(ids: string[]): string[] {
  * useCurrentPlanning (multi-selection)
  *
  * Persists and exposes the current planning selection using localStorage.
- * - Reads/writes from localStorage under the key 'planning'
+ * - Reads/writes from localStorage under the key 'plannings'
  * - Exposes helper methods for toggling and resetting the selection
  *
  * Backward compatibility:
@@ -40,7 +40,7 @@ export function useCurrentPlanning(): {
 } {
   // Use any here to allow migration from a legacy string value
   const raw = useLocalStorage<any>(
-    CURRENT_PLANNING_STORAGE_KEY,
+    CURRENT_PLANNINGS_STORAGE_KEY,
     DEFAULT_PLANNING_FULL_IDS,
     { writeDefaults: true },
   )
@@ -49,12 +49,6 @@ export function useCurrentPlanning(): {
     get() {
       const v = raw.value
       if (Array.isArray(v)) return normalizeIds(v)
-      if (typeof v === 'string' && v.trim().length > 0) {
-        // migrate: string -> [string]
-        const migrated = [v.trim()]
-        raw.value = migrated
-        return migrated
-      }
       // fallback
       raw.value = DEFAULT_PLANNING_FULL_IDS
       return DEFAULT_PLANNING_FULL_IDS

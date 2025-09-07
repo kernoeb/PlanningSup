@@ -12,3 +12,6 @@ tools/
 .github/
 scripts/*.js
 **/.env
+apps/api/server
+apps/api/duplicates.log.json
+apps/api/.cursor

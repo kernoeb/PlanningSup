@@ -3,11 +3,11 @@ import { onKeyStroke } from '@vueuse/core'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { useTheme } from '@web/composables/useTheme'
+import { useSharedTheme } from '@web/composables/useTheme'
 import { computed, useTemplateRef } from 'vue'
 
 const { title } = usePlanningData()
-const { theme, i18nThemes, setTheme, setAuto, mode } = useTheme()
+const { theme, i18nThemes, setTheme, setAuto, mode } = useSharedTheme()
 
 const currentLabel = computed<string>(() => {
   return mode.store.value === 'auto'

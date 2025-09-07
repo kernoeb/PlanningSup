@@ -2,7 +2,7 @@
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
-import { useTheme } from '@web/composables/useTheme'
+import { useSharedTheme } from '@web/composables/useTheme'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
@@ -25,7 +25,7 @@ const canOpenMenu = computed(() => !isPending.value && !!user.value)
 const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
 // Theme (for small screens, theme controls live here)
-const { theme, i18nThemes, setTheme, setAuto, mode } = useTheme()
+const { theme, i18nThemes, setTheme, setAuto, mode } = useSharedTheme()
 const currentThemeLabel = computed<string>(() => {
   return mode.store.value === 'auto'
     ? i18nThemes.system
