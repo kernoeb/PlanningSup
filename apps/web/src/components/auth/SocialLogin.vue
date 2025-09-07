@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useAuth } from '@web/composables/useAuth'
-import { reactive } from 'vue'
+import { reactive, useTemplateRef } from 'vue'
 
-defineProps<{ id: string }>()
+const dialog = useTemplateRef('dialog')
 
 const isLoading = reactive({
   discord: false,
@@ -24,10 +24,14 @@ async function handleLogin(provider: 'discord' | 'github') {
     isLoading[provider] = false
   }
 }
+
+defineExpose({
+  dialog,
+})
 </script>
 
 <template>
-  <dialog :id="id" class="modal">
+  <dialog ref="dialog" class="modal">
     <div class="modal-box max-w-md bg-base-100 shadow-2xl">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors">

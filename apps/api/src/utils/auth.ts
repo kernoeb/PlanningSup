@@ -101,9 +101,7 @@ const options = {
   telemetry: {
     enabled: false,
   },
-  trustedOrigins: import.meta.env.NODE_ENV === 'production'
-    ? (Bun.env.TRUSTED_ORIGINS as string | undefined)?.split(',').map(s => s.trim()) ?? []
-    : ['chrome-extension://fhepfbdpjmlkkjkfbmhhjakenibnjfgn'],
+  trustedOrigins: (Bun.env.TRUSTED_ORIGINS as string | undefined)?.split(',').map(s => s.trim()) ?? [],
   socialProviders: {
     discord: {
       clientId: Bun.env.DISCORD_CLIENT_ID as string,

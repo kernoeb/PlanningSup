@@ -3,13 +3,14 @@ import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
-import { computed, ref } from 'vue'
+import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
 
 const { session, signOut, isAnonymous } = useAuth()
 
 const isSettingsOpen = ref(false)
+const socialLogin = useTemplateRef('socialLogin')
 
 const isPending = computed(() => session.value.isPending)
 const user = computed(() => session.value.data?.user ?? null)
@@ -90,7 +91,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         <div class="sm:hidden divider m-0" />
         <!-- End small-screen theme controls -->
         <li v-if="!user || isAnonymous">
-          <button class="justify-between" onclick="socialLogin.showModal()">
+          <button class="justify-between" @click="socialLogin?.dialog?.showModal()">
             Se connecter
           </button>
         </li>
@@ -109,6 +110,6 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
   </div>
 
   <!-- Modals -->
-  <SocialLogin id="socialLogin" />
+  <SocialLogin ref="socialLogin" />
   <SettingsDialog :open="isSettingsOpen" @update:open="val => isSettingsOpen = val" />
 </template>
