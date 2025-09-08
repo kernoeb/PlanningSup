@@ -55,7 +55,7 @@ defineExpose({
           Bienvenue !
         </h3>
         <p class="text-base-content/70 text-sm">
-          Connectez-vous pour accéder à votre compte
+          Connectez-vous pour synchroniser vos préférences (couleurs, week-ends, blocages, etc.) et les retrouver sur tous vos appareils
         </p>
       </div>
 
@@ -109,9 +109,15 @@ defineExpose({
 
       <!-- Footer -->
       <div class="text-center pt-4">
-        <p class="text-xs text-base-content/60">
-          Aucune donnée personnelle n’est vendue ou partagée. Seuls vos e-mails et identifiants de connexion sont conservés.
-        </p>
+        <div class="text-xs text-base-content/60 space-y-2 text-left">
+          <p>La connexion sert à associer vos préférences à un compte pour les retrouver sur tous vos appareils.</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Votre email, et si disponibles votre nom et avatar fournis par le fournisseur (Discord/GitHub)</li>
+            <li>Vos préférences synchronisées: couleurs du planning, surlignage enseignant, affichage des week-ends, liste de blocage, thème</li>
+            <li>Des métadonnées de session (adresse IP, navigateur, expiration) utilisées à des fins de sécurité</li>
+          </ul>
+          <p>Aucune donnée personnelle n’est vendue ou partagée.</p>
+        </div>
       </div>
     </div>
 
