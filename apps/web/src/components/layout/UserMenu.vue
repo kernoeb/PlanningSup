@@ -17,12 +17,6 @@ const isPending = computed(() => session.value.isPending)
 const user = computed(() => session.value.data?.user ?? null)
 const hasImage = computed(() => !!user.value?.image)
 
-const avatarInitial = computed(() => {
-  if (isPending.value) return 'A' // Disabled avatar while session is loading
-  const name = user.value?.name
-  return name && name.length ? name.charAt(0).toUpperCase() : 'A'
-})
-
 const canOpenMenu = computed(() => !isPending.value && !!user.value)
 const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
