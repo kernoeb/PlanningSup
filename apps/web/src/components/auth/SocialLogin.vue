@@ -34,7 +34,7 @@ defineExpose({
   <dialog ref="dialog" class="modal">
     <div class="modal-box max-w-md bg-base-100 shadow-2xl">
       <form method="dialog">
-        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors">
+        <button class="btn btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors">
           ✕
         </button>
       </form>
@@ -110,10 +110,7 @@ defineExpose({
       <!-- Footer -->
       <div class="text-center pt-4">
         <p class="text-xs text-base-content/60">
-          En continuant, vous acceptez nos
-          <a class="link link-primary" href="#">conditions d'utilisation</a>
-          et notre
-          <a class="link link-primary" href="#">politique de confidentialité</a>
+          Aucune donnée personnelle n’est vendue ou partagée. Seuls vos e-mails et identifiants de connexion sont conservés.
         </p>
       </div>
     </div>

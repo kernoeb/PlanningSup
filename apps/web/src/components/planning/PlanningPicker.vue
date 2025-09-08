@@ -271,71 +271,90 @@ onMounted(() => {
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog ref="dialogRef" class="modal">
-      <div class="modal-box max-w-5xl">
-        <!-- Header -->
-        <div class="mb-4 space-y-2 sticky top-0 bg-base-100 z-10 pt-1">
+      <div class="modal-box max-w-xl flex flex-col p-0">
+        <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-300 bg-base-100">
+          <div class="flex flex-col">
+            <h3 id="settings-title" class="font-bold text-xl">
+              Sélectionner un planning
+            </h3>
+            <span class="text-xs opacity-70">
+              {{ selectionCount }} sélectionné(s)
+            </span>
+          </div>
           <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-20" tabindex="-1">
+            <button
+              aria-label="Fermer"
+              class="btn btn-circle btn-ghost"
+              @click="close"
+            >
               ✕
             </button>
           </form>
-          <h3 class="text-lg font-bold">
-            Sélectionner des plannings
-          </h3>
+        </div>
 
-          <!-- Controls -->
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center gap-2">
-              <input
-                v-model="searchQuery"
-                autofocus
-                class="input input-sm input-bordered w-full"
-                placeholder="Rechercher un planning…"
-                type="text"
+        <!-- Controls -->
+        <div class="flex-1 px-6 py-4 space-y-2">
+          <div class="flex items-center gap-2">
+            <input
+              v-model="searchQuery"
+              autofocus
+              class="input input-bordered w-full"
+              placeholder="Rechercher un planning…"
+              type="text"
+            >
+            <button class="btn" :disabled="!searchQuery" type="button" @click="searchQuery = ''">
+              Effacer
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <div class="flex flex-wrap gap-2 flex-1 min-w-0">
+              <div
+                v-for="item in selectedItems"
+                :key="item.id"
+                class="tooltip max-w-full min-w-0"
+                :data-tip="item.title"
               >
-              <button class="btn btn-sm" :disabled="!searchQuery" type="button" @click="searchQuery = ''">
-                Effacer
-              </button>
-            </div>
-            <div class="flex items-center gap-2 flex-wrap min-h-[40px]">
-              <div class="flex flex-wrap gap-2">
                 <div
-                  v-for="item in selectedItems"
-                  :key="item.id"
-                  class="tooltip"
-                  :data-tip="item.title"
+                  class="badge badge-md gap-1 bg-base-200 max-w-full min-w-0"
+                  title="Cliquer pour retirer"
                 >
-                  <div
-                    class="badge badge-lg gap-1 bg-base-200"
-                    title="Cliquer pour retirer"
-                  >
-                    <span class="truncate max-w-[240px]">{{ item.title }}</span>
-                    <button
-                      :aria-label="`Retirer ${item.title}`"
-                      class="btn btn-xs btn-circle btn-ghost"
-                      @click="togglePlanning(item.id)"
-                    >
-                      ✕
-                    </button>
+                  <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] [text-align:left] flex-1 min-w-0 max-w-full">
+                    {{ item.title }}
                   </div>
+                  <button
+                    :aria-label="`Retirer ${item.title}`"
+                    class="btn btn-xs btn-circle btn-ghost shrink-0"
+                    @click="togglePlanning(item.id)"
+                  >
+                    ✕
+                  </button>
                 </div>
               </div>
-              <button class="btn btn-sm ml-auto" :disabled="selectionCount === 0" type="button" @click="clearSelection">
-                Tout désélectionner
-              </button>
             </div>
+            <!--
+            <button
+              class="btn btn-sm ml-auto shrink-0"
+              :disabled="selectionCount === 0"
+              type="button"
+              @click="clearSelection"
+            >
+              Tout désélectionner
+            </button>
+            -->
           </div>
         </div>
 
         <!-- Body -->
-        <div class="h-[60vh] bg-base-200 rounded" v-bind="containerProps">
+        <div class="h-[60vh] bg-base-200" v-bind="containerProps">
           <div v-bind="wrapperProps">
             <div
               v-for="row in vlist"
               :key="row.data.fullId"
-              class="flex items-center justify-between px-2 hover:bg-primary/20 rounded transition-all cursor-pointer"
+              class="flex items-center justify-between px-2 hover:bg-primary/20 transition-all cursor-pointer"
               :class="{
-                'bg-primary/20': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0) || (row.data.isLeaf && isSelected(row.data.fullId)),
+                'bg-primary/10': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0),
+                'bg-primary/20 font-bold': (row.data.isLeaf && isSelected(row.data.fullId)),
               }"
               :style="{
                 height: `${ROW_HEIGHT}px`,
@@ -361,6 +380,7 @@ onMounted(() => {
                       totalLeavesFor(row.data.fullId) > 200
                         || (totalLeavesFor(row.data.fullId) - selectedCountFor(row.data.fullId)) > 10
                     "
+                    :indeterminate="selectedCountFor(row.data.fullId) > 0 && selectedCountFor(row.data.fullId) < totalLeavesFor(row.data.fullId)"
                     title="Tout sélectionner/désélectionner dans ce groupe"
                     type="checkbox"
                     @click.stop="onGroupToggle(row.data.fullId)"
@@ -382,15 +402,6 @@ onMounted(() => {
                 </div>
               </template>
             </div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="mt-4 sticky bottom-0 bg-base-100 pt-2">
-          <div class="flex items-center justify-end gap-2">
-            <span class="text-sm opacity-70">
-              {{ selectionCount }} sélectionné(s)
-            </span>
           </div>
         </div>
       </div>

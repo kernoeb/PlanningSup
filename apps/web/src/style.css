@@ -31,7 +31,7 @@
   --color-warning-content: oklch(19.359% 0.042 109.769);
   --color-error: oklch(62.795% 0.257 29.233);
   --color-error-content: oklch(12.559% 0.051 29.233);
-  --radius-selector: 0.5rem;
+  --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.25rem;
   --size-selector: 0.21875rem;
@@ -67,7 +67,7 @@
   --color-warning-content: oklch(0% 0 0);
   --color-error: oklch(70% 0.191 22.216);
   --color-error-content: oklch(0% 0 0);
-  --radius-selector: 0.5rem;
+  --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.25rem;
   --size-selector: 0.21875rem;
@@ -103,7 +103,7 @@
   --color-warning-content: oklch(19.106% 0.026 112.757);
   --color-error: oklch(68.22% 0.206 24.43);
   --color-error-content: oklch(13.644% 0.041 24.43);
-  --radius-selector: 0.5rem;
+  --radius-selector: 0.25rem;
   --radius-field: 0.25rem;
   --radius-box: 0.25rem;
   --size-selector: 0.21875rem;
@@ -146,4 +146,8 @@ html[data-theme="light"] .shadow-none {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.modal-box {
+  max-height: calc(100dvh - 3rem);
 }

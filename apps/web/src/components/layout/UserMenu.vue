@@ -44,8 +44,8 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         :tabindex="canOpenMenu ? 0 : -1"
       >
         <div
-          class="w-10 rounded-full"
-          :class="{ 'bg-neutral text-neutral-content': !hasImage }"
+          class="w-12 rounded-full"
+          :class="{ 'bg-primary/10': !hasImage }"
         >
           <img
             v-if="hasImage"
@@ -53,9 +53,14 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
             :alt="user?.name || 'User avatar'"
             :src="user?.image ?? undefined"
           >
-          <span v-else key="avatar-initial">
-            {{ user ? avatarInitial : '' }}
-          </span>
+          <svg v-else class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
         </div>
       </div>
 

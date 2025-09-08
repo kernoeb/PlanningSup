@@ -48,22 +48,23 @@ watch(() => props.open, (next) => {
 
 <template>
   <dialog ref="dialogRef" aria-labelledby="settings-title" class="modal" @close="emit('update:open', false)">
-    <div class="modal-box max-w-xl">
-      <form method="dialog">
-        <button
-          aria-label="Fermer"
-          class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-          @click="close"
-        >
-          ✕
-        </button>
-      </form>
+    <div class="modal-box max-w-xl flex flex-col p-0">
+      <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-300 bg-base-100">
+        <h3 id="settings-title" class="font-bold text-xl">
+          Paramètres
+        </h3>
+        <form method="dialog">
+          <button
+            aria-label="Fermer"
+            class="btn btn-circle btn-ghost"
+            @click="close"
+          >
+            ✕
+          </button>
+        </form>
+      </div>
 
-      <h3 id="settings-title" class="font-bold text-xl mb-4">
-        Paramètres
-      </h3>
-
-      <div class="space-y-6">
+      <div class="flex-1 overflow-y-auto px-6 py-4 space-y-6">
         <!-- 1) Couleurs des événements du calendrier -->
         <section class="space-y-2">
           <div class="flex items-center justify-between">
@@ -124,7 +125,7 @@ watch(() => props.open, (next) => {
               aria-describedby="hl-teacher-desc" class="toggle"
               type="checkbox"
             >
-            <span id="hl-teacher-desc" class="label-text">
+            <span id="hl-teacher-desc" class="text-wrap">
               Les événements sans enseignant seront estompés (grisés).
             </span>
           </label>
@@ -141,7 +142,7 @@ watch(() => props.open, (next) => {
               aria-describedby="show-weekends-desc" class="toggle"
               type="checkbox"
             >
-            <span id="show-weekends-desc" class="label-text">
+            <span id="show-weekends-desc" class="text-wrap">
               Inclure samedi et dimanche dans la vue semaine.
             </span>
           </label>
@@ -182,13 +183,6 @@ watch(() => props.open, (next) => {
             placeholder="Ajouter un élément puis Entrée ou virgule"
           />
         </section>
-      </div>
-      <div class="modal-action">
-        <form method="dialog">
-          <button class="btn" @click="close">
-            Fermer
-          </button>
-        </form>
       </div>
     </div>
 
