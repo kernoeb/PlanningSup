@@ -120,6 +120,7 @@ export function usePlanningCalendar(options: {
     return {
       nDays: settings.weekNDays.value,
       gridHeight: 800,
+      eventWidth: 98,
     }
   }
 

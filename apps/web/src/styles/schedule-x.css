@@ -164,12 +164,6 @@ html[data-theme="dracula"] {
   }
 }
 
-.sx__time-grid-event.sx__event {
-  inset-inline-start: 1%!important; /* like margin-left */
-  inset-inline-end: 1%!important;   /* like margin-right */
-  width: auto!important;            /* remove fixed 100% */
-}
-
 .sx__week-grid__date {
   user-select: none;
 }
