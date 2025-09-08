@@ -1,5 +1,8 @@
-import type { ApiEvent } from './usePlanningData'
+import type {
+  CalendarEvent,
+} from '@schedule-x/calendar'
 
+import type { EventWithFullId } from './usePlanningData'
 import type { AllowedTimezones } from './useTimezone'
 import {
   createCalendar,
@@ -23,21 +26,21 @@ import { useSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
 
 function mapApiEventToCalendarEvent(
-  event: ApiEvent,
+  event: EventWithFullId,
   timezone: NonNullable<AllowedTimezones>,
 ) {
   const start = event.startDate.toTemporalInstant().toZonedDateTimeISO(timezone)
   const end = event.endDate.toTemporalInstant().toZonedDateTimeISO(timezone)
 
-  const srcId = event.sourceFullId ?? 'multi'
+  const id = `${event.fullId}_${event.uid}`.replace(/[^\w-]/g, '_') // valid HTML id (querySelector)
   return {
     ...event,
-    id: `${srcId}_${event.uid}`.replace(/[^\w-]/g, '_'),
+    id,
     title: event.summary,
     start,
     end,
     calendarId: event.categoryId,
-  }
+  } satisfies CalendarEvent
 }
 
 /**
@@ -114,7 +117,10 @@ export function usePlanningCalendar(options: {
   }
 
   function getWeekOptions() {
-    return { nDays: settings.weekNDays.value, gridHeight: 800 }
+    return {
+      nDays: settings.weekNDays.value,
+      gridHeight: 800,
+    }
   }
 
   function initOrUpdate(forceRecreate = false) {

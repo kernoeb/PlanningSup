@@ -1,3 +1,4 @@
+import type { Events, PlanningWithEvents } from '@libs'
 import type { Ref } from 'vue'
 import { client } from '@libs'
 import { useIntervalFn, useWindowFocus } from '@vueuse/core'
@@ -5,19 +6,12 @@ import { ref, watch } from 'vue'
 import { useCurrentPlanning } from './useCurrentPlanning'
 import { useSettings } from './useSettings'
 
-export interface ApiEvent {
-  uid: string
-  summary: string
-  startDate: Date
-  endDate: Date
-  categoryId: string
-  sourceFullId?: string
-}
+export type EventWithFullId = Events[number] & { fullId: string }
 
 export interface PlanningDataStore {
   planningFullIds: Ref<string[]>
   title: Ref<string>
-  events: Ref<ApiEvent[]>
+  events: Ref<EventWithFullId[]>
   loading: Ref<boolean>
   error: Ref<string | null>
   refresh: () => Promise<void>
@@ -37,7 +31,7 @@ function createPlanningDataStore(): PlanningDataStore {
   const settings = useSettings()
 
   const title = ref<string>('')
-  const events = ref<ApiEvent[]>([])
+  const events = ref<EventWithFullId[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -60,9 +54,9 @@ function createPlanningDataStore(): PlanningDataStore {
   }
 
   async function refresh() {
-    const ids = Array.from(new Set((planningFullIds.value ?? []).map(s => s.trim()).filter(Boolean)))
+    const fullIds = [...planningFullIds.value]
 
-    if (ids.length === 0) {
+    if (fullIds.length === 0) {
       title.value = ''
       events.value = []
       error.value = null
@@ -76,8 +70,8 @@ function createPlanningDataStore(): PlanningDataStore {
 
     try {
       const results = await Promise.allSettled(
-        ids.map(id =>
-          client.api.plannings({ fullId: id }).get({
+        fullIds.map(fullId =>
+          client.api.plannings({ fullId }).get({
             query: {
               events: 'true',
               ...settings.queryParams.value,
@@ -89,11 +83,11 @@ function createPlanningDataStore(): PlanningDataStore {
       // Ignore outdated responses
       if (token !== requestToken) return
 
-      const successes: Array<{ id: string, title: string, events: ApiEvent[] }> = []
+      const successes: Array<PlanningWithEvents> = []
       const errors: string[] = []
 
-      for (let i = 0; i < ids.length; i++) {
-        const id = ids[i]!
+      for (let i = 0; i < fullIds.length; i++) {
+        const id = fullIds[i]!
         const res = results[i]
         if (!res) {
           errors.push(`${id}: missing response`)
@@ -102,12 +96,8 @@ function createPlanningDataStore(): PlanningDataStore {
 
         if (res.status === 'fulfilled') {
           const data = res.value?.data
-          const t = data?.title || id
-          const rawEvents = (data && 'events' in data) ? data.events : null
-          const evts: ApiEvent[] = Array.isArray(rawEvents)
-            ? rawEvents.map(e => ({ ...e, sourceFullId: id } as ApiEvent))
-            : []
-          successes.push({ id, title: t, events: evts })
+          if (data && 'events' in data && data.events) successes.push(data)
+          else errors.push(`${id}: invalid response`)
         } else {
           const msg = res.reason instanceof Error ? res.reason.message : String(res.reason)
           errors.push(`${id}: ${msg}`)
@@ -116,7 +106,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
       // Titles
       if (successes.length === 0) {
-        title.value = ids.join(' + ')
+        title.value = fullIds.join(' + ')
       } else if (successes.length === 1) {
         title.value = successes[0]!.title
       } else {
@@ -124,14 +114,18 @@ function createPlanningDataStore(): PlanningDataStore {
       }
 
       // Events (concatenate)
-      events.value = successes.length > 0 ? successes.flatMap(s => s.events) : []
+      events.value = successes.length > 0
+        ? successes.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
+        : []
 
       // Partial failures shouldn't wipe out data from successes; surface an error note
-      error.value = errors.length > 0 ? `Some plannings failed to load (${errors.length}). Details: ${errors.join(' | ')}` : null
+      error.value = errors.length > 0
+        ? `Some plannings failed to load (${errors.length}). Details: ${errors.join(' | ')}`
+        : null
     } catch (e: unknown) {
       if (token !== requestToken) return
       error.value = e instanceof Error ? e.message : String(e)
-      title.value = ids.join(' + ')
+      title.value = fullIds.join(' + ')
       events.value = []
     } finally {
       if (token === requestToken) loading.value = false
