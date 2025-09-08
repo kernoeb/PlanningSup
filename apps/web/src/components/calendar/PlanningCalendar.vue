@@ -4,6 +4,7 @@ import { useSwipe } from '@vueuse/core'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { useTimezone } from '@web/composables/useTimezone'
+import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 import { useTemplateRef } from 'vue'
 
 const { timezone } = useTimezone()
@@ -35,5 +36,14 @@ defineExpose({ reload })
         </div>
       </template>
     </ScheduleXCalendar>
+
+    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 join z-50 md:hidden">
+      <button class="btn join-item" @click="prevPeriod">
+        <ArrowLeft :size="20" />
+      </button>
+      <button class="btn join-item" @click="nextPeriod">
+        <ArrowRight :size="20" />
+      </button>
+    </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRegisterSW } from 'virtual:pwa-register/vue'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 // check for updates every hour
 const period = 60 * 60 * 1000
@@ -46,8 +46,8 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
 })
 
 const title = computed(() => {
-  if (offlineReady.value) return 'Application prête pour le mode hors ligne'
-  if (needRefresh.value) return 'Nouveau contenu disponible. Cliquez sur "Recharger" pour mettre à jour.'
+  if (offlineReady.value) return 'Application disponible hors ligne'
+  if (needRefresh.value) return 'Nouvelle version disponible !'
   return ''
 })
 
@@ -57,33 +57,43 @@ function close() {
   offlineReady.value = false
   needRefresh.value = false
 }
+
+watch([offlineReady], (offlineReady) => {
+  if (offlineReady) {
+    setTimeout(() => {
+      close()
+    }, 2500) // auto close after 2.5 seconds
+  }
+})
 </script>
 
 <template>
-  <div v-if="offlineReady || needRefresh" class="toast toast-end toast-bottom">
-    <div aria-atomic="true" aria-live="polite" class="alert" :class="alertClass" role="alert">
-      <div class="flex flex-col sm:flex-row sm:items-center gap-3 w-full">
+  <Transition name="fade">
+    <div
+      v-if="offlineReady || needRefresh"
+      class="toast toast-bottom toast-center z-50"
+      style="max-width: calc(100dvw - 100px);"
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="alert flex flex-col"
+        :class="alertClass"
+        role="alert"
+      >
         <span id="toast-message" class="flex-1">
           {{ title }}
         </span>
-        <div class="flex gap-2">
+        <div v-if="needRefresh" class="flex gap-2 w-full">
           <button
-            v-if="needRefresh"
-            class="btn btn-neutral btn-sm"
+            class="btn btn-neutral btn-sm flex-1"
             type="button"
             @click="updateServiceWorker()"
           >
             Recharger
           </button>
-          <button
-            class="btn btn-ghost btn-sm"
-            type="button"
-            @click="close"
-          >
-            Fermer
-          </button>
         </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>

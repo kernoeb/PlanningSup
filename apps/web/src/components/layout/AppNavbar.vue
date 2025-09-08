@@ -4,6 +4,7 @@ import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { useSharedTheme } from '@web/composables/useTheme'
+import { ChevronDown, List } from 'lucide-vue-next'
 import { computed, useTemplateRef } from 'vue'
 
 const { title } = usePlanningData()
@@ -67,18 +68,7 @@ onKeyStroke(
       <div class="dropdown dropdown-end">
         <div class="btn btn-ghost" role="button" tabindex="0">
           Thème: {{ currentLabel }}
-          <svg
-            class="h-4 w-4 ml-1 opacity-70"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              clip-rule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
-              fill-rule="evenodd"
-            />
-          </svg>
+          <ChevronDown class="opacity-70" :size="14" />
         </div>
         <ul
           class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-48 p-2 shadow"
@@ -112,9 +102,7 @@ onKeyStroke(
 
     <div class="fab sm:hidden">
       <button aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPicker?.open()">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+        <List />
       </button>
     </div>
   </div>

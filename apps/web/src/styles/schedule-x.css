@@ -199,3 +199,7 @@ html[data-theme="dracula"] {
 .sx__slide-right {
   animation: sx-slide-right 0.1s ease-out;
 }
+
+.sx__current-time-indicator {
+  z-index: 1;
+}

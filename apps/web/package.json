@@ -19,8 +19,10 @@
     "@schedule-x/timezone-select": "^3.1.0",
     "@schedule-x/translations": "^3.1.0",
     "@schedule-x/vue": "^3.1.0",
+    "lucide-vue-next": "^0.542.0",
     "temporal-polyfill": "^0.3.0",
-    "vue": "^3.5.21"
+    "vue": "^3.5.21",
+    "vue3-simple-icons": "^15.6.0"
   },
   "devDependencies": {
     "@fontsource-variable/roboto": "^5.2.6",

@@ -3,6 +3,7 @@ import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
+import { User } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
@@ -53,14 +54,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
             :alt="user?.name || 'User avatar'"
             :src="user?.image ?? undefined"
           >
-          <svg v-else class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-            />
-          </svg>
+          <User v-else class="w-4 h-4 text-primary" />
         </div>
       </div>
 

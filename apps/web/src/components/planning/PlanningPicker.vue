@@ -124,14 +124,14 @@ function isTrueLeaf(fullId: string): boolean {
 }
 
 // Controls
-function clearSelection() {
+/* function clearSelection() {
   const ids = [...safePlanningIds.value]
   const branch = new Set(Object.keys(leafIndex.value))
   for (const id of ids) {
     if (branch.has(id)) continue
     if (isSelected(id)) togglePlanning(id)
   }
-}
+} */
 
 // Open/Close + data load
 function sortTree(nodes: PlanningNode[]): PlanningNode[] {
