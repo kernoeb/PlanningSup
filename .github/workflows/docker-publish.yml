@@ -7,51 +7,75 @@ on:
   pull_request:
     branches: [main]
 
+# Prevent overlapping publishes for the same ref
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: false
+
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: planning
   DOCKERHUB_IMAGE: kernoeb/planningsup
-  # JSON array of PR branch names allowed to push images (same-repo PRs only)
-  PUBLISH_PR_WHITELIST: '["refactor/elysia-postgresql"]'
+  # YAML array (exact branch names) allowed to publish on PRs (same-repo only)
+  PUBLISH_PR_WHITELIST: |
+    - refactor/elysia-postgresql
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     permissions:
       contents: read
       packages: write
       attestations: write
       id-token: write
+      security-events: write
+
+    env:
+      # Derived flag (evaluated in expressions) to decide pushing
+      CAN_PUBLISH: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromYAML(env.PUBLISH_PR_WHITELIST), github.head_ref)) }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Validate required secrets for publish
+        if: env.CAN_PUBLISH == 'true' && github.event_name != 'pull_request'
+        run: |
+          missing=0
+          [[ -z "${{ secrets.DOCKER_USERNAME }}" ]] && echo "::error::Missing DOCKER_USERNAME" && missing=1
+            [[ -z "${{ secrets.DOCKER_PASSWORD }}" ]] && echo "::error::Missing DOCKER_PASSWORD" && missing=1
+          [[ $missing -eq 1 ]] && exit 1 || echo "All required secrets present."
 
       - name: Compute branch slug
         id: branch
         shell: bash
         run: |
           BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
-          SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' | cut -c1-128)
-          echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
-          if [ -n "${GITHUB_HEAD_REF}" ]; then
-            echo "FULL_REF=refs/heads/${GITHUB_HEAD_REF}" >> "$GITHUB_ENV"
-          else
-            echo "FULL_REF=${GITHUB_REF}" >> "$GITHUB_ENV"
+          if [[ ! "$BRANCH" =~ ^[A-Za-z0-9/_.-]+$ ]]; then
+            echo "::error::Invalid branch name: $BRANCH"
+            exit 1
           fi
-          echo "Branch slug: $SLUG"
+          SLUG=$(echo "$BRANCH" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' \
+            | cut -c1-128)
+          if [[ -z "$SLUG" ]]; then
+            echo "::error::Empty slug produced"
+            exit 1
+          fi
+            echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
+          echo "Branch: $BRANCH -> Slug: $SLUG"
 
       - name: Derive lowercase GHCR image path
         id: ghcr_path
-        uses: ASzc/change-string-case-action@v6
-        with:
-          string: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
+        run: |
+          echo "lowercase=$(echo "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Log into GHCR
-        if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref))
+        if: env.CAN_PUBLISH == 'true'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -59,7 +83,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log into Docker Hub
-        if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref))
+        if: env.CAN_PUBLISH == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -72,36 +96,57 @@ jobs:
           images: |
             ${{ steps.ghcr_path.outputs.lowercase }}
             ${{ env.DOCKERHUB_IMAGE }}
-          ref: ${{ env.FULL_REF }}
           flavor: |
             latest=false
           tags: |
             type=ref,event=tag
+            type=semver,pattern=latest
             type=ref,event=branch
+          labels: |
+            org.opencontainers.image.title=PlanningSup
+            org.opencontainers.image.description=Planning application
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.vendor=kernoeb
+            org.opencontainers.image.created=${{ github.run_started_at }}
 
-      - name: Show planned tags (debug)
+      - name: Show planned tags
         run: |
-          echo "Generated meta tags:"
-          echo "${{ steps.meta.outputs.tags }}"
-          echo "Labels:"
-          echo "${{ steps.meta.outputs.labels }}"
-          echo "Branch slug tag (will be added explicitly for both registries): ${{ env.BRANCH_SLUG }}"
+          echo "Base (GHCR): ${{ steps.ghcr_path.outputs.lowercase }}"
+          echo "Base (DockerHub): ${{ env.DOCKERHUB_IMAGE }}"
+          echo "Slug: ${{ env.BRANCH_SLUG }}"
+          echo "Metadata tags:"
+          printf "  %s\n" "${{ steps.meta.outputs.tags }}"
+          echo "Will publish? ${{ env.CAN_PUBLISH }}"
 
       - name: Build test image (no push)
         uses: docker/build-push-action@v6
         with:
           context: .
           load: true
-          tags: test-${{ env.IMAGE_NAME }}
+          platforms: linux/amd64
+          tags: test-${{ env.IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: false
+          sbom: false
 
-      - name: Build and push images
+      - name: Vulnerability scan (test image)
+        uses: docker/scout-action@v1
+        with:
+          command: cves
+          image: test-${{ env.IMAGE_NAME }}:${{ github.sha }}
+          only-severities: critical,high
+          exit-code: true
+
+      - name: Build and push production images
         id: build_and_push
+        if: env.CAN_PUBLISH == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)) }}
+          push: true
+          platforms: linux/amd64
           tags: |
             ${{ steps.meta.outputs.tags }}
             ${{ steps.ghcr_path.outputs.lowercase }}:${{ env.BRANCH_SLUG }}
@@ -109,18 +154,23 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          provenance: true
+          sbom: true
+          build-args: |
+            BUILDTIME=${{ github.run_started_at }}
+            VERSION=${{ github.sha }}
 
       - name: Attest build provenance (GHCR)
-        if: steps.build_and_push.outputs.digest != '' && (github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)))
-        uses: actions/attest-build-provenance@v3
+        if: env.CAN_PUBLISH == 'true' && steps.build_and_push.outputs.digest != ''
+        uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ steps.ghcr_path.outputs.lowercase }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
 
       - name: Attest build provenance (Docker Hub)
-        if: steps.build_and_push.outputs.digest != '' && (github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)))
-        uses: actions/attest-build-provenance@v3
+        if: env.CAN_PUBLISH == 'true' && steps.build_and_push.outputs.digest != ''
+        uses: actions/attest-build-provenance@v1
         with:
           subject-name: index.docker.io/${{ env.DOCKERHUB_IMAGE }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
@@ -129,12 +179,19 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "Digest: ${{ steps.build_and_push.outputs.digest }}"
-          echo "GHCR image base: ${{ steps.ghcr_path.outputs.lowercase }}"
-          echo "Docker Hub image base: ${{ env.DOCKERHUB_IMAGE }}"
-          echo "Branch slug: ${{ env.BRANCH_SLUG }}"
-          echo "Event: ${{ github.event_name }}"
-          echo "Final tag set:"
-          printf "%s\n" "${{ steps.meta.outputs.tags }}" | sed 's/^/  meta: /'
-          echo "  explicit (ghcr): ${{ steps.ghcr_path.outputs.lowercase }}:${{ env.BRANCH_SLUG }}"
-          echo "  explicit (dockerhub): ${{ env.DOCKERHUB_IMAGE }}:${{ env.BRANCH_SLUG }}"
+          echo "::group::Build Summary"
+          echo "Event:                ${{ github.event_name }}"
+          echo "Ref:                  ${{ github.ref }}"
+          echo "Head ref:             ${{ github.head_ref }}"
+          echo "Branch slug:          ${{ env.BRANCH_SLUG }}"
+          echo "Can publish:          ${{ env.CAN_PUBLISH }}"
+          echo "GHCR base:            ${{ steps.ghcr_path.outputs.lowercase }}"
+          echo "DockerHub base:       ${{ env.DOCKERHUB_IMAGE }}"
+          echo "Metadata tags:"
+          printf "  %s\n" "${{ steps.meta.outputs.tags }}"
+          if [[ -n "${{ steps.build_and_push.outputs.digest }}" ]]; then
+            echo "Published digest:     ${{ steps.build_and_push.outputs.digest }}"
+          else
+            echo "Published digest:     (none)"
+          fi
+          echo "::endgroup::"
