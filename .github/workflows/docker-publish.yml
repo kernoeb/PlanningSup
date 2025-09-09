@@ -93,8 +93,10 @@ jobs:
         with:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
-          # This configures the docker credential helper for Artifact Registry
-          create_credentials_file: true
+
+      - name: Configure Docker for Artifact Registry
+        if: steps.publish.outputs.can_publish == 'true'
+        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
 
       - name: Log into GHCR
         if: steps.publish.outputs.can_publish == 'true'
@@ -141,14 +143,6 @@ jobs:
           cache-to: type=gha,mode=max
           provenance: false
           sbom: false
-
-      # - name: Vulnerability scan (test image)
-      #   uses: docker/scout-action@v1
-      #   with:
-      #     command: cves
-      #     image: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
-      #     only-severities: critical,high
-      #     exit-code: true
 
       - name: Build and push production images
         id: build_and_push
