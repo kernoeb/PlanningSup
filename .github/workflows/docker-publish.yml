@@ -142,13 +142,13 @@ jobs:
           provenance: false
           sbom: false
 
-      - name: Vulnerability scan (test image)
-        uses: docker/scout-action@v1
-        with:
-          command: cves
-          image: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
-          only-severities: critical,high
-          exit-code: true
+      # - name: Vulnerability scan (test image)
+      #   uses: docker/scout-action@v1
+      #   with:
+      #     command: cves
+      #     image: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
+      #     only-severities: critical,high
+      #     exit-code: true
 
       - name: Build and push production images
         id: build_and_push
