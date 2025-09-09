@@ -7,7 +7,6 @@ on:
   pull_request:
     branches: [main]
 
-# Prevent overlapping publishes for the same ref
 concurrency:
   group: docker-${{ github.ref }}
   cancel-in-progress: false
@@ -23,181 +22,75 @@ env:
   GHCR_REGISTRY: ghcr.io
   GHCR_IMAGE_NAME: planning
 
-  # YAML array (exact branch names) allowed to publish on PRs (same-repo only)
-  PUBLISH_PR_WHITELIST: |
-    - refactor/elysia-postgresql
+  # Whitelist of branches that are allowed to be published on push
+  PUBLISH_WHITELIST: |
+    main
+    refactor/elysia-postgresql
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     permissions:
       contents: read
       packages: write
-      attestations: write
       id-token: write # Required for Google Cloud authentication
-      security-events: write
-      pull-requests: write
+      attestations: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Determine publish eligibility
-        id: publish
-        shell: bash
-        run: |
-          CAN=false
-          if [[ "${{ github.event_name }}" != "pull_request" ]]; then
-            CAN=true
-          elif [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" && -n "${{ github.head_ref }}" ]]; then
-            WHITELIST="${{ env.PUBLISH_PR_WHITELIST }}"
-            if echo "$WHITELIST" | grep -q "^ *- ${{ github.head_ref }}$"; then
-              CAN=true
-            fi
-          fi
-          echo "can_publish=$CAN" >> "$GITHUB_OUTPUT"
-          echo "Computed can_publish=$CAN"
-
-      - name: Compute branch slug
-        id: branch
-        shell: bash
-        run: |
-          BRANCH="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
-          if [[ ! "$BRANCH" =~ ^[A-Za-z0-9/_.-]+$ ]]; then
-            echo "::error::Invalid branch name: $BRANCH"
-            exit 1
-          fi
-          SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' | cut -c1-128)
-          if [[ -z "$SLUG" ]]; then
-            echo "::error::Empty slug produced"
-            exit 1
-          fi
-          echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
-          echo "Branch: $BRANCH -> Slug: $SLUG"
-
-      - name: Derive lowercase image paths
-        id: image_paths
-        run: |
-          echo "ghcr=$(echo "${{ env.GHCR_REGISTRY }}/${{ github.repository }}/${{ env.GHCR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
-          echo "artifact_registry=$(echo "${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
-
       - name: Authenticate to Google Cloud
-        if: steps.publish.outputs.can_publish == 'true'
         uses: 'google-github-actions/auth@v2'
+        # Only authenticate when we intend to publish
+        if: github.event_name == 'push'
         with:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
 
-      - name: Get Google Cloud access token
-        id: get_gcp_token
-        if: steps.publish.outputs.can_publish == 'true'
-        run: echo "token=$(gcloud auth print-access-token)" >> $GITHUB_OUTPUT
-
-      - name: Log into Artifact Registry
-        if: steps.publish.outputs.can_publish == 'true'
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.GCP_REGION }}-docker.pkg.dev
-          username: oauth2accesstoken
-          password: ${{ steps.get_gcp_token.outputs.token }}
-
-      - name: Log into GHCR
-        if: steps.publish.outputs.can_publish == 'true'
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.GHCR_REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log into Artifact Registry and GHCR
+        # Only log in when we intend to publish
+        if: github.event_name == 'push'
+        run: |
+          # Log into Artifact Registry
+          gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
+          # Log into GHCR
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.GHCR_REGISTRY }} -u ${{ github.actor }} --password-stdin
 
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ steps.image_paths.outputs.ghcr }}
-            ${{ steps.image_paths.outputs.artifact_registry }}
-          flavor: latest=false
-          tags: type=ref,event=tag
-            type=semver,pattern=latest
-            type=ref,event=branch
-          labels: org.opencontainers.image.title=PlanningSup
-            org.opencontainers.image.description=Planning application
-            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
-            org.opencontainers.image.revision=${{ github.sha }}
-            org.opencontainers.image.vendor=kernoeb
-            org.opencontainers.image.created=${{ github.run_started_at }}
-
-      - name: Show planned tags
-        run: |
-          echo "Base (GHCR): ${{ steps.image_paths.outputs.ghcr }}"
-          echo "Base (Artifact Registry): ${{ steps.image_paths.outputs.artifact_registry }}"
-          echo "Slug: ${{ env.BRANCH_SLUG }}"
-          echo "Metadata tags:"
-          printf "  %s\n" "${{ steps.meta.outputs.tags }}"
-          echo "Will publish? ${{ steps.publish.outputs.can_publish }}"
-
-      - name: Build test image (no push)
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          load: true
-          platforms: linux/amd64
-          tags: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          provenance: false
-          sbom: false
-
-      - name: Build and push production images
-        id: build_and_push
-        if: steps.publish.outputs.can_publish == 'true'
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          platforms: linux/amd64
+          images: |
+            ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
+            ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
-            ${{ steps.meta.outputs.tags }}
-            ${{ steps.image_paths.outputs.ghcr }}:${{ env.BRANCH_SLUG }}
-            ${{ steps.image_paths.outputs.artifact_registry }}:${{ env.BRANCH_SLUG }}
+            # On a push to a whitelisted branch, create a tag named after the branch
+            type=ref,event=branch,enable=${{ github.event_name == 'push' && contains(fromYaml(env.PUBLISH_WHITELIST), github.ref_name) }}
+            # Create semver tags for git tags
+            type=semver,pattern={{version}}
+            # Create a tag for pull requests, like 'pr-123'
+            type=pr,prefix=pr-
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          # Only push on main branch or tag pushes, not on PRs
+          push: ${{ github.event_name == 'push' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          provenance: true
-          sbom: true
-          build-args: |
-            BUILDTIME=${{ github.run_started_at }}
-            VERSION=${{ github.sha }}
 
       - name: Attest build provenance
-        if: steps.publish.outputs.can_publish == 'true' && steps.build_and_push.outputs.digest != ''
+        if: github.event_name == 'push'
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ steps.image_paths.outputs.artifact_registry }}
+          subject-name: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
-
-      - name: Summary
-        if: always()
-        run: |
-          echo "::group::Build Summary"
-          echo "Event:                ${{ github.event_name }}"
-          echo "Ref:                  ${{ github.ref }}"
-          echo "Head ref:             ${{ github.head_ref }}"
-          echo "Branch slug:          ${{ env.BRANCH_SLUG }}"
-          echo "Can publish:          ${{ steps.publish.outputs.can_publish }}"
-          echo "GHCR base:            ${{ steps.image_paths.outputs.ghcr }}"
-          echo "Artifact Registry base: ${{ steps.image_paths.outputs.artifact_registry }}"
-          echo "Metadata tags:"
-          printf "  %s\n" "${{ steps.meta.outputs.tags }}"
-          if [[ -n "${{ steps.build_and_push.outputs.digest }}" ]]; then
-            echo "Published digest:     ${{ steps.build_and_push.outputs.digest }}"
-          else
-            echo "Published digest:     (none)"
-          fi
-          echo "::endgroup::"
