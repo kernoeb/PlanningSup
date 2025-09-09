@@ -20,6 +20,7 @@ await initDb(db).then(() => {
   jobs.start(db)
 })
 
-app.listen(20000, () => {
-  logger.info('Server started on http://localhost:20000')
+const port = Bun.env.PORT ? Number(Bun.env.PORT) : 20000
+app.listen(port, () => {
+  logger.info(`Server started on http://localhost:${port}`)
 })

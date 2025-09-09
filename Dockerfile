@@ -67,4 +67,5 @@ ENV NODE_ENV=production
 
 CMD ["./server"]
 
-EXPOSE 20000
+ENV PORT=20000
+EXPOSE $PORT
