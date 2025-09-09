@@ -31,18 +31,30 @@ jobs:
       id-token: write
       security-events: write
 
-    env:
-      # Derived flag (evaluated in expressions) to decide pushing
-      CAN_PUBLISH: ${{ github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromYAML(env.PUBLISH_PR_WHITELIST), github.head_ref)) }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
+      - name: Determine publish eligibility
+        id: publish
+        shell: bash
+        run: |
+          CAN=false
+          if [[ "${{ github.event_name }}" != "pull_request" ]]; then
+            CAN=true
+          elif [[ "${{ github.event.pull_request.head.repo.full_name }}" == "${{ github.repository }}" && -n "${{ github.head_ref }}" ]]; then
+            WHITELIST="${{ env.PUBLISH_PR_WHITELIST }}"
+            if echo "$WHITELIST" | grep -q "^ *- ${{ github.head_ref }}$"; then
+              CAN=true
+            fi
+          fi
+          echo "can_publish=$CAN" >> "$GITHUB_OUTPUT"
+          echo "Computed can_publish=$CAN"
+
       - name: Validate required secrets for publish
-        if: env.CAN_PUBLISH == 'true' && github.event_name != 'pull_request'
+        if: steps.publish.outputs.can_publish == 'true' && github.event_name != 'pull_request'
         run: |
           missing=0
           [[ -z "${{ secrets.DOCKER_USERNAME }}" ]] && echo "::error::Missing DOCKER_USERNAME" && missing=1
@@ -75,7 +87,7 @@ jobs:
           echo "lowercase=$(echo "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Log into GHCR
-        if: env.CAN_PUBLISH == 'true'
+        if: steps.publish.outputs.can_publish == 'true'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -83,7 +95,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log into Docker Hub
-        if: env.CAN_PUBLISH == 'true'
+        if: steps.publish.outputs.can_publish == 'true'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -117,7 +129,7 @@ jobs:
           echo "Slug: ${{ env.BRANCH_SLUG }}"
           echo "Metadata tags:"
           printf "  %s\n" "${{ steps.meta.outputs.tags }}"
-          echo "Will publish? ${{ env.CAN_PUBLISH }}"
+          echo "Will publish? ${{ steps.publish.outputs.can_publish }}"
 
       - name: Build test image (no push)
         uses: docker/build-push-action@v6
@@ -141,7 +153,7 @@ jobs:
 
       - name: Build and push production images
         id: build_and_push
-        if: env.CAN_PUBLISH == 'true'
+        if: steps.publish.outputs.can_publish == 'true'
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -161,7 +173,7 @@ jobs:
             VERSION=${{ github.sha }}
 
       - name: Attest build provenance (GHCR)
-        if: env.CAN_PUBLISH == 'true' && steps.build_and_push.outputs.digest != ''
+        if: steps.publish.outputs.can_publish == 'true' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ steps.ghcr_path.outputs.lowercase }}
@@ -169,7 +181,7 @@ jobs:
           push-to-registry: true
 
       - name: Attest build provenance (Docker Hub)
-        if: env.CAN_PUBLISH == 'true' && steps.build_and_push.outputs.digest != ''
+        if: steps.publish.outputs.can_publish == 'true' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: index.docker.io/${{ env.DOCKERHUB_IMAGE }}
@@ -184,7 +196,7 @@ jobs:
           echo "Ref:                  ${{ github.ref }}"
           echo "Head ref:             ${{ github.head_ref }}"
           echo "Branch slug:          ${{ env.BRANCH_SLUG }}"
-          echo "Can publish:          ${{ env.CAN_PUBLISH }}"
+          echo "Can publish:          ${{ steps.publish.outputs.can_publish }}"
           echo "GHCR base:            ${{ steps.ghcr_path.outputs.lowercase }}"
           echo "DockerHub base:       ${{ env.DOCKERHUB_IMAGE }}"
           echo "Metadata tags:"
