@@ -97,7 +97,7 @@ jobs:
       - name: Get Google Cloud access token
         id: get_gcp_token
         if: steps.publish.outputs.can_publish == 'true'
-        uses: 'google-github-actions/get-access-token@v1'
+        run: echo "token=$(gcloud auth print-access-token)" >> $GITHUB_OUTPUT
 
       - name: Log into Artifact Registry
         if: steps.publish.outputs.can_publish == 'true'
