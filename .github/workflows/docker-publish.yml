@@ -50,7 +50,6 @@ jobs:
         with:
           string: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
 
-      # Login to GHCR (conditional on push criteria)
       - name: Log into GHCR
         if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref))
         uses: docker/login-action@v3
@@ -59,7 +58,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Login to Docker Hub (only for non-PR events, or allowed same-repo PRs in whitelist)
       - name: Log into Docker Hub
         if: github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref))
         uses: docker/login-action@v3
@@ -67,7 +65,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Extract metadata for BOTH registries (GHCR + Docker Hub)
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -79,23 +76,17 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            # Semver tags on version refs (v1.2.3, v1.2, v1)
             type=ref,event=tag
-            # Branch tag (main, feature-*). Includes PR head ref when building PR
             type=ref,event=branch
-            # PR tag (pr-123)
-            type=ref,event=pr
-            # Short SHA
-            type=sha,format=short
 
       - name: Show planned tags (debug)
         run: |
-          echo "Generated tags:"
+          echo "Generated meta tags:"
           echo "${{ steps.meta.outputs.tags }}"
           echo "Labels:"
-            echo "${{ steps.meta.outputs.labels }}"
+          echo "${{ steps.meta.outputs.labels }}"
+          echo "Branch slug tag (will be added explicitly for both registries): ${{ env.BRANCH_SLUG }}"
 
-      # Local test build (fast failure feedback, no push)
       - name: Build test image (no push)
         uses: docker/build-push-action@v6
         with:
@@ -105,7 +96,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Build & Push (conditionally) to BOTH GHCR and Docker Hub
       - name: Build and push images
         id: build_and_push
         uses: docker/build-push-action@v6
@@ -115,11 +105,11 @@ jobs:
           tags: |
             ${{ steps.meta.outputs.tags }}
             ${{ steps.ghcr_path.outputs.lowercase }}:${{ env.BRANCH_SLUG }}
+            ${{ env.DOCKERHUB_IMAGE }}:${{ env.BRANCH_SLUG }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Attest provenance for GHCR image
       - name: Attest build provenance (GHCR)
         if: steps.build_and_push.outputs.digest != '' && (github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)))
         uses: actions/attest-build-provenance@v3
@@ -128,7 +118,6 @@ jobs:
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
 
-      # Attest provenance for Docker Hub image
       - name: Attest build provenance (Docker Hub)
         if: steps.build_and_push.outputs.digest != '' && (github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref != '' && contains(fromJSON(env.PUBLISH_PR_WHITELIST), github.head_ref)))
         uses: actions/attest-build-provenance@v3
@@ -141,7 +130,11 @@ jobs:
         if: always()
         run: |
           echo "Digest: ${{ steps.build_and_push.outputs.digest }}"
-          echo "GHCR base image: ${{ steps.ghcr_path.outputs.lowercase }}"
-          echo "Docker Hub image: ${{ env.DOCKERHUB_IMAGE }}"
+          echo "GHCR image base: ${{ steps.ghcr_path.outputs.lowercase }}"
+          echo "Docker Hub image base: ${{ env.DOCKERHUB_IMAGE }}"
           echo "Branch slug: ${{ env.BRANCH_SLUG }}"
           echo "Event: ${{ github.event_name }}"
+          echo "Final tag set:"
+          printf "%s\n" "${{ steps.meta.outputs.tags }}" | sed 's/^/  meta: /'
+          echo "  explicit (ghcr): ${{ steps.ghcr_path.outputs.lowercase }}:${{ env.BRANCH_SLUG }}"
+          echo "  explicit (dockerhub): ${{ env.DOCKERHUB_IMAGE }}:${{ env.BRANCH_SLUG }}"
