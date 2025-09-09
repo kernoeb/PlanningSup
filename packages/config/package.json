@@ -3,6 +3,6 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "typescript": "^5"
+    "typescript": "catalog:dev"
   }
 }

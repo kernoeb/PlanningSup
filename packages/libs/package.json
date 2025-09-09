@@ -10,11 +10,11 @@
     "coverage": "bun test --coverage"
   },
   "dependencies": {
-    "elysia": "1.3.21"
+    "elysia": "catalog:"
   },
   "devDependencies": {
-    "@elysiajs/eden": "^1",
+    "@elysiajs/eden": "^1.3.3",
     "config": "workspace:*",
-    "typescript": "^5"
+    "typescript": "catalog:dev"
   }
 }
