@@ -43,17 +43,32 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Check branch whitelist
+        id: whitelist_check
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          WHITELIST="${{ env.PUBLISH_WHITELIST }}"
+          echo "Checking if '$BRANCH_NAME' is in the whitelist..."
+          if echo "$WHITELIST" | grep -Fxq "$BRANCH_NAME"; then
+            echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
+            echo "Result: Yes"
+          else
+            echo "is_whitelisted=false" >> "$GITHUB_OUTPUT"
+            echo "Result: No"
+          fi
+
       - name: Authenticate to Google Cloud
         uses: 'google-github-actions/auth@v2'
         # Only authenticate when we intend to publish
-        if: github.event_name == 'push'
+        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         with:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
 
       - name: Log into Artifact Registry and GHCR
         # Only log in when we intend to publish
-        if: github.event_name == 'push'
+        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
         run: |
           # Log into Artifact Registry
           gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
@@ -69,26 +84,27 @@ jobs:
             ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
             # On a push to a whitelisted branch, create a tag named after the branch
-            type=ref,event=branch,enable=${{ github.event_name == 'push' && contains(fromYaml(env.PUBLISH_WHITELIST), github.ref_name) }}
+            type=ref,event=branch,enable=${{ steps.whitelist_check.outputs.is_whitelisted == 'true' }}
             # Create semver tags for git tags
             type=semver,pattern={{version}}
             # Create a tag for pull requests, like 'pr-123'
             type=pr,prefix=pr-
 
       - name: Build and push image
+        id: build_and_push
         uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          # Only push on main branch or tag pushes, not on PRs
-          push: ${{ github.event_name == 'push' }}
+          # Only push on whitelisted branch or tag pushes
+          push: ${{ steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Attest build provenance
-        if: github.event_name == 'push'
+        if: steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
