@@ -3,7 +3,7 @@ import { authClient } from '@libs'
 import { createSharedComposable, watchDebounced } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
-export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors'
+export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings'
 
 export interface SyncOptions<T> {
   // Transform local value to the server payload format.

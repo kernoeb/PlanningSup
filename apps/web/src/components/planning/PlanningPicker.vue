@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { client } from '@libs'
 import { useVirtualList } from '@vueuse/core'
-import { useCurrentPlanning } from '@web/composables/useCurrentPlanning'
+import { useSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { computed, onMounted, ref, watch } from 'vue'
 
 interface PlanningNode {
@@ -23,8 +23,8 @@ const loading = ref(false)
 const error = ref<string | null>(null)
 const tree = ref<PlanningNode[]>([])
 
-// Multi-selection composable
-const { planningFullIds, isSelected, togglePlanning } = useCurrentPlanning()
+// Multi-selection composable (synced with server)
+const { planningFullIds, isSelected, togglePlanning } = useSyncedCurrentPlanning()
 
 // UX state
 const searchQuery = ref('')

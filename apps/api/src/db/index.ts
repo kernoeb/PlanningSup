@@ -16,7 +16,7 @@ const db = drizzle({
 })
 
 if (Bun.env.NO_MIGRATE !== 'true') {
-  logger.info('Connected to database, running migrations if needed...')
+  logger.info('Running migrations if needed...')
   await migrate(db, { migrationsFolder: './drizzle' })
   logger.info('Migrations complete.')
 }
