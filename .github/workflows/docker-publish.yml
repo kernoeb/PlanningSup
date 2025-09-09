@@ -88,7 +88,7 @@ jobs:
             # Create semver tags for git tags
             type=semver,pattern={{version}}
             # Create a tag for pull requests, like 'pr-123'
-            type=pr,prefix=pr-
+            type=ref,event=pr,prefix=pr-
 
       - name: Build and push image
         id: build_and_push
