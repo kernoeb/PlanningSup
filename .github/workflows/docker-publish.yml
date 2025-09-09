@@ -14,6 +14,7 @@ concurrency:
 
 env:
   # Google Artifact Registry
+  GCP_PROJECT_ID: planningsup
   GCP_REGION: europe-west1
   AR_REPO_NAME: planningsup
   AR_IMAGE_NAME: planningsup
@@ -72,10 +73,7 @@ jobs:
             echo "::error::Invalid branch name: $BRANCH"
             exit 1
           fi
-          SLUG=$(echo "$BRANCH"
-            | tr '[:upper:]' '[:lower:]'
-            | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g'
-            | cut -c1-128)
+          SLUG=$(echo "$BRANCH" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' | cut -c1-128)
           if [[ -z "$SLUG" ]]; then
             echo "::error::Empty slug produced"
             exit 1
@@ -87,7 +85,7 @@ jobs:
         id: image_paths
         run: |
           echo "ghcr=$(echo "${{ env.GHCR_REGISTRY }}/${{ github.repository }}/${{ env.GHCR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
-          echo "artifact_registry=$(echo "${{ env.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "artifact_registry=$(echo "${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
 
       - name: Authenticate to Google Cloud
         if: steps.publish.outputs.can_publish == 'true'
@@ -110,16 +108,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: |
-            ${{ steps.image_paths.outputs.ghcr }}
+          images: ${{ steps.image_paths.outputs.ghcr }}
             ${{ steps.image_paths.outputs.artifact_registry }}
           flavor: latest=false
-          tags: |
-            type=ref,event=tag
+          tags: type=ref,event=tag
             type=semver,pattern=latest
             type=ref,event=branch
-          labels: |
-            org.opencontainers.image.title=PlanningSup
+          labels: org.opencontainers.image.title=PlanningSup
             org.opencontainers.image.description=Planning application
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
