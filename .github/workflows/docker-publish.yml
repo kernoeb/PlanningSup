@@ -13,9 +13,15 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: planning
-  DOCKERHUB_IMAGE: kernoeb/planningsup
+  # Google Artifact Registry
+  GCP_REGION: europe-west1
+  AR_REPO_NAME: planningsup
+  AR_IMAGE_NAME: planningsup
+
+  # GitHub Container Registry
+  GHCR_REGISTRY: ghcr.io
+  GHCR_IMAGE_NAME: planning
+
   # YAML array (exact branch names) allowed to publish on PRs (same-repo only)
   PUBLISH_PR_WHITELIST: |
     - refactor/elysia-postgresql
@@ -28,7 +34,7 @@ jobs:
       contents: read
       packages: write
       attestations: write
-      id-token: write
+      id-token: write # Required for Google Cloud authentication
       security-events: write
       pull-requests: write
 
@@ -57,14 +63,6 @@ jobs:
           echo "can_publish=$CAN" >> "$GITHUB_OUTPUT"
           echo "Computed can_publish=$CAN"
 
-      - name: Validate required secrets for publish
-        if: steps.publish.outputs.can_publish == 'true' && github.event_name != 'pull_request'
-        run: |
-          missing=0
-          [[ -z "${{ secrets.DOCKER_USERNAME }}" ]] && echo "::error::Missing DOCKER_USERNAME" && missing=1
-            [[ -z "${{ secrets.DOCKER_PASSWORD }}" ]] && echo "::error::Missing DOCKER_PASSWORD" && missing=1
-          [[ $missing -eq 1 ]] && exit 1 || echo "All required secrets present."
-
       - name: Compute branch slug
         id: branch
         shell: bash
@@ -74,46 +72,48 @@ jobs:
             echo "::error::Invalid branch name: $BRANCH"
             exit 1
           fi
-          SLUG=$(echo "$BRANCH" \
-            | tr '[:upper:]' '[:lower:]' \
-            | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g' \
+          SLUG=$(echo "$BRANCH"
+            | tr '[:upper:]' '[:lower:]'
+            | sed -E 's/[^a-z0-9._-]+/-/g; s/^-+|-+$//g'
             | cut -c1-128)
           if [[ -z "$SLUG" ]]; then
             echo "::error::Empty slug produced"
             exit 1
           fi
-            echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
+          echo "BRANCH_SLUG=$SLUG" >> "$GITHUB_ENV"
           echo "Branch: $BRANCH -> Slug: $SLUG"
 
-      - name: Derive lowercase GHCR image path
-        id: ghcr_path
+      - name: Derive lowercase image paths
+        id: image_paths
         run: |
-          echo "lowercase=$(echo "${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "ghcr=$(echo "${{ env.GHCR_REGISTRY }}/${{ github.repository }}/${{ env.GHCR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "artifact_registry=$(echo "${{ env.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
+      - name: Authenticate to Google Cloud
+        if: steps.publish.outputs.can_publish == 'true'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
+          service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
+          # This configures the docker credential helper for Artifact Registry
+          create_credentials_file: true
 
       - name: Log into GHCR
         if: steps.publish.outputs.can_publish == 'true'
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Log into Docker Hub
-        if: steps.publish.outputs.can_publish == 'true'
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ steps.ghcr_path.outputs.lowercase }}
-            ${{ env.DOCKERHUB_IMAGE }}
-          flavor: |
-            latest=false
+            ${{ steps.image_paths.outputs.ghcr }}
+            ${{ steps.image_paths.outputs.artifact_registry }}
+          flavor: latest=false
           tags: |
             type=ref,event=tag
             type=semver,pattern=latest
@@ -128,8 +128,8 @@ jobs:
 
       - name: Show planned tags
         run: |
-          echo "Base (GHCR): ${{ steps.ghcr_path.outputs.lowercase }}"
-          echo "Base (DockerHub): ${{ env.DOCKERHUB_IMAGE }}"
+          echo "Base (GHCR): ${{ steps.image_paths.outputs.ghcr }}"
+          echo "Base (Artifact Registry): ${{ steps.image_paths.outputs.artifact_registry }}"
           echo "Slug: ${{ env.BRANCH_SLUG }}"
           echo "Metadata tags:"
           printf "  %s\n" "${{ steps.meta.outputs.tags }}"
@@ -141,7 +141,7 @@ jobs:
           context: .
           load: true
           platforms: linux/amd64
-          tags: test-${{ env.IMAGE_NAME }}:${{ github.sha }}
+          tags: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           provenance: false
@@ -151,7 +151,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves
-          image: test-${{ env.IMAGE_NAME }}:${{ github.sha }}
+          image: test-${{ env.AR_IMAGE_NAME }}:${{ github.sha }}
           only-severities: critical,high
           exit-code: true
 
@@ -165,8 +165,8 @@ jobs:
           platforms: linux/amd64
           tags: |
             ${{ steps.meta.outputs.tags }}
-            ${{ steps.ghcr_path.outputs.lowercase }}:${{ env.BRANCH_SLUG }}
-            ${{ env.DOCKERHUB_IMAGE }}:${{ env.BRANCH_SLUG }}
+            ${{ steps.image_paths.outputs.ghcr }}:${{ env.BRANCH_SLUG }}
+            ${{ steps.image_paths.outputs.artifact_registry }}:${{ env.BRANCH_SLUG }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -176,19 +176,11 @@ jobs:
             BUILDTIME=${{ github.run_started_at }}
             VERSION=${{ github.sha }}
 
-      - name: Attest build provenance (GHCR)
+      - name: Attest build provenance
         if: steps.publish.outputs.can_publish == 'true' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ steps.ghcr_path.outputs.lowercase }}
-          subject-digest: ${{ steps.build_and_push.outputs.digest }}
-          push-to-registry: true
-
-      - name: Attest build provenance (Docker Hub)
-        if: steps.publish.outputs.can_publish == 'true' && steps.build_and_push.outputs.digest != ''
-        uses: actions/attest-build-provenance@v1
-        with:
-          subject-name: index.docker.io/${{ env.DOCKERHUB_IMAGE }}
+          subject-name: ${{ steps.image_paths.outputs.artifact_registry }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
 
@@ -201,8 +193,8 @@ jobs:
           echo "Head ref:             ${{ github.head_ref }}"
           echo "Branch slug:          ${{ env.BRANCH_SLUG }}"
           echo "Can publish:          ${{ steps.publish.outputs.can_publish }}"
-          echo "GHCR base:            ${{ steps.ghcr_path.outputs.lowercase }}"
-          echo "DockerHub base:       ${{ env.DOCKERHUB_IMAGE }}"
+          echo "GHCR base:            ${{ steps.image_paths.outputs.ghcr }}"
+          echo "Artifact Registry base: ${{ steps.image_paths.outputs.artifact_registry }}"
           echo "Metadata tags:"
           printf "  %s\n" "${{ steps.meta.outputs.tags }}"
           if [[ -n "${{ steps.build_and_push.outputs.digest }}" ]]; then
