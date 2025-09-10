@@ -89,8 +89,20 @@ jobs:
             else
               echo "❌ Push event but not a branch or valid tag"
             fi
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # Check if PR is from a whitelisted branch
+            SOURCE_BRANCH="${{ github.head_ref }}"
+            WHITELIST="${{ env.PUBLISH_WHITELIST }}"
+            echo "Checking if PR source branch '$SOURCE_BRANCH' is in the whitelist..."
+            if echo "$WHITELIST" | grep -Fxq "$SOURCE_BRANCH"; then
+              echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
+              echo "should_publish=true" >> "$GITHUB_OUTPUT"
+              echo "✅ PR from whitelisted branch '$SOURCE_BRANCH' - publishing enabled"
+            else
+              echo "❌ PR from non-whitelisted branch '$SOURCE_BRANCH'"
+            fi
           else
-            echo "ℹ️  Not a push event - build only, no publishing"
+            echo "ℹ️  Not a push or PR event - build only, no publishing"
           fi
 
           # Final safety check - never publish from fork PRs
@@ -131,8 +143,8 @@ jobs:
             type=ref,event=branch,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }}
             # Create semver tags for valid git tags
             type=semver,pattern={{version}},enable=${{ steps.publish_check.outputs.is_valid_tag == 'true' }}
-            # Always create a 'pr-<number>' tag for PRs (but won't be pushed)
-            type=ref,event=pr
+            # For PRs from whitelisted branches, use the source branch name as tag
+            type=ref,event=pr,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }},value={{head_ref}}
 
       - name: Build and push image
         id: build_and_push
@@ -165,6 +177,7 @@ jobs:
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Ref | ${{ github.ref }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Source Branch | ${{ github.head_ref || github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Fork PR | ${{ env.IS_FORK_PR }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Whitelisted Branch | ${{ steps.publish_check.outputs.is_whitelisted }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Valid Tag | ${{ steps.publish_check.outputs.is_valid_tag }} |" >> $GITHUB_STEP_SUMMARY
