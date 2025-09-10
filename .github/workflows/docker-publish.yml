@@ -20,7 +20,7 @@ env:
 
   # GitHub Container Registry
   GHCR_REGISTRY: ghcr.io
-  GHCR_IMAGE_NAME: planning
+  GHCR_IMAGE_NAME: planningsup/planning
 
   # Whitelist of branches that are allowed to be published on push
   PUBLISH_WHITELIST: |
@@ -88,11 +88,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.GHCR_REGISTRY }}/${{ github.repository }}/${{ env.GHCR_IMAGE_NAME }}
+            ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
             ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
-            # On a push to a whitelisted branch, create a tag named after the branch
-            type=ref,event=branch,enable=${{ steps.whitelist_check.outputs.is_whitelisted == 'true' }}
+            # On a push to a branch, create a tag named after the branch
+            type=ref,event=branch
             # Create semver tags for git tags
             type=semver,pattern={{version}}
 
