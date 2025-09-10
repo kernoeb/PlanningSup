@@ -25,17 +25,6 @@ const app = new Elysia()
     return { error, message: isNotFound ? 'Route not found' : 'Internal server error' }
   })
   .use(openapi())
-  /* .use( // disable CORS temporarily
-    cors({
-      origin: 'http://localhost:4444',
-      allowedHeaders: ['Content-Type', 'Authorization'],
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      exposeHeaders: ['Content-Length'],
-      maxAge: 600,
-      credentials: true,
-    }),
-  ) */
-
   .all('/api/auth/*', betterAuthView)
   .use(new Elysia({ prefix: '/api' })
     .use(planningsRoutes),

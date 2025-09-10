@@ -29,7 +29,6 @@ export default new Elysia({ prefix: '/plannings' })
       const allEvents = events
         ? getFormattedEvents(planning.id, events, {
             blocklist,
-
             highlightTeacher,
             localeUtils,
           })
@@ -41,7 +40,6 @@ export default new Elysia({ prefix: '/plannings' })
         fullId,
         nbEvents,
         blocklist,
-
         highlightTeacher,
       })
 
