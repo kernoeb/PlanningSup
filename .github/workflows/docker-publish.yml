@@ -63,6 +63,7 @@ jobs:
           fi
 
       - name: Authenticate to Google Cloud
+        id: gcp_auth
         uses: 'google-github-actions/auth@v2'
         # Only authenticate when we intend to publish
         if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
@@ -70,14 +71,17 @@ jobs:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
 
-      - name: Log into Artifact Registry and GHCR
-        # Only log in when we intend to publish
+      - name: Log into Google Artifact Registry
         if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
-        run: |
-          # Log into Artifact Registry
-          gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev
-          # Log into GHCR
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.GHCR_REGISTRY }} -u ${{ github.actor }} --password-stdin
+        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev --quiet
+
+      - name: Log into GitHub Container Registry
+        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.GHCR_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract Docker metadata
         id: meta
@@ -110,7 +114,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Attest build provenance
-        if: (steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))) && steps.build_and_push.outputs.digest != ''
+        if: github.event_name == 'push' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
