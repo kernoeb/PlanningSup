@@ -27,6 +27,10 @@ env:
     main
     refactor/elysia-postgresql
 
+  # Security context
+  IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+  IS_PUBLISH_EVENT: ${{ github.event_name == 'push' && (github.ref_type == 'branch' || github.ref_type == 'tag') }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,40 +47,72 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Check branch whitelist
-        id: whitelist_check
-        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')) || github.event_name == 'pull_request'
+      - name: Verify PR safety
+        if: github.event_name == 'pull_request'
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            BRANCH_NAME="${{ github.head_ref }}"
-          else
-            BRANCH_NAME="${{ github.ref_name }}"
+          echo "This is a PR build - images will be built but not pushed"
+          echo "PR from: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Base repo: ${{ github.repository }}"
+          if [[ "${{ env.IS_FORK_PR }}" == "true" ]]; then
+            echo "⚠️  This is a fork PR - extra security restrictions apply"
           fi
-          WHITELIST="${{ env.PUBLISH_WHITELIST }}"
-          echo "Checking if '$BRANCH_NAME' is in the whitelist..."
-          if echo "$WHITELIST" | grep -Fxq "$BRANCH_NAME"; then
-            echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
-            echo "Result: Yes"
+
+      - name: Check branch whitelist and tag validation
+        id: publish_check
+        run: |
+          # Initialize all outputs as false
+          echo "is_whitelisted=false" >> "$GITHUB_OUTPUT"
+          echo "is_valid_tag=false" >> "$GITHUB_OUTPUT"
+          echo "should_publish=false" >> "$GITHUB_OUTPUT"
+
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            if [[ "${{ github.ref }}" == refs/heads/* ]]; then
+              BRANCH_NAME="${{ github.ref_name }}"
+              WHITELIST="${{ env.PUBLISH_WHITELIST }}"
+              echo "Checking if branch '$BRANCH_NAME' is in the whitelist..."
+              if echo "$WHITELIST" | grep -Fxq "$BRANCH_NAME"; then
+                echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
+                echo "should_publish=true" >> "$GITHUB_OUTPUT"
+                echo "✅ Branch '$BRANCH_NAME' is whitelisted for publishing"
+              else
+                echo "❌ Branch '$BRANCH_NAME' is not whitelisted for publishing"
+              fi
+            elif [[ "${{ github.ref }}" == refs/tags/v*.*.* ]]; then
+              echo "Validating tag: ${{ github.ref_name }}"
+              if [[ "${{ github.ref_name }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+                echo "is_valid_tag=true" >> "$GITHUB_OUTPUT"
+                echo "should_publish=true" >> "$GITHUB_OUTPUT"
+                echo "✅ Valid semver tag: ${{ github.ref_name }}"
+              else
+                echo "❌ Invalid tag format: ${{ github.ref_name }} (expected: v*.*.* semver)"
+              fi
+            else
+              echo "❌ Push event but not a branch or valid tag"
+            fi
           else
-            echo "is_whitelisted=false" >> "$GITHUB_OUTPUT"
-            echo "Result: No"
+            echo "ℹ️  Not a push event - build only, no publishing"
+          fi
+
+          # Final safety check - never publish from fork PRs
+          if [[ "${{ env.IS_FORK_PR }}" == "true" ]]; then
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "🔒 Fork PR detected - publishing disabled for security"
           fi
 
       - name: Authenticate to Google Cloud
         id: gcp_auth
         uses: 'google-github-actions/auth@v2'
-        # Only authenticate when we intend to publish
-        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        if: steps.publish_check.outputs.should_publish == 'true'
         with:
           workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
           service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
 
       - name: Log into Google Artifact Registry
-        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        if: steps.publish_check.outputs.should_publish == 'true'
         run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev --quiet
 
       - name: Log into GitHub Container Registry
-        if: steps.whitelist_check.outputs.is_whitelisted == 'true' || github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        if: steps.publish_check.outputs.should_publish == 'true'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.GHCR_REGISTRY }}
@@ -91,10 +127,12 @@ jobs:
             ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
             ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
-            # On a push to a branch, create a tag named after the branch
-            type=ref,event=branch
-            # Create semver tags for git tags
-            type=semver,pattern={{version}}
+            # On a push to a whitelisted branch, create a tag named after the branch
+            type=ref,event=branch,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }}
+            # Create semver tags for valid git tags
+            type=semver,pattern={{version}},enable=${{ steps.publish_check.outputs.is_valid_tag == 'true' }}
+            # Always create a 'pr-<number>' tag for PRs (but won't be pushed)
+            type=ref,event=pr
 
       - name: Build and push image
         id: build_and_push
@@ -104,17 +142,31 @@ jobs:
           platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          # Push on whitelisted branches or tag pushes
-          push: ${{ steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
+          # Only push when explicitly allowed and safe
+          push: ${{ steps.publish_check.outputs.should_publish == 'true' }}
           # Load locally when not pushing to avoid buildx warning
-          load: ${{ !(steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))) }}
+          load: ${{ steps.publish_check.outputs.should_publish != 'true' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Attest build provenance
-        if: github.event_name == 'push' && steps.build_and_push.outputs.digest != ''
+        if: steps.publish_check.outputs.should_publish == 'true' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
+
+      - name: Build summary
+        if: always()
+        run: |
+          echo "## Docker Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Ref | ${{ github.ref }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Fork PR | ${{ env.IS_FORK_PR }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Whitelisted Branch | ${{ steps.publish_check.outputs.is_whitelisted }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Valid Tag | ${{ steps.publish_check.outputs.is_valid_tag }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Should Publish | ${{ steps.publish_check.outputs.should_publish }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Tags | ${{ steps.meta.outputs.tags }} |" >> $GITHUB_STEP_SUMMARY
