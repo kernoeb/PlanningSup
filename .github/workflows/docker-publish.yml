@@ -105,7 +105,7 @@ jobs:
           # Push on whitelisted branches or tag pushes
           push: ${{ steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
           # Load locally when not pushing to avoid buildx warning
-          load: ${{ not (steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))) }}
+          load: ${{ !(steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))) }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
