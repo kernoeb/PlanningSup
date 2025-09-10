@@ -27,6 +27,7 @@ const app = new Elysia()
   .use(openapi())
   .all('/api/auth/*', betterAuthView)
   .use(new Elysia({ prefix: '/api' })
+    .get('/ping', () => 'pong')
     .use(planningsRoutes),
   )
 
