@@ -1,14 +1,14 @@
 {
   "title": "ENSCR",
-  "children": [
+  "edts": [
     {
       "id": "cycleingenieur",
       "title": "Cycle Ingénieur",
-      "children": [
+      "edts": [
         {
           "id": "1iereanneeci",
           "title": "1ière année CI",
-          "children": [
+          "edts": [
             {
               "id": "elevesing1iereannee",
               "title": "Elèves Ing. 1ière année",
@@ -17,7 +17,7 @@
             {
               "id": "groupederentree",
               "title": "Groupe de rentrée",
-              "children": [
+              "edts": [
                 {
                   "id": "promotioni1horsmath",
                   "title": "Promotion I1 hors math",
@@ -33,7 +33,7 @@
             {
               "id": "groupeslanguesvivantes2",
               "title": "Groupes Langues Vivantes 2",
-              "children": [
+              "edts": [
                 {
                   "id": "gr1espagnolei1",
                   "title": "Gr. 1 Espagnol / EI1",
@@ -57,9 +57,9 @@
               ]
             },
             {
-              "id": "groupesd'anglais",
+              "id": "groupesdanglais",
               "title": "Groupes d'Anglais",
-              "children": [
+              "edts": [
                 {
                   "id": "gr1anglaisei1",
                   "title": "Gr. 1 Anglais / EI1",
@@ -90,7 +90,7 @@
             {
               "id": "groupesdetp",
               "title": "Groupes de TP",
-              "children": [
+              "edts": [
                 {
                   "id": "groupetp1ei1",
                   "title": "Groupe TP 1 / EI1",
@@ -109,7 +109,7 @@
                 {
                   "id": "sous-groupesdetp1ei1",
                   "title": "Sous-Groupes de TP 1/ EI1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp1-aei1",
                       "title": "S.Gr. TP 1-A / EI1",
@@ -125,7 +125,7 @@
                 {
                   "id": "sous-groupesdetp2ei1",
                   "title": "Sous-Groupes de TP 2/ EI1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp2-aei1",
                       "title": "S.Gr. TP 2-A / EI1",
@@ -141,7 +141,7 @@
                 {
                   "id": "sous-groupesdetp3ei1",
                   "title": "Sous-Groupes de TP 3/ EI1",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp3-aei1",
                       "title": "S.Gr. TP 3-A / EI1",
@@ -161,38 +161,7 @@
         {
           "id": "2iemeanneeci",
           "title": "2ième année CI",
-          "children": [
-            {
-              "id": "ei2-primo-entrants",
-              "title": "EI2-Primo-entrants",
-              "children": [
-                {
-                  "id": "abdelmouttalibzineb",
-                  "title": "ABDELMOUTTALIB Zineb",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=229&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "chetouanenada",
-                  "title": "CHETOUANE Nada",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=246&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "dehanejihane",
-                  "title": "DEHANE Jihane",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=271&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "lemzahmimalak",
-                  "title": "LEMZAHMI Malak",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=294&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "ouajahatfilalisalma",
-                  "title": "OUAJAHAT FILALI Salma",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=320&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
+          "edts": [
             {
               "id": "elevesing2iemeannee",
               "title": "Elèves Ing. 2ième année",
@@ -201,7 +170,7 @@
             {
               "id": "groupeslanguesvivantes2",
               "title": "Groupes Langues Vivantes 2",
-              "children": [
+              "edts": [
                 {
                   "id": "gr1espagnolei2",
                   "title": "Gr. 1 Espagnol / EI2",
@@ -225,9 +194,9 @@
               ]
             },
             {
-              "id": "groupesd'anglais",
+              "id": "groupesdanglais",
               "title": "Groupes d'Anglais",
-              "children": [
+              "edts": [
                 {
                   "id": "gr1anglaisei2",
                   "title": "Gr. 1 Anglais / EI2",
@@ -253,11 +222,11 @@
             {
               "id": "groupesdemajeures",
               "title": "Groupes de Majeures",
-              "children": [
+              "edts": [
                 {
                   "id": "groupesctv",
                   "title": "Groupes CTV",
-                  "children": [
+                  "edts": [
                     {
                       "id": "groupectv_a",
                       "title": "Groupe CTV_A",
@@ -298,7 +267,7 @@
                 {
                   "id": "groupesepa",
                   "title": "Groupes EPA",
-                  "children": [
+                  "edts": [
                     {
                       "id": "groupeepa_c",
                       "title": "Groupe EPA_C",
@@ -356,7 +325,7 @@
             {
               "id": "groupesdetp",
               "title": "Groupes de TP",
-              "children": [
+              "edts": [
                 {
                   "id": "groupetp1ei2",
                   "title": "Groupe TP 1 / EI2",
@@ -375,7 +344,7 @@
                 {
                   "id": "sous-groupesdetp1ei2",
                   "title": "Sous-Groupes de TP 1/ EI2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp1-aei2",
                       "title": "S.Gr. TP 1-A / EI2",
@@ -391,7 +360,7 @@
                 {
                   "id": "sous-groupesdetp2ei2",
                   "title": "Sous-Groupes de TP 2/ EI2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp2-aei2",
                       "title": "S.Gr. TP 2-A / EI2",
@@ -407,7 +376,7 @@
                 {
                   "id": "sous-groupesdetp3ei2",
                   "title": "Sous-Groupes de TP 3/ EI2",
-                  "children": [
+                  "edts": [
                     {
                       "id": "sgrtp3-aei2",
                       "title": "S.Gr. TP 3-A / EI2",
@@ -425,7 +394,7 @@
             {
               "id": "groupesderentree",
               "title": "Groupes de rentrée",
-              "children": [
+              "edts": [
                 {
                   "id": "groupem1",
                   "title": "Groupe M1",
@@ -439,928 +408,17 @@
               ]
             }
           ]
-        },
-        {
-          "id": "3iemeanneeci",
-          "title": "3ième année CI",
-          "children": [
-            {
-              "id": "ei3-primoentrants",
-              "title": "EI3-Primo entrants",
-              "children": [
-                {
-                  "id": "ciavarellalea",
-                  "title": "CIAVARELLA Léa",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=375&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "cottomatthieu",
-                  "title": "COTTO Matthieu",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=378&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "elevesing3iemeannee",
-              "title": "Elèves Ing. 3ième année",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=120&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "groupescommunicationetanglais",
-              "title": "Groupes Communication et Anglais",
-              "children": [
-                {
-                  "id": "gri3-a",
-                  "title": "Gr. I3-A",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=142&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "gri3-b",
-                  "title": "Gr. I3-B",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=175&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "gri3-c",
-                  "title": "Gr. I3-C",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=176&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "gri3-d",
-                  "title": "Gr. I3-D",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=177&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "grtoeic",
-                  "title": "Gr. TOEIC",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=496&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "majeurectv",
-              "title": "Majeure CTV",
-              "children": [
-                {
-                  "id": "@eictv-alternance#5",
-                  "title": "@EI CTV-Alternance #5",
-                  "children": [
-                    {
-                      "id": "_biotechproc",
-                      "title": "_Biotech & Proc.",
-                      "children": [
-                        {
-                          "id": "_cressensthomas",
-                          "title": "_CRESSENS Thomas",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=273&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_marboeufemilie",
-                          "title": "_MARBOEUF Emilie",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=645&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "_formulation",
-                      "title": "_Formulation",
-                      "children": [
-                        {
-                          "id": "_deniscassandra",
-                          "title": "_DENIS Cassandra",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=404&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_legoeccapucine",
-                          "title": "_LE GOEC Capucine",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=646&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_lecomtevanessa",
-                          "title": "_LECOMTE Vanessa",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=653&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere1:biotechnologies",
-                  "title": "Filière 1 : Biotechnologies",
-                  "children": [
-                    {
-                      "id": "@eictv-biotech-11",
-                      "title": "@EI CTV-Biotech -11",
-                      "children": [
-                        {
-                          "id": "biotech:^ctvnum",
-                          "title": "Biotech: ^CTV Num",
-                          "children": [
-                            {
-                              "id": "beauvalletalban",
-                              "title": "BEAUVALLET Alban",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=508&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "danesejulia",
-                              "title": "DANESE Julia",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=512&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "biotech:^chimverte",
-                          "title": "Biotech: ^Chim. Verte",
-                          "children": [
-                            {
-                              "id": "bendavidmailys",
-                              "title": "BENDAVID Maïlys",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=182&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "chapoulienoa",
-                              "title": "CHAPOULIE Noa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=454&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "cubero-lopezlou-ann",
-                              "title": "CUBERO-LOPEZ Lou-Ann",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=53&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "duvauchellepaulin",
-                              "title": "DUVAUCHELLE Paulin",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=661&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "maurelantoine",
-                              "title": "MAUREL Antoine",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=217&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "oliviertom",
-                              "title": "OLIVIER Tom",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "sigemarie",
-                              "title": "SIGE Marie",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "straubeva",
-                              "title": "STRAUB Eva",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=610&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "vachervalentine",
-                              "title": "VACHER Valentine",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=611&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "ue-agb-alternantsspecifiquecoursgeniemicrobio*17*",
-                      "title": "UE-A GB - Alternants (Spécifique cours Génie Microbio) *17*",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=278&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "ue-ageniebiologique-21",
-                      "title": "UE-A Génie biologique - 21",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=288&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "ue-bchimieetbiotechnologieagriagrosante-22",
-                      "title": "UE-B Chimie et Biotechnologie Agri/Agro/Santé - 22",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=289&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere2:formulation",
-                  "title": "Filière 2 : Formulation",
-                  "children": [
-                    {
-                      "id": "@eictv-formu#6",
-                      "title": "@EI CTV-Formu #6",
-                      "children": [
-                        {
-                          "id": "formu:^ctvnum",
-                          "title": "Formu: ^CTV Num.",
-                          "children": [
-                            {
-                              "id": "xuxhuanjin",
-                              "title": "XU Xhuanjin",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=464&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "formu:^chimbiotech",
-                          "title": "Formu: ^Chim. & Biotech",
-                          "children": [
-                            {
-                              "id": "audinotantoine",
-                              "title": "AUDINOT Antoine",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=568&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "bardarillemanon",
-                              "title": "BARDARILLE Manon",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=619&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "chetouanelea",
-                              "title": "CHETOUANE Léa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=639&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "colmontzelie",
-                              "title": "COLMONT Zélie",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=621&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "valgueblasselorane",
-                              "title": "VALGUEBLASSE Lorane",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=637&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "ue-cformulationetcaracterisation*8*",
-                      "title": "UE-C Formulation et caractérisation *8*",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=299&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "ue-dformulation:colloidesetinterfaces*6*",
-                      "title": "UE-D Formulation : Colloïdes et interfaces *6*",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=300&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere3:ctvnumerique",
-                  "title": "Filière 3 : CTV & Numérique",
-                  "children": [
-                    {
-                      "id": "@eifilierechimnumtcctv#1",
-                      "title": "@EI Filière Chim. Num. (TC CTV) #1",
-                      "children": [
-                        {
-                          "id": "ctvnum^chimverte",
-                          "title": "CTV Num ^Chim Verte",
-                          "children": [
-                            {
-                              "id": "janahhamza",
-                              "title": "JANAH Hamza",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=642&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "uectvnumerique",
-                      "title": "UE CTV & Numérique",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=317&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filieremasterchimiemoleculaire",
-                  "title": "Filière MASTER Chimie Moléculaire",
-                  "children": [
-                    {
-                      "id": "@eim2cm#16",
-                      "title": "@EI M2 CM #16",
-                      "children": [
-                        {
-                          "id": "cm^chimverte",
-                          "title": "CM ^Chim. Verte",
-                          "children": [
-                            {
-                              "id": "bourrasseautelma",
-                              "title": "BOURRASSEAU Telma",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=237&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "carrasqueriaalban",
-                              "title": "CARRASQUERIA Alban",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=643&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "leonguirec",
-                              "title": "LEON Guirec",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=223&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "natariannileonore",
-                              "title": "NATARIANNI Léonore",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=473&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "cm^geniebio",
-                          "title": "CM ^Génie Bio",
-                          "children": [
-                            {
-                              "id": "authiejulie",
-                              "title": "AUTHIE Julie",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=216&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "beraudfanny",
-                              "title": "BERAUD Fanny",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=667&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "chantremathis",
-                              "title": "CHANTRE Mathis",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=220&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "deonaelie",
-                              "title": "DE ONA Elie",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=221&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "deleruecannelle",
-                              "title": "DELERUE Cannelle",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=669&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "grandjeanalexandre",
-                              "title": "GRANDJEAN Alexandre",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=124&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "grandjeannathan",
-                              "title": "GRANDJEAN Nathan",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=479&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "lambertblandine",
-                              "title": "LAMBERT Blandine",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=671&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "leichtelisa",
-                              "title": "LEICHT Elisa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=412&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "peterzoe",
-                              "title": "PETER Zoé",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=406&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "poncetelisa",
-                              "title": "PONCET Elisa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=480&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "robergejuliette",
-                              "title": "ROBERGE Juliette",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=407&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "filieremasterchimiedusolideetdesmateriaux",
-                  "title": "Filière MASTER Chimie du Solide et des Matériaux",
-                  "children": [
-                    {
-                      "id": "@eim2csm#5",
-                      "title": "@EI M2 CSM #5",
-                      "children": [
-                        {
-                          "id": "csm^formucarac",
-                          "title": "CSM ^Formu. Carac.",
-                          "children": [
-                            {
-                              "id": "besnieoscar",
-                              "title": "BESNIE Oscar",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=413&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "gerbaudmathilde",
-                              "title": "GERBAUD Mathilde",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=644&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "paquelinarnaud",
-                              "title": "PAQUELIN Arnaud",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=415&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "csm:^ctvnum",
-                          "title": "CSM: ^CTV Num",
-                          "children": [
-                            {
-                              "id": "debailleuxnathan",
-                              "title": "DEBAILLEUX Nathan",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=417&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "lichengjun",
-                              "title": "LI Chengjun",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=226&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "tronccommunctv[43]",
-                  "title": "Tronc commun CTV [43]",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=319&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "uechimieverte-12",
-                  "title": "UE Chimie verte - 12",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=316&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "majeureepa",
-              "title": "Majeure EPA",
-              "children": [
-                {
-                  "id": "@eiepa-alternance#6",
-                  "title": "@EI EPA-Alternance #6",
-                  "children": [
-                    {
-                      "id": "_analysenum",
-                      "title": "_Analyse & Num.",
-                      "children": [
-                        {
-                          "id": "_vandecapelleanne",
-                          "title": "_VANDECAPELLE Anne",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=249&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "_geniedesprocnum#10",
-                      "title": "_Génie des Proc & Num #10",
-                      "children": [
-                        {
-                          "id": "_afqirlamaye",
-                          "title": "_AFQIR Lamaye",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=418&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_caronjuliette",
-                          "title": "_CARON Juliette",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=251&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_megricheilef",
-                          "title": "_MEGRICHE Ilef",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=235&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_sametaicha",
-                          "title": "_SAMET Aïcha",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=256&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "_ziyatisafae",
-                          "title": "_ZIYATI Safae",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=269&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere1:geniedesprocedesenvironnement",
-                  "title": "Filière 1 : Génie des Procédés & Environnement",
-                  "children": [
-                    {
-                      "id": "@eiepa-proc#4",
-                      "title": "@EI EPA-Proc #4",
-                      "children": [
-                        {
-                          "id": "gproc-^analenv",
-                          "title": "G. Proc - ^Anal. Env.",
-                          "children": [
-                            {
-                              "id": "cottomathieu",
-                              "title": "COTTO Mathieu",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=146&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "gproc-^epanum",
-                          "title": "G. Proc - ^EPA Num",
-                          "children": [
-                            {
-                              "id": "caznochhelena",
-                              "title": "CAZNOCH Héléna",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=658&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "pagnoncelllituseklara",
-                              "title": "PAGNONCELLLI TUSEK Lara",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=659&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "gproc-^managdura",
-                          "title": "G. Proc - ^Manag. Dura.",
-                          "children": [
-                            {
-                              "id": "yagoubiadrien",
-                              "title": "YAGOUBI Adrien",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=499&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "ue-ggeniedesprocedes-11",
-                      "title": "UE-G Génie des Procédés  - 11",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=339&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "ue-hprocedespourl'environnement*15*",
-                      "title": "UE-H Procédés pour l'environnement *15*",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=340&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere2:analyseetenvironnement",
-                  "title": "Filière 2 : Analyse et Environnement",
-                  "children": [
-                    {
-                      "id": "@eiepa-env#5",
-                      "title": "@EI EPA-Env #5",
-                      "children": [
-                        {
-                          "id": "analenv-^epanum",
-                          "title": "Anal. Env. - ^EPA Num.",
-                          "children": [
-                            {
-                              "id": "flambardjulie",
-                              "title": "FLAMBARD Julie",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=583&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "leboucheraudrey",
-                              "title": "LE BOUCHER Audrey",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=535&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "analenv-^managdura",
-                          "title": "Anal. Env. - ^Manag. Dura.",
-                          "children": [
-                            {
-                              "id": "ciavarellalea",
-                              "title": "CIAVARELLA Léa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=162&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "hennequartnemo",
-                              "title": "HENNEQUART Nemo",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=163&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "lebaharpauline",
-                              "title": "LEBAHAR Pauline",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=113&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "ue-ianalyse",
-                      "title": "UE-I Analyse",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=363&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "ue-janalysepourl'environnement#20",
-                      "title": "UE-J Analyse pour l'Environnement #20",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=364&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filiere3:numeriqueepa",
-                  "title": "Filière 3 : Numérique & EPA",
-                  "children": [
-                    {
-                      "id": "@eifilierechimnumtcepa#1",
-                      "title": "@EI Filière Chim. Num. (TC EPA) #1",
-                      "children": [
-                        {
-                          "id": "epanum:^genieproc",
-                          "title": "EPA Num: ^Génie Proc",
-                          "children": [
-                            {
-                              "id": "taonada",
-                              "title": "TAO Nada",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=116&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "ue-lepanumerique",
-                      "title": "UE-L EPA & Numérique",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=649&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "filieremasterqualiteettraitementsdeseaux",
-                  "title": "Filière MASTER Qualité et Traitements des Eaux",
-                  "children": [
-                    {
-                      "id": "@eiquatro-3",
-                      "title": "@EI QuaTro -3",
-                      "children": [
-                        {
-                          "id": "qt4r=^analenv",
-                          "title": "QT(4R) = ^Anal. Env.",
-                          "children": [
-                            {
-                              "id": "dietteemma",
-                              "title": "DIETTE Emma",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=231&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "maillotcharlene",
-                              "title": "MAILLOT Charlène",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=660&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "ricardthomas",
-                              "title": "RICARD Thomas",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=149&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "@ue1pcontam9ei",
-                      "title": "@UE 1P (CONTAM9) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=259&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue1p-nonei",
-                      "title": "@UE 1P-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=440&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue2prisqsan9ei",
-                      "title": "@UE 2P (RISQSAN9) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=75&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue2p-nonei",
-                      "title": "@UE 2P-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=503&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue3ptraitbio9ei",
-                      "title": "@UE 3P (TRAITBIO9) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=76&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue3p-nonei",
-                      "title": "@UE 3P-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=616&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue3rprocedespourl'envei",
-                      "title": "@UE 3R (Procédés pour l'Env.) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=290&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue3r-nonei",
-                      "title": "@UE 3R-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=769&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue4ptraitpc9ei",
-                      "title": "@UE 4P (TRAITPC9) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=260&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue4p-nonei",
-                      "title": "@UE 4P-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=681&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue4ranalysepourl'envei",
-                      "title": "@UE 4R (Analyse pour l' Env.) EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=286&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue4r-nonei",
-                      "title": "@UE 4R-non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=770&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue5rakaepanum",
-                      "title": "@UE 5R (aka EPA & Num)",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=759&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@ue5r-nonei",
-                      "title": "@UE 5R - non EI",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=272&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "@non-eiquatro-10",
-                      "title": "@non-EI QuaTro - 10",
-                      "children": [
-                        {
-                          "id": "qt3r=^procenvnonei",
-                          "title": "QT(3R) = ^Proc. Env. (non EI)",
-                          "children": [
-                            {
-                              "id": "nebrimassissilia",
-                              "title": "NEBRI Massissilia",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=333&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "ouallaiman",
-                              "title": "OUALLA Iman",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=416&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "randriambololontsoamendrikasarobidy",
-                              "title": "RANDRIAMBOLOLONTSOA Mendrika Sarobidy",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=419&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "zekraouiidriss",
-                              "title": "ZEKRAOUI\tIdriss",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=420&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "qt4r=^analenvnonei",
-                          "title": "QT(4R) = ^Anal. Env. (non EI)",
-                          "children": [
-                            {
-                              "id": "labatmartin",
-                              "title": "LABAT Martin",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=215&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "nguyentinhyiu",
-                              "title": "NGUYEN Tinh Yiu",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=296&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "rogernoa",
-                              "title": "ROGER Noa",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=122&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "^qt5r=^epanumnonei",
-                          "title": "^QT(5R) = ^EPA Num. (non EI)",
-                          "children": [
-                            {
-                              "id": "bahrihaytam",
-                              "title": "BAHRI Haytam",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=126&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "hamidialaouiasmae",
-                              "title": "HAMIDI ALAOUI\tAsmae",
-                              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=150&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "eiqt",
-                      "title": "EI QT",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=773&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "qt3rredoublants",
-                      "title": "QT(3R) redoublants",
-                      "children": [
-                        {
-                          "id": "elarfaouimeryame",
-                          "title": "EL ARFAOUI Meryame",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=203&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "mabroukomaima",
-                          "title": "MABROUK Omaima",
-                          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=225&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "uesquatroue1r2r",
-                      "title": "UEs QuaTrO (UE 1R & 2R)",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=485&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "non-eiqt",
-                      "title": "non-EI QT",
-                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=777&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "tronccommunepa[20]",
-                  "title": "Tronc commun EPA [20]",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=341&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "ue-kmanagementenvironnemental-4",
-                  "title": "UE-K Management environnemental-4",
-                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=398&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "anneesspeciales",
-          "title": "Années spéciales",
-          "children": [
-            {
-              "id": "ei3-alternants",
-              "title": "EI3 - Alternants",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=304&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "ei3-eiqtalternantscm+csm",
-              "title": "EI3 - EI (QT & Alternants & CM+CSM)",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=740&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "ei3-eiqtalternants",
-              "title": "EI3 - EI (QT & Alternants)",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=552&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "m1-ur-parcoursqt",
-              "title": "M1-UR-Parcours QT",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=670&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "specialjobchemakaeimodulek",
-              "title": "Special JobChem aka EI module K",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=347&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tronccommunctv-alternants",
-              "title": "Tronc commun CTV - Alternants",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=377&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tronccommunepa-alternants",
-              "title": "Tronc commun EPA - Alternants",
-              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=357&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
         }
       ]
     },
     {
       "id": "cyclespreparatoires",
       "title": "Cycles préparatoires",
-      "children": [
+      "edts": [
         {
           "id": "citi",
           "title": "CITI",
-          "children": [
+          "edts": [
             {
               "id": "citi1",
               "title": "CITI 1",
@@ -1374,7 +432,7 @@
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "children": [
+              "edts": [
                 {
                   "id": "citi1all",
                   "title": "CITI1 All",
@@ -1412,7 +470,7 @@
         {
           "id": "premiereanneecp",
           "title": "Première année CP",
-          "children": [
+          "edts": [
             {
               "id": "cp1",
               "title": "CP1",
@@ -1431,7 +489,7 @@
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "children": [
+              "edts": [
                 {
                   "id": "a1all",
                   "title": "A1 All",
@@ -1507,7 +565,7 @@
             {
               "id": "groupesdelv2fle",
               "title": "Groupes de LV2/FLE",
-              "children": [
+              "edts": [
                 {
                   "id": "allemand1",
                   "title": "Allemand1",
@@ -1538,7 +596,7 @@
             {
               "id": "groupesdetd",
               "title": "Groupes de TD",
-              "children": [
+              "edts": [
                 {
                   "id": "cpi1a1",
                   "title": "CPI 1 (A1)",
@@ -1566,26 +624,26 @@
         {
           "id": "secondeanneecp",
           "title": "Seconde année CP",
-          "children": [
+          "edts": [
             {
-              "id": "cp2[82]",
+              "id": "cp282",
               "title": "CP2 [82]",
               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=711&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "chemist2c2+d2[39]",
+              "id": "chemist2c2d239",
               "title": "Chemist2 (C2+D2) [39]",
               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=713&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "cpi2a2+b2[43]",
+              "id": "cpi2a2b243",
               "title": "Cpi2 (A2+B2) [43]",
               "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=712&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "children": [
+              "edts": [
                 {
                   "id": "a2all",
                   "title": "A2 All",
@@ -1661,7 +719,7 @@
             {
               "id": "groupesdelv2fle",
               "title": "Groupes de LV2/FLE",
-              "children": [
+              "edts": [
                 {
                   "id": "allemand2",
                   "title": "Allemand2",
@@ -1692,24 +750,24 @@
             {
               "id": "groupesdetd",
               "title": "Groupes de TD",
-              "children": [
+              "edts": [
                 {
-                  "id": "cpi2a2[26]",
+                  "id": "cpi2a226",
                   "title": "CPI 2 (A2) [26]",
                   "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=244&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "cpi2b2[15]",
+                  "id": "cpi2b215",
                   "title": "CPI 2 (B2) [15]",
                   "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=243&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "chemist2c2[26]",
+                  "id": "chemist2c226",
                   "title": "Chem.I.St. 2 (C2) [26]",
                   "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=245&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "chemist2d2[13]",
+                  "id": "chemist2d213",
                   "title": "Chem.I.St. 2 (D2) [13]",
                   "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=293&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
@@ -1722,7 +780,7 @@
     {
       "id": "spir",
       "title": "SPIR",
-      "children": [
+      "edts": [
         {
           "id": "spir",
           "title": "SPIR",
