@@ -12,12 +12,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # Google Artifact Registry
-  GCP_PROJECT_ID: planningsup
-  GCP_REGION: europe-west1
-  AR_REPO_NAME: planningsup
-  AR_IMAGE_NAME: planningsup
-
   # GitHub Container Registry
   GHCR_REGISTRY: ghcr.io
   GHCR_IMAGE_NAME: planningsup/planning
@@ -37,7 +31,6 @@ jobs:
     permissions:
       contents: read
       packages: write
-      id-token: write # Required for Google Cloud authentication
       attestations: write
 
     steps:
@@ -111,18 +104,6 @@ jobs:
             echo "🔒 Fork PR detected - publishing disabled for security"
           fi
 
-      - name: Authenticate to Google Cloud
-        id: gcp_auth
-        uses: 'google-github-actions/auth@v2'
-        if: steps.publish_check.outputs.should_publish == 'true'
-        with:
-          workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
-          service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
-
-      - name: Log into Google Artifact Registry
-        if: steps.publish_check.outputs.should_publish == 'true'
-        run: gcloud auth configure-docker ${{ env.GCP_REGION }}-docker.pkg.dev --quiet
-
       - name: Log into GitHub Container Registry
         if: steps.publish_check.outputs.should_publish == 'true'
         uses: docker/login-action@v3
@@ -137,7 +118,6 @@ jobs:
         with:
           images: |
             ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
-            ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
             # On a push to a whitelisted branch, create a tag named after the branch
             type=ref,event=branch,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }}
