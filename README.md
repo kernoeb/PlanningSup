@@ -112,6 +112,7 @@ Lancement en local :
 - Louanne M.
 - RidzArt
 - [EDM115](https://github.com/EDM115)
+- Xotak
 
 (merci à vous ! ❤️)
 

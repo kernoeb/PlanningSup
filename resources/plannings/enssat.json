@@ -22,6 +22,28 @@
           ]
         }
       ]
+    },
+    {
+      "id": "fisa2",
+      "title": "FISA2",
+      "edts": [
+        {
+          "id": "iai2",
+          "title": "IAI2",
+          "edts": [
+            {
+              "id": "iai2g1",
+              "title": "IAI2 G1",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18359&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "iai2g2",
+              "title": "IAI2 G2",
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

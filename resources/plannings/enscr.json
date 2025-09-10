@@ -1,0 +1,802 @@
+{
+  "title": "ENSCR",
+  "edts": [
+    {
+      "id": "cycleingenieur",
+      "title": "Cycle Ingénieur",
+      "edts": [
+        {
+          "id": "1iereanneeci",
+          "title": "1ière année CI",
+          "edts": [
+            {
+              "id": "elevesing1iereannee",
+              "title": "Elèves Ing. 1ière année",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=139&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupederentree",
+              "title": "Groupe de rentrée",
+              "edts": [
+                {
+                  "id": "promotioni1horsmath",
+                  "title": "Promotion I1 hors math",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=588&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "complementsmath",
+                  "title": "compléments Math.",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=591&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupeslanguesvivantes2",
+              "title": "Groupes Langues Vivantes 2",
+              "edts": [
+                {
+                  "id": "gr1espagnolei1",
+                  "title": "Gr. 1 Espagnol / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=196&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr2espagnolei1",
+                  "title": "Gr. 2 Espagnol / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=197&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "grallemandei1",
+                  "title": "Gr. Allemand / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=194&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "grfleei1",
+                  "title": "Gr. F.L.E. / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=195&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdanglais",
+              "title": "Groupes d'Anglais",
+              "edts": [
+                {
+                  "id": "gr1anglaisei1",
+                  "title": "Gr. 1 Anglais / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=185&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr2anglaisei1",
+                  "title": "Gr. 2 Anglais / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=186&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr3anglaisei1",
+                  "title": "Gr. 3 Anglais / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=187&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr4anglaisei1",
+                  "title": "Gr. 4 Anglais / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=781&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "grsoutienanglaisei1",
+                  "title": "Gr. Soutien Anglais / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=782&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdetp",
+              "title": "Groupes de TP",
+              "edts": [
+                {
+                  "id": "groupetp1ei1",
+                  "title": "Groupe TP 1 / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=58&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "groupetp2ei1",
+                  "title": "Groupe TP 2 / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=59&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "groupetp3ei1",
+                  "title": "Groupe TP 3 / EI1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=57&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "sous-groupesdetp1ei1",
+                  "title": "Sous-Groupes de TP 1/ EI1",
+                  "edts": [
+                    {
+                      "id": "sgrtp1-aei1",
+                      "title": "S.Gr. TP 1-A / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=131&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp1-bei1",
+                      "title": "S.Gr. TP 1-B / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=132&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "sous-groupesdetp2ei1",
+                  "title": "Sous-Groupes de TP 2/ EI1",
+                  "edts": [
+                    {
+                      "id": "sgrtp2-aei1",
+                      "title": "S.Gr. TP 2-A / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=134&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp2-bei1",
+                      "title": "S.Gr. TP 2-B / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=135&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "sous-groupesdetp3ei1",
+                  "title": "Sous-Groupes de TP 3/ EI1",
+                  "edts": [
+                    {
+                      "id": "sgrtp3-aei1",
+                      "title": "S.Gr. TP 3-A / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=137&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp3-bei1",
+                      "title": "S.Gr. TP 3-B / EI1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=138&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2iemeanneeci",
+          "title": "2ième année CI",
+          "edts": [
+            {
+              "id": "elevesing2iemeannee",
+              "title": "Elèves Ing. 2ième année",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=110&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupeslanguesvivantes2",
+              "title": "Groupes Langues Vivantes 2",
+              "edts": [
+                {
+                  "id": "gr1espagnolei2",
+                  "title": "Gr. 1 Espagnol / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=199&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr2espagnolei2",
+                  "title": "Gr. 2 Espagnol / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=200&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "grallemandei2",
+                  "title": "Gr. Allemand / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=201&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "grfleei2",
+                  "title": "Gr. F.L.E. / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=181&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdanglais",
+              "title": "Groupes d'Anglais",
+              "edts": [
+                {
+                  "id": "gr1anglaisei2",
+                  "title": "Gr. 1 Anglais / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=189&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr2anglaisei2",
+                  "title": "Gr. 2 Anglais / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=190&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr3anglaisei2",
+                  "title": "Gr. 3 Anglais / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=191&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr4anglaisei2",
+                  "title": "Gr. 4 Anglais / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=477&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdemajeures",
+              "title": "Groupes de Majeures",
+              "edts": [
+                {
+                  "id": "groupesctv",
+                  "title": "Groupes CTV",
+                  "edts": [
+                    {
+                      "id": "groupectv_a",
+                      "title": "Groupe CTV_A",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=265&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_a-1",
+                      "title": "Groupe CTV_A-1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=206&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_a-2",
+                      "title": "Groupe CTV_A-2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=298&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_a-3",
+                      "title": "Groupe CTV_A-3",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=356&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_b",
+                      "title": "Groupe CTV_B",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=266&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_b-1",
+                      "title": "Groupe CTV_B-1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=519&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupectv_b-2",
+                      "title": "Groupe CTV_B-2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=638&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "groupesepa",
+                  "title": "Groupes EPA",
+                  "edts": [
+                    {
+                      "id": "groupeepa_c",
+                      "title": "Groupe EPA_C",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=262&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_c-1",
+                      "title": "Groupe EPA_C-1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=330&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_c-2",
+                      "title": "Groupe EPA_C-2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=331&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_c-3",
+                      "title": "Groupe EPA_C-3",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=212&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_d",
+                      "title": "Groupe EPA_D",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=263&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_d-1",
+                      "title": "Groupe EPA_D-1",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=360&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_d-2",
+                      "title": "Groupe EPA_D-2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=520&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "groupeepa_d-3",
+                      "title": "Groupe EPA_D-3",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=539&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "majeurectv",
+                  "title": "Majeure CTV",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=112&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "majeureepa",
+                  "title": "Majeure EPA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=111&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdetp",
+              "title": "Groupes de TP",
+              "edts": [
+                {
+                  "id": "groupetp1ei2",
+                  "title": "Groupe TP 1 / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=54&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "groupetp2ei2",
+                  "title": "Groupe TP 2 / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=55&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "groupetp3ei2",
+                  "title": "Groupe TP 3 / EI2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=56&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "sous-groupesdetp1ei2",
+                  "title": "Sous-Groupes de TP 1/ EI2",
+                  "edts": [
+                    {
+                      "id": "sgrtp1-aei2",
+                      "title": "S.Gr. TP 1-A / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=102&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp1-bei2",
+                      "title": "S.Gr. TP 1-B / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=103&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "sous-groupesdetp2ei2",
+                  "title": "Sous-Groupes de TP 2/ EI2",
+                  "edts": [
+                    {
+                      "id": "sgrtp2-aei2",
+                      "title": "S.Gr. TP 2-A / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=105&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp2-bei2",
+                      "title": "S.Gr. TP 2-B / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=106&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "sous-groupesdetp3ei2",
+                  "title": "Sous-Groupes de TP 3/ EI2",
+                  "edts": [
+                    {
+                      "id": "sgrtp3-aei2",
+                      "title": "S.Gr. TP 3-A / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=108&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "sgrtp3-bei2",
+                      "title": "S.Gr. TP 3-B / EI2",
+                      "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=109&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "groupesderentree",
+              "title": "Groupes de rentrée",
+              "edts": [
+                {
+                  "id": "groupem1",
+                  "title": "Groupe M1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=310&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "promotioni2horsm1",
+                  "title": "Promotion I2 hors M1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=348&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cyclespreparatoires",
+      "title": "Cycles préparatoires",
+      "edts": [
+        {
+          "id": "citi",
+          "title": "CITI",
+          "edts": [
+            {
+              "id": "citi1",
+              "title": "CITI 1",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=39&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "citi2",
+              "title": "CITI 2",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=801&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupescombines",
+              "title": "Groupes combinés",
+              "edts": [
+                {
+                  "id": "citi1all",
+                  "title": "CITI1 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=462&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "citi1espa",
+                  "title": "CITI1 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=469&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "citi1espb",
+                  "title": "CITI1 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=475&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "citi2espa",
+                  "title": "CITI2  EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=739&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "citi2all",
+                  "title": "CITI2 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=478&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "citi2espb",
+                  "title": "CITI2 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=745&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "premiereanneecp",
+          "title": "Première année CP",
+          "edts": [
+            {
+              "id": "cp1",
+              "title": "CP1",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=736&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "cpi1",
+              "title": "CPI1",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=738&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "chemist1",
+              "title": "ChemISt1",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=737&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupescombines",
+              "title": "Groupes combinés",
+              "edts": [
+                {
+                  "id": "a1all",
+                  "title": "A1 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=654&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "a1espa",
+                  "title": "A1 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=655&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "a1espb",
+                  "title": "A1 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=656&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b1all",
+                  "title": "B1 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=657&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b1espa",
+                  "title": "B1 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=662&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b1espb",
+                  "title": "B1 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=663&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c1all",
+                  "title": "C1 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=720&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c1espa",
+                  "title": "C1 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=664&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c1espb",
+                  "title": "C1 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=729&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c1fle",
+                  "title": "C1 FLE",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=730&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d1all",
+                  "title": "D1 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=733&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d1espa",
+                  "title": "D1 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=732&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d1espb",
+                  "title": "D1 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=731&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d1fle",
+                  "title": "D1 FLE",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=734&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdelv2fle",
+              "title": "Groupes de LV2/FLE",
+              "edts": [
+                {
+                  "id": "allemand1",
+                  "title": "Allemand1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=635&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol1a",
+                  "title": "Espagnol1 A",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=633&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol1b",
+                  "title": "Espagnol1 B",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=634&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "fle1",
+                  "title": "FLE1",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=650&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "lv2horsenscr",
+                  "title": "LV2 hors ENSCR",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=651&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdetd",
+              "title": "Groupes de TD",
+              "edts": [
+                {
+                  "id": "cpi1a1",
+                  "title": "CPI 1 (A1)",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=238&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "cpi1b1",
+                  "title": "CPI 1 (B1)",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=239&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chemist1c1",
+                  "title": "Chem.I.St. 1 (C1)",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chemist1d1",
+                  "title": "Chem.I.St. 1 (D1)",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=62&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "secondeanneecp",
+          "title": "Seconde année CP",
+          "edts": [
+            {
+              "id": "cp282",
+              "title": "CP2 [82]",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=711&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "chemist2c2d239",
+              "title": "Chemist2 (C2+D2) [39]",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=713&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "cpi2a2b243",
+              "title": "Cpi2 (A2+B2) [43]",
+              "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=712&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "groupescombines",
+              "title": "Groupes combinés",
+              "edts": [
+                {
+                  "id": "a2all",
+                  "title": "A2 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=315&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "a2espa",
+                  "title": "A2 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=323&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "a2espb",
+                  "title": "A2 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=325&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b2all",
+                  "title": "B2 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=328&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b2espa",
+                  "title": "B2 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=361&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "b2espb",
+                  "title": "B2 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=513&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c2all",
+                  "title": "C2 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=576&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c2espa",
+                  "title": "C2 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=514&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c2espb",
+                  "title": "C2 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=602&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "c2fle",
+                  "title": "C2 FLE",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=615&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d2all",
+                  "title": "D2 All",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=629&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d2espa",
+                  "title": "D2 EspA",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=628&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d2espb",
+                  "title": "D2 EspB",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=620&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "d2fle",
+                  "title": "D2 FLE",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=630&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdelv2fle",
+              "title": "Groupes de LV2/FLE",
+              "edts": [
+                {
+                  "id": "allemand2",
+                  "title": "Allemand2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=724&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol2a",
+                  "title": "Espagnol2 A",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=722&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol2b",
+                  "title": "Espagnol2 B",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=723&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "fle2",
+                  "title": "FLE2",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=725&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "lv2horsenscr",
+                  "title": "LV2 hors ENSCR",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=726&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "groupesdetd",
+              "title": "Groupes de TD",
+              "edts": [
+                {
+                  "id": "cpi2a226",
+                  "title": "CPI 2 (A2) [26]",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=244&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "cpi2b215",
+                  "title": "CPI 2 (B2) [15]",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=243&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chemist2c226",
+                  "title": "Chem.I.St. 2 (C2) [26]",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=245&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chemist2d213",
+                  "title": "Chem.I.St. 2 (D2) [13]",
+                  "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=293&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spir",
+      "title": "SPIR",
+      "edts": [
+        {
+          "id": "spir",
+          "title": "SPIR",
+          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=599&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "spirgroupe1",
+          "title": "SPIR (Groupe 1)",
+          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=346&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        },
+        {
+          "id": "spirgroupe2",
+          "title": "SPIR (Groupe 2)",
+          "url": "https://planning.ensc-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=345&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+        }
+      ]
+    }
+  ]
+}

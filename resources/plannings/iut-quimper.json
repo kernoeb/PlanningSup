@@ -1097,7 +1097,7 @@
         {
           "id": "tca_1ab",
           "title": "TCA_1aB",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7560&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7560&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
         }
       ]
     }
