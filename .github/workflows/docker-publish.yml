@@ -2,10 +2,10 @@ name: Docker
 
 on:
   push:
-    branches: ['**']
+    branches: [main]
     tags: ['v*.*.*']
   pull_request:
-    branches: ['**']
+    branches: [main]
 
 concurrency:
   group: docker-${{ github.ref }}
