@@ -143,8 +143,8 @@ jobs:
             type=ref,event=branch,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }}
             # Create semver tags for valid git tags
             type=semver,pattern={{version}},enable=${{ steps.publish_check.outputs.is_valid_tag == 'true' }}
-            # For PRs from whitelisted branches, use the source branch name as tag
-            type=ref,event=pr,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }},value={{head_ref}}
+            # For PRs from whitelisted branches, use the source branch name as tag (replace slashes with dashes)
+            type=raw,value={{head_ref}},enable=${{ github.event_name == 'pull_request' && steps.publish_check.outputs.is_whitelisted == 'true' }}
 
       - name: Build and push image
         id: build_and_push
