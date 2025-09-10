@@ -88,15 +88,13 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
+            ${{ env.GHCR_REGISTRY }}/${{ github.repository }}/${{ env.GHCR_IMAGE_NAME }}
             ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
           tags: |
             # On a push to a whitelisted branch, create a tag named after the branch
             type=ref,event=branch,enable=${{ steps.whitelist_check.outputs.is_whitelisted == 'true' }}
             # Create semver tags for git tags
             type=semver,pattern={{version}}
-            # Create a tag for pull requests, like 'pr-123'
-            type=ref,event=pr,prefix=pr-,enable=${{ steps.whitelist_check.outputs.is_whitelisted == 'true' }}
 
       - name: Build and push image
         id: build_and_push
