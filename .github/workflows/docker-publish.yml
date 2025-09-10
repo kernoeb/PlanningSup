@@ -2,10 +2,10 @@ name: Docker
 
 on:
   push:
-    branches: [main]
+    branches: ['**']
     tags: ['v*.*.*']
   pull_request:
-    branches: [main]
+    branches: ['**']
 
 concurrency:
   group: docker-${{ github.ref }}
@@ -45,9 +45,13 @@ jobs:
 
       - name: Check branch whitelist
         id: whitelist_check
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
+        if: (github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')) || github.event_name == 'pull_request'
         run: |
-          BRANCH_NAME="${{ github.ref_name }}"
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
           WHITELIST="${{ env.PUBLISH_WHITELIST }}"
           echo "Checking if '$BRANCH_NAME' is in the whitelist..."
           if echo "$WHITELIST" | grep -Fxq "$BRANCH_NAME"; then
@@ -88,7 +92,7 @@ jobs:
             # Create semver tags for git tags
             type=semver,pattern={{version}}
             # Create a tag for pull requests, like 'pr-123'
-            type=ref,event=pr,prefix=pr-
+            type=ref,event=pr,prefix=pr-,enable=${{ steps.whitelist_check.outputs.is_whitelisted == 'true' }}
 
       - name: Build and push image
         id: build_and_push
@@ -98,8 +102,10 @@ jobs:
           platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
-          # Only push on whitelisted branch or tag pushes
+          # Push on whitelisted branches or tag pushes
           push: ${{ steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
+          # Load locally when not pushing to avoid buildx warning
+          load: ${{ not (steps.whitelist_check.outputs.is_whitelisted == 'true' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))) }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
