@@ -165,7 +165,7 @@ jobs:
         if: steps.publish_check.outputs.should_publish == 'true' && steps.build_and_push.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.GCP_REGION }}-docker.pkg.dev/${{ env.GCP_PROJECT_ID }}/${{ env.AR_REPO_NAME }}/${{ env.AR_IMAGE_NAME }}
+          subject-name: ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
           subject-digest: ${{ steps.build_and_push.outputs.digest }}
           push-to-registry: true
 
