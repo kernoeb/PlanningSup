@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
-import { formatQuietHours, isInQuietHours, parseQuietHours } from '@api/jobs'
+import { DEFAULT_TIMEZONE, formatQuietHours, isInQuietHours, parseQuietHours } from '@api/jobs'
 
 /**
  * Test goals:
@@ -95,16 +95,17 @@ describe('Jobs quiet hours functionality', () => {
     it('detects time within quiet hours (crossing midnight)', () => {
       const quietHours = parseQuietHours('21:00–06:00')
 
-      // Test times within quiet hours
+      // Test times within quiet hours (in Europe/Paris timezone)
+      // Note: These are UTC times that correspond to quiet hours in Paris time
       const testCases = [
-        new Date('2025-01-01T21:00:00'), // Start of quiet hours
-        new Date('2025-01-01T23:30:00'), // Middle of night
-        new Date('2025-01-02T02:00:00'), // Early morning
-        new Date('2025-01-02T05:59:00'), // Just before end
+        new Date('2025-01-01T20:00:00Z'), // 21:00 Paris time (UTC+1 winter)
+        new Date('2025-01-01T22:30:00Z'), // 23:30 Paris time
+        new Date('2025-01-02T01:00:00Z'), // 02:00 Paris time
+        new Date('2025-01-02T04:59:00Z'), // 05:59 Paris time
       ]
 
       for (const testTime of testCases) {
-        const result = isInQuietHours(quietHours, testTime)
+        const result = isInQuietHours(quietHours, testTime, 'Europe/Paris')
         expect(result).toBeTrue()
       }
     })
@@ -112,16 +113,16 @@ describe('Jobs quiet hours functionality', () => {
     it('detects time outside quiet hours (crossing midnight)', () => {
       const quietHours = parseQuietHours('21:00–06:00')
 
-      // Test times outside quiet hours
+      // Test times outside quiet hours (in Europe/Paris timezone)
       const testCases = [
-        new Date('2025-01-01T06:00:00'), // End of quiet hours
-        new Date('2025-01-01T12:00:00'), // Noon
-        new Date('2025-01-01T18:00:00'), // Evening
-        new Date('2025-01-01T20:59:00'), // Just before start
+        new Date('2025-01-01T05:00:00Z'), // 06:00 Paris time (end of quiet hours)
+        new Date('2025-01-01T11:00:00Z'), // 12:00 Paris time (noon)
+        new Date('2025-01-01T17:00:00Z'), // 18:00 Paris time (evening)
+        new Date('2025-01-01T19:59:00Z'), // 20:59 Paris time (just before start)
       ]
 
       for (const testTime of testCases) {
-        const result = isInQuietHours(quietHours, testTime)
+        const result = isInQuietHours(quietHours, testTime, 'Europe/Paris')
         expect(result).toBeFalse()
       }
     })
@@ -129,36 +130,53 @@ describe('Jobs quiet hours functionality', () => {
     it('detects time within quiet hours (same day)', () => {
       const quietHours = parseQuietHours('02:00–04:00')
 
+      // Test times for same-day quiet hours (in Europe/Paris timezone)
       const testCases = [
-        { time: new Date('2025-01-01T02:00:00'), expected: true },
-        { time: new Date('2025-01-01T03:00:00'), expected: true },
-        { time: new Date('2025-01-01T03:59:00'), expected: true },
-        { time: new Date('2025-01-01T04:00:00'), expected: false },
-        { time: new Date('2025-01-01T01:59:00'), expected: false },
-        { time: new Date('2025-01-01T05:00:00'), expected: false },
+        { time: new Date('2025-01-01T01:00:00Z'), expected: true }, // 02:00 Paris time
+        { time: new Date('2025-01-01T02:00:00Z'), expected: true }, // 03:00 Paris time
+        { time: new Date('2025-01-01T02:59:00Z'), expected: true }, // 03:59 Paris time
+        { time: new Date('2025-01-01T03:00:00Z'), expected: false }, // 04:00 Paris time
+        { time: new Date('2025-01-01T00:59:00Z'), expected: false }, // 01:59 Paris time
+        { time: new Date('2025-01-01T04:00:00Z'), expected: false }, // 05:00 Paris time
       ]
 
       for (const { time, expected } of testCases) {
-        const result = isInQuietHours(quietHours, time)
+        const result = isInQuietHours(quietHours, time, 'Europe/Paris')
         expect(result).toBe(expected)
       }
     })
 
     it('returns false when quiet hours is null', () => {
-      const result = isInQuietHours(null, new Date())
+      const result = isInQuietHours(null, new Date(), 'Europe/Paris')
       expect(result).toBeFalse()
     })
 
     it('handles edge case at exactly start time', () => {
       const quietHours = parseQuietHours('21:00–06:00')
-      const result = isInQuietHours(quietHours, new Date('2025-01-01T21:00:00'))
+      const result = isInQuietHours(quietHours, new Date('2025-01-01T20:00:00Z'), 'Europe/Paris') // 21:00 Paris time
       expect(result).toBeTrue()
     })
 
     it('handles edge case at exactly end time', () => {
       const quietHours = parseQuietHours('21:00–06:00')
-      const result = isInQuietHours(quietHours, new Date('2025-01-01T06:00:00'))
+      const result = isInQuietHours(quietHours, new Date('2025-01-01T05:00:00Z'), 'Europe/Paris') // 06:00 Paris time
       expect(result).toBeFalse()
+    })
+
+    it('works with different timezones', () => {
+      const quietHours = parseQuietHours('21:00–06:00')
+
+      // Same UTC time, different timezones
+      const utcTime = new Date('2025-01-01T21:00:00Z')
+
+      // 21:00 UTC = 22:00 Paris (winter) = within quiet hours
+      expect(isInQuietHours(quietHours, utcTime, 'Europe/Paris')).toBeTrue()
+
+      // 21:00 UTC = 21:00 UTC = within quiet hours
+      expect(isInQuietHours(quietHours, utcTime, 'UTC')).toBeTrue()
+
+      // 21:00 UTC = 16:00 New York (winter) = outside quiet hours
+      expect(isInQuietHours(quietHours, utcTime, 'America/New_York')).toBeFalse()
     })
   })
 
@@ -198,6 +216,14 @@ describe('Jobs quiet hours functionality', () => {
         end: { hour: 6, minute: 0 },
         crossesMidnight: true,
       })
+    })
+
+    it('uses default timezone when not specified', async () => {
+      delete Bun.env.JOBS_QUIET_HOURS_TIMEZONE
+      const { jobs } = await import('@api/jobs')
+      const timezone = jobs.getTimezone()
+
+      expect(timezone).toBe('Europe/Paris')
     })
 
     it('disables quiet hours when set to empty', () => {

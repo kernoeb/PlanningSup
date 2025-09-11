@@ -4,22 +4,27 @@ Background jobs system with automatic quiet hours functionality.
 
 ## Environment Variables
 
-| Variable             | Default            | Description                                    |
-| -------------------- | ------------------ | ---------------------------------------------- |
-| `RUN_JOBS`           | `true`             | Enable/disable the job runner                  |
-| `DELAY_BETWEEN_JOBS` | `60000`            | Delay between cycles (ms, or `60s`, `1m`, etc) |
-| `ALLOWED_JOBS`       | `plannings-backup` | Comma-separated job IDs or `*` for all         |
-| `JOBS_QUIET_HOURS`   | `21:00–06:00`      | Time range when jobs should not run            |
+| Variable                    | Default            | Description                                    |
+| --------------------------- | ------------------ | ---------------------------------------------- |
+| `RUN_JOBS`                  | `true`             | Enable/disable the job runner                  |
+| `DELAY_BETWEEN_JOBS`        | `60000`            | Delay between cycles (ms, or `60s`, `1m`, etc) |
+| `ALLOWED_JOBS`              | `plannings-backup` | Comma-separated job IDs or `*` for all         |
+| `JOBS_QUIET_HOURS`          | `21:00–06:00`      | Time range when jobs should not run            |
+| `JOBS_QUIET_HOURS_TIMEZONE` | `Europe/Paris`     | Timezone for quiet hours evaluation            |
 
 ## Quiet Hours
 
 Configure when jobs should not run:
 
 ```bash
-export JOBS_QUIET_HOURS="21:00–06:00"  # 9 PM to 6 AM (crosses midnight)
-export JOBS_QUIET_HOURS="22:30-07:15"  # Custom with minutes
-export JOBS_QUIET_HOURS="02:00–04:00"  # Same day range
-export JOBS_QUIET_HOURS=""             # Disabled
+export JOBS_QUIET_HOURS="21:00–06:00"          # 9 PM to 6 AM (crosses midnight)
+export JOBS_QUIET_HOURS="22:30-07:15"          # Custom with minutes
+export JOBS_QUIET_HOURS="02:00–04:00"          # Same day range
+export JOBS_QUIET_HOURS=""                     # Disabled
+
+export JOBS_QUIET_HOURS_TIMEZONE="Europe/Paris"    # Default timezone
+export JOBS_QUIET_HOURS_TIMEZONE="UTC"             # UTC timezone
+export JOBS_QUIET_HOURS_TIMEZONE="America/New_York" # US Eastern timezone
 ```
 
 **Behavior:**
@@ -27,6 +32,7 @@ export JOBS_QUIET_HOURS=""             # Disabled
 - Jobs are skipped if started during quiet hours
 - Running jobs receive abort signal when quiet hours begin
 - Supports ranges crossing midnight or within same day
+- Times are evaluated in the configured timezone (default: Europe/Paris)
 
 ## Writing Jobs
 
