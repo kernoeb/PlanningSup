@@ -1,0 +1,291 @@
+name: Extension Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'apps/extension/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'bun.lock'
+      - '.bun-version'
+      - '.github/workflows/extension-build.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'apps/extension/**'
+      - 'packages/**'
+      - 'package.json'
+      - 'bun.lock'
+      - '.bun-version'
+      - '.github/workflows/extension-build.yml'
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: 'Create a GitHub release'
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: extension-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  EXTENSION_DIR: apps/extension
+  NODE_ENV: production
+  VITE_BACKEND_URL: https://api.planningsup.fr
+  CI: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.bun-version'
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+            node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Verify extension directory
+        run: |
+          echo "Extension directory contents:"
+          ls -la ${{ env.EXTENSION_DIR }}
+          echo "Package.json exists:"
+          test -f ${{ env.EXTENSION_DIR }}/package.json && echo "✅ Found" || echo "❌ Missing"
+
+      - name: Type check extension
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          bun run typecheck
+
+      - name: Lint extension
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          bun run lint
+
+      - name: Build extension
+        env:
+          NODE_ENV: production
+          VITE_BACKEND_URL: ${{ env.VITE_BACKEND_URL }}
+          CI: true
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          echo "Building extension..."
+          echo "Environment variables:"
+          echo "  NODE_ENV: $NODE_ENV"
+          echo "  VITE_BACKEND_URL: $VITE_BACKEND_URL"
+          echo "  CI: $CI"
+          bun run build
+          echo "Build completed. Checking output:"
+          ls -la extension/
+
+      - name: Package extensions
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          echo "Packaging extensions..."
+          bun run pack
+          echo "Packaging completed."
+
+      - name: Verify build artifacts
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          echo "=== Build Artifacts ==="
+          ls -la extension.* || echo "No extension artifacts found"
+
+          echo "=== Extension Directory ==="
+          ls -la extension/ || echo "No extension directory found"
+
+          if [ -f extension.crx ]; then
+            echo "✅ Chrome extension (CRX): $(ls -lh extension.crx | awk '{print $5}')"
+          else
+            echo "❌ Chrome extension (CRX) not found"
+          fi
+
+          if [ -f extension.xpi ]; then
+            echo "✅ Firefox extension (XPI): $(ls -lh extension.xpi | awk '{print $5}')"
+          else
+            echo "❌ Firefox extension (XPI) not found"
+          fi
+
+          if [ -f extension.zip ]; then
+            echo "✅ Generic ZIP: $(ls -lh extension.zip | awk '{print $5}')"
+          else
+            echo "❌ Generic ZIP not found"
+          fi
+
+      - name: Upload Chrome Extension Artifact
+        uses: actions/upload-artifact@v4
+        if: hashFiles('apps/extension/extension.crx') != ''
+        with:
+          name: planningsup-chrome-extension-${{ github.run_number }}-${{ github.sha }}
+          path: ${{ env.EXTENSION_DIR }}/extension.crx
+          retention-days: 90
+          compression-level: 0
+
+      - name: Upload Firefox Extension Artifact
+        uses: actions/upload-artifact@v4
+        if: hashFiles('apps/extension/extension.xpi') != ''
+        with:
+          name: planningsup-firefox-extension-${{ github.run_number }}-${{ github.sha }}
+          path: ${{ env.EXTENSION_DIR }}/extension.xpi
+          retention-days: 90
+          compression-level: 0
+
+      - name: Upload Generic Extension Artifact
+        uses: actions/upload-artifact@v4
+        if: hashFiles('apps/extension/extension.zip') != ''
+        with:
+          name: planningsup-extension-zip-${{ github.run_number }}-${{ github.sha }}
+          path: ${{ env.EXTENSION_DIR }}/extension.zip
+          retention-days: 90
+          compression-level: 0
+
+      - name: Upload Extension Source (Built)
+        uses: actions/upload-artifact@v4
+        with:
+          name: planningsup-extension-source-${{ github.run_number }}-${{ github.sha }}
+          path: |
+            ${{ env.EXTENSION_DIR }}/extension/
+          retention-days: 30
+
+      - name: Upload Build Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: planningsup-extension-build-logs-${{ github.run_number }}-${{ github.sha }}
+          path: |
+            ${{ env.EXTENSION_DIR }}/*.log
+          retention-days: 7
+          if-no-files-found: ignore
+
+      - name: Get extension version and metadata
+        id: version
+        run: |
+          cd ${{ env.EXTENSION_DIR }}
+          VERSION=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('package.json', 'utf8')).version)")
+          NAME=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('package.json', 'utf8')).displayName || JSON.parse(require('fs').readFileSync('package.json', 'utf8')).name)")
+          DESCRIPTION=$(bun -e "console.log(JSON.parse(require('fs').readFileSync('package.json', 'utf8')).description || '')")
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+
+          echo "Extension Metadata:"
+          echo "  Name: $NAME"
+          echo "  Version: $VERSION"
+          echo "  Description: $DESCRIPTION"
+
+      - name: Create Release
+        if: github.event.inputs.create_release == 'true' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: extension-v${{ steps.version.outputs.version }}
+          name: Extension v${{ steps.version.outputs.version }}
+          body: |
+            PlanningSup Browser Extension v${{ steps.version.outputs.version }}
+
+            ## Downloads
+            - **Chrome Extension**: `planningsup-chrome-extension.crx`
+            - **Firefox Extension**: `planningsup-firefox-extension.xpi`
+            - **Generic ZIP**: `planningsup-extension.zip`
+
+            ## Installation
+            ### Chrome/Chromium
+            1. Download the `.crx` file
+            2. Open Chrome and go to `chrome://extensions/`
+            3. Enable "Developer mode"
+            4. Drag and drop the `.crx` file onto the page
+
+            ### Firefox
+            1. Download the `.xpi` file
+            2. Open Firefox and go to `about:addons`
+            3. Click the gear icon and select "Install Add-on From File"
+            4. Select the downloaded `.xpi` file
+
+            ### Manual Installation (Any Browser)
+            1. Download and extract the `.zip` file
+            2. Open your browser's extension management page
+            3. Enable "Developer mode"
+            4. Click "Load unpacked" and select the extracted folder
+
+            ## Build Information
+            - **Commit**: ${{ github.sha }}
+            - **Build Number**: ${{ github.run_number }}
+            - **Build Date**: ${{ github.event.head_commit.timestamp }}
+            - **Built from Branch**: ${{ github.ref_name }}
+          files: |
+            ${{ env.EXTENSION_DIR }}/extension.crx
+            ${{ env.EXTENSION_DIR }}/extension.xpi
+            ${{ env.EXTENSION_DIR }}/extension.zip
+          draft: false
+          prerelease: false
+
+      - name: Build Summary
+        if: always()
+        run: |
+          echo "## ${{ steps.version.outputs.name }} Extension Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Branch | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit SHA | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Run Number | ${{ github.run_number }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Extension Name | ${{ steps.version.outputs.name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Extension Version | ${{ steps.version.outputs.version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Node Environment | ${{ env.NODE_ENV }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### Build Status" >> $GITHUB_STEP_SUMMARY
+
+          # Check if files exist and report status
+          cd ${{ env.EXTENSION_DIR }}
+          if [ -f extension.crx ]; then
+            echo "- ✅ Chrome Extension (\`.crx\`) - $(ls -lh extension.crx | awk '{print $5}')" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Chrome Extension (\`.crx\`) - Failed to build" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ -f extension.xpi ]; then
+            echo "- ✅ Firefox Extension (\`.xpi\`) - $(ls -lh extension.xpi | awk '{print $5}')" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Firefox Extension (\`.xpi\`) - Failed to build" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ -f extension.zip ]; then
+            echo "- ✅ Generic ZIP (\`.zip\`) - $(ls -lh extension.zip | awk '{print $5}')" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Generic ZIP (\`.zip\`) - Failed to build" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Artifacts Created" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-chrome-extension-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-firefox-extension-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-extension-zip-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-extension-source-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Quick Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Artifacts](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
+          echo "- [Extension Directory](${{ github.server_url }}/${{ github.repository }}/tree/${{ github.sha }}/apps/extension)" >> $GITHUB_STEP_SUMMARY

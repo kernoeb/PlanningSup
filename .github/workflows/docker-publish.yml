@@ -127,6 +127,13 @@ jobs:
             # For PRs from whitelisted branches, use the source branch name as tag (replace slashes with dashes)
             type=raw,value=${{ github.head_ref }},enable=${{ github.event_name == 'pull_request' && steps.publish_check.outputs.is_whitelisted == 'true' }}
 
+      - name: Read Bun version
+        id: bun_version
+        run: |
+          BUN_VERSION=$(cat .bun-version)
+          echo "version=$BUN_VERSION" >> $GITHUB_OUTPUT
+          echo "Using Bun version: $BUN_VERSION"
+
       - name: Build and push image
         id: build_and_push
         uses: docker/build-push-action@v6
@@ -135,6 +142,8 @@ jobs:
           platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
           tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            BUN_VERSION=${{ steps.bun_version.outputs.version }}
           # Only push when explicitly allowed and safe
           push: ${{ steps.publish_check.outputs.should_publish == 'true' }}
           # Load locally when not pushing to avoid buildx warning
@@ -159,6 +168,7 @@ jobs:
           echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Ref | ${{ github.ref }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Source Branch | ${{ github.head_ref || github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Bun Version | ${{ steps.bun_version.outputs.version }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Fork PR | ${{ env.IS_FORK_PR }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Whitelisted Branch | ${{ steps.publish_check.outputs.is_whitelisted }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Is Valid Tag | ${{ steps.publish_check.outputs.is_valid_tag }} |" >> $GITHUB_STEP_SUMMARY
