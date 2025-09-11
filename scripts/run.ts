@@ -6,9 +6,7 @@ import concurrently from 'concurrently'
 const [, , command] = process.argv
 
 // Add the full path of any app or package you want to exclude.
-const blacklist = [
-  'apps/extension',
-]
+const blacklist: string[] = []
 
 function mapPrefix(prefix: string) {
   return (folders: string[]) =>

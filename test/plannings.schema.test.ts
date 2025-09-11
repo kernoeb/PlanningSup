@@ -146,7 +146,7 @@ describe('Planning JSON Schema Validation', () => {
         return urls
       }
 
-      const allUrls = jsonData.children.flatMap(collectUrls)
+      const allUrls = jsonData.children.flatMap(collectUrls) as { url: string, path: string[] }[]
 
       allUrls.forEach(({ url, path }) => {
         // Validate URL format

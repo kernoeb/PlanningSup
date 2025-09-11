@@ -1,9 +1,9 @@
 import { dirname, relative } from 'node:path'
-import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
-import { isDev, port, r } from './scripts/utils'
+import { defineConfig } from 'vite'
 import packageJson from './package.json'
+import { isDev, port, r } from './scripts/utils'
 
 export default defineConfig(({ command }) => ({
   base: command === 'serve' ? `http://localhost:${port}/` : '/dist/',

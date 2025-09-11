@@ -22,6 +22,7 @@
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf --glob extension/dist extension/manifest.json extension.*",
     "lint": "eslint --cache .",
+    "lint-fix": "eslint --cache --fix .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -35,9 +36,9 @@
     "cross-env": "^10.0.0",
     "crx": "^5.0.1",
     "daisyui": "catalog:ui",
-    "sass-embedded": "catalog:ui",
     "fs-extra": "^11.3.1",
     "rimraf": "^6.0.1",
+    "sass-embedded": "catalog:ui",
     "tailwindcss": "catalog:ui",
     "typescript": "catalog:dev",
     "vite": "catalog:dev",

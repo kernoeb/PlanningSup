@@ -1,7 +1,7 @@
 import { dirname, relative } from 'node:path'
 import { defineConfig } from 'vite'
-import { isDev, r } from './scripts/utils'
 import packageJson from './package.json'
+import { isDev, r } from './scripts/utils'
 
 // bundling the content script using Vite
 export default defineConfig({
