@@ -137,7 +137,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.crx') != ''
         with:
-          name: planningsup-chrome-${{ github.run_number }}.crx
+          name: planningsup-chrome-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.crx
           retention-days: 90
           compression-level: 0
@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.xpi') != ''
         with:
-          name: planningsup-firefox-${{ github.run_number }}.xpi
+          name: planningsup-firefox-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.xpi
           retention-days: 90
           compression-level: 0
@@ -155,7 +155,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.zip') != ''
         with:
-          name: planningsup-extension-${{ github.run_number }}.zip
+          name: planningsup-extension-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.zip
           retention-days: 90
           compression-level: 0
@@ -205,9 +205,9 @@ jobs:
             PlanningSup Browser Extension v${{ steps.version.outputs.version }}
 
             ## Downloads
-            - **Chrome Extension**: `planningsup-chrome-${{ github.run_number }}.crx`
-            - **Firefox Extension**: `planningsup-firefox-${{ github.run_number }}.xpi`
-            - **Generic ZIP**: `planningsup-extension-${{ github.run_number }}.zip`
+            - **Chrome Extension**: `planningsup-chrome-${{ github.run_number }}.zip` (contains .crx file)
+            - **Firefox Extension**: `planningsup-firefox-${{ github.run_number }}.zip` (contains .xpi file)
+            - **Generic ZIP**: `planningsup-extension-${{ github.run_number }}.zip` (contains .zip file)
 
             ## Installation
             ### Chrome/Chromium
@@ -280,9 +280,9 @@ jobs:
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Artifacts Created" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-chrome-${{ github.run_number }}.crx\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-firefox-${{ github.run_number }}.xpi\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-extension-${{ github.run_number }}.zip\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-chrome-${{ github.run_number }}\` (Chrome .crx)" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-firefox-${{ github.run_number }}\` (Firefox .xpi)" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-extension-${{ github.run_number }}\` (Generic .zip)" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-source-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
