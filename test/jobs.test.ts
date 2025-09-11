@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
-import { DEFAULT_TIMEZONE, formatQuietHours, isInQuietHours, parseQuietHours } from '@api/jobs'
+import { formatQuietHours, isInQuietHours, parseQuietHours } from '@api/jobs'
 
 /**
  * Test goals:
