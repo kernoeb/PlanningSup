@@ -34,7 +34,7 @@ concurrency:
 env:
   EXTENSION_DIR: apps/extension
   NODE_ENV: production
-  VITE_BACKEND_URL: https://api.planningsup.fr
+  VITE_BACKEND_URL: https://v3.planningsup.app
   CI: true
 
 jobs:
