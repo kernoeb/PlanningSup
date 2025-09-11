@@ -153,10 +153,10 @@ jobs:
 
       - name: Upload Generic Extension Artifact
         uses: actions/upload-artifact@v4
-        if: hashFiles('apps/extension/extension.zip') != ''
+        if: hashFiles('apps/extension/extension/**') != ''
         with:
           name: planningsup-extension-${{ github.run_number }}
-          path: ${{ env.EXTENSION_DIR }}/extension.zip
+          path: ${{ env.EXTENSION_DIR }}/extension/
           retention-days: 90
           compression-level: 0
 
@@ -207,7 +207,7 @@ jobs:
             ## Downloads
             - **Chrome Extension**: `planningsup-chrome-${{ github.run_number }}.zip` (contains .crx file)
             - **Firefox Extension**: `planningsup-firefox-${{ github.run_number }}.zip` (contains .xpi file)
-            - **Generic ZIP**: `planningsup-extension-${{ github.run_number }}.zip` (contains .zip file)
+            - **Generic ZIP**: `planningsup-extension-${{ github.run_number }}.zip` (contains extension files)
 
             ## Installation
             ### Chrome/Chromium
@@ -223,10 +223,11 @@ jobs:
             4. Select the downloaded `.xpi` file
 
             ### Manual Installation (Any Browser)
-            1. Download and extract the `.zip` file
-            2. Open your browser's extension management page
-            3. Enable "Developer mode"
-            4. Click "Load unpacked" and select the extracted folder
+            1. Download the `planningsup-extension-${{ github.run_number }}.zip` file
+            2. Extract it to get the extension folder
+            3. Open your browser's extension management page
+            4. Enable "Developer mode"
+            5. Click "Load unpacked" and select the extracted extension folder
 
             ## Build Information
             - **Commit**: ${{ github.sha }}
@@ -282,7 +283,7 @@ jobs:
           echo "### Artifacts Created" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-chrome-${{ github.run_number }}\` (Chrome .crx)" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-firefox-${{ github.run_number }}\` (Firefox .xpi)" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-extension-${{ github.run_number }}\` (Generic .zip)" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-extension-${{ github.run_number }}\` (Extension files)" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-source-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
