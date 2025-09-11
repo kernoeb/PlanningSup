@@ -137,7 +137,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.crx') != ''
         with:
-          name: planningsup-chrome-extension-${{ github.run_number }}-${{ github.sha }}
+          name: planningsup-chrome-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.crx
           retention-days: 90
           compression-level: 0
@@ -146,7 +146,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.xpi') != ''
         with:
-          name: planningsup-firefox-extension-${{ github.run_number }}-${{ github.sha }}
+          name: planningsup-firefox-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.xpi
           retention-days: 90
           compression-level: 0
@@ -155,7 +155,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: hashFiles('apps/extension/extension.zip') != ''
         with:
-          name: planningsup-extension-zip-${{ github.run_number }}-${{ github.sha }}
+          name: planningsup-extension-${{ github.run_number }}
           path: ${{ env.EXTENSION_DIR }}/extension.zip
           retention-days: 90
           compression-level: 0
@@ -163,7 +163,7 @@ jobs:
       - name: Upload Extension Source (Built)
         uses: actions/upload-artifact@v4
         with:
-          name: planningsup-extension-source-${{ github.run_number }}-${{ github.sha }}
+          name: planningsup-source-${{ github.run_number }}
           path: |
             ${{ env.EXTENSION_DIR }}/extension/
           retention-days: 30
@@ -172,7 +172,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: planningsup-extension-build-logs-${{ github.run_number }}-${{ github.sha }}
+          name: planningsup-build-logs-${{ github.run_number }}
           path: |
             ${{ env.EXTENSION_DIR }}/*.log
           retention-days: 7
@@ -205,8 +205,8 @@ jobs:
             PlanningSup Browser Extension v${{ steps.version.outputs.version }}
 
             ## Downloads
-            - **Chrome Extension**: `planningsup-chrome-extension.crx`
-            - **Firefox Extension**: `planningsup-firefox-extension.xpi`
+            - **Chrome Extension**: `planningsup-chrome.crx`
+            - **Firefox Extension**: `planningsup-firefox.xpi`
             - **Generic ZIP**: `planningsup-extension.zip`
 
             ## Installation
@@ -280,10 +280,10 @@ jobs:
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Artifacts Created" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-chrome-extension-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-firefox-extension-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-extension-zip-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-extension-source-${{ github.run_number }}-${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-chrome-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-firefox-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-extension-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-source-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Quick Links" >> $GITHUB_STEP_SUMMARY
