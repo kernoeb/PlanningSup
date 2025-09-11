@@ -3198,16 +3198,6 @@
               "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1777&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "huma-arts-etudes-chorale",
-              "title": "Chorale",
-              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1780&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "huma-arts-etudes-orchestre",
-              "title": "Orchestre",
-              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1783&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
               "id": "huma-arts-etudes-art-plastiques",
               "title": "Arts Plastiques",
               "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1779&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
