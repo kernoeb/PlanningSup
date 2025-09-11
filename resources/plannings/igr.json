@@ -367,8 +367,8 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=625&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "m1mae-mej-fi-td",
-              "title": "M1 MAE - MEJ - FI - TD",
+              "id": "m1mae-mej-fi-td-2",
+              "title": "M1 MAE - MEJ - FI - TD (Groupe 2)",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=631&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
@@ -398,8 +398,8 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2984&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "m1mae-ma-fi-td",
-              "title": "M1 MAE - MA - FI - TD",
+              "id": "m1mae-ma-fi-td-2",
+              "title": "M1 MAE - MA - FI - TD (Groupe 2)",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11651&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]

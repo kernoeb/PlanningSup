@@ -346,8 +346,8 @@
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16769&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
-                      "id": "ouv",
-                      "title": "OUV",
+                      "id": "ouv-2",
+                      "title": "OUV (Groupe 2)",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16773&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]

@@ -907,11 +907,6 @@
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6480&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
-        },
-        {
-          "id": "cpeml",
-          "title": "CPEM L",
-          "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4951&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
         }
       ]
     },
