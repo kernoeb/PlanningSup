@@ -10,20 +10,37 @@ import { run as runPlanningsBackup } from './plannings-backup'
 // - DELAY_BETWEEN_JOBS: delay between cycles (supports ms number or "60s", "1m", "500ms", "1h")
 // - ALLOWED_JOBS: comma-separated list of job IDs to run, or "*" for all registered jobs.
 //   Example: ALLOWED_JOBS="plannings-backup,another-job"
+// - JOBS_QUIET_HOURS: time range when jobs should not run (default: "21:00–06:00")
+//   Examples: "21:00–06:00" (crosses midnight), "02:00–04:00" (same day), "" (disabled)
+//   Supports both en dash (–) and hyphen (-) as separators
 //
-// A "job" is any module that exports an async `run(db: Database): Promise<void>` function.
+// A "job" is any module that exports an async `run(db: Database, signal?: AbortSignal): Promise<void>` function.
 // Jobs must be added to the JOB_REGISTRY below, which is an explicit allowlist.
+//
+// Quiet Hours Feature:
+// - Jobs are skipped if the current time falls within the configured quiet hours
+// - If quiet hours begin while a job is running, the job receives an abort signal
+// - Jobs should check the abort signal periodically and handle graceful shutdown
+// - Quiet hours can cross midnight (e.g., 21:00–06:00) or stay within the same day (e.g., 02:00–04:00)
 
 interface JobModule {
   name: string
-  run: (db: Database) => Promise<void>
+  run: (db: Database, signal?: AbortSignal) => Promise<void>
 }
 
 let isRunning = false
 let isStopped = false
 let paused = false
+let currentJobAbortController: AbortController | null = null
 
 const DEFAULT_DELAY_MS = 60_000
+export const DEFAULT_QUIET_HOURS = '21:00–06:00'
+
+export interface QuietHours {
+  start: { hour: number, minute: number }
+  end: { hour: number, minute: number }
+  crossesMidnight: boolean
+}
 
 function readEnvBoolean(value: string | undefined | null, defaultValue: boolean): boolean {
   if (value == null) return defaultValue
@@ -83,6 +100,62 @@ function formatDuration(ms: number): string {
   if (seconds) parts.push(`${seconds}s`)
   if (millis || parts.length === 0) parts.push(`${millis}ms`)
   return parts.join(' ')
+}
+
+export function parseQuietHours(input: string | undefined | null): QuietHours | null {
+  if (!input) return null
+  const raw = String(input).trim()
+  if (raw === '') return null
+
+  // Support both en dash (–) and hyphen (-) as separator
+  const match = /^(\d{1,2}):(\d{2})[–-](\d{1,2}):(\d{2})$/.exec(raw)
+  if (!match) return null
+
+  const [, startHour, startMinute, endHour, endMinute] = match.map(Number)
+
+  if (startHour < 0 || startHour > 23 || endHour < 0 || endHour > 23
+    || startMinute < 0 || startMinute > 59 || endMinute < 0 || endMinute > 59) {
+    return null
+  }
+
+  const start = { hour: startHour, minute: startMinute }
+  const end = { hour: endHour, minute: endMinute }
+
+  // Check if the range crosses midnight (e.g., 21:00–06:00)
+  const startMinutes = startHour * 60 + startMinute
+  const endMinutes = endHour * 60 + endMinute
+  const crossesMidnight = startMinutes >= endMinutes
+
+  return { start, end, crossesMidnight }
+}
+
+export function isInQuietHours(quietHours: QuietHours | null, now: Date = new Date()): boolean {
+  if (!quietHours) return false
+
+  const currentHour = now.getHours()
+  const currentMinute = now.getMinutes()
+
+  const currentMinutes = currentHour * 60 + currentMinute
+
+  const startMinutes = quietHours.start.hour * 60 + quietHours.start.minute
+  const endMinutes = quietHours.end.hour * 60 + quietHours.end.minute
+
+  if (quietHours.crossesMidnight) {
+    // Range crosses midnight (e.g., 21:00–06:00)
+    return currentMinutes >= startMinutes || currentMinutes < endMinutes
+  } else {
+    // Range within same day (e.g., 02:00–04:00)
+    return currentMinutes >= startMinutes && currentMinutes < endMinutes
+  }
+}
+
+export function formatQuietHours(quietHours: QuietHours | null): string {
+  if (!quietHours) return 'disabled'
+
+  const formatTime = (time: { hour: number, minute: number }) =>
+    `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`
+
+  return `${formatTime(quietHours.start)}–${formatTime(quietHours.end)}`
 }
 
 function toPrettyName(id: string) {
@@ -152,6 +225,8 @@ export interface JobsController {
   resume: () => void
   isPaused: () => boolean
   getDelayMs: () => number
+  getQuietHours: () => QuietHours | null
+  isInQuietHours: () => boolean
 }
 
 const controller: JobsController = {
@@ -161,6 +236,10 @@ const controller: JobsController = {
       return
     }
     isStopped = true
+    // Abort any currently running job
+    if (currentJobAbortController) {
+      currentJobAbortController.abort('Jobs system stopping')
+    }
     jobsLogger.info('Stop signal received for jobs loop.')
   },
   pause() {
@@ -180,6 +259,12 @@ const controller: JobsController = {
   },
   getDelayMs() {
     return parseDelayMs()
+  },
+  getQuietHours() {
+    return parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS)
+  },
+  isInQuietHours() {
+    return isInQuietHours(parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS))
   },
 }
 
@@ -207,11 +292,13 @@ export function startJobs(db: Database): JobsController {
   isRunning = true
   isStopped = false
   const delayMs = parseDelayMs()
+  const quietHours = parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS)
 
   ;(async () => {
-    jobsLogger.info('Starting jobs loop with delay {delay} ({ms} ms)', {
+    jobsLogger.info('Starting jobs loop with delay {delay} ({ms} ms), quiet hours: {quietHours}', {
       delay: formatDuration(delayMs),
       ms: delayMs,
+      quietHours: formatQuietHours(quietHours),
     })
 
     const jobs = resolveAllowedJobs()
@@ -230,10 +317,34 @@ export function startJobs(db: Database): JobsController {
 
       // Run each job sequentially
       for (const job of jobs) {
+        if (isStopped) break
+
+        // Check quiet hours before starting job
+        if (isInQuietHours(quietHours)) {
+          jobsLogger.info('Skipping job {name} due to quiet hours ({quietHours})', {
+            name: job.name,
+            quietHours: formatQuietHours(quietHours),
+          })
+          continue
+        }
+
         const t0 = Date.now()
+        currentJobAbortController = new AbortController()
+
         try {
           jobsLogger.info('Starting job: {name}', { name: job.name })
-          await job.run(db)
+
+          // Start monitoring for quiet hours during job execution
+          const quietHoursChecker = setInterval(() => {
+            if (isInQuietHours(quietHours) && currentJobAbortController && !currentJobAbortController.signal.aborted) {
+              jobsLogger.info('Aborting job {name} due to quiet hours starting', { name: job.name })
+              currentJobAbortController.abort('Quiet hours started')
+            }
+          }, 30_000) // Check every 30 seconds
+
+          await job.run(db, currentJobAbortController.signal)
+          clearInterval(quietHoursChecker)
+
           const dur = Date.now() - t0
           jobsLogger.info('Finished job: {name} in {duration} ({ms} ms)', {
             name: job.name,
@@ -242,12 +353,22 @@ export function startJobs(db: Database): JobsController {
           })
         } catch (err) {
           const dur = Date.now() - t0
-          jobsLogger.error('Job failed: {name} after {duration}', {
-            name: job.name,
-            duration: formatDuration(dur),
-            error: normalizeError(err),
-          })
+          if (currentJobAbortController?.signal.aborted) {
+            jobsLogger.info('Job aborted: {name} after {duration} (reason: {reason})', {
+              name: job.name,
+              duration: formatDuration(dur),
+              reason: currentJobAbortController.signal.reason || 'Unknown',
+            })
+          } else {
+            jobsLogger.error('Job failed: {name} after {duration}', {
+              name: job.name,
+              duration: formatDuration(dur),
+              error: normalizeError(err),
+            })
+          }
           // Continue to next job
+        } finally {
+          currentJobAbortController = null
         }
       }
 
@@ -285,6 +406,8 @@ export const jobs: {
   resume: () => void
   isPaused: () => boolean
   getDelayMs: () => number
+  getQuietHours: () => QuietHours | null
+  isInQuietHours: () => boolean
 } = {
   start: startJobs,
   stop: controller.stop,
@@ -292,6 +415,8 @@ export const jobs: {
   resume: controller.resume,
   isPaused: controller.isPaused,
   getDelayMs: controller.getDelayMs,
+  getQuietHours: controller.getQuietHours,
+  isInQuietHours: controller.isInQuietHours,
 }
 
 export default jobs
