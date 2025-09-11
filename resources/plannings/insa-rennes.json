@@ -2773,8 +2773,8 @@
               "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2788&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "s1-stpi-harmonisation-f",
-              "title": "Groupe F",
+              "id": "s1-stpi-harmonisation-nf",
+              "title": "Groupe NF",
               "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
@@ -3158,6 +3158,120 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2299&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "huma",
+      "title": "Humanités",
+      "edts": [
+        {
+          "id": "anglais-transversal",
+          "title": "Anglais Transversal",
+          "edts": [
+            {
+              "id": "huma-anglais-toeic",
+              "title": "Anglais-TOEIC",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1848&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-anglais-conversation",
+              "title": "Anglais-conversation",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1628&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-anglais-soutien",
+              "title": "Anglais-soutien",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1844&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "arts-etudes",
+          "title": "Arts-Études",
+          "edts" : [
+            {
+              "id": "huma-arts-etudes-adec",
+              "title": "ADEC",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1777&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-arts-etudes-chorale",
+              "title": "Chorale",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1780&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-arts-etudes-orchestre",
+              "title": "Orchestre",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1783&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-arts-etudes-art-plastiques",
+              "title": "Arts Plastiques",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1779&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-arts-etudes-musique",
+              "title": "Musique",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2715&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            }
+          ]
+        },
+        {
+          "id": "huma-lv",
+          "title": "LV2 et LV3",
+          "edts": [
+            {
+              "id": "huma-lv-allemand",
+              "title": "Allemand",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3286&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-arabe",
+              "title": "Arabe (Supélec)",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3314&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-chinois",
+              "title": "Chinois",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3294&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-espagnol",
+              "title": "Espagnol",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3301&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-fle",
+              "title": "Français Langue Étrangère",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3311&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-italien",
+              "title": "Italien",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3244&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-japonais",
+              "title": "Japonais",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3256&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-OI",
+              "title": "Ouverture Interculturelle",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3651&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-portugais",
+              "title": "Portugais",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2340&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+            },
+            {
+              "id": "huma-lv-russe",
+              "title": "Russe (Supélec)",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3316&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
