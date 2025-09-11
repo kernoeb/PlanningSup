@@ -3166,11 +3166,11 @@
     {
       "id": "huma",
       "title": "Humanités",
-      "edts": [
+      "children": [
         {
           "id": "anglais-transversal",
           "title": "Anglais Transversal",
-          "edts": [
+          "children": [
             {
               "id": "huma-anglais-toeic",
               "title": "Anglais-TOEIC",
@@ -3191,7 +3191,7 @@
         {
           "id": "arts-etudes",
           "title": "Arts-Études",
-          "edts" : [
+          "children": [
             {
               "id": "huma-arts-etudes-adec",
               "title": "ADEC",
@@ -3212,7 +3212,7 @@
         {
           "id": "huma-lv",
           "title": "LV2 et LV3",
-          "edts": [
+          "children": [
             {
               "id": "huma-lv-allemand",
               "title": "Allemand",
