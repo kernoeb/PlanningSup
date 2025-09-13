@@ -14,7 +14,7 @@ function betterAuthView(context: Context) {
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
     return auth.handler(context.request)
   } else {
-    context.error(405)
+    context.status(405)
   }
 }
 
