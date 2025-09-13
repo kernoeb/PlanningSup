@@ -9,7 +9,7 @@
     "generate-drizzle": "NO_MIGRATE=true bun run --bun drizzle-kit generate",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "build": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts",
+    "build": "bun run scripts/build",
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
