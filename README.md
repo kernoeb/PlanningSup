@@ -87,6 +87,27 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ### Nécessaire
 
 - [Node.js](https://github.com/nodejs/node) 22.X : Installation via [nvm](https://github.com/nvm-sh/nvm) ou [fnm](https://github.com/Schniz/fnm)
+- [Bun](https://bun.sh/) : Version spécifiée dans `.bun-version`
+
+### Gestion des versions
+
+Le projet utilise un fichier `.bun-version` pour maintenir la cohérence des versions de Bun entre :
+
+- Les workflows GitHub Actions
+- Les images Docker
+- Les environnements de développement local
+
+Pour mettre à jour la version de Bun, il suffit de modifier le fichier `.bun-version` :
+
+```bash
+# Mettre à jour votre Bun local
+bun upgrade
+
+# Puis mettre à jour le fichier .bun-version avec la nouvelle version
+echo "1.3.0" > .bun-version
+```
+
+Tous les workflows et builds utiliseront automatiquement cette nouvelle version.
 
 ### Commandes utiles
 

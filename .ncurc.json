@@ -1,6 +1,6 @@
 {
   "concurrency": 30,
-  "packageManager": "npm",
+  "packageManager": "bun",
   "root": true,
   "workspaces": true
 }

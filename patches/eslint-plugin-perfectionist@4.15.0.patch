@@ -1,0 +1,13 @@
+diff --git a/dist/rules/sort-imports.js b/dist/rules/sort-imports.js
+index 9cf75ddf0edd1cdfe2ea1a9827ca7ac8aa202d18..898e4b43435a8a109829b8ed066588ebc4c947f1 100644
+--- a/dist/rules/sort-imports.js
++++ b/dist/rules/sort-imports.js
+@@ -44,7 +44,7 @@ let defaultOptions = {
+   specialCharacters: 'keep',
+   sortSideEffects: false,
+   type: 'alphabetical',
+-  environment: 'node',
++  environment: 'bun',
+   newlinesBetween: 1,
+   customGroups: [],
+   ignoreCase: true,
