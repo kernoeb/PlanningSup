@@ -1598,7 +1598,7 @@
                 {
                   "id": "s6-gcu-c9",
                   "title": "GRP C.9",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2574&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2574&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },

@@ -16,7 +16,7 @@
                 {
                   "id": "las-se",
                   "title": "LAS SE",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5127&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5127&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "las-shs",
@@ -139,7 +139,7 @@
                 {
                   "id": "td-pass",
                   "title": "TD PASS",
-                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11975&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11975&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -294,7 +294,7 @@
                     {
                       "id": "l2-sps-groupe-4-4-4",
                       "title": "L2 SPS - Groupe 4 (4/4)",
-                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1206&projectId=4&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-st-etienne.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1206&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 },
