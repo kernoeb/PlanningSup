@@ -781,7 +781,7 @@
                 {
                   "id": "2e1",
                   "title": "2E1",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5084&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5084&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2e2",
@@ -977,7 +977,7 @@
             {
               "id": "tc3aa",
               "title": "TC 3aA",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1633&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1633&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1013,7 +1013,7 @@
             {
               "id": "tc3ab",
               "title": "TC 3aB",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3290&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3290&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1049,7 +1049,7 @@
             {
               "id": "tc3ac",
               "title": "TC 3aC",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3374&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3374&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1085,7 +1085,7 @@
             {
               "id": "tc3ad",
               "title": "TC 3aD",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5736&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5736&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
