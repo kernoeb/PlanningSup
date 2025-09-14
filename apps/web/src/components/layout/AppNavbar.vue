@@ -32,9 +32,9 @@ onKeyStroke(
 </script>
 
 <template>
-  <div class="navbar bg-base-100 shadow-sm px-3 gap-2">
+  <div id="app-navbar" class="navbar bg-base-100 shadow-sm px-3 gap-2">
     <div class="flex-1 flex items-center gap-3">
-      <a class="text-xl flex items-center gap-3" href="/">
+      <a id="app-logo" class="text-xl flex items-center gap-3" href="/">
         <div class="avatar">
           <div class="w-8 rounded">
             <img alt="PlanningSup" src="/icon.png">
@@ -50,7 +50,7 @@ onKeyStroke(
       <div class="flex items-center gap-2">
         <PlanningPicker ref="planningPicker">
           <template #trigger="{ open }">
-            <button class="btn btn-secondary h-6 min-h-6 hidden sm:inline-flex" type="button" @click="open">
+            <button id="planning-picker-trigger" class="btn btn-secondary h-6 min-h-6 hidden sm:inline-flex" type="button" @click="open">
               Changer de planning
               <kbd
                 class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100 hidden sm:inline-flex"
@@ -59,38 +59,39 @@ onKeyStroke(
           </template>
         </PlanningPicker>
         <Transition name="fade">
-          <span v-if="title" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
+          <span v-if="title" id="current-planning-badge" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
         </Transition>
       </div>
     </div>
 
     <div class="flex-none mr-2 hidden sm:block">
-      <div class="dropdown dropdown-end">
-        <div class="btn btn-ghost" role="button" tabindex="0">
+      <div id="theme-dropdown" class="dropdown dropdown-end">
+        <div id="theme-dropdown-trigger" class="btn btn-ghost" role="button" tabindex="0">
           Thème: {{ currentLabel }}
           <ChevronDown class="opacity-70" :size="14" />
         </div>
         <ul
+          id="theme-dropdown-menu"
           class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-48 p-2 shadow"
           tabindex="0"
         >
           <li>
-            <button :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
+            <button id="theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
               {{ i18nThemes.auto }}
             </button>
           </li>
           <li>
-            <button :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
+            <button id="theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
               {{ i18nThemes.dark }}
             </button>
           </li>
           <li>
-            <button :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
+            <button id="theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
               {{ i18nThemes.light }}
             </button>
           </li>
           <li>
-            <button :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
+            <button id="theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
               {{ i18nThemes.dracula }}
             </button>
           </li>
@@ -101,7 +102,7 @@ onKeyStroke(
     <UserMenu />
 
     <div class="fab sm:hidden">
-      <button aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPicker?.open()">
+      <button id="mobile-planning-fab" aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPicker?.open()">
         <List />
       </button>
     </div>

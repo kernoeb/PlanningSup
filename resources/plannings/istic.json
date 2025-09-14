@@ -2600,11 +2600,6 @@
                   ]
                 },
                 {
-                  "id": "mineureacf",
-                  "title": "Mineure ACF",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18970&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
                   "children": [
@@ -2786,17 +2781,6 @@
                   ]
                 },
                 {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "children": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15268&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
                   "id": "mineurewe",
                   "title": "Mineure WE",
                   "children": [
@@ -2966,17 +2950,6 @@
                   ]
                 },
                 {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "children": [
-                    {
-                      "id": "mineureseaalt",
-                      "title": "Mineure SEA Alt",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13984&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
                   "id": "mineurewe",
                   "title": "Mineure WE",
                   "children": [
@@ -3107,28 +3080,6 @@
                   ]
                 },
                 {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "children": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14679&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "children": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14799&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
                   "id": "mineurewe",
                   "title": "Mineure WE",
                   "children": [
@@ -3255,11 +3206,6 @@
                   "id": "m1sifisr",
                   "title": "M1 SIF  ISR",
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12523&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "m1sifitr",
-                  "title": "M1 SIF  ITR",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=14744&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "m1sifmarketingetstrategie",

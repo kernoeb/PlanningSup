@@ -270,11 +270,11 @@ onMounted(() => {
   <div class="sm:flex">
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
-    <dialog ref="dialogRef" class="modal">
+    <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
       <div class="modal-box max-w-xl flex flex-col p-0">
         <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-300 bg-base-100">
           <div class="flex flex-col">
-            <h3 id="settings-title" class="font-bold text-xl">
+            <h3 id="planning-picker-title" class="font-bold text-xl">
               Sélectionner un planning
             </h3>
             <span class="text-xs opacity-70">
@@ -283,6 +283,7 @@ onMounted(() => {
           </div>
           <form method="dialog">
             <button
+              id="planning-picker-close"
               aria-label="Fermer"
               class="btn btn-circle btn-ghost"
               @click="close"
@@ -296,21 +297,23 @@ onMounted(() => {
         <div class="flex-1 px-6 py-4 space-y-2">
           <div class="flex items-center gap-2">
             <input
+              id="planning-search-input"
               v-model="searchQuery"
               autofocus
               class="input input-bordered w-full"
               placeholder="Rechercher un planning…"
               type="text"
             >
-            <button class="btn" :disabled="!searchQuery" type="button" @click="searchQuery = ''">
+            <button id="planning-search-clear" class="btn" :disabled="!searchQuery" type="button" @click="searchQuery = ''">
               Effacer
             </button>
           </div>
 
           <div class="flex items-center gap-2">
-            <div class="flex flex-wrap gap-2 flex-1 min-w-0">
+            <div id="selected-plannings-list" class="flex flex-wrap gap-2 flex-1 min-w-0">
               <div
                 v-for="item in selectedItems"
+                :id="`selected-planning-${item.id}`"
                 :key="item.id"
                 class="tooltip max-w-full min-w-0"
                 :data-tip="item.title"
@@ -323,6 +326,7 @@ onMounted(() => {
                     {{ item.title }}
                   </div>
                   <button
+                    :id="`remove-planning-${item.id}`"
                     :aria-label="`Retirer ${item.title}`"
                     class="btn btn-xs btn-circle btn-ghost shrink-0"
                     @click="togglePlanning(item.id)"
@@ -346,10 +350,11 @@ onMounted(() => {
         </div>
 
         <!-- Body -->
-        <div class="h-[60vh] bg-base-200" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-200" v-bind="containerProps">
           <div v-bind="wrapperProps">
             <div
               v-for="row in vlist"
+              :id="`planning-row-${row.data.fullId}`"
               :key="row.data.fullId"
               class="flex items-center justify-between px-2 hover:bg-primary/20 transition-all cursor-pointer"
               :class="{
@@ -374,6 +379,7 @@ onMounted(() => {
                     </span>
                   </span>
                   <input
+                    :id="`planning-group-checkbox-${row.data.fullId}`"
                     :checked="totalLeavesFor(row.data.fullId) > 0 && selectedCountFor(row.data.fullId) === totalLeavesFor(row.data.fullId)"
                     class="checkbox checkbox-sm checkbox-primary ml-auto"
                     :disabled="
@@ -393,6 +399,7 @@ onMounted(() => {
                   <span class="inline-flex items-center justify-center w-3 select-none" />
                   <span class="truncate text-left">{{ row.data.title }}</span>
                   <input
+                    :id="`planning-leaf-checkbox-${row.data.fullId}`"
                     :checked="isSelected(row.data.fullId)"
                     class="checkbox checkbox-sm checkbox-primary ml-auto"
                     type="checkbox"

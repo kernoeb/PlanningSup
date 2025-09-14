@@ -4,11 +4,12 @@ This directory contains GitHub Actions workflows for automating builds and deplo
 
 ## Workflows
 
-### 1. Docker Build (`docker-publish.yml`)
+### 1. Docker Build and Test (`docker-publish.yml`)
 
-- **Purpose**: Builds and publishes Docker images for the main application
+- **Purpose**: Builds Docker images, runs integration tests, and publishes images only if tests pass
 - **Triggers**: Push to main branch, tags, and pull requests
-- **Outputs**: Docker images published to GitHub Container Registry
+- **Outputs**: Docker images published to GitHub Container Registry (only after successful tests)
+- **Testing**: Includes Bun test integration tests and Playwright E2E tests with PostgreSQL 17
 
 ### 2. Extension Build (`extension-build.yml`)
 
@@ -18,6 +19,42 @@ This directory contains GitHub Actions workflows for automating builds and deplo
   - Pull requests to `main` or `develop` branches (when extension files change)
   - Manual workflow dispatch
 - **Outputs**: GitHub artifacts containing built extensions
+
+## Docker Build and Test Workflow
+
+### Integration Testing
+
+The Docker workflow now includes comprehensive integration testing:
+
+1. **Build Phase**
+   - Builds Docker image locally (without pushing)
+   - Sets up PostgreSQL 17 service for database tests
+   - Starts application container for testing
+
+2. **Test Phase**
+   - **Bun Test Integration Tests**: API endpoint testing
+   - **Playwright E2E Tests**: Browser-based UI testing
+   - **Basic API Validation**: Curl-based endpoint checks
+
+3. **Publish Phase**
+   - Only pushes Docker image if all tests pass
+   - Prevents broken images from being published
+   - Includes build provenance attestation
+
+### Test Configuration
+
+- **Bun Test**: Uses `bunfig.toml` configuration with integration tests in `test/integration/`
+- **Playwright**: Uses `playwright.config.ts` for E2E tests in `test/e2e/`
+- **Test Files**: Located in `test/integration/` and `test/e2e/`
+- **Application URL**: `http://localhost:20000`
+- **Database**: PostgreSQL 17 with test credentials
+
+### Benefits
+
+- **Quality Assurance**: No broken images published
+- **Efficiency**: Single workflow, no duplicate builds
+- **Fast Feedback**: Tests run immediately after build
+- **Comprehensive Coverage**: API + UI + Database integration
 
 ## Extension Build Workflow
 

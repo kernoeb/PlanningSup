@@ -126,7 +126,10 @@ export function usePlanningCalendar(options: {
 
   function initOrUpdate(forceRecreate = false) {
     const mapped = getMappedEvents()
-    if (!calendarApp.value || forceRecreate) {
+
+    // Only initialize calendar if we have planning data or are forcing recreation
+    const hasData = planning.planningFullIds.value?.length > 0
+    if ((!calendarApp.value && hasData) || forceRecreate) {
       // Preserve current state (view and date) when recreating
       const prevView = calendarApp.value ? calendarControls.getView() : undefined
       const prevDate = currentDate.value
@@ -173,7 +176,7 @@ export function usePlanningCalendar(options: {
   // Sync on planning change and when new events arrive
   watch(planning.planningFullIds, () => {
     void initOrUpdate()
-  })
+  }, { immediate: true })
 
   watch(planning.events, () => {
     if (calendarApp.value) {
@@ -206,8 +209,7 @@ export function usePlanningCalendar(options: {
     void planning.refresh()
   }
 
-  // Initial load
-  void initOrUpdate()
+  // Calendar initializes when planning data is available via the watch
 
   // Humanized cumulated event duration for the current view range
   const nbHours = computed<string | null>(() => {

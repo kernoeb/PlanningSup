@@ -118,6 +118,41 @@ Lancement en local :
 
 > For MacOS M1, you can use `npm run dev:darwin-arm64`
 
+### Tests
+
+Le projet inclut une suite complète de tests d'intégration utilisant Vitest et Playwright :
+
+```bash
+# Lancer tous les tests E2E optimisés (construit l'image Docker et lance les tests)
+bun run test:e2e:fast
+
+# Options disponibles
+bun run test:e2e:fast --safari      # Inclure Safari (Chrome + Safari)
+bun run test:e2e:fast --verbose     # Affichage détaillé
+bun run test:e2e:fast --headed      # Mode visuel pour débogage
+bun run test:e2e:fast --no-cleanup  # Ne pas nettoyer les conteneurs
+
+# Tests manuels (nécessite l'environnement de test)
+docker compose -f docker-compose.test.yml up -d
+INTEGRATION_TEST_URL=http://localhost:20000 bunx vitest run --config vitest.integration.config.ts
+BASE_URL=http://localhost:20000 bunx playwright test
+```
+
+**Intégration CI/CD** :
+
+- Les tests s'exécutent automatiquement dans le workflow `docker-publish.yml`
+- L'image Docker n'est publiée que si tous les tests passent
+- Tests complets : API (Vitest) + Interface (Playwright) + Endpoints
+- Base de données PostgreSQL 17 dédiée aux tests
+
+L'environnement de test utilise `docker-compose.test.yml` avec :
+
+- Tous les endpoints API (`/api/ping`, `/api/plannings`, etc.)
+- L'interface utilisateur complète avec Playwright
+- La compatibilité multi-navigateurs et responsive design
+
+Pour plus de détails, voir [test/README.md](test/README.md).
+
 ## Donateurs
 
 - [Ewennn](https://github.com/Ewennnn) (merci️, le goat)

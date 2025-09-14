@@ -26,13 +26,28 @@ env:
   IS_PUBLISH_EVENT: ${{ github.event_name == 'push' && (github.ref_type == 'branch' || github.ref_type == 'tag') }}
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
       attestations: write
       id-token: write
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_USER: testuser
+          POSTGRES_DB: planningsup_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
       - name: Checkout
@@ -134,8 +149,8 @@ jobs:
           echo "version=$BUN_VERSION" >> $GITHUB_OUTPUT
           echo "Using Bun version: $BUN_VERSION"
 
-      - name: Build and push image
-        id: build_and_push
+      - name: Build Docker image (without push)
+        id: build_image
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -144,25 +159,153 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           build-args: |
             BUN_VERSION=${{ steps.bun_version.outputs.version }}
-          # Only push when explicitly allowed and safe
-          push: ${{ steps.publish_check.outputs.should_publish == 'true' }}
-          # Load locally when not pushing to avoid buildx warning
-          load: ${{ steps.publish_check.outputs.should_publish != 'true' }}
+          # Always load locally for testing, never push yet
+          push: false
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Set up Bun for tests
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.bun-version'
+
+      - name: Install test dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Get built image tag
+        id: get_image_tag
+        run: |
+          # Extract the first tag from the metadata
+          FIRST_TAG=$(echo "${{ steps.meta.outputs.tags }}" | head -n1)
+          echo "image_tag=$FIRST_TAG" >> $GITHUB_OUTPUT
+          echo "Using image tag: $FIRST_TAG"
+
+      - name: Start application container for testing
+        run: |
+          IMAGE_TAG="${{ steps.get_image_tag.outputs.image_tag }}"
+
+          # Start the application container
+          # In GitHub Actions, services are accessible via localhost
+          docker run -d \
+            --name planningsup-app-test \
+            --network host \
+            -e NODE_ENV=production \
+            -e PORT=20000 \
+            -e DATABASE_URL="postgresql://testuser:testpass@localhost:5432/planningsup_test" \
+            -e RUN_JOBS=false \
+            "$IMAGE_TAG"
+
+          # Wait for the application to be ready
+          echo "Waiting for application to start..."
+          timeout 60 bash -c 'until curl -f http://localhost:20000/api/ping 2>/dev/null; do sleep 2; done' || {
+            echo "❌ Application failed to start within 60 seconds"
+            docker logs planningsup-app-test
+            exit 1
+          }
+
+          echo "✅ Application is ready for testing"
+
+      - name: Run unit tests with Bun test
+        run: |
+          # Run unit tests (no external dependencies needed)
+          bun test test/*.test.ts
+
+      - name: Run integration tests with Bun test
+        run: |
+          # Run integration tests using Bun test (no additional dependencies needed)
+          BASE_URL=http://localhost:20000 bun test test/integration/
+
+      - name: Install Playwright and run E2E tests
+        run: |
+          # Install Playwright
+          bun add -d playwright @playwright/test
+          bunx playwright install --with-deps chromium
+
+          # Run E2E tests using existing config
+          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=chromium
+
+      - name: Run basic API tests
+        run: |
+          echo "Testing basic API endpoints..."
+
+          # Install jq for JSON parsing
+          sudo apt-get update && sudo apt-get install -y jq
+
+          # Test ping endpoint
+          response=$(curl -s http://localhost:20000/api/ping)
+          if [[ "$response" != "pong" ]]; then
+            echo "❌ Ping test failed: expected 'pong', got '$response'"
+            exit 1
+          fi
+
+          # Test plannings endpoint returns JSON array
+          plannings_count=$(curl -s http://localhost:20000/api/plannings | jq 'length' 2>/dev/null)
+          if [[ -z "$plannings_count" || "$plannings_count" -eq 0 ]]; then
+            echo "❌ Plannings test failed: no plannings returned"
+            exit 1
+          fi
+
+          echo "✅ Basic API tests passed (ping: OK, plannings: $plannings_count items)"
+
+      - name: Show application logs if tests fail
+        if: failure()
+        run: |
+          echo "=== Application Container Logs ==="
+          docker logs planningsup-app-test || true
+
+          echo "=== Database Connection Test ==="
+          docker exec planningsup-app-test sh -c 'nc -z localhost 5432 && echo "Database reachable" || echo "Database not reachable"' || true
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ github.run_number }}
+          path: playwright-report/
+          retention-days: 7
+
+      - name: Test container resource usage
+        run: |
+          echo "=== Container Resource Usage ==="
+          docker stats planningsup-app-test --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"
+
+          echo "=== Container Logs (last 50 lines) ==="
+          docker logs --tail 50 planningsup-app-test
+
+      - name: Cleanup test container
+        if: always()
+        run: |
+          docker stop planningsup-app-test || true
+          docker rm planningsup-app-test || true
+
+      - name: Push Docker image (only after successful tests)
+        id: push_image
+        if: steps.publish_check.outputs.should_publish == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            BUN_VERSION=${{ steps.bun_version.outputs.version }}
+          push: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Attest build provenance
-        if: steps.publish_check.outputs.should_publish == 'true' && steps.build_and_push.outputs.digest != ''
+        if: steps.publish_check.outputs.should_publish == 'true' && steps.push_image.outputs.digest != ''
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
-          subject-digest: ${{ steps.build_and_push.outputs.digest }}
+          subject-digest: ${{ steps.push_image.outputs.digest }}
           push-to-registry: true
 
-      - name: Build summary
+      - name: Build and test summary
         if: always()
         run: |
-          echo "## Docker Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## Docker Build and Test Summary" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
           echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
@@ -174,3 +317,5 @@ jobs:
           echo "| Is Valid Tag | ${{ steps.publish_check.outputs.is_valid_tag }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Should Publish | ${{ steps.publish_check.outputs.should_publish }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Image Tags | ${{ steps.meta.outputs.tags }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests Status | ${{ job.status == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Published | ${{ steps.push_image.outcome == 'success' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY

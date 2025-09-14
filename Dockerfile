@@ -46,7 +46,7 @@ RUN mkdir -p ./plannings && \
 ENV PLANNINGS_LOCATION=/app/plannings
 
 COPY /test ./test
-RUN bun test
+RUN bun test test/jobs.test.ts test/plannings.routes.test.ts
 
 ##########################################################
 FROM gcr.io/distroless/base-debian12

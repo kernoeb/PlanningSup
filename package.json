@@ -45,18 +45,27 @@
     "dev": "bun scripts/run dev",
     "build": "bun scripts/run build",
     "test": "bun scripts/run test",
-    "test:unit": "bun scripts/run test:unit",
+    "test:unit": "bun test test/*.test.ts",
     "coverage": "bun scripts/run coverage",
-    "test:e2e": "bun scripts/run test:e2e",
+    "test:e2e": "bun scripts/test-fast.ts",
+    "test:e2e:fast": "bun scripts/test-fast.ts",
+    "test:e2e:safari": "bun scripts/test-fast.ts --safari",
+    "test:e2e:headed": "bun scripts/test-fast.ts --headed",
+    "test:e2e:debug": "bun scripts/test-fast.ts --headed --verbose",
+    "test:integration": "bun scripts/test-integration.ts",
+    "test:integration:local": "bun scripts/test-integration.ts --skip-build --docker-image planningsup-test:local",
+    "validate:workflows": "bun scripts/validate-workflows.ts",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",
     "typecheck": "bun scripts/run typecheck"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.3.0",
+    "@playwright/test": "^1.49.1",
     "@types/bun": "^1.2.21",
     "concurrently": "^9.2.1",
-    "eslint": "^9.35.0"
+    "eslint": "^9.35.0",
+    "playwright": "^1.49.1"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",

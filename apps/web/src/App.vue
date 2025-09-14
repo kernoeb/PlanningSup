@@ -9,7 +9,7 @@ import './styles/schedule-x.css'
 </script>
 
 <template>
-  <div>
+  <div id="planning-sup-app">
     <AppNavbar />
     <PlanningCalendar
       style="height: calc(100dvh - 64px);"
