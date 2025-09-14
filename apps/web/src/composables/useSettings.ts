@@ -149,7 +149,7 @@ export function useSettings() {
     normalizeServer: v => v,
     fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
     setLocal: v => (highlightTeacher.value = v),
-    debounce: 600,
+    debounce: 10,
   })
 
   // showWeekends
@@ -159,7 +159,7 @@ export function useSettings() {
     normalizeServer: v => v,
     fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
     setLocal: v => (showWeekends.value = v),
-    debounce: 600,
+    debounce: 10,
   })
 
   // blocklist
@@ -170,7 +170,7 @@ export function useSettings() {
     fromServerToLocal: raw =>
       Array.isArray(raw) && raw.every(x => typeof x === 'string') ? (raw as string[]) : null,
     setLocal: v => (blocklist.value = v),
-    debounce: 600,
+    debounce: 250,
   })
 
   // colors (stored in DB as JSON string)
@@ -189,7 +189,7 @@ export function useSettings() {
       }
     },
     setLocal: v => (colors.value = v),
-    debounce: 600,
+    debounce: 400,
   })
 
   return {

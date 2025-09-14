@@ -1,6 +1,6 @@
 import type { Ref, WatchSource } from 'vue'
 import { authClient } from '@libs'
-import { createSharedComposable, watchDebounced } from '@vueuse/core'
+import { createSharedComposable } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
 const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled
@@ -91,7 +91,7 @@ function userPrefsSync() {
       normalizeServer = (raw: unknown) => raw,
       fromServerToLocal = (raw: unknown) => raw as T,
       setLocal,
-      debounce = 600,
+      debounce = 10,
     } = options
 
     const session = authClient.useSession()
@@ -154,10 +154,13 @@ function userPrefsSync() {
         const payload: Record<string, unknown> = { [key]: payloadValue, prefsMeta: stampedMeta }
 
         console.debug(`syncPref[${key}] Pushing to server:`, payload)
-        await authClient.updateUser(payload)
+        // Optimistically mark as synced to coalesce trailing updates during in-flight request
         lastSynced.value = payloadValue
+        await authClient.updateUser(payload)
       } catch (err) {
         console.error(`syncPref[${key}] Failed to push update:`, err)
+        // Roll back optimistic sync so the next change can retry
+        lastSynced.value = null
       }
     }
 
@@ -212,15 +215,36 @@ function userPrefsSync() {
     watch(userId, onSessionReady, { immediate: true })
 
     // 2. Handle ongoing local changes.
-    watchDebounced(
+    // Leading + trailing scheduler for local changes
+    let leadingTriggered = false
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null
+
+    watch(
       source,
       (newValue) => {
-        // Only push changes if the user is logged in.
-        if (userId.value) {
-          pushToServer(newValue as T)
+        if (!userId.value) return
+
+        // If debounce <= 0, push immediately for every change
+        if (debounce <= 0) {
+          void pushToServer(newValue as T)
+          return
         }
+
+        // Leading call: push immediately on first change in a burst
+        if (!leadingTriggered) {
+          leadingTriggered = true
+          void pushToServer(newValue as T)
+        }
+
+        // Trailing debounce: ensure final state is synced
+        if (debounceTimer) clearTimeout(debounceTimer)
+        debounceTimer = setTimeout(() => {
+          leadingTriggered = false
+          const latest = toValue(source) as T
+          void pushToServer(latest)
+        }, debounce)
       },
-      { debounce, deep: true },
+      { deep: true },
     )
   }
 

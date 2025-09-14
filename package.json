@@ -22,7 +22,7 @@
     },
     "catalogs": {
       "types": {
-        "@types/bun": "^1.2.21"
+        "@types/bun": "^1.2.22"
       },
       "dev": {
         "vite": "npm:rolldown-vite@latest",
@@ -61,7 +61,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^5.3.0",
     "@playwright/test": "^1.49.1",
-    "@types/bun": "^1.2.21",
+    "@types/bun": "^1.2.22",
     "concurrently": "^9.2.1",
     "eslint": "^9.35.0",
     "playwright": "^1.49.1"

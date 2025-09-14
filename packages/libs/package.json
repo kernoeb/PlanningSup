@@ -13,7 +13,7 @@
     "elysia": "catalog:"
   },
   "devDependencies": {
-    "@elysiajs/eden": "^1.4.0",
+    "@elysiajs/eden": "^1.4.1",
     "config": "workspace:*",
     "typescript": "catalog:dev"
   }

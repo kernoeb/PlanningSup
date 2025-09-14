@@ -48,7 +48,7 @@ function useTheme() {
       return 'auto'
     },
     setLocal: setTheme,
-    debounce: 500,
+    debounce: 10,
   })
 
   return {

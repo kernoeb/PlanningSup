@@ -28,7 +28,7 @@
     "vue3-simple-icons": "^15.6.0"
   },
   "devDependencies": {
-    "@fontsource-variable/roboto": "^5.2.6",
+    "@fontsource-variable/roboto": "^5.2.7",
     "@playwright/test": "^1.49.1",
     "@schedule-x/current-time": "^3.1.2",
     "@schedule-x/events-service": "^3.1.2",
@@ -36,7 +36,6 @@
     "@types/bun": "catalog:types",
     "@vite-pwa/assets-generator": "^1.0.1",
     "@vitejs/plugin-vue": "catalog:dev",
-
     "@vue/tsconfig": "^0.8.1",
     "@vueuse/core": "^13.9.0",
     "config": "workspace:*",
@@ -49,7 +48,6 @@
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
     "vite-plugin-pwa": "^1.0.3",
-
     "vue-tsc": "^3.0.7",
     "workbox-core": "^7.3.0",
     "workbox-precaching": "^7.3.0",

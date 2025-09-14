@@ -22,10 +22,9 @@ defineExpose({ reload })
 </script>
 
 <template>
-  <div id="planning-calendar-container" ref="calendarSwipeEl">
+  <div id="planning-calendar-container" ref="calendarSwipeEl" :class="{ 'is-dark': uiIsDark }">
     <ScheduleXCalendar
       v-if="calendarApp"
-      :key="uiIsDark ? 'dark' : 'light'"
       :calendar-app="calendarApp"
       class="h-full"
       data-calendar-id="schedule-x-calendar"

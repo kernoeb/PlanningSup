@@ -86,7 +86,7 @@ export function useSyncedCurrentPlanning(): SyncedCurrentPlanning {
       return normalizePlannings(raw as string[])
     },
     setLocal: v => setPlanningFullIds(normalizePlannings(v)),
-    debounce: 600,
+    debounce: 250,
   })
 
   return {

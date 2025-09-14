@@ -195,8 +195,8 @@ export function usePlanningCalendar(options: {
   )
 
   // Re-init calendar when theme darkness changes
-  watch(uiIsDark, () => {
-    initOrUpdate(true)
+  watch(uiIsDark, (isDark) => {
+    calendarApp.value?.setTheme(isDark ? 'dark' : 'light')
   })
 
   // Re-init calendar when the number of days in week view changes
