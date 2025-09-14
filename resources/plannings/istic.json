@@ -681,8 +681,8 @@
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20497&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                         },
                         {
-                          "id": "prr_g8",
-                          "title": "PRR_G8",
+                          "id": "prr_g8-1",
+                          "title": "PRR_G8-1",
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20523&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                         }
                       ]
