@@ -225,12 +225,29 @@ jobs:
           # Run integration tests using Bun test (no additional dependencies needed)
           BASE_URL=http://localhost:20000 bun test test/integration/
 
-      - name: Install Playwright and run E2E tests
+      - name: Determine Playwright version
+        id: pw
         if: steps.changes.outputs.apps == 'true'
         run: |
-          # Install Playwright
-          bun add -d playwright @playwright/test
-          bunx playwright install --with-deps chromium
+          echo "version=$(bunx -y playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        if: steps.changes.outputs.apps == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.pw.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install browsers and run E2E tests
+        if: steps.changes.outputs.apps == 'true'
+        timeout-minutes: 15
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
+        run: |
+          # Install Playwright browsers only (avoid apt deps)
+          bunx playwright install chromium
 
           # Run E2E tests using existing config
           BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=chromium
