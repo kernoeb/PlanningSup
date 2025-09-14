@@ -87,6 +87,27 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 ### Nécessaire
 
 - [Node.js](https://github.com/nodejs/node) 22.X : Installation via [nvm](https://github.com/nvm-sh/nvm) ou [fnm](https://github.com/Schniz/fnm)
+- [Bun](https://bun.sh/) : Version spécifiée dans `.bun-version`
+
+### Gestion des versions
+
+Le projet utilise un fichier `.bun-version` pour maintenir la cohérence des versions de Bun entre :
+
+- Les workflows GitHub Actions
+- Les images Docker
+- Les environnements de développement local
+
+Pour mettre à jour la version de Bun, il suffit de modifier le fichier `.bun-version` :
+
+```bash
+# Mettre à jour votre Bun local
+bun upgrade
+
+# Puis mettre à jour le fichier .bun-version avec la nouvelle version
+echo "1.3.0" > .bun-version
+```
+
+Tous les workflows et builds utiliseront automatiquement cette nouvelle version.
 
 ### Commandes utiles
 
@@ -96,6 +117,41 @@ Lancement en local :
 - `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 
 > For MacOS M1, you can use `npm run dev:darwin-arm64`
+
+### Tests
+
+Le projet inclut une suite complète de tests d'intégration utilisant Vitest et Playwright :
+
+```bash
+# Lancer tous les tests E2E (construit l'image Docker et lance les tests)
+bun run test:e2e
+
+# Options disponibles
+bun run test:e2e --safari      # Inclure Safari (Chrome + Safari)
+bun run test:e2e --verbose     # Affichage détaillé
+bun run test:e2e --headed      # Mode visuel pour débogage
+bun run test:e2e --no-cleanup  # Ne pas nettoyer les conteneurs
+
+# Tests manuels (nécessite l'environnement de test)
+docker compose -f docker-compose.test.yml up -d
+INTEGRATION_TEST_URL=http://localhost:20000 bunx vitest run --config vitest.integration.config.ts
+BASE_URL=http://localhost:20000 bunx playwright test
+```
+
+**Intégration CI/CD** :
+
+- Les tests s'exécutent automatiquement dans le workflow `docker-publish.yml`
+- L'image Docker n'est publiée que si tous les tests passent
+- Tests complets : API (Vitest) + Interface (Playwright) + Endpoints
+- Base de données PostgreSQL 17 dédiée aux tests
+
+L'environnement de test utilise `docker-compose.test.yml` avec :
+
+- Tous les endpoints API (`/api/ping`, `/api/plannings`, etc.)
+- L'interface utilisateur complète avec Playwright
+- La compatibilité multi-navigateurs et responsive design
+
+Pour plus de détails, voir [test/README.md](test/README.md).
 
 ## Donateurs
 

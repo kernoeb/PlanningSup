@@ -1,14 +1,14 @@
 {
   "title": "ENSCR",
-  "edts": [
+  "children": [
     {
       "id": "cycleingenieur",
       "title": "Cycle Ingénieur",
-      "edts": [
+      "children": [
         {
           "id": "1iereanneeci",
           "title": "1ière année CI",
-          "edts": [
+          "children": [
             {
               "id": "elevesing1iereannee",
               "title": "Elèves Ing. 1ière année",
@@ -17,7 +17,7 @@
             {
               "id": "groupederentree",
               "title": "Groupe de rentrée",
-              "edts": [
+              "children": [
                 {
                   "id": "promotioni1horsmath",
                   "title": "Promotion I1 hors math",
@@ -33,7 +33,7 @@
             {
               "id": "groupeslanguesvivantes2",
               "title": "Groupes Langues Vivantes 2",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1espagnolei1",
                   "title": "Gr. 1 Espagnol / EI1",
@@ -59,7 +59,7 @@
             {
               "id": "groupesdanglais",
               "title": "Groupes d'Anglais",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1anglaisei1",
                   "title": "Gr. 1 Anglais / EI1",
@@ -90,7 +90,7 @@
             {
               "id": "groupesdetp",
               "title": "Groupes de TP",
-              "edts": [
+              "children": [
                 {
                   "id": "groupetp1ei1",
                   "title": "Groupe TP 1 / EI1",
@@ -109,7 +109,7 @@
                 {
                   "id": "sous-groupesdetp1ei1",
                   "title": "Sous-Groupes de TP 1/ EI1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp1-aei1",
                       "title": "S.Gr. TP 1-A / EI1",
@@ -125,7 +125,7 @@
                 {
                   "id": "sous-groupesdetp2ei1",
                   "title": "Sous-Groupes de TP 2/ EI1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp2-aei1",
                       "title": "S.Gr. TP 2-A / EI1",
@@ -141,7 +141,7 @@
                 {
                   "id": "sous-groupesdetp3ei1",
                   "title": "Sous-Groupes de TP 3/ EI1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp3-aei1",
                       "title": "S.Gr. TP 3-A / EI1",
@@ -161,7 +161,7 @@
         {
           "id": "2iemeanneeci",
           "title": "2ième année CI",
-          "edts": [
+          "children": [
             {
               "id": "elevesing2iemeannee",
               "title": "Elèves Ing. 2ième année",
@@ -170,7 +170,7 @@
             {
               "id": "groupeslanguesvivantes2",
               "title": "Groupes Langues Vivantes 2",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1espagnolei2",
                   "title": "Gr. 1 Espagnol / EI2",
@@ -196,7 +196,7 @@
             {
               "id": "groupesdanglais",
               "title": "Groupes d'Anglais",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1anglaisei2",
                   "title": "Gr. 1 Anglais / EI2",
@@ -222,11 +222,11 @@
             {
               "id": "groupesdemajeures",
               "title": "Groupes de Majeures",
-              "edts": [
+              "children": [
                 {
                   "id": "groupesctv",
                   "title": "Groupes CTV",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupectv_a",
                       "title": "Groupe CTV_A",
@@ -267,7 +267,7 @@
                 {
                   "id": "groupesepa",
                   "title": "Groupes EPA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupeepa_c",
                       "title": "Groupe EPA_C",
@@ -325,7 +325,7 @@
             {
               "id": "groupesdetp",
               "title": "Groupes de TP",
-              "edts": [
+              "children": [
                 {
                   "id": "groupetp1ei2",
                   "title": "Groupe TP 1 / EI2",
@@ -344,7 +344,7 @@
                 {
                   "id": "sous-groupesdetp1ei2",
                   "title": "Sous-Groupes de TP 1/ EI2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp1-aei2",
                       "title": "S.Gr. TP 1-A / EI2",
@@ -360,7 +360,7 @@
                 {
                   "id": "sous-groupesdetp2ei2",
                   "title": "Sous-Groupes de TP 2/ EI2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp2-aei2",
                       "title": "S.Gr. TP 2-A / EI2",
@@ -376,7 +376,7 @@
                 {
                   "id": "sous-groupesdetp3ei2",
                   "title": "Sous-Groupes de TP 3/ EI2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sgrtp3-aei2",
                       "title": "S.Gr. TP 3-A / EI2",
@@ -394,7 +394,7 @@
             {
               "id": "groupesderentree",
               "title": "Groupes de rentrée",
-              "edts": [
+              "children": [
                 {
                   "id": "groupem1",
                   "title": "Groupe M1",
@@ -414,11 +414,11 @@
     {
       "id": "cyclespreparatoires",
       "title": "Cycles préparatoires",
-      "edts": [
+      "children": [
         {
           "id": "citi",
           "title": "CITI",
-          "edts": [
+          "children": [
             {
               "id": "citi1",
               "title": "CITI 1",
@@ -432,7 +432,7 @@
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "edts": [
+              "children": [
                 {
                   "id": "citi1all",
                   "title": "CITI1 All",
@@ -470,7 +470,7 @@
         {
           "id": "premiereanneecp",
           "title": "Première année CP",
-          "edts": [
+          "children": [
             {
               "id": "cp1",
               "title": "CP1",
@@ -489,7 +489,7 @@
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "edts": [
+              "children": [
                 {
                   "id": "a1all",
                   "title": "A1 All",
@@ -565,7 +565,7 @@
             {
               "id": "groupesdelv2fle",
               "title": "Groupes de LV2/FLE",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand1",
                   "title": "Allemand1",
@@ -596,7 +596,7 @@
             {
               "id": "groupesdetd",
               "title": "Groupes de TD",
-              "edts": [
+              "children": [
                 {
                   "id": "cpi1a1",
                   "title": "CPI 1 (A1)",
@@ -624,7 +624,7 @@
         {
           "id": "secondeanneecp",
           "title": "Seconde année CP",
-          "edts": [
+          "children": [
             {
               "id": "cp282",
               "title": "CP2 [82]",
@@ -643,7 +643,7 @@
             {
               "id": "groupescombines",
               "title": "Groupes combinés",
-              "edts": [
+              "children": [
                 {
                   "id": "a2all",
                   "title": "A2 All",
@@ -719,7 +719,7 @@
             {
               "id": "groupesdelv2fle",
               "title": "Groupes de LV2/FLE",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand2",
                   "title": "Allemand2",
@@ -750,7 +750,7 @@
             {
               "id": "groupesdetd",
               "title": "Groupes de TD",
-              "edts": [
+              "children": [
                 {
                   "id": "cpi2a226",
                   "title": "CPI 2 (A2) [26]",
@@ -780,7 +780,7 @@
     {
       "id": "spir",
       "title": "SPIR",
-      "edts": [
+      "children": [
         {
           "id": "spir",
           "title": "SPIR",

@@ -1,18 +1,18 @@
 {
   "title": "FSA Béthune",
-  "edts": [
+  "children": [
     {
       "id": "licences",
       "title": "Licences",
-      "edts": [
+      "children": [
         {
           "id": "l1-spi",
           "title": "L1 SPI",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l1-spi-s1",
                   "title": "L1 SPI - S1",
@@ -23,7 +23,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l1-spi-s2",
                   "title": "L1 SPI - S2",
@@ -36,11 +36,11 @@
         {
           "id": "l2-spi",
           "title": "L2 SPI",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l2-spi-s3",
                   "title": "L2 SPI - S3",
@@ -51,7 +51,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l2-spi-s4",
                   "title": "L2 SPI - S4",
@@ -64,11 +64,11 @@
         {
           "id": "l3-spi-2mls",
           "title": "L3 SPI 2MLS",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-2mls-s1",
                   "title": "L3 2MLS Semestre 1",
@@ -79,7 +79,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l2-2mls-semestre-2",
                   "title": "L2 2MLS Semestre 2",
@@ -92,11 +92,11 @@
         {
           "id": "l3-spi-log",
           "title": "L3 SPI Log",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3gl-s1",
                   "title": "L3GL Semestre 1",
@@ -107,7 +107,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3gl-s2",
                   "title": "L3GL Semestre 2",
@@ -120,11 +120,11 @@
         {
           "id": "l3-spi-gc",
           "title": "L3 SPI GC",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-gc-s1",
                   "title": "L3GC Semestre 1",
@@ -135,7 +135,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-gc-s2",
                   "title": "L3GC Semestre 2",
@@ -148,11 +148,11 @@
         {
           "id": "l3-spi-ge",
           "title": "L3 SPI GE",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-ge-s5",
                   "title": "L3GE S5",
@@ -163,7 +163,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-ge-s6",
                   "title": "L3GE S6",
@@ -176,11 +176,11 @@
         {
           "id": "l3-spi-geme",
           "title": "L3 SPI GEME",
-          "edts": [
+          "children": [
             {
               "id": "s5",
               "title": "Semestre 5",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-geme-s5",
                   "title": "L3 GEME Semestre 5",
@@ -191,7 +191,7 @@
             {
               "id": "s6",
               "title": "Semestre 6",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-geme-s6",
                   "title": "L3 GEME Semestre 6",
@@ -204,7 +204,7 @@
         {
           "id": "l3-spi-gm2d",
           "title": "L3 SPI GM2D",
-          "edts": [
+          "children": [
             {
               "id": "l3-gm2d",
               "title": "L3 GM2D",
@@ -217,15 +217,15 @@
     {
       "id": "lp",
       "title": "Licences Pro",
-      "edts": [
+      "children": [
         {
           "id": "lp-cao",
           "title": "LP CAO",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-cao-s1",
                   "title": "LPCAO",
@@ -246,7 +246,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-cao-s2",
                   "title": "LP CAO semestre2",
@@ -274,11 +274,11 @@
         {
           "id": "lp-cdcpe",
           "title": "LP CDCPE",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-cdcpe-s1",
                   "title": "LP CDCPE Semestre 1",
@@ -289,7 +289,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-cdcpe-s2",
                   "title": "LP CDCPE Semestre 2",
@@ -302,11 +302,11 @@
         {
           "id": "lp-melog",
           "title": "LP MELOG",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-melog-s1",
                   "title": "LP MELOG Semestre 1",
@@ -317,7 +317,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-melog-s2",
                   "title": "LP MELOG Semestre 2",
@@ -330,11 +330,11 @@
         {
           "id": "lp-mige",
           "title": "LP MIGE",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-mige-s1",
                   "title": "LP MIGE S1",
@@ -345,7 +345,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "lp-mige-s2",
                   "title": "LP MIGE S2",
@@ -360,15 +360,15 @@
     {
       "id": "m1",
       "title": "Masters 1",
-      "edts": [
+      "children": [
         {
           "id": "m1-cmi",
           "title": "M1 CMI",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-cmi-s1",
                   "title": "Master 1 CMI Semestre 1",
@@ -379,7 +379,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-cmi-s2",
                   "title": "Master 1 CMI Semestre 2",
@@ -392,11 +392,11 @@
         {
           "id": "m1-eeea",
           "title": "M1 EEEA",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-eeea-s1",
                   "title": "M1 EEEA Semestre 1",
@@ -407,7 +407,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-eeea-s2",
                   "title": "M1 EEEA Semestre 2",
@@ -420,11 +420,11 @@
         {
           "id": "m1-gc",
           "title": "M1 GC",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-gc-s1",
                   "title": "M1GC Semestre 1",
@@ -435,7 +435,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1-gc-s2",
                   "title": "M1GC Semestre 2",
@@ -448,7 +448,7 @@
         {
           "id": "m1-icl",
           "title": "M1 ICL",
-          "edts": [
+          "children": [
             {
               "id": "m1-icl",
               "title": "M1 ICL",
@@ -471,15 +471,15 @@
     {
       "id": "m2",
       "title": "Masters 2",
-      "edts": [
+      "children": [
         {
           "id": "m2-bdee",
           "title": "M2 BDEE",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-gc-bdee-s1",
                   "title": "M2 GC BDEE Semestre 1",
@@ -490,7 +490,7 @@
             {
               "id": "s2",
               "title": "Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-gc-bdee-s2",
                   "title": "M2 GC BDEE Semestre 2",
@@ -503,7 +503,7 @@
         {
           "id": "m2-bivrd",
           "title": "M2 BIVRD",
-          "edts": [
+          "children": [
             {
               "id": "m2-bivrd-bat",
               "title": "M2 BIVRD BAT",
@@ -519,11 +519,11 @@
         {
           "id": "m2-cmi",
           "title": "M2 CMI",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-cmi-s9",
                   "title": "M2 CMI - S9",
@@ -536,11 +536,11 @@
         {
           "id": "m2-eei",
           "title": "M2 EEI",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-eei-s1",
                   "title": "M2 EEI Semestre 1",
@@ -553,11 +553,11 @@
         {
           "id": "m2-icl",
           "title": "M2 ICL",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-icl-s1",
                   "title": "M2ICL Semestre 1",
@@ -570,11 +570,11 @@
         {
           "id": "m2-ise",
           "title": "M2 ISE",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m2-ise-s1",
                   "title": "M2 ISE Semestre 1",

@@ -3,76 +3,346 @@ name: Docker
 on:
   push:
     branches: [main]
-    # Publish semver tags as releases.
     tags: ['v*.*.*']
   pull_request:
     branches: [main]
 
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: false
+
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: planning
+  # GitHub Container Registry
+  GHCR_REGISTRY: ghcr.io
+  GHCR_IMAGE_NAME: planningsup/planning
+
+  # Whitelist of branches that are allowed to be published on push
+  PUBLISH_WHITELIST: |
+    main
+    refactor/elysia-postgresql
+
+  # Security context
+  IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+  IS_PUBLISH_EVENT: ${{ github.event_name == 'push' && (github.ref_type == 'branch' || github.ref_type == 'tag') }}
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+      attestations: write
+      id-token: write
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_USER: testuser
+          POSTGRES_DB: planningsup_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
+      - name: Detect changes in apps/
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            apps:
+              - 'apps/**'
+
+      - name: Verify PR safety
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "This is a PR build - images will be built but not pushed"
+          echo "PR from: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Base repo: ${{ github.repository }}"
+          if [[ "${{ env.IS_FORK_PR }}" == "true" ]]; then
+            echo "⚠️  This is a fork PR - extra security restrictions apply"
+          fi
+
+      - name: Check branch whitelist and tag validation
+        id: publish_check
+        run: |
+          # Initialize all outputs as false
+          echo "is_whitelisted=false" >> "$GITHUB_OUTPUT"
+          echo "is_valid_tag=false" >> "$GITHUB_OUTPUT"
+          echo "should_publish=false" >> "$GITHUB_OUTPUT"
+
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            if [[ "${{ github.ref }}" == refs/heads/* ]]; then
+              BRANCH_NAME="${{ github.ref_name }}"
+              WHITELIST="${{ env.PUBLISH_WHITELIST }}"
+              echo "Checking if branch '$BRANCH_NAME' is in the whitelist..."
+              if echo "$WHITELIST" | grep -Fxq "$BRANCH_NAME"; then
+                echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
+                echo "should_publish=true" >> "$GITHUB_OUTPUT"
+                echo "✅ Branch '$BRANCH_NAME' is whitelisted for publishing"
+              else
+                echo "❌ Branch '$BRANCH_NAME' is not whitelisted for publishing"
+              fi
+            elif [[ "${{ github.ref }}" == refs/tags/v*.*.* ]]; then
+              echo "Validating tag: ${{ github.ref_name }}"
+              if [[ "${{ github.ref_name }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+                echo "is_valid_tag=true" >> "$GITHUB_OUTPUT"
+                echo "should_publish=true" >> "$GITHUB_OUTPUT"
+                echo "✅ Valid semver tag: ${{ github.ref_name }}"
+              else
+                echo "❌ Invalid tag format: ${{ github.ref_name }} (expected: v*.*.* semver)"
+              fi
+            else
+              echo "❌ Push event but not a branch or valid tag"
+            fi
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # Check if PR is from a whitelisted branch
+            SOURCE_BRANCH="${{ github.head_ref }}"
+            WHITELIST="${{ env.PUBLISH_WHITELIST }}"
+            echo "Checking if PR source branch '$SOURCE_BRANCH' is in the whitelist..."
+            if echo "$WHITELIST" | grep -Fxq "$SOURCE_BRANCH"; then
+              echo "is_whitelisted=true" >> "$GITHUB_OUTPUT"
+              echo "should_publish=true" >> "$GITHUB_OUTPUT"
+              echo "✅ PR from whitelisted branch '$SOURCE_BRANCH' - publishing enabled"
+            else
+              echo "❌ PR from non-whitelisted branch '$SOURCE_BRANCH'"
+            fi
+          else
+            echo "ℹ️  Not a push or PR event - build only, no publishing"
+          fi
+
+          # Final safety check - never publish from fork PRs
+          if [[ "${{ env.IS_FORK_PR }}" == "true" ]]; then
+            echo "should_publish=false" >> "$GITHUB_OUTPUT"
+            echo "🔒 Fork PR detected - publishing disabled for security"
+          fi
+
+      - name: Log into GitHub Container Registry
+        if: steps.publish_check.outputs.should_publish == 'true'
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # Uppercase to lowercase image name
-      - id: string
-        uses: ASzc/change-string-case-action@v6
-        with:
-          string: ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.IMAGE_NAME }}
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ steps.string.outputs.lowercase }}
+          images: |
+            ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
+          tags: |
+            # On a push to a whitelisted branch, create a tag named after the branch
+            type=ref,event=branch,enable=${{ steps.publish_check.outputs.is_whitelisted == 'true' }}
+            # Create semver tags for valid git tags
+            type=semver,pattern={{version}},enable=${{ steps.publish_check.outputs.is_valid_tag == 'true' }}
+            # For PRs from whitelisted branches, use the source branch name as tag (replace slashes with dashes)
+            type=raw,value=${{ github.head_ref }},enable=${{ github.event_name == 'pull_request' && steps.publish_check.outputs.is_whitelisted == 'true' }}
 
-      # Build a test Docker image
-      - name: Build a test image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          load: true
-          tags: test-planning
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      # Test ./test/real-world/real-world-test.sh
-      - name: Test
+      - name: Read Bun version
+        id: bun_version
         run: |
-          ./test/real-world/real-world-test.sh test-planning
+          BUN_VERSION=$(cat .bun-version)
+          echo "version=$BUN_VERSION" >> $GITHUB_OUTPUT
+          echo "Using Bun version: $BUN_VERSION"
 
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+      - name: Build Docker image (without push)
+        id: build_image
+        uses: docker/build-push-action@v6
         with:
           context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          platforms: linux/amd64
           labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            BUN_VERSION=${{ steps.bun_version.outputs.version }}
+          # Always load locally for testing, never push yet
+          push: false
+          load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Set up Bun for tests
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.bun-version'
+
+      - name: Install test dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Get built image tag
+        id: get_image_tag
+        run: |
+          # Extract the first tag from the metadata
+          FIRST_TAG=$(echo "${{ steps.meta.outputs.tags }}" | head -n1)
+          echo "image_tag=$FIRST_TAG" >> $GITHUB_OUTPUT
+          echo "Using image tag: $FIRST_TAG"
+
+      - name: Start application container for testing
+        run: |
+          IMAGE_TAG="${{ steps.get_image_tag.outputs.image_tag }}"
+
+          # Start the application container
+          # In GitHub Actions, services are accessible via localhost
+          docker run -d \
+            --name planningsup-app-test \
+            --network host \
+            -e NODE_ENV=production \
+            -e PORT=20000 \
+            -e DATABASE_URL="postgresql://testuser:testpass@localhost:5432/planningsup_test" \
+            -e RUN_JOBS=false \
+            -e ENABLE_AUTH=false \
+            "$IMAGE_TAG"
+
+          # Wait for the application to be ready
+          echo "Waiting for application to start..."
+          timeout 60 bash -c 'until curl -f http://localhost:20000/api/ping 2>/dev/null; do sleep 2; done' || {
+            echo "❌ Application failed to start within 60 seconds"
+            docker logs planningsup-app-test
+            exit 1
+          }
+
+          echo "✅ Application is ready for testing"
+
+      - name: Run unit tests with Bun test
+        run: |
+          # Run unit tests (no external dependencies needed)
+          bun test test/*.test.ts
+
+      - name: Run integration tests with Bun test
+        run: |
+          # Run integration tests using Bun test (no additional dependencies needed)
+          BASE_URL=http://localhost:20000 bun test test/integration/
+
+      - name: Determine Playwright version
+        id: pw
+        if: steps.changes.outputs.apps == 'true'
+        run: |
+          echo "version=$(bunx -y playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        if: steps.changes.outputs.apps == 'true'
+        uses: actions/cache@v4
+        with:
+          path: $HOME/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.pw.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install browsers and run E2E tests
+        if: steps.changes.outputs.apps == 'true'
+        timeout-minutes: 15
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: $HOME/.cache/ms-playwright
+        run: |
+          # Install Playwright browsers only (avoid apt deps)
+          bunx playwright install chromium
+
+          # Run E2E tests using existing config
+          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop --project=mobile
+
+      - name: Run basic API tests
+        run: |
+          echo "Testing basic API endpoints..."
+
+          # Install jq for JSON parsing
+          sudo apt-get update && sudo apt-get install -y jq
+
+          # Test ping endpoint
+          response=$(curl -s http://localhost:20000/api/ping)
+          if [[ "$response" != "pong" ]]; then
+            echo "❌ Ping test failed: expected 'pong', got '$response'"
+            exit 1
+          fi
+
+          # Test plannings endpoint returns JSON array
+          plannings_count=$(curl -s http://localhost:20000/api/plannings | jq 'length' 2>/dev/null)
+          if [[ -z "$plannings_count" || "$plannings_count" -eq 0 ]]; then
+            echo "❌ Plannings test failed: no plannings returned"
+            exit 1
+          fi
+
+          echo "✅ Basic API tests passed (ping: OK, plannings: $plannings_count items)"
+
+      - name: Show application logs if tests fail
+        if: failure()
+        run: |
+          echo "=== Application Container Logs ==="
+          docker logs planningsup-app-test || true
+
+          echo "=== Database Connection Test (host) ==="
+          timeout 3 bash -c '</dev/tcp/localhost/5432' >/dev/null 2>&1 && echo "Database reachable" || echo "Database not reachable"
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always() && steps.changes.outputs.apps == 'true'
+        with:
+          name: playwright-report-${{ github.run_number }}
+          path: playwright-report/
+          retention-days: 7
+
+      - name: Test container resource usage
+        run: |
+          echo "=== Container Resource Usage ==="
+          docker stats planningsup-app-test --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}"
+
+          echo "=== Container Logs (last 50 lines) ==="
+          docker logs --tail 50 planningsup-app-test
+
+      - name: Cleanup test container
+        if: always()
+        run: |
+          docker stop planningsup-app-test || true
+          docker rm planningsup-app-test || true
+
+      - name: Push Docker image (only after successful tests)
+        id: push_image
+        if: steps.publish_check.outputs.should_publish == 'true'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta.outputs.tags }}
+          build-args: |
+            BUN_VERSION=${{ steps.bun_version.outputs.version }}
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Attest build provenance
+        if: steps.publish_check.outputs.should_publish == 'true' && steps.push_image.outputs.digest != ''
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.GHCR_REGISTRY }}/${{ github.repository_owner }}/${{ env.GHCR_IMAGE_NAME }}
+          subject-digest: ${{ steps.push_image.outputs.digest }}
+          push-to-registry: true
+
+      - name: Build and test summary
+        if: always()
+        run: |
+          echo "## Docker Build and Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Event Type | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Ref | ${{ github.ref }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Source Branch | ${{ github.head_ref || github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Bun Version | ${{ steps.bun_version.outputs.version }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Fork PR | ${{ env.IS_FORK_PR }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Whitelisted Branch | ${{ steps.publish_check.outputs.is_whitelisted }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Is Valid Tag | ${{ steps.publish_check.outputs.is_valid_tag }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Should Publish | ${{ steps.publish_check.outputs.should_publish }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Tags | ${{ steps.meta.outputs.tags }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests Status | ${{ job.status == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Published | ${{ steps.push_image.outcome == 'success' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
