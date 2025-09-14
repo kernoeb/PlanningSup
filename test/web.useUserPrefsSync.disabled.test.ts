@@ -3,13 +3,13 @@ import { ref } from 'vue'
 
 /**
  * This test asserts that user preferences synchronization becomes a no-op
- * when VITE_ENABLE_AUTH is false. In that case:
+ * when auth is disabled via runtime config. In that case:
  * - The sync registration should short-circuit immediately.
  * - It must not call authClient.useSession (no session observation).
  * - It must not call authClient.updateUser (no network sync).
  */
 
-describe('useUserPrefsSync (VITE_ENABLE_AUTH=false) no-op behavior', () => {
+describe('useUserPrefsSync (authEnabled=false via runtime config) no-op behavior', () => {
   let useUserPrefsSync: any
 
   const counters = {
@@ -21,8 +21,8 @@ describe('useUserPrefsSync (VITE_ENABLE_AUTH=false) no-op behavior', () => {
   const warnings: string[] = []
 
   beforeAll(async () => {
-    // Force auth disabled
-    Bun.env.VITE_ENABLE_AUTH = 'false'
+    // Force disabled auth via runtime config
+    (globalThis as any).__APP_CONFIG__ = { authEnabled: false }
 
     // Mock @libs to track any accidental calls to auth client
     mock.module('@libs', () => {

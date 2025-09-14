@@ -1,7 +1,7 @@
 import { authClient } from '@libs'
 import { computed, ref } from 'vue'
 
-const AUTH_ENABLED = String(import.meta.env.VITE_ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
+const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled
 
 const session = AUTH_ENABLED
   ? authClient.useSession()

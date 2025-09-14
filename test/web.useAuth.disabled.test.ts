@@ -1,7 +1,7 @@
 import { beforeAll, afterAll, beforeEach, describe, expect, it, mock } from 'bun:test'
 
 /**
- * Tests for the useAuth composable when VITE_ENABLE_AUTH is false.
+ * Tests for the useAuth composable when auth is disabled via runtime config (globalThis.__APP_CONFIG__.authEnabled=false).
  * Expectations:
  * - authEnabled === false
  * - session is a simple ref-like object with { isPending: false, data: null, error: null }
@@ -9,7 +9,7 @@ import { beforeAll, afterAll, beforeEach, describe, expect, it, mock } from 'bun
  * - isAnonymous is always false (anonymous mode removed)
  */
 
-describe('useAuth (VITE_ENABLE_AUTH=false)', () => {
+describe('useAuth (authEnabled=false via runtime config)', () => {
   let useAuth: any
   const warnings: string[] = []
   const originalWarn = console.warn
@@ -23,8 +23,8 @@ describe('useAuth (VITE_ENABLE_AUTH=false)', () => {
   }
 
   beforeAll(async () => {
-    // Force disabled auth for this test file before importing the composable
-    Bun.env.VITE_ENABLE_AUTH = 'false'
+    // Force disabled auth via runtime config before importing the composable
+    (globalThis as any).__APP_CONFIG__ = { authEnabled: false }
 
     // Stub @libs to ensure no real BetterAuth client is created or used
     mock.module('@libs', () => {

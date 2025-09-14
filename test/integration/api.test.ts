@@ -165,6 +165,4 @@ describe('API Integration Tests', () => {
     expect(response.ok).toBe(true)
     expect(response.headers.get('content-type')).toContain('application/json')
   })
-
-
 })

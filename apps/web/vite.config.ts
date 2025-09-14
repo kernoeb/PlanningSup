@@ -50,6 +50,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:20000',
+      '/config.js': 'http://localhost:20000',
     },
   },
 })
