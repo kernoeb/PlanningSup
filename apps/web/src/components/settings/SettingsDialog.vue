@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TagInput from '@web/components/inputs/TagInput.vue'
-import { getDefaultColors, useSettings } from '@web/composables/useSettings'
+import { getDefaultColors, useSharedSettings } from '@web/composables/useSettings'
 import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
 import { computed, ref, watch } from 'vue'
 
@@ -17,7 +17,7 @@ const emit = defineEmits<{
 }>()
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
-const { blocklist, colors, highlightTeacher, showWeekends, targetTimezone } = useSettings()
+const { blocklist, colors, highlightTeacher, showWeekends, targetTimezone } = useSharedSettings()
 
 // Timezone selector state
 const browserTimezone = ref<string | null>(detectBrowserTimezone())

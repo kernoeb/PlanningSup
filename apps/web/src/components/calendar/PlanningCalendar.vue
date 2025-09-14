@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ScheduleXCalendar } from '@schedule-x/vue'
-import { useSwipe } from '@vueuse/core'
+import { refDebounced, useSwipe } from '@vueuse/core'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { useTimezone } from '@web/composables/useTimezone'
@@ -18,11 +18,15 @@ useSwipe(el, {
     else if (direction === 'right') prevPeriod()
   },
 })
+
+// To avoid first animation
+const loadingDebounced = refDebounced(loading, 200)
+
 defineExpose({ reload })
 </script>
 
 <template>
-  <div id="planning-calendar-container" ref="calendarSwipeEl" :class="{ 'is-dark': uiIsDark }">
+  <div id="planning-calendar-container" ref="calendarSwipeEl" :class="{ 'is-dark': uiIsDark, 'sx-animations-enabled': !loadingDebounced }">
     <ScheduleXCalendar
       v-if="calendarApp"
       :calendar-app="calendarApp"

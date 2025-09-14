@@ -144,7 +144,7 @@ html[data-theme="dracula"] {
 }
 
 .sx__calendar-header__week-number {
-  background-color: var(--sx-color-surface-container)!important;
+  background-color: var(--sx-color-surface-container) !important;
 }
 
 .sx__calendar-header {
@@ -178,7 +178,10 @@ html[data-theme="dracula"] {
 }
 
 .sx__slide-left {
-  animation: sx-slide-left 0.1s ease-out;
+  animation: none !important;
+}
+.sx-animations-enabled .sx__slide-left {
+  animation: sx-slide-left 0.1s ease-out !important;
 }
 
 @keyframes sx-slide-right {
@@ -191,7 +194,10 @@ html[data-theme="dracula"] {
 }
 
 .sx__slide-right {
-  animation: sx-slide-right 0.1s ease-out;
+  animation: none !important;
+}
+.sx-animations-enabled .sx__slide-right {
+  animation: sx-slide-right 0.1s ease-out !important;
 }
 
 .sx__current-time-indicator {

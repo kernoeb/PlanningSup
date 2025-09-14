@@ -4,6 +4,7 @@ import { createSharedComposable } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
 const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled
+const DEV = import.meta?.env?.DEV ?? false
 
 export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings'
 
@@ -153,7 +154,7 @@ function userPrefsSync() {
 
         const payload: Record<string, unknown> = { [key]: payloadValue, prefsMeta: stampedMeta }
 
-        console.debug(`syncPref[${key}] Pushing to server:`, payload)
+        if (DEV) console.debug(`syncPref[${key}] Pushing to server:`, payload)
         // Optimistically mark as synced to coalesce trailing updates during in-flight request
         lastSynced.value = payloadValue
         await authClient.updateUser(payload)
@@ -182,7 +183,7 @@ function userPrefsSync() {
       if (serverTs > localTs && serverRaw !== undefined) {
         const serverVal = fromServerToLocal(serverRaw)
         if (serverVal !== null) {
-          console.debug(`syncPref[${key}]: Adopting newer value from server.`)
+          if (DEV) console.debug(`syncPref[${key}]: Adopting newer value from server.`)
           setLocalValue(serverVal)
           // Align local timestamp with the server's authoritative one
           setLocalMeta({ ...localMeta, [key]: serverTs })
@@ -196,11 +197,11 @@ function userPrefsSync() {
       const serverNorm = normalizeServer(serverRaw)
 
       if (!jsonEqual(localNorm, serverNorm)) {
-        console.debug(`syncPref[${key}]: Local value differs or is newer. Pushing.`)
+        if (DEV) console.debug(`syncPref[${key}]: Local value differs or is newer. Pushing.`)
         await pushToServer(localVal)
       } else {
         // Already in sync. Just initialize lastSynced.
-        console.debug(`syncPref[${key}]: Values are already in sync.`)
+        if (DEV) console.debug(`syncPref[${key}]: Values are already in sync.`)
         lastSynced.value = toServer(localVal)
         // If server had a timestamp and local didn't, align them.
         if (serverTs > localTs) {

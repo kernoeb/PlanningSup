@@ -22,7 +22,7 @@ import buildCalendarsUtil from '@web/utils/calendars'
 
 import { computed, ref, shallowRef, watch } from 'vue'
 import { usePlanningData } from './usePlanningData'
-import { useSettings } from './useSettings'
+import { useSharedSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
 
 function mapApiEventToCalendarEvent(
@@ -62,7 +62,7 @@ export function usePlanningCalendar(options: {
   const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
 
-  const settings = useSettings()
+  const settings = useSharedSettings()
   const planning = usePlanningData()
   const { isDark: uiIsDark } = useSharedTheme()
 

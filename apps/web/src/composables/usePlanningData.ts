@@ -3,8 +3,8 @@ import type { Ref } from 'vue'
 import { client } from '@libs'
 import { useIntervalFn, useWindowFocus } from '@vueuse/core'
 import { ref, watch } from 'vue'
-import { useSettings } from './useSettings'
-import { useSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
+import { useSharedSettings } from './useSettings'
+import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
 
 export type EventWithFullId = Events[number] & { fullId: string }
 
@@ -27,8 +27,8 @@ export interface PlanningDataStore {
 let _instance: PlanningDataStore | null = null
 
 function createPlanningDataStore(): PlanningDataStore {
-  const { planningFullIds } = useSyncedCurrentPlanning()
-  const settings = useSettings()
+  const { planningFullIds } = useSharedSyncedCurrentPlanning()
+  const settings = useSharedSettings()
 
   const title = ref<string>('')
   const events = ref<EventWithFullId[]>([])
