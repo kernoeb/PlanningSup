@@ -250,7 +250,7 @@ jobs:
           bunx playwright install chromium
 
           # Run E2E tests using existing config
-          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop
+          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop --project=mobile
 
       - name: Run basic API tests
         run: |

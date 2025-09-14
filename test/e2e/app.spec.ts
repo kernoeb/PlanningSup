@@ -74,6 +74,41 @@ test.describe('PlanningSup E2E Tests - Optimized', () => {
         // Theme switching may not be available in all viewport sizes
       }
     })
+
+    await test.step('Dracula theme and persistence', async () => {
+      try {
+        if (helper.device.isMobile()) {
+          // Open user menu and choose dracula on mobile
+          const trigger = page.locator('#user-menu-trigger')
+          const disabled = await trigger.getAttribute('class')
+          if (!disabled?.includes('btn-disabled')) {
+            await trigger.click({ timeout: 3000 })
+            await expect(page.locator('#user-dropdown-menu')).toBeVisible()
+            await expect(page.locator('#mobile-theme-dracula')).toBeVisible()
+            await page.locator('#mobile-theme-dracula').click()
+            await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+
+            // Persistence across reload
+            await page.reload()
+            await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+          } else {
+            console.log('ℹ️ User menu disabled on mobile - skipping dracula test')
+          }
+        } else {
+          // Desktop: open theme dropdown and choose dracula
+          await page.locator('#theme-dropdown-trigger').click({ timeout: 3000 })
+          await expect(page.locator('#theme-dropdown-menu')).toBeVisible()
+          await page.locator('#theme-dracula').click()
+          await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+
+          // Persistence across reload
+          await page.reload()
+          await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+        }
+      } catch (error) {
+        console.log('ℹ️ Dracula theme/persistence not available in current viewport - skipped')
+      }
+    })
   })
 
   test('calendar navigation and interaction', async ({ page }) => {

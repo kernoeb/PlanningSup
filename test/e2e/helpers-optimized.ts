@@ -1,8 +1,6 @@
 import { Page, expect } from '@playwright/test'
 
-// Cached setup data to avoid repeated mock setup
-let mockDataCache: any = null
-let authTokenCache: string | null = null
+// Fast per-page route mocks (no global cache to avoid cross-test leakage)
 
 export interface MockPlanning {
   id: string
@@ -136,11 +134,7 @@ class OptimizedTestHelper {
     const { mockApi = true } = options
 
     if (mockApi) {
-      // Use cached mocks when possible
-      if (!mockDataCache) {
-        await this.api.setupFastMocks()
-        mockDataCache = true
-      }
+      await this.api.setupFastMocks()
     }
 
     // Navigate with optimized loading
@@ -213,7 +207,7 @@ class OptimizedTestHelper {
     }
   }
 
-  async switchTheme(theme: 'light' | 'dark' | 'auto'): Promise<void> {
+  async switchTheme(theme: 'light' | 'dark' | 'dracula' | 'auto'): Promise<void> {
     if (this.device.isMobile()) {
       // Check if user menu is available
       const isUserMenuEnabled = await this.page.evaluate(() => {
@@ -250,7 +244,13 @@ class OptimizedTestHelper {
     // Give theme change time to apply - use shorter timeout and handle gracefully
     try {
       await this.page.waitForFunction(
-        (expectedTheme) => document.documentElement.getAttribute('data-theme') === expectedTheme,
+        (expectedTheme) => {
+          const attr = document.documentElement.getAttribute('data-theme')
+          if (expectedTheme === 'auto') {
+            return attr === 'auto' || attr === 'light' || attr === 'dark'
+          }
+          return attr === expectedTheme
+        },
         theme,
         { timeout: 1500 }
       )
@@ -258,6 +258,31 @@ class OptimizedTestHelper {
       // Theme change might not be instant - that's okay for tests
       console.log(`Theme change to ${theme} may not have applied immediately`)
     }
+  }
+
+  async getCurrentTheme(): Promise<string | null> {
+    return await this.page.evaluate(() => document.documentElement.getAttribute('data-theme'))
+  }
+
+  async assertTheme(expected: 'light' | 'dark' | 'dracula' | 'auto'): Promise<void> {
+    await this.page.waitForFunction(
+      (expectedTheme) => {
+        const attr = document.documentElement.getAttribute('data-theme')
+        if (expectedTheme === 'auto') {
+          return attr === 'auto' || attr === 'light' || attr === 'dark'
+        }
+        return attr === expectedTheme
+      },
+      expected,
+      { timeout: 2000 }
+    )
+  }
+
+  async assertThemePersists(expected: 'light' | 'dark' | 'dracula' | 'auto'): Promise<void> {
+    await this.assertTheme(expected)
+    await this.page.reload()
+    await this.device.waitForPageLoad()
+    await this.assertTheme(expected)
   }
 
   async verifyCalendar(): Promise<void> {
@@ -324,6 +349,10 @@ class OptimizedTestHelper {
       `button[aria-label*="${action}"]`,
       `button[title*="${action}"]`
     ]
+    // Schedule X exposes a Today button via .sx__today-button in desktop mode
+    if (action === 'today') {
+      navSelectors.unshift('.sx__today-button')
+    }
 
     let navigationFound = false
     for (const selector of navSelectors) {

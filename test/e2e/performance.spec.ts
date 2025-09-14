@@ -77,7 +77,13 @@ test.describe('Performance and Stability Tests', () => {
       }
     })
 
-    await helper.fastSetup()
+    await helper.fastSetup({ mockApi: false })
+
+    // Prime at least one API call and wait for it to register
+    await test.step('Prime API call', async () => {
+      await page.evaluate(() => fetch('/api/plannings'))
+      await expect.poll(() => apiCalls.length).toBeGreaterThan(0)
+    })
 
     // Trigger multiple rapid interactions with better error handling
     await test.step('Rapid concurrent interactions', async () => {

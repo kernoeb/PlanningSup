@@ -245,17 +245,18 @@ test.describe('Mobile Functionality', () => {
       return
     }
 
-    await test.step('Test mobile theme persistence', async () => {
-      // Test that theme persistence UI works
-      await helper.switchTheme('dark')
+    await test.step('Test mobile theme persistence (dracula)', async () => {
+      // Switch to dracula and verify attribute
+      await helper.switchTheme('dracula')
+      await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
 
       // Verify app remains functional after theme interaction
       await expect(page.locator('#planning-sup-app')).toBeVisible()
 
-      // Test page reload functionality
+      // Reload and ensure theme persists
       await page.reload()
       await helper.device.waitForPageLoad()
-      await expect(page.locator('#planning-sup-app')).toBeVisible()
+      await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
     })
   })
 })

@@ -37,6 +37,14 @@ test.describe('Core Functionality', () => {
 
     await helper.verifyNavbarElements()
 
+    // Desktop-only: test Dracula theme persistence
+    if (helper.device.isDesktop()) {
+      await test.step('Theme persistence (dracula)', async () => {
+        await helper.switchTheme('dracula')
+        await helper.assertThemePersists('dracula')
+      })
+    }
+
     // Test user menu interaction
     const userMenuTrigger = page.locator('#user-menu-trigger')
     const triggerCount = await userMenuTrigger.count()
@@ -95,6 +103,9 @@ test.describe('Core Functionality', () => {
     await test.step('Navigate calendar periods', async () => {
       await helper.fastNavigation('next')
       await helper.fastNavigation('previous')
+      if (helper.device.isDesktop()) {
+        await expect(page.locator('.sx__today-button')).toBeVisible()
+      }
       await helper.fastNavigation('today')
     })
   })
