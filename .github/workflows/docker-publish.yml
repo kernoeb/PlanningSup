@@ -235,7 +235,7 @@ jobs:
         if: steps.changes.outputs.apps == 'true'
         uses: actions/cache@v4
         with:
-          path: ~/.cache/ms-playwright
+          path: $HOME/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ steps.pw.outputs.version }}
           restore-keys: |
             ${{ runner.os }}-playwright-
@@ -244,13 +244,13 @@ jobs:
         if: steps.changes.outputs.apps == 'true'
         timeout-minutes: 15
         env:
-          PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
+          PLAYWRIGHT_BROWSERS_PATH: $HOME/.cache/ms-playwright
         run: |
           # Install Playwright browsers only (avoid apt deps)
           bunx playwright install chromium
 
           # Run E2E tests using existing config
-          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=chromium
+          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop
 
       - name: Run basic API tests
         run: |
@@ -281,8 +281,8 @@ jobs:
           echo "=== Application Container Logs ==="
           docker logs planningsup-app-test || true
 
-          echo "=== Database Connection Test ==="
-          docker exec planningsup-app-test sh -c 'nc -z localhost 5432 && echo "Database reachable" || echo "Database not reachable"' || true
+          echo "=== Database Connection Test (host) ==="
+          timeout 3 bash -c '</dev/tcp/localhost/5432' >/dev/null 2>&1 && echo "Database reachable" || echo "Database not reachable"
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
