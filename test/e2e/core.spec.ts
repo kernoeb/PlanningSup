@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { createOptimizedHelper, batchExpect } from './helpers-optimized'
+import { createOptimizedHelper } from './helpers-optimized'
 
 test.describe('Core Functionality', () => {
   test('essential app loading and navigation', async ({ page }) => {
@@ -7,7 +7,7 @@ test.describe('Core Functionality', () => {
     await helper.fastSetup()
 
     // Batch basic checks for better performance
-    await batchExpect([
+    await batchExpected([
       () => expect(page).toHaveTitle(/PlanningSup/),
       () => expect(page.locator('#planning-sup-app')).toBeVisible()
     ])

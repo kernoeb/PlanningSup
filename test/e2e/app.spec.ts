@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { createOptimizedHelper, batchExpect } from './helpers-optimized'
+import { createOptimizedHelper } from './helpers-optimized'
 
 test.describe('PlanningSup E2E Tests - Optimized', () => {
   test('essential application functionality', async ({ page }) => {

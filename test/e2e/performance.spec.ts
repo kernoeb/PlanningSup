@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { createOptimizedHelper, quickCheck } from './helpers-optimized'
+import { createOptimizedHelper } from './helpers-optimized'
 
 test.describe('Performance and Stability Tests', () => {
   // Use test.beforeAll for expensive setup that can be shared
