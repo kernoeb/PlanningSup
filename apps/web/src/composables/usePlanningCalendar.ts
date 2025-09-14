@@ -131,8 +131,18 @@ export function usePlanningCalendar(options: {
     const hasData = planning.planningFullIds.value?.length > 0
     if ((!calendarApp.value && hasData) || forceRecreate) {
       // Preserve current state (view and date) when recreating
-      const prevView = calendarApp.value ? calendarControls.getView() : undefined
-      const prevDate = currentDate.value
+      const isRecreate = !!calendarApp.value
+      const prevView = isRecreate ? calendarControls.getView() : undefined
+      const prevDate = isRecreate ? currentDate.value : undefined
+
+      // Determine initial selected date (skip weekend if weekends are hidden)
+      let initialSelectedDate = currentDate.value
+      if (!isRecreate && settings.showWeekends.value === false) {
+        const dow = initialSelectedDate.dayOfWeek // 1 = Monday ... 7 = Sunday
+        if (dow === 6) initialSelectedDate = initialSelectedDate.add({ days: 2 }) // Saturday -> Monday
+        else if (dow === 7) initialSelectedDate = initialSelectedDate.add({ days: 1 }) // Sunday -> Monday
+        currentDate.value = initialSelectedDate
+      }
 
       calendarApp.value = createCalendar({
         views: [
@@ -144,6 +154,7 @@ export function usePlanningCalendar(options: {
         locale: 'fr-FR',
         isDark: uiIsDark.value,
         timezone,
+        selectedDate: initialSelectedDate,
         showWeekNumbers: true,
         dayBoundaries: { start: '07:00', end: '20:00' },
         weekOptions: getWeekOptions(),
@@ -167,7 +178,7 @@ export function usePlanningCalendar(options: {
 
       // Restore previous state if available
       if (prevView) calendarControls.setView?.(prevView)
-      if (prevDate) calendarControls.setDate?.(prevDate)
+      if (isRecreate && prevDate) calendarControls.setDate?.(prevDate)
     } else {
       eventsServicePlugin.set(mapped)
     }
