@@ -56,6 +56,14 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Detect changes in apps/
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            apps:
+              - 'apps/**'
+
       - name: Verify PR safety
         if: github.event_name == 'pull_request'
         run: |
@@ -218,6 +226,7 @@ jobs:
           BASE_URL=http://localhost:20000 bun test test/integration/
 
       - name: Install Playwright and run E2E tests
+        if: steps.changes.outputs.apps == 'true'
         run: |
           # Install Playwright
           bun add -d playwright @playwright/test
@@ -260,7 +269,7 @@ jobs:
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() && steps.changes.outputs.apps == 'true'
         with:
           name: playwright-report-${{ github.run_number }}
           path: playwright-report/
