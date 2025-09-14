@@ -46,7 +46,7 @@ function parseArgs(): TestConfig {
         config.verbose = true;
         break;
       case '--headed':
-        config.headed = false;
+        config.headed = true;
         break;
       case '--workers':
         config.workers = parseInt(args[++i]) || 4;
@@ -87,9 +87,9 @@ function info(message: string): void {
 
 // Show help message
 function showHelp(): void {
-  console.log("Usage: bun scripts/test-fast.ts [options]");
+  console.log("Usage: bun scripts/test.ts [options]");
   console.log("");
-  console.log("Fast E2E Test Runner - Optimized for speed and efficiency");
+  console.log("E2E Test Runner - Run end-to-end tests");
   console.log("");
   console.log("Options:");
   console.log("  --safari           Include Safari tests (Chrome only by default)");
@@ -237,7 +237,7 @@ async function runTests(config: TestConfig): Promise<{ success: boolean; duratio
   if (config.safari) {
     info("🌐 Running tests on Chrome + Safari (full browser coverage)");
   } else {
-    info("⚡ Running tests on Chrome only (fast mode)");
+    info("⚡ Running tests on Chrome only");
   }
 
   // Set environment variables
@@ -291,7 +291,7 @@ async function runTests(config: TestConfig): Promise<{ success: boolean; duratio
 
 // Main function
 async function main(): Promise<void> {
-  console.log("🚀 Fast E2E Test Runner");
+  console.log("🚀 E2E Test Runner");
   console.log("=======================");
 
   const config = parseArgs();

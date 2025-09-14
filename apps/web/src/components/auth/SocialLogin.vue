@@ -10,7 +10,7 @@ const isLoading = reactive({
   discord: false,
   github: false,
 })
-const { signInDiscord, signInGithub } = useAuth()
+const { authEnabled, signInDiscord, signInGithub } = useAuth()
 
 async function handleLogin(provider: 'discord' | 'github') {
   isLoading[provider] = true
@@ -33,7 +33,7 @@ defineExpose({
 </script>
 
 <template>
-  <dialog ref="dialog" class="modal">
+  <dialog v-if="authEnabled" ref="dialog" class="modal">
     <div class="modal-box max-w-md bg-base-100 shadow-2xl">
       <form method="dialog">
         <button class="btn btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors">

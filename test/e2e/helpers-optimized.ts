@@ -94,41 +94,11 @@ class OptimizedApiMocker {
   constructor(private page: Page) {}
 
   async setupFastMocks(): Promise<void> {
-    // Mock auth session first to ensure user menu is enabled
-    const mockSession = {
-      user: {
-        id: 'test-user',
-        email: 'test@example.com',
-        name: 'Test User',
-        image: null
-      },
-      session: { id: 'test-session', expires: new Date(Date.now() + 86400000).toISOString() }
-    }
-
     // Batch all API route mocks in one call for better performance
     await this.page.route('**/api/**', async (route) => {
       const url = route.request().url()
 
-      if (url.includes('/api/auth/get-session') || url.includes('/api/auth/session')) {
-        await route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify(mockSession)
-        })
-      } else if (url.includes('/api/auth/sign-in/anonymous')) {
-        await route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify(mockSession)
-        })
-      } else if (url.includes('/api/auth/')) {
-        // Mock all other auth endpoints
-        await route.fulfill({
-          status: 200,
-          contentType: 'application/json',
-          body: JSON.stringify({ success: true })
-        })
-      } else if (url.includes('/api/plannings')) {
+      if (url.includes('/api/plannings')) {
         await route.fulfill({
           status: 200,
           contentType: 'application/json',
@@ -146,14 +116,6 @@ class OptimizedApiMocker {
         await route.continue()
       }
     })
-
-    // Also inject session data directly into the page for immediate availability
-    await this.page.addInitScript((session) => {
-      // Mock the session in localStorage or global state if needed
-      localStorage.setItem('auth-session', JSON.stringify(session))
-      // @ts-ignore
-      window.__TEST_AUTH_SESSION__ = session
-    }, mockSession)
   }
 
   async clearMocks(): Promise<void> {
@@ -190,16 +152,7 @@ class OptimizedTestHelper {
     // Wait only for critical elements, not arbitrary timeouts
     await this.device.waitForPageLoad()
 
-    // Wait for authentication to load if mocking is enabled
-    if (mockApi) {
-      // Wait for user menu to be enabled
-      await this.page.waitForFunction(() => {
-        const userMenuTrigger = document.querySelector('#user-menu-trigger')
-        return userMenuTrigger && !userMenuTrigger.classList.contains('btn-disabled')
-      }, { timeout: 8000 }).catch(() => {
-        console.log('Warning: User menu did not become enabled within timeout')
-      })
-    }
+    // Auth is optional by default; skip waiting for user menu to be enabled.
   }
 
   async openPlanningPicker(): Promise<void> {

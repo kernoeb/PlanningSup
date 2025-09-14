@@ -8,7 +8,7 @@ import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
 
-const { session, signOut, isAnonymous } = useAuth()
+const { authEnabled, session, signOut, isAnonymous } = useAuth()
 
 const isSettingsOpen = ref(false)
 const socialLogin = useTemplateRef('socialLogin')
@@ -17,8 +17,8 @@ const isPending = computed(() => session.value.isPending)
 const user = computed(() => session.value.data?.user ?? null)
 const hasImage = computed(() => !!user.value?.image)
 
-const canOpenMenu = computed(() => !isPending.value && !!user.value)
-const ariaLabel = computed(() => (isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
+const canOpenMenu = computed(() => (authEnabled ? (!isPending.value && !!user.value) : true))
+const ariaLabel = computed(() => (authEnabled && isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
 // Theme (for small screens, theme controls live here)
 const { theme, i18nThemes, setTheme } = useSharedTheme()
@@ -87,7 +87,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         </li>
         <div class="sm:hidden divider m-0" />
         <!-- End small-screen theme controls -->
-        <li v-if="!user || isAnonymous">
+        <li v-if="authEnabled && (!user || isAnonymous)">
           <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
             Se connecter
           </button>
@@ -97,7 +97,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
             Paramètres
           </button>
         </li>
-        <li v-if="user && !isAnonymous">
+        <li v-if="authEnabled && user && !isAnonymous">
           <button id="logout-button" type="button" @click="signOut()">
             Se déconnecter
           </button>

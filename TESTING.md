@@ -111,7 +111,7 @@ bun test test/integration/
 E2E tests run in real browsers and test complete user workflows:
 
 ```bash
-# Run E2E tests (Chrome only, fast)
+# Run E2E tests
 bun run test:e2e
 
 # Run E2E tests with full browser coverage (Chrome + Safari)
@@ -344,7 +344,7 @@ bun run test:integration
 
 ### Performance
 
-1. **Run unit tests frequently** (they're fast)
+1. **Run unit tests frequently**
 2. **Run integration tests before commits** (medium speed)
 3. **Run E2E tests before pushes** (slower but comprehensive)
 4. **Use parallel execution** for faster E2E tests
@@ -360,11 +360,11 @@ bun run test:integration
 
 | Script               | Command                          | Purpose                                    |
 | -------------------- | -------------------------------- | ------------------------------------------ |
-| Unit tests           | `bun test test/*.test.ts`        | Fast unit tests                            |
+| Unit tests           | `bun test test/*.test.ts`        | Unit tests                                 |
 | Integration (full)   | `bun run test:integration`       | Full integration test suite                |
 | Integration (local)  | `bun run test:integration:local` | Use existing Docker image                  |
 | Integration (direct) | `bun test test/integration/`     | Run tests directly if environment is ready |
-| E2E (fast)           | `bun run test:e2e`               | Chrome-only E2E tests                      |
+| E2E                  | `bun run test:e2e`               | Chrome-only E2E tests                      |
 | E2E (full)           | `bun run test:e2e:safari`        | All browsers E2E tests                     |
 | E2E (debug)          | `bun run test:e2e:debug`         | Headed mode with verbose output            |
 

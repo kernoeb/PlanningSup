@@ -9,6 +9,7 @@ import { Elysia } from 'elysia'
 
 const FRONTEND_DIST_PATH = Bun.env.WEB_DIST_LOCATION || path.join(webLocation)
 const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
+const ENABLE_AUTH = String(Bun.env.ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
 
 function betterAuthView(context: Context) {
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
@@ -25,11 +26,15 @@ const app = new Elysia()
     return { error, message: isNotFound ? 'Route not found' : 'Internal server error' }
   })
   .use(openapi())
-  .all('/api/auth/*', betterAuthView)
+  // /api/auth/* routes will be mounted conditionally below when ENABLE_AUTH is true
   .use(new Elysia({ prefix: '/api' })
     .get('/ping', () => 'pong')
     .use(planningsRoutes),
   )
+
+if (ENABLE_AUTH) {
+  app.all('/api/auth/*', betterAuthView)
+}
 
 if (import.meta.env.NODE_ENV === 'production') {
   app.use(staticPlugin({

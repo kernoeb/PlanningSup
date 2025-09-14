@@ -3,6 +3,8 @@ import { authClient } from '@libs'
 import { createSharedComposable, watchDebounced } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
+const AUTH_ENABLED = String(import.meta.env.VITE_ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
+
 export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings'
 
 export interface SyncOptions<T> {
@@ -79,6 +81,10 @@ function userPrefsSync() {
     }
     registeredKeys.add(key)
 
+    if (!AUTH_ENABLED) {
+      return
+    }
+
     const {
       toServer = (v: T) => v,
       normalizeLocal = (v: T) => v,
@@ -134,6 +140,7 @@ function userPrefsSync() {
     // --- Core Sync Logic ---
 
     const pushToServer = async (value: T) => {
+      if (!AUTH_ENABLED) return
       if (!userId.value) return // Safeguard against calls when logged out.
 
       const payloadValue = toServer(value)

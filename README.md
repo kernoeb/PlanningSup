@@ -123,14 +123,14 @@ Lancement en local :
 Le projet inclut une suite complète de tests d'intégration utilisant Vitest et Playwright :
 
 ```bash
-# Lancer tous les tests E2E optimisés (construit l'image Docker et lance les tests)
-bun run test:e2e:fast
+# Lancer tous les tests E2E (construit l'image Docker et lance les tests)
+bun run test:e2e
 
 # Options disponibles
-bun run test:e2e:fast --safari      # Inclure Safari (Chrome + Safari)
-bun run test:e2e:fast --verbose     # Affichage détaillé
-bun run test:e2e:fast --headed      # Mode visuel pour débogage
-bun run test:e2e:fast --no-cleanup  # Ne pas nettoyer les conteneurs
+bun run test:e2e --safari      # Inclure Safari (Chrome + Safari)
+bun run test:e2e --verbose     # Affichage détaillé
+bun run test:e2e --headed      # Mode visuel pour débogage
+bun run test:e2e --no-cleanup  # Ne pas nettoyer les conteneurs
 
 # Tests manuels (nécessite l'environnement de test)
 docker compose -f docker-compose.test.yml up -d

@@ -27,6 +27,7 @@ services:
       PORT: 20000
       DATABASE_URL: postgresql://testuser:testpass@postgres-test:5432/planningsup_test
       RUN_JOBS: false
+      ENABLE_AUTH: 'false'
     ports:
       - '20000:20000'
     depends_on:

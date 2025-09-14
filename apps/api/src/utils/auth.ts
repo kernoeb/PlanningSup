@@ -3,8 +3,10 @@ import { db } from '@api/db'
 import * as schema from '@api/db/schemas/auth'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
-import { anonymous, customSession } from 'better-auth/plugins'
+import { customSession } from 'better-auth/plugins'
 import * as z from 'zod'
+
+const ENABLE_AUTH = String(Bun.env.ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
 
 const options = {
   database: drizzleAdapter(db, {
@@ -109,24 +111,26 @@ const options = {
     // session is updated every 7 days
     updateAge: 7 * 24 * 60 * 60, // 7 days in seconds
   },
-  plugins: [
-    anonymous(),
-  ],
+  plugins: [],
   telemetry: {
     enabled: false,
   },
   trustedOrigins: (Bun.env.TRUSTED_ORIGINS as string | undefined)?.split(',').map(s => s.trim()) ?? [],
-  socialProviders: {
-    discord: {
-      clientId: Bun.env.DISCORD_CLIENT_ID as string,
-      clientSecret: Bun.env.DISCORD_CLIENT_SECRET as string,
-    },
-    github: {
-      clientId: Bun.env.GITHUB_CLIENT_ID as string,
-      clientSecret: Bun.env.GITHUB_CLIENT_SECRET as string,
-    },
-  },
+  socialProviders: ENABLE_AUTH
+    ? {
+        discord: {
+          clientId: Bun.env.DISCORD_CLIENT_ID as string,
+          clientSecret: Bun.env.DISCORD_CLIENT_SECRET as string,
+        },
+        github: {
+          clientId: Bun.env.GITHUB_CLIENT_ID as string,
+          clientSecret: Bun.env.GITHUB_CLIENT_SECRET as string,
+        },
+      }
+    : {},
 } satisfies BetterAuthOptions
+
+export const AUTH_ENABLED = ENABLE_AUTH
 
 export const auth = betterAuth({
   ...options,

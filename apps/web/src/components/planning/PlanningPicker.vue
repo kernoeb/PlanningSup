@@ -4,19 +4,19 @@ import { useVirtualList } from '@vueuse/core'
 import { useSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { computed, onMounted, ref, watch } from 'vue'
 
-interface PlanningNode {
-  id: string
-  title: string
-  fullId: string
-  children?: PlanningNode[]
-}
-
 defineOptions({ name: 'PlanningPicker' })
 
 const props = defineProps<{
   openOnMount?: boolean
   standaloneTrigger?: boolean
 }>()
+
+interface PlanningNode {
+  id: string
+  title: string
+  fullId: string
+  children?: PlanningNode[]
+}
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const loading = ref(false)
