@@ -291,7 +291,7 @@
             {
               "id": "tp2",
               "title": "TP2",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2764&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9994&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
