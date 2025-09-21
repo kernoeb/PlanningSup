@@ -16,7 +16,7 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "test/*"
+      "test"
     ],
     "catalog": {
       "elysia": "^1.4.6",
