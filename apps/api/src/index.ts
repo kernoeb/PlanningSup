@@ -34,10 +34,11 @@ if (import.meta.env.NODE_ENV === 'production') {
   const FRONTEND_DIST_PATH = config.webDistLocation || path.join(webLocation)
   logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
 
-  app.use(staticPlugin({
-    assets: FRONTEND_DIST_PATH,
-    indexHTML: true,
-    alwaysStatic: true,
-    prefix: '/',
-  }))
+  app.use(
+    staticPlugin({
+      assets: FRONTEND_DIST_PATH,
+      alwaysStatic: true,
+      prefix: '/',
+    }),
+  ).get('/*', () => Bun.file(`${FRONTEND_DIST_PATH}/index.html`))
 }
