@@ -1,9 +1,9 @@
 {
   "name": "planningsup-extension",
   "displayName": "PlanningSup",
+  "type": "module",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
   "description": "The official PlanningSup browser extension",
   "scripts": {
     "dev": "bun run clear && cross-env VITE_ENABLE_AUTH=true VITE_BACKEND_URL=http://localhost:20000 NODE_ENV=development concurrently bun:dev:*",
