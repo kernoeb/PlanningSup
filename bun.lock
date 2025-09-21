@@ -157,7 +157,7 @@
         "elysia": "catalog:",
       },
       "devDependencies": {
-        "@elysiajs/eden": "^1.4.1",
+        "@elysiajs/eden": "catalog:",
         "@tauri-apps/api": "^2.8.0",
         "better-auth": "^1.3.13",
         "config": "workspace:*",
@@ -171,10 +171,8 @@
     "sharp",
     "core-js",
   ],
-  "patchedDependencies": {
-    "eslint-plugin-perfectionist@4.15.0": "patches/eslint-plugin-perfectionist@4.15.0.patch",
-  },
   "catalog": {
+    "@elysiajs/eden": "^1.4.1",
     "elysia": "^1.4.6",
   },
   "catalogs": {

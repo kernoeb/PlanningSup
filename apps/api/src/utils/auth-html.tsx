@@ -5,7 +5,7 @@
 import config from '@api/config'
 
 // eslint-disable-next-line unused-imports/no-unused-imports
-import { html, Html } from '@elysiajs/html'
+import { html, Html } from '@elysiajs/html' // deepscan-disable-line
 import { Elysia } from 'elysia'
 
 const pageCss = `

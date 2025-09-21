@@ -16,6 +16,7 @@ export async function getManifest() {
     action: {
       default_icon: 'assets/icon-512.png',
     },
+    // @ts-expect-error missing in type
     externally_connectable: {
       matches: ['http://localhost:20000/*', 'https://planningsup.app/*'],
     },

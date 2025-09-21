@@ -14,7 +14,7 @@
     "elysia": "catalog:"
   },
   "devDependencies": {
-    "@elysiajs/eden": "^1.4.1",
+    "@elysiajs/eden": "catalog:",
     "@tauri-apps/api": "^2.8.0",
     "better-auth": "^1.3.13",
     "config": "workspace:*",
