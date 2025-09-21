@@ -27,7 +27,7 @@
         "drizzle-typebox": "^0.3.3",
         "elysia": "catalog:",
         "ical.js": "^2.2.1",
-        "zod": "^4.1.11",
+        "zod": "catalog:",
       },
       "devDependencies": {
         "@antfu/eslint-config": "^5.4.1",
@@ -170,6 +170,7 @@
         "@elysiajs/eden": "catalog:",
         "elysia": "catalog:",
         "vue": "catalog:ui",
+        "zod": "catalog:",
       },
     },
   },
@@ -182,6 +183,7 @@
   "catalog": {
     "@elysiajs/eden": "^1.4.1",
     "elysia": "^1.4.6",
+    "zod": "^4.1.11",
   },
   "catalogs": {
     "dev": {

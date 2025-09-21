@@ -5,6 +5,7 @@
   "devDependencies": {
     "@elysiajs/eden": "catalog:",
     "elysia": "catalog:",
-    "vue": "catalog:ui"
+    "vue": "catalog:ui",
+    "zod": "catalog:"
   }
 }
