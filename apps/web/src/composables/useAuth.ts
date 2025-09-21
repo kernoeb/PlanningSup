@@ -1,6 +1,6 @@
 import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled || import.meta.env?.VITE_ENABLE_AUTH === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
@@ -124,24 +124,20 @@ if (IS_TAURI) {
   })
 }
 
-const forceSignIn = new URLSearchParams(window.location.search).get('forceSignIn') === 'true'
-if (forceSignIn) signInDiscord()
+// const forceSignIn = new URLSearchParams(window.location.search).get('forceSignIn') === 'true'
+// if (forceSignIn) signInDiscord()
 
-// Auth optional mode: no automatic anonymous sign-in
+const client = (() => {
+  if (IS_TAURI) return 'tauri'
+  if (IS_EXTENSION) return 'extension'
+  return 'web'
+})()
 
 async function signInDiscord() {
   if (!AUTH_ENABLED) {
     console.warn('Auth is disabled; signInDiscord is a no-op.')
     return
   }
-
-  console.log('signInDiscord')
-
-  const client = (() => {
-    if (IS_TAURI) return 'tauri'
-    if (IS_EXTENSION) return 'extension'
-    return 'web'
-  })()
 
   const { data, error } = await authClient.signIn.social({
     provider: 'discord',
@@ -153,27 +149,15 @@ async function signInDiscord() {
   const url = data?.url
   if (!url) throw new Error('No authorization URL returned')
 
-  console.log({
-    url,
-    data,
-    error,
-    AUTH_ENABLED,
-    IS_TAURI,
-    IS_EXTENSION,
-  })
-
   if (IS_TAURI) {
     const { openUrl } = await import('@tauri-apps/plugin-opener')
     await openUrl(url)
   } else if (IS_EXTENSION) {
-    console.log('signInDiscord', data)
     const { default: browser } = await import('webextension-polyfill')
     browser.runtime.sendMessage({ type: 'openUrl', url })
   } else {
     window.location.href = url
   }
-
-  console.log('signInDiscord', data)
 }
 
 async function signInGithub() {
@@ -181,10 +165,26 @@ async function signInGithub() {
     console.warn('Auth is disabled; signInGithub is a no-op.')
     return
   }
-  const data = await authClient.signIn.social({
+
+  const { data, error } = await authClient.signIn.social({
     provider: 'github',
+    callbackURL: `${window.location.origin}?client=${client}`,
+    disableRedirect: true,
   })
-  console.log('signInGithub', data)
+
+  if (error) throw new Error(error.message)
+  const url = data?.url
+  if (!url) throw new Error('No authorization URL returned')
+
+  if (IS_TAURI) {
+    const { openUrl } = await import('@tauri-apps/plugin-opener')
+    await openUrl(url)
+  } else if (IS_EXTENSION) {
+    const { default: browser } = await import('webextension-polyfill')
+    browser.runtime.sendMessage({ type: 'openUrl', url })
+  } else {
+    window.location.href = url
+  }
 }
 
 async function signOut() {
@@ -194,8 +194,6 @@ async function signOut() {
   }
   await authClient.signOut()
 }
-
-const isAnonymous = computed(() => false)
 
 /**
  * Ensures there's an authenticated session when auth is enabled and exposes the session ref.
@@ -208,7 +206,6 @@ export function useAuth() {
   return {
     authEnabled: AUTH_ENABLED,
     session,
-    isAnonymous,
     signInDiscord,
     signInGithub,
     signOut,

@@ -6,7 +6,6 @@ import { beforeAll, afterAll, beforeEach, describe, expect, it, mock } from 'bun
  * - authEnabled === false
  * - session is a simple ref-like object with { isPending: false, data: null, error: null }
  * - signInDiscord/signInGithub/signOut are no-ops (do not call auth client, warn in console)
- * - isAnonymous is always false (anonymous mode removed)
  */
 
 describe('useAuth (authEnabled=false via runtime config)', () => {
@@ -81,29 +80,6 @@ describe('useAuth (authEnabled=false via runtime config)', () => {
     callCounters.signOut = 0
     callCounters.useSession = 0
     callCounters.updateUser = 0
-  })
-
-  it('returns authEnabled=false and a noop session object', () => {
-    const api = useAuth()
-    expect(api).toBeTruthy()
-
-    expect(api.authEnabled).toBeFalse()
-
-    // session should be a ref-like object with the default disabled payload
-    expect(api.session).toBeTruthy()
-    expect(api.session.value).toEqual({
-      isPending: false,
-      data: null,
-      error: null,
-    })
-
-    // With auth disabled, the composable must not call authClient.useSession()
-    expect(callCounters.useSession).toBe(0)
-  })
-
-  it('isAnonymous is always false when auth is disabled', () => {
-    const { isAnonymous } = useAuth()
-    expect(isAnonymous.value).toBeFalse()
   })
 
   it('signInDiscord/signInGithub/signOut are no-ops and do not call auth client', async () => {

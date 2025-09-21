@@ -2,8 +2,9 @@
   "name": "test",
   "type": "module",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "@elysiajs/eden": "catalog:",
-    "elysia": "catalog:"
+    "elysia": "catalog:",
+    "vue": "catalog:ui"
   }
 }

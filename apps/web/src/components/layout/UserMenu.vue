@@ -8,7 +8,7 @@ import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
 
-const { authEnabled, session, signOut, isAnonymous } = useAuth()
+const { authEnabled, session, signOut } = useAuth()
 
 const isSettingsOpen = ref(false)
 const socialLogin = useTemplateRef('socialLogin')
@@ -87,7 +87,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         </li>
         <div class="sm:hidden divider m-0" />
         <!-- End small-screen theme controls -->
-        <li v-if="authEnabled && (!user || isAnonymous)">
+        <li v-if="authEnabled && !user">
           <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
             Se connecter
           </button>
@@ -97,7 +97,7 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
             Paramètres
           </button>
         </li>
-        <li v-if="authEnabled && user && !isAnonymous">
+        <li v-if="authEnabled && user">
           <button id="logout-button" type="button" @click="signOut()">
             Se déconnecter
           </button>

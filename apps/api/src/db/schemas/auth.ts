@@ -13,7 +13,6 @@ export const user = pgTable('user', {
     .$defaultFn(() => new Date())
     .$onUpdate(() => new Date())
     .notNull(),
-  isAnonymous: boolean('is_anonymous'),
   theme: text('theme'),
   highlightTeacher: boolean('highlight_teacher'),
   showWeekends: boolean('show_weekends'),

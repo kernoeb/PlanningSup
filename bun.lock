@@ -166,9 +166,10 @@
     },
     "test": {
       "name": "test",
-      "dependencies": {
+      "devDependencies": {
         "@elysiajs/eden": "catalog:",
         "elysia": "catalog:",
+        "vue": "catalog:ui",
       },
     },
   },

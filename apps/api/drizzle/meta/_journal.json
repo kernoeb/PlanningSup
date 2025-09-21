@@ -15,6 +15,13 @@
       "when": 1757450809233,
       "tag": "0001_tan_diamondback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758485513914,
+      "tag": "0002_funny_ezekiel_stane",
+      "breakpoints": true
     }
   ]
 }
