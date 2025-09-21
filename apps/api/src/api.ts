@@ -25,9 +25,19 @@ const app = new Elysia()
   .onRequest(async ({ request }) => {
     console.log(`[${new Date().toISOString()}] ${request.method} ${request.url} ${request.headers.get('origin') || ''}`)
   })
-  .onError(({ error, code }) => {
+  .onError(({ error, code, set }) => {
     const isNotFound = code === 'NOT_FOUND'
     if (import.meta.env.NODE_ENV !== 'production' && !isNotFound) console.error(error)
+
+    if (isNotFound) set.status = 404
+    else if (code === 'INTERNAL_SERVER_ERROR') set.status = 500
+    else if (code === 'INVALID_COOKIE_SIGNATURE') set.status = 400
+    else if (code === 'INVALID_FILE_TYPE') set.status = 415
+    else if (code === 'PARSE') set.status = 400
+    else if (code === 'UNKNOWN') set.status = 500
+    else if (code === 'VALIDATION') set.status = 400
+    else set.status = 400
+
     return Response.json({ error, message: isNotFound ? 'Route not found' : 'Internal server error' })
   })
   .use(openapi())

@@ -81,8 +81,8 @@ export default new Elysia().use(html()).get('/api/auth/auto-redirect/:provider',
   const state = requestUrl.searchParams.get('state')
   const client = requestUrl.searchParams.get('client')
 
-  if (!code || !state || !client) return c.status(400)
-  if (client !== 'tauri' && client !== 'extension') return c.status(400)
+  if (!code || !state || !client) return c.status(400, 'Missing required query parameters')
+  if (client !== 'tauri' && client !== 'extension') return c.status(400, 'Invalid client parameter')
 
   // Simple validation: only allow base64url-like characters for code and state
   const allowedPattern = /^[-\w.~]+$/
