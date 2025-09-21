@@ -1,6 +1,7 @@
 import type { Database } from '@api/db'
-import { jobsLogger } from '@api/utils/logger'
+import config from '@api/config'
 
+import { jobsLogger } from '@api/utils/logger'
 // ----- Explicit job registry (whitelist) -----
 // Add new jobs by importing their run() function and registering here.
 import { run as runPlanningsBackup } from './plannings-backup'
@@ -37,8 +38,6 @@ let paused = false
 let currentJobAbortController: AbortController | null = null
 
 const DEFAULT_DELAY_MS = 60_000
-export const DEFAULT_QUIET_HOURS = '21:00–06:00'
-export const DEFAULT_TIMEZONE = 'Europe/Paris'
 
 export interface QuietHours {
   start: { hour: number, minute: number }
@@ -46,16 +45,8 @@ export interface QuietHours {
   crossesMidnight: boolean
 }
 
-function readEnvBoolean(value: string | undefined | null, defaultValue: boolean): boolean {
-  if (value == null) return defaultValue
-  const v = String(value).trim().toLowerCase()
-  if (['false', '0', 'no', 'off', 'disabled'].includes(v)) return false
-  if (['true', '1', 'yes', 'on', 'enabled'].includes(v)) return true
-  return defaultValue
-}
-
 function parseDelayMs(): number {
-  const parsed = parseDurationToMs(Bun.env.DELAY_BETWEEN_JOBS)
+  const parsed = parseDurationToMs(config.jobs.delayBetweenJobs)
   if (parsed != null) return parsed
   return DEFAULT_DELAY_MS
 }
@@ -133,7 +124,7 @@ export function parseQuietHours(input: string | undefined | null): QuietHours | 
   return { start, end, crossesMidnight }
 }
 
-export function isInQuietHours(quietHours: QuietHours | null, now: Date = new Date(), timezone: string = DEFAULT_TIMEZONE): boolean {
+export function isInQuietHours(quietHours: QuietHours | null, now: Date = new Date(), timezone: string = config.jobs.quietHoursTimezone): boolean {
   if (!quietHours) return false
 
   // Convert current time to the specified timezone
@@ -188,7 +179,7 @@ const JOB_REGISTRY: Record<string, JobModule['run']> = {
 const DEFAULT_ALLOWED_JOBS = Object.freeze<string[]>(['plannings-backup'])
 
 function readAllowedJobIdsFromEnv(): readonly string[] {
-  const raw = Bun.env.ALLOWED_JOBS
+  const raw = config.jobs.allowedJobs
   if (!raw) return DEFAULT_ALLOWED_JOBS
   const ids = raw.split(',').map(s => s.trim()).filter(Boolean)
   if (ids.length === 1 && ids[0] === '*') {
@@ -267,14 +258,14 @@ const controller: JobsController = {
     return parseDelayMs()
   },
   getQuietHours() {
-    return parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS)
+    return parseQuietHours(config.jobs.quietHours)
   },
   getTimezone() {
-    return Bun.env.JOBS_QUIET_HOURS_TIMEZONE || DEFAULT_TIMEZONE
+    return config.jobs.quietHoursTimezone
   },
   isInQuietHours() {
-    const quietHours = parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS)
-    const timezone = Bun.env.JOBS_QUIET_HOURS_TIMEZONE || DEFAULT_TIMEZONE
+    const quietHours = parseQuietHours(config.jobs.quietHours)
+    const timezone = config.jobs.quietHoursTimezone
     return isInQuietHours(quietHours, new Date(), timezone)
   },
 }
@@ -294,8 +285,7 @@ export function startJobs(db: Database): JobsController {
     return controller
   }
 
-  const runJobs = readEnvBoolean(Bun.env.RUN_JOBS, true)
-  if (!runJobs) {
+  if (!config.jobs.runJobs) {
     jobsLogger.info('Jobs runner disabled by RUN_JOBS=false, not starting.')
     return controller
   }
@@ -303,8 +293,8 @@ export function startJobs(db: Database): JobsController {
   isRunning = true
   isStopped = false
   const delayMs = parseDelayMs()
-  const quietHours = parseQuietHours(Bun.env.JOBS_QUIET_HOURS || DEFAULT_QUIET_HOURS)
-  const timezone = Bun.env.JOBS_QUIET_HOURS_TIMEZONE || DEFAULT_TIMEZONE
+  const quietHours = parseQuietHours(config.jobs.quietHours)
+  const timezone = config.jobs.quietHoursTimezone
 
   ;(async () => {
     jobsLogger.info('Starting jobs loop with delay {delay} ({ms} ms), quiet hours: {quietHours} ({timezone})', {

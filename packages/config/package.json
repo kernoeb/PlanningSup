@@ -3,6 +3,9 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "typescript": "catalog:dev"
+    "@tailwindcss/vite": "catalog:ui",
+    "@vitejs/plugin-vue": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev"
   }
 }

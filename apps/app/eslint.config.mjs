@@ -3,8 +3,13 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     stylistic: true,
-    vue: false,
     rules: {
+      'vue/attributes-order': ['error', {
+        alphabetical: true,
+      }],
+      'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+        registeredComponentsOnly: true,
+      }],
       'no-console': 'off',
       'antfu/if-newline': 'off',
       'nonblock-statement-body-position': 'error',
@@ -12,18 +17,10 @@ export default antfu(
       'style/brace-style': ['error', '1tbs', { allowSingleLine: false }],
       'unused-imports/no-unused-vars': 'warn',
       'unused-imports/no-unused-imports': 'warn',
+      'vue/custom-event-name-casing': ['error', 'camelCase', { ignores: ['/^[a-z]+(?:-[a-z]+)*:[a-z]+(?:-[a-z]+)*$/u'] }],
       'jsonc/sort-keys': 'error',
-      'antfu/no-top-level-await': 'off',
       'unicorn/prefer-node-protocol': 'off',
     },
-    ignores: [
-      'dist',
-      'drizzle',
-      'node_modules',
-      'coverage',
-      'build',
-      'public',
-      'temp',
-    ],
+    ignores: ['src-tauri/**'],
   },
 )

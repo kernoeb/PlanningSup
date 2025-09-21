@@ -2,6 +2,8 @@
   "extends": "config/typescript/base.json",
   "compilerOptions": {
     "jsx": "react",
+    "jsxFactory": "Html.createElement",
+    "jsxFragmentFactory": "Html.Fragment",
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -18,6 +20,6 @@
     },
     "noEmit": true
   },
-  "include": ["src", "test", "scripts", "eslint.config.mjs"],
-  "exclude": ["node_modules", "dist", "drizzle.config.ts"]
+  "include": ["src", "test", "scripts"],
+  "exclude": ["node_modules", "dist"]
 }

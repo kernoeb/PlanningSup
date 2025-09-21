@@ -1,14 +1,15 @@
 import type { BetterAuthOptions } from 'better-auth'
+import config from '@api/config'
 import { db } from '@api/db'
 import * as schema from '@api/db/schemas/auth'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
+import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
 import * as z from 'zod'
 
-const ENABLE_AUTH = String(Bun.env.ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
-
 const options = {
+  appName: 'PlanningSup',
   database: drizzleAdapter(db, {
     provider: 'pg',
     schema,
@@ -115,22 +116,54 @@ const options = {
   telemetry: {
     enabled: false,
   },
-  trustedOrigins: (Bun.env.TRUSTED_ORIGINS as string | undefined)?.split(',').map(s => s.trim()) ?? [],
-  socialProviders: ENABLE_AUTH
+  trustedOrigins: config.trustedOrigins,
+  hooks: {
+    before: createAuthMiddleware(async (ctx) => {
+      const state = ctx.query?.state
+      const client = ctx.query?.client // e.g. "tauri" or "extension"
+
+      if (!client && ctx.request && ctx.path === '/callback/:id' && state) {
+        const data = await ctx.context.internalAdapter.findVerificationValue(state)
+        if (data) {
+          const parsedData = z
+            .object({ callbackURL: z.string() })
+            .parse(JSON.parse(data.value))
+
+          if (parsedData.callbackURL) {
+            const callbackURL = new URL(parsedData.callbackURL)
+            const client = callbackURL.searchParams.get('client')
+            if (client === 'tauri' || client === 'extension') {
+              // Redirect to our auto-redirect page, which will handle the deep link
+              const newUrl = new URL(`${ctx.context.baseURL}/auto-redirect/${ctx.params.id}`)
+              // Copy over all search params from the original URL (ctx.request.url)
+              const originalUrl = new URL(ctx.request.url)
+              for (const [key, value] of originalUrl.searchParams.entries()) {
+                if (key !== 'client') newUrl.searchParams.set(key, value)
+              }
+              newUrl.searchParams.set('client', client)
+              ctx.context.logger.success('Redirecting to auto-redirect URL:', newUrl.toString())
+              throw ctx.redirect(newUrl.toString())
+            }
+          }
+        }
+      }
+    }),
+  },
+  socialProviders: config.enableAuth
     ? {
         discord: {
-          clientId: Bun.env.DISCORD_CLIENT_ID as string,
-          clientSecret: Bun.env.DISCORD_CLIENT_SECRET as string,
+          clientId: config.auth.discord.clientId!,
+          clientSecret: config.auth.discord.clientSecret!,
+          prompt: 'consent',
         },
         github: {
-          clientId: Bun.env.GITHUB_CLIENT_ID as string,
-          clientSecret: Bun.env.GITHUB_CLIENT_SECRET as string,
+          clientId: config.auth.github.clientId!,
+          clientSecret: config.auth.github.clientSecret!,
+          prompt: 'consent',
         },
       }
     : {},
 } satisfies BetterAuthOptions
-
-export const AUTH_ENABLED = ENABLE_AUTH
 
 export const auth = betterAuth({
   ...options,

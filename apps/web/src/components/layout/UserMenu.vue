@@ -17,7 +17,7 @@ const isPending = computed(() => session.value.isPending)
 const user = computed(() => session.value.data?.user ?? null)
 const hasImage = computed(() => !!user.value?.image)
 
-const canOpenMenu = computed(() => (authEnabled ? (!isPending.value && !!user.value) : true))
+const canOpenMenu = computed(() => (authEnabled ? !isPending.value : true))
 const ariaLabel = computed(() => (authEnabled && isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
 // Theme (for small screens, theme controls live here)

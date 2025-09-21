@@ -3,7 +3,7 @@ import { authClient } from '@libs'
 import { createSharedComposable } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
-const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled
+const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled || import.meta.env?.VITE_ENABLE_AUTH === 'true'
 const DEV = import.meta?.env?.DEV ?? false
 
 export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings'

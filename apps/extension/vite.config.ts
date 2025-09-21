@@ -1,7 +1,7 @@
 import { dirname, relative } from 'node:path'
-import tailwindcss from '@tailwindcss/vite'
-import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
+
+import { getAliases, getCommonPlugins, getOptimizeDeps, getRoot } from '../../packages/config/vite/shared'
 import packageJson from './package.json'
 import { isDev, port, r } from './scripts/utils'
 
@@ -14,33 +14,16 @@ export default defineConfig(({ command }) => ({
     },
     origin: `http://localhost:${port}`,
   },
-  root: r('../web/'),
+  root: getRoot(import.meta.url),
   resolve: {
-    alias: [
-      { find: '@web', replacement: Bun.fileURLToPath(new URL('../web/src', import.meta.url)) },
-      { find: '@api', replacement: Bun.fileURLToPath(new URL('../api/src', import.meta.url)) },
-      { find: '@libs', replacement: Bun.fileURLToPath(new URL('../../packages/libs/src', import.meta.url)) },
-    ],
+    alias: getAliases(import.meta.url),
   },
   define: {
     __DEV__: isDev,
     __NAME__: JSON.stringify(packageJson.name),
   },
   plugins: [
-    tailwindcss(),
-    vue(),
-
-    // ignore PWA badge component
-    // since the extension cannot be a PWA
-    {
-      name: 'ignore-pwa-badge',
-      resolveId(id) {
-        if (id.includes('PWABadge.vue')) return id
-      },
-      load(id) {
-        if (id.includes('PWABadge.vue')) return '<template></template>'
-      },
-    },
+    ...getCommonPlugins({ addIgnorePWABadge: true }),
 
     // rewrite assets to use relative path
     {
@@ -52,13 +35,7 @@ export default defineConfig(({ command }) => ({
       },
     },
   ],
-  optimizeDeps: {
-    include: [
-      'vue',
-      '@vueuse/core',
-      'webextension-polyfill',
-    ],
-  },
+  optimizeDeps: getOptimizeDeps(),
   build: {
     watch: isDev
       ? {}

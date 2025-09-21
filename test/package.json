@@ -1,5 +1,9 @@
 {
   "name": "test",
   "type": "module",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@elysiajs/eden": "^1.4.1",
+    "elysia": "^1.4.6"
+  }
 }

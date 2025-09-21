@@ -4,7 +4,6 @@
     "src",
     "test",
     "scripts",
-
     "postcss.config.mjs"
   ],
   "exclude": ["node_modules", "dist", "coverage"]

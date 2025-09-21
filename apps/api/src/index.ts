@@ -1,9 +1,15 @@
+import path from 'path'
 import process from 'process'
+import app from '@api/api'
+import config from '@api/config'
 import { client, db } from '@api/db'
 import { init as initDb } from '@api/db/init'
 import { jobs } from '@api/jobs'
 import { defaultLogger as logger } from '@api/utils/logger'
-import app from './api.js'
+import staticPlugin from '@elysiajs/static'
+import { webLocation } from '@web/expose'
+
+console.log('Starting server...')
 
 // Properly handle shutdown
 function onExit() {
@@ -20,7 +26,18 @@ await initDb(db).then(() => {
   jobs.start(db)
 })
 
-const port = Bun.env.PORT ? Number(Bun.env.PORT) : 20000
-app.listen(port, () => {
-  logger.info(`Server started on http://localhost:${port}`)
+app.listen(config.port, () => {
+  logger.info(`Server started on http://localhost:${config.port}`)
 })
+
+if (import.meta.env.NODE_ENV === 'production') {
+  const FRONTEND_DIST_PATH = config.webDistLocation || path.join(webLocation)
+  logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
+
+  app.use(staticPlugin({
+    assets: FRONTEND_DIST_PATH,
+    indexHTML: true,
+    alwaysStatic: true,
+    prefix: '/',
+  }))
+}

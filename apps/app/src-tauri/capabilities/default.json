@@ -1,0 +1,30 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "https://v3.planningsup.app"
+        },
+        {
+          "url": "http://localhost:20000"
+        },
+        {
+          "url": "http://10.0.2.2:20000"
+        },
+        {
+          "url": "http://192.168.1.70:20000"
+        }
+      ]
+    },
+    "deep-link:default"
+  ]
+}

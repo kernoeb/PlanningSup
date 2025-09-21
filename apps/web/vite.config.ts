@@ -1,20 +1,14 @@
-import tailwindcss from '@tailwindcss/vite'
-import vue from '@vitejs/plugin-vue'
 // import { bundleStats } from 'rollup-plugin-bundle-stats'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import { getAliases, getCommonPlugins, getDefaultProxy } from '../../packages/config/vite/shared.ts'
 
 export default defineConfig({
   resolve: {
-    alias: [
-      { find: '@web', replacement: Bun.fileURLToPath(new URL('../web/src', import.meta.url)) },
-      { find: '@api', replacement: Bun.fileURLToPath(new URL('../api/src', import.meta.url)) },
-      { find: '@libs', replacement: Bun.fileURLToPath(new URL('../../packages/libs/src', import.meta.url)) },
-    ],
+    alias: getAliases(import.meta.url),
   },
   plugins: [
-    tailwindcss(),
-    vue(),
+    ...getCommonPlugins({ addIgnorePWABadge: false }),
     VitePWA({
       strategies: 'injectManifest',
       srcDir: 'src',
@@ -48,9 +42,6 @@ export default defineConfig({
     // bundleStats(),
   ],
   server: {
-    proxy: {
-      '/api': 'http://localhost:20000',
-      '/config.js': 'http://localhost:20000',
-    },
+    proxy: getDefaultProxy(),
   },
 })

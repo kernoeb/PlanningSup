@@ -8,7 +8,7 @@ WORKDIR /app
 COPY /scripts/run.ts ./scripts/run.ts
 
 # Cache packages
-COPY patches patches
+# COPY patches patches
 COPY package.json package.json
 COPY bun.lock bun.lock
 
@@ -18,6 +18,7 @@ COPY /packages/libs/package.json ./packages/libs/package.json
 COPY /apps/api/package.json ./apps/api/package.json
 COPY /apps/web/package.json ./apps/web/package.json
 COPY /apps/extension/package.json ./apps/extension/package.json
+COPY /apps/app/package.json ./apps/app/package.json
 
 RUN bun install --frozen-lockfile # or `bun ci` but at least it's explicit
 

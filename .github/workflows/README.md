@@ -145,7 +145,7 @@ apps/extension/
 ├── scripts/           # Build scripts
 ├── src/              # Source code
 ├── package.json      # Extension configuration
-└── vite.config.mts   # Build configuration
+└── vite.config.ts   # Build configuration
 ```
 
 #### Environment Variables

@@ -1,15 +1,7 @@
+import config from '@api/config'
 import { defaultLogger as logger } from '@api/utils/logger'
 
 const USER_AGENT = 'Mozilla/5.0'
-
-const TIMEOUT = (() => {
-  const env = Bun.env.CURL_TIMEOUT
-  if (env) {
-    const parsed = Number.parseInt(env)
-    if (!Number.isNaN(parsed)) return parsed
-  }
-  return 5000 // 5 seconds
-})()
 
 async function fetchWithTimeout(
   url: string,
@@ -23,7 +15,7 @@ async function fetchWithTimeout(
 }> {
   try {
     const response = await fetch(url, {
-      signal: AbortSignal.timeout(timeoutOverride || TIMEOUT),
+      signal: AbortSignal.timeout(timeoutOverride || config.curlTimeout),
       headers: {
         'User-Agent': USER_AGENT,
       },

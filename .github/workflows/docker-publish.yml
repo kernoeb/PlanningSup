@@ -62,7 +62,8 @@ jobs:
         with:
           filters: |
             apps:
-              - 'apps/**'
+              - 'apps/web/**'
+              - 'apps/api/**'
 
       - name: Verify PR safety
         if: github.event_name == 'pull_request'

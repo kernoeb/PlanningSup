@@ -16,6 +16,9 @@ export async function getManifest() {
     action: {
       default_icon: 'assets/icon-512.png',
     },
+    externally_connectable: {
+      matches: ['http://localhost:20000/*', 'https://planningsup.app/*'],
+    },
     background: isFirefox
       ? {
           scripts: ['dist/background/index.mjs'],
@@ -35,6 +38,7 @@ export async function getManifest() {
       'activeTab',
       'sidePanel',
     ],
+
     host_permissions: ['*://*/*'],
     content_security_policy: {
       extension_pages: isDev

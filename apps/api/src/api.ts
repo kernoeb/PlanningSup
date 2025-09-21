@@ -1,22 +1,19 @@
 import type { Context } from 'elysia'
-import path from 'path'
+import config from '@api/config'
 import planningsRoutes from '@api/routes/plannings'
 import { auth } from '@api/utils/auth'
 import { defaultLogger as logger } from '@api/utils/logger'
+import { cors } from '@elysiajs/cors'
 import { openapi } from '@elysiajs/openapi'
-import staticPlugin from '@elysiajs/static'
-import { webLocation } from '@web/expose'
 import { Elysia } from 'elysia'
+import authHtml from './utils/auth-html'
 
-const FRONTEND_DIST_PATH = Bun.env.WEB_DIST_LOCATION || path.join(webLocation)
 const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
-const ENABLE_AUTH = String(Bun.env.ENABLE_AUTH ?? 'false').toLowerCase() === 'true'
-const RUNTIME_CONFIG = { authEnabled: ENABLE_AUTH }
+const RUNTIME_CONFIG = { authEnabled: config.enableAuth }
 
-logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
-logger.info(`Authentication is ${ENABLE_AUTH ? 'enabled' : 'disabled'}`)
+logger.info(`Authentication is ${config.enableAuth ? 'enabled' : 'disabled'}`)
 
-function betterAuthView(context: Context) {
+async function betterAuthView(context: Context) {
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
     return auth.handler(context.request)
   } else {
@@ -25,19 +22,30 @@ function betterAuthView(context: Context) {
 }
 
 const app = new Elysia()
+  .onRequest(async ({ request }) => {
+    console.log(`[${new Date().toISOString()}] ${request.method} ${request.url} ${request.headers.get('origin') || ''}`)
+  })
   .onError(({ error, code }) => {
     const isNotFound = code === 'NOT_FOUND'
     if (import.meta.env.NODE_ENV !== 'production' && !isNotFound) console.error(error)
-    return { error, message: isNotFound ? 'Route not found' : 'Internal server error' }
+    return Response.json({ error, message: isNotFound ? 'Route not found' : 'Internal server error' })
   })
   .use(openapi())
-  // /api/auth/* routes will be mounted conditionally below when ENABLE_AUTH is true
+  .use(
+    cors({
+      origin: config.trustedOrigins,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization'],
+    }),
+  )
   .use(new Elysia({ prefix: '/api' })
     .get('/ping', () => 'pong')
     .use(planningsRoutes),
   )
 
-if (ENABLE_AUTH) {
+if (config.enableAuth) {
+  app.use(authHtml)
   app.all('/api/auth/*', betterAuthView)
 }
 
@@ -49,15 +57,6 @@ app.get('/config.js', ({ set }) => {
   }
   return body
 })
-
-if (import.meta.env.NODE_ENV === 'production') {
-  app.use(staticPlugin({
-    assets: FRONTEND_DIST_PATH,
-    indexHTML: true,
-    alwaysStatic: true,
-    prefix: '/',
-  }))
-}
 
 export type App = typeof app
 export default app

@@ -7,28 +7,31 @@
     "dev": "bun run --watch src/index.ts",
     "generate-better-auth": "NO_MIGRATE=true bunx --bun @better-auth/cli generate --config src/utils/auth.ts --output ./src/db/schemas/auth.ts --yes",
     "generate-drizzle": "NO_MIGRATE=true bun run --bun drizzle-kit generate",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
+    "lint": "bunx --bun eslint .",
+    "lint-fix": "bunx --bun eslint . --fix",
     "build": "bun run scripts/build",
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.0",
-    "@elysiajs/openapi": "^1.4.2",
+    "@elysiajs/html": "^1.4.0",
+    "@elysiajs/openapi": "^1.4.9",
     "@elysiajs/static": "^1.4.0",
-    "@logtape/logtape": "1.0.5",
-    "better-auth": "^1.3.9",
+    "@logtape/logtape": "1.1.1",
+    "better-auth": "^1.3.13",
     "dayjs": "^1.11.18",
     "drizzle-orm": "^0.44.5",
     "drizzle-typebox": "^0.3.3",
     "elysia": "catalog:",
     "ical.js": "^2.2.1",
-    "zod": "^4.1.8"
+    "zod": "^4.1.11"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^5.4.1",
     "@types/bun": "catalog:types",
     "config": "workspace:*",
     "drizzle-kit": "^0.31.4",
+    "eslint": "^9.36.0",
     "pg": "^8.16.3"
   },
   "overrides": {
