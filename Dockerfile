@@ -19,6 +19,7 @@ COPY /apps/api/package.json ./apps/api/package.json
 COPY /apps/web/package.json ./apps/web/package.json
 COPY /apps/extension/package.json ./apps/extension/package.json
 COPY /apps/app/package.json ./apps/app/package.json
+COPY ./test/package.json ./test/package.json
 
 RUN bun install --frozen-lockfile # or `bun ci` but at least it's explicit
 
