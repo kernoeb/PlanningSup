@@ -10,7 +10,7 @@ import authHtml from './utils/auth-html'
 
 const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
 
-logger.info(`Authentication is ${config.enableAuth ? 'enabled' : 'disabled'}`)
+logger.info(`Authentication is ${config.authEnabled ? 'enabled' : 'disabled'}`)
 
 async function betterAuthView(context: Context) {
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
@@ -53,7 +53,7 @@ const api = new Elysia({
   .get('/ping', () => 'pong')
   .use(planningsRoutes)
 
-if (config.enableAuth) {
+if (config.authEnabled) {
   api.use(authHtml)
   api.all('/auth/*', betterAuthView)
 }

@@ -149,7 +149,7 @@ const options = {
       }
     }),
   },
-  socialProviders: config.enableAuth
+  socialProviders: config.authEnabled
     ? {
         discord: {
           clientId: config.auth.discord.clientId!,

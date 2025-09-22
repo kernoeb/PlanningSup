@@ -2,10 +2,10 @@ import { describe, it, expect } from 'bun:test'
 import './setup'
 
 /**
- * Auth routes are optional and disabled by default (ENABLE_AUTH=false).
+ * Auth routes are optional and disabled by default (AUTH_ENABLED=false).
  * When disabled, no /api/auth/* routes should be mounted, and requests must return 404.
  *
- * These tests verify that behavior. If you enable auth locally (ENABLE_AUTH=true),
+ * These tests verify that behavior. If you enable auth locally (AUTH_ENABLED=true),
  * these tests will fail by design.
  */
 

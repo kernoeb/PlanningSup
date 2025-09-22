@@ -6,7 +6,7 @@
   "private": true,
   "description": "The official PlanningSup browser extension",
   "scripts": {
-    "dev": "bun run clear && cross-env VITE_ENABLE_AUTH=true VITE_BACKEND_URL=http://localhost:20000 NODE_ENV=development concurrently bun:dev:*",
+    "dev": "bun run clear && cross-env VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://localhost:20000 NODE_ENV=development concurrently bun:dev:*",
     "dev-firefox": "bun run clear && cross-env NODE_ENV=development EXTENSION=firefox bun:dev:*",
     "dev:prepare": "bun scripts/prepare.ts",
     "dev:background": "bun run build:background -- --mode development",

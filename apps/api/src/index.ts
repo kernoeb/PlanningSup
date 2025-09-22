@@ -29,7 +29,7 @@ await initDb(db).then(() => {
   jobs.start(db)
 })
 
-const RUNTIME_CONFIG = { authEnabled: config.enableAuth }
+const RUNTIME_CONFIG = { authEnabled: config.authEnabled }
 
 export const app = new Elysia()
   .use(api)

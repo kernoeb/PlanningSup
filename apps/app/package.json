@@ -9,9 +9,9 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "dev": "VITE_BACKEND_URL=http://localhost:20000 bun --bun run tauri dev",
-    "dev-android": "VITE_ENABLE_AUTH=true VITE_BACKEND_URL=http://10.0.2.2:20000 bun --bun run tauri android dev",
-    "build-android": "VITE_ENABLE_AUTH=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri android build",
-    "build-app": "VITE_ENABLE_AUTH=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri build",
+    "dev-android": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://10.0.2.2:20000 bun --bun run tauri android dev",
+    "build-android": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri android build",
+    "build-app": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri build",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix"
   },

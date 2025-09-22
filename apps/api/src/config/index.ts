@@ -22,7 +22,7 @@ function getConfig() {
     noMigrateDatabase: env('NO_MIGRATE_DATABASE', { default: false }),
 
     // Better-Auth
-    enableAuth: env('ENABLE_AUTH', { default: false }),
+    authEnabled: env('AUTH_ENABLED', { default: false }),
     trustedOrigins: env('TRUSTED_ORIGINS')?.split(',').map(s => s.trim()),
 
     auth: {

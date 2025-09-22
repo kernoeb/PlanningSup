@@ -203,7 +203,7 @@ jobs:
             -e PORT=20000 \
             -e DATABASE_URL="postgresql://testuser:testpass@localhost:5432/planningsup_test" \
             -e RUN_JOBS=false \
-            -e ENABLE_AUTH=false \
+            -e AUTH_ENABLED=false \
             "$IMAGE_TAG"
 
           # Wait for the application to be ready
