@@ -1,14 +1,14 @@
 {
   "title": "IUT de St-Malo",
-  "edts": [
+  "children": [
     {
       "id": "cj",
       "title": "CJ",
-      "edts": [
+      "children": [
         {
           "id": "1cj",
           "title": "Année1 S1/S2",
-          "edts": [
+          "children": [
             {
               "id": "g1a",
               "title": "G1-A",
@@ -54,7 +54,7 @@
         {
           "id": "2cj",
           "title": "Année2 S3/S4",
-          "edts": [
+          "children": [
             {
               "id": "g1a",
               "title": "G1-A",
@@ -102,11 +102,11 @@
     {
       "id": "gea",
       "title": "GEA",
-      "edts": [
+      "children": [
         {
           "id": "1gea",
           "title": "Année1 S1/S2",
-          "edts": [
+          "children": [
             {
               "id": "g1a",
               "title": "G1-A",
@@ -152,7 +152,7 @@
         {
           "id": "2gea",
           "title": "Année2 S3/S4",
-          "edts": [
+          "children": [
             {
               "id": "g1a",
               "title": "CG2P-A (G1-A)",
@@ -200,11 +200,11 @@
     {
       "id": "gim",
       "title": "GIM",
-      "edts": [
+      "children": [
         {
           "id": "but1",
           "title": "BUT1 FI",
-          "edts": [
+          "children": [
             {
               "id": "tpa",
               "title": "BUT 1 TPA",
@@ -230,7 +230,7 @@
         {
           "id": "but2fa",
           "title": "BUT2 FA",
-          "edts": [
+          "children": [
             {
               "id": "tpa",
               "title": "BUT2 FA TPA",
@@ -246,7 +246,7 @@
         {
           "id": "but2fi",
           "title": "BUT2 FI",
-          "edts": [
+          "children": [
             {
               "id": "tpa",
               "title": "BUT2 FI TPA",
@@ -264,11 +264,11 @@
     {
       "id": "lp",
       "title": "Licences Pro",
-      "edts": [
+      "children": [
         {
           "id": "asur",
           "title": "ASUR",
-          "edts": [
+          "children": [
             {
               "id": "asur_fa_cp",
               "title": "ASUR FA/CP",
@@ -284,7 +284,7 @@
         {
           "id": "cart",
           "title": "CART",
-          "edts": [
+          "children": [
             {
               "id": "lpcart_g1",
               "title": "LPCART G1",
@@ -300,7 +300,7 @@
         {
           "id": "cpclg",
           "title": "CPCLG",
-          "edts": [
+          "children": [
             {
               "id": "cpclg_fa",
               "title": "CPCLG FA",
@@ -316,7 +316,7 @@
         {
           "id": "ecommerce",
           "title": "E-COMMERCE",
-          "edts": [
+          "children": [
             {
               "id": "ecomm_gr_a",
               "title": "ECOMM GR A",
@@ -332,7 +332,7 @@
         {
           "id": "mgri",
           "title": "MGRI",
-          "edts": [
+          "children": [
             {
               "id": "gimlpg1",
               "title": "GIMLPG1",
@@ -348,7 +348,7 @@
         {
           "id": "ogehr",
           "title": "OGEHR",
-          "edts": [
+          "children": [
             {
               "id": "ogehrlp",
               "title": "OGEHR",
@@ -359,7 +359,7 @@
         {
           "id": "rims",
           "title": "RIMS",
-          "edts": [
+          "children": [
             {
               "id": "lprims_g1",
               "title": "LPRIMS G1",
@@ -377,11 +377,11 @@
     {
       "id": "rt",
       "title": "R&T",
-      "edts": [
+      "children": [
         {
           "id": "fa1a",
           "title": "FA1A",
-          "edts": [
+          "children": [
             {
               "id": "fa1g11",
               "title": "FA1G11",
@@ -407,7 +407,7 @@
         {
           "id": "fa2a",
           "title": "FA2A",
-          "edts": [
+          "children": [
             {
               "id": "fa2g11",
               "title": "FA2G11",
@@ -433,7 +433,7 @@
         {
           "id": "fi1a",
           "title": "FI1A",
-          "edts": [
+          "children": [
             {
               "id": "fi1g11",
               "title": "FI1G11",
@@ -459,7 +459,7 @@
         {
           "id": "fi2a",
           "title": "FI2A",
-          "edts": [
+          "children": [
             {
               "id": "fi2g11",
               "title": "FI2G11",
@@ -485,7 +485,7 @@
         {
           "id": "tssr",
           "title": "TSSR",
-          "edts": [
+          "children": [
             {
               "id": "tssr2122",
               "title": "TSSR 21-22",

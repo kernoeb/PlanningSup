@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@elysiajs/eden": "catalog:",
+    "elysia": "catalog:",
+    "vue": "catalog:ui",
+    "zod": "catalog:"
+  }
+}

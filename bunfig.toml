@@ -1,0 +1,8 @@
+[test]
+# Test configuration for Bun
+timeout = 30000
+
+[install]
+# Install configuration
+registry = "https://registry.npmjs.org/"
+linker = "isolated"
