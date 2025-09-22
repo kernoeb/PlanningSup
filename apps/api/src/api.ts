@@ -36,7 +36,6 @@ const api = new Elysia({
     else if (code === 'INVALID_FILE_TYPE') set.status = 415
     else if (code === 'PARSE') set.status = 400
     else if (code === 'UNKNOWN') set.status = 500
-    else if (code === 'VALIDATION') set.status = 400
     else set.status = 400
 
     return Response.json({ error, message: isNotFound ? 'Route not found' : 'Internal server error' })
