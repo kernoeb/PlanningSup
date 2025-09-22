@@ -9,7 +9,6 @@ import { Elysia } from 'elysia'
 import authHtml from './utils/auth-html'
 
 const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
-const RUNTIME_CONFIG = { authEnabled: config.enableAuth }
 
 logger.info(`Authentication is ${config.enableAuth ? 'enabled' : 'disabled'}`)
 
@@ -21,7 +20,9 @@ async function betterAuthView(context: Context) {
   }
 }
 
-const app = new Elysia()
+const api = new Elysia({
+  prefix: '/api',
+})
   .onRequest(async ({ request }) => {
     console.log(`[${new Date().toISOString()}] ${request.method} ${request.url} ${request.headers.get('origin') || ''}`)
   })
@@ -49,24 +50,16 @@ const app = new Elysia()
       allowedHeaders: ['Content-Type', 'Authorization'],
     }),
   )
-  .use(new Elysia({ prefix: '/api' })
-    .get('/ping', () => 'pong')
-    .use(planningsRoutes),
-  )
+  .get('/ping', () => 'pong')
+  .use(planningsRoutes)
 
 if (config.enableAuth) {
-  app.use(authHtml)
-  app.all('/api/auth/*', betterAuthView)
+  api.use(authHtml)
+  api.all('/auth/*', betterAuthView)
 }
 
-app.get('/config.js', ({ set }) => {
-  const body = `globalThis.__APP_CONFIG__ = ${JSON.stringify(RUNTIME_CONFIG)};`
-  set.headers = {
-    'Content-Type': 'application/javascript; charset=utf-8',
-    'Cache-Control': 'no-store',
-  }
-  return body
-})
+// Fallback
+api.all('*', ({ status }) => status(404))
 
-export type App = typeof app
-export default app
+export type App = typeof api
+export default api

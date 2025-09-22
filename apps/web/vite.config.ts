@@ -26,6 +26,7 @@ export default defineConfig({
         short_name: 'PlanningSup',
         description: 'Un planning simple et efficace pour les étudiants',
         theme_color: '#000000',
+        lang: 'fr',
       },
 
       injectManifest: {
