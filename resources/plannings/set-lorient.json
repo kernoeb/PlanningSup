@@ -673,7 +673,7 @@
             {
               "id": "autres",
               "title": "autres",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },

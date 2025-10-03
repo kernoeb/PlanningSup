@@ -206,7 +206,7 @@
             {
               "id": "m2-info-aidn-2",
               "title": "M2-INFO-AIDN-2",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7857&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7857&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "m2-info-saim",
