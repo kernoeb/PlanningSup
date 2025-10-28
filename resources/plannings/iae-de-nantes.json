@@ -1,10 +1,10 @@
 {
   "title": "IAE de Nantes",
-  "edts": [
+  "children": [
     {
       "id": "master",
       "title": "918-MASTER 2 Management de l'Innovation",
-      "edts": [
+      "children": [
         {
           "id": "g90461",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90461.ics",
@@ -200,7 +200,7 @@
     {
       "id": "diu",
       "title": "DIU Innovation & Transformation Numérique",
-      "edts": [
+      "children": [
         {
           "id": "g837691",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g837691.ics",
@@ -211,7 +211,7 @@
     {
       "id": "du",
       "title": "DU CGP - INTER 1",
-      "edts": [
+      "children": [
         {
           "id": "g90362",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90362.ics",
@@ -222,7 +222,7 @@
     {
       "id": "edt",
       "title": "EDT FILIERES 40-45-50 (gérés par MS)",
-      "edts": [
+      "children": [
         {
           "id": "g210538",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g210538.ics",
@@ -233,7 +233,7 @@
     {
       "id": "ensemble",
       "title": "ENSEMBLE ETUDIANTS INSTITUT",
-      "edts": [
+      "children": [
         {
           "id": "g130501",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g130501.ics",
@@ -244,7 +244,7 @@
     {
       "id": "l",
       "title": "L1 EG",
-      "edts": [
+      "children": [
         {
           "id": "g90364",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90364.ics",
@@ -530,7 +530,7 @@
     {
       "id": "licence",
       "title": "LICENCE 2 ECO GESTION Parc ALP",
-      "edts": [
+      "children": [
         {
           "id": "g90388",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90388.ics",
@@ -581,7 +581,7 @@
     {
       "id": "m",
       "title": "M1 HOMER",
-      "edts": [
+      "children": [
         {
           "id": "g1104256",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g1104256.ics",
@@ -642,7 +642,7 @@
     {
       "id": "mae",
       "title": "MAE ALTERNANCE",
-      "edts": [
+      "children": [
         {
           "id": "g90417",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90417.ics",
@@ -653,7 +653,7 @@
     {
       "id": "option",
       "title": "OPTION Management et Ressources Humaines",
-      "edts": [
+      "children": [
         {
           "id": "g90469",
           "url": "https://edt.univ-nantes.fr/iemn_iae/g90469.ics",

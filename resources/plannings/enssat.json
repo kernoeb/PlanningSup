@@ -1,14 +1,14 @@
 {
   "title": "ENSSAT",
-  "edts": [
+  "children": [
     {
       "id": "fisa1",
       "title": "FISA1",
-      "edts": [
+      "children": [
         {
           "id": "iai1",
           "title": "IAI1",
-          "edts": [
+          "children": [
             {
               "id": "iai1g1",
               "title": "IAI1 G1",
@@ -26,11 +26,11 @@
     {
       "id": "fisa2",
       "title": "FISA2",
-      "edts": [
+      "children": [
         {
           "id": "iai2",
           "title": "IAI2",
-          "edts": [
+          "children": [
             {
               "id": "iai2g1",
               "title": "IAI2 G1",

@@ -1,18 +1,18 @@
 {
   "title": "IUT Quimper",
-  "edts": [
+  "children": [
     {
       "id": "gb",
       "title": "GB",
-      "edts": [
+      "children": [
         {
           "id": "gb1",
           "title": "GB1",
-          "edts": [
+          "children": [
             {
               "id": "bmb1",
               "title": "BMB1",
-              "edts": [
+              "children": [
                 {
                   "id": "g101",
                   "title": "G1.01",
@@ -26,7 +26,7 @@
                 {
                   "id": "g103",
                   "title": "G1.03",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g103a",
                       "title": "G1.03A",
@@ -54,7 +54,7 @@
             {
               "id": "sab1",
               "title": "SAB1",
-              "edts": [
+              "children": [
                 {
                   "id": "g106",
                   "title": "G1.06",
@@ -63,7 +63,7 @@
                 {
                   "id": "g107",
                   "title": "G1.07",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g107a",
                       "title": "G1.07a",
@@ -93,11 +93,11 @@
         {
           "id": "gb2",
           "title": "GB2",
-          "edts": [
+          "children": [
             {
               "id": "bmb2",
               "title": "BMB2",
-              "edts": [
+              "children": [
                 {
                   "id": "g201",
                   "title": "G2.01",
@@ -123,7 +123,7 @@
             {
               "id": "sab2",
               "title": "SAB2",
-              "edts": [
+              "children": [
                 {
                   "id": "g205",
                   "title": "G2.05",
@@ -146,11 +146,11 @@
         {
           "id": "gb3",
           "title": "GB3",
-          "edts": [
+          "children": [
             {
               "id": "bmb3",
               "title": "BMB3",
-              "edts": [
+              "children": [
                 {
                   "id": "g301",
                   "title": "G3.01",
@@ -176,7 +176,7 @@
             {
               "id": "sab3",
               "title": "SAB3",
-              "edts": [
+              "children": [
                 {
                   "id": "g305prod",
                   "title": "G3.05 (Prod)",
@@ -196,15 +196,15 @@
     {
       "id": "gea",
       "title": "GEA",
-      "edts": [
+      "children": [
         {
           "id": "butgea1",
           "title": "BUT GEA1",
-          "edts": [
+          "children": [
             {
               "id": "c1",
               "title": "C1",
-              "edts": [
+              "children": [
                 {
                   "id": "c1-a",
                   "title": "C1-A",
@@ -220,7 +220,7 @@
             {
               "id": "c2",
               "title": "C2",
-              "edts": [
+              "children": [
                 {
                   "id": "c2-a",
                   "title": "C2-A",
@@ -236,7 +236,7 @@
             {
               "id": "c3",
               "title": "C3",
-              "edts": [
+              "children": [
                 {
                   "id": "c3-a",
                   "title": "C3-A",
@@ -252,7 +252,7 @@
             {
               "id": "c4",
               "title": "C4",
-              "edts": [
+              "children": [
                 {
                   "id": "c4-a",
                   "title": "C4-A",
@@ -270,11 +270,11 @@
         {
           "id": "butgea2",
           "title": "BUT GEA2",
-          "edts": [
+          "children": [
             {
               "id": "d1",
               "title": "D1",
-              "edts": [
+              "children": [
                 {
                   "id": "d1a",
                   "title": "D1 A",
@@ -290,7 +290,7 @@
             {
               "id": "d2",
               "title": "D2",
-              "edts": [
+              "children": [
                 {
                   "id": "d2a",
                   "title": "D2 A",
@@ -306,7 +306,7 @@
             {
               "id": "d3",
               "title": "D3",
-              "edts": [
+              "children": [
                 {
                   "id": "d3-gema",
                   "title": "D3-GEMA",
@@ -322,7 +322,7 @@
             {
               "id": "d4",
               "title": "D4",
-              "edts": [
+              "children": [
                 {
                   "id": "d4a",
                   "title": "D4 A",
@@ -340,11 +340,11 @@
         {
           "id": "butgea3",
           "title": "BUT GEA3",
-          "edts": [
+          "children": [
             {
               "id": "e1",
               "title": "E1",
-              "edts": [
+              "children": [
                 {
                   "id": "gc2f",
                   "title": "GC2F",
@@ -355,7 +355,7 @@
             {
               "id": "e2",
               "title": "E2",
-              "edts": [
+              "children": [
                 {
                   "id": "gema",
                   "title": "GEMA",
@@ -375,7 +375,7 @@
     {
       "id": "internationaldays",
       "title": "International Days",
-      "edts": [
+      "children": [
         {
           "id": "listegroupe1-etudiants",
           "title": "Liste Groupe 1 -  étudiants",
@@ -461,15 +461,15 @@
     {
       "id": "mlt",
       "title": "MLT",
-      "edts": [
+      "children": [
         {
           "id": "mlt1",
           "title": "MLT1",
-          "edts": [
+          "children": [
             {
               "id": "a",
               "title": "A",
-              "edts": [
+              "children": [
                 {
                   "id": "a1",
                   "title": "A1",
@@ -485,7 +485,7 @@
             {
               "id": "b",
               "title": "B",
-              "edts": [
+              "children": [
                 {
                   "id": "b1",
                   "title": "B1",
@@ -501,7 +501,7 @@
             {
               "id": "c",
               "title": "C",
-              "edts": [
+              "children": [
                 {
                   "id": "c1",
                   "title": "C1",
@@ -519,11 +519,11 @@
         {
           "id": "mlt2",
           "title": "MLT2",
-          "edts": [
+          "children": [
             {
               "id": "d",
               "title": "D",
-              "edts": [
+              "children": [
                 {
                   "id": "d",
                   "title": "D",
@@ -534,7 +534,7 @@
             {
               "id": "e",
               "title": "E",
-              "edts": [
+              "children": [
                 {
                   "id": "e",
                   "title": "E",
@@ -550,7 +550,7 @@
             {
               "id": "tp",
               "title": "TP",
-              "edts": [
+              "children": [
                 {
                   "id": "tp1",
                   "title": "TP1",
@@ -573,15 +573,15 @@
         {
           "id": "mlt3",
           "title": "MLT3",
-          "edts": [
+          "children": [
             {
               "id": "td",
               "title": "TD",
-              "edts": [
+              "children": [
                 {
                   "id": "g",
                   "title": "G",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
@@ -597,7 +597,7 @@
                 {
                   "id": "h",
                   "title": "H",
-                  "edts": [
+                  "children": [
                     {
                       "id": "h1",
                       "title": "H1",
@@ -619,15 +619,15 @@
     {
       "id": "tc",
       "title": "TC",
-      "edts": [
+      "children": [
         {
           "id": "tc1",
           "title": "TC1",
-          "edts": [
+          "children": [
             {
               "id": "1a",
               "title": "1A",
-              "edts": [
+              "children": [
                 {
                   "id": "1a1",
                   "title": "1A1",
@@ -643,7 +643,7 @@
             {
               "id": "1b",
               "title": "1B",
-              "edts": [
+              "children": [
                 {
                   "id": "1b1",
                   "title": "1B1",
@@ -659,7 +659,7 @@
             {
               "id": "1c",
               "title": "1C",
-              "edts": [
+              "children": [
                 {
                   "id": "1c1",
                   "title": "1C1",
@@ -675,7 +675,7 @@
             {
               "id": "1d",
               "title": "1D",
-              "edts": [
+              "children": [
                 {
                   "id": "1d1",
                   "title": "1D1",
@@ -691,7 +691,7 @@
             {
               "id": "1e",
               "title": "1E",
-              "edts": [
+              "children": [
                 {
                   "id": "1e1",
                   "title": "1E1",
@@ -709,11 +709,11 @@
         {
           "id": "tc2",
           "title": "TC2",
-          "edts": [
+          "children": [
             {
               "id": "2a",
               "title": "2A",
-              "edts": [
+              "children": [
                 {
                   "id": "2a1",
                   "title": "2A1",
@@ -729,7 +729,7 @@
             {
               "id": "2b",
               "title": "2B",
-              "edts": [
+              "children": [
                 {
                   "id": "2b1",
                   "title": "2B1",
@@ -745,7 +745,7 @@
             {
               "id": "2c",
               "title": "2C",
-              "edts": [
+              "children": [
                 {
                   "id": "2c1",
                   "title": "2C1",
@@ -761,7 +761,7 @@
             {
               "id": "2d",
               "title": "2D",
-              "edts": [
+              "children": [
                 {
                   "id": "2d1",
                   "title": "2D1",
@@ -777,7 +777,7 @@
             {
               "id": "2e",
               "title": "2E",
-              "edts": [
+              "children": [
                 {
                   "id": "2e1",
                   "title": "2E1",
@@ -795,11 +795,11 @@
         {
           "id": "tc3",
           "title": "TC3",
-          "edts": [
+          "children": [
             {
               "id": "3a",
               "title": "3A",
-              "edts": [
+              "children": [
                 {
                   "id": "bi",
                   "title": "BI",
@@ -815,7 +815,7 @@
             {
               "id": "3b",
               "title": "3B",
-              "edts": [
+              "children": [
                 {
                   "id": "mdeea",
                   "title": "MDEEa",
@@ -831,7 +831,7 @@
             {
               "id": "3c",
               "title": "3C",
-              "edts": [
+              "children": [
                 {
                   "id": "mdeec",
                   "title": "MDEEc",
@@ -851,11 +851,11 @@
     {
       "id": "tccfa",
       "title": "TCCFA",
-      "edts": [
+      "children": [
         {
           "id": "2aa",
           "title": "2aA",
-          "edts": [
+          "children": [
             {
               "id": "2aabdmrc-bq",
               "title": "2aA BDMRC - BQ",
@@ -886,7 +886,7 @@
         {
           "id": "2ab",
           "title": "2aB",
-          "edts": [
+          "children": [
             {
               "id": "2abbdmrc-bq",
               "title": "2aB BDMRC - BQ",
@@ -917,7 +917,7 @@
         {
           "id": "2ac",
           "title": "2aC",
-          "edts": [
+          "children": [
             {
               "id": "2acbdmrc-bq",
               "title": "2aC BDMRC - BQ",
@@ -948,7 +948,7 @@
         {
           "id": "3aa",
           "title": "3aA",
-          "edts": [
+          "children": [
             {
               "id": "3aabdmrc-bq",
               "title": "3aA BDMRC - BQ",
@@ -984,7 +984,7 @@
         {
           "id": "3ab",
           "title": "3aB",
-          "edts": [
+          "children": [
             {
               "id": "3abbdmrc-bq",
               "title": "3aB BDMRC - BQ",
@@ -1020,7 +1020,7 @@
         {
           "id": "3ac",
           "title": "3aC",
-          "edts": [
+          "children": [
             {
               "id": "3acbdmrc-bq",
               "title": "3aC BDMRC- BQ",
@@ -1056,7 +1056,7 @@
         {
           "id": "3ad",
           "title": "3aD",
-          "edts": [
+          "children": [
             {
               "id": "3adbdmrc-bq",
               "title": "3aD BDMRC-BQ",
