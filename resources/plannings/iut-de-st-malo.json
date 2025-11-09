@@ -320,12 +320,12 @@
             {
               "id": "ecomm_gr_a",
               "title": "ECOMM GR A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5723&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5723&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "ecomm_gr_b",
               "title": "ECOMM GR B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10029&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10029&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },

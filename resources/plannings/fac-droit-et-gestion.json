@@ -517,7 +517,7 @@
             {
               "id": "optionuec",
               "title": "OPTION UEC",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2133&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2133&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
