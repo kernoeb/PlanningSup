@@ -1,5 +1,5 @@
 {
-  "title": "Univ Rennes – Faculté des Sciences",
+  "title": "Université de Rennes - Faculté des Sciences",
   "edts": [
     {
       "id": "autresbiologie",
@@ -5622,48 +5622,54 @@
           ]
         },
         {
-          "id": "langues",
-          "title": "LANGUES",
+          "id": "l3-maths",
+          "title": "L3-MATHS",
           "edts": [
             {
-              "id": "allemand3maths",
-              "title": "Allemand 3 Maths",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11531&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr1",
-              "title": "Anglais3-Gr1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr2",
-              "title": "Anglais3-Gr2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11261&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr3",
-              "title": "Anglais3-Gr3",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4268&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr4",
-              "title": "Anglais3-Gr4",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7979&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr5",
-              "title": "Anglais3-Gr5",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10101&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "anglais3-gr6",
-              "title": "Anglais3-Gr6",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11126&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "espagnol3maths",
-              "title": "Espagnol3 Maths",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2670&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "langues",
+              "title": "LANGUES",
+              "edts": [
+                {
+                  "id": "allemand3maths",
+                  "title": "Allemand 3 Maths",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11531&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr1",
+                  "title": "Anglais3-Gr1",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr2",
+                  "title": "Anglais3-Gr2",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11261&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr3",
+                  "title": "Anglais3-Gr3",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4268&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr4",
+                  "title": "Anglais3-Gr4",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7979&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr5",
+                  "title": "Anglais3-Gr5",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10101&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "anglais3-gr6",
+                  "title": "Anglais3-Gr6",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11126&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol3maths",
+                  "title": "Espagnol3 Maths",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2670&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
             },
             {
               "id": "parmoduless5",
