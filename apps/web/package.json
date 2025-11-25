@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "bunx --bun vite --port 4444 --host",
+    "dev": "bunx --bun vite --port 4444 --host --open",
     "build": "vue-tsc -b && bunx --bun vite build",
     "preview": "bunx --bun vite preview",
     "test:unit": "bun test",
