@@ -301,8 +301,8 @@ onMounted(() => {
           <div class="flex items-center gap-2">
             <input
               id="planning-search-input"
-              v-model="searchQuery"
               ref="searchInputRef"
+              v-model="searchQuery"
               class="input input-bordered w-full"
               placeholder="Rechercher un planning…"
               type="text"

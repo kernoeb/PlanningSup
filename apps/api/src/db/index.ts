@@ -1,6 +1,6 @@
+import { SQL } from 'bun'
 import config from '@api/config'
 import { defaultLogger as logger } from '@api/utils/logger'
-import { SQL } from 'bun'
 import { drizzle } from 'drizzle-orm/bun-sql'
 import { migrate } from 'drizzle-orm/bun-sql/migrator'
 
