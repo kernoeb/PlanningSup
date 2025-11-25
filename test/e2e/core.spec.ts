@@ -9,7 +9,7 @@ test.describe('Core Functionality', () => {
     // Batch basic checks for better performance
     await batchExpected([
       () => expect(page).toHaveTitle(/PlanningSup/),
-      () => expect(page.locator('#planning-sup-app')).toBeVisible()
+      () => expect(page.locator('#planningsup-app')).toBeVisible()
     ])
 
     // Test critical user flow in one optimized test
@@ -56,7 +56,7 @@ test.describe('Core Functionality', () => {
           await userMenuTrigger.first().click({ timeout: 3000 })
           await expect(page.locator('#user-dropdown-menu')).toBeVisible()
           // Close menu by clicking elsewhere
-          await page.locator('#planning-sup-app').click()
+          await page.locator('#planningsup-app').click()
         } catch {
           // If the menu isn't interactable (auth optional), skip gracefully
         }
@@ -138,7 +138,7 @@ test.describe('Core Functionality', () => {
     })
 
     // Verify app remains stable
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
     await helper.verifyCalendar()
 
     // Check for critical errors

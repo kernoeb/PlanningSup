@@ -84,7 +84,7 @@ class OptimizedDeviceHelper {
   async waitForPageLoad(): Promise<void> {
     // Wait only for critical content, not all resources
     await this.page.waitForLoadState('domcontentloaded')
-    await this.page.waitForSelector('#planning-sup-app', { timeout: 5000 })
+    await this.page.waitForSelector('#planningsup-app', { timeout: 5000 })
   }
 }
 
@@ -306,7 +306,7 @@ class OptimizedTestHelper {
 
     if (!calendarFound) {
       // Fall back to checking if there's any content in the main app
-      await expect(this.page.locator('#planning-sup-app')).toBeVisible()
+      await expect(this.page.locator('#planningsup-app')).toBeVisible()
     }
   }
 
@@ -330,7 +330,7 @@ class OptimizedTestHelper {
     }
 
     if (!eventsFound) {
-      await expect(this.page.locator('#planning-sup-app')).toBeVisible()
+      await expect(this.page.locator('#planningsup-app')).toBeVisible()
     }
   }
 
@@ -396,7 +396,7 @@ class OptimizedTestHelper {
 
   async checkAccessibility(): Promise<void> {
     // Quick accessibility checks
-    await expect(this.page.locator('#planning-sup-app')).toBeVisible()
+    await expect(this.page.locator('#planningsup-app')).toBeVisible()
 
     // Verify focus management works
     await this.page.keyboard.press('Tab')

@@ -55,7 +55,7 @@ test.describe('Mobile Functionality', () => {
       await helper.switchTheme('dark')
 
       // Verify app remains functional after theme interaction
-      await expect(page.locator('#planning-sup-app')).toBeVisible()
+      await expect(page.locator('#planningsup-app')).toBeVisible()
     })
   })
 
@@ -78,7 +78,7 @@ test.describe('Mobile Functionality', () => {
       })
 
       // Close menu by tapping elsewhere
-      await page.locator('#planning-sup-app').click()
+      await page.locator('#planningsup-app').click()
       await expect(page.locator('#user-dropdown-menu')).not.toBeVisible()
     }
   })
@@ -160,7 +160,7 @@ test.describe('Mobile Functionality', () => {
       await page.locator('#planning-picker-close').click()
 
       // Verify app remains stable and responsive
-      await expect(page.locator('#planning-sup-app')).toBeVisible()
+      await expect(page.locator('#planningsup-app')).toBeVisible()
       await helper.verifyCalendar()
     })
 
@@ -225,7 +225,7 @@ test.describe('Mobile Functionality', () => {
     })
 
     // Verify app remains functional after network issues
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
     await helper.verifyCalendar()
   })
 
@@ -251,7 +251,7 @@ test.describe('Mobile Functionality', () => {
       await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
 
       // Verify app remains functional after theme interaction
-      await expect(page.locator('#planning-sup-app')).toBeVisible()
+      await expect(page.locator('#planningsup-app')).toBeVisible()
 
       // Reload and ensure theme persists
       await page.reload()

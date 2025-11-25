@@ -1,5 +1,8 @@
 # Repository Guidelines
 
+## Overview
+PlanningSup is a french university calendar to help students manage their schedules. It features a PWA with offline support, automatic refresh, and customization options. The backend API serves calendar data converted from ICS.
+
 ## Project Structure & Modules
 - Monorepo with Bun workspaces: `apps/` (API in `apps/api` on Elysia + Drizzle/PostgreSQL; PWA in `apps/web` on Vue 3 + Vite + DaisyUI (Tailwind CSS); desktop and mobile in `apps/app`; browser extension in `apps/extension`) and shared `packages/` (`libs` for lint/TS utilities, `config` for Vite/TS presets).  
 - Tests live in `test/`: unit `*.test.ts`, integration in `test/integration/`, Playwright specs in `test/e2e/`. Shared assets and ICS metadata are in `resources/`. Root docker-compose files drive local and CI stacks.

@@ -9,7 +9,7 @@ test.describe('PlanningSup E2E Tests - Optimized', () => {
     // Use test.step for better granular reporting without separate tests
     await test.step('Verify app loads correctly', async () => {
       await expect(page).toHaveTitle(/PlanningSup/)
-      await expect(page.locator('#planning-sup-app')).toBeVisible()
+      await expect(page.locator('#planningsup-app')).toBeVisible()
       await expect(page.locator('#app-navbar')).toBeVisible()
     })
 
@@ -149,7 +149,7 @@ test.describe('PlanningSup E2E Tests - Optimized', () => {
             }
 
             // Close menu
-            await page.locator('#planning-sup-app').click()
+            await page.locator('#planningsup-app').click()
           } catch {
             // If the menu isn't interactable (auth optional), skip gracefully
           }
@@ -194,7 +194,7 @@ test.describe('PlanningSup E2E Tests - Optimized', () => {
     })
 
     // Verify app remains stable after rapid interactions
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
     await helper.verifyCalendar()
 
     // The fact that the app is still responsive proves stability
