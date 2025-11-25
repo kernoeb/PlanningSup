@@ -25,6 +25,9 @@ onKeyStroke(
     ) {
       return
     }
+    // Prevent the keystroke from inserting "u" into the newly focused search box
+    e.preventDefault()
+    e.stopPropagation()
     planningPicker.value?.open()
   },
   { dedupe: true },
