@@ -46,7 +46,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev": "bun scripts/run dev",
+    "dev": "docker compose up -d --pull always; bun scripts/run dev",
     "build": "bun scripts/run build",
     "test": "bun scripts/run test",
     "test:unit": "bun test test/*.test.ts",
