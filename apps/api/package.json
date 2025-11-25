@@ -13,26 +13,26 @@
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
-    "@elysiajs/cors": "^1.4.0",
-    "@elysiajs/html": "^1.4.0",
-    "@elysiajs/openapi": "^1.4.11",
-    "@elysiajs/static": "^1.4.7",
+    "@elysiajs/cors": "1.4.0",
+    "@elysiajs/html": "1.4.0",
+    "@elysiajs/openapi": "1.4.11",
+    "@elysiajs/static": "1.4.7",
     "@logtape/logtape": "1.2.0",
-    "better-auth": "^1.4.1",
-    "dayjs": "^1.11.19",
-    "drizzle-orm": "^0.44.7",
-    "drizzle-typebox": "^0.3.3",
+    "better-auth": "1.4.2",
+    "dayjs": "1.11.19",
+    "drizzle-orm": "0.44.7",
+    "drizzle-typebox": "0.3.3",
     "elysia": "catalog:",
-    "ical.js": "^2.2.1",
+    "ical.js": "2.2.1",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/eslint-config": "6.2.0",
     "@types/bun": "catalog:types",
     "config": "workspace:*",
-    "drizzle-kit": "^0.31.7",
-    "eslint": "^9.39.1",
-    "pg": "^8.16.3"
+    "drizzle-kit": "0.31.7",
+    "eslint": "9.39.1",
+    "pg": "8.16.3"
   },
   "overrides": {
     "@sinclair/typebox": "0.34"
