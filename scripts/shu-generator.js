@@ -37,20 +37,27 @@ const CONFIG = {
   RPC_ENDPOINT: '/direct/gwtdirectplanning/CorePlanningServiceProxy',
 
   // GWT RPC payload template (DOMAIN and PROJECT_ID will be replaced)
-  RPC_PAYLOAD_TEMPLATE: '7|0|11|DOMAIN/direct/gwtdirectplanning/|AB6CBED41BD6D0AD629E9C452786823C|com.adesoft.gwt.core.client.rpc.CorePlanningServiceProxy|method9getGeneratedUrl|J|java.util.List|java.lang.String/2004016611|java.util.Date/3385151746|java.lang.Integer/3438268394|java.util.ArrayList/4159755760|ical|1|2|3|4|7|5|6|7|8|8|9|9|Zk1T_Cy|10|1|9|PROJECT_ID|11|8|ZkmMXcA|8|Zk_8UMA|9|12|9|8|',
+  RPC_PAYLOAD_TEMPLATE: '7|0|11|DOMAIN/direct/gwtdirectplanning/|AB6CBED41BD6D0AD629E9C452786823C|com.adesoft.gwt.core.client.rpc.CorePlanningServiceProxy|method9getGeneratedUrl|J|java.util.List|java.lang.String/2004016611|java.util.Date/3385151746|java.lang.Integer/3438268394|java.util.ArrayList/4159755760|ical|1|2|3|4|7|5|6|7|8|8|9|9|ZptuO4Q|10|1|9|PROJECT_ID|11|8|Zpq2QmA|8|ZqJvzGA|9|1|9|8|',
 
   // Request settings
   REQUEST_DELAY_MS: 100,
+  RETRY_DELAY_MS: 500,
 
   // File patterns
   URL_PATTERN: /resources=(\d+)/,
   SHU_RESPONSE_PATTERN: /\/\/OK\[1,\["([^"]+\.shu)"\]/,
+  MAX_RETRIES: 10,
 }
 
 // Function to extract projectId from URL
 function extractProjectId(url) {
   const match = url.match(CONFIG.URL_PATTERN)
   return match ? match[1] : null
+}
+
+// Some responses return /plannings/.shu (missing filename); detect so we can retry.
+function isIncompleteShuUrl(url) {
+  return typeof url === 'string' && url.includes('/plannings/.shu')
 }
 
 // Function to make the curl request and get .shu URL
@@ -90,6 +97,10 @@ async function getShuUrl(projectId) {
   }
 }
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 // Function to recursively process and replace URLs in the planning structure
 async function processEdtUrls(planningObject, stats) {
   if (planningObject.url) {
@@ -98,7 +109,23 @@ async function processEdtUrls(planningObject, stats) {
     if (projectId) {
       console.log(`Processing ${planningObject.title} (ID: ${planningObject.id}) with projectId: ${projectId}`)
 
-      const shuUrl = await getShuUrl(projectId)
+      let shuUrl = null
+      for (let attempt = 1; attempt <= CONFIG.MAX_RETRIES; attempt++) {
+        const candidate = await getShuUrl(projectId)
+
+        if (candidate && !isIncompleteShuUrl(candidate)) {
+          shuUrl = candidate
+          break
+        }
+
+        const reason = candidate ? 'incomplete .shu URL' : 'empty response'
+        console.log(`Attempt ${attempt}/${CONFIG.MAX_RETRIES} failed (${reason}).`)
+
+        if (attempt < CONFIG.MAX_RETRIES) {
+          console.log(`Retrying in ${CONFIG.RETRY_DELAY_MS}ms...`)
+          await delay(CONFIG.RETRY_DELAY_MS)
+        }
+      }
 
       if (shuUrl) {
         // Replace the URL in place
@@ -111,7 +138,7 @@ async function processEdtUrls(planningObject, stats) {
       }
 
       // Add a small delay to avoid overwhelming the server
-      await new Promise(resolve => setTimeout(resolve, CONFIG.REQUEST_DELAY_MS))
+      await delay(CONFIG.REQUEST_DELAY_MS)
     } else {
       console.log(`Could not extract projectId from URL: ${planningObject.url}`)
       stats.failed++
