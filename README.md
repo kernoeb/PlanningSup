@@ -101,7 +101,7 @@ TRUSTED_ORIGINS=https://planningsup.app
 
 ## Donateurs
 
-- [Ewennn](https://github.com/Ewennnn) (merci️, le goat)
+- [Ewennn](https://github.com/Ewennnn)
 - [W00dy](https://github.com/0xW00dy)
 - [Rick](https://github.com/rick-gnous)
 - [Lahgolz](https://twitter.com/lahgolzmiin)
