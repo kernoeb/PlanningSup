@@ -676,8 +676,8 @@
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/AWvLpPYP.shu"
                         },
                         {
-                          "id": "prr_g8",
-                          "title": "PRR_G8",
+                          "id": "prr_g8_2",
+                          "title": "PRR_G8_2",
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/rY68ENWz.shu"
                         }
                       ]
@@ -2610,11 +2610,6 @@
                   ]
                 },
                 {
-                  "id": "mineureacf",
-                  "title": "Mineure ACF",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8Kl0Y8.shu"
-                },
-                {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
                   "children": [
@@ -3128,17 +3123,6 @@
                   ]
                 },
                 {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "children": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/V3LyP8YA.shu"
-                    }
-                  ]
-                },
-                {
                   "id": "mineurewe",
                   "title": "Mineure WE",
                   "children": [
@@ -3355,11 +3339,6 @@
                   "id": "m1sifima",
                   "title": "M1 SIF IMA",
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/V3LyBPYA.shu"
-                },
-                {
-                  "id": "m1sifitr",
-                  "title": "M1 SIF ITR",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/XnmJLNWr.shu"
                 },
                 {
                   "id": "m1sifinnovationetproprieteintellectuelle",
