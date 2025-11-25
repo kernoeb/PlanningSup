@@ -1,14 +1,14 @@
 {
   "title": "Université de Rennes - Faculté des Sciences",
-  "edts": [
+  "children": [
     {
       "id": "autresbiologie",
       "title": "Autres Biologie",
-      "edts": [
+      "children": [
         {
           "id": "autresformations",
           "title": "Autres formations",
-          "edts": [
+          "children": [
             {
               "id": "cea-applicateurs",
               "title": "CEA -applicateurs",
@@ -49,7 +49,7 @@
         {
           "id": "cmtdtpauchoix",
           "title": "CM, TD, TP au choix",
-          "edts": [
+          "children": [
             {
               "id": "ccauchoix",
               "title": "CC au choix",
@@ -75,19 +75,19 @@
         {
           "id": "licences",
           "title": "LICENCES",
-          "edts": [
+          "children": [
             {
               "id": "langueslv2",
               "title": "LANGUES LV2",
-              "edts": [
+              "children": [
                 {
                   "id": "l1",
                   "title": "L1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemand",
                       "title": "Allemand",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l1allbecv",
                           "title": "L1 ALL BECV",
@@ -98,7 +98,7 @@
                     {
                       "id": "espagnol",
                       "title": "Espagnol",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l1espbecvg1",
                           "title": "L1 Esp BECV G1",
@@ -121,11 +121,11 @@
                 {
                   "id": "l2",
                   "title": "L2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemand",
                       "title": "Allemand",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l2allsveg1",
                           "title": "L2 All SVE G1",
@@ -141,7 +141,7 @@
                     {
                       "id": "espagnol",
                       "title": "Espagnol",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l2espsveg1",
                           "title": "L2 Esp SVE G1",
@@ -159,11 +159,11 @@
                 {
                   "id": "l3",
                   "title": "L3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemand",
                       "title": "Allemand",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l3allsve",
                           "title": "L3 All SVE",
@@ -174,7 +174,7 @@
                     {
                       "id": "espagnol",
                       "title": "Espagnol",
-                      "edts": [
+                      "children": [
                         {
                           "id": "l3espsve",
                           "title": "L3 Esp SVE",
@@ -191,7 +191,7 @@
         {
           "id": "univrennes2",
           "title": "UNIV RENNES 2",
-          "edts": [
+          "children": [
             {
               "id": "ora-orienterreflechiretagir",
               "title": "ORA-Orienter, Réfléchir et Agir",
@@ -200,11 +200,11 @@
             {
               "id": "psychologiel1-l2-l3",
               "title": "Psychologie L1-L2-L3",
-              "edts": [
+              "children": [
                 {
                   "id": "l1psycho",
                   "title": "L1 psycho",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdgr01",
                       "title": "TD gr01",
@@ -280,7 +280,7 @@
                 {
                   "id": "l2psycho",
                   "title": "L2 psycho",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l2majeures3-s4",
                       "title": "L2 Majeure S3-S4",
@@ -351,7 +351,7 @@
                 {
                   "id": "l3psycho",
                   "title": "L3 Psycho",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3mineuredecomplements5-s6",
                       "title": "L3 Mineure de complément S5-S6",
@@ -374,7 +374,7 @@
             {
               "id": "psychologiem1s2",
               "title": "Psychologie M1 S2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1psycho",
                   "title": "M1 Psycho",
@@ -389,7 +389,7 @@
     {
       "id": "dupareo",
       "title": "DU PaRéO",
-      "edts": [
+      "children": [
         {
           "id": "semestre1",
           "title": "Semestre 1",
@@ -405,19 +405,19 @@
     {
       "id": "licences1",
       "title": "LICENCES 1",
-      "edts": [
+      "children": [
         {
           "id": "l1pcstm",
           "title": "L1  PCSTM",
-          "edts": [
+          "children": [
             {
               "id": "groupeslangues",
               "title": "Groupes Langues",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand",
                   "title": "Allemand",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe1-allemand-l1pcstm",
                       "title": "Groupe 1 - Allemand - L1PCSTM",
@@ -433,7 +433,7 @@
                 {
                   "id": "anglais",
                   "title": "Anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea-anglais-l1pcstm-creneau13h15-14h45",
                       "title": "Groupe A - Anglais - L1PCSTM - créneau 13h15-14h45",
@@ -499,7 +499,7 @@
                 {
                   "id": "espagnol",
                   "title": "Espagnol",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe1-espagnol-l1pcstm",
                       "title": "Groupe 1 - Espagnol - L1PCSTM",
@@ -522,15 +522,15 @@
             {
               "id": "l1pcstm-s1",
               "title": "L1 PCSTM - S1",
-              "edts": [
+              "children": [
                 {
                   "id": "l1pcstms1",
                   "title": "L1 PCSTM S1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe01",
                       "title": "Groupe 01",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe01ouisi",
                           "title": "Groupe 01 OUI SI",
@@ -551,7 +551,7 @@
                     {
                       "id": "groupe03",
                       "title": "Groupe 03",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe03",
                           "title": "Groupe 03",
@@ -562,7 +562,7 @@
                     {
                       "id": "groupe04",
                       "title": "Groupe 04",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe04defi",
                           "title": "Groupe 04 DEFI",
@@ -583,7 +583,7 @@
                     {
                       "id": "groupe06",
                       "title": "Groupe 06",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe06",
                           "title": "Groupe 06",
@@ -594,7 +594,7 @@
                     {
                       "id": "groupe07",
                       "title": "Groupe 07",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe07",
                           "title": "Groupe 07",
@@ -610,7 +610,7 @@
                     {
                       "id": "groupe09",
                       "title": "Groupe 09",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe09",
                           "title": "Groupe 09",
@@ -633,7 +633,7 @@
                 {
                   "id": "mineures",
                   "title": "Mineures",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureastrophysique",
                       "title": "Mineure Astrophysique",
@@ -642,11 +642,11 @@
                     {
                       "id": "mineureingenieriemecanique",
                       "title": "Mineure Ingenierie Mécanique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupedetd",
                           "title": "Groupe de TD",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tdimgroupe1",
                               "title": "TD IM Groupe 1",
@@ -662,7 +662,7 @@
                         {
                           "id": "groupedetp",
                           "title": "Groupe de TP",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpimgroupea",
                               "title": "TP IM Groupe A",
@@ -722,7 +722,7 @@
                 {
                   "id": "revisions",
                   "title": "Révisions",
-                  "edts": [
+                  "children": [
                     {
                       "id": "revisionlibresencadreesdsdc",
                       "title": "Révision libres encadrées DSDC",
@@ -735,15 +735,15 @@
             {
               "id": "l1pcstm-s2",
               "title": "L1 PCSTM - S2",
-              "edts": [
+              "children": [
                 {
                   "id": "l1pcstms2",
                   "title": "L1 PCSTM S2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupe01",
                       "title": "Groupe 01",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe01ouisi",
                           "title": "Groupe 01 OUI SI",
@@ -759,7 +759,7 @@
                     {
                       "id": "groupe02",
                       "title": "Groupe 02",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe2parcoursdme",
                           "title": "Groupe 2 parcours DME",
@@ -775,7 +775,7 @@
                     {
                       "id": "groupe03",
                       "title": "Groupe 03",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe03parcoursdme",
                           "title": "Groupe 03 parcours DME",
@@ -791,7 +791,7 @@
                     {
                       "id": "groupe04",
                       "title": "Groupe 04",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe04defi",
                           "title": "Groupe 04 DEFI",
@@ -807,7 +807,7 @@
                     {
                       "id": "groupe05",
                       "title": "Groupe 05",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe05espagnol",
                           "title": "Groupe 05 Espagnol",
@@ -823,7 +823,7 @@
                     {
                       "id": "groupe06",
                       "title": "Groupe 06",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe06",
                           "title": "Groupe 06",
@@ -834,7 +834,7 @@
                     {
                       "id": "groupe07",
                       "title": "Groupe 07",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe07",
                           "title": "Groupe 07",
@@ -845,7 +845,7 @@
                     {
                       "id": "groupe08",
                       "title": "Groupe 08",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe08espagnol",
                           "title": "Groupe 08 Espagnol",
@@ -861,7 +861,7 @@
                     {
                       "id": "groupe09",
                       "title": "Groupe 09",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupe09dme",
                           "title": "Groupe 09 DME",
@@ -879,11 +879,11 @@
                 {
                   "id": "mineures",
                   "title": "Mineures",
-                  "edts": [
+                  "children": [
                     {
                       "id": "minchimieexperimentale",
                       "title": "MIN Chimie expérimentale",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minchimieexperimentalegroupea",
                           "title": "MIN Chimie expérimentale Groupe A",
@@ -899,7 +899,7 @@
                     {
                       "id": "minchimieexperimentaleavancee",
                       "title": "MIN Chimie expérimentale avancée",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minchimieexperimentaleavancee",
                           "title": "MIN Chimie expérimentale avancée",
@@ -910,7 +910,7 @@
                     {
                       "id": "mininteractionsmoleculaires",
                       "title": "MIN Interactions Moléculaires",
-                      "edts": [
+                      "children": [
                         {
                           "id": "mininteractionsmoleculaires",
                           "title": "MIN Interactions Moléculaires",
@@ -921,7 +921,7 @@
                     {
                       "id": "minlesmathematiquesparlaphysique",
                       "title": "MIN Les mathématiques par la Physique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minlesmathematiquesparlaphysiquegrp1",
                           "title": "MIN Les mathématiques par la Physique Grp 1",
@@ -937,7 +937,7 @@
                     {
                       "id": "minmecaniqueetfluides:interactionsfluide-structure",
                       "title": "MIN Mécanique et fluides : Interactions fluide-structure",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minmecaniqueetfluides:interactionsfluide-structure",
                           "title": "MIN Mécanique et fluides : Interactions fluide-structure",
@@ -948,7 +948,7 @@
                     {
                       "id": "minmecaniqueetmateriaux:choixdesmateriaux",
                       "title": "MIN Mécanique et matériaux : Choix des matériaux",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minmecaniqueetmateriaux:choixdesmateriauxgroupe1",
                           "title": "MIN Mécanique et matériaux : Choix des matériaux Groupe 1",
@@ -964,7 +964,7 @@
                     {
                       "id": "minstetressourcesnaturelles-materiauxetmetaux",
                       "title": "MIN ST et Ressources naturelles- Matériaux et Métaux",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minstetressourcesnaturelles-materiauxetmetaux",
                           "title": "MIN ST et Ressources naturelles- Matériaux et Métaux",
@@ -975,7 +975,7 @@
                     {
                       "id": "minstetressourcesnaturelles-eauetenergies",
                       "title": "MIN ST et Ressources naturelles-Eau et Energies",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minstetressourcesnaturelles-eauetenergies",
                           "title": "MIN ST et Ressources naturelles-Eau et Energies",
@@ -986,7 +986,7 @@
                     {
                       "id": "minstructuresmathematiquespourlaphysique",
                       "title": "MIN Structures mathématiques pour la physique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "minstructuresmathematiquespourlaphysiquegrp1",
                           "title": "MIN Structures mathématiques pour la physique Grp1",
@@ -1008,11 +1008,11 @@
         {
           "id": "l1becv",
           "title": "L1 BECV",
-          "edts": [
+          "children": [
             {
               "id": "rentreedu1au12septembre",
               "title": "Rentrée du 1 au 12 septembre",
-              "edts": [
+              "children": [
                 {
                   "id": "becvetudiantsa-i",
                   "title": "BECV Etudiants A-I",
@@ -1046,7 +1046,7 @@
                 {
                   "id": "groupesrentree",
                   "title": "GROUPES Rentrée",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grr01",
                       "title": "GR R 01",
@@ -1204,11 +1204,11 @@
             {
               "id": "s1l1apartirdu15-09",
               "title": "S1 L1 (à partir du 15-09)",
-              "edts": [
+              "children": [
                 {
                   "id": "gr01si-etho-rev38",
                   "title": "Gr 01 (SI) - ETHO-REV (38)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr01a-etho20",
                       "title": "Gr 01a - ETHO (20)",
@@ -1224,7 +1224,7 @@
                 {
                   "id": "gr02si-etho-rev38",
                   "title": "Gr 02 (SI) - ETHO-REV (38)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr02a-etho22",
                       "title": "Gr 02a - ETHO (22)",
@@ -1240,7 +1240,7 @@
                 {
                   "id": "gr03-etho-rev-ia30",
                   "title": "Gr 03 - ETHO-REV-IA (30)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr03a-etho-ia12",
                       "title": "Gr 03a - ETHO-IA (12)",
@@ -1256,7 +1256,7 @@
                 {
                   "id": "gr04-matrdontouisi40",
                   "title": "Gr 04 - MATR dont Oui si (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr04a-matr20dontouisi",
                       "title": "Gr 04a - MATR (20) dont Oui si",
@@ -1272,7 +1272,7 @@
                 {
                   "id": "gr05-etho-rev40",
                   "title": "Gr 05 - ETHO- REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr05a-etho18",
                       "title": "Gr 05a - ETHO (18)",
@@ -1288,7 +1288,7 @@
                 {
                   "id": "gr06-matr-etho40",
                   "title": "Gr 06 - MATR-ETHO (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr06a-matr20",
                       "title": "Gr 06a - MATR (20)",
@@ -1304,7 +1304,7 @@
                 {
                   "id": "gr07-matr40",
                   "title": "Gr 07 - MATR (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr07a-matr20",
                       "title": "Gr 07a - MATR (20)",
@@ -1320,7 +1320,7 @@
                 {
                   "id": "gr08etho-rev40",
                   "title": "Gr 08 ETHO-REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr08a-etho14",
                       "title": "Gr 08a - ETHO (14)",
@@ -1336,7 +1336,7 @@
                 {
                   "id": "gr09las40",
                   "title": "Gr 09 L.AS (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr09a20",
                       "title": "Gr 09a (20)",
@@ -1352,7 +1352,7 @@
                 {
                   "id": "gr10las40",
                   "title": "Gr 10 L.AS (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr10a20",
                       "title": "Gr 10a (20)",
@@ -1368,7 +1368,7 @@
                 {
                   "id": "gr11las40",
                   "title": "Gr 11 L.AS (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr11a20",
                       "title": "Gr 11a (20)",
@@ -1384,7 +1384,7 @@
                 {
                   "id": "gr12las40",
                   "title": "Gr 12 L.AS (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr12a20",
                       "title": "Gr 12a (20)",
@@ -1400,7 +1400,7 @@
                 {
                   "id": "gr13-etho40",
                   "title": "Gr 13 - ETHO (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr13a-etho10",
                       "title": "Gr 13a - ETHO (10)",
@@ -1416,7 +1416,7 @@
                 {
                   "id": "gr14-matr-rev40",
                   "title": "Gr 14 - MATR-REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr14a-matr20",
                       "title": "Gr 14a - MATR (20)",
@@ -1432,7 +1432,7 @@
                 {
                   "id": "gr15-matr-rev40",
                   "title": "Gr 15 - MATR-REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr15a-matr20",
                       "title": "Gr 15a - MATR (20)",
@@ -1448,7 +1448,7 @@
                 {
                   "id": "gr16-rev40",
                   "title": "Gr 16 - REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr16a-rev10",
                       "title": "Gr 16a - REV (10)",
@@ -1464,7 +1464,7 @@
                 {
                   "id": "gr17-etho40",
                   "title": "Gr 17 - ETHO (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr17a-etho15",
                       "title": "Gr 17a - ETHO (15)",
@@ -1480,7 +1480,7 @@
                 {
                   "id": "gr18-rev40",
                   "title": "Gr 18 - REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr18a-rev18",
                       "title": "Gr 18a - REV (18)",
@@ -1496,7 +1496,7 @@
                 {
                   "id": "gr19-etho-rev40",
                   "title": "Gr 19 - ETHO-REV (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr19a-etho20",
                       "title": "Gr 19a - ETHO (20)",
@@ -1517,7 +1517,7 @@
                 {
                   "id": "gr20-etho",
                   "title": "Gr 20 -ETHO",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr20a20",
                       "title": "Gr 20a (20)",
@@ -1535,11 +1535,11 @@
             {
               "id": "s2l1",
               "title": "S2 L1",
-              "edts": [
+              "children": [
                 {
                   "id": "gr01si-",
                   "title": "GR01 SI -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1a-",
                       "title": "1a -",
@@ -1550,7 +1550,7 @@
                 {
                   "id": "gr02si-",
                   "title": "GR02 SI -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2a-",
                       "title": "2a -",
@@ -1596,7 +1596,7 @@
                 {
                   "id": "gr03biomia-",
                   "title": "GR03 BioMIA -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3a-",
                       "title": "3a -",
@@ -1627,7 +1627,7 @@
                 {
                   "id": "gr04-",
                   "title": "GR04 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "4a-",
                       "title": "4a -",
@@ -1668,7 +1668,7 @@
                 {
                   "id": "gr05-",
                   "title": "GR05 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "5a-",
                       "title": "5a -",
@@ -1704,7 +1704,7 @@
                 {
                   "id": "gr06-",
                   "title": "GR06 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "6a-",
                       "title": "6a -",
@@ -1735,7 +1735,7 @@
                 {
                   "id": "gr07-",
                   "title": "GR07 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "7a-",
                       "title": "7a -",
@@ -1756,7 +1756,7 @@
                 {
                   "id": "gr08-",
                   "title": "GR08 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "8a-",
                       "title": "8a -",
@@ -1777,7 +1777,7 @@
                 {
                   "id": "gr09las",
                   "title": "GR09 (L.AS)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "9a-",
                       "title": "9a -",
@@ -1798,7 +1798,7 @@
                 {
                   "id": "gr10las",
                   "title": "GR10 (L.AS)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "10a-",
                       "title": "10a -",
@@ -1819,7 +1819,7 @@
                 {
                   "id": "gr11las",
                   "title": "GR11 (L.AS)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "11a-",
                       "title": "11a -",
@@ -1835,7 +1835,7 @@
                 {
                   "id": "gr12las",
                   "title": "GR12 (L.AS)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "12a-",
                       "title": "12a -",
@@ -1851,7 +1851,7 @@
                 {
                   "id": "gr13-",
                   "title": "GR13 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "13a-",
                       "title": "13a -",
@@ -1872,7 +1872,7 @@
                 {
                   "id": "gr14-",
                   "title": "GR14 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "14a-",
                       "title": "14a -",
@@ -1888,7 +1888,7 @@
                 {
                   "id": "gr15-",
                   "title": "GR15 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "15a-",
                       "title": "15a -",
@@ -1909,7 +1909,7 @@
                 {
                   "id": "gr16-",
                   "title": "GR16 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "16a-",
                       "title": "16a -",
@@ -1930,7 +1930,7 @@
                 {
                   "id": "gr17-",
                   "title": "GR17 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "17a-",
                       "title": "17a -",
@@ -1951,7 +1951,7 @@
                 {
                   "id": "gr18-",
                   "title": "GR18 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "18a-",
                       "title": "18a -",
@@ -1972,7 +1972,7 @@
                 {
                   "id": "gr19-",
                   "title": "GR19 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "19a-",
                       "title": "19a -",
@@ -1993,7 +1993,7 @@
                 {
                   "id": "gr20-",
                   "title": "GR20 -",
-                  "edts": [
+                  "children": [
                     {
                       "id": "20a-",
                       "title": "20a -",
@@ -2018,7 +2018,7 @@
         {
           "id": "l1cpes",
           "title": "L1 CPES",
-          "edts": [
+          "children": [
             {
               "id": "l1cpes",
               "title": "L1 CPES",
@@ -2029,11 +2029,11 @@
         {
           "id": "l1-maths",
           "title": "L1-MATHS",
-          "edts": [
+          "children": [
             {
               "id": "langues",
               "title": "LANGUES",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand1l1maths",
                   "title": "Allemand 1 L1 Maths",
@@ -2094,11 +2094,11 @@
             {
               "id": "parmoduless1",
               "title": "Par MODULES S1",
-              "edts": [
+              "children": [
                 {
                   "id": "3pe-projetpersonnelprofessionnel",
                   "title": "3PE-Projet personnel professionnel",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3pe",
                       "title": "3PE",
@@ -2109,7 +2109,7 @@
                 {
                   "id": "an1-analyse1",
                   "title": "AN1-Analyse 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "an1-gr1",
                       "title": "AN1-Gr1",
@@ -2135,7 +2135,7 @@
                 {
                   "id": "ar1-algebreetarithmetique1",
                   "title": "AR1-Algèbre et arithmétique 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ar1-gr1",
                       "title": "AR1-Gr1",
@@ -2161,7 +2161,7 @@
                 {
                   "id": "calm1-soutienenmathematiques",
                   "title": "CALM1-Soutien en mathématiques",
-                  "edts": [
+                  "children": [
                     {
                       "id": "calm1",
                       "title": "CALM1",
@@ -2172,7 +2172,7 @@
                 {
                   "id": "cmd1-complementsmathematiquesdefi1",
                   "title": "CMD1-Compléments mathématiques Défi 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cmd1-gr1",
                       "title": "CMD1-Gr1",
@@ -2188,7 +2188,7 @@
                 {
                   "id": "ipi-introductionalaprogrammationimperative",
                   "title": "IPI-Introduction à la programmation impérative",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ipi-gr1",
                       "title": "IPI-Gr1",
@@ -2204,7 +2204,7 @@
                 {
                   "id": "isa-introductionauxstructuresalgebriques",
                   "title": "ISA-Introduction aux structures algébriques",
-                  "edts": [
+                  "children": [
                     {
                       "id": "isa-gr1",
                       "title": "ISA-Gr1",
@@ -2230,7 +2230,7 @@
                 {
                   "id": "mage-mathematiquesgenerales",
                   "title": "MAGE-Mathématiques Générales",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mage",
                       "title": "MAGE",
@@ -2241,7 +2241,7 @@
                 {
                   "id": "mom-modelisationmathematique",
                   "title": "MOM-Modélisation mathématique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mom-gr1",
                       "title": "MOM-Gr1",
@@ -2272,11 +2272,11 @@
                 {
                   "id": "ph1-physique1",
                   "title": "PH1-Physique 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "electricite",
                       "title": "ELECTRICITE",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ph1b-electricitegr1",
                           "title": "PH1B-Electricité Gr1",
@@ -2297,7 +2297,7 @@
                     {
                       "id": "optique",
                       "title": "OPTIQUE",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ph1a-optiquegr1",
                           "title": "PH1A-Optique Gr1",
@@ -2320,7 +2320,7 @@
                 {
                   "id": "tes-enjeuxetdefisdelatransitionecologiqueetsociale",
                   "title": "TES-Enjeux et Défis de la Transition Ecologique et Sociale",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tes",
                       "title": "TES",
@@ -2333,11 +2333,11 @@
             {
               "id": "parmoduless2",
               "title": "Par MODULES S2",
-              "edts": [
+              "children": [
                 {
                   "id": "ag2-algebreetgeometrie2",
                   "title": "AG2 - Algèbre et géométrie 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ag2-gr1",
                       "title": "AG2-Gr1",
@@ -2368,7 +2368,7 @@
                 {
                   "id": "ap2-analyseetprobabilites2",
                   "title": "AP2 - Analyse et probabilités 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ap2-gr1",
                       "title": "AP2-Gr1",
@@ -2394,7 +2394,7 @@
                 {
                   "id": "calm2-soutienenmathematiques",
                   "title": "CALM2-Soutien en mathématiques",
-                  "edts": [
+                  "children": [
                     {
                       "id": "calm2",
                       "title": "CALM2",
@@ -2405,7 +2405,7 @@
                 {
                   "id": "cmd2-complementsmathematiquesdefi2",
                   "title": "CMD2-Compléments mathématiques Défi 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cmd2-gr1",
                       "title": "CMD2-Gr1",
@@ -2421,7 +2421,7 @@
                 {
                   "id": "dmm1-decouvertedesmetiersdesmathematiques1",
                   "title": "DMM1-Découverte des métiers des mathématiques 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "dmm1",
                       "title": "DMM1",
@@ -2432,7 +2432,7 @@
                 {
                   "id": "ipf-initiationalaprogrammationfonctionnelle",
                   "title": "IPF - Initiation à la programmation fonctionnelle",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ipf-gr1",
                       "title": "IPF-Gr1",
@@ -2448,7 +2448,7 @@
                 {
                   "id": "oi-outilsinformatiques",
                   "title": "OI-Outils informatiques",
-                  "edts": [
+                  "children": [
                     {
                       "id": "oi-gr1",
                       "title": "OI-Gr1",
@@ -2474,11 +2474,11 @@
                 {
                   "id": "ph2-physique2",
                   "title": "PH2 - Physique 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ph2-mecanique",
                       "title": "PH2-Mécanique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ph2-mecaniquegr1",
                           "title": "PH2-Mécanique Gr1",
@@ -2499,7 +2499,7 @@
                     {
                       "id": "ph2-oscillateur",
                       "title": "PH2-Oscillateur",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ph2-oscillateurgr1",
                           "title": "PH2-Oscillateur Gr1",
@@ -2524,7 +2524,7 @@
             {
               "id": "pargroupe",
               "title": "Par groupe",
-              "edts": [
+              "children": [
                 {
                   "id": "ma1-defi",
                   "title": "MA1-DEFI",
@@ -2564,15 +2564,15 @@
     {
       "id": "licences2",
       "title": "LICENCES 2",
-      "edts": [
+      "children": [
         {
           "id": "l2bio-bmcp",
           "title": "L2 BIO - BMCP",
-          "edts": [
+          "children": [
             {
               "id": "s3bmcp284",
               "title": "S3 BMCP (284)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudiantsbmcpenlv2semestre3",
                   "title": "Etudiants BMCP en LV2 (semestre3)",
@@ -2581,7 +2581,7 @@
                 {
                   "id": "gr1bmcpleglaslv234dont8sansmineure",
                   "title": "Gr 1 BMCP LEG LAS LV2 (34) dont 8 sans mineure",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1abmcpleglas17dont4sansmineure",
                       "title": "Gr1a BMCP LEG LAS (17) dont 4 sans mineure",
@@ -2597,7 +2597,7 @@
                 {
                   "id": "gr2bmcpleglaslv2os34dont2sansmineure",
                   "title": "Gr 2 BMCP LEG LAS LV2 OS (34) dont 2 sans mineure",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr2abmcpleg17dont4sansmineure",
                       "title": "Gr2a BMCP LEG (17) dont 4 sans mineure",
@@ -2618,7 +2618,7 @@
                 {
                   "id": "gr3bmcpnemlas34dont4sansmineure",
                   "title": "Gr 3 BMCP NEM LAS (34) dont 4 sans mineure",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr3abmcpnemlas17dont2sansmineure",
                       "title": "Gr3a BMCP NEM LAS (17) dont 2 sans mineure",
@@ -2634,7 +2634,7 @@
                 {
                   "id": "gr4bmcpnemlasos33",
                   "title": "Gr 4 BMCP NEM LAS OS (33)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr4abmcpnemlas17dont2sansmineure",
                       "title": "Gr4a BMCP NEM LAS (17) dont 2 sans mineure",
@@ -2650,7 +2650,7 @@
                 {
                   "id": "gr5bmcpnemlas33",
                   "title": "Gr 5 BMCP NEM LAS (33)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr5abmcpnemlas16",
                       "title": "Gr5a BMCP NEM LAS (16)",
@@ -2671,7 +2671,7 @@
                 {
                   "id": "gr6bmcpsilegnemlv217demi-groupe",
                   "title": "Gr 6 BMCP SI LEG NEM LV2 (17) demi-groupe",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr6abmcp-sileglv28dont1lv2",
                       "title": "Gr6a BMCP-SI LEG LV2 (8) dont 1 LV2",
@@ -2687,7 +2687,7 @@
                 {
                   "id": "gr7bmcpreopelas34",
                   "title": "Gr 7 BMCP REO PE LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr7abmcpreolas18",
                       "title": "Gr7a BMCP REO LAS (18)",
@@ -2708,7 +2708,7 @@
                 {
                   "id": "gr8bmcpbtaprepa32las",
                   "title": "Gr 8 BMCP BTA prépa (32) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr8abmcpbtalas16",
                       "title": "Gr8a BMCP BTA LAS (16)",
@@ -2729,7 +2729,7 @@
                 {
                   "id": "gr9bmcpbiomia30las",
                   "title": "Gr 9 BMCP BioMIA (30) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr9abmcpbiomia11",
                       "title": "Gr9a BMCP BioMIA (11)",
@@ -2752,7 +2752,7 @@
             {
               "id": "s4bmcp233",
               "title": "S4 BMCP (233)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudiantsbmcpenlv2semestre4",
                   "title": "Etudiants BMCP en LV2 (semestre 4)",
@@ -2761,7 +2761,7 @@
                 {
                   "id": "gr1bmcpdiglas34",
                   "title": "Gr 1 BMCP DIG LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1abmcpdiglas17",
                       "title": "1a BMCP DIG LAS (17)",
@@ -2777,7 +2777,7 @@
                 {
                   "id": "gr2bmcpdiglas34",
                   "title": "Gr 2 BMCP DIG LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2abmcpdiglas17",
                       "title": "2a BMCP DIG LAS (17)",
@@ -2793,7 +2793,7 @@
                 {
                   "id": "gr3bmcpcasggeoslas33",
                   "title": "Gr 3 BMCP CAS GGE OS LAS (33)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3abmcpcasoslas16dont3osintegre",
                       "title": "3a BMCP CAS OS LAS (16) dont 3 OS intégré",
@@ -2809,7 +2809,7 @@
                 {
                   "id": "gr4bmcpbdepeoslas34",
                   "title": "Gr 4 BMCP BDE PE OS LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "4abmcpbde17dont3osintegrelas",
                       "title": "4a BMCP BDE (17) dont 3 OS integré LAS",
@@ -2830,7 +2830,7 @@
                 {
                   "id": "gr5bmcpgge34",
                   "title": "Gr 5 BMCP GGE (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "5abmcpgge17",
                       "title": "5a BMCP GGE (17)",
@@ -2846,7 +2846,7 @@
                 {
                   "id": "gr6bmcpnabpb1oslas34",
                   "title": "Gr 6 BMCP NAB PB1 OS LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "6abmcpnablas17",
                       "title": "6a BMCP NAB LAS (17)",
@@ -2867,7 +2867,7 @@
                 {
                   "id": "gr7bmcpnaboslas34",
                   "title": "Gr 7 BMCP NAB OS LAS (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "7abmcpnab17",
                       "title": "7a BMCP NAB (17)",
@@ -2888,7 +2888,7 @@
                 {
                   "id": "gr8bmcpbiomiaggebdenabsilv235",
                   "title": "Gr 8 BMCP BioMIA GGE BDE NAB SI LV2 (35)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "8abmcpbiomiagge7",
                       "title": "8a BMCP BioMIA GGE (7)",
@@ -2928,11 +2928,11 @@
         {
           "id": "l2bio-bo3e",
           "title": "L2 BIO - BO3E",
-          "edts": [
+          "children": [
             {
               "id": "s3bo3e246",
               "title": "S3 BO3E (246)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudiantsbo3eenlv2semestre3",
                   "title": "Etudiants BO3E en LV2 (semestre 3)",
@@ -2941,7 +2941,7 @@
                 {
                   "id": "gr1bo3eois234",
                   "title": "Gr 1 BO3E OIS2 (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1abo3eois217",
                       "title": "Gr1a BO3E OIS2 (17)",
@@ -2957,7 +2957,7 @@
                 {
                   "id": "gr2bo3eois234las",
                   "title": "Gr 2 BO3E OIS2 (34) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr2abo3eois217las",
                       "title": "Gr2a BO3E OIS2 (17) LAS",
@@ -2973,7 +2973,7 @@
                 {
                   "id": "gr3bo3elv2ois2ois1-sae32",
                   "title": "Gr 3 BO3E LV2 OIS2 OIS1-SAE (32)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr3abo3e-lv2ois23",
                       "title": "Gr3a BO3E-LV2 OIS2 (3)",
@@ -2994,7 +2994,7 @@
                 {
                   "id": "gr4boeois1-emt32las",
                   "title": "Gr 4 BOE OIS1-EMT (32) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr4abo3eois1-emt15",
                       "title": "Gr4a BO3E OIS1-EMT (15)",
@@ -3020,7 +3020,7 @@
                 {
                   "id": "gr5bo3elv2emt-saeprepa31las",
                   "title": "Gr 5 BO3E LV2 EMT-SAE Prépa (31) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr5abo3eemt-saeprepa3",
                       "title": "Gr5a BO3E EMT-SAE Prépa (3)",
@@ -3041,7 +3041,7 @@
                 {
                   "id": "gr6bo3elv2siois2ois1-emt35",
                   "title": "Gr 6 BO3E LV2 SI OIS2 OIS1-EMT (35)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr6abo3e-siois219lv2",
                       "title": "Gr6a BO3E-SI OIS2 (19) LV2",
@@ -3057,7 +3057,7 @@
                 {
                   "id": "gr7bo3ebiomia19",
                   "title": "Gr 7 BO3E BioMIA (19)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr7abo3ebiomia7",
                       "title": "Gr7a BO3E BioMIA (7)",
@@ -3080,7 +3080,7 @@
             {
               "id": "s4bo3e256",
               "title": "S4 BO3E (256)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudiantbo3eenlv2semestre4",
                   "title": "Etudiant BO3E en LV2 (semestre 4)",
@@ -3089,7 +3089,7 @@
                 {
                   "id": "gr1bo3edscdofpe34",
                   "title": "Gr 1 BO3E DSC DOF PE (34)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1abo3edscdof17",
                       "title": "1a BO3E DSC DOF (17)",
@@ -3105,7 +3105,7 @@
                 {
                   "id": "gr2bo3edscdoffevsportabipb132las",
                   "title": "Gr 2 BO3E DSC DOF FEV SPORT ABI PB1 (32) LAS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2abo3edof-fev10",
                       "title": "2a BO3E DOF-FEV (10)",
@@ -3141,7 +3141,7 @@
                 {
                   "id": "gr3bo3edscfev32",
                   "title": "Gr 3 BO3E DSC FEV (32)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3abo3edscfev16",
                       "title": "3a BO3E DSC FEV (16)",
@@ -3157,7 +3157,7 @@
                 {
                   "id": "gr4bo3edscfevabi32",
                   "title": "Gr 4 BO3E DSC FEV ABI (32)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "4abo3edscfev16",
                       "title": "4a BO3E DSC FEV (16)",
@@ -3178,7 +3178,7 @@
                 {
                   "id": "gr5dscsportovi33",
                   "title": "Gr 5 DSC SPORT OVI (33)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "5abo3edscovi17",
                       "title": "5a BO3E DSC OVI (17)",
@@ -3194,7 +3194,7 @@
                 {
                   "id": "gr6bo3edscdoffev36si",
                   "title": "Gr 6 BO3E DSC DOF FEV (36) SI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "6abo3edscdof16si",
                       "title": "6a BO3E DSC DOF (16) SI",
@@ -3214,11 +3214,11 @@
         {
           "id": "l2bio-svt-me",
           "title": "L2 BIO - SVT-ME",
-          "edts": [
+          "children": [
             {
               "id": "s3svt-me23",
               "title": "S3 SVT-ME (23)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudiantssvt-meenlv2",
                   "title": "Etudiants SVT-ME en LV2",
@@ -3227,7 +3227,7 @@
                 {
                   "id": "gr1svt18",
                   "title": "Gr1 SVT (18)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1asvtsso-bq114",
                       "title": "Gr1a SVT SSO-BQ1 (14)",
@@ -3245,7 +3245,7 @@
             {
               "id": "s4svt-me19",
               "title": "S4 SVT-ME (19)",
-              "edts": [
+              "children": [
                 {
                   "id": "1asvtfev-ipd-stagecoll15",
                   "title": "1a SVT FEV-IPD-stage COLL (15)",
@@ -3263,19 +3263,19 @@
         {
           "id": "l2pcstm",
           "title": "L2 PCSTM",
-          "edts": [
+          "children": [
             {
               "id": "l2pcstm-s3",
               "title": "L2 PCSTM - S3",
-              "edts": [
+              "children": [
                 {
                   "id": "grchimie53",
                   "title": "Gr CHIMIE (53)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grc128",
                       "title": "Gr C1 (28)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grc1a17",
                           "title": "Gr C1a (17)",
@@ -3296,7 +3296,7 @@
                     {
                       "id": "grc228",
                       "title": "Gr C2 (28)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grc2a19",
                           "title": "Gr C2a (19)",
@@ -3314,7 +3314,7 @@
                 {
                   "id": "grcpespc8",
                   "title": "Gr CPES (PC) (8)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grcpespc8",
                       "title": "Gr CPES (PC) (8)",
@@ -3325,7 +3325,7 @@
                 {
                   "id": "grgeosciences12",
                   "title": "Gr GEOSCIENCES (12)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grgeosciences12",
                       "title": "Gr Géosciences (12)",
@@ -3336,7 +3336,7 @@
                 {
                   "id": "grphys-chimie22",
                   "title": "Gr PHYS-CHIMIE (22)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grpc11",
                       "title": "Gr PC (11)",
@@ -3362,11 +3362,11 @@
                 {
                   "id": "grphysique70",
                   "title": "Gr PHYSIQUE (70)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grp134",
                       "title": "Gr P1 (34)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grp1aphysique26",
                           "title": "Gr P1a Physique(26)",
@@ -3387,7 +3387,7 @@
                     {
                       "id": "grp233",
                       "title": "Gr P2 (33)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grp2aphysique27",
                           "title": "Gr P2a Physique (27)",
@@ -3405,7 +3405,7 @@
                 {
                   "id": "grspi18",
                   "title": "Gr SPI (18)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grspi1",
                       "title": "Gr SPI1",
@@ -3426,7 +3426,7 @@
                 {
                   "id": "mineures",
                   "title": "MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "min_biochgr154",
                       "title": "MIN_BIOCH Gr1 (54)",
@@ -3475,7 +3475,7 @@
                     {
                       "id": "min_professoratdesecolespe7",
                       "title": "MIN_Professorat des Ecoles (PE) (7)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "min_matmaths17",
                           "title": "MIN_MAT (Maths1) (7)",
@@ -3523,7 +3523,7 @@
                 {
                   "id": "pix",
                   "title": "PIX",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pix",
                       "title": "PIX",
@@ -3536,11 +3536,11 @@
             {
               "id": "l2pcstm-s4",
               "title": "L2 PCSTM - S4",
-              "edts": [
+              "children": [
                 {
                   "id": "escmineuress3ets4",
                   "title": "ESC Mineures S3 et S4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "escmineuress3",
                       "title": "ESC Mineures S3",
@@ -3556,15 +3556,15 @@
                 {
                   "id": "grchimie",
                   "title": "Gr CHIMIE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "c1",
                       "title": "C1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "c1a",
                           "title": "C1a",
-                          "edts": [
+                          "children": [
                             {
                               "id": "grc1a13",
                               "title": "Gr C1a (13)",
@@ -3580,7 +3580,7 @@
                         {
                           "id": "c1b",
                           "title": "C1b",
-                          "edts": [
+                          "children": [
                             {
                               "id": "grc1b8",
                               "title": "Gr C1b (8)",
@@ -3593,7 +3593,7 @@
                     {
                       "id": "c2",
                       "title": "C2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grc2a17",
                           "title": "Gr C2a (17)",
@@ -3611,7 +3611,7 @@
                 {
                   "id": "grcpespc",
                   "title": "Gr CPES (PC)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grcpespc9",
                       "title": "Gr CPES (PC) (9)",
@@ -3622,7 +3622,7 @@
                 {
                   "id": "grgeosciences",
                   "title": "Gr GEOSCIENCES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grgeosciences22",
                       "title": "Gr. Géosciences (22)",
@@ -3633,7 +3633,7 @@
                 {
                   "id": "grphys-chimie",
                   "title": "Gr PHYS-CHIMIE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grpc4",
                       "title": "Gr PC (4)",
@@ -3659,11 +3659,11 @@
                 {
                   "id": "grphysique",
                   "title": "Gr PHYSIQUE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grp123",
                       "title": "Gr P1 (23)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grp1a16",
                           "title": "Gr P1a (16)",
@@ -3684,7 +3684,7 @@
                     {
                       "id": "grp220",
                       "title": "Gr P2 (20)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grp2a16",
                           "title": "Gr P2a (16)",
@@ -3707,7 +3707,7 @@
                 {
                   "id": "grspi",
                   "title": "Gr SPI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grspi1",
                       "title": "Gr SPI1",
@@ -3728,7 +3728,7 @@
                 {
                   "id": "languesvivantes1-languesvivantes2",
                   "title": "Langues Vivantes 1 - Langues Vivantes 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "lv1anglais",
                       "title": "LV1 Anglais",
@@ -3749,7 +3749,7 @@
                 {
                   "id": "mineures",
                   "title": "MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "min_aed",
                       "title": "MIN_AED",
@@ -3810,7 +3810,7 @@
                 {
                   "id": "optionimeactuellepour2024?",
                   "title": "Option IME actuelle pour 2024?",
-                  "edts": [
+                  "children": [
                     {
                       "id": "optionime",
                       "title": "Option IME",
@@ -3821,7 +3821,7 @@
                 {
                   "id": "pix",
                   "title": "PIX",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pix",
                       "title": "PIX",
@@ -3834,7 +3834,7 @@
             {
               "id": "langueslv2",
               "title": "LANGUES LV2",
-              "edts": [
+              "children": [
                 {
                   "id": "lv2allemandgr1spml2pcstm",
                   "title": "LV2 Allemand Gr1 SPM L2 PCSTM",
@@ -3852,11 +3852,11 @@
         {
           "id": "l2ste",
           "title": "L2 STE",
-          "edts": [
+          "children": [
             {
               "id": "s3ste",
               "title": "S3 STE",
-              "edts": [
+              "children": [
                 {
                   "id": "l2ste-cpes19",
                   "title": "L2 STE-CPES (19)",
@@ -3872,7 +3872,7 @@
             {
               "id": "s4ste",
               "title": "S4 STE",
-              "edts": [
+              "children": [
                 {
                   "id": "l2ste-cpes",
                   "title": "L2 STE-CPES",
@@ -3890,11 +3890,11 @@
         {
           "id": "l2-maths",
           "title": "L2-MATHS",
-          "edts": [
+          "children": [
             {
               "id": "langues",
               "title": "LANGUES",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand2l2maths",
                   "title": "Allemand 2 L2 Maths",
@@ -3935,11 +3935,11 @@
             {
               "id": "parmoduless3",
               "title": "Par MODULES S3",
-              "edts": [
+              "children": [
                 {
                   "id": "aco-algebreetcomplexite",
                   "title": "ACO-Algèbre et complexité",
-                  "edts": [
+                  "children": [
                     {
                       "id": "aco-gr1",
                       "title": "ACO-Gr1",
@@ -3955,7 +3955,7 @@
                 {
                   "id": "al3-algebre3",
                   "title": "AL3-Algèbre 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "al3-gr1",
                       "title": "AL3-Gr1",
@@ -3976,7 +3976,7 @@
                 {
                   "id": "ap3-analyseetprobabilites3",
                   "title": "AP3-Analyse et probabilités 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ap3-gr1",
                       "title": "AP3-Gr1",
@@ -3997,7 +3997,7 @@
                 {
                   "id": "cmd3-complementsmathematiquesdefi3",
                   "title": "CMD3-Compléments mathématiques Défi 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cmd3",
                       "title": "CMD3",
@@ -4008,7 +4008,7 @@
                 {
                   "id": "dmm2-decouvertedesmetiersdesmathematiques2",
                   "title": "DMM2-Découverte des métiers des mathématiques 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "dmm2",
                       "title": "DMM2",
@@ -4019,7 +4019,7 @@
                 {
                   "id": "i3a-introductionauxapplicationsdel'arithmetiqueetdel'algebre",
                   "title": "I3A-Introduction aux applications de l'arithmétique et de l'algèbre",
-                  "edts": [
+                  "children": [
                     {
                       "id": "i3a-gr1",
                       "title": "I3A-Gr1",
@@ -4040,7 +4040,7 @@
                 {
                   "id": "ph3-physique3",
                   "title": "PH3-Physique 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ph3-gr1",
                       "title": "PH3-Gr1",
@@ -4056,7 +4056,7 @@
                 {
                   "id": "ppa1-miseaniveauenmathematiquespost-pass1",
                   "title": "PPA1-Mise à niveau en mathématiques Post-Pass 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ppa1",
                       "title": "PPA1",
@@ -4067,7 +4067,7 @@
                 {
                   "id": "resoudre",
                   "title": "RESOUDRE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "resoudre",
                       "title": "RESOUDRE",
@@ -4080,11 +4080,11 @@
             {
               "id": "parmoduless4",
               "title": "Par MODULES S4",
-              "edts": [
+              "children": [
                 {
                   "id": "al4-algebre4",
                   "title": "AL4-Algèbre 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "al4-gr1",
                       "title": "AL4-Gr1",
@@ -4105,7 +4105,7 @@
                 {
                   "id": "an4-analyse4",
                   "title": "AN4-Analyse 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "an4-gr1",
                       "title": "AN4-Gr1",
@@ -4126,7 +4126,7 @@
                 {
                   "id": "cal-calculabilite",
                   "title": "CAL-Calculabilité",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cal",
                       "title": "CAL",
@@ -4147,7 +4147,7 @@
                 {
                   "id": "cmd4-complementsmathematiquesdefi4",
                   "title": "CMD4-Compléments mathématiques Défi 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cmd4",
                       "title": "CMD4",
@@ -4158,7 +4158,7 @@
                 {
                   "id": "did1-didactiquedesmathematiques1",
                   "title": "DID1-Didactique des mathématiques 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "did",
                       "title": "DID",
@@ -4169,7 +4169,7 @@
                 {
                   "id": "ed1-equationsdifferentielles1",
                   "title": "ED1-Equations différentielles 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ed1-gr1",
                       "title": "ED1-Gr1",
@@ -4190,7 +4190,7 @@
                 {
                   "id": "imia-introductionauxmathematiquesdel'intelligenceartificielle",
                   "title": "IMIA-Introduction aux mathématiques de l'intelligence artificielle",
-                  "edts": [
+                  "children": [
                     {
                       "id": "imia-gr1",
                       "title": "IMIA-Gr1",
@@ -4211,7 +4211,7 @@
                 {
                   "id": "ph4-physique4",
                   "title": "PH4-Physique 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ph4",
                       "title": "PH4",
@@ -4222,7 +4222,7 @@
                 {
                   "id": "ppa2-miseaniveauenmathematiquespost-pass2",
                   "title": "PPA2-Mise à niveau en mathématiques Post-Pass 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ppa2",
                       "title": "PPA2",
@@ -4235,7 +4235,7 @@
             {
               "id": "parparcours",
               "title": "Par PARCOURS",
-              "edts": [
+              "children": [
                 {
                   "id": "l2-math-cpes",
                   "title": "L2-Math-CPES",
@@ -4261,7 +4261,7 @@
             {
               "id": "reunionsderentree",
               "title": "Réunions de rentrée",
-              "edts": [
+              "children": [
                 {
                   "id": "l2defimathematiques",
                   "title": "L2 Défi mathématiques",
@@ -4281,15 +4281,15 @@
     {
       "id": "licences3",
       "title": "LICENCES 3",
-      "edts": [
+      "children": [
         {
           "id": "l3bio-bmcp",
           "title": "L3 BIO - BMCP",
-          "edts": [
+          "children": [
             {
               "id": "s5bmcp128",
               "title": "S5 BMCP (128)",
-              "edts": [
+              "children": [
                 {
                   "id": "01-iva-sdc-dym-rco-ali7las",
                   "title": "01-IVA-SDC-DYM-RCO-ALI (7) LAS",
@@ -4368,7 +4368,7 @@
                 {
                   "id": "groupesd'anglais",
                   "title": "Groupes d'anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1bmcp",
                       "title": "Gr1 BMCP",
@@ -4411,7 +4411,7 @@
             {
               "id": "s6bmcp109",
               "title": "S6 BMCP (109)",
-              "edts": [
+              "children": [
                 {
                   "id": "01-mba-cpb-bvf2",
                   "title": "01- MBA-CPB-BVF (2)",
@@ -4495,7 +4495,7 @@
                 {
                   "id": "groupesd'anglais",
                   "title": "Groupes d'anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1bmcp",
                       "title": "Gr1 BMCP",
@@ -4540,11 +4540,11 @@
         {
           "id": "l3bio-bo3e",
           "title": "L3 BIO - BO3E",
-          "edts": [
+          "children": [
             {
               "id": "s5bo3e181",
               "title": "S5 BO3E (181)",
-              "edts": [
+              "children": [
                 {
                   "id": "*nouveauxentrantsbo*",
                   "title": "*Nouveaux entrants BO*",
@@ -4553,7 +4553,7 @@
                 {
                   "id": "gr1bo3esocnec+as30lv2",
                   "title": "Gr1 BO3E SOC NEC + AS (30) LV2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1a-socneceli15lv2",
                       "title": "1a-SOC NEC/ELI (15) LV2",
@@ -4569,7 +4569,7 @@
                 {
                   "id": "gr2bo3esocnec-eli-bgo29",
                   "title": "Gr2 BO3E SOC NEC-ELI-BGO (29)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2a-socneceli16",
                       "title": "2a-SOC NEC/ELI (16)",
@@ -4590,7 +4590,7 @@
                 {
                   "id": "gr3bo3esocnec-msb-pe17",
                   "title": "Gr3 BO3E SOC NEC-MSB-PE  (17)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3a-socnecmsb15",
                       "title": "3a-SOC NEC/MSB (15)",
@@ -4606,7 +4606,7 @@
                 {
                   "id": "gr4bo3etersocnec-eli33si",
                   "title": "Gr4 BO3E TER/SOC  NEC-ELI (33) SI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "4a-soc-necelisi9",
                       "title": "4a-SOC -NEC/ELI SI (9)",
@@ -4627,7 +4627,7 @@
                 {
                   "id": "gr5bo3etereli-bgo-msb35si+as",
                   "title": "Gr5 BO3E TER ELI-BGO-MSB (35) SI+ AS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "5a-terelimsb16",
                       "title": "5a-TER ELI/MSB (16)",
@@ -4648,7 +4648,7 @@
                 {
                   "id": "gr6bo3eteripesra-eli-bgo37+as",
                   "title": "Gr6 BO3E TER/IPE SRA-ELI-BGO (37)+ AS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "6a-ter-sraeli13",
                       "title": "6a-TER- SRA/ELI (13)",
@@ -4674,7 +4674,7 @@
                 {
                   "id": "groupesd'anglais",
                   "title": "Groupes d'anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr06bo3e",
                       "title": "Gr06 BO3E",
@@ -4720,7 +4720,7 @@
                 {
                   "id": "groupesreferents",
                   "title": "Groupes référents",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupesreferents",
                       "title": "Groupes référents",
@@ -4733,11 +4733,11 @@
             {
               "id": "s6bo3e160",
               "title": "S6 BO3E (160)",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1bo3eanb-aqa-emi40",
                   "title": "Gr1 BO3E ANB-AQA-EMI (40)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1a-anb-aqa-emi-eta-inv120",
                       "title": "1a- ANB-AQA-EMI-ETA-INV1 (20)",
@@ -4758,7 +4758,7 @@
                 {
                   "id": "gr2bo3eanb-aqa-emi32",
                   "title": "Gr2 BO3E ANB-AQA-EMI (32)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1d-anb-aqa-emi-eta-mvi5",
                       "title": "1d- ANB-AQA-EMI-ETA-MVI (5)",
@@ -4779,7 +4779,7 @@
                 {
                   "id": "gr3bo3efia-ran-vip36",
                   "title": "Gr3 BO3E FIA-RAN-VIP (36)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2a-fia-ran-vip-eta-inv118",
                       "title": "2a- FIA-RAN-VIP-ETA-INV1 (18)",
@@ -4800,7 +4800,7 @@
                 {
                   "id": "gr4bo3efia-ran-vip35pe",
                   "title": "Gr4 BO3E FIA-RAN-VIP (35) PE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2d-fia-ran-vip-msb-inv1+spr17",
                       "title": "2d- FIA-RAN-VIP-MSB-INV1 + SPR (17)",
@@ -4821,7 +4821,7 @@
                 {
                   "id": "gr5bo3eagr-emi-anb16demi-groupe",
                   "title": "Gr5 BO3E AGR-EMI-ANB (16) demi-groupe",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3a-anb-agr-emi-sep-ibp7",
                       "title": "3a- ANB-AGR-EMI-SEP-IBP (7)",
@@ -4837,7 +4837,7 @@
                 {
                   "id": "groupesd'anglais",
                   "title": "Groupes d'anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr07bo3e",
                       "title": "Gr07 BO3E",
@@ -4887,7 +4887,7 @@
         {
           "id": "l3bio-mta",
           "title": "L3 BIO - MTA",
-          "edts": [
+          "children": [
             {
               "id": "lpmtaalternants4",
               "title": "LP MTA Alternants (4)",
@@ -4903,11 +4903,11 @@
         {
           "id": "l3bio-svt-me",
           "title": "L3 BIO - SVT-ME",
-          "edts": [
+          "children": [
             {
               "id": "s5-s6l3svt-me21",
               "title": "S5-S6 L3 SVT-ME (21)",
-              "edts": [
+              "children": [
                 {
                   "id": "gra18lv2",
                   "title": "Gr A (18) LV2",
@@ -4925,11 +4925,11 @@
         {
           "id": "l3bio-prodraci",
           "title": "L3 BIO - pro DRACI",
-          "edts": [
+          "children": [
             {
               "id": "s5-s6draci",
               "title": "S5-S6 DRACI",
-              "edts": [
+              "children": [
                 {
                   "id": "optionrd16",
                   "title": "option RD (16)",
@@ -4942,15 +4942,15 @@
         {
           "id": "l3chimie",
           "title": "L3 CHIMIE",
-          "edts": [
+          "children": [
             {
               "id": "l3chimies5",
               "title": "L3 CHIMIE S5",
-              "edts": [
+              "children": [
                 {
                   "id": "l3chs5groupea20defi-lasinclus",
                   "title": "L3 CH S5 Groupe A (20) (Défi-Las inclus)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea1classique6",
                       "title": "Groupe A1 Classique (6)",
@@ -4986,7 +4986,7 @@
                 {
                   "id": "l3chs5groupeb20lasinclus",
                   "title": "L3 CH S5 Groupe B (20) (Las inclus)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupeb1classique9",
                       "title": "Groupe B1 Classique (9)",
@@ -5012,7 +5012,7 @@
                 {
                   "id": "l3chs5groupec0:fermeen2025-2026",
                   "title": "L3 CH S5 Groupe C (0) : fermé en 2025-2026",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupec1fermeen25-26",
                       "title": "Groupe C1 (fermé en 25-26)",
@@ -5028,7 +5028,7 @@
                 {
                   "id": "ueouvertureselectionnerlavotre",
                   "title": "UE OUVERTURE (sélectionner la vôtre)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "optionchimieindustriellel3ch",
                       "title": "Option Chimie industrielle (L3 CH)",
@@ -5056,11 +5056,11 @@
             {
               "id": "l3chimies6",
               "title": "L3 CHIMIE S6",
-              "edts": [
+              "children": [
                 {
                   "id": "l3chgra20defi-lasinclus",
                   "title": "L3 CH GrA (20) (Défi-Las inclus)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gra1classique6",
                       "title": "Gr A1 Classique (6)",
@@ -5096,7 +5096,7 @@
                 {
                   "id": "l3chgrb20lasinclus",
                   "title": "L3 CH GrB (20) (Las inclus)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grb1classique9",
                       "title": "Gr B1 Classique (9)",
@@ -5122,7 +5122,7 @@
                 {
                   "id": "l3chgrc0:fermeen2025-2026",
                   "title": "L3 CH GrC (0) : fermé en 2025-2026",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grc1fermeen25-26",
                       "title": "Gr C1 (fermé en 25-26)",
@@ -5138,7 +5138,7 @@
                 {
                   "id": "optioncpbbiomolecules-l3defichimie",
                   "title": "Option CPB Biomolécules - L3 Défi Chimie",
-                  "edts": [
+                  "children": [
                     {
                       "id": "optioncpbbiomolecules-l3defichimie",
                       "title": "Option CPB Biomolécules - L3 Défi Chimie",
@@ -5151,11 +5151,11 @@
             {
               "id": "langueslv2s5",
               "title": "LANGUES LV2 S5",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand",
                   "title": "Allemand",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemandgr1spml3ch-s5",
                       "title": "Allemand Gr1 SPM L3 CH-S5",
@@ -5166,7 +5166,7 @@
                 {
                   "id": "espagnol",
                   "title": "Espagnol",
-                  "edts": [
+                  "children": [
                     {
                       "id": "espagnolgr1spml3ch-s5",
                       "title": "Espagnol Gr1 SPM L3 CH-S5",
@@ -5181,11 +5181,11 @@
         {
           "id": "l3physique",
           "title": "L3 PHYSIQUE",
-          "edts": [
+          "children": [
             {
               "id": "l3physique-s559",
               "title": "L3 PHYSIQUE- S5 (59)",
-              "edts": [
+              "children": [
                 {
                   "id": "conference",
                   "title": "Conférence",
@@ -5194,7 +5194,7 @@
                 {
                   "id": "groupea30",
                   "title": "Groupe A (30)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "defi",
                       "title": "Défi",
@@ -5220,7 +5220,7 @@
                 {
                   "id": "groupeb30",
                   "title": "Groupe B (30)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupeb",
                       "title": "Groupe B",
@@ -5241,7 +5241,7 @@
                 {
                   "id": "groupesdetpsystemesetsignaux",
                   "title": "Groupes de TP systèmes et signaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s1",
                       "title": "S1",
@@ -5269,7 +5269,7 @@
             {
               "id": "l3physique-s6",
               "title": "L3 PHYSIQUE- S6",
-              "edts": [
+              "children": [
                 {
                   "id": "conference",
                   "title": "Conférence",
@@ -5278,11 +5278,11 @@
                 {
                   "id": "groupesdetd",
                   "title": "Groupes de TD",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea",
                       "title": "Groupe A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "parcoursdefis",
                           "title": "Parcours défis",
@@ -5298,7 +5298,7 @@
                     {
                       "id": "groupeb",
                       "title": "Groupe B",
-                      "edts": [
+                      "children": [
                         {
                           "id": "parcourscmi",
                           "title": "Parcours CMI",
@@ -5316,7 +5316,7 @@
                 {
                   "id": "mineure",
                   "title": "Mineure",
-                  "edts": [
+                  "children": [
                     {
                       "id": "astroetphysnucl",
                       "title": "Astro et Phys Nucl",
@@ -5339,7 +5339,7 @@
             {
               "id": "parcourssur2ans",
               "title": "Parcours sur 2 ans",
-              "edts": [
+              "children": [
                 {
                   "id": "magistere12",
                   "title": "Magistère 1/2",
@@ -5357,11 +5357,11 @@
         {
           "id": "l3physique-chimie",
           "title": "L3 PHYSIQUE-CHIMIE",
-          "edts": [
+          "children": [
             {
               "id": "l3pc-s514",
               "title": "L3 PC - S5 (14)",
-              "edts": [
+              "children": [
                 {
                   "id": "mineurepe",
                   "title": "Mineure PE",
@@ -5380,11 +5380,11 @@
                 {
                   "id": "tpgroupe",
                   "title": "TP Groupe",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupetpchimieorganique",
                       "title": "Groupe TP Chimie organique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupec1",
                           "title": "Groupe C1",
@@ -5400,7 +5400,7 @@
                     {
                       "id": "groupetpvibrations",
                       "title": "Groupe TP Vibrations",
-                      "edts": [
+                      "children": [
                         {
                           "id": "groupep1",
                           "title": "Groupe P1",
@@ -5418,7 +5418,7 @@
                 {
                   "id": "ueouvertureetouuedefis5",
                   "title": "UE Ouverture et/ou UE défi S5",
-                  "edts": [
+                  "children": [
                     {
                       "id": "optionchimieindustrielleuel3pc-defiuniquement",
                       "title": "Option Chimie industrielle (UE L3PC-Défi uniquement)",
@@ -5456,11 +5456,11 @@
             {
               "id": "l3pc-s614",
               "title": "L3 PC - S6 (14)",
-              "edts": [
+              "children": [
                 {
                   "id": "groupesdetpuechimieinorganiquecinetiqueelectrochimie",
                   "title": "Groupes de TP UE  Chimie inorganique/Cinétique/Electrochimie",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea",
                       "title": "Groupe A",
@@ -5498,7 +5498,7 @@
             {
               "id": "l3pcparcourscpessens10",
               "title": "L3 PC Parcours CPES SENS (10)",
-              "edts": [
+              "children": [
                 {
                   "id": "l3pcparccpessens10",
                   "title": "L3 PC Parc. CPES SENS (10)",
@@ -5511,7 +5511,7 @@
         {
           "id": "l3sciencespourl'ingenieur",
           "title": "L3 SCIENCES POUR l'INGENIEUR",
-          "edts": [
+          "children": [
             {
               "id": "but3gmp-iut",
               "title": "BUT3 GMP - IUT",
@@ -5520,11 +5520,11 @@
             {
               "id": "l3spi-semestre1",
               "title": "L3 SPI - Semestre 1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3spiparcoursconception",
                   "title": "L3 SPI Parcours Conception",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3spigroupea",
                       "title": "L3 SPI groupe A",
@@ -5547,11 +5547,11 @@
             {
               "id": "l3spi-semestre2",
               "title": "L3 SPI - Semestre 2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3spiparcoursconception",
                   "title": "L3 SPI  Parcours Conception",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3spigroupea",
                       "title": "L3 SPI Groupe A",
@@ -5576,11 +5576,11 @@
         {
           "id": "l3ste",
           "title": "L3 STE",
-          "edts": [
+          "children": [
             {
               "id": "s5ste",
               "title": "S5 STE",
-              "edts": [
+              "children": [
                 {
                   "id": "l3steparcourscpessens6",
                   "title": "L3 STE parcours CPES SENS (6)",
@@ -5601,7 +5601,7 @@
             {
               "id": "s6ste",
               "title": "S6 STE",
-              "edts": [
+              "children": [
                 {
                   "id": "l3ste-cpes",
                   "title": "L3 STE-CPES",
@@ -5624,11 +5624,11 @@
         {
           "id": "l3-maths",
           "title": "L3-MATHS",
-          "edts": [
+          "children": [
             {
               "id": "langues",
               "title": "LANGUES",
-              "edts": [
+              "children": [
                 {
                   "id": "allemand3maths",
                   "title": "Allemand 3 Maths",
@@ -5674,11 +5674,11 @@
             {
               "id": "parmoduless5",
               "title": "Par MODULES S5",
-              "edts": [
+              "children": [
                 {
                   "id": "aed5",
                   "title": "AED5",
-                  "edts": [
+                  "children": [
                     {
                       "id": "aed5",
                       "title": "AED5",
@@ -5689,7 +5689,7 @@
                 {
                   "id": "albi-algebrelineaireetbilineaire",
                   "title": "ALBI-Algèbre linéaire et bilinéaire",
-                  "edts": [
+                  "children": [
                     {
                       "id": "albi-gr0",
                       "title": "ALBI-Gr0",
@@ -5710,7 +5710,7 @@
                 {
                   "id": "algo1",
                   "title": "ALGO1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "algo1-gr0",
                       "title": "ALGO1-Gr0",
@@ -5721,7 +5721,7 @@
                 {
                   "id": "cd-calculdifferentiel",
                   "title": "CD-Calcul différentiel",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cd-gr0",
                       "title": "CD-Gr0",
@@ -5742,7 +5742,7 @@
                 {
                   "id": "cdf-calculdifferentielendimensionfinie",
                   "title": "CDF-Calcul différentiel en dimension finie",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cdf-gr1",
                       "title": "CDF-Gr1",
@@ -5763,7 +5763,7 @@
                 {
                   "id": "cma-calculmatriciel",
                   "title": "CMA-Calcul matriciel",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cma-gr1",
                       "title": "CMA-Gr1",
@@ -5784,7 +5784,7 @@
                 {
                   "id": "ehs-epistemologieethistoiredessciences",
                   "title": "EHS-Epistémologie et histoire des sciences",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ehs",
                       "title": "EHS",
@@ -5795,7 +5795,7 @@
                 {
                   "id": "fond1",
                   "title": "FOND1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "fond1-gr0",
                       "title": "FOND1-Gr0",
@@ -5806,7 +5806,7 @@
                 {
                   "id": "grac-groupesetactionsdegroupes",
                   "title": "GRAC-Groupes et actions de groupes",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grac-gr1",
                       "title": "GRAC-Gr1",
@@ -5827,7 +5827,7 @@
                 {
                   "id": "holo-fonctionsholomorphes",
                   "title": "HOLO-Fonctions holomorphes",
-                  "edts": [
+                  "children": [
                     {
                       "id": "holo-gr0",
                       "title": "HOLO-Gr0",
@@ -5853,7 +5853,7 @@
                 {
                   "id": "intl-integraledelebesgue",
                   "title": "INTL-Intégrale de Lebesgue",
-                  "edts": [
+                  "children": [
                     {
                       "id": "intl-gr0",
                       "title": "INTL-Gr0",
@@ -5874,7 +5874,7 @@
                 {
                   "id": "kholles1",
                   "title": "KHOLLES 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "kholles1",
                       "title": "KHOLLES 1",
@@ -5885,7 +5885,7 @@
                 {
                   "id": "mna-methodesnumeriquesenanalyse",
                   "title": "MNA - Méthodes numériques en analyse",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mna-gr1",
                       "title": "MNA-Gr1",
@@ -5906,7 +5906,7 @@
                 {
                   "id": "opt-optique",
                   "title": "OPT-Optique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "opt-gr0",
                       "title": "OPT-Gr0",
@@ -5917,7 +5917,7 @@
                 {
                   "id": "pcap1",
                   "title": "PCAP1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pcap1",
                       "title": "PCAP1",
@@ -5928,7 +5928,7 @@
                 {
                   "id": "phy-physiquestatistique",
                   "title": "PHY-Physique statistique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "phy-gr0",
                       "title": "PHY-Gr0",
@@ -5939,7 +5939,7 @@
                 {
                   "id": "ps-probabilitesetstatistique",
                   "title": "PS-Probabilités et statistique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ps-gr1",
                       "title": "PS-Gr1",
@@ -5960,7 +5960,7 @@
                 {
                   "id": "senspourcpes",
                   "title": "SEnS pour CPES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sens",
                       "title": "SEnS",
@@ -5971,7 +5971,7 @@
                 {
                   "id": "smmd-mecaniquedessystemesmaterielsetmilieuxdeformables",
                   "title": "SMMD-Mécanique des systèmes matériels et milieux déformables",
-                  "edts": [
+                  "children": [
                     {
                       "id": "smmd",
                       "title": "SMMD",
@@ -5982,7 +5982,7 @@
                 {
                   "id": "thgr-theoriedesgroupes",
                   "title": "THGR-Théorie des groupes",
-                  "edts": [
+                  "children": [
                     {
                       "id": "thgr-gr0",
                       "title": "THGR-Gr0",
@@ -6003,7 +6003,7 @@
                 {
                   "id": "topg-topologiegenerale",
                   "title": "TOPG-Topologie générale",
-                  "edts": [
+                  "children": [
                     {
                       "id": "topg-gr0",
                       "title": "TOPG-Gr0",
@@ -6026,11 +6026,11 @@
             {
               "id": "parmoduless6",
               "title": "Par MODULES S6",
-              "edts": [
+              "children": [
                 {
                   "id": "algo2",
                   "title": "ALGO2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "algo2-gr0",
                       "title": "ALGO2-Gr0",
@@ -6041,7 +6041,7 @@
                 {
                   "id": "an-analyseappliquee",
                   "title": "AN-Analyse appliquée",
-                  "edts": [
+                  "children": [
                     {
                       "id": "an-gr1",
                       "title": "AN-Gr1",
@@ -6062,7 +6062,7 @@
                 {
                   "id": "anar-anneauxetarithmetique",
                   "title": "ANAR-Anneaux et arithmétique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "anar-gr0",
                       "title": "ANAR-Gr0",
@@ -6083,7 +6083,7 @@
                 {
                   "id": "anu-analysenumerique",
                   "title": "ANU-Analyse numérique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "anu-gr0",
                       "title": "ANU-Gr0",
@@ -6104,7 +6104,7 @@
                 {
                   "id": "csp-courbesetsurfacesparametrees",
                   "title": "CSP-Courbes et surfaces paramétrées",
-                  "edts": [
+                  "children": [
                     {
                       "id": "csp-gr1",
                       "title": "CSP-Gr1",
@@ -6125,7 +6125,7 @@
                 {
                   "id": "did2-didactiquedesmathematiques2",
                   "title": "DID2-Didactique des mathématiques 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "did2-gr1",
                       "title": "DID2-Gr1",
@@ -6141,7 +6141,7 @@
                 {
                   "id": "dmm3-decouvertedesmetiersdesmathematiques3",
                   "title": "DMM3-Découverte des métiers des mathématiques 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "dmm3",
                       "title": "DMM3",
@@ -6152,7 +6152,7 @@
                 {
                   "id": "ed2-equationsdifferentielles2",
                   "title": "ED2-Equations différentielles 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ed2-gr0",
                       "title": "ED2-Gr0",
@@ -6173,7 +6173,7 @@
                 {
                   "id": "electromag",
                   "title": "ELECTROMAG",
-                  "edts": [
+                  "children": [
                     {
                       "id": "electromag-gr0",
                       "title": "ELECTROMAG-Gr0",
@@ -6184,7 +6184,7 @@
                 {
                   "id": "evn-espacesvectorielsnormes",
                   "title": "EVN-Espaces vectoriels normés",
-                  "edts": [
+                  "children": [
                     {
                       "id": "evn-gr0",
                       "title": "EVN-Gr0",
@@ -6205,7 +6205,7 @@
                 {
                   "id": "flu-mecaniquedesfluides",
                   "title": "FLU-Mécanique des fluides",
-                  "edts": [
+                  "children": [
                     {
                       "id": "flu",
                       "title": "FLU",
@@ -6216,7 +6216,7 @@
                 {
                   "id": "geo-geometries",
                   "title": "GEO-Géométries",
-                  "edts": [
+                  "children": [
                     {
                       "id": "geo-gr1",
                       "title": "GEO-Gr1",
@@ -6237,7 +6237,7 @@
                 {
                   "id": "isd-introductionalasciencedesdonnees",
                   "title": "ISD-Introduction à la science des données",
-                  "edts": [
+                  "children": [
                     {
                       "id": "isd",
                       "title": "ISD",
@@ -6248,7 +6248,7 @@
                 {
                   "id": "kholles2",
                   "title": "KHOLLES 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "kholles2",
                       "title": "KHOLLES 2",
@@ -6259,7 +6259,7 @@
                 {
                   "id": "ldr-lecturedirigeederecherche",
                   "title": "LDR-Lecture Dirigée de Recherche",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ldr",
                       "title": "LDR",
@@ -6270,7 +6270,7 @@
                 {
                   "id": "pcap2",
                   "title": "PCAP2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pcap2",
                       "title": "PCAP2",
@@ -6281,7 +6281,7 @@
                 {
                   "id": "pro-probabilites",
                   "title": "PRO-Probabilités",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pro-gr0",
                       "title": "PRO-Gr0",
@@ -6302,7 +6302,7 @@
                 {
                   "id": "pssd-introductionauxprobasetstatspourlasciencedesdonnees",
                   "title": "PSSD-Introduction aux probas et stats pour la science des données",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pssd-gr1",
                       "title": "PSSD-Gr1",
@@ -6323,7 +6323,7 @@
                 {
                   "id": "senspourcpes",
                   "title": "SEnS pour CPES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "sens",
                       "title": "SEnS",
@@ -6336,7 +6336,7 @@
             {
               "id": "parparcours",
               "title": "Par PARCOURS",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-math-cpes-mf",
                   "title": "L3-Math-CPES-MF",
@@ -6371,19 +6371,19 @@
     {
       "id": "masters1",
       "title": "MASTERS 1",
-      "edts": [
+      "children": [
         {
           "id": "m1bee-efce-mode-imabee46",
           "title": "M1 BEE - EFCE-MODE-IMABEE (46)",
-          "edts": [
+          "children": [
             {
               "id": "s7efce-mode-imabee46",
               "title": "S7 EFCE-MODE-IMABEE (46)",
-              "edts": [
+              "children": [
                 {
                   "id": "gr123",
                   "title": "Gr 1 (23)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr1a",
                       "title": "Gr 1a",
@@ -6399,7 +6399,7 @@
                 {
                   "id": "gr223",
                   "title": "Gr 2 (23)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gr2a",
                       "title": "Gr 2a",
@@ -6417,7 +6417,7 @@
             {
               "id": "s8efce-mode-imabee46",
               "title": "S8 EFCE-MODE-IMABEE (46)",
-              "edts": [
+              "children": [
                 {
                   "id": "mee-ecp-fsa-ase3*",
                   "title": "MEE-ECP-FSA-ASE (3)*",
@@ -6550,11 +6550,11 @@
         {
           "id": "m1bee-pnb29",
           "title": "M1 BEE - PNB (29)",
-          "edts": [
+          "children": [
             {
               "id": "s7pnb29",
               "title": "S7 PNB (29)",
-              "edts": [
+              "children": [
                 {
                   "id": "s7pnb29",
                   "title": "S7 PNB (29)",
@@ -6565,7 +6565,7 @@
             {
               "id": "s8pnb29",
               "title": "S8 PNB (29)",
-              "edts": [
+              "children": [
                 {
                   "id": "dec-dee5",
                   "title": "DEC-DEE (5)",
@@ -6603,11 +6603,11 @@
         {
           "id": "m1bio-apvv30",
           "title": "M1 BIO - APVV (30)",
-          "edts": [
+          "children": [
             {
               "id": "s7apvv30",
               "title": "S7 APVV (30)",
-              "edts": [
+              "children": [
                 {
                   "id": "apvv",
                   "title": "APVV",
@@ -6618,7 +6618,7 @@
             {
               "id": "s8apvv32",
               "title": "S8 APVV (32)",
-              "edts": [
+              "children": [
                 {
                   "id": "bba-bbm-gen3",
                   "title": "BBA-BBM-GEN (3)",
@@ -6676,11 +6676,11 @@
         {
           "id": "m1bio-bmc64",
           "title": "M1 BIO - BMC (64)",
-          "edts": [
+          "children": [
             {
               "id": "s7bmc64",
               "title": "S7 BMC (64)",
-              "edts": [
+              "children": [
                 {
                   "id": "bmcgr1a16",
                   "title": "BMC Gr 1a (16)",
@@ -6716,7 +6716,7 @@
             {
               "id": "s8bmc60",
               "title": "S8 BMC (60)",
-              "edts": [
+              "children": [
                 {
                   "id": "bci-bin-cac1",
                   "title": "BCI-BIN-CAC (1)",
@@ -6814,11 +6814,11 @@
         {
           "id": "m1bio-cah25",
           "title": "M1 BIO - CAH (25)",
-          "edts": [
+          "children": [
             {
               "id": "s7cah25",
               "title": "S7 CAH (25)",
-              "edts": [
+              "children": [
                 {
                   "id": "cahgr1-pls-",
                   "title": "CAH gr 1 - PLS (-)",
@@ -6834,7 +6834,7 @@
             {
               "id": "s8cah25",
               "title": "S8 CAH (25)",
-              "edts": [
+              "children": [
                 {
                   "id": "eds-bea-rha5",
                   "title": "EDS-BEA-RHA (5)",
@@ -6872,11 +6872,11 @@
         {
           "id": "m1bio-info34",
           "title": "M1 BIO - INFO (34)",
-          "edts": [
+          "children": [
             {
               "id": "s7bio-info34",
               "title": "S7 Bio-info (34)",
-              "edts": [
+              "children": [
                 {
                   "id": "bigr120",
                   "title": "BI Gr 1 (20)",
@@ -6892,7 +6892,7 @@
             {
               "id": "s8bio-info34",
               "title": "S8 Bio-info (34)",
-              "edts": [
+              "children": [
                 {
                   "id": "jpp-bin-bsta15",
                   "title": "JPP-BIN-BSTa (15)",
@@ -6920,11 +6920,11 @@
         {
           "id": "m1bio-microbiologie28",
           "title": "M1 BIO - Microbiologie (28)",
-          "edts": [
+          "children": [
             {
               "id": "s7microbiologie28",
               "title": "S7 Microbiologie (28)",
-              "edts": [
+              "children": [
                 {
                   "id": "groupea14",
                   "title": "Groupe A (14)",
@@ -6940,7 +6940,7 @@
             {
               "id": "s8microbiologie28",
               "title": "S8 Microbiologie (28)",
-              "edts": [
+              "children": [
                 {
                   "id": "a:enz-mic0",
                   "title": "A : ENZ-MIC (0)",
@@ -6968,11 +6968,11 @@
         {
           "id": "m1bio-nsa46",
           "title": "M1 BIO - NSA (46)",
-          "edts": [
+          "children": [
             {
               "id": "s7nsa46",
               "title": "S7 NSA (46)",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1nsa15",
                   "title": "Gr 1 NSA (15)",
@@ -6998,7 +6998,7 @@
             {
               "id": "s8nsa49",
               "title": "S8 NSA (49)",
-              "edts": [
+              "children": [
                 {
                   "id": "in-nna11",
                   "title": "IN-NNA (11)",
@@ -7041,11 +7041,11 @@
         {
           "id": "m1biologie-gestionmae19",
           "title": "M1 Biologie-Gestion MAE (19)",
-          "edts": [
+          "children": [
             {
               "id": "s7biogestion19",
               "title": "S7 BIO GESTION (19)",
-              "edts": [
+              "children": [
                 {
                   "id": "bio-gestion19",
                   "title": "Bio-gestion (19)",
@@ -7056,7 +7056,7 @@
             {
               "id": "s8biogestion19",
               "title": "S8 BIO GESTION (19)",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe111",
                   "title": "groupe 1 (11)",
@@ -7074,7 +7074,7 @@
         {
           "id": "m1chimie-internationalofchemistryexamens",
           "title": "M1 CHIMIE - INTERNATIONAL OF CHEMISTRY (Examens)",
-          "edts": [
+          "children": [
             {
               "id": "m1cint-optionue8a\"basicsinlumomatsciences\"",
               "title": "M1 CINT - Option UE8a \"Basics in Lumomat Sciences\"",
@@ -7090,11 +7090,11 @@
         {
           "id": "m1chimieinitial-alternant",
           "title": "M1 CHIMIE Initial-Alternant",
-          "edts": [
+          "children": [
             {
               "id": "languess2",
               "title": "LANGUES S2",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgr1spmm1chs2",
                   "title": "Anglais GR1 SPM M1 CH (S2)",
@@ -7110,11 +7110,11 @@
             {
               "id": "m1chimies1initial-alternant:4parcours",
               "title": "M1 CHIMIE S1 (Initial-Alternant : 4 parcours)",
-              "edts": [
+              "children": [
                 {
                   "id": "alternants:parcoursmolcsmma",
                   "title": "ALTERNANTS : parcours MOL, CSM, MA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdgraalternantmolcsmma",
                       "title": "TD GrA Alternant (MOL, CSM, MA)",
@@ -7130,11 +7130,11 @@
                 {
                   "id": "initiaux:parcoursquatro",
                   "title": "INITIAUX  : parcours QUATRO",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grtd",
                       "title": "Gr TD",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tdgrainitialquatro",
                           "title": "TD GrA Initial (QUATRO)",
@@ -7150,7 +7150,7 @@
                     {
                       "id": "grtp",
                       "title": "Gr TP",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1initialquatro",
                           "title": "TP Gr1 Initial (QUATRO)",
@@ -7173,11 +7173,11 @@
                 {
                   "id": "initiaux:parcoursmolcsmma",
                   "title": "INITIAUX : parcours MOL, CSM, MA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grtd",
                       "title": "Gr TD",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tdgrainitialmolcsmma",
                           "title": "TD GrA Initial (MOL, CSM, MA)",
@@ -7193,7 +7193,7 @@
                     {
                       "id": "grtp",
                       "title": "Gr TP",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1initialmolcsmma",
                           "title": "TP Gr1 Initial (MOL, CSM, MA)",
@@ -7218,11 +7218,11 @@
             {
               "id": "m1chimies2initial-alternant:4parcours",
               "title": "M1 CHIMIE S2 (Initial-Alternant : 4 parcours)",
-              "edts": [
+              "children": [
                 {
                   "id": "m1cm4v8-initial-alternant",
                   "title": "M1 CM4V (8) - (Initial-Alternant)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm4v-gr14",
                       "title": "CM4V - GR1 (4)",
@@ -7238,7 +7238,7 @@
                 {
                   "id": "m1csm14initial-alternant",
                   "title": "M1 CSM (14) (Initial-Alternant)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "csm-gr17",
                       "title": "CSM - GR1 (7)",
@@ -7254,11 +7254,11 @@
                 {
                   "id": "m1ma12initial-alternant",
                   "title": "M1 MA (12) (Initial-Alternant)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ma-gr16",
                       "title": "MA - GR1 (6)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ma-gr1a2",
                           "title": "MA - GR1a (2)",
@@ -7274,7 +7274,7 @@
                     {
                       "id": "ma-gr26",
                       "title": "MA - GR2 (6)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ma-gr2a3",
                           "title": "MA - GR2a (3)",
@@ -7292,7 +7292,7 @@
                 {
                   "id": "m1quatro1initial",
                   "title": "M1 QUATRO (1) (Initial)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "quatro-gr11",
                       "title": "QUATRO - GR1 (1)",
@@ -7307,7 +7307,7 @@
         {
           "id": "m1ge-ed21",
           "title": "M1 GE - ED (21)",
-          "edts": [
+          "children": [
             {
               "id": "s7ed21",
               "title": "S7 ED (21)",
@@ -7316,7 +7316,7 @@
             {
               "id": "s8ed21",
               "title": "S8 ED (21)",
-              "edts": [
+              "children": [
                 {
                   "id": "age",
                   "title": "AGE ()",
@@ -7334,7 +7334,7 @@
         {
           "id": "m1ge-erpur18",
           "title": "M1 GE - ERPUR (18)",
-          "edts": [
+          "children": [
             {
               "id": "s7erpur18",
               "title": "S7 ERPUR (18)",
@@ -7343,7 +7343,7 @@
             {
               "id": "s8erpur18",
               "title": "S8 ERPUR (18)",
-              "edts": [
+              "children": [
                 {
                   "id": "abc-",
                   "title": "ABC (-)",
@@ -7366,11 +7366,11 @@
         {
           "id": "m1ge-ghbv25",
           "title": "M1 GE - GHBV (25)",
-          "edts": [
+          "children": [
             {
               "id": "s7ghbv25",
               "title": "S7 GHBV (25)",
-              "edts": [
+              "children": [
                 {
                   "id": "ghbv25",
                   "title": "GHBV (25)",
@@ -7381,7 +7381,7 @@
             {
               "id": "s8ghbv25",
               "title": "S8 GHBV (25)",
-              "edts": [
+              "children": [
                 {
                   "id": "abc0",
                   "title": "ABC (0)",
@@ -7404,15 +7404,15 @@
         {
           "id": "m1mecaniqueinitial-alternant",
           "title": "M1 MECANIQUE Initial-Alternant",
-          "edts": [
+          "children": [
             {
               "id": "m1mecaniques1",
               "title": "M1 Mécanique S1",
-              "edts": [
+              "children": [
                 {
                   "id": "alternants:mentionmecanique",
                   "title": "ALTERNANTS : Mention Mécanique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gra1",
                       "title": "Gr A1",
@@ -7423,7 +7423,7 @@
                 {
                   "id": "initiaux:mentionmecanique",
                   "title": "INITIAUX : Mention Mécanique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "gri1",
                       "title": "Gr I1",
@@ -7446,15 +7446,15 @@
             {
               "id": "m1mecaniques2",
               "title": "M1 Mécanique S2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1mecanique",
                   "title": "M1 Mécanique",
-                  "edts": [
+                  "children": [
                     {
                       "id": "alternants:mentionmecanique",
                       "title": "ALTERNANTS : Mention Mécanique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "gra1",
                           "title": "Gr A1",
@@ -7480,7 +7480,7 @@
                     {
                       "id": "initiaux:mentionmecanique",
                       "title": "INITIAUX : Mention Mécanique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "gri1",
                           "title": "Gr I1",
@@ -7522,11 +7522,11 @@
         {
           "id": "m1meefphysique-chimie",
           "title": "M1 MEEF Physique-Chimie",
-          "edts": [
+          "children": [
             {
               "id": "m1meefpc-s1",
               "title": "M1 MEEF PC - S1",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1",
                   "title": "Groupe 1",
@@ -7542,7 +7542,7 @@
             {
               "id": "m1meefpc-s2",
               "title": "M1 MEEF PC - S2",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1",
                   "title": "Groupe 1",
@@ -7560,11 +7560,11 @@
         {
           "id": "m1meefsvt-biogeosciences52",
           "title": "M1 MEEF SVT - Biogéosciences (52)",
-          "edts": [
+          "children": [
             {
               "id": "semestre1meefbiogeosciences-svt-ppp52",
               "title": "Semestre 1 MEEF Biogéosciences - SVT -PPP (52)",
-              "edts": [
+              "children": [
                 {
                   "id": "-svt116",
                   "title": "-SVT1 (16)",
@@ -7595,7 +7595,7 @@
             {
               "id": "semestre2meefbiogeosciences-svt-ppp52",
               "title": "Semestre 2 MEEF Biogéosciences - SVT-PPP (52)",
-              "edts": [
+              "children": [
                 {
                   "id": "-svt116",
                   "title": "-SVT1 (16)",
@@ -7628,11 +7628,11 @@
         {
           "id": "m1physiquefondamentaleetapplicationspfa",
           "title": "M1 PHYSIQUE FONDAMENTALE ET APPLICATIONS (PFA)",
-          "edts": [
+          "children": [
             {
               "id": "m1materialssciencesmamaself12",
               "title": "M1 MATERIALS SCIENCES MAMASELF (12)",
-              "edts": [
+              "children": [
                 {
                   "id": "s1m1materialssciencemamaself14",
                   "title": "S1 M1 Materials Science Mamaself (14)",
@@ -7648,7 +7648,7 @@
             {
               "id": "m1nanosciences4",
               "title": "M1 NANOSCIENCES (4)",
-              "edts": [
+              "children": [
                 {
                   "id": "m1nanosciences4",
                   "title": "M1 Nanosciences (4)",
@@ -7659,7 +7659,7 @@
             {
               "id": "m1photonique9",
               "title": "M1 PHOTONIQUE (9)",
-              "edts": [
+              "children": [
                 {
                   "id": "m1photonique9",
                   "title": "M1 Photonique (9)",
@@ -7670,7 +7670,7 @@
             {
               "id": "m1physiqueagregation3",
               "title": "M1 PHYSIQUE AGREGATION (3)",
-              "edts": [
+              "children": [
                 {
                   "id": "m1physiqueagregation3",
                   "title": "M1 Physique Agrégation (3)",
@@ -7681,7 +7681,7 @@
             {
               "id": "m1physiquemedicale18",
               "title": "M1 PHYSIQUE MEDICALE (18)",
-              "edts": [
+              "children": [
                 {
                   "id": "m1physiquemedicale18",
                   "title": "M1 Physique Médicale (18)",
@@ -7694,11 +7694,11 @@
         {
           "id": "m1se",
           "title": "M1 SE",
-          "edts": [
+          "children": [
             {
               "id": "s7m1se",
               "title": "S7 M1 SE",
-              "edts": [
+              "children": [
                 {
                   "id": "s7-m1segr1",
                   "title": "S7 - M1 SE Gr.1",
@@ -7724,7 +7724,7 @@
             {
               "id": "s8m1se",
               "title": "S8 M1 SE",
-              "edts": [
+              "children": [
                 {
                   "id": "s8m1se",
                   "title": "S8 M1 SE",
@@ -7737,11 +7737,11 @@
         {
           "id": "m1stpe",
           "title": "M1 STPE",
-          "edts": [
+          "children": [
             {
               "id": "s7stpe",
               "title": "S7 STPE",
-              "edts": [
+              "children": [
                 {
                   "id": "m1stpe_optionnel",
                   "title": "M1 STPE_optionnel",
@@ -7757,7 +7757,7 @@
             {
               "id": "s8stpe",
               "title": "S8 STPE",
-              "edts": [
+              "children": [
                 {
                   "id": "s8m1stpe",
                   "title": "S8 M1 STPE",
@@ -7770,15 +7770,15 @@
         {
           "id": "m1-maths",
           "title": "M1-MATHS",
-          "edts": [
+          "children": [
             {
               "id": "s1-m1-maths",
               "title": "S1-M1-MATHS",
-              "edts": [
+              "children": [
                 {
                   "id": "parmodules",
                   "title": "Par MODULES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "acf",
                       "title": "ACF",
@@ -8059,7 +8059,7 @@
                 {
                   "id": "parparcours",
                   "title": "Par PARCOURS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cryptographie",
                       "title": "CRYPTOGRAPHIE",
@@ -8087,11 +8087,11 @@
             {
               "id": "s2-m1-maths",
               "title": "S2-M1-MATHS",
-              "edts": [
+              "children": [
                 {
                   "id": "parmodules",
                   "title": "Par MODULES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "acga-td1",
                       "title": "ACGA-TD1",
@@ -8277,7 +8277,7 @@
                 {
                   "id": "parparcours",
                   "title": "Par PARCOURS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cryptographie",
                       "title": "CRYPTOGRAPHIE",
@@ -8307,7 +8307,7 @@
         {
           "id": "m1-mathsmeef",
           "title": "M1-MATHS MEEF",
-          "edts": [
+          "children": [
             {
               "id": "e-m1-capesmath",
               "title": "E-M1-CAPES math",
@@ -8340,11 +8340,11 @@
     {
       "id": "masters2",
       "title": "MASTERS 2",
-      "edts": [
+      "children": [
         {
           "id": "m2bee-efce39",
           "title": "M2 BEE - EFCE (39)",
-          "edts": [
+          "children": [
             {
               "id": "gsf-ame-iml",
               "title": "GSF-AME-IML",
@@ -8390,7 +8390,7 @@
         {
           "id": "m2bee-mode21",
           "title": "M2 BEE - MODE (21)",
-          "edts": [
+          "children": [
             {
               "id": "pls1-",
               "title": "PLS1 (-)",
@@ -8406,7 +8406,7 @@
         {
           "id": "m2bee-pnb26",
           "title": "M2 BEE - PNB (26)",
-          "edts": [
+          "children": [
             {
               "id": "s910pnb26",
               "title": "S9/10 PNB (26)",
@@ -8417,7 +8417,7 @@
         {
           "id": "m2bio-apvv20",
           "title": "M2 BIO - APVV (20)",
-          "edts": [
+          "children": [
             {
               "id": "eipb13",
               "title": "EIPB (13)",
@@ -8433,7 +8433,7 @@
         {
           "id": "m2bio-bmc82",
           "title": "M2 BIO - BMC (82)",
-          "edts": [
+          "children": [
             {
               "id": "biocell:mic-csooib-prj-olc",
               "title": "Bio cell : MIC-CSO/OIB-PRJ-OLC",
@@ -8484,7 +8484,7 @@
         {
           "id": "m2bio-cah30",
           "title": "M2 BIO - CAH (30)",
-          "edts": [
+          "children": [
             {
               "id": "s9cah30",
               "title": "S9 CAH (30)",
@@ -8495,7 +8495,7 @@
         {
           "id": "m2bio-info40",
           "title": "M2 BIO - INFO (40)",
-          "edts": [
+          "children": [
             {
               "id": "1interbio24",
               "title": "1. InterBio (24)",
@@ -8521,11 +8521,11 @@
         {
           "id": "m2bio-miam25",
           "title": "M2 BIO - MIAM (25)",
-          "edts": [
+          "children": [
             {
               "id": "s9-10miam25",
               "title": "S9-10 MIAM (25)",
-              "edts": [
+              "children": [
                 {
                   "id": "alt-aci2-comm-demi8",
                   "title": "ALT - ACI2-COMM-DEMI (8)",
@@ -8568,7 +8568,7 @@
         {
           "id": "m2bio-microbiologie22",
           "title": "M2 BIO - Microbiologie (22)",
-          "edts": [
+          "children": [
             {
               "id": "a:msecvdbame2",
               "title": "A : MSEC VDB AME (2)",
@@ -8614,7 +8614,7 @@
         {
           "id": "m2biogeosciencessvstuprepaconcours17",
           "title": "M2 Biogéosciences SV STU prépa concours (17)",
-          "edts": [
+          "children": [
             {
               "id": "biogeosciencessvstu17",
               "title": "biogéosciences SV STU (17)",
@@ -8625,11 +8625,11 @@
         {
           "id": "m2biologie-gestion27",
           "title": "M2 Biologie-Gestion (27)",
-          "edts": [
+          "children": [
             {
               "id": "s09bio-gestion27",
               "title": "S09 Bio-Gestion (27)",
-              "edts": [
+              "children": [
                 {
                   "id": "alternantstravailperso-resasalle",
                   "title": "(Alternants travail perso-résa salle)",
@@ -8650,7 +8650,7 @@
             {
               "id": "s10bio-gestion",
               "title": "S10 Bio-Gestion",
-              "edts": [
+              "children": [
                 {
                   "id": "alternants",
                   "title": "Alternants",
@@ -8668,15 +8668,15 @@
         {
           "id": "m2chimie4parcours",
           "title": "M2 CHIMIE (4 parcours)",
-          "edts": [
+          "children": [
             {
               "id": "m2chimiedusolideetdesmateriauxalternant-initiale",
               "title": "M2 CHIMIE DU SOLIDE ET DES MATERIAUX (Alternant-Initiale)",
-              "edts": [
+              "children": [
                 {
                   "id": "langues",
                   "title": "LANGUES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "anglaisgr1spmm2csm",
                       "title": "Anglais Gr1 SPM M2 CSM",
@@ -8697,7 +8697,7 @@
                 {
                   "id": "m2csmalternant:majeures-mineures",
                   "title": "M2 CSM Alternant : MAJEURES - MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2csmtprdalternant",
                       "title": "M2 CSM TP R&D (Alternant)",
@@ -8768,7 +8768,7 @@
                 {
                   "id": "m2csminitiale:majeures-mineures",
                   "title": "M2 CSM Initiale : MAJEURES - MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2csmbibliographieinitiale",
                       "title": "M2 CSM Bibliographie (initiale)",
@@ -8846,11 +8846,11 @@
             {
               "id": "m2chimiemoleculairecm4valternant-initiale",
               "title": "M2 CHIMIE MOLECULAIRE (CM4V) (Alternant-Initiale)",
-              "edts": [
+              "children": [
                 {
                   "id": "langues",
                   "title": "LANGUES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "anglaisgr1spmm2cm4v",
                       "title": "Anglais Gr1 SPM M2 CM4V",
@@ -8871,7 +8871,7 @@
                 {
                   "id": "m2cm4valternant:majeures-mineures",
                   "title": "M2 CM4V Alternant : MAJEURES - MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2cm4vuereporttrainingalternantobligatoire-mutualiseavecm2greensuscat",
                       "title": "M2 CM4V UE Report Training (Alternant / Obligatoire) - mutualisé avec M2 GreenSuSCat",
@@ -8937,7 +8937,7 @@
                 {
                   "id": "m2cm4vinitiale:majeures-mineures",
                   "title": "M2 CM4V Initiale : MAJEURES - MINEURES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2cm4vuereporttraininginitialobligatoire-mutualiseavecm2greensuscat",
                       "title": "M2 CM4V UE Report Training (Initial / Obligatoire) - mutualisé avec M2 GreenSuSCat",
@@ -9005,7 +9005,7 @@
             {
               "id": "m2greensuscatexamens",
               "title": "M2 GreenSusCat (Examens)",
-              "edts": [
+              "children": [
                 {
                   "id": "m2greensuscat",
                   "title": "M2 GreenSusCat",
@@ -9016,11 +9016,11 @@
             {
               "id": "m2methodesd'analysesalternant-initiale",
               "title": "M2 METHODES D'ANALYSES (Alternant-Initiale)",
-              "edts": [
+              "children": [
                 {
                   "id": "langues",
                   "title": "LANGUES",
-                  "edts": [
+                  "children": [
                     {
                       "id": "anglaisgr1spmm2ma",
                       "title": "Anglais Gr1 SPM M2 MA",
@@ -9041,7 +9041,7 @@
                 {
                   "id": "m2maalternant9",
                   "title": "M2 MA Alternant (9)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2maalternant",
                       "title": "M2 MA Alternant",
@@ -9052,11 +9052,11 @@
                 {
                   "id": "m2mainitiale15",
                   "title": "M2 MA Initiale (15)",
-                  "edts": [
+                  "children": [
                     {
                       "id": "grainitiale8",
                       "title": "Gr A (Initiale) (8)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grpea13initiale",
                           "title": "Grpe A1 (3) (Initiale)",
@@ -9072,7 +9072,7 @@
                     {
                       "id": "grbinitiale7",
                       "title": "Gr B (Initiale) (7)",
-                      "edts": [
+                      "children": [
                         {
                           "id": "grpeb12initiale",
                           "title": "Grpe B1 (2) (Initiale)",
@@ -9094,7 +9094,7 @@
         {
           "id": "m2ge-ed17",
           "title": "M2 GE - ED (17)",
-          "edts": [
+          "children": [
             {
               "id": "s910ed17",
               "title": "S9/10 ED (17)",
@@ -9105,7 +9105,7 @@
         {
           "id": "m2ge-erpur21",
           "title": "M2 GE - ERPUR (21)",
-          "edts": [
+          "children": [
             {
               "id": "s910erpur21",
               "title": "S9/10 ERPUR (21)",
@@ -9116,7 +9116,7 @@
         {
           "id": "m2ge-ghbv23",
           "title": "M2 GE - GHBV (23)",
-          "edts": [
+          "children": [
             {
               "id": "poll-geg-",
               "title": "Poll-GeG  (-)",
@@ -9137,7 +9137,7 @@
         {
           "id": "m2mamaself",
           "title": "M2 MAMASELF",
-          "edts": [
+          "children": [
             {
               "id": "mamaselfm2",
               "title": "MaMaSELF (M2)",
@@ -9148,7 +9148,7 @@
         {
           "id": "m2mecanique3parcoursinitial-alternant",
           "title": "M2 MECANIQUE (3 parcours Initial-Alternant)",
-          "edts": [
+          "children": [
             {
               "id": "anglaisressources24-25voirsuppr?",
               "title": "Anglais ressources 24-25 voir suppr ?",
@@ -9157,7 +9157,7 @@
             {
               "id": "m2mecaniqueetmateriauxinitiale+alternance",
               "title": "M2 MECANIQUE ET MATERIAUX (Initiale+Alternance)",
-              "edts": [
+              "children": [
                 {
                   "id": "m2mecaniqueetmateriauxalternance",
                   "title": "M2 MECANIQUE ET MATERIAUX (Alternance)",
@@ -9173,7 +9173,7 @@
             {
               "id": "m2mecatroniqueinitial-alternant",
               "title": "M2 MECATRONIQUE Initial-Alternant",
-              "edts": [
+              "children": [
                 {
                   "id": "m2mecatroniquealternance",
                   "title": "M2 MECATRONIQUE (Alternance)",
@@ -9187,7 +9187,7 @@
                 {
                   "id": "m2mecatroniqueenalternancemutualisel3mecanique",
                   "title": "M2 MECATRONIQUE (en Alternance) Mutualisé L3 MECANIQUE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupec",
                       "title": "Groupe C",
@@ -9205,7 +9205,7 @@
             {
               "id": "m2transitionsenvironnementalesdel'industrieinitiale+alternance",
               "title": "M2 TRANSITIONS ENVIRONNEMENTALES DE L'INDUSTRIE (Initiale+Alternance)",
-              "edts": [
+              "children": [
                 {
                   "id": "m2transitionsenvironnementalesdel'industriealternance",
                   "title": "M2 TRANSITIONS ENVIRONNEMENTALES DE L'INDUSTRIE (Alternance)",
@@ -9223,11 +9223,11 @@
         {
           "id": "m2meefphysique-chimie",
           "title": "M2 MEEF Physique-Chimie",
-          "edts": [
+          "children": [
             {
               "id": "m2meefpc-s3",
               "title": "M2 MEEF PC - S3",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1",
                   "title": "Groupe 1",
@@ -9243,7 +9243,7 @@
             {
               "id": "m2meefpc-s4",
               "title": "M2 MEEF PC - S4",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1",
                   "title": "Groupe 1",
@@ -9261,7 +9261,7 @@
         {
           "id": "m2meefsvt23",
           "title": "M2 MEEF SVT (23)",
-          "edts": [
+          "children": [
             {
               "id": "m2meef23",
               "title": "M2 MEEF (23)",
@@ -9272,11 +9272,11 @@
         {
           "id": "m2physique",
           "title": "M2 PHYSIQUE",
-          "edts": [
+          "children": [
             {
               "id": "m2agregation",
               "title": "M2 AGREGATION",
-              "edts": [
+              "children": [
                 {
                   "id": "m2agregationclasseentiere",
                   "title": "M2 Agrégation Classe entière",
@@ -9292,11 +9292,11 @@
             {
               "id": "m2nanosciences",
               "title": "M2 NANOSCIENCES",
-              "edts": [
+              "children": [
                 {
                   "id": "groupeanglais",
                   "title": "Groupe Anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea-anglais-m2nanosciences-creneau13h15-14h45",
                       "title": "Groupe A - Anglais - M2 Nanosciences - créneau 13h15-14h45",
@@ -9324,11 +9324,11 @@
             {
               "id": "m2photonique",
               "title": "M2 PHOTONIQUE",
-              "edts": [
+              "children": [
                 {
                   "id": "groupeanglais",
                   "title": "Groupe Anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea-anglais-m2photonique-creneau13h15-14h45",
                       "title": "Groupe A - Anglais - M2 Photonique - créneau 13h15-14h45",
@@ -9361,11 +9361,11 @@
             {
               "id": "m2physiquemedicale",
               "title": "M2 PHYSIQUE MEDICALE",
-              "edts": [
+              "children": [
                 {
                   "id": "groupeanglais",
                   "title": "Groupe Anglais",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea-anglais-m2physiquemed-creneau13h15-14h45",
                       "title": "Groupe A - Anglais - M2 Physique Méd. - créneau 13h15-14h45",
@@ -9381,7 +9381,7 @@
                 {
                   "id": "m2physiquemedicale2025-2026-classeentiere",
                   "title": "M2 Physique Médicale 2025-2026 - Classe entière",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m2physiquemedicalegpea",
                       "title": "M2 Physique Médicale Gpe A",
@@ -9401,7 +9401,7 @@
         {
           "id": "m2ppp",
           "title": "M2 PPP",
-          "edts": [
+          "children": [
             {
               "id": "m2ppp",
               "title": "M2 PPP",
@@ -9412,7 +9412,7 @@
         {
           "id": "m2se",
           "title": "M2 SE",
-          "edts": [
+          "children": [
             {
               "id": "m2se",
               "title": "M2 SE",
@@ -9423,7 +9423,7 @@
         {
           "id": "m2stpe",
           "title": "M2 STPE",
-          "edts": [
+          "children": [
             {
               "id": "s9stpe",
               "title": "S9 STPE",
@@ -9434,7 +9434,7 @@
         {
           "id": "m2-mathsagregationexterne",
           "title": "M2-MATHS AGREGATION EXTERNE",
-          "edts": [
+          "children": [
             {
               "id": "anglaism2agregmathshorsens",
               "title": "Anglais M2 Agreg Maths hors ENS",
@@ -9465,7 +9465,7 @@
         {
           "id": "m2-mathsapprofondissementdisciplinaire",
           "title": "M2-MATHS Approfondissement disciplinaire",
-          "edts": [
+          "children": [
             {
               "id": "e-interne",
               "title": "E-Interne",
@@ -9476,7 +9476,7 @@
         {
           "id": "m2-mathscsm",
           "title": "M2-MATHS CSM",
-          "edts": [
+          "children": [
             {
               "id": "ducccs",
               "title": "DU CCCS",
@@ -9497,7 +9497,7 @@
         {
           "id": "m2-mathsmeef",
           "title": "M2-MATHS MEEF",
-          "edts": [
+          "children": [
             {
               "id": "e-m2-capes",
               "title": "E-M2-CAPES",
@@ -9518,7 +9518,7 @@
         {
           "id": "m2-mathsrecherche",
           "title": "M2-MATHS Recherche",
-          "edts": [
+          "children": [
             {
               "id": "e-m2-algebreetgeometrie",
               "title": "E-M2-Algèbre et géométrie",
@@ -9539,7 +9539,7 @@
         {
           "id": "m2-mathssns",
           "title": "M2-MATHS SNS",
-          "edts": [
+          "children": [
             {
               "id": "m2sns",
               "title": "M2 SNS",
@@ -9550,7 +9550,7 @@
         {
           "id": "m2-mathsdel'infocrypto",
           "title": "M2-MATHS de l'info, CRYPTO",
-          "edts": [
+          "children": [
             {
               "id": "parcoursclassique",
               "title": "Parcours classique",
@@ -9564,7 +9564,7 @@
             {
               "id": "populations",
               "title": "populations",
-              "edts": [
+              "children": [
                 {
                   "id": "cryptoclassique",
                   "title": "crypto classique",
