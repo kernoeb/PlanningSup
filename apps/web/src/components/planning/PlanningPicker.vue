@@ -360,13 +360,13 @@ onMounted(() => {
         </div>
 
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-200" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-200 pt-2 px-4 pb-4 " v-bind="containerProps">
           <div v-bind="wrapperProps">
             <div
               v-for="row in vlist"
               :id="`planning-row-${row.data.fullId}`"
               :key="row.data.fullId"
-              class="flex items-center justify-between px-2 hover:bg-primary/20 transition-all cursor-pointer"
+              class="flex items-center justify-between px-2 mb-1.5 hover:bg-primary/20 transition-all cursor-pointer"
               :class="{
                 'bg-primary/10': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0),
                 'bg-primary/20 font-bold': (row.data.isLeaf && isSelected(row.data.fullId)),
