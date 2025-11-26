@@ -1,5 +1,4 @@
 import { createSharedComposable, useLocalStorage } from '@vueuse/core'
-import { detectBrowserTimezone } from '@web/composables/useTimezone'
 import { useUserPrefsSync } from '@web/composables/useUserPrefsSync'
 import { computed } from 'vue'
 
@@ -22,14 +21,6 @@ const DEFAULT_COLORS: ColorMap = {
  */
 export function getDefaultColors(): ColorMap {
   return { ...DEFAULT_COLORS }
-}
-
-/**
- * Helper to detect the browser IANA timezone.
- * Delegates to shared detectBrowserTimezone from useTimezone.
- */
-function getBrowserTimezone(): string | null {
-  return detectBrowserTimezone()
 }
 
 // Stable normalization of colors for comparison/stringify (ensure key order)
@@ -104,8 +95,6 @@ export function useSettings() {
    * Shape:
    * - highlightTeacher=true            (only when true)
    * - blocklist=a,b,c                  (only when non-empty)
-   * - browserTimezone=Europe/Paris     (only when targetTimezone is set)
-   * - targetTimezone=UTC               (only when targetTimezone is set)
    */
   const queryParams = computed<Record<string, string>>(() => {
     const qp: Record<string, string> = {}
@@ -118,15 +107,6 @@ export function useSettings() {
 
     if (blocklist.value.length > 0) {
       qp.blocklist = blocklist.value.join(',')
-    }
-
-    // Include timezone query params only when a target timezone is selected
-    if (targetTimezone.value) {
-      const browserTz = getBrowserTimezone()
-      if (browserTz) {
-        qp.browserTimezone = browserTz
-        qp.targetTimezone = targetTimezone.value
-      }
     }
 
     return qp

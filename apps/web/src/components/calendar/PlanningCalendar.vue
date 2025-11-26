@@ -2,12 +2,16 @@
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { refDebounced, useSwipe } from '@vueuse/core'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
+import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
-import { useTimezone } from '@web/composables/useTimezone'
+import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
-import { useTemplateRef } from 'vue'
+import { computed, useTemplateRef } from 'vue'
 
-const { timezone } = useTimezone()
+const settings = useSharedSettings()
+const allowedTimezones = getSupportedTimezones()
+const timezone = computed(() => resolveTimezone(settings.targetTimezone.value, allowedTimezones))
+
 const { calendarApp, reload, nextPeriod, prevPeriod, nbHours, loading } = usePlanningCalendar({ timezone })
 const { isDark: uiIsDark } = useSharedTheme()
 

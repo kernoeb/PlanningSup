@@ -49,7 +49,6 @@
     "predev": "bun install; docker compose up -d --pull always",
     "dev": "bun scripts/run dev",
     "build": "bun scripts/run build",
-    "test": "bun scripts/run test",
     "test:unit": "bun test test/*.test.ts",
     "coverage": "bun scripts/run coverage",
     "test:e2e": "bun scripts/test.ts",

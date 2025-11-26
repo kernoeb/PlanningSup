@@ -81,7 +81,7 @@ bun dev
 - `bun run build` : build de tous les packages applicables.
 - `bun run lint` · `bun run lint-fix` : ESLint.
 - `bun run typecheck` : vérification TS.
-- `bun run test` ou `bun run test:unit` : tests unitaires Bun.
+- `bun run test:unit` : tests unitaires Bun.
 - `bun run test:integration` : tests d’intégration (Docker requis).
 - `bun run test:e2e` (+ variantes `:safari`, `:headed`, `:debug`) : Playwright.  
   Plus de détails dans `TESTING.md`.

@@ -30,6 +30,24 @@ export function isAllowedTimezone(tz: string, allowed: Set<string>): tz is NonNu
   return allowed.has(tz)
 }
 
+/**
+ * Resolve the effective timezone given an optional preferred value.
+ * - If `preferred` is allowed, use it.
+ * - Otherwise try to detect the browser timezone.
+ * - Fallback to FALLBACK_TIMEZONE.
+ */
+export function resolveTimezone(
+  preferred?: string | null,
+  allowed: Set<string> = getSupportedTimezones(),
+): NonNullable<AllowedTimezones> {
+  if (preferred && isAllowedTimezone(preferred, allowed)) return preferred
+
+  const detected = detectBrowserTimezone()
+  if (detected && isAllowedTimezone(detected, allowed)) return detected
+
+  return FALLBACK_TIMEZONE
+}
+
 export function detectBrowserTimezone(): string | null {
   try {
     const temporalNow = Temporal.Now
@@ -42,13 +60,10 @@ export function detectBrowserTimezone(): string | null {
     return null
   }
 }
-export function useTimezone(): { timezone: NonNullable<AllowedTimezones> } {
+
+export function useTimezone(preferred?: string | null): { timezone: NonNullable<AllowedTimezones> } {
   const allowedTimezones = getSupportedTimezones()
-
-  const detected = detectBrowserTimezone()
-
-  const timezone: NonNullable<AllowedTimezones>
-    = detected && isAllowedTimezone(detected, allowedTimezones) ? detected : FALLBACK_TIMEZONE
+  const timezone: NonNullable<AllowedTimezones> = resolveTimezone(preferred, allowedTimezones)
 
   return { timezone }
 }

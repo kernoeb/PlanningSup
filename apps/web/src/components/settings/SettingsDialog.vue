@@ -164,11 +164,13 @@ watch(() => props.open, (next) => {
               {{ tz }}
             </option>
           </select>
-          <div
-            v-if="browserTimezone || targetTimezone"
-            class="text-xs text-base-content/60 mt-1"
-          >
-            Navigateur: <code>{{ browserTimezone || 'inconnu' }}</code><span v-if="targetTimezone">, Cible: <code>{{ targetTimezone }}</code></span>
+          <div class="text-xs text-base-content/60 mt-1">
+            <template v-if="targetTimezone">
+              Navigateur: <code>{{ browserTimezone || 'inconnu' }}</code>, Cible: <code>{{ targetTimezone }}</code>
+            </template>
+            <template v-else>
+              Fuseau actif: <code>Par défaut</code><span v-if="browserTimezone"> (navigateur: <code>{{ browserTimezone }}</code>)</span>
+            </template>
           </div>
         </section>
 

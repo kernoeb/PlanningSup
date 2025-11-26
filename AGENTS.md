@@ -11,7 +11,7 @@ PlanningSup is a french university calendar to help students manage their schedu
 - Install: `bun install` (Bun pinned in `.bun-version`, equivalent to Node >=22).  
 - Local stack: `bun dev` (starts Docker, then `scripts/run dev`).  
 - Build: `bun run build`.  
-- Unit sweep: `bun run test:unit` or `bun run test` (uses `scripts/run test`).  
+- Unit sweep: `bun run test:unit`  
 - Integration: `bun run test:integration` (builds image) or `bun run test:integration:local` with existing containers.  
 - E2E: `bun run test:e2e` (`:safari`, `:headed`, `:debug` variants).  
 - Quality gates: `bun run lint`, `bun run lint-fix`, `bun run typecheck`, `bun run coverage`.

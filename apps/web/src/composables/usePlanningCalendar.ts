@@ -1,16 +1,9 @@
-import type {
-  CalendarEvent,
-} from '@schedule-x/calendar'
-
+import type { CalendarEvent } from '@schedule-x/calendar'
+import type { Ref } from 'vue'
 import type { EventWithFullId } from './usePlanningData'
 import type { AllowedTimezones } from './useTimezone'
-import {
-  createCalendar,
-  createViewDay,
-  createViewMonthAgenda,
-  createViewMonthGrid,
-  createViewWeek,
-} from '@schedule-x/calendar'
+
+import { createCalendar, createViewDay, createViewMonthAgenda, createViewMonthGrid, createViewWeek } from '@schedule-x/calendar'
 import { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import { createCurrentTimePlugin } from '@schedule-x/current-time'
 import { createEventModalPlugin } from '@schedule-x/event-modal'
@@ -18,9 +11,9 @@ import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 
 import { onKeyStroke } from '@vueuse/core'
-import buildCalendarsUtil from '@web/utils/calendars'
 
-import { computed, ref, shallowRef, watch } from 'vue'
+import buildCalendarsUtil from '@web/utils/calendars'
+import { computed, ref, shallowRef, unref, watch } from 'vue'
 import { usePlanningData } from './usePlanningData'
 import { useSharedSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
@@ -53,9 +46,10 @@ function mapApiEventToCalendarEvent(
  * const { calendarApp, reload } = usePlanningCalendar({ timezone })
  */
 export function usePlanningCalendar(options: {
-  timezone: NonNullable<AllowedTimezones>
+  timezone: Ref<NonNullable<AllowedTimezones>>
 }) {
-  const { timezone } = options
+  const timezoneRef = options.timezone
+  const timezoneValue = computed(() => unref(timezoneRef))
 
   const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
   const eventsServicePlugin = createEventsServicePlugin()
@@ -70,7 +64,7 @@ export function usePlanningCalendar(options: {
   const currentView = ref<ReturnType<typeof calendarControls.getView> | null>(null)
 
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
-  const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezone).toPlainDate())
+  const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezoneValue.value).toPlainDate())
 
   const loading = computed(() => planning.loading.value)
 
@@ -112,8 +106,8 @@ export function usePlanningCalendar(options: {
     prevPeriod()
   }, { dedupe: true })
 
-  function getMappedEvents() {
-    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, timezone))
+  function getMappedEvents(tz: NonNullable<AllowedTimezones>) {
+    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, tz))
   }
 
   function getWeekOptions() {
@@ -125,7 +119,8 @@ export function usePlanningCalendar(options: {
   }
 
   function initOrUpdate(forceRecreate = false) {
-    const mapped = getMappedEvents()
+    const timezone = timezoneValue.value
+    const mappedEvents = getMappedEvents(timezone)
 
     // Only initialize calendar if we have planning data or are forcing recreation
     const hasData = planning.planningFullIds.value?.length > 0
@@ -159,7 +154,7 @@ export function usePlanningCalendar(options: {
         dayBoundaries: { start: '07:00', end: '20:00' },
         weekOptions: getWeekOptions(),
         calendars: buildCalendarsUtil(settings.colors.value),
-        events: mapped,
+        events: mappedEvents,
         plugins: [
           calendarControls,
           eventsServicePlugin,
@@ -180,7 +175,7 @@ export function usePlanningCalendar(options: {
       if (prevView) calendarControls.setView?.(prevView)
       if (isRecreate && prevDate) calendarControls.setDate?.(prevDate)
     } else {
-      eventsServicePlugin.set(mapped)
+      eventsServicePlugin.set(mappedEvents)
     }
   }
 
@@ -191,28 +186,29 @@ export function usePlanningCalendar(options: {
 
   watch(planning.events, () => {
     if (calendarApp.value) {
-      eventsServicePlugin.set(getMappedEvents())
+      eventsServicePlugin.set(getMappedEvents(timezoneValue.value))
     }
   })
 
-  // Update calendars palette in place when colors change (no reinit, no flicker)
-  watch(
-    () => settings.colors.value,
-    () => {
-      if (!calendarApp.value) return
-      calendarControls.setCalendars(buildCalendarsUtil(settings.colors.value))
-    },
-    { deep: true },
-  )
+  // Update calendars palette in place when colors change
+  watch(() => settings.colors.value, () => {
+    if (!calendarApp.value) return
+    calendarControls.setCalendars(buildCalendarsUtil(settings.colors.value))
+  }, { deep: true })
 
-  // Re-init calendar when theme darkness changes
+  // Update calendar when theme darkness changes
   watch(uiIsDark, (isDark) => {
     calendarApp.value?.setTheme(isDark ? 'dark' : 'light')
   })
 
-  // Re-init calendar when the number of days in week view changes
+  // Update calendar when the number of days in week view changes
   watch(() => settings.weekNDays.value, () => {
     calendarControls.setWeekOptions(getWeekOptions())
+  })
+
+  // Update calendar when timezone changes
+  watch(timezoneValue, () => {
+    calendarControls.setTimezone(timezoneValue.value)
   })
 
   // Manual reload if needed by UI
