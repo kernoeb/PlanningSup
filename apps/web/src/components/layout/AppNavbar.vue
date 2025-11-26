@@ -7,7 +7,7 @@ import { useSharedTheme } from '@web/composables/useTheme'
 import { ChevronDown, List } from 'lucide-vue-next'
 import { computed, useTemplateRef } from 'vue'
 
-const { title } = usePlanningData()
+const { title, planningFullIds } = usePlanningData()
 const { theme, i18nThemes, setTheme } = useSharedTheme()
 const currentLabel = computed(() => i18nThemes[theme.value])
 
@@ -56,13 +56,20 @@ onKeyStroke(
             <button id="planning-picker-trigger" class="btn btn-secondary h-6 min-h-6 hidden sm:inline-flex" type="button" @click="open">
               Changer de planning
               <kbd
-                class="kbd kbd-xs bg-transparent text-[inherit] border-current opacity-100 hidden sm:inline-flex"
+                class="kbd kbd-xs bg-transparent text-inherit border-current opacity-100 hidden sm:inline-flex"
               >U</kbd>
             </button>
           </template>
         </PlanningPicker>
         <Transition name="fade">
-          <span v-if="title" id="current-planning-badge" class="badge truncate max-w-[22rem] h-6 hidden sm:inline-flex">{{ title }}</span>
+          <span v-if="title && planningFullIds.length === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex">
+            {{ title }}
+          </span>
+          <div v-else-if="title && planningFullIds.length > 1" class="tooltip tooltip-bottom" :data-tip="title">
+            <span id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex">
+              {{ planningFullIds.length }} plannings sélectionnés
+            </span>
+          </div>
         </Transition>
       </div>
     </div>
