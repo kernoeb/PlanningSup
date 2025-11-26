@@ -13,7 +13,8 @@ import { mergeLocales, translations } from '@schedule-x/translations'
 import { onKeyStroke } from '@vueuse/core'
 
 import buildCalendarsUtil from '@web/utils/calendars'
-import { computed, ref, shallowRef, unref, watch } from 'vue'
+import { computed, shallowRef, unref, watch } from 'vue'
+import { useCalendarResponsiveView } from './useCalendarResponsiveView'
 import { usePlanningData } from './usePlanningData'
 import { useSharedSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
@@ -55,13 +56,11 @@ export function usePlanningCalendar(options: {
   const eventsServicePlugin = createEventsServicePlugin()
   const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
+  const { currentView, updateCurrentView } = useCalendarResponsiveView({ calendarControls, calendarApp })
 
   const settings = useSharedSettings()
   const planning = usePlanningData()
   const { isDark: uiIsDark } = useSharedTheme()
-
-  // On view change, update our ref
-  const currentView = ref<ReturnType<typeof calendarControls.getView> | null>(null)
 
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
   const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezoneValue.value).toPlainDate())
@@ -164,12 +163,12 @@ export function usePlanningCalendar(options: {
         translations: mergeLocales(translations),
         callbacks: {
           onRangeUpdate: () => {
-            currentView.value = calendarControls.getView()
+            updateCurrentView(calendarControls.getView())
           },
         },
       })
 
-      currentView.value = calendarControls.getView()
+      updateCurrentView(calendarControls.getView())
 
       // Restore previous state if available
       if (prevView) calendarControls.setView?.(prevView)
