@@ -58,6 +58,7 @@ function parseAndNormalizeColors(raw: unknown) {
  *   - blocklist: string[]
  *   - targetTimezone: string | null
  *   - showWeekends: boolean
+ *   - mergeDuplicates: boolean
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - weekNDays: number (7 when showWeekends, otherwise 5)
@@ -85,6 +86,9 @@ export function useSettings() {
   // 5) Show weekends in week view (client-only)
   // Default false to match current behavior (5-day week)
   const showWeekends = useLocalStorage<boolean>('settings.showWeekends', false)
+
+  // 6) Merge duplicate events across plannings (client-only)
+  const mergeDuplicates = useLocalStorage<boolean>('settings.mergeDuplicates', true)
 
   // Derived helper for calendar weekOptions.nDays
   const weekNDays = computed(() => (showWeekends.value ? 7 : 5))
@@ -153,6 +157,16 @@ export function useSettings() {
     debounce: 250,
   })
 
+  // mergeDuplicates (client-side behavior but kept in user prefs for consistency)
+  syncPref('mergeDuplicates', mergeDuplicates, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
+    setLocal: v => (mergeDuplicates.value = v),
+    debounce: 50,
+  })
+
   // colors (stored in DB as JSON string)
   syncPref('colors', colors, {
     toServer: v => encodeColorsToString(v),
@@ -179,6 +193,7 @@ export function useSettings() {
     blocklist,
     targetTimezone,
     showWeekends,
+    mergeDuplicates,
 
     // derived
     queryParams,

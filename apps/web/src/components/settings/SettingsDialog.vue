@@ -17,7 +17,7 @@ const emit = defineEmits<{
 }>()
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
-const { blocklist, colors, highlightTeacher, showWeekends, targetTimezone } = useSharedSettings()
+const { blocklist, colors, highlightTeacher, mergeDuplicates, showWeekends, targetTimezone } = useSharedSettings()
 
 // Timezone selector state
 const browserTimezone = ref<string | null>(detectBrowserTimezone())
@@ -148,7 +148,24 @@ watch(() => props.open, (next) => {
           </label>
         </section>
 
-        <!-- 4) Fuseau horaire cible -->
+        <!-- 4) Fusionner les doublons -->
+        <section>
+          <h4 class="font-semibold mb-2">
+            Fusionner les doublons
+          </h4>
+          <label class="label cursor-pointer justify-start gap-3">
+            <input
+              v-model="mergeDuplicates"
+              aria-describedby="merge-duplicates-desc" class="toggle"
+              type="checkbox"
+            >
+            <span id="merge-duplicates-desc" class="text-wrap">
+              Combine les événements identiques provenant de plusieurs plannings en un seul.
+            </span>
+          </label>
+        </section>
+
+        <!-- 5) Fuseau horaire cible -->
         <section>
           <h4 class="font-semibold mb-2">
             Fuseau horaire cible
@@ -174,7 +191,7 @@ watch(() => props.open, (next) => {
           </div>
         </section>
 
-        <!-- 5) Liste de blocage -->
+        <!-- 6) Liste de blocage -->
         <section>
           <h4 class="font-semibold mb-2">
             Liste de blocage

@@ -30,6 +30,10 @@ const options = {
         type: 'boolean',
         validator: { input: z.boolean().optional() },
       },
+      mergeDuplicates: {
+        type: 'boolean',
+        validator: { input: z.boolean().optional() },
+      },
       blocklist: {
         type: 'string[]',
         validator: { input: z.array(z.string()).optional() },
@@ -78,10 +82,10 @@ const options = {
           // - If value is a number, keep it as-is
           // - If value is not a number, stamp with Date.now()
           // - Always return normalized JSON string
-          // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings', number>
+          // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings', number>
           input: z.string().optional().transform((val) => {
             try {
-              const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'blocklist', 'colors', 'plannings'] as const
+              const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'blocklist', 'colors', 'plannings'] as const
               const set = new Set<string>(allowed as unknown as string[])
               const raw = JSON.parse(val || '{}')
               if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return '{}'

@@ -13,6 +13,7 @@ import { mergeLocales, translations } from '@schedule-x/translations'
 import { onKeyStroke } from '@vueuse/core'
 
 import buildCalendarsUtil from '@web/utils/calendars'
+import { mergeDuplicateEvents } from '@web/utils/events'
 import { computed, shallowRef, unref, watch } from 'vue'
 import { useCalendarResponsiveView } from './useCalendarResponsiveView'
 import { usePlanningData } from './usePlanningData'
@@ -105,8 +106,12 @@ export function usePlanningCalendar(options: {
     prevPeriod()
   }, { dedupe: true })
 
+  const displayedEvents = computed(() =>
+    settings.mergeDuplicates.value ? mergeDuplicateEvents(planning.events.value) : planning.events.value,
+  )
+
   function getMappedEvents(tz: NonNullable<AllowedTimezones>) {
-    return planning.events.value.map(e => mapApiEventToCalendarEvent(e, tz))
+    return displayedEvents.value.map(e => mapApiEventToCalendarEvent(e, tz))
   }
 
   function getWeekOptions() {
@@ -183,7 +188,7 @@ export function usePlanningCalendar(options: {
     void initOrUpdate()
   }, { immediate: true })
 
-  watch(planning.events, () => {
+  watch(displayedEvents, () => {
     if (calendarApp.value) {
       eventsServicePlugin.set(getMappedEvents(timezoneValue.value))
     }
@@ -219,7 +224,7 @@ export function usePlanningCalendar(options: {
 
   // Humanized cumulated event duration for the current view range
   const nbHours = computed<string | null>(() => {
-    const events = planning.events.value ?? []
+    const events = displayedEvents.value ?? []
     if (!events.length) return null
 
     // Resolve current range [startMs, endMs]

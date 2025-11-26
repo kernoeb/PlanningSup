@@ -6,7 +6,7 @@ import { computed, isRef, ref, toValue, watch } from 'vue'
 const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled || import.meta.env?.VITE_AUTH_ENABLED === 'true'
 const DEV = import.meta?.env?.DEV ?? false
 
-export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings'
+export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings' | 'mergeDuplicates'
 
 export interface SyncOptions<T> {
   // Transform local value to the server payload format.
