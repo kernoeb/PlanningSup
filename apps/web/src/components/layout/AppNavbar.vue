@@ -74,7 +74,7 @@ onKeyStroke(
       </div>
     </div>
 
-    <div class="flex-none mr-2 hidden sm:block">
+    <div class="flex-none mr-2 hidden md:block">
       <div id="theme-dropdown" class="dropdown dropdown-end">
         <div id="theme-dropdown-trigger" class="btn btn-ghost" role="button" tabindex="0">
           Thème: {{ currentLabel }}

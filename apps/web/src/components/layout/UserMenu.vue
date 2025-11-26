@@ -62,30 +62,30 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         tabindex="0"
       >
         <!-- Small screens: Theme controls moved here -->
-        <li class="menu-title sm:hidden">
+        <li class="menu-title md:hidden">
           <span>Thème: {{ currentThemeLabel }}</span>
         </li>
-        <li class="sm:hidden">
+        <li class="md:hidden">
           <button id="mobile-theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
             {{ i18nThemes.auto }}
           </button>
         </li>
-        <li class="sm:hidden">
+        <li class="md:hidden">
           <button id="mobile-theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
             {{ i18nThemes.dark }}
           </button>
         </li>
-        <li class="sm:hidden">
+        <li class="md:hidden">
           <button id="mobile-theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
             {{ i18nThemes.light }}
           </button>
         </li>
-        <li class="sm:hidden">
+        <li class="md:hidden">
           <button id="mobile-theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
             {{ i18nThemes.dracula }}
           </button>
         </li>
-        <div class="sm:hidden divider m-0" />
+        <div class="md:hidden divider m-0" />
         <!-- End small-screen theme controls -->
         <li v-if="authEnabled && !user">
           <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
