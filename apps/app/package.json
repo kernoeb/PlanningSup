@@ -17,20 +17,20 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "catalog:ui",
-    "@tauri-apps/api": "2.8.0",
-    "@tauri-apps/plugin-deep-link": "~2",
-    "@tauri-apps/plugin-opener": "2.5.0",
+    "@tauri-apps/api": "2.9.0",
+    "@tauri-apps/plugin-deep-link": "~2.4.5",
+    "@tauri-apps/plugin-opener": "2.5.2",
     "daisyui": "catalog:ui",
     "tailwindcss": "catalog:ui",
-    "temporal-polyfill": "^0.3.0",
+    "temporal-polyfill": "0.3.0",
     "vue": "catalog:ui"
   },
   "devDependencies": {
-    "@fontsource-variable/roboto": "^5.2.8",
-    "@tauri-apps/cli": "2.8.4",
+    "@fontsource-variable/roboto": "5.2.9",
+    "@tauri-apps/cli": "2.9.4",
     "@types/bun": "catalog:types",
     "@vitejs/plugin-vue": "catalog:dev",
-    "@vue/tsconfig": "^0.8.1",
+    "@vue/tsconfig": "0.8.1",
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
     "vue-tsc": "catalog:dev"

@@ -100,7 +100,7 @@ test.describe('Performance and Stability Tests', () => {
     })
 
     // Verify app remains stable
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
     await helper.verifyCalendar()
 
     // Should have made API calls efficiently
@@ -179,7 +179,7 @@ test.describe('Performance and Stability Tests', () => {
     expect(loadTime).toBeLessThan(5000)
 
     // Basic functionality should work despite API errors
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
     await helper.verifyCalendar()
 
     // Should handle errors gracefully
@@ -287,7 +287,7 @@ test.describe('Performance and Stability Tests', () => {
         expect(loadTime).toBeLessThan(4000)
 
         // Basic functionality should work
-        await expect(page.locator('#planning-sup-app')).toBeVisible()
+        await expect(page.locator('#planningsup-app')).toBeVisible()
         await helper.verifyResponsiveDesign()
       })
     }
@@ -315,7 +315,7 @@ test.describe('Performance and Stability Tests', () => {
     })
 
     // App should remain stable
-    await expect(page.locator('#planning-sup-app')).toBeVisible()
+    await expect(page.locator('#planningsup-app')).toBeVisible()
   })
 
   test('performance metrics within acceptable ranges', async ({ page }) => {

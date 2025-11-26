@@ -397,7 +397,7 @@
                 {
                   "id": "bp3",
                   "title": "BP3",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6347&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6347&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "eb1",
@@ -427,7 +427,7 @@
                 {
                   "id": "eg1",
                   "title": "EG1",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2137&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2137&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "eg2",
@@ -442,7 +442,7 @@
                 {
                   "id": "eg4",
                   "title": "EG4",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4899&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4899&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "gp1",
@@ -673,7 +673,7 @@
             {
               "id": "autres",
               "title": "autres",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },

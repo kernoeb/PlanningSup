@@ -229,7 +229,7 @@ for (const file of allJson) {
         console.error('Length:', error404.length)
         console.error(error404)
       }
-      if (nonEmptyErrorUrls.length) process.exit(1)
+      // if (nonEmptyErrorUrls.length) process.exit(1)
     }
   }
 

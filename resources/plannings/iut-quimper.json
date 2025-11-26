@@ -952,7 +952,7 @@
             {
               "id": "3aabdmrc-bq",
               "title": "3aA BDMRC - BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1599&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1599&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3aabiav",
@@ -988,7 +988,7 @@
             {
               "id": "3abbdmrc-bq",
               "title": "3aB BDMRC - BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3335&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3335&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3abbiav",
@@ -1024,7 +1024,7 @@
             {
               "id": "3acbdmrc-bq",
               "title": "3aC BDMRC- BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3373&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3373&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3acbiav",
@@ -1060,7 +1060,7 @@
             {
               "id": "3adbdmrc-bq",
               "title": "3aD BDMRC-BQ",
-              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5733&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5733&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "3adbiav",

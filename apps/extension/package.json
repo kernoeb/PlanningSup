@@ -27,25 +27,25 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@ffflorian/jszip-cli": "^3.8.8",
+    "@ffflorian/jszip-cli": "3.11.2",
     "@tailwindcss/vite": "catalog:ui",
     "@types/bun": "catalog:types",
-    "@types/fs-extra": "^11.0.4",
-    "@types/webextension-polyfill": "^0.12.3",
+    "@types/fs-extra": "11.0.4",
+    "@types/webextension-polyfill": "0.12.4",
     "@vitejs/plugin-vue": "catalog:dev",
-    "chokidar": "^4.0.3",
-    "cross-env": "^10.0.0",
-    "crx": "^5.0.1",
+    "chokidar": "4.0.3",
+    "cross-env": "10.1.0",
+    "crx": "5.0.1",
     "daisyui": "catalog:ui",
-    "fs-extra": "^11.3.2",
-    "rimraf": "^6.0.1",
+    "fs-extra": "11.3.2",
+    "rimraf": "6.1.2",
     "sass-embedded": "catalog:ui",
     "tailwindcss": "catalog:ui",
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
     "vue": "catalog:ui",
-    "web-ext": "^8.10.0",
-    "webext-bridge": "^6.0.1",
-    "webextension-polyfill": "^0.12.0"
+    "web-ext": "8.10.0",
+    "webext-bridge": "6.0.1",
+    "webextension-polyfill": "0.12.0"
   }
 }

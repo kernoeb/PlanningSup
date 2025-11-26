@@ -20,6 +20,7 @@ interface PlanningNode {
 }
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
+const searchInputRef = ref<HTMLInputElement | null>(null)
 const loading = ref(false)
 const error = ref<string | null>(null)
 const tree = ref<PlanningNode[]>([])
@@ -170,6 +171,8 @@ async function loadTree() {
 async function open() {
   void loadTree()
   dialogRef.value?.showModal()
+  // Focus the search box after the dialog is visible to avoid replaying the opening keystroke
+  requestAnimationFrame(() => searchInputRef.value?.focus())
 }
 
 function close() {
@@ -304,6 +307,7 @@ onMounted(() => {
             <label class="input input-bordered w-full pe-0">
               <input
                 id="planning-search-input"
+                ref="searchInputRef"
                 v-model="searchQuery"
                 autofocus
                 class="grow"
