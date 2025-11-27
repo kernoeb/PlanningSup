@@ -3,8 +3,9 @@ import { client } from '@libs'
 import { useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
-import groupByPolyfill from 'object.groupby'
 import { computed, onMounted, ref, watch } from 'vue'
+// Object.groupBy is Baseline 2024
+import 'groupby-polyfill/lib/polyfill.js'
 
 defineOptions({ name: 'PlanningPicker' })
 
@@ -13,8 +14,6 @@ const props = defineProps<{
   standaloneTrigger?: boolean
 }>()
 
-// Object.groupBy is Baseline 2024
-const groupBy: typeof Object.groupBy = Object.groupBy || groupByPolyfill
 
 interface PlanningNode {
   id: string
@@ -240,7 +239,7 @@ function flattenVisible(nodes: PlanningNode[], expandedSet: Set<string>, depth =
 
 const groupedRows = computed<GroupedRows>(() => {
   const list = flattenVisible(filteredTree.value, expanded.value)
-  const grouped = groupBy(list, p => p.group || 'Autres')
+  const grouped = Object.groupBy(list, p => p.group || 'Autres')
 
   // Sort groups alphabetically, with "Autres" always last
   const collator = new Intl.Collator('fr', { sensitivity: 'base' })
