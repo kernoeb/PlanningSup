@@ -54,7 +54,17 @@ const selectedItems = computed(() => {
   const ids = safePlanningIds.value
   return ids.map((id) => {
     const path = findPathInTree(tree.value, id)
-    return { id, title: path ? path.join(' > ') : id }
+
+    let shortTitle = id
+    if (path) {
+      if (path.length > 3) {
+        shortTitle = `${path.at(0)} > ... > ${path.at(-1)}`
+      } else {
+        shortTitle = path.join(' > ')
+      }
+    }
+
+    return { id, shortTitle, title: path ? path.join(' > ') : id }
   })
 })
 
@@ -279,7 +289,7 @@ onMounted(() => {
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
-      <div class="modal-box max-w-xl flex flex-col p-0">
+      <div class="modal-box max-w-xl flex flex-col p-0 overflow-visible">
         <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-300 bg-base-100">
           <div class="flex flex-col">
             <h3 id="planning-picker-title" class="font-bold text-xl">
@@ -336,8 +346,8 @@ onMounted(() => {
                   class="badge badge-md gap-1 bg-base-200 max-w-full min-w-0"
                   title="Cliquer pour retirer"
                 >
-                  <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] [text-align:left] flex-1 min-w-0 max-w-full">
-                    {{ item.title }}
+                  <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
+                    {{ item.shortTitle }}
                   </div>
                   <button
                     :id="`remove-planning-${item.id}`"
@@ -423,3 +433,12 @@ onMounted(() => {
     </dialog>
   </div>
 </template>
+
+<style scoped>
+.tooltip {
+  &[data-tip]::before {
+    z-index: 10;
+  }
+}
+
+</style>
