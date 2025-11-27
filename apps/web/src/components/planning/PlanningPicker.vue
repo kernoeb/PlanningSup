@@ -14,7 +14,6 @@ const props = defineProps<{
   standaloneTrigger?: boolean
 }>()
 
-
 interface PlanningNode {
   id: string
   title: string
