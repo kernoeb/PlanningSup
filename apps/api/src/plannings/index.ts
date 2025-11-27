@@ -23,12 +23,13 @@ type PlanningElement
 const ElementSchema: z.ZodType<PlanningElement> = z.lazy(() =>
   z.union([
     z.object({ id: z.string().min(1), title: z.string().min(1), children: z.array(ElementSchema).min(1) }),
-    z.object({ id: z.string().min(1), title: z.string().min(1), url: z.string().url() }),
+    z.object({ id: z.string().min(1), title: z.string().min(1), url: z.url() }),
   ]),
 )
 
 const PlanningSchema = z.object({
   title: z.string().min(1),
+  group: z.string().optional(),
   children: z.array(ElementSchema).min(1),
 })
 
@@ -59,6 +60,7 @@ export interface ReadonlyPlanning {
   readonly id: string
   readonly fullId: string
   readonly title: string
+  readonly group: string | undefined
   readonly children: readonly EnrichedPlanningElement[]
   readonly flatten: readonly FlatPlanning[]
 }
@@ -110,6 +112,7 @@ for await (const file of glob.scan({
   plannings.push({
     id,
     fullId,
+    group: parsed.group,
     title: parsed.title,
     children: enrichedChildren,
     flatten,
