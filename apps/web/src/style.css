@@ -166,7 +166,24 @@ html[data-theme="light"] .shadow-none {
   &.modal-open,
   &[open],
   &:target {
-    background-color: oklch(0% 0 0/ 0.8);
+    background-color: oklch(
+      from var(--color-secondary) var(--lightness, 30%) c h/ var(--opacity, 0.8)
+    );
+
+    [data-theme="light"] & {
+      --opacity: 0.7;
+      --lightness: 30%;
+    }
+
+    [data-theme="dracula"] & {
+      --opacity: 0.75;
+      --lightness: 10%;
+    }
+
+    [data-theme="dark"] & {
+      --opacity: 0.8;
+      --lightness: 20%;
+    }
   }
 }
 
