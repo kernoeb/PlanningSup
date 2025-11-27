@@ -74,8 +74,8 @@ COPY --from=copy-and-test-plannings /app/plannings ./plannings
 ENV NODE_ENV=production
 ENV PORT=20000
 
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD /usr/bin/wget --no-verbose --tries=1 --spider "http://localhost:$PORT/api/ping"
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD \
+  ["/usr/bin/wget","--no-verbose","--tries=1","--spider","http://localhost:20000/api/ping"]
 
 CMD ["./server"]
 
