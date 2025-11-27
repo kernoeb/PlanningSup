@@ -54,8 +54,8 @@ html[data-theme="dark"] {
 
     /* Primary, Secondary, and Tertiary are now a very dark charcoal.
         On a dark background, they act as subtle, interactive surfaces. */
-    --sx-color-primary: #444;
-    --sx-color-on-primary: #fff;
+    --sx-color-primary: var(--color-primary);
+    --sx-color-on-primary: var(--color-primary-content);
     --sx-color-primary-container: #1a1a1a;
     --sx-color-on-primary-container: #fff;
 
@@ -76,7 +76,7 @@ html[data-theme="dark"] {
     --sx-color-on-surface: #fff;
     --sx-color-surface-container: #1a1a1a; /* A slightly more visible layer */
     --sx-color-surface-container-low: #111;
-    --sx-color-surface-container-high: #000;
+    --sx-color-surface-container-high: var(--color-base-200);
 
     /* Outlines are a slightly lighter dark gray for subtle definition */
     --sx-color-outline: #666;

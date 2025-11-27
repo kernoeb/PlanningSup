@@ -2,6 +2,7 @@
 import { client } from '@libs'
 import { useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
+import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
 
 defineOptions({ name: 'PlanningPicker' })
@@ -56,6 +57,10 @@ const selectedItems = computed(() => {
     return { id, title: path ? path.join(' > ') : id }
   })
 })
+
+function clearSelection() {
+  planningFullIds.value = []
+}
 
 const selectionCount = computed(() => safePlanningIds.value.length)
 
@@ -291,7 +296,7 @@ onMounted(() => {
               class="btn btn-circle btn-ghost"
               @click="close"
             >
-              ✕
+              <XIcon class="size-6 text-base-content" />
             </button>
           </form>
         </div>
@@ -299,16 +304,22 @@ onMounted(() => {
         <!-- Controls -->
         <div class="flex-1 px-6 py-4 space-y-2">
           <div class="flex items-center gap-2">
-            <input
-              id="planning-search-input"
-              ref="searchInputRef"
-              v-model="searchQuery"
-              class="input input-bordered w-full"
-              placeholder="Rechercher un planning…"
-              type="text"
-            >
-            <button id="planning-search-clear" class="btn" :disabled="!searchQuery" type="button" @click="searchQuery = ''">
-              Effacer
+            <label class="input input-bordered w-full pe-0">
+              <input
+                id="planning-search-input"
+                ref="searchInputRef"
+                v-model="searchQuery"
+                autofocus
+                class="grow"
+                placeholder="Rechercher un planning…"
+                type="text"
+              >
+              <button v-if="searchQuery" id="planning-search-clear" class="btn btn-ghost btn-circle size-8" type="button" @click="searchQuery = ''">
+                <XIcon class="size-4 text-base-content" />
+              </button>
+            </label>
+            <button id="planning-clear-selection" class="btn" :disabled="selectionCount === 0" type="button" @click="clearSelection()">
+              <RotateCcwIcon class="size-4 text-base-content" />
             </button>
           </div>
 
@@ -353,16 +364,16 @@ onMounted(() => {
         </div>
 
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-200" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-200 pt-2 px-4 pb-4 " v-bind="containerProps">
           <div v-bind="wrapperProps">
             <div
               v-for="row in vlist"
               :id="`planning-row-${row.data.fullId}`"
               :key="row.data.fullId"
-              class="flex items-center justify-between px-2 hover:bg-primary/20 transition-all cursor-pointer"
+              class="flex items-center justify-between px-2 mb-1.5 hover:bg-secondary/30 transition-all cursor-pointer"
               :class="{
-                'bg-primary/10': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0),
-                'bg-primary/20 font-bold': (row.data.isLeaf && isSelected(row.data.fullId)),
+                'bg-secondary/40': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0),
+                'bg-secondary/80 font-bold': (row.data.isLeaf && isSelected(row.data.fullId)),
               }"
               :style="{
                 height: `${ROW_HEIGHT}px`,
