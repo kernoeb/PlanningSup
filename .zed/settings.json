@@ -1,0 +1,14 @@
+{
+  "language_servers": [
+    "vtsls",
+    "eslint",
+    "color-lsp",
+    "tailwindcss-language-server",
+    "json-language-server"
+  ],
+  "languages": {
+    "Vue.js": {
+      "language_servers": ["vtsls", "vue-language-server"]
+    }
+  }
+}
