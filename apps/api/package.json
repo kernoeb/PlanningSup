@@ -18,7 +18,7 @@
     "@elysiajs/openapi": "1.4.11",
     "@elysiajs/static": "1.4.7",
     "@logtape/logtape": "1.2.0",
-    "better-auth": "1.4.2",
+    "better-auth": "1.4.3",
     "dayjs": "1.11.19",
     "drizzle-orm": "0.44.7",
     "drizzle-typebox": "0.3.3",
