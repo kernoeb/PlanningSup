@@ -35,11 +35,6 @@ services:
         condition: service_healthy
     networks:
       - planningsup_test_network
-    healthcheck:
-      test: ['CMD-SHELL', 'curl -f http://localhost:20000/api/ping || exit 1']
-      interval: 5s
-      timeout: 5s
-      retries: 10
 
 networks:
   planningsup_test_network:

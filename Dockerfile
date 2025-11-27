@@ -50,8 +50,13 @@ ENV PLANNINGS_LOCATION=/app/plannings
 COPY /test ./test
 RUN bun test test/jobs.test.ts test/plannings.routes.test.ts
 
+
+##########################################################
+FROM busybox:uclibc AS busybox
+
 ##########################################################
 FROM gcr.io/distroless/base-debian12
+COPY --from=busybox /bin/wget /usr/bin/wget
 
 WORKDIR /app
 
@@ -67,8 +72,11 @@ COPY --from=build /app/apps/web/dist ./web/dist/
 COPY --from=copy-and-test-plannings /app/plannings ./plannings
 
 ENV NODE_ENV=production
+ENV PORT=20000
+
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD /usr/bin/wget --no-verbose --tries=1 --spider "http://localhost:$PORT/api/ping"
 
 CMD ["./server"]
 
-ENV PORT=20000
 EXPOSE $PORT
