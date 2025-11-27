@@ -8,7 +8,15 @@
   ],
   "languages": {
     "Vue.js": {
-      "language_servers": ["vtsls", "vue-language-server"]
+      "language_servers": ["vtsls", "vue-language-server"],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
     }
   }
 }
