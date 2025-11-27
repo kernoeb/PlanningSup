@@ -4,6 +4,8 @@ import { useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
+// Object.groupBy is Baseline 2024
+import 'groupby-polyfill/lib/polyfill.js'
 
 defineOptions({ name: 'PlanningPicker' })
 
@@ -12,12 +14,27 @@ const props = defineProps<{
   standaloneTrigger?: boolean
 }>()
 
+
 interface PlanningNode {
   id: string
   title: string
   fullId: string
+  group: string | undefined
   children?: PlanningNode[]
 }
+
+export interface PlanningRow {
+  fullId: string
+  title: string
+  group: string | undefined
+  depth: number
+  isLeaf: boolean
+}
+
+// A virtual list row can be either a group header or a planning row
+type VirtualRow
+  = | { type: 'group', group: string }
+    | { type: 'row', data: PlanningRow }
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const searchInputRef = ref<HTMLInputElement | null>(null)
@@ -139,16 +156,6 @@ function isTrueLeaf(fullId: string): boolean {
   return !branchIds.value.has(fullId)
 }
 
-// Controls
-/* function clearSelection() {
-  const ids = [...safePlanningIds.value]
-  const branch = new Set(Object.keys(leafIndex.value))
-  for (const id of ids) {
-    if (branch.has(id)) continue
-    if (isSelected(id)) togglePlanning(id)
-  }
-} */
-
 // Open/Close + data load
 function sortTree(nodes: PlanningNode[]): PlanningNode[] {
   const collator = new Intl.Collator('fr', { sensitivity: 'base', numeric: true })
@@ -159,6 +166,7 @@ function sortTree(nodes: PlanningNode[]): PlanningNode[] {
   clone.sort((a, b) => collator.compare(a.title, b.title))
   return clone
 }
+
 async function loadTree() {
   if (tree.value.length > 0) return
   loading.value = true
@@ -189,10 +197,10 @@ function close() {
   dialogRef.value?.close()
 }
 
-// Expanded state setter for <details> (used by children)
-function setExpanded(id: string, open: boolean) {
+// Expanded state setter
+function setExpanded(id: string, isOpen: boolean) {
   const next = new Set(expanded.value)
-  if (open) next.add(id)
+  if (isOpen) next.add(id)
   else next.delete(id)
   expanded.value = next
 }
@@ -201,47 +209,72 @@ function toggleRowExpand(id: string) {
   setExpanded(id, !expanded.value.has(id))
 }
 
-function onRowClick(row: { fullId: string, isLeaf: boolean }) {
+function onRowClick(row: PlanningRow) {
   if (row.isLeaf && isTrueLeaf(row.fullId)) {
     togglePlanning(row.fullId)
   } else {
     toggleRowExpand(row.fullId)
   }
 }
+
 defineExpose({ open, close })
 
 /**
- * Virtualized tree rows
- * - Flatten filtered+expanded tree to visible rows
- * - Build a leaf index for group counts and bulk toggle
+ * Flatten filtered+expanded tree to visible rows, grouped by group field
  */
-interface Row {
-  fullId: string
-  title: string
-  depth: number
-  isLeaf: boolean
-  node: PlanningNode
-}
+type GroupedRows = { group: string, data: PlanningRow[] }[]
 
-function flattenVisible(nodes: PlanningNode[], expandedSet: Set<string>, depth = 0, out: Row[] = []): Row[] {
+function flattenVisible(nodes: PlanningNode[], expandedSet: Set<string>, depth = 0, parentGroup?: string, out: PlanningRow[] = []): PlanningRow[] {
   for (const n of nodes) {
     const isLeaf = isTrueLeaf(n.fullId)
-    out.push({ fullId: n.fullId, title: n.title, depth, isLeaf, node: n })
+    // Children inherit parent's group so they stay together when expanded
+    const effectiveGroup = depth === 0 ? n.group : parentGroup
+    out.push({ fullId: n.fullId, title: n.title, group: effectiveGroup, depth, isLeaf })
     if (!isLeaf && expandedSet.has(n.fullId) && n.children && n.children.length > 0) {
-      flattenVisible(n.children!, expandedSet, depth + 1, out)
+      flattenVisible(n.children, expandedSet, depth + 1, effectiveGroup, out)
     }
   }
   return out
 }
-const visibleRows = computed<Row[]>(() => flattenVisible(filteredTree.value, expanded.value))
 
-// moved: leafIndex/buildLeafIndex defined above
+const groupedRows = computed<GroupedRows>(() => {
+  const list = flattenVisible(filteredTree.value, expanded.value)
+  const grouped = Object.groupBy(list, p => p.group || 'Autres')
 
+  // Sort groups alphabetically, with "Autres" always last
+  const collator = new Intl.Collator('fr', { sensitivity: 'base' })
+  return Object.entries(grouped)
+    .map(([group, data]) => ({
+      group,
+      data: data as PlanningRow[],
+    }))
+    .sort((a, b) => {
+      if (a.group === 'Autres') return 1
+      if (b.group === 'Autres') return -1
+      return collator.compare(a.group, b.group)
+    })
+})
+
+// Flatten grouped rows into a single list with group headers for virtual list
+const virtualRows = computed<VirtualRow[]>(() => {
+  const result: VirtualRow[] = []
+  for (const { group, data } of groupedRows.value) {
+    result.push({ type: 'group', group })
+    for (const row of data) {
+      result.push({ type: 'row', data: row })
+    }
+  }
+  return result
+})
+
+// Selection helpers
 const selectedSet = computed(() => new Set(safePlanningIds.value))
+
 function totalLeavesFor(fullId: string): number {
   const ids = leafIndex.value[fullId]
   return ids ? ids.length : 1
 }
+
 function selectedCountFor(fullId: string): number {
   const ids = leafIndex.value[fullId]
   if (!ids) return selectedSet.value.has(fullId) ? 1 : 0
@@ -274,8 +307,9 @@ function onGroupToggle(fullId: string) {
 }
 
 const ROW_HEIGHT = 36
+
 const { list: vlist, containerProps, wrapperProps } = useVirtualList(
-  visibleRows,
+  virtualRows,
   { itemHeight: ROW_HEIGHT },
 )
 
@@ -364,65 +398,85 @@ onMounted(() => {
         </div>
 
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-200 pt-2 px-4 pb-4 " v-bind="containerProps">
-          <div v-bind="wrapperProps">
-            <div
-              v-for="row in vlist"
-              :id="`planning-row-${row.data.fullId}`"
-              :key="row.data.fullId"
-              class="flex items-center justify-between px-2 mb-1.5 hover:bg-secondary/30 transition-all cursor-pointer"
-              :class="{
-                'bg-secondary/40': (!row.data.isLeaf && selectedCountFor(row.data.fullId) > 0),
-                'bg-secondary/80 font-bold': (row.data.isLeaf && isSelected(row.data.fullId)),
-              }"
-              :style="{
-                height: `${ROW_HEIGHT}px`,
-                paddingLeft: `${(row.data.depth * 16) + 8}px`,
-              }"
-              @click="onRowClick(row.data)"
-            >
-              <template v-if="!row.data.isLeaf">
-                <div class="flex items-center gap-2 min-w-0 w-full">
-                  <span class="inline-flex items-center justify-center w-3 select-none">
-                    {{ expanded.has(row.data.fullId) ? '▾' : '▸' }}
-                  </span>
-                  <span class="truncate text-left">
-                    {{ row.data.title }}
-                    <span class="opacity-50 text-xs ml-2">
-                      ({{ selectedCountFor(row.data.fullId) }}/{{ totalLeavesFor(row.data.fullId) }})
-                    </span>
-                  </span>
-                  <input
-                    :id="`planning-group-checkbox-${row.data.fullId}`"
-                    :checked="totalLeavesFor(row.data.fullId) > 0 && selectedCountFor(row.data.fullId) === totalLeavesFor(row.data.fullId)"
-                    class="checkbox checkbox-sm checkbox-primary ml-auto"
-                    :disabled="
-                      totalLeavesFor(row.data.fullId) > 200
-                        || (totalLeavesFor(row.data.fullId) - selectedCountFor(row.data.fullId)) > 10
-                    "
-                    :indeterminate="selectedCountFor(row.data.fullId) > 0 && selectedCountFor(row.data.fullId) < totalLeavesFor(row.data.fullId)"
-                    title="Tout sélectionner/désélectionner dans ce groupe"
-                    type="checkbox"
-                    @click.stop="onGroupToggle(row.data.fullId)"
-                  >
-                </div>
-              </template>
+        <div id="planning-tree-container" class="h-[60vh] bg-base-200 pt-2 px-4 pb-4" v-bind="containerProps">
+          <div v-if="loading" class="flex items-center justify-center h-full">
+            <span class="loading loading-spinner loading-lg" />
+          </div>
+          <div v-else-if="error" class="flex items-center justify-center h-full text-error">
+            {{ error }}
+          </div>
+          <div v-else-if="virtualRows.length === 0" class="flex items-center justify-center h-full opacity-50">
+            Aucun planning trouvé
+          </div>
+          <div v-else v-bind="wrapperProps">
+            <template v-for="{ data: item } in vlist" :key="item.type === 'group' ? `group-${item.group}` : item.data.fullId">
+              <!-- Group header -->
+              <div
+                v-if="item.type === 'group'"
+                class="mt-2 px-2 flex items-center font-bold"
+                :style="{ height: `${ROW_HEIGHT}px` }"
+              >
+                {{ item.group }}
+              </div>
 
-              <template v-else>
-                <div class="flex items-center gap-2 min-w-0 w-full">
-                  <span class="inline-flex items-center justify-center w-3 select-none" />
-                  <span class="truncate text-left">{{ row.data.title }}</span>
-                  <input
-                    :id="`planning-leaf-checkbox-${row.data.fullId}`"
-                    :checked="isSelected(row.data.fullId)"
-                    class="checkbox checkbox-sm checkbox-primary ml-auto"
-                    type="checkbox"
-                    @change="togglePlanning(row.data.fullId)"
-                    @click.stop
-                  >
-                </div>
-              </template>
-            </div>
+              <!-- Planning row -->
+              <div
+                v-else
+                :id="`planning-row-${item.data.fullId}`"
+                class="flex items-center justify-between px-2 hover:bg-secondary/30 transition-all cursor-pointer"
+                :class="{
+                  'bg-secondary/40': !item.data.isLeaf && selectedCountFor(item.data.fullId) > 0,
+                  'bg-secondary/80 font-bold': item.data.isLeaf && isSelected(item.data.fullId),
+                }"
+                :style="{
+                  height: `${ROW_HEIGHT}px`,
+                  paddingLeft: `${(item.data.depth * 16) + 8}px`,
+                }"
+                @click="onRowClick(item.data)"
+              >
+                <template v-if="!item.data.isLeaf">
+                  <div class="flex items-center gap-2 min-w-0 w-full">
+                    <span class="inline-flex items-center justify-center w-3 select-none">
+                      {{ expanded.has(item.data.fullId) ? '▾' : '▸' }}
+                    </span>
+                    <span class="truncate text-left">
+                      {{ item.data.title }}
+                      <span class="opacity-50 text-xs ml-2">
+                        ({{ selectedCountFor(item.data.fullId) }}/{{ totalLeavesFor(item.data.fullId) }})
+                      </span>
+                    </span>
+                    <input
+                      :id="`planning-group-checkbox-${item.data.fullId}`"
+                      :checked="totalLeavesFor(item.data.fullId) > 0 && selectedCountFor(item.data.fullId) === totalLeavesFor(item.data.fullId)"
+                      class="checkbox checkbox-sm checkbox-primary ml-auto"
+                      :disabled="
+                        totalLeavesFor(item.data.fullId) > 200
+                          || (totalLeavesFor(item.data.fullId) - selectedCountFor(item.data.fullId)) > 10
+                      "
+                      :indeterminate="selectedCountFor(item.data.fullId) > 0 && selectedCountFor(item.data.fullId) < totalLeavesFor(item.data.fullId)"
+                      title="Tout sélectionner/désélectionner dans ce groupe"
+                      type="checkbox"
+                      @click.stop="onGroupToggle(item.data.fullId)"
+                    >
+                  </div>
+                </template>
+
+                <template v-else>
+                  <div class="flex items-center gap-2 min-w-0 w-full">
+                    <span class="inline-flex items-center justify-center w-3 select-none" />
+                    <span class="truncate text-left">{{ item.data.title }}</span>
+                    <input
+                      :id="`planning-leaf-checkbox-${item.data.fullId}`"
+                      :checked="isSelected(item.data.fullId)"
+                      class="checkbox checkbox-sm checkbox-primary ml-auto"
+                      type="checkbox"
+                      @change="togglePlanning(item.data.fullId)"
+                      @click.stop
+                    >
+                  </div>
+                </template>
+              </div>
+            </template>
           </div>
         </div>
       </div>
