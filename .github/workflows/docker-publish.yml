@@ -56,14 +56,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Detect changes in apps/
+      - name: Detect UI-related changes
         id: changes
         uses: dorny/paths-filter@v3
         with:
           filters: |
-            apps:
+            web_ui:
               - 'apps/web/**'
-              - 'apps/api/**'
+              - 'apps/web/package.json'
+              - 'apps/web/bun.lockb'
+              - 'playwright.config.ts'
+              - 'playwright.dev.config.ts'
+              - 'test/e2e/**'
 
       - name: Verify PR safety
         if: github.event_name == 'pull_request'
@@ -228,12 +232,12 @@ jobs:
 
       - name: Determine Playwright version
         id: pw
-        if: steps.changes.outputs.apps == 'true'
+        if: steps.changes.outputs.web_ui == 'true'
         run: |
           echo "version=$(bunx -y playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
 
       - name: Cache Playwright browsers
-        if: steps.changes.outputs.apps == 'true'
+        if: steps.changes.outputs.web_ui == 'true'
         uses: actions/cache@v4
         with:
           path: $HOME/.cache/ms-playwright
@@ -242,7 +246,7 @@ jobs:
             ${{ runner.os }}-playwright-
 
       - name: Install browsers and run E2E tests
-        if: steps.changes.outputs.apps == 'true'
+        if: steps.changes.outputs.web_ui == 'true'
         timeout-minutes: 15
         env:
           PLAYWRIGHT_BROWSERS_PATH: $HOME/.cache/ms-playwright
@@ -287,7 +291,7 @@ jobs:
 
       - name: Upload Playwright report
         uses: actions/upload-artifact@v4
-        if: always() && steps.changes.outputs.apps == 'true'
+        if: always() && steps.changes.outputs.web_ui == 'true'
         with:
           name: playwright-report-${{ github.run_number }}
           path: playwright-report/
