@@ -64,7 +64,6 @@ jobs:
             web_ui:
               - 'apps/web/**'
               - 'apps/web/package.json'
-              - 'apps/web/bun.lockb'
               - 'playwright.config.ts'
               - 'playwright.dev.config.ts'
               - 'test/e2e/**'
@@ -335,7 +334,7 @@ jobs:
           push-to-registry: true
 
       - name: Deploy to Coolify
-        if: github.event_name == 'push' && steps.publish_check.outputs.should_publish == 'true' && steps.push_image.outcome == 'success'
+        if: steps.publish_check.outputs.should_publish == 'true' && steps.push_image.outcome == 'success'
         run: |
           curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
 
