@@ -345,21 +345,11 @@ onMounted(() => {
                     class="btn btn-xs btn-circle btn-ghost shrink-0"
                     @click="togglePlanning(item.id)"
                   >
-                    ✕
+                    <XIcon class="size-3" />
                   </button>
                 </div>
               </div>
             </div>
-            <!--
-            <button
-              class="btn btn-sm ml-auto shrink-0"
-              :disabled="selectionCount === 0"
-              type="button"
-              @click="clearSelection"
-            >
-              Tout désélectionner
-            </button>
-            -->
           </div>
         </div>
 

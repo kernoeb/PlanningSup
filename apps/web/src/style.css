@@ -56,7 +56,7 @@
   --color-base-content: oklch(22.389% 0.031 278.072);
   --color-primary: oklch(58% 0.158 241.966);
   --color-primary-content: oklch(100% 0 0);
-  --color-secondary: oklch(55% 0.046 257.417);
+  --color-secondary: oklch(85% 0.016 257.417);
   --color-secondary-content: oklch(100% 0 0);
   --color-accent: oklch(60% 0.118 184.704);
   --color-accent-content: oklch(100% 0 0);
@@ -91,7 +91,7 @@
   --color-base-content: oklch(97.747% 0.007 106.545);
   --color-primary: oklch(75.461% 0.183 346.812);
   --color-primary-content: oklch(15.092% 0.036 346.812);
-  --color-secondary: oklch(74.202% 0.148 301.883);
+  --color-secondary: oklch(40% 0.048 301.883);
   --color-secondary-content: oklch(14.84% 0.029 301.883);
   --color-accent: oklch(83.392% 0.124 66.558);
   --color-accent-content: oklch(16.678% 0.024 66.558);
@@ -161,10 +161,25 @@ html[data-theme="light"] .shadow-none {
   max-height: calc(100dvh - 3rem);
 }
 
+/* DaisyUI Color fixes */
 .modal {
   &.modal-open,
   &[open],
   &:target {
     background-color: oklch(0% 0 0/ 0.8);
+  }
+}
+
+.btn-secondary {
+  [data-theme="light"] & {
+    --btn-bg: oklch(from var(--color-secondary) 55% c h);
+  }
+
+  [data-theme="dracula"] & {
+    --btn-bg: oklch(from var(--color-secondary) 88% c h);
+  }
+
+  [data-theme="dark"] & {
+    --btn-bg: oklch(from var(--color-secondary) 42% c h);
   }
 }
