@@ -56,6 +56,7 @@ FROM busybox:uclibc AS busybox
 
 ##########################################################
 FROM gcr.io/distroless/base-debian12
+COPY --from=busybox /bin/sh /bin/sh
 COPY --from=busybox /bin/wget /usr/bin/wget
 
 WORKDIR /app
@@ -75,7 +76,7 @@ ENV NODE_ENV=production
 ENV PORT=20000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-  CMD ["/usr/bin/wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:20000/api/ping"]
+  CMD ["/bin/sh", "-c", "[ \"$(/usr/bin/wget -qO- http://localhost:20000/api/ping)\" = \"pong\" ]"]
 
 CMD ["./server"]
 
