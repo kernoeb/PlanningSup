@@ -44,7 +44,10 @@ function getConfig() {
     firefoxExtensionId: env('FIREFOX_EXTENSION_ID'),
 
     // Analytics
-    openpanelClientId: env('OPENPANEL_CLIENT_ID'),
+    openPanel: {
+      clientId: env('OPENPANEL_CLIENT_ID'),
+      apiUrl: env('OPENPANEL_API_URL'),
+    },
   }
 }
 

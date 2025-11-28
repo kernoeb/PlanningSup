@@ -5,11 +5,12 @@ import './style.css'
 import 'temporal-polyfill/global'
 import '@fontsource-variable/roboto'
 
-const openPanelClientId = globalThis.__APP_CONFIG__?.openpanelClientId
+const openPanelConfig = globalThis.__APP_CONFIG__?.openPanel
 
-if (openPanelClientId) {
+if (openPanelConfig?.clientId) {
   const openPanel = new OpenPanel({
-    clientId: openPanelClientId,
+    clientId: openPanelConfig.clientId,
+    apiUrl: openPanelConfig.apiUrl,
     trackScreenViews: true,
     trackOutgoingLinks: true,
     trackAttributes: true,
