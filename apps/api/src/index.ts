@@ -29,7 +29,10 @@ await initDb(db).then(() => {
   jobs.start(db)
 })
 
-const RUNTIME_CONFIG = { authEnabled: config.authEnabled }
+const RUNTIME_CONFIG = {
+  authEnabled: config.authEnabled,
+  openpanelClientId: config.openpanelClientId,
+}
 
 export const app = new Elysia()
   .use(api)

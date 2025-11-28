@@ -15,6 +15,7 @@
     "typecheck": "bunx --bun vue-tsc --build --force"
   },
   "dependencies": {
+    "@openpanel/web": "^1.0.5",
     "@schedule-x/calendar": "3.4.2",
     "@schedule-x/calendar-controls": "3.4.2",
     "@schedule-x/event-modal": "3.4.2",

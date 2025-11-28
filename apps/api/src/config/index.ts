@@ -42,6 +42,9 @@ function getConfig() {
     // Extension
     chromeExtensionId: env('CHROME_EXTENSION_ID'),
     firefoxExtensionId: env('FIREFOX_EXTENSION_ID'),
+
+    // Analytics
+    openpanelClientId: env('OPENPANEL_CLIENT_ID'),
   }
 }
 
