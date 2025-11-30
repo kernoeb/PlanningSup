@@ -333,10 +333,19 @@ jobs:
           subject-digest: ${{ steps.push_image.outputs.digest }}
           push-to-registry: true
 
-      - name: Deploy to Coolify
+      - name: Deploy to Dokploy
         if: steps.publish_check.outputs.should_publish == 'true' && steps.push_image.outcome == 'success'
+        env:
+          DOKPLOY_DOMAIN: ${{ secrets.DOKPLOY_DOMAIN }}
+          DOKPLOY_API_KEY: ${{ secrets.DOKPLOY_API_KEY }}
+          DOKPLOY_APPLICATION_ID: ${{ secrets.DOKPLOY_APPLICATION_ID }}
         run: |
-          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+          curl -X 'POST' \
+            "https://${DOKPLOY_DOMAIN}/api/application.deploy" \
+            -H 'accept: application/json' \
+            -H 'Content-Type: application/json' \
+            -H "x-api-key: ${DOKPLOY_API_KEY}" \
+            -d "{\"applicationId\": \"${DOKPLOY_APPLICATION_ID}\"}"
 
       - name: Build and test summary
         if: always()
