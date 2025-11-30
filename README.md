@@ -71,6 +71,9 @@ Créez un fichier `.env` avec les variables suivantes :
 ```
 SESSION_SECRET=secret
 MONGODB_URL=mongodb:27017
+MONGODB_USERNAME= # optionnel
+MONGODB_PASSWORD= # optionnel
+MONGODB_AUTH_SOURCE=admin # optionnel si différent de la base planningsup
 TZ=Europe/Paris
 ```
 
@@ -93,6 +96,7 @@ Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
 Lancement en local :
 
 - Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
+- (Optionnel) Ajouter `MONGODB_USERNAME`, `MONGODB_PASSWORD` et `MONGODB_AUTH_SOURCE` si votre instance MongoDB requiert une authentification
 - `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
 
 > For MacOS M1, you can use `npm run dev:darwin-arm64`

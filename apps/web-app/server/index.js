@@ -9,6 +9,7 @@ const packageJson = require('../../../package.json')
 const logger = require('./util/signale')
 const { initDB } = require('./util/db')
 const { initBree } = require('./util/bree')
+const { buildMongoUri, describeMongoTarget } = require('./util/mongoUri')
 
 mongoose.set('strictQuery', true)
 
@@ -17,14 +18,16 @@ const health = {
   bree: false
 }
 
+const mongoUri = buildMongoUri()
+
 logger.info('Starting...')
 logger.info('Version : ' + packageJson.version)
-logger.info('MongoDB Url : ' + (process.env.MONGODB_URL || 'localhost:27017'))
+logger.info('MongoDB Url : ' + describeMongoTarget())
 logger.info('BREE : ' + (process.env.NO_BREE ? 'disabled' : 'enabled'))
 
 // Connect to MongoDB first
 if (process.env.NODE_ENV !== 'test') {
-  mongoose.connect(`mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`).then(() => {
+  mongoose.connect(mongoUri).then(() => {
     logger.info('Mongo initialized !')
 
     const t1 = Date.now()
@@ -55,7 +58,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Create session store for express-session
 const store = new MongoDBStore({
-  uri: `mongodb://${process.env.MONGODB_URL || 'localhost:27017'}/planningsup`,
+  uri: mongoUri,
   collection: 'sessions'
 })
 

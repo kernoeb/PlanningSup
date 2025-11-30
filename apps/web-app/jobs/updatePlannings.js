@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const logger = require('../server/util/signale');
 const { fetchAndGetJSON } = require('../server/util/utils');
+const { buildMongoUri, describeMongoTarget } = require('../server/util/mongoUri');
 
 // This is the main function that will run our job.
 // Using a top-level async function is the best practice for managing the script's lifecycle.
@@ -12,8 +13,8 @@ async function runJob() {
   try {
     mongoose.set('strictQuery', true);
 
-    const MONGO_URI = `mongodb://${process.env.MONGODB_URL || '127.0.0.1:27017'}/planningsup?directConnection=true`;
-    logger.info(`[Bree Job] Creating new isolated connection to: ${MONGO_URI}`);
+    const MONGO_URI = buildMongoUri({ directConnection: true });
+    logger.info(`[Bree Job] Creating new isolated connection to: ${describeMongoTarget()}`);
 
     // --- Core Solution: Use createConnection for an isolated connection ---
     // This does not use or interfere with the global Mongoose singleton that your main app uses.
