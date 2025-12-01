@@ -31,7 +31,7 @@ await initDb(db).then(() => {
 
 const RUNTIME_CONFIG = {
   authEnabled: config.authEnabled,
-  openPanel: config.openPanel,
+  plausible: config.plausible,
 }
 
 export const app = new Elysia()
