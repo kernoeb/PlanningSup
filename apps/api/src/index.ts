@@ -47,6 +47,16 @@ export const app = new Elysia()
 
 if (import.meta.env.NODE_ENV === 'production') {
   logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
+
+  // Serve the service worker with no-cache so clients always check for updates.
+  app.get('/sw.js', ({ set }) => {
+    set.headers = {
+      'Content-Type': 'application/javascript; charset=utf-8',
+      'Cache-Control': 'no-cache',
+    }
+    return Bun.file(path.join(FRONTEND_DIST_PATH, 'sw.js'))
+  })
+
   app.use(staticPlugin({ prefix: '/', assets: FRONTEND_DIST_PATH, alwaysStatic: true, indexHTML: false }))
 }
 
