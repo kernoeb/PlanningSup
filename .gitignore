@@ -21,6 +21,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .env.test.local
 .env.production.local
 .env.local
+db.env
+webapp.env
+docker-compose.local.yml
 
 # caches
 .eslintcache
@@ -38,3 +41,5 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 playwright-report
 test-results
 .playwright-browsers-installed
+
+postgres_data
