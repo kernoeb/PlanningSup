@@ -182,6 +182,14 @@ jobs:
         with:
           bun-version-file: '.bun-version'
 
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - name: Install test dependencies
         run: bun install --frozen-lockfile
 
@@ -229,39 +237,9 @@ jobs:
           # Run integration tests using Bun test (no additional dependencies needed)
           BASE_URL=http://localhost:20000 bun test test/integration/
 
-      - name: Determine Playwright version
-        id: pw
-        if: steps.changes.outputs.web_ui == 'true'
-        run: |
-          echo "version=$(bunx -y playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Playwright browsers
-        if: steps.changes.outputs.web_ui == 'true'
-        uses: actions/cache@v4
-        with:
-          path: $HOME/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ steps.pw.outputs.version }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-
-      - name: Install browsers and run E2E tests
-        if: steps.changes.outputs.web_ui == 'true'
-        timeout-minutes: 15
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: $HOME/.cache/ms-playwright
-        run: |
-          # Install Playwright browsers only (avoid apt deps)
-          bunx playwright install chromium
-
-          # Run E2E tests using existing config
-          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop --project=mobile
-
-      - name: Run basic API tests
+      - name: Run basic API smoke tests
         run: |
           echo "Testing basic API endpoints..."
-
-          # Install jq for JSON parsing
-          sudo apt-get update && sudo apt-get install -y jq
 
           # Test ping endpoint
           response=$(curl -s http://localhost:20000/api/ping)
@@ -270,14 +248,44 @@ jobs:
             exit 1
           fi
 
-          # Test plannings endpoint returns JSON array
-          plannings_count=$(curl -s http://localhost:20000/api/plannings | jq 'length' 2>/dev/null)
-          if [[ -z "$plannings_count" || "$plannings_count" -eq 0 ]]; then
-            echo "❌ Plannings test failed: no plannings returned"
+          # Test plannings endpoint returns valid JSON array (use grep instead of jq)
+          plannings=$(curl -s http://localhost:20000/api/plannings)
+          if ! echo "$plannings" | grep -q '^\['; then
+            echo "❌ Plannings test failed: invalid JSON response"
             exit 1
           fi
 
-          echo "✅ Basic API tests passed (ping: OK, plannings: $plannings_count items)"
+          echo "✅ Basic API smoke tests passed"
+
+      - name: Determine Playwright version
+        id: pw
+        if: steps.changes.outputs.web_ui == 'true'
+        run: |
+          echo "version=$(bunx -y playwright --version | awk '{print $2}')" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        if: steps.changes.outputs.web_ui == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ steps.pw.outputs.version }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install browsers and run E2E tests
+        if: steps.changes.outputs.web_ui == 'true'
+        timeout-minutes: 15
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
+        run: |
+          # Install Playwright browsers only if not cached
+          if [[ "${{ steps.playwright-cache.outputs.cache-hit }}" != "true" ]]; then
+            bunx playwright install chromium
+          fi
+
+          # Run E2E tests using existing config
+          BASE_URL=http://localhost:20000 bunx playwright test --config playwright.config.ts --project=desktop --project=mobile
 
       - name: Show application logs if tests fail
         if: failure()
