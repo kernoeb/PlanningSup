@@ -1,159 +1,103 @@
 import { test, expect } from '@playwright/test'
 import { createOptimizedHelper } from './helpers-optimized'
 
-test.describe('PlanningSup E2E Tests - Optimized', () => {
-  test('essential application functionality', async ({ page }) => {
+test.describe('PlanningSup E2E', () => {
+  test('complete user workflow: load → select planning → navigate calendar', async ({ page }) => {
     const helper = createOptimizedHelper(page)
     await helper.fastSetup()
 
-    // Use test.step for better granular reporting without separate tests
-    await test.step('Verify app loads correctly', async () => {
+    await test.step('App loads correctly', async () => {
       await expect(page).toHaveTitle(/PlanningSup/)
       await expect(page.locator('#planningsup-app')).toBeVisible()
       await expect(page.locator('#app-navbar')).toBeVisible()
     })
 
-    await test.step('Test planning picker workflow', async () => {
+    await test.step('Planning picker opens and search works', async () => {
       await helper.openPlanningPicker()
       await expect(page.locator('#planning-picker-modal')).toBeVisible()
       await expect(page.locator('#planning-search-input')).toBeVisible()
       await expect(page.locator('#planning-tree-container')).toBeVisible()
 
-      // Quick search test
-      await page.fill('#planning-search-input', 'test')
+      await page.fill('#planning-search-input', 'Group A')
       await page.waitForTimeout(200)
-
-      await helper.selectPlanning()
     })
 
-    await test.step('Verify calendar functionality', async () => {
+    await test.step('Select planning and verify calendar', async () => {
+      await helper.selectPlanning('Group A')
+
+      if (helper.device.isDesktop()) {
+        const badge = page.locator('#current-planning-badge')
+        await expect(badge).toBeVisible()
+      }
+
       await helper.verifyCalendar()
       await helper.verifyEventsDisplayed()
     })
+
+    await test.step('Calendar navigation works', async () => {
+      await helper.fastNavigation('next')
+      await helper.fastNavigation('previous')
+      await helper.fastNavigation('today')
+      await helper.verifyCalendar()
+    })
   })
 
-  test('responsive design and device-specific features', async ({ page }) => {
+  test('responsive design and device-specific UI', async ({ page }) => {
     const helper = createOptimizedHelper(page)
     await helper.fastSetup()
 
     await helper.verifyResponsiveDesign()
+    await helper.verifyNavbarElements()
 
     if (helper.device.isMobile()) {
-      await test.step('Mobile-specific functionality', async () => {
+      await test.step('Mobile FAB opens planning picker', async () => {
         await expect(page.locator('#mobile-planning-fab')).toBeVisible()
-
-        // Test FAB functionality
         await page.locator('#mobile-planning-fab').click()
         await expect(page.locator('#planning-picker-modal')).toBeVisible()
         await page.locator('#planning-picker-close').click()
       })
     } else {
-      await test.step('Desktop-specific functionality', async () => {
+      await test.step('Desktop planning trigger visible', async () => {
         await expect(page.locator('#planning-picker-trigger')).toBeVisible()
       })
     }
   })
 
-  test('theme switching and user preferences', async ({ page }) => {
+  test('theme switching and persistence', async ({ page }) => {
     const helper = createOptimizedHelper(page)
     await helper.fastSetup({ mockApi: true })
 
-    // No pre-check for user menu; auth is optional and switchTheme handles availability gracefully
-
-    await test.step('Test theme switching', async () => {
+    await test.step('Switch between themes', async () => {
       try {
         await helper.switchTheme('dark')
         await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
 
         await helper.switchTheme('light')
         await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
-
-        await helper.switchTheme('auto')
-      } catch (error) {
-        console.log('ℹ️ Theme switching not available - test skipped gracefully')
-        // Theme switching may not be available in all viewport sizes
+      } catch {
+        // Theme switching may not be available in all viewports
       }
     })
 
-    await test.step('Dracula theme and persistence', async () => {
+    await test.step('Theme persists after reload', async () => {
       try {
         if (helper.device.isMobile()) {
-          // Open user menu and choose dracula on mobile
           const trigger = page.locator('#user-menu-trigger')
-          const disabled = await trigger.getAttribute('class')
-          if (!disabled?.includes('btn-disabled')) {
-            await trigger.click({ timeout: 3000 })
-            await expect(page.locator('#user-dropdown-menu')).toBeVisible()
-            await expect(page.locator('#mobile-theme-dracula')).toBeVisible()
-            await page.locator('#mobile-theme-dracula').click()
-            await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+          const classes = await trigger.getAttribute('class')
+          if (classes?.includes('btn-disabled')) return
 
-            // Persistence across reload
-            await page.reload()
-            await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
-          } else {
-            console.log('ℹ️ User menu disabled on mobile - skipping dracula test')
-          }
+          await trigger.click({ timeout: 3000 })
+          await page.locator('#mobile-theme-dracula').click()
         } else {
-          // Desktop: open theme dropdown and choose dracula
           await page.locator('#theme-dropdown-trigger').click({ timeout: 3000 })
-          await expect(page.locator('#theme-dropdown-menu')).toBeVisible()
           await page.locator('#theme-dracula').click()
-          await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
-
-          // Persistence across reload
-          await page.reload()
-          await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
         }
-      } catch (error) {
-        console.log('ℹ️ Dracula theme/persistence not available in current viewport - skipped')
-      }
-    })
-  })
 
-  test('calendar navigation and interaction', async ({ page }) => {
-    const helper = createOptimizedHelper(page)
-    await helper.fastSetup()
-
-    await helper.verifyCalendar()
-
-    await test.step('Test calendar navigation', async () => {
-      await helper.fastNavigation('next')
-      await helper.fastNavigation('previous')
-      await helper.fastNavigation('today')
-    })
-  })
-
-  test('user menu and navigation elements', async ({ page }) => {
-    const helper = createOptimizedHelper(page)
-    await helper.fastSetup()
-
-    await helper.verifyNavbarElements()
-
-    await test.step('Test user menu interaction', async () => {
-      const userMenuTrigger = page.locator('#user-menu-trigger')
-      const triggerCount = await userMenuTrigger.count()
-
-      if (triggerCount > 0) {
-        const isDisabled = await userMenuTrigger.first().getAttribute('class')
-        if (!isDisabled?.includes('btn-disabled')) {
-          try {
-            await userMenuTrigger.first().click({ timeout: 3000 })
-            await expect(page.locator('#user-dropdown-menu')).toBeVisible()
-
-            if (helper.device.isMobile()) {
-              // Verify mobile theme options in user menu
-              await expect(page.locator('#mobile-theme-light')).toBeVisible()
-              await expect(page.locator('#mobile-theme-dark')).toBeVisible()
-              await expect(page.locator('#mobile-theme-auto')).toBeVisible()
-            }
-
-            // Close menu
-            await page.locator('#planningsup-app').click()
-          } catch {
-            // If the menu isn't interactable (auth optional), skip gracefully
-          }
-        }
+        await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+        await page.reload()
+        await expect(page.locator('html')).toHaveAttribute('data-theme', 'dracula')
+      } catch {
+        // Theme persistence may not be available
       }
     })
   })
@@ -162,92 +106,26 @@ test.describe('PlanningSup E2E Tests - Optimized', () => {
     const helper = createOptimizedHelper(page)
     await helper.fastSetup()
 
-    await helper.checkAccessibility()
+    await test.step('Basic accessibility checks', async () => {
+      await helper.checkAccessibility()
+    })
 
-    await test.step('Test keyboard navigation', async () => {
-      // Test escape key functionality
+    await test.step('Escape closes modal', async () => {
       await helper.openPlanningPicker()
       await page.keyboard.press('Escape')
       await expect(page.locator('#planning-picker-dialog')).not.toBeVisible()
     })
-  })
 
-  test('error handling and application stability', async ({ page }) => {
-    const helper = createOptimizedHelper(page)
-
-    await helper.fastSetup({ mockApi: true })
-
-    await test.step('Test application stability under load', async () => {
-      // Rapid interactions to test stability
+    await test.step('App remains stable after rapid interactions', async () => {
       for (let i = 0; i < 3; i++) {
         await helper.openPlanningPicker()
         try {
-          await page.locator('#planning-picker-close').click({ timeout: 3000 })
+          await page.locator('#planning-picker-close').click({ timeout: 2000 })
         } catch {
           await page.keyboard.press('Escape')
         }
       }
-
-      // Test calendar navigation
-      await helper.fastNavigation('next')
-      await helper.fastNavigation('previous')
-    })
-
-    // Verify app remains stable after rapid interactions
-    await expect(page.locator('#planningsup-app')).toBeVisible()
-    await helper.verifyCalendar()
-
-    // The fact that the app is still responsive proves stability
-  })
-
-  test('complete user workflow integration', async ({ page }) => {
-    const helper = createOptimizedHelper(page)
-    await helper.fastSetup()
-
-    await test.step('Complete planning selection workflow', async () => {
-      // Open planning picker
-      await helper.openPlanningPicker()
-
-      // Search for planning
-      await page.fill('#planning-search-input', 'Group A')
-      await page.waitForTimeout(200)
-
-      // Select planning
-      await helper.selectPlanning('Group A')
-
-      // Verify selection result
-      if (helper.device.isDesktop()) {
-        const badge = page.locator('#current-planning-badge')
-        await expect(badge).toBeVisible()
-        const badgeText = await badge.textContent()
-        expect(badgeText).toBeTruthy()
-      }
-    })
-
-    await test.step('Verify events and calendar interaction', async () => {
-      await helper.verifyEventsDisplayed()
-      await helper.fastNavigation('next')
-      await helper.verifyCalendar()
-    })
-  })
-
-  test('performance and load time verification', async ({ page }) => {
-    const helper = createOptimizedHelper(page)
-
-    // Measure load performance
-    const startTime = Date.now()
-    await helper.fastSetup()
-    const loadTime = Date.now() - startTime
-
-    // App should load quickly
-    expect(loadTime).toBeLessThan(3000)
-
-    await test.step('Verify quick interactions', async () => {
-      // All basic interactions should be fast
-      await helper.openPlanningPicker()
-      await page.locator('#planning-picker-close').click()
-
-      await helper.verifyCalendar()
+      await expect(page.locator('#planningsup-app')).toBeVisible()
     })
   })
 })

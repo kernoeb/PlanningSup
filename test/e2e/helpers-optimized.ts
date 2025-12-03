@@ -439,17 +439,3 @@ class OptimizedTestHelper {
 export function createOptimizedHelper(page: Page): OptimizedTestHelper {
   return new OptimizedTestHelper(page)
 }
-
-// Utility function for quick element checks across tests
-export async function quickCheck(page: Page, selector: string): Promise<boolean> {
-  try {
-    return await page.locator(selector).first().isVisible({ timeout: 1000 })
-  } catch {
-    return false
-  }
-}
-
-// Batch expectation helper for better performance
-export async function batchExpect(expectations: Array<() => Promise<void>>): Promise<void> {
-  await Promise.all(expectations.map(expectation => expectation()))
-}
