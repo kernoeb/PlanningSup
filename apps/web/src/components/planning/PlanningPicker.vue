@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { client } from '@libs'
-import { useVirtualList } from '@vueuse/core'
+import { refDebounced, useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
 import { computed, onMounted, ref, watch } from 'vue'
@@ -46,6 +46,7 @@ const { planningFullIds, isSelected, togglePlanning } = useSharedSyncedCurrentPl
 
 // UX state
 const searchQuery = ref('')
+const debouncedSearchQuery = refDebounced(searchQuery, 150)
 const expanded = ref<Set<string>>(new Set())
 
 function findPathInTree(
@@ -93,13 +94,33 @@ const selectionCount = computed(() => safePlanningIds.value.length)
 // Filtering and auto-expansion
 interface FilterResult { nodes: PlanningNode[], expandedIds: Set<string> }
 
+// Normalize text: remove accents, collapse spaces, lowercase
+function normalize(text: string): string {
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036F]/g, '')
+    .replace(/\s+/g, ' ')
+    .toLowerCase()
+}
+
+// Cache normalized titles to avoid recomputing on each search
+const normalizedTitleCache = new WeakMap<PlanningNode, string>()
+function getNormalizedTitle(node: PlanningNode): string {
+  let cached = normalizedTitleCache.get(node)
+  if (cached === undefined) {
+    cached = normalize(node.title)
+    normalizedTitleCache.set(node, cached)
+  }
+  return cached
+}
+
 function filterTree(nodes: PlanningNode[], q: string): FilterResult {
   if (!q.trim()) return { nodes, expandedIds: new Set() }
-  const query = q.toLowerCase()
+  const query = normalize(q)
   const expandedIds = new Set<string>()
 
   function walk(node: PlanningNode): PlanningNode | null {
-    const selfMatch = node.title.toLowerCase().includes(query)
+    const selfMatch = getNormalizedTitle(node).includes(query)
     const filteredChildren = (node.children ?? [])
       .map(walk)
       .filter(Boolean) as PlanningNode[]
@@ -117,13 +138,13 @@ function filterTree(nodes: PlanningNode[], q: string): FilterResult {
   return { nodes: filteredNodes, expandedIds }
 }
 
-const filtered = computed<FilterResult>(() => filterTree(tree.value, searchQuery.value))
+const filtered = computed<FilterResult>(() => filterTree(tree.value, debouncedSearchQuery.value))
 const filteredTree = computed(() => filtered.value.nodes)
 
 watch(
-  () => searchQuery.value,
-  () => {
-    if (searchQuery.value) {
+  debouncedSearchQuery,
+  (query) => {
+    if (query) {
       // Auto-expand branches that contain matches (merge with currently expanded)
       const merged = new Set(expanded.value)
       filtered.value.expandedIds.forEach(id => merged.add(id))
@@ -352,10 +373,14 @@ onMounted(() => {
                 id="planning-search-input"
                 ref="searchInputRef"
                 v-model="searchQuery"
+                autocomplete="off"
+                autocorrect="off"
                 autofocus
                 class="grow"
+                enterkeyhint="search"
                 placeholder="Rechercher un planning…"
-                type="text"
+                spellcheck="false"
+                type="search"
               >
               <button v-if="searchQuery" id="planning-search-clear" class="btn btn-ghost btn-circle size-8" type="button" @click="searchQuery = ''">
                 <XIcon class="size-4 text-base-content" />
