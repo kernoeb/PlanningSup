@@ -1,3 +1,4 @@
+import fs from 'fs'
 import path from 'path'
 import process from 'process'
 import api from '@api/api'
@@ -48,16 +49,44 @@ export const app = new Elysia()
 if (import.meta.env.NODE_ENV === 'production') {
   logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
 
+  // Serve the app shell explicitly with proper headers.
+  // This MUST be registered before the static plugin to take precedence.
+  // This is needed because workbox precaches /index.html directly.
+  const indexHtmlPath = path.join(FRONTEND_DIST_PATH, 'index.html')
+
+  // Read the index.html content once at startup
+  const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf-8')
+  logger.info(`Loaded index.html (${indexHtmlContent.length} bytes)`)
+
+  app.get('/', ({ set }) => {
+    set.headers['Content-Type'] = 'text/html; charset=utf-8'
+    set.headers['Cache-Control'] = 'no-cache'
+    return indexHtmlContent
+  })
+
+  app.get('/index.html', ({ set }) => {
+    set.headers['Content-Type'] = 'text/html; charset=utf-8'
+    set.headers['Cache-Control'] = 'no-cache'
+    return indexHtmlContent
+  })
+
   // Serve the service worker with no-cache so clients always check for updates.
   app.get('/sw.js', ({ set }) => {
-    set.headers = {
-      'Content-Type': 'application/javascript; charset=utf-8',
-      'Cache-Control': 'no-cache',
-    }
+    set.headers['Content-Type'] = 'application/javascript; charset=utf-8'
+    set.headers['Cache-Control'] = 'no-cache'
     return Bun.file(path.join(FRONTEND_DIST_PATH, 'sw.js'))
   })
 
-  app.use(staticPlugin({ prefix: '/', assets: FRONTEND_DIST_PATH, alwaysStatic: true, indexHTML: false }))
+  // Static plugin for other assets (JS, CSS, images, etc.)
+  // The ignorePatterns option prevents the static plugin from handling index.html
+  // so our explicit routes above take precedence.
+  app.use(staticPlugin({
+    prefix: '/',
+    assets: FRONTEND_DIST_PATH,
+    alwaysStatic: false,
+    indexHTML: false,
+    ignorePatterns: [/index\.html$/],
+  }))
 }
 
 app.onError(({ code }) => {

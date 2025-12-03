@@ -25,6 +25,7 @@ export default defineConfig({
     ignoreHTTPSErrors: true,
     actionTimeout: 10000, // Reduced from 15s
     navigationTimeout: 20000, // Reduced from 30s
+    serviceWorkers: 'allow', // Enable service worker support for PWA testing
   },
   // Optimized browser projects - focus on Chrome for speed
   projects: [
