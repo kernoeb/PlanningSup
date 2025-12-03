@@ -20,8 +20,19 @@ async function betterAuthView(context: Context) {
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
     return auth!.handler(context.request)
   } else {
-    context.status(405)
+    context.set.status = 405
   }
+}
+
+// Create a separate Elysia instance for auth routes without prefix
+// This ensures BetterAuth receives requests at the correct paths
+const authApi = new Elysia()
+
+if (config.authEnabled && auth && authHtml) {
+  // Mount authHtml routes (e.g., /api/auth/auto-redirect/:provider)
+  authApi.use(authHtml)
+  // Mount BetterAuth handler for all /api/auth/* routes
+  authApi.all('/api/auth/*', betterAuthView)
 }
 
 const api = new Elysia({
@@ -56,13 +67,13 @@ const api = new Elysia({
   .get('/ping', () => 'pong')
   .use(planningsRoutes)
 
-if (config.authEnabled && authHtml) {
-  api.use(authHtml)
-  api.all('/auth/*', betterAuthView)
-}
+// Fallback for /api/* routes
+api.all('*', ({ set }) => {
+  set.status = 404
+  return Response.json({ error: 'NOT_FOUND', message: 'Route not found' })
+})
 
-// Fallback
-api.all('*', ({ status }) => status(404))
-
+// Export both the prefixed API and the auth API to be mounted separately
+export { authApi }
 export type App = typeof api
 export default api

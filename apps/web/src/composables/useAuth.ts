@@ -2,7 +2,7 @@ import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
-const AUTH_ENABLED = !!globalThis.__APP_CONFIG__?.authEnabled || import.meta.env?.VITE_AUTH_ENABLED === 'true'
+const AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
 
 const IS_TAURI = isTauri()

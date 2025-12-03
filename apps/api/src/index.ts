@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import process from 'process'
-import api from '@api/api'
+import api, { authApi } from '@api/api'
 import config from '@api/config'
 import { client, db } from '@api/db'
 import { init as initDb } from '@api/db/init'
@@ -36,6 +36,7 @@ const RUNTIME_CONFIG = {
 }
 
 export const app = new Elysia()
+  .use(authApi) // Mount auth routes first (handles /api/auth/* without prefix issues)
   .use(api)
   .get('/config.js', ({ set }) => {
     const body = `globalThis.__APP_CONFIG__ = ${JSON.stringify(RUNTIME_CONFIG)};`

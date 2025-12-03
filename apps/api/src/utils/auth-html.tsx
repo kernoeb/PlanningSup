@@ -72,7 +72,7 @@ const pageCss = `
             }
         `
 
-export default new Elysia().use(html()).get('/auth/auto-redirect/:provider', async (c) => {
+export default new Elysia().use(html()).get('/api/auth/auto-redirect/:provider', async (c) => {
   const allowedProviders = ['discord', 'github']
   if (!allowedProviders.includes(c.params.provider)) return c.status(400, 'Unsupported provider')
 
