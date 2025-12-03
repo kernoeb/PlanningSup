@@ -27,13 +27,13 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@ffflorian/jszip-cli": "3.11.2",
+    "@ffflorian/jszip-cli": "3.12.6",
     "@tailwindcss/vite": "catalog:ui",
     "@types/bun": "catalog:types",
     "@types/fs-extra": "11.0.4",
     "@types/webextension-polyfill": "0.12.4",
     "@vitejs/plugin-vue": "catalog:dev",
-    "chokidar": "4.0.3",
+    "chokidar": "5.0.0",
     "cross-env": "10.1.0",
     "crx": "5.0.1",
     "daisyui": "catalog:ui",
@@ -44,7 +44,7 @@
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
     "vue": "catalog:ui",
-    "web-ext": "8.10.0",
+    "web-ext": "9.2.0",
     "webext-bridge": "6.0.1",
     "webextension-polyfill": "0.12.0"
   }
