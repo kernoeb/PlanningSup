@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import process from 'process'
-import api, { authApi } from '@api/api'
+import api from '@api/api'
 import config from '@api/config'
 import { client, db } from '@api/db'
 import { init as initDb } from '@api/db/init'
@@ -36,7 +36,7 @@ const RUNTIME_CONFIG = {
 }
 
 export const app = new Elysia()
-  .use(authApi) // Mount auth routes first (handles /api/auth/* without prefix issues)
+  // Mount the API routes (includes BetterAuth and custom auth HTML routes when enabled)
   .use(api)
   .get('/config.js', ({ set }) => {
     const body = `globalThis.__APP_CONFIG__ = ${JSON.stringify(RUNTIME_CONFIG)};`
@@ -90,8 +90,13 @@ if (import.meta.env.NODE_ENV === 'production') {
   }))
 }
 
-app.onError(({ code }) => {
+app.onError(({ code, request }) => {
   if (import.meta.env.NODE_ENV === 'production' && code === 'NOT_FOUND') {
+    // Don't serve SPA for API routes - return JSON 404 instead
+    const url = new URL(request.url)
+    if (url.pathname.startsWith('/api/')) {
+      return Response.json({ error: 'NOT_FOUND', message: 'Route not found' }, { status: 404 })
+    }
     return new Response(Bun.file(path.join(FRONTEND_DIST_PATH, 'index.html')), {
       status: 200,
       headers: { 'Content-Type': 'text/html; charset=utf-8' },

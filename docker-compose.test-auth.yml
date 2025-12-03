@@ -1,0 +1,60 @@
+# Docker Compose for integration tests WITH authentication enabled.
+# This is separate from docker-compose.test.yml which tests with AUTH_ENABLED=false.
+#
+# Usage:
+#   bun run test:integration:auth
+#
+# Note: These tests verify that BetterAuth routes are properly mounted and respond
+# when AUTH_ENABLED=true. They don't test full OAuth flows (which require real providers).
+
+services:
+  postgres-test-auth:
+    image: postgres:17
+    container_name: planningsup_test_auth_db
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: planningsup_test_auth
+    ports:
+      - '5434:5432'
+    networks:
+      - planningsup_test_auth_network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U testuser -d planningsup_test_auth']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app-test-auth:
+    build:
+      context: .
+      args:
+        BUN_VERSION: ${BUN_VERSION:-1.3.3}
+    container_name: planningsup_test_auth_app
+    environment:
+      NODE_ENV: production
+      PORT: 20001
+      DATABASE_URL: postgresql://testuser:testpass@postgres-test-auth:5432/planningsup_test_auth
+      RUN_JOBS: false
+      # Auth is ENABLED for these tests
+      AUTH_ENABLED: 'true'
+      # BetterAuth secret (required for auth to work)
+      BETTER_AUTH_SECRET: 'test-secret-for-integration-tests-only-do-not-use-in-production'
+      # Dummy OAuth credentials (routes will be mounted but OAuth won't work without real creds)
+      DISCORD_CLIENT_ID: 'test-discord-client-id'
+      DISCORD_CLIENT_SECRET: 'test-discord-client-secret'
+      GITHUB_CLIENT_ID: 'test-github-client-id'
+      GITHUB_CLIENT_SECRET: 'test-github-client-secret'
+      # Trusted origins for CORS
+      TRUSTED_ORIGINS: 'http://localhost:20001,http://localhost:3000'
+    ports:
+      - '20001:20001'
+    depends_on:
+      postgres-test-auth:
+        condition: service_healthy
+    networks:
+      - planningsup_test_auth_network
+
+networks:
+  planningsup_test_auth_network:
+    driver: bridge

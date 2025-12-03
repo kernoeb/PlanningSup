@@ -35,6 +35,34 @@ describe('API Integration Tests', () => {
     expect(response.status).toBe(404)
   })
 
+  it('should return JSON 404 for unknown API routes (not HTML/SPA)', async () => {
+    // This test ensures that /api/* routes return proper JSON 404 responses,
+    // not the SPA fallback (index.html). This was a production bug where
+    // app.onError would serve the SPA for all NOT_FOUND errors including API routes.
+    const testPaths = [
+      '/api/unknown-route',
+      '/api/aaa',
+      '/api/some/nested/path',
+      '/api/auth-typo/session', // Typo in auth path
+    ]
+
+    for (const path of testPaths) {
+      const response = await fetch(`${baseUrl}${path}`)
+
+      // Must be 404
+      expect(response.status).toBe(404)
+
+      // Must be JSON, not HTML
+      const contentType = response.headers.get('content-type') || ''
+      expect(contentType).toContain('application/json')
+
+      // Must have proper error structure
+      const body = await response.json()
+      expect(body).toHaveProperty('error', 'NOT_FOUND')
+      expect(body).toHaveProperty('message', 'Route not found')
+    }
+  })
+
   it('should return planning details for valid planning ID', async () => {
     // First get the list of plannings
     const listResponse = await fetch(`${baseUrl}/api/plannings`)

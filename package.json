@@ -57,6 +57,8 @@
     "test:e2e:debug": "bun scripts/test.ts --headed --verbose",
     "test:integration": "bun scripts/test-integration.ts",
     "test:integration:local": "bun scripts/test-integration.ts --skip-build --docker-image planningsup-test:local",
+    "test:integration:auth": "bun scripts/test-integration-auth.ts",
+    "test:integration:auth:local": "bun scripts/test-integration-auth.ts --skip-build",
     "validate:workflows": "bun scripts/validate-workflows.ts",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",

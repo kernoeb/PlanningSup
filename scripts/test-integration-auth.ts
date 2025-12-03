@@ -2,10 +2,25 @@
 
 import { $ } from "bun";
 
+/**
+ * Integration Test Runner for Auth-Enabled tests.
+ *
+ * This script runs integration tests with AUTH_ENABLED=true using
+ * docker-compose.test-auth.yml on port 20001.
+ *
+ * Usage:
+ *   bun scripts/test-integration-auth.ts [options]
+ *
+ * Options:
+ *   --skip-build       Skip Docker image build step
+ *   --no-cleanup       Don't cleanup containers after tests
+ *   --verbose          Show detailed output
+ *   --help             Show help message
+ */
+
 // Types for configuration
 interface IntegrationTestConfig {
   skipBuild: boolean;
-  dockerImage: string;
   cleanup: boolean;
   verbose: boolean;
   help: boolean;
@@ -17,14 +32,18 @@ const colors = {
   green: '\x1b[32m',
   yellow: '\x1b[33m',
   blue: '\x1b[34m',
+  magenta: '\x1b[35m',
   reset: '\x1b[0m'
 } as const;
+
+const COMPOSE_FILE = 'docker-compose.test-auth.yml';
+const TEST_FILE = 'test/integration/auth.routes.enabled.test.ts';
+const BASE_URL = 'http://localhost:20001';
 
 // Parse command line arguments
 function parseArgs(): IntegrationTestConfig {
   const config: IntegrationTestConfig = {
     skipBuild: false,
-    dockerImage: 'planningsup-test:latest',
     cleanup: true,
     verbose: false,
     help: false
@@ -36,9 +55,6 @@ function parseArgs(): IntegrationTestConfig {
     switch (args[i]) {
       case '--skip-build':
         config.skipBuild = true;
-        break;
-      case '--docker-image':
-        config.dockerImage = args[++i] || config.dockerImage;
         break;
       case '--no-cleanup':
         config.cleanup = false;
@@ -80,32 +96,36 @@ function info(message: string): void {
   console.log(`${colors.blue}[${timestamp}]${colors.reset} ${message}`);
 }
 
+function header(message: string): void {
+  console.log(`${colors.magenta}${message}${colors.reset}`);
+}
+
 // Show help message
 function showHelp(): void {
-  console.log("Usage: bun scripts/test-integration.ts [options]");
+  console.log("Usage: bun scripts/test-integration-auth.ts [options]");
   console.log("");
-  console.log("Integration Test Runner - Tests API endpoints with Bun test");
+  console.log("Integration Test Runner for Auth-Enabled Tests");
+  console.log("Tests BetterAuth routes with AUTH_ENABLED=true");
   console.log("");
   console.log("Options:");
   console.log("  --skip-build       Skip Docker image build step");
-  console.log("  --docker-image IMG Use specific Docker image (default: planningsup-test:latest)");
   console.log("  --no-cleanup       Don't cleanup containers after tests");
   console.log("  --verbose          Show detailed output");
   console.log("  --help             Show this help message");
   console.log("");
   console.log("Examples:");
-  console.log("  bun scripts/test-integration.ts");
-  console.log("  bun scripts/test-integration.ts --skip-build --docker-image planningsup-test:local");
-  console.log("  bun scripts/test-integration.ts --verbose --no-cleanup");
+  console.log("  bun scripts/test-integration-auth.ts");
+  console.log("  bun scripts/test-integration-auth.ts --skip-build");
+  console.log("  bun scripts/test-integration-auth.ts --verbose --no-cleanup");
 }
 
 // Cleanup function
 async function cleanup(shouldCleanup: boolean): Promise<void> {
   if (shouldCleanup) {
-    log("Cleaning up test containers...");
+    log("Cleaning up auth test containers...");
     try {
-      await $`docker compose -f docker-compose.test.yml down -v --remove-orphans`.quiet();
-    } catch (err) {
+      await $`docker compose -f ${COMPOSE_FILE} down -v --remove-orphans`.quiet();
+    } catch {
       // Ignore cleanup errors
     }
   } else {
@@ -116,7 +136,7 @@ async function cleanup(shouldCleanup: boolean): Promise<void> {
 // Check if containers are already running
 async function checkContainersRunning(): Promise<boolean> {
   try {
-    const result = await $`docker compose -f docker-compose.test.yml ps`.quiet();
+    const result = await $`docker compose -f ${COMPOSE_FILE} ps`.quiet();
     return result.text().includes("healthy");
   } catch {
     return false;
@@ -130,9 +150,9 @@ async function buildDockerImage(config: IntegrationTestConfig): Promise<void> {
     return;
   }
 
-  info("Building Docker image for integration tests...");
+  info("Building Docker image for auth-enabled integration tests...");
   try {
-    await $`docker compose -f docker-compose.test.yml build`;
+    await $`docker compose -f ${COMPOSE_FILE} build`;
     log("✅ Docker image built successfully");
   } catch (err) {
     error("Failed to build Docker image");
@@ -143,11 +163,11 @@ async function buildDockerImage(config: IntegrationTestConfig): Promise<void> {
 
 // Start test environment
 async function startTestEnvironment(): Promise<number> {
-  info("🔄 Starting test environment...");
+  info("🔄 Starting auth-enabled test environment...");
   const startTime = Date.now();
 
   try {
-    await $`docker compose -f docker-compose.test.yml up -d`;
+    await $`docker compose -f ${COMPOSE_FILE} up -d`;
 
     // Wait for health check
     log("Waiting for services to be ready...");
@@ -156,7 +176,7 @@ async function startTestEnvironment(): Promise<number> {
     const startWait = Date.now();
 
     while (Date.now() - startWait < maxWaitTime) {
-      const result = await $`docker compose -f docker-compose.test.yml ps`.quiet();
+      const result = await $`docker compose -f ${COMPOSE_FILE} ps`.quiet();
       if (result.text().includes("healthy")) {
         break;
       }
@@ -164,17 +184,17 @@ async function startTestEnvironment(): Promise<number> {
     }
 
     // Final check
-    const finalCheck = await $`docker compose -f docker-compose.test.yml ps`.quiet();
+    const finalCheck = await $`docker compose -f ${COMPOSE_FILE} ps`.quiet();
     if (!finalCheck.text().includes("healthy")) {
       error("Services failed to start within 60 seconds");
-      const logs = await $`docker compose -f docker-compose.test.yml logs`.quiet();
+      const logs = await $`docker compose -f ${COMPOSE_FILE} logs`.quiet();
       console.log(logs.text());
       process.exit(1);
     }
 
     const endTime = Date.now();
     const duration = Math.round((endTime - startTime) / 1000);
-    log(`✅ Test environment ready in ${duration}s`);
+    log(`✅ Auth-enabled test environment ready in ${duration}s`);
     return duration;
   } catch (err) {
     error("Failed to start test environment");
@@ -192,7 +212,7 @@ async function healthCheck(): Promise<void> {
 
   while (attempts < maxAttempts) {
     try {
-      const response = await fetch("http://localhost:20000/api/ping");
+      const response = await fetch(`${BASE_URL}/api/ping`);
       if (response.ok) {
         const text = await response.text();
         if (text.includes("pong")) {
@@ -210,7 +230,7 @@ async function healthCheck(): Promise<void> {
 
   error("Application health check failed");
   try {
-    const logs = await $`docker compose -f docker-compose.test.yml logs app-test`.quiet();
+    const logs = await $`docker compose -f ${COMPOSE_FILE} logs app-test-auth`.quiet();
     console.log(logs.text());
   } catch {
     // Ignore log errors
@@ -218,27 +238,47 @@ async function healthCheck(): Promise<void> {
   process.exit(1);
 }
 
+// Verify auth is enabled
+async function verifyAuthEnabled(): Promise<void> {
+  info("Verifying AUTH_ENABLED=true in runtime config...");
+
+  try {
+    const response = await fetch(`${BASE_URL}/config.js`);
+    if (!response.ok) {
+      error("Failed to fetch /config.js");
+      process.exit(1);
+    }
+
+    const text = await response.text();
+    if (!text.includes('"authEnabled":true') && !text.includes('authEnabled:true')) {
+      error("AUTH_ENABLED is not true in /config.js!");
+      error("Config content:");
+      console.log(text);
+      process.exit(1);
+    }
+
+    log("✅ AUTH_ENABLED=true confirmed");
+  } catch (err) {
+    error("Failed to verify auth enabled");
+    console.error(err);
+    process.exit(1);
+  }
+}
+
 // Run integration tests using Bun test
 async function runIntegrationTests(config: IntegrationTestConfig): Promise<{ success: boolean; duration: number }> {
-  log("🧪 Running integration tests with Bun test...");
+  log("🧪 Running auth-enabled integration tests with Bun test...");
 
   // Set up environment variables
-  process.env.BASE_URL = "http://localhost:20000";
+  process.env.BASE_URL = BASE_URL;
 
   const testStart = Date.now();
 
   try {
-    // Run tests in test/integration/ but exclude auth-enabled tests
-    // (those run separately with test:integration:auth on port 20001)
-    const testFiles = [
-      "test/integration/api.test.ts",
-      "test/integration/auth.routes.test.ts",
-    ];
-
     const testArgs = [
       "test",
       "--timeout", "30000",
-      ...testFiles
+      TEST_FILE
     ];
 
     if (config.verbose) {
@@ -251,7 +291,7 @@ async function runIntegrationTests(config: IntegrationTestConfig): Promise<{ suc
     const duration = Math.round((testEnd - testStart) / 1000);
 
     return { success: true, duration };
-  } catch (err) {
+  } catch {
     const testEnd = Date.now();
     const duration = Math.round((testEnd - testStart) / 1000);
 
@@ -261,8 +301,8 @@ async function runIntegrationTests(config: IntegrationTestConfig): Promise<{ suc
 
 // Main function
 async function main(): Promise<void> {
-  console.log("🚀 Integration Test Runner (Bun)");
-  console.log("=================================");
+  header("🔐 Auth-Enabled Integration Test Runner");
+  console.log("==========================================");
 
   const config = parseArgs();
 
@@ -287,7 +327,7 @@ async function main(): Promise<void> {
 
   // Check if containers are already running
   if (await checkContainersRunning()) {
-    log("✅ Test environment already running, skipping startup");
+    log("✅ Auth-enabled test environment already running, skipping startup");
   } else {
     startupTime = await startTestEnvironment();
   }
@@ -295,11 +335,14 @@ async function main(): Promise<void> {
   // Health check
   await healthCheck();
 
+  // Verify auth is enabled
+  await verifyAuthEnabled();
+
   // Run integration tests
   const { success, duration: testTime } = await runIntegrationTests(config);
 
   if (success) {
-    log("🎉 All integration tests passed!");
+    log("🎉 All auth-enabled integration tests passed!");
     info("Performance Summary:");
     info(`  Startup time: ${startupTime}s`);
     info(`  Test execution: ${testTime}s`);
@@ -307,7 +350,7 @@ async function main(): Promise<void> {
 
     process.exit(0);
   } else {
-    error("💥 Some integration tests failed");
+    error("💥 Some auth-enabled integration tests failed");
     error(`Execution time: ${testTime}s`);
 
     if (!config.verbose) {

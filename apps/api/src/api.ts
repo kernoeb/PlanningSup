@@ -1,4 +1,3 @@
-import type { Context } from 'elysia'
 import config from '@api/config'
 import planningsRoutes from '@api/routes/plannings'
 import { defaultLogger as logger } from '@api/utils/logger'
@@ -6,34 +5,11 @@ import { cors } from '@elysiajs/cors'
 import { openapi } from '@elysiajs/openapi'
 import { Elysia } from 'elysia'
 
-const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
-
 logger.info(`Authentication is ${config.authEnabled ? 'enabled' : 'disabled'}`)
 
 // Only import auth module when auth is enabled (avoids BetterAuth initialization otherwise)
 const auth = config.authEnabled ? (await import('@api/utils/auth')).auth : null
 const authHtml = config.authEnabled ? (await import('./utils/auth-html')).default : null
-
-async function betterAuthView(context: Context) {
-  // auth is guaranteed to be non-null here because this function
-  // is only registered as a route handler when config.authEnabled is true
-  if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
-    return auth!.handler(context.request)
-  } else {
-    context.set.status = 405
-  }
-}
-
-// Create a separate Elysia instance for auth routes without prefix
-// This ensures BetterAuth receives requests at the correct paths
-const authApi = new Elysia()
-
-if (config.authEnabled && auth && authHtml) {
-  // Mount authHtml routes (e.g., /api/auth/auto-redirect/:provider)
-  authApi.use(authHtml)
-  // Mount BetterAuth handler for all /api/auth/* routes
-  authApi.all('/api/auth/*', betterAuthView)
-}
 
 const api = new Elysia({
   prefix: '/api',
@@ -67,13 +43,25 @@ const api = new Elysia({
   .get('/ping', () => 'pong')
   .use(planningsRoutes)
 
-// Fallback for /api/* routes
+// Mount custom auth HTML routes (e.g., /api/auth/auto-redirect/:provider for Tauri/extension)
+if (authHtml) {
+  api.use(authHtml)
+}
+
+// Mount BetterAuth using explicit .get() and .post() handlers
+// Note: Elysia's .mount() doesn't work correctly for GET requests (likely a bug),
+// so we use separate handlers that forward the raw request to BetterAuth
+if (auth) {
+  logger.info('Mounting BetterAuth handler at /auth/*')
+  api.get('/auth/*', ({ request }) => auth.handler(request))
+  api.post('/auth/*', ({ request }) => auth.handler(request))
+}
+
+// Fallback for /api/* routes that weren't matched above
 api.all('*', ({ set }) => {
   set.status = 404
   return Response.json({ error: 'NOT_FOUND', message: 'Route not found' })
 })
 
-// Export both the prefixed API and the auth API to be mounted separately
-export { authApi }
 export type App = typeof api
 export default api

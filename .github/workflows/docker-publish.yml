@@ -235,7 +235,7 @@ jobs:
       - name: Run integration tests with Bun test
         run: |
           # Run integration tests using Bun test (no additional dependencies needed)
-          BASE_URL=http://localhost:20000 bun test test/integration/
+          BASE_URL=http://localhost:20000 bun test test/integration/api.test.ts test/integration/auth.routes.test.ts
 
       - name: Run basic API smoke tests
         run: |
@@ -372,3 +372,135 @@ jobs:
           echo "| Image Tags | ${{ steps.meta.outputs.tags }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Tests Status | ${{ job.status == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Image Published | ${{ steps.push_image.outcome == 'success' && '✅ Yes' || '❌ No' }} |" >> $GITHUB_STEP_SUMMARY
+
+  # Separate job for auth-enabled integration tests
+  # This runs in parallel with the main build-and-test job for faster CI
+  auth-integration-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    services:
+      postgres-auth:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: testpass
+          POSTGRES_USER: testuser
+          POSTGRES_DB: planningsup_test_auth
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5434:5432
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Read Bun version
+        id: bun_version
+        run: |
+          BUN_VERSION=$(cat .bun-version)
+          echo "version=$BUN_VERSION" >> $GITHUB_OUTPUT
+          echo "Using Bun version: $BUN_VERSION"
+
+      - name: Build Docker image for auth tests
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          tags: planningsup-auth-test:latest
+          build-args: |
+            BUN_VERSION=${{ steps.bun_version.outputs.version }}
+          push: false
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Set up Bun for tests
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.bun-version'
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
+      - name: Install test dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Start auth-enabled application container
+        run: |
+          # Start the application container with AUTH_ENABLED=true
+          docker run -d \
+            --name planningsup-app-auth-test \
+            --network host \
+            -e NODE_ENV=production \
+            -e PORT=20001 \
+            -e DATABASE_URL="postgresql://testuser:testpass@localhost:5434/planningsup_test_auth" \
+            -e RUN_JOBS=false \
+            -e AUTH_ENABLED=true \
+            -e BETTER_AUTH_SECRET="test-secret-for-ci-only-do-not-use-in-production" \
+            -e DISCORD_CLIENT_ID="test-discord-client-id" \
+            -e DISCORD_CLIENT_SECRET="test-discord-client-secret" \
+            -e GITHUB_CLIENT_ID="test-github-client-id" \
+            -e GITHUB_CLIENT_SECRET="test-github-client-secret" \
+            -e TRUSTED_ORIGINS="http://localhost:20001,http://localhost:3000" \
+            planningsup-auth-test:latest
+
+          # Wait for the application to be ready
+          echo "Waiting for auth-enabled application to start..."
+          timeout 60 bash -c 'until curl -f http://localhost:20001/api/ping 2>/dev/null; do sleep 2; done' || {
+            echo "❌ Auth-enabled application failed to start within 60 seconds"
+            docker logs planningsup-app-auth-test
+            exit 1
+          }
+
+          echo "✅ Auth-enabled application is ready for testing"
+
+      - name: Verify AUTH_ENABLED=true in runtime config
+        run: |
+          echo "Verifying AUTH_ENABLED=true..."
+          CONFIG=$(curl -s http://localhost:20001/config.js)
+          if ! echo "$CONFIG" | grep -q '"authEnabled":true'; then
+            echo "❌ AUTH_ENABLED is not true in /config.js!"
+            echo "Config content:"
+            echo "$CONFIG"
+            exit 1
+          fi
+          echo "✅ AUTH_ENABLED=true confirmed"
+
+      - name: Run auth-enabled integration tests
+        run: |
+          BASE_URL=http://localhost:20001 bun test test/integration/auth.routes.enabled.test.ts --timeout 30000
+
+      - name: Show auth application logs if tests fail
+        if: failure()
+        run: |
+          echo "=== Auth-Enabled Application Container Logs ==="
+          docker logs planningsup-app-auth-test || true
+
+      - name: Cleanup auth test container
+        if: always()
+        run: |
+          docker stop planningsup-app-auth-test || true
+          docker rm planningsup-app-auth-test || true
+
+      - name: Auth integration tests summary
+        if: always()
+        run: |
+          echo "## Auth Integration Tests Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Auth Enabled | ✅ true |" >> $GITHUB_STEP_SUMMARY
+          echo "| Test Port | 20001 |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests Status | ${{ job.status == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
