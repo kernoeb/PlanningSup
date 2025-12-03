@@ -1,4 +1,4 @@
-import type { auth } from '@api/utils/auth'
+import type { BetterAuthInstance } from '@api/utils/auth'
 import { inferAdditionalFields } from 'better-auth/client/plugins'
 import { createAuthClient } from 'better-auth/vue'
 
@@ -8,6 +8,6 @@ console.log('Auth client baseURL:', baseURL || 'Not set, using relative URLs')
 export const authClient = createAuthClient({
   baseURL,
   plugins: [
-    inferAdditionalFields<typeof auth>(),
+    inferAdditionalFields<BetterAuthInstance>(),
   ],
 })

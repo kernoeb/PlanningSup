@@ -1,20 +1,24 @@
 import type { Context } from 'elysia'
 import config from '@api/config'
 import planningsRoutes from '@api/routes/plannings'
-import { auth } from '@api/utils/auth'
 import { defaultLogger as logger } from '@api/utils/logger'
 import { cors } from '@elysiajs/cors'
 import { openapi } from '@elysiajs/openapi'
 import { Elysia } from 'elysia'
-import authHtml from './utils/auth-html'
 
 const BETTER_AUTH_ACCEPT_METHODS = ['POST', 'GET']
 
 logger.info(`Authentication is ${config.authEnabled ? 'enabled' : 'disabled'}`)
 
+// Only import auth module when auth is enabled (avoids BetterAuth initialization otherwise)
+const auth = config.authEnabled ? (await import('@api/utils/auth')).auth : null
+const authHtml = config.authEnabled ? (await import('./utils/auth-html')).default : null
+
 async function betterAuthView(context: Context) {
+  // auth is guaranteed to be non-null here because this function
+  // is only registered as a route handler when config.authEnabled is true
   if (BETTER_AUTH_ACCEPT_METHODS.includes(context.request.method)) {
-    return auth.handler(context.request)
+    return auth!.handler(context.request)
   } else {
     context.status(405)
   }
@@ -52,7 +56,7 @@ const api = new Elysia({
   .get('/ping', () => 'pong')
   .use(planningsRoutes)
 
-if (config.authEnabled) {
+if (config.authEnabled && authHtml) {
   api.use(authHtml)
   api.all('/auth/*', betterAuthView)
 }
