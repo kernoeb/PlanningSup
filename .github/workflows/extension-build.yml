@@ -43,10 +43,11 @@ jobs:
     permissions:
       contents: write
       packages: read
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
 
     steps:
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
       - name: Checkout repository
         uses: actions/checkout@v4
 

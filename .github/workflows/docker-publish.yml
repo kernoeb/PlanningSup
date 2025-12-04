@@ -33,9 +33,10 @@ jobs:
       bun_version: ${{ steps.bun_version.outputs.version }}
       image_tags: ${{ steps.meta.outputs.tags }}
       image_labels: ${{ steps.meta.outputs.labels }}
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
     steps:
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -172,9 +173,10 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     needs: [prepare]
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
     steps:
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -205,8 +207,6 @@ jobs:
   integration-tests:
     runs-on: ubuntu-latest
     needs: [prepare, build]
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
     services:
       postgres:
         image: postgres:17
@@ -222,6 +222,9 @@ jobs:
         ports:
           - 5432:5432
     steps:
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -299,8 +302,6 @@ jobs:
   auth-integration-tests:
     runs-on: ubuntu-latest
     needs: [prepare, build]
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
     services:
       postgres-auth:
         image: postgres:17
@@ -316,6 +317,9 @@ jobs:
         ports:
           - 5434:5432
     steps:
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -415,10 +419,12 @@ jobs:
         ports:
           - 5433:5432
     timeout-minutes: 15
-    env:
-      BUN_INSTALL: ${{ runner.temp }}/bun/install
-      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/ms-playwright
     steps:
+      - name: Set environment variables
+        run: |
+          echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+          echo "PLAYWRIGHT_BROWSERS_PATH=${{ runner.temp }}/ms-playwright" >> $GITHUB_ENV
+
       - name: Checkout
         uses: actions/checkout@v4
 
