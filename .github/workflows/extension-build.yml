@@ -36,7 +36,6 @@ env:
   NODE_ENV: production
   VITE_BACKEND_URL: https://v3.planningsup.app
   CI: true
-  BUN_INSTALL: ${{ runner.temp }}/bun/install
 
 jobs:
   build:
@@ -44,6 +43,8 @@ jobs:
     permissions:
       contents: write
       packages: read
+    env:
+      BUN_INSTALL: ${{ runner.temp }}/bun/install
 
     steps:
       - name: Checkout repository
