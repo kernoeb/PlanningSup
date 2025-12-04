@@ -27,7 +27,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "6.3.0",
+    "@antfu/eslint-config": "6.4.1",
     "@types/bun": "catalog:types",
     "config": "workspace:*",
     "drizzle-kit": "0.31.7",
