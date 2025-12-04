@@ -18,6 +18,7 @@ env:
     main
     refactor/elysia-postgresql
   IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
+  BUN_INSTALL: ${{ runner.temp }}/bun/install
 
 jobs:
   # ============================================================================
@@ -47,7 +48,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
@@ -61,9 +62,9 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
-          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
 
       - name: Detect UI-related changes
         id: changes
@@ -183,7 +184,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
@@ -228,7 +229,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
@@ -320,7 +321,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
@@ -408,7 +409,7 @@ jobs:
           - 5433:5432
     timeout-minutes: 15
     env:
-      PLAYWRIGHT_BROWSERS_PATH: ~/.cache/ms-playwright
+      PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/ms-playwright
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -422,7 +423,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |

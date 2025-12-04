@@ -36,6 +36,7 @@ env:
   NODE_ENV: production
   VITE_BACKEND_URL: https://v3.planningsup.app
   CI: true
+  BUN_INSTALL: ${{ runner.temp }}/bun/install
 
 jobs:
   build:
@@ -57,7 +58,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: |
-            ~/.bun/install/cache
+            ${{ runner.temp }}/bun/install/cache
             node_modules
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
