@@ -27,7 +27,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@ffflorian/jszip-cli": "3.12.6",
+    "@ffflorian/jszip-cli": "3.12.8",
     "@tailwindcss/vite": "catalog:ui",
     "@types/bun": "catalog:types",
     "@types/fs-extra": "11.0.4",

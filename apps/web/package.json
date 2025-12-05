@@ -24,7 +24,7 @@
     "@schedule-x/translations": "3.4.2",
     "@schedule-x/vue": "3.4.0",
     "groupby-polyfill": "^1.0.0",
-    "lucide-vue-next": "0.555.0",
+    "lucide-vue-next": "0.556.0",
     "temporal-polyfill": "0.3.0",
     "vue": "catalog:ui",
     "vue3-simple-icons": "15.6.0"
