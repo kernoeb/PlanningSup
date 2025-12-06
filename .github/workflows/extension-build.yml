@@ -35,6 +35,7 @@ env:
   EXTENSION_DIR: apps/extension
   NODE_ENV: production
   VITE_BACKEND_URL: https://v3.planningsup.app
+  VITE_AUTH_ENABLED: true
   CI: true
 
 jobs:
@@ -90,6 +91,7 @@ jobs:
         env:
           NODE_ENV: production
           VITE_BACKEND_URL: ${{ env.VITE_BACKEND_URL }}
+          VITE_AUTH_ENABLED: ${{ env.VITE_AUTH_ENABLED }}
           CI: true
         run: |
           cd ${{ env.EXTENSION_DIR }}
@@ -97,6 +99,7 @@ jobs:
           echo "Environment variables:"
           echo "  NODE_ENV: $NODE_ENV"
           echo "  VITE_BACKEND_URL: $VITE_BACKEND_URL"
+          echo "  VITE_AUTH_ENABLED: $VITE_AUTH_ENABLED"
           echo "  CI: $CI"
           bun run build
           echo "Build completed. Checking output:"
