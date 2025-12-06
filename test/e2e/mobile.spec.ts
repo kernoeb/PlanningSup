@@ -45,13 +45,13 @@ test.describe('Mobile-Specific Functionality', () => {
     await test.step('Theme options in user menu', async () => {
       await userMenuTrigger.click()
       await expect(page.locator('#user-dropdown-menu')).toBeVisible()
-      await expect(page.locator('#mobile-theme-light')).toBeVisible()
-      await expect(page.locator('#mobile-theme-dark')).toBeVisible()
-      await expect(page.locator('#mobile-theme-auto')).toBeVisible()
+      await expect(page.locator('#theme-light')).toBeVisible()
+      await expect(page.locator('#theme-dark')).toBeVisible()
+      await expect(page.locator('#theme-auto')).toBeVisible()
     })
 
     await test.step('Theme switching works', async () => {
-      await page.locator('#mobile-theme-dark').click()
+      await page.locator('#theme-dark').click()
       await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark')
     })
   })

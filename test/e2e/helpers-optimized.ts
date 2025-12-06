@@ -225,7 +225,7 @@ class OptimizedTestHelper {
       await this.page.waitForSelector('#user-dropdown-menu', { timeout: 5000 })
 
       // Click theme button
-      await this.page.locator(`#mobile-theme-${theme}`).click({ force: true })
+      await this.page.locator(`#theme-${theme}`).click({ force: true })
     } else {
       // Check if desktop theme dropdown is visible (hidden on smaller screens)
       const isThemeDropdownVisible = await this.page.locator('#theme-dropdown').isVisible()

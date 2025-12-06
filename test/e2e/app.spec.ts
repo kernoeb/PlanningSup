@@ -87,7 +87,7 @@ test.describe('PlanningSup E2E', () => {
           if (classes?.includes('btn-disabled')) return
 
           await trigger.click({ timeout: 3000 })
-          await page.locator('#mobile-theme-dracula').click()
+          await page.locator('#theme-dracula').click()
         } else {
           await page.locator('#theme-dropdown-trigger').click({ timeout: 3000 })
           await page.locator('#theme-dracula').click()
