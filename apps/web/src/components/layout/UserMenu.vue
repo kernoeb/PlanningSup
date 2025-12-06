@@ -20,7 +20,6 @@ const hasImage = computed(() => !!user.value?.image)
 const canOpenMenu = computed(() => (authEnabled ? !isPending.value : true))
 const ariaLabel = computed(() => (authEnabled && isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
 
-// Theme (for small screens, theme controls live here)
 const { theme, i18nThemes, setTheme } = useSharedTheme()
 const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
 </script>
@@ -61,32 +60,30 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         class="menu dropdown-content bg-base-200 dark:bg-base-300 rounded-box z-10 mt-3 w-52 p-2"
         tabindex="0"
       >
-        <!-- Small screens: Theme controls moved here -->
-        <li class="menu-title md:hidden">
+        <li class="menu-title">
           <span>Thème: {{ currentThemeLabel }}</span>
         </li>
-        <li class="md:hidden">
-          <button id="mobile-theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
+        <li>
+          <button id="theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
             {{ i18nThemes.auto }}
           </button>
         </li>
-        <li class="md:hidden">
-          <button id="mobile-theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
+        <li>
+          <button id="theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
             {{ i18nThemes.dark }}
           </button>
         </li>
-        <li class="md:hidden">
-          <button id="mobile-theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
+        <li>
+          <button id="theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
             {{ i18nThemes.light }}
           </button>
         </li>
-        <li class="md:hidden">
-          <button id="mobile-theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
+        <li>
+          <button id="theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
             {{ i18nThemes.dracula }}
           </button>
         </li>
-        <div class="md:hidden divider m-0" />
-        <!-- End small-screen theme controls -->
+        <div class="divider m-0" />
         <li v-if="authEnabled && !user">
           <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
             Se connecter

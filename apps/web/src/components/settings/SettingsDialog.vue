@@ -49,7 +49,7 @@ watch(() => props.open, (next) => {
 <template>
   <dialog ref="dialogRef" aria-labelledby="settings-title" class="modal" @close="emit('update:open', false)">
     <div class="modal-box max-w-xl flex flex-col p-0">
-      <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-800 bg-base-200">
+      <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-base-300 dark:border-base-200 bg-base-200 dark:bg-base-100">
         <h3 id="settings-title" class="font-bold text-xl">
           Paramètres
         </h3>
@@ -64,7 +64,7 @@ watch(() => props.open, (next) => {
         </form>
       </div>
 
-      <div class="flex-1 overflow-y-auto px-6 pt-4 pb-8 space-y-8">
+      <div class="flex-1 overflow-y-auto px-6 pt-4 pb-8 space-y-8 bg-base-100 dark:bg-base-200">
         <!-- 1) Couleurs des événements du calendrier -->
         <section class="space-y-2">
           <div class="flex items-center justify-between">

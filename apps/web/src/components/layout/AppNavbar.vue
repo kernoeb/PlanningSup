@@ -3,13 +3,10 @@ import { onKeyStroke } from '@vueuse/core'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { useSharedTheme } from '@web/composables/useTheme'
 import { ChevronDown, List } from 'lucide-vue-next'
-import { computed, useTemplateRef } from 'vue'
+import { useTemplateRef } from 'vue'
 
 const { title, planningFullIds } = usePlanningData()
-const { theme, i18nThemes, setTheme } = useSharedTheme()
-const currentLabel = computed(() => i18nThemes[theme.value])
 
 const planningPicker = useTemplateRef('planningPicker')
 
@@ -71,41 +68,6 @@ onKeyStroke(
             </span>
           </div>
         </Transition>
-      </div>
-    </div>
-
-    <div class="flex-none mr-2 hidden md:block">
-      <div id="theme-dropdown" class="dropdown dropdown-end">
-        <div id="theme-dropdown-trigger" class="btn btn-ghost" role="button" tabindex="0">
-          Thème: {{ currentLabel }}
-          <ChevronDown class="opacity-70" :size="14" />
-        </div>
-        <ul
-          id="theme-dropdown-menu"
-          class="menu menu-sm dropdown-content bg-base-200 rounded-box z-10 mt-3 w-48 p-2 shadow"
-          tabindex="0"
-        >
-          <li>
-            <button id="theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
-              {{ i18nThemes.auto }}
-            </button>
-          </li>
-          <li>
-            <button id="theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
-              {{ i18nThemes.dark }}
-            </button>
-          </li>
-          <li>
-            <button id="theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
-              {{ i18nThemes.light }}
-            </button>
-          </li>
-          <li>
-            <button id="theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
-              {{ i18nThemes.dracula }}
-            </button>
-          </li>
-        </ul>
       </div>
     </div>
 

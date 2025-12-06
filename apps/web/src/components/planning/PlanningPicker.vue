@@ -343,8 +343,8 @@ onMounted(() => {
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
-      <div class="modal-box max-w-xl flex flex-col p-0 overflow-visible">
-        <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-gray-300 bg-base-100">
+      <div class="modal-box max-w-xl flex flex-col p-0">
+        <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-base-300 dark:border-base-200 bg-base-200 dark:bg-base-100">
           <div class="flex flex-col">
             <h3 id="planning-picker-title" class="font-bold text-xl">
               Sélectionner un planning
@@ -422,7 +422,7 @@ onMounted(() => {
         </div>
 
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-200 pt-2 px-4 pb-4" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-100 dark:bg-base-200 pt-2 px-4 pb-4" v-bind="containerProps">
           <div v-if="loading" class="flex items-center justify-center h-full">
             <span class="loading loading-spinner loading-lg" />
           </div>
