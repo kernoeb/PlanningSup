@@ -159,11 +159,11 @@ export default new Elysia().use(html()).get('/auth/auto-redirect/:provider', asy
             function sendMessageToExtension(message) {
               if (typeof browser !== 'undefined' && browser.runtime && browser.runtime.sendMessage) {
                 // For Firefox and browsers supporting webextension-polyfill
-                if (${!!config.chromeExtensionId}) return browser.runtime.sendMessage('${config.chromeExtensionId || '*'}', message);
+                if (${!!config.firefoxExtensionId}) return browser.runtime.sendMessage('${config.firefoxExtensionId || '*'}', message);
               } else if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
                 // For Chrome
                 return new Promise((resolve, reject) => {
-                  if (${!!config.firefoxExtensionId}) chrome.runtime.sendMessage('${config.firefoxExtensionId || '*'}', message, (response) => {
+                  if (${!!config.chromeExtensionId}) chrome.runtime.sendMessage('${config.chromeExtensionId || '*'}', message, (response) => {
                     console.log('chrome.runtime.sendMessage response:', response);
                     const err = chrome.runtime.lastError;
                     if (err) reject(err);
