@@ -3,7 +3,7 @@ import { onKeyStroke } from '@vueuse/core'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { ChevronDown, List } from 'lucide-vue-next'
+import { List } from 'lucide-vue-next'
 import { useTemplateRef } from 'vue'
 
 const { title, planningFullIds } = usePlanningData()
