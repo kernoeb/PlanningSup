@@ -43,3 +43,6 @@ test-results
 .playwright-browsers-installed
 
 postgres_data
+
+CLAUDE.md
+GEMINI.md

@@ -18,20 +18,20 @@
     "@elysiajs/openapi": "1.4.11",
     "@elysiajs/static": "1.4.7",
     "@logtape/logtape": "1.2.2",
-    "better-auth": "1.4.5",
+    "better-auth": "catalog:",
     "dayjs": "1.11.19",
-    "drizzle-orm": "0.45.0",
+    "drizzle-orm": "0.45.1",
     "drizzle-typebox": "0.3.3",
     "elysia": "catalog:",
     "ical.js": "2.2.1",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "6.4.2",
+    "@antfu/eslint-config": "6.6.1",
     "@types/bun": "catalog:types",
     "config": "workspace:*",
     "drizzle-kit": "0.31.8",
-    "eslint": "9.39.1",
+    "eslint": "9.39.2",
     "pg": "8.16.3"
   },
   "overrides": {

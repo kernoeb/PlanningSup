@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@fontsource-variable/roboto": "5.2.9",
-    "@tauri-apps/cli": "2.9.5",
+    "@tauri-apps/cli": "2.9.6",
     "@types/bun": "catalog:types",
     "@vitejs/plugin-vue": "catalog:dev",
     "@vue/tsconfig": "0.8.1",

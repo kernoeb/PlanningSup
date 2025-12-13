@@ -16,7 +16,7 @@
   "devDependencies": {
     "@elysiajs/eden": "catalog:",
     "@tauri-apps/api": "2.9.1",
-    "better-auth": "1.4.5",
+    "better-auth": "catalog:",
     "config": "workspace:*",
     "typescript": "catalog:dev"
   }

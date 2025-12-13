@@ -22,9 +22,9 @@
     "@schedule-x/theme-default": "3.5.0",
     "@schedule-x/timezone-select": "3.5.0",
     "@schedule-x/translations": "3.5.0",
-    "@schedule-x/vue": "3.4.0",
+    "@schedule-x/vue": "3.5.0",
     "groupby-polyfill": "^1.0.0",
-    "lucide-vue-next": "0.556.0",
+    "lucide-vue-next": "0.561.0",
     "temporal-polyfill": "0.3.0",
     "vue": "catalog:ui",
     "vue3-simple-icons": "15.6.0"
