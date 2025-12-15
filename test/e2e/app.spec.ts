@@ -27,21 +27,12 @@ test.describe('PlanningSup E2E', () => {
 
       if (helper.device.isDesktop()) {
         const badge = page.locator('#current-planning-badge')
+        await expect(badge).toHaveCount(1)
         await expect(badge).toBeVisible()
       }
 
       await helper.verifyCalendar()
       await helper.verifyEventsDisplayed()
-    })
-
-    await test.step('Calendar view selector works', async () => {
-      const viewSelect = page.locator('#calendar-view-select')
-      await expect(viewSelect).toBeVisible()
-
-      // Switch view and assert the label updates (stable UI contract).
-      await viewSelect.click()
-      await page.locator('button', { hasText: 'Mois' }).first().click()
-      await expect(viewSelect).toContainText('Mois')
     })
 
     await test.step('Calendar navigation works', async () => {
@@ -50,6 +41,19 @@ test.describe('PlanningSup E2E', () => {
       await helper.fastNavigation('today')
       await helper.verifyCalendar()
     })
+  })
+
+  test('calendar view selector updates the current view label', async ({ page }) => {
+    const helper = createOptimizedHelper(page)
+    await helper.fastSetup()
+
+    const viewSelect = page.locator('#calendar-view-select')
+    await expect(viewSelect).toBeVisible()
+
+    // Switch view and assert the label updates (stable UI contract).
+    await viewSelect.click()
+    await page.locator('button', { hasText: 'Mois' }).first().click()
+    await expect(viewSelect).toContainText('Mois')
   })
 
   test('responsive design and device-specific UI', async ({ page }) => {

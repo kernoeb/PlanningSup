@@ -166,19 +166,15 @@ class OptimizedTestHelper {
       const firstPlanning = this.page.locator('#planning-tree-container').locator('[data-planning-id]').first()
       if (await firstPlanning.count() > 0) {
         await firstPlanning.click()
-        await this.page.waitForTimeout(500)
       }
     } else {
       // Search for the specific planning
       await this.page.fill('#planning-search-input', planningName)
-      await this.page.waitForTimeout(500)
 
       // Look for planning in the tree
-      const planningElement = this.page.locator('#planning-tree-container').locator(`text="${planningName}"`).first()
-      if (await planningElement.count() > 0) {
-        await planningElement.click()
-        await this.page.waitForTimeout(500)
-      }
+      const planningElement = this.page.locator('#planning-tree-container').getByText(planningName).first()
+      await planningElement.waitFor({ state: 'visible', timeout: 2000 })
+      await planningElement.click()
     }
 
     // Close picker using the close button with retry logic
@@ -188,7 +184,9 @@ class OptimizedTestHelper {
       // Try alternative close methods if primary fails
       await this.page.keyboard.press('Escape')
     }
-    await this.page.waitForTimeout(1000)
+
+    // Wait for modal to close (faster and more reliable than fixed sleeps).
+    await expect(this.page.locator('#planning-picker-modal')).not.toBeVisible({ timeout: 5000 })
   }
 
   async verifyNavbarElements(): Promise<void> {
