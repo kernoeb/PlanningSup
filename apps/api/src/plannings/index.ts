@@ -159,15 +159,16 @@ function removeUrlFromElement<T>(element: T): RemoveUrl<T> {
   return element as RemoveUrl<T>
 }
 
-function removeUrlFromPlanning(planning: typeof plannings[number]): PlanningWithoutUrl {
+function removeUrlFromPlanning(planning: typeof plannings[number]): Omit<PlanningWithoutUrl, 'flatten'> {
+  const { flatten, ...rest } = planning
   return {
-    ...planning,
+    ...rest,
     children: planning.children.map(removeUrlFromElement),
   }
 }
 
-// Recursively remove "url" key from all planning elements
-const cleanedPlannings: readonly PlanningWithoutUrl[] = plannings.map(removeUrlFromPlanning)
+// Recursively remove "url" key and "flatten" from all planning elements
+const cleanedPlannings: readonly Omit<PlanningWithoutUrl, 'flatten'>[] = plannings.map(removeUrlFromPlanning)
 
 const flattenedPlannings = plannings.flatMap(p => p.flatten)
 

@@ -69,20 +69,22 @@ const safePlanningIds = computed<string[]>(() => Array.isArray(planningFullIds.v
 
 const selectedItems = computed(() => {
   const ids = safePlanningIds.value
-  return ids.map((id) => {
-    const path = findPathInTree(tree.value, id)
 
-    let shortTitle = id
-    if (path) {
+  return ids
+    .map((id) => {
+      const path = findPathInTree(tree.value, id)
+      if (!path) return null // Hide while tree is loading
+
+      let shortTitle: string
       if (path.length > 3) {
         shortTitle = `${path.at(0)} > ... > ${path.at(-1)}`
       } else {
         shortTitle = path.join(' > ')
       }
-    }
 
-    return { id, shortTitle, title: path ? path.join(' > ') : id }
-  })
+      return { id, shortTitle, title: path.join(' > ') }
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null)
 })
 
 function clearSelection() {

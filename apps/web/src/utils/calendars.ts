@@ -17,6 +17,8 @@
  * })
  */
 
+import Color from 'color'
+
 export type EventKind = 'lecture' | 'lab' | 'tutorial' | 'other'
 export type ColorMap = Record<EventKind, string>
 
@@ -121,11 +123,11 @@ function resolveOnContainer(bg: string, strategy: BuildCalendarsOptions['onConta
 }
 
 function makePalette(name: string, color: string, onContainer: '#000000' | '#FFFFFF'): CalendarTypeLike {
-  // For now main=container=color for both light and dark modes.
+  const darkerMainColor = Color(color).darken(0.2).hex()
   return {
     colorName: name,
-    lightColors: { main: color, container: color, onContainer },
-    darkColors: { main: color, container: color, onContainer },
+    lightColors: { main: darkerMainColor, container: color, onContainer },
+    darkColors: { main: darkerMainColor, container: color, onContainer },
   }
 }
 

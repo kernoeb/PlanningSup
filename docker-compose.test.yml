@@ -20,7 +20,7 @@ services:
     build:
       context: .
       args:
-        BUN_VERSION: ${BUN_VERSION:-1.3.3}
+        BUN_VERSION: ${BUN_VERSION:-1.3.4}
     container_name: planningsup_test_app
     environment:
       NODE_ENV: production

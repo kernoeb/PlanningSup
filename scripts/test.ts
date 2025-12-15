@@ -21,6 +21,8 @@ const colors = {
   reset: '\x1b[0m'
 } as const;
 
+const COMPOSE_PROJECT = process.env.COMPOSE_PROJECT || "planningsup-e2e";
+
 // Parse command line arguments
 function parseArgs(): TestConfig {
   const config: TestConfig = {
@@ -111,7 +113,7 @@ async function cleanup(shouldCleanup: boolean): Promise<void> {
   if (shouldCleanup) {
     log("Cleaning up test containers...");
     try {
-      await $`docker compose -f docker-compose.test.yml down -v --remove-orphans`.quiet();
+      await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml down -v --remove-orphans`.quiet();
     } catch (err) {
       // Ignore cleanup errors
     }
@@ -123,8 +125,11 @@ async function cleanup(shouldCleanup: boolean): Promise<void> {
 // Check if containers are already running
 async function checkContainersRunning(): Promise<boolean> {
   try {
-    const result = await $`docker compose -f docker-compose.test.yml ps`.quiet();
-    return result.text().includes("healthy");
+    const result = await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml ps`.quiet();
+    const out = result.text();
+
+    // Ensure both app and DB services for the test stack are up.
+    return out.includes("app-test") && out.includes("postgres-test") && out.includes("healthy");
   } catch {
     return false;
   }
@@ -136,7 +141,7 @@ async function startTestEnvironment(): Promise<number> {
   const startTime = Date.now();
 
   try {
-    await $`docker compose -f docker-compose.test.yml up -d --build`;
+    await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml up -d --build`;
 
     // Wait for health check with optimized timeout
     log("Waiting for services to be ready...");
@@ -145,7 +150,7 @@ async function startTestEnvironment(): Promise<number> {
     const startWait = Date.now();
 
     while (Date.now() - startWait < maxWaitTime) {
-      const result = await $`docker compose -f docker-compose.test.yml ps`.quiet();
+      const result = await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml ps`.quiet();
       if (result.text().includes("healthy")) {
         break;
       }
@@ -153,10 +158,10 @@ async function startTestEnvironment(): Promise<number> {
     }
 
     // Final check
-    const finalCheck = await $`docker compose -f docker-compose.test.yml ps`.quiet();
+    const finalCheck = await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml ps`.quiet();
     if (!finalCheck.text().includes("healthy")) {
       error("Services failed to start within 45 seconds");
-      const logs = await $`docker compose -f docker-compose.test.yml logs`.quiet();
+      const logs = await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml logs`.quiet();
       console.log(logs.text());
       process.exit(1);
     }
@@ -181,7 +186,7 @@ async function healthCheck(): Promise<void> {
 
   while (attempts < maxAttempts) {
     try {
-      const response = await fetch("http://localhost:20000/api/ping");
+      const response = await fetch("http://127.0.0.1:20000/api/ping");
       if (response.ok) {
         const text = await response.text();
         if (text.includes("pong")) {
@@ -199,7 +204,7 @@ async function healthCheck(): Promise<void> {
 
   error("Application health check failed");
   try {
-    const logs = await $`docker compose -f docker-compose.test.yml logs app-test`.quiet();
+    const logs = await $`docker compose -p ${COMPOSE_PROJECT} -f docker-compose.test.yml logs app-test`.quiet();
     console.log(logs.text());
   } catch {
     // Ignore log errors

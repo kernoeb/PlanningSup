@@ -11,6 +11,7 @@ export type EventWithFullId = Events[number] & { fullId: string }
 export interface PlanningDataStore {
   planningFullIds: Ref<string[]>
   title: Ref<string>
+  titles: Ref<Record<string, string>>
   events: Ref<EventWithFullId[]>
   loading: Ref<boolean>
   error: Ref<string | null>
@@ -31,6 +32,7 @@ function createPlanningDataStore(): PlanningDataStore {
   const settings = useSharedSettings()
 
   const title = ref<string>('')
+  const titles = ref<Record<string, string>>({})
   const events = ref<EventWithFullId[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
@@ -44,20 +46,21 @@ function createPlanningDataStore(): PlanningDataStore {
   const BACKGROUND_COOLDOWN_MS = 60_000 // 60s cool-down for background triggers
   const NATURAL_INTERVAL_MS = 60_000 * 5 // 5 minutes
 
-  async function maybeBackgroundRefresh() {
+  async function maybeBackgroundRefresh(trigger: string) {
     // Avoid overlapping requests
     if (loading.value) return
     // Enforce cool-down
     const now = Date.now()
     if (now - lastRefreshAt.value < BACKGROUND_COOLDOWN_MS) return
-    await refresh()
+    await refresh(`bg:${trigger}`)
   }
 
-  async function refresh() {
+  async function refresh(_reason: string = 'manual') {
     const fullIds = [...planningFullIds.value]
 
     if (fullIds.length === 0) {
       title.value = ''
+      titles.value = {}
       events.value = []
       error.value = null
       return
@@ -104,7 +107,13 @@ function createPlanningDataStore(): PlanningDataStore {
         }
       }
 
-      // Titles
+      // Titles - build map of fullId -> title and combined title string
+      const titlesMap: Record<string, string> = {}
+      for (const s of successes) {
+        titlesMap[s.fullId] = s.title
+      }
+      titles.value = titlesMap
+
       if (successes.length === 0) {
         title.value = fullIds.join(' + ')
       } else if (successes.length === 1) {
@@ -126,6 +135,7 @@ function createPlanningDataStore(): PlanningDataStore {
       if (token !== requestToken) return
       error.value = e instanceof Error ? e.message : String(e)
       title.value = fullIds.join(' + ')
+      titles.value = {}
       events.value = []
     } finally {
       if (token === requestToken) loading.value = false
@@ -134,7 +144,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
   // Natural background refresh every 5 minutes
   const { pause, resume } = useIntervalFn(() => {
-    void maybeBackgroundRefresh()
+    void maybeBackgroundRefresh('interval')
   }, NATURAL_INTERVAL_MS)
 
   // Start/stop the interval depending on whether we have a valid selection
@@ -146,20 +156,21 @@ function createPlanningDataStore(): PlanningDataStore {
 
   // Trigger background refresh on window focus (respects 60s cooldown and no overlap)
   watch(focused, (isFocused) => {
-    if (isFocused) void maybeBackgroundRefresh()
+    if (isFocused) void maybeBackgroundRefresh('focus')
   })
 
   // Auto-load and reload on planning selection or settings changes
   watch(planningFullIds, () => {
-    void refresh()
+    void refresh('planningFullIds')
   }, { immediate: true })
   watch(settings.queryParams, () => {
-    void refresh()
+    void refresh('settings.queryParams')
   })
 
   return {
     planningFullIds,
     title,
+    titles,
     events,
     loading,
     error,

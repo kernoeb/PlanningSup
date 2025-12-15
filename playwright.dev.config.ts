@@ -12,7 +12,9 @@ export default defineConfig({
     ['html', { open: 'on-failure' }], // Auto-open HTML report on failure
   ],
   use: {
-    baseURL: 'http://localhost:20000',
+    // Prefer explicit IPv4 loopback to avoid environments where `localhost`
+    // resolves to IPv6 (::1) but the app only listens on 127.0.0.1.
+    baseURL: 'http://127.0.0.1:20000',
     trace: 'on', // Always collect traces in dev mode
     screenshot: 'on', // Always take screenshots
     video: 'on', // Always record videos
@@ -42,8 +44,10 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'echo "Application should already be running"',
-    url: 'http://localhost:20000',
+    // Keep a long-lived process so Playwright's webServer harness doesn't fail
+    // with "exited early" when the app is already running (e.g. via Docker).
+    command: 'bash -lc "curl -fsS http://127.0.0.1:20000/api/ping >/dev/null && tail -f /dev/null"',
+    url: 'http://127.0.0.1:20000',
     reuseExistingServer: true,
     timeout: 10000,
   },

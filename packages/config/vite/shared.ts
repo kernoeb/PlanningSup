@@ -74,7 +74,17 @@ export function ignorePWABadgePlugin(name = 'ignore-pwa-badge') {
  * Optionally adds the ignore-PWA-badge plugin (enabled by default).
  */
 export function getCommonPlugins(options: { addIgnorePWABadge?: boolean } = {}) {
-  const plugins = [tailwindcss(), vue()] as PluginOption[]
+  const plugins = [
+    tailwindcss(),
+    vue({
+      template: {
+        compilerOptions: {
+          // Treat cally web components as custom elements
+          isCustomElement: tag => tag.startsWith('calendar-'),
+        },
+      },
+    }),
+  ] as PluginOption[]
   if (options.addIgnorePWABadge) plugins.push(ignorePWABadgePlugin())
   return plugins
 }

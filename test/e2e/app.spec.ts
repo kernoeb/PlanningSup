@@ -34,6 +34,16 @@ test.describe('PlanningSup E2E', () => {
       await helper.verifyEventsDisplayed()
     })
 
+    await test.step('Calendar view selector works', async () => {
+      const viewSelect = page.locator('#calendar-view-select')
+      await expect(viewSelect).toBeVisible()
+
+      // Switch view and assert the label updates (stable UI contract).
+      await viewSelect.click()
+      await page.locator('button', { hasText: 'Mois' }).first().click()
+      await expect(viewSelect).toContainText('Mois')
+    })
+
     await test.step('Calendar navigation works', async () => {
       await helper.fastNavigation('next')
       await helper.fastNavigation('previous')
@@ -113,7 +123,7 @@ test.describe('PlanningSup E2E', () => {
     await test.step('Escape closes modal', async () => {
       await helper.openPlanningPicker()
       await page.keyboard.press('Escape')
-      await expect(page.locator('#planning-picker-dialog')).not.toBeVisible()
+      await expect(page.locator('#planning-picker-modal')).not.toBeVisible()
     })
 
     await test.step('App remains stable after rapid interactions', async () => {

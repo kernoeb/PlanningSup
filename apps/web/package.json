@@ -23,6 +23,8 @@
     "@schedule-x/timezone-select": "3.5.0",
     "@schedule-x/translations": "3.5.0",
     "@schedule-x/vue": "3.5.0",
+    "cally": "^0.9.0",
+    "color": "^5.0.3",
     "groupby-polyfill": "^1.0.0",
     "lucide-vue-next": "0.561.0",
     "temporal-polyfill": "0.3.0",

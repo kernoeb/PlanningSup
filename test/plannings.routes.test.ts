@@ -170,6 +170,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(first).toHaveProperty('title')
     expect(first).toHaveProperty('children')
     expect(first).not.toHaveProperty('url')
+    expect(first).not.toHaveProperty('flatten')
 
     // Ensure no 'url' in the tree
     const stack = [...(first.children as any[])]

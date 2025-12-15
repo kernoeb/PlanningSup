@@ -341,14 +341,27 @@ class OptimizedTestHelper {
       return
     }
 
-    const navSelectors = [
+    const navSelectors: string[] = []
+
+    // Prefer explicit, stable app-level selectors.
+    if (action === 'next') {
+      navSelectors.push('#calendar-next-period-header')
+    }
+    else if (action === 'previous') {
+      navSelectors.push('#calendar-prev-period-header')
+    }
+    else if (action === 'today') {
+      navSelectors.push('#calendar-today-btn')
+    }
+
+    navSelectors.push(
       `#calendar-${action}-period`,
       `[data-action="${action}"]`,
       `.calendar-nav-${action}`,
       `.sx__${action}-button`,
       `button[aria-label*="${action}"]`,
       `button[title*="${action}"]`
-    ]
+    )
     // Schedule X exposes a Today button via .sx__today-button in desktop mode
     if (action === 'today') {
       navSelectors.unshift('.sx__today-button')

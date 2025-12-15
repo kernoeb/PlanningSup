@@ -49,9 +49,11 @@ function mapApiEventToCalendarEvent(
  */
 export function usePlanningCalendar(options: {
   timezone: Ref<NonNullable<AllowedTimezones>>
+  onUserInteraction?: (reason: string) => void
 }) {
   const timezoneRef = options.timezone
   const timezoneValue = computed(() => unref(timezoneRef))
+  const onUserInteraction = options.onUserInteraction ?? (() => {})
 
   const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
   const eventsServicePlugin = createEventsServicePlugin()
@@ -70,6 +72,7 @@ export function usePlanningCalendar(options: {
 
   function nextPeriod() {
     if (!calendarApp.value) return
+    onUserInteraction('nextPeriod')
     const view = currentView.value
     if (!view) return null
     const days
@@ -84,6 +87,7 @@ export function usePlanningCalendar(options: {
 
   function prevPeriod() {
     if (!calendarApp.value) return
+    onUserInteraction('prevPeriod')
     const view = currentView.value
     if (!view) return null
     const days
@@ -98,11 +102,13 @@ export function usePlanningCalendar(options: {
 
   onKeyStroke('ArrowRight', (e) => {
     e.preventDefault()
+    onUserInteraction('key:ArrowRight')
     nextPeriod()
   }, { dedupe: true })
 
   onKeyStroke('ArrowLeft', (e) => {
     e.preventDefault()
+    onUserInteraction('key:ArrowLeft')
     prevPeriod()
   }, { dedupe: true })
 
@@ -118,7 +124,7 @@ export function usePlanningCalendar(options: {
     return {
       nDays: settings.weekNDays.value,
       gridHeight: 800,
-      eventWidth: 98,
+      eventWidth: currentView.value === 'week' ? 100 - 2 : 100, // check how we can center instead,
     }
   }
 
@@ -176,8 +182,12 @@ export function usePlanningCalendar(options: {
       updateCurrentView(calendarControls.getView())
 
       // Restore previous state if available
-      if (prevView) calendarControls.setView?.(prevView)
-      if (isRecreate && prevDate) calendarControls.setDate?.(prevDate)
+      if (prevView) {
+        calendarControls.setView?.(prevView)
+      }
+      if (isRecreate && prevDate) {
+        calendarControls.setDate?.(prevDate)
+      }
     } else {
       eventsServicePlugin.set(mappedEvents)
     }
@@ -217,7 +227,24 @@ export function usePlanningCalendar(options: {
 
   // Manual reload if needed by UI
   function reload() {
+    onUserInteraction('reload')
     void planning.refresh()
+  }
+
+  // Go to today's date
+  function goToToday() {
+    if (!calendarApp.value) return
+    onUserInteraction('goToToday')
+    currentDate.value = Temporal.Now.zonedDateTimeISO(timezoneValue.value).toPlainDate()
+    calendarControls.setDate(currentDate.value)
+  }
+
+  // Set the calendar view (allows any view even on mobile)
+  function setView(view: 'day' | 'week' | 'month-grid' | 'month-agenda') {
+    if (!calendarApp.value) return
+    onUserInteraction(`setView:${view}`)
+    calendarControls.setView(view)
+    updateCurrentView(view)
   }
 
   // Calendar initializes when planning data is available via the watch
@@ -314,6 +341,10 @@ export function usePlanningCalendar(options: {
     nbHours,
     nextPeriod,
     prevPeriod,
+    goToToday,
+    setView,
+    currentDate,
+    currentView,
     reload,
     loading,
   }

@@ -200,3 +200,12 @@ html[data-theme="light"] .shadow-none {
     --btn-bg: oklch(from var(--color-secondary) 42% c h);
   }
 }
+
+/* Lighter hover for outline buttons in light theme */
+[data-theme="light"] .btn:hover:not(.btn-secondary) {
+  --btn-bg: color-mix(
+    in oklab,
+    var(--btn-color, var(--color-base-200)),
+    #000 0%
+  );
+}
