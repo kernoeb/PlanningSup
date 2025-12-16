@@ -389,7 +389,7 @@ watch(
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
-      <div class="modal-box max-w-xl flex flex-col p-0">
+      <div class="modal-box overflow-visible max-w-xl flex flex-col p-0">
         <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-base-300 dark:border-base-200 bg-base-200 dark:bg-base-100">
           <div class="flex flex-col">
             <h3 id="planning-picker-title" class="font-bold text-xl">
@@ -433,7 +433,14 @@ watch(
                 <IconX class="size-4 text-base-content" />
               </button>
             </label>
-            <button id="planning-clear-selection" class="btn" :disabled="selectionCount === 0" type="button" @click="clearSelection()">
+            <button
+              id="planning-clear-selection"
+              class="tooltip btn"
+              data-tip="Effacer la sélection"
+              :disabled="selectionCount === 0"
+              type="button"
+              @click="clearSelection()"
+            >
               <IconRotateCcw class="size-4 text-base-content" />
             </button>
           </div>
