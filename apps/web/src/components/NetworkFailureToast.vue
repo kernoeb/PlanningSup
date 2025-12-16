@@ -8,9 +8,27 @@ const { networkFailures, planningFullIds } = usePlanningData()
 const isOnline = useOnline()
 
 const hasNetworkFailures = computed(() => networkFailures.value.length > 0)
-const shouldShowToast = computed(() => !isOnline.value || hasNetworkFailures.value)
-const showToast = ref(false)
-const dismissed = ref(false)
+const toastReason = computed(() => {
+  if (!isOnline.value) return 'offline'
+  if (hasNetworkFailures.value) return 'failures'
+  return null
+})
+
+const dismissedOffline = ref(false)
+const dismissedFailures = ref(false)
+const autoHideHandle = ref<ReturnType<typeof setTimeout> | null>(null)
+const isVisible = computed(() => {
+  if (toastReason.value === 'offline') return !dismissedOffline.value
+  if (toastReason.value === 'failures') return !dismissedFailures.value
+  return false
+})
+
+function clearAutoHide() {
+  if (autoHideHandle.value) {
+    clearTimeout(autoHideHandle.value)
+    autoHideHandle.value = null
+  }
+}
 
 function formatBackupTime(timestamp: number | null): string {
   if (!timestamp) return 'inconnu'
@@ -25,30 +43,46 @@ function formatBackupTime(timestamp: number | null): string {
 }
 
 function dismiss() {
-  showToast.value = false
-  dismissed.value = true
+  if (toastReason.value === 'offline') dismissedOffline.value = true
+  if (toastReason.value === 'failures') dismissedFailures.value = true
+  clearAutoHide()
 }
 
-// Show toast when offline or network failures occur (but only if not dismissed)
-watch(shouldShowToast, (should) => {
-  if (should && !dismissed.value) {
-    showToast.value = true
-  } else if (!should) {
-    showToast.value = false
-    dismissed.value = false
+watch(toastReason, (reason, prevReason) => {
+  clearAutoHide()
+
+  if (reason === null) {
+    dismissedOffline.value = false
+    dismissedFailures.value = false
+    return
+  }
+
+  if (reason === 'failures') {
+    if (prevReason !== 'failures') {
+      dismissedFailures.value = false
+    }
+
+    if (!dismissedFailures.value) {
+      autoHideHandle.value = setTimeout(() => {
+        dismissedFailures.value = true
+        autoHideHandle.value = null
+      }, 15_000)
+    }
   }
 }, { immediate: true })
 
 // Reset dismissed state when planning selection changes
 watch(planningFullIds, () => {
-  dismissed.value = false
+  dismissedOffline.value = false
+  dismissedFailures.value = false
+  clearAutoHide()
 })
 </script>
 
 <template>
   <Transition name="network-toast">
     <div
-      v-if="showToast && shouldShowToast"
+      v-if="isVisible"
       class="toast toast-bottom toast-center z-50 pointer-events-none"
     >
       <div
