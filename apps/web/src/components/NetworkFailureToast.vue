@@ -83,7 +83,7 @@ watch(planningFullIds, () => {
   <Transition name="network-toast">
     <div
       v-if="isVisible"
-      class="toast toast-bottom toast-center z-50 pointer-events-none"
+      class="toast toast-bottom z-50 w-full px-8 items-center pointer-events-none md:bottom-4"
     >
       <div
         aria-atomic="true"
