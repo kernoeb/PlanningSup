@@ -154,8 +154,8 @@ defineExpose({ reload })
       data-calendar-id="schedule-x-calendar"
     >
       <template #headerContent>
-        <div class="flex items-center justify-between w-full gap-2 flex-wrap">
-          <div class="flex items-center gap-2">
+        <div class="flex items-center justify-between w-full gap-2">
+          <div class="flex items-center gap-2 min-w-0 overflow-hidden">
             <div class="max-md:tooltip max-md:tooltip-bottom z-50" data-tip="Aujourd'hui">
               <button
                 id="calendar-today-btn"
@@ -201,8 +201,8 @@ defineExpose({ reload })
           </div>
 
           <!-- Right section: View selector + Date picker -->
-          <div class="flex items-center gap-2">
-            <details ref="viewDropdown" class="dropdown dropdown-end">
+          <div class="flex items-center gap-2 shrink-0">
+            <details ref="viewDropdown" class="dropdown dropdown-end self-end">
               <summary id="calendar-view-select" class="btn btn-outline font-normal border-base-200">
                 {{ currentViewLabel }} <IconChevronDown :size="16" />
               </summary>
