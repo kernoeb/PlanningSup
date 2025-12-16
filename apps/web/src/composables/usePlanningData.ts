@@ -1,7 +1,7 @@
 import type { Events, PlanningWithEvents } from '@libs'
 import type { Ref } from 'vue'
 import { client } from '@libs'
-import { useIntervalFn, useWindowFocus } from '@vueuse/core'
+import { useIntervalFn, useOnline, useWindowFocus } from '@vueuse/core'
 import { ref, watch } from 'vue'
 import { useSharedSettings } from './useSettings'
 import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
@@ -37,6 +37,7 @@ let _instance: PlanningDataStore | null = null
 function createPlanningDataStore(): PlanningDataStore {
   const { planningFullIds } = useSharedSyncedCurrentPlanning()
   const settings = useSharedSettings()
+  const isOnline = useOnline()
 
   const titles = ref<Record<string, string>>({})
   const events = ref<EventWithFullId[]>([])
@@ -121,42 +122,44 @@ function createPlanningDataStore(): PlanningDataStore {
     const token = ++requestToken
 
     try {
-      // Phase 1: Fast database-only fetch (parallel)
-      const dbResults = await Promise.allSettled(
-        fullIds.map(fullId =>
-          client.api.plannings({ fullId }).get({
-            query: {
-              events: 'true',
-              onlyDb: 'true',
-              ...settings.queryParams.value,
-            },
-          }),
-        ),
-      )
-
-      // Ignore outdated responses
-      if (token !== requestToken) return
-
       const dbSuccesses: Array<PlanningWithEvents> = []
       const dbErrors: string[] = []
       const titlesMap: Record<string, string> = {}
       const dbTimestamps: Record<string, number | null> = {}
 
-      for (let i = 0; i < fullIds.length; i++) {
-        const id = fullIds[i]!
-        const { success, title, error: err, timestamp } = processResponse(id, dbResults[i])
+      // Phase 1: Fast database-only fetch (parallel) - skip when offline
+      if (isOnline.value) {
+        const dbResults = await Promise.allSettled(
+          fullIds.map(fullId =>
+            client.api.plannings({ fullId }).get({
+              query: {
+                events: 'true',
+                onlyDb: 'true',
+                ...settings.queryParams.value,
+              },
+            }),
+          ),
+        )
 
-        if (title) titlesMap[id] = title
-        if (success) dbSuccesses.push(success)
-        else if (err) dbErrors.push(err)
-        dbTimestamps[id] = timestamp
+        // Ignore outdated responses
+        if (token !== requestToken) return
+
+        for (let i = 0; i < fullIds.length; i++) {
+          const id = fullIds[i]!
+          const { success, title, error: err, timestamp } = processResponse(id, dbResults[i])
+
+          if (title) titlesMap[id] = title
+          if (success) dbSuccesses.push(success)
+          else if (err) dbErrors.push(err)
+          dbTimestamps[id] = timestamp
+        }
+
+        // Update UI immediately with database data
+        titles.value = { ...titlesMap }
+        events.value = dbSuccesses.length > 0
+          ? dbSuccesses.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
+          : []
       }
-
-      // Update UI immediately with database data
-      titles.value = { ...titlesMap }
-      events.value = dbSuccesses.length > 0
-        ? dbSuccesses.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
-        : []
 
       // Mark loading as done after DB phase, start refreshing phase
       loading.value = false

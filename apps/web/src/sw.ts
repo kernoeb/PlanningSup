@@ -28,9 +28,12 @@ self.addEventListener('activate', (event) => {
 // --- ROUTING ---
 
 // 3. API CACHING FOR 'GET' (Specific)
+// Only cache network-first calls (exclude onlyDb=true which returns fast DB-only responses)
 registerRoute(
   ({ url, request }) =>
-    url.pathname.startsWith('/api/plannings') && request.method === 'GET',
+    url.pathname.startsWith('/api/plannings')
+    && request.method === 'GET'
+    && url.searchParams.get('onlyDb') !== 'true',
   new NetworkFirst({
     cacheName: 'api-plannings',
     networkTimeoutSeconds: 5,
