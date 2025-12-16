@@ -5,6 +5,7 @@ import { useSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcwIcon as IconRotateCcw, XIcon as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
+
 // Object.groupBy is Baseline 2024
 import 'groupby-polyfill/lib/polyfill.js'
 
@@ -47,8 +48,12 @@ const { planningFullIds, isSelected, togglePlanning } = useSharedSyncedCurrentPl
 
 // UX state
 const searchQuery = ref('')
-const debouncedSearchQuery = refDebounced(searchQuery, 150)
+const debouncedSearchQuery = refDebounced(searchQuery, 100)
 const expanded = ref<Set<string>>(new Set())
+
+// Collapse state
+const showCustomGroups = ref(true)
+const showSelectedItems = ref(true)
 
 function findPathInTree(
   nodes: PlanningNode[] | undefined,
@@ -188,6 +193,12 @@ watch(
       // Collapse when search is cleared to avoid unfolding everything
       expanded.value = new Set()
     }
+
+    nextTick(() => {
+      // Scroll to top of the list
+      const list = document.querySelector('#planning-tree-container')
+      if (list) list.scrollTop = 0
+    })
   },
 )
 
@@ -422,7 +433,7 @@ watch(
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
-      <div class="modal-box overflow-visible max-w-[min(var(--container-xl),100svw)] flex flex-col p-0">
+      <div class="modal-box max-w-[min(var(--container-xl),100svw)] flex flex-col p-0">
         <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-base-300 dark:border-base-200 bg-base-200 dark:bg-base-100">
           <div class="flex flex-col">
             <h3 id="planning-picker-title" class="font-bold text-xl">
@@ -468,7 +479,7 @@ watch(
             </label>
             <button
               id="planning-clear-selection"
-              class="tooltip btn"
+              class="tooltip before:z-50 after:z-50 btn"
               data-tip="Effacer la sélection"
               :disabled="selectionCount === 0"
               type="button"
@@ -479,7 +490,7 @@ watch(
             <details ref="customGroupDetailsRef" class="dropdown dropdown-end">
               <summary
                 id="planning-save-selection"
-                class="tooltip btn z-5000"
+                class="tooltip tooltip-left before:z-50 after:z-50 btn z-5000"
                 data-tip="Enregistrer la sélection"
               >
                 <PinIcon class="size-4 text-base-content" />
@@ -497,7 +508,7 @@ watch(
                     <input v-model="customGroupName" class="grow" placeholder="Fac de bio" type="text">
                   </label>
                   <p class="legend">
-                    Créez un groupe pour retrouver plus facilement vos plannings  .
+                    Créez un groupe pour retrouver plus facilement vos plannings.
                   </p>
                 </fieldset>
                 <button
@@ -511,83 +522,92 @@ watch(
             </details>
           </div>
 
-          <details v-if="customGroups.length > 0" class="collapse collapse-arrow flex flex-col gap-2" name="my-accordion-det-1" open>
-            <summary class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0">
+          <div v-if="customGroups.length > 0" class="collapse collapse-arrow">
+            <input v-model="showCustomGroups" type="checkbox">
+            <div class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
               <h4 class="text-sm font-medium text-base-content/70">
                 Groupes enregistrés
               </h4>
               <span class="text-xs text-base-content/50">
                 Cliquer pour appliquer un groupe
               </span>
-            </summary>
-            <div class="collapse-content flex flex-wrap max-w-full gap-2 flex-1 min-w-0 px-0">
-              <div
-                v-for="item in customGroups"
-                :id="`custom-group-${item.id}`"
-                :key="item.id"
-                class="group flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 hover:border-secondary/40 cursor-pointer transition-all"
-                @click="applyCustomGroup(item.id)"
-              >
-                <FolderIcon class="size-4 text-secondary shrink-0" />
-                <span class="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-40">
-                  {{ item.name }}
-                </span>
-                <span class="text-xs text-base-content/50">
-                  ({{ item.plannings.length }})
-                </span>
-                <button
-                  :id="`remove-custom-group-${item.name}`"
-                  :aria-label="`Supprimer le groupe ${item.name}`"
-                  class="btn btn-xs btn-circle btn-ghost grid place-items-center opacity-50 group-hover:opacity-100 shrink-0 ml-1"
-                  type="button"
-                  @click.stop="groupToDelete = { id: item.id, name: item.name }"
+            </div>
+            <div class="collapse-content px-0">
+              <div class="flex flex-wrap gap-2 pt-2">
+                <div
+                  v-for="item in customGroups"
+                  :id="`custom-group-${item.id}`"
+                  :key="item.id"
+                  class="group flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 hover:border-secondary/40 cursor-pointer transition-all"
+                  @click="applyCustomGroup(item.id)"
                 >
-                  <IconX class="size-3.5" />
-                </button>
+                  <FolderIcon class="size-4 text-secondary shrink-0" />
+                  <span class="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-40">
+                    {{ item.name }}
+                  </span>
+                  <span class="text-xs text-base-content/50">
+                    ({{ item.plannings.length }})
+                  </span>
+                  <button
+                    :id="`remove-custom-group-${item.name}`"
+                    :aria-label="`Supprimer le groupe ${item.name}`"
+                    class="btn btn-xs btn-circle btn-ghost grid place-items-center opacity-50 group-hover:opacity-100 shrink-0 ml-1"
+                    type="button"
+                    @click.stop="groupToDelete = { id: item.id, name: item.name }"
+                  >
+                    <IconX class="size-3.5" />
+                  </button>
+                </div>
               </div>
             </div>
-          </details>
+          </div>
 
-          <details v-if="selectedItems.length > 0" class="collapse collapse-arrow flex flex-col gap-2 mt-4">
-            <summary class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0">
+          <div v-if="selectedItems.length > 0" class="collapse collapse-arrow">
+            <input v-model="showSelectedItems" type="checkbox">
+            <div class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
               <h4 class="text-sm font-medium text-base-content/70">
                 Plannings sélectionnés
               </h4>
               <span class="text-xs text-base-content/50">
                 Cliquer un planning pour le retirer
               </span>
-            </summary>
-            <div id="selected-plannings-list" class="collapse-content flex max-w-full overflow-x-auto md:flex-wrap gap-2 flex-1 min-w-0 px-0">
-              <div
-                v-for="item in selectedItems"
-                :id="`selected-planning-${item.id}`"
-                :key="item.id"
-                class="tooltip w-fit"
-                :data-tip="item.title"
-              >
+            </div>
+            <div id="selected-plannings-list" class="collapse-content px-0">
+              <div class="flex flex-wrap gap-2 pt-2">
                 <div
-                  class="badge badge-md gap-1 bg-base-200"
-                  title="Cliquer pour retirer"
+                  v-for="item in selectedItems"
+                  :id="`selected-planning-${item.id}`"
+                  :key="item.id"
+                  class="tooltip tooltip-top w-fit before:z-50 after:z-50"
+                  :data-tip="item.title"
                 >
-                  <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
-                    {{ item.shortTitle }}
-                  </div>
-                  <button
-                    :id="`remove-planning-${item.id}`"
-                    :aria-label="`Retirer ${item.title}`"
-                    class="btn btn-xs btn-circle btn-ghost shrink-0"
-                    @click="togglePlanning(item.id)"
+                  <div
+                    class="badge badge-md gap-1 bg-base-200"
+                    title="Cliquer pour retirer"
                   >
-                    <IconX class="size-3" />
-                  </button>
+                    <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
+                      {{ item.shortTitle }}
+                    </div>
+                    <button
+                      :id="`remove-planning-${item.id}`"
+                      :aria-label="`Retirer ${item.title}`"
+                      class="btn btn-xs btn-circle btn-ghost shrink-0"
+                      @click="togglePlanning(item.id)"
+                    >
+                      <IconX class="size-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </details>
+          </div>
         </div>
 
+        <!-- Divider -->
+        <div class="divider my-0 h-0.5" />
+
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-100 dark:bg-base-200 pt-0 px-4 pb-4" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-100 dark:bg-base-200 pt-2 px-4 pb-4" v-bind="containerProps">
           <div v-if="loading" class="flex items-center justify-center h-full">
             <span class="loading loading-spinner loading-lg" />
           </div>
@@ -713,11 +733,3 @@ watch(
     </dialog>
   </div>
 </template>
-
-<style scoped>
-.tooltip {
-  &[data-tip]::before {
-    z-index: 10;
-  }
-}
-</style>

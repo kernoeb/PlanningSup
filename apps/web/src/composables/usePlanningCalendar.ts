@@ -6,7 +6,6 @@ import type { AllowedTimezones } from './useTimezone'
 import { createCalendar, createViewDay, createViewMonthAgenda, createViewMonthGrid, createViewWeek } from '@schedule-x/calendar'
 import { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import { createCurrentTimePlugin } from '@schedule-x/current-time'
-import { createEventModalPlugin } from '@schedule-x/event-modal'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 
@@ -57,8 +56,10 @@ export function usePlanningCalendar(options: {
 
   const calendarApp = shallowRef<ReturnType<typeof createCalendar> | null>(null)
   const eventsServicePlugin = createEventsServicePlugin()
-  const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
+
+  // Selected event for the bottom modal
+  const selectedEvent = shallowRef<CalendarEvent | null>(null)
   const { currentView, preferredView, updateCurrentView, isSmallScreen } = useCalendarResponsiveView({ calendarControls, calendarApp })
 
   const settings = useSharedSettings()
@@ -176,13 +177,16 @@ export function usePlanningCalendar(options: {
         plugins: [
           calendarControls,
           eventsServicePlugin,
-          eventModal,
           createCurrentTimePlugin(),
         ],
         translations: mergeLocales(translations),
         callbacks: {
           onRangeUpdate: () => {
             updateCurrentView(calendarControls.getView())
+          },
+          onEventClick: (calendarEvent: CalendarEvent) => {
+            onUserInteraction('eventClick')
+            selectedEvent.value = calendarEvent
           },
         },
       })
@@ -347,11 +351,18 @@ export function usePlanningCalendar(options: {
     return `${minutes}m`
   })
 
+  // Close the event modal
+  function closeEventModal() {
+    selectedEvent.value = null
+  }
+
   return {
     calendarApp,
     calendarControls,
     eventsServicePlugin,
-    eventModal,
+    selectedEvent,
+    closeEventModal,
+    planningTitles: planning.titles,
     nbHours,
     nextPeriod,
     prevPeriod,

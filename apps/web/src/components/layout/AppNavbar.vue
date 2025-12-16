@@ -140,7 +140,7 @@ onKeyStroke(
           </span>
           <div
             v-else-if="selectedCount > 1"
-            class="tooltip tooltip-bottom hidden sm:inline-flex relative z-50"
+            class="tooltip tooltip-bottom hidden sm:inline-flex relative before:z-50 after:z-50"
             :data-tip="selectedTitlesTooltip"
           >
             <span id="current-planning-badge" class="badge truncate max-w-88 h-6 gap-1">

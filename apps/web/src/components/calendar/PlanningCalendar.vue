@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { onClickOutside, useSwipe } from '@vueuse/core'
+import EventBottomModal from '@web/components/calendar/EventBottomModal.vue'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { useSharedSettings } from '@web/composables/useSettings'
@@ -33,12 +34,24 @@ const {
   currentView,
   nbHours,
   loading,
+  selectedEvent,
+  closeEventModal,
+  planningTitles,
 } = usePlanningCalendar({
   timezone,
   onUserInteraction: (reason) => {
     enableAnimationsOnce(reason)
   },
 })
+
+// Get the planning title for the selected event
+const selectedEventPlanningTitle = computed(() => {
+  if (!selectedEvent.value) return undefined
+  const fullId = (selectedEvent.value as any).fullId
+  if (!fullId) return undefined
+  return planningTitles.value[fullId]
+})
+
 const planningPickerController = usePlanningPickerController()
 const { isDark: uiIsDark } = useSharedTheme()
 
@@ -67,7 +80,7 @@ const viewOptions = [
 const formattedDate = computed(() => {
   const date = currentDate.value
   if (!date) return ''
-  return date.toLocaleString('fr-FR', { month: 'long', year: 'numeric' })
+  return date.toLocaleString('fr-FR', { month: 'short', year: 'numeric' })
 })
 
 // Week number (ISO week)
@@ -155,8 +168,8 @@ defineExpose({ reload })
     >
       <template #headerContent>
         <div class="flex items-center justify-between w-full gap-2">
-          <div class="flex items-center gap-2 min-w-0 overflow-hidden">
-            <div class="max-md:tooltip max-md:tooltip-bottom z-50" data-tip="Aujourd'hui">
+          <div class="flex items-center gap-2 min-w-0">
+            <div class="max-md:tooltip max-md:tooltip-bottom before:z-50 after:z-50" data-tip="Aujourd'hui">
               <button
                 id="calendar-today-btn"
                 aria-label="Aller à aujourd'hui"
@@ -258,5 +271,12 @@ defineExpose({ reload })
         </div>
       </div>
     </div>
+
+    <!-- Event detail modal -->
+    <EventBottomModal
+      :event="selectedEvent"
+      :planning-title="selectedEventPlanningTitle"
+      @close="closeEventModal"
+    />
   </div>
 </template>

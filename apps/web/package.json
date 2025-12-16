@@ -12,7 +12,7 @@
     "test:e2e:ui": "playwright test --ui",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "typecheck": "bunx --bun vue-tsc --build --force"
+    "typecheck": "bunx vue-tsc --build --force"
   },
   "dependencies": {
     "@plausible-analytics/tracker": "^0.4.4",

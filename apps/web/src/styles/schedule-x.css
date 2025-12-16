@@ -150,6 +150,8 @@ html[data-theme="dracula"] {
 .sx__calendar-header {
   padding-top: var(--sx-spacing-padding3);
   padding-bottom: var(--sx-spacing-padding3);
+  padding-left: 12px;
+  padding-right: 12px;
   display: flex;
   align-items: center;
 }

@@ -1,7 +1,7 @@
 ARG BUN_VERSION=1
 FROM oven/bun:${BUN_VERSION} AS build
 
-#RUN apt update && apt install python3 python3-pip make g++ -y
+RUN apt-get update && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && apt-get install -y nodejs
 
 WORKDIR /app
 
