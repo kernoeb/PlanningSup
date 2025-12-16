@@ -89,19 +89,18 @@ onKeyStroke(
 <template>
   <div id="app-navbar" class="navbar bg-base-100 px-3 gap-2">
     <div class="flex-1 flex items-center gap-3">
-      <a id="app-logo" class="text-xl flex items-center gap-3" href="/">
-        <div class="avatar">
-          <div class="w-8 rounded">
-            <img alt="PlanningSup" src="/icon.png">
+      <div id="app-logo" class="text-xl flex items-center gap-3">
+        <a href="/">
+          <div class="avatar">
+            <div class="w-8 rounded">
+              <img alt="PlanningSup" src="/icon.png">
+            </div>
           </div>
-        </div>
+        </a>
         <div class="flex flex-col">
           <div>PlanningSup</div>
           <div class="text-xs font-light flex items-center gap-1 sm:hidden">
             <span>{{ selectedSummaryLabel }}</span>
-            <IconWifiOff v-if="!isOnline" class="size-3 text-warning" />
-            <IconWarning v-else-if="hasNetworkFailures" class="size-3 text-warning" />
-            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
             <button
               v-if="selectedCount > 1"
               id="mobile-selected-plannings-info"
@@ -111,9 +110,12 @@ onKeyStroke(
             >
               i
             </button>
+            <IconWifiOff v-if="!isOnline" class="size-3 text-warning" />
+            <IconWarning v-else-if="hasNetworkFailures" class="size-3 text-warning" />
+            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
           </div>
         </div>
-      </a>
+      </div>
       <div class="flex items-center gap-2">
         <PlanningPicker ref="planningPicker">
           <template #trigger="{ open }">

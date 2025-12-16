@@ -46,34 +46,34 @@ watch(planningFullIds, () => {
 </script>
 
 <template>
-  <Transition name="fade">
+  <Transition name="network-toast">
     <div
       v-if="showToast && shouldShowToast"
-      class="toast toast-bottom toast-center z-50"
-      style="max-width: calc(100dvw - 32px);"
+      class="toast toast-bottom toast-center z-50 pointer-events-none"
     >
       <div
         aria-atomic="true"
         aria-live="polite"
-        class="alert alert-warning flex flex-col items-start gap-2 shadow-lg"
+        class="alert alert-soft network-toast-alert pointer-events-auto w-full max-w-md flex flex-col items-start gap-2 rounded-2xl border shadow-lg ring-1 ring-base-content/10 text-base-content"
         role="alert"
+        style="--alert-color: var(--color-warning);"
       >
         <div class="flex items-center justify-between w-full">
           <div class="flex items-center gap-2">
-            <IconWifiOff v-if="!isOnline" class="size-5" />
-            <IconWarning v-else class="size-5" />
+            <IconWifiOff v-if="!isOnline" class="size-5 text-warning" />
+            <IconWarning v-else class="size-5 text-warning" />
             <span class="font-semibold">{{ !isOnline ? 'Vous êtes hors ligne' : 'Données hors ligne' }}</span>
           </div>
           <button
             aria-label="Fermer"
-            class="btn btn-ghost btn-xs btn-circle"
+            class="btn btn-ghost btn-xs btn-circle opacity-70 hover:opacity-100"
             type="button"
             @click="dismiss"
           >
             <IconX class="size-4" />
           </button>
         </div>
-        <div class="text-sm">
+        <div class="text-sm leading-snug">
           <template v-if="!isOnline">
             <p>
               Votre appareil n'est pas connecté à internet. Les données affichées peuvent ne pas être à jour.
@@ -83,7 +83,7 @@ watch(planningFullIds, () => {
             <p class="mb-1">
               Les plannings suivants n'ont pas pu être mis à jour :
             </p>
-            <ul class="list-disc list-inside space-y-0.5">
+            <ul class="list-disc list-inside space-y-0.5 max-h-40 overflow-auto pr-1">
               <li v-for="failure in networkFailures" :key="failure.fullId" class="truncate">
                 <span class="font-medium">{{ failure.title }}</span>
                 <span class="opacity-70 text-xs ml-1">(dernière mise à jour : {{ formatBackupTime(failure.timestamp) }})</span>
@@ -95,3 +95,45 @@ watch(planningFullIds, () => {
     </div>
   </Transition>
 </template>
+
+<style>
+.network-toast-enter-active,
+.network-toast-leave-active {
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 220ms ease;
+}
+
+.network-toast-enter-from,
+.network-toast-leave-to {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .network-toast-enter-active,
+  .network-toast-leave-active {
+    transition: opacity 180ms ease;
+  }
+
+  .network-toast-enter-from,
+  .network-toast-leave-to {
+    transform: none;
+    filter: none;
+  }
+}
+
+.network-toast-alert {
+  border-color: color-mix(in oklab, var(--alert-color) 22%, #0000);
+  background-color: color-mix(in oklab, var(--color-base-100) 70%, #0000);
+  backdrop-filter: blur(12px);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .network-toast-alert {
+    background-color: color-mix(in oklab, var(--color-base-100) 86%, #0000);
+  }
+}
+</style>
