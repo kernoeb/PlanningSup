@@ -118,7 +118,7 @@ onKeyStroke(
             </button>
           </template>
         </PlanningPicker>
-        <Transition name="fade" mode="out-in">
+        <Transition mode="out-in" name="fade">
           <span v-if="selectedCount === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex">
             {{ singleSelectedTitle || '...' }}
           </span>
