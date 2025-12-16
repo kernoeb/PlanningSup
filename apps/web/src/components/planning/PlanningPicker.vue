@@ -93,6 +93,7 @@ function clearSelection() {
 }
 
 const customGroupName = ref<string | undefined>(undefined)
+const groupToDelete = ref<{ id: string, name: string } | null>(null)
 
 const { customGroups, addCustomGroup } = useSettings()
 
@@ -441,7 +442,7 @@ watch(
         </div>
 
         <!-- Controls -->
-        <div class="flex-1 px-6 pt-4 space-y-2">
+        <div class="flex-1 px-6 pt-4 pb-2 space-y-2">
           <div class="flex items-center gap-2">
             <label class="input input-bordered w-full pe-0">
               <input
@@ -530,30 +531,15 @@ watch(
                 <span class="text-xs text-base-content/50">
                   ({{ item.plannings.length }})
                 </span>
-                <details class="dropdown dropdown-right" @click.stop>
-                  <summary
-                    :id="`remove-custom-group-${item.name}`"
-                    :aria-label="`Supprimer le groupe ${item.name}`"
-                    class="btn btn-xs btn-circle btn-ghost grid place-items-center opacity-50 group-hover:opacity-100 shrink-0 ml-1"
-                  >
-                    <span>
-                      <IconX class="size-3.5" />
-                    </span>
-                  </summary>
-                  <div class="dropdown-content bg-base-100 mt-2 rounded-box w-60 p-4 shadow-xl z-50">
-                    <p class="text-sm mb-3">
-                      Supprimer le groupe « {{ item.name }} » ?
-                    </p>
-                    <button
-                      class="btn btn-soft btn-error btn-sm w-full"
-                      type="button"
-                      @click="removeCustomGroup(item.id)"
-                    >
-                      <Trash2Icon class="size-4 me-2" />
-                      Supprimer
-                    </button>
-                  </div>
-                </details>
+                <button
+                  :id="`remove-custom-group-${item.name}`"
+                  :aria-label="`Supprimer le groupe ${item.name}`"
+                  class="btn btn-xs btn-circle btn-ghost grid place-items-center opacity-50 group-hover:opacity-100 shrink-0 ml-1"
+                  type="button"
+                  @click.stop="groupToDelete = { id: item.id, name: item.name }"
+                >
+                  <IconX class="size-3.5" />
+                </button>
               </div>
             </div>
           </details>
@@ -597,7 +583,7 @@ watch(
         </div>
 
         <!-- Body -->
-        <div id="planning-tree-container" class="h-[60vh] bg-base-100 dark:bg-base-200 pt-2 px-4 pb-4" v-bind="containerProps">
+        <div id="planning-tree-container" class="h-[60vh] bg-base-100 dark:bg-base-200 pt-0 px-4 pb-4" v-bind="containerProps">
           <div v-if="loading" class="flex items-center justify-center h-full">
             <span class="loading loading-spinner loading-lg" />
           </div>
@@ -612,7 +598,7 @@ watch(
               <!-- Group header -->
               <div
                 v-if="item.type === 'group'"
-                class="mt-2 px-2 flex items-center font-bold"
+                class="mt-1 px-2 flex items-center font-bold"
                 :style="{ height: `${ROW_HEIGHT}px` }"
               >
                 {{ item.group }}
@@ -683,6 +669,43 @@ watch(
       <form class="modal-backdrop" method="dialog">
         <button>close</button>
       </form>
+
+      <!-- Delete group confirmation modal -->
+      <dialog
+        class="modal"
+        :class="{ 'modal-open': groupToDelete !== null }"
+        :open="groupToDelete !== null"
+        @click.self="groupToDelete = null"
+      >
+        <div v-if="groupToDelete" class="modal-box">
+          <h3 class="font-bold text-lg">
+            Supprimer le groupe « {{ groupToDelete.name }} » ?
+          </h3>
+          <p class="py-4 text-sm text-base-content/70">
+            Cette action est irréversible.
+          </p>
+          <div class="modal-action">
+            <button
+              class="btn btn-ghost"
+              type="button"
+              @click="groupToDelete = null"
+            >
+              Annuler
+            </button>
+            <button
+              class="btn btn-error"
+              type="button"
+              @click="removeCustomGroup(groupToDelete.id); groupToDelete = null"
+            >
+              <Trash2Icon class="size-4 me-2" />
+              Supprimer
+            </button>
+          </div>
+        </div>
+        <form class="modal-backdrop" method="dialog" @click="groupToDelete = null">
+          <button>close</button>
+        </form>
+      </dialog>
     </dialog>
   </div>
 </template>
