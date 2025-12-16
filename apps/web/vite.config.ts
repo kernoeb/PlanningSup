@@ -22,40 +22,67 @@ export default defineConfig({
         description: 'Un planning simple et efficace pour les étudiants',
         theme_color: '#000000',
         lang: 'fr',
+        screenshots: [
+          {
+            src: 'screenshots/mobile.png',
+            sizes: '612x1016',
+            type: 'image/png',
+            form_factor: 'narrow',
+          },
+          {
+            src: 'screenshots/wide.png',
+            sizes: '1541x1016',
+            type: 'image/png',
+            form_factor: 'wide',
+          },
+        ],
         icons: [
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x48.png',
             sizes: '48x48',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x72.png',
             sizes: '72x72',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x96.png',
             sizes: '96x96',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x128.png',
             sizes: '128x128',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x192.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x384.png',
             sizes: '384x384',
             type: 'image/png',
           },
           {
+            purpose: 'maskable',
             src: 'maskable_icon_x512.png',
             sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            purpose: 'any',
+            src: 'icon.png',
+            sizes: '1024x1024',
             type: 'image/png',
           },
         ],
