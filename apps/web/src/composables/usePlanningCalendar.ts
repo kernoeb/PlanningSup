@@ -59,7 +59,7 @@ export function usePlanningCalendar(options: {
   const eventsServicePlugin = createEventsServicePlugin()
   const eventModal = createEventModalPlugin()
   const calendarControls = createCalendarControlsPlugin()
-  const { currentView, updateCurrentView } = useCalendarResponsiveView({ calendarControls, calendarApp })
+  const { currentView, preferredView, updateCurrentView, isSmallScreen } = useCalendarResponsiveView({ calendarControls, calendarApp })
 
   const settings = useSharedSettings()
   const planning = usePlanningData()
@@ -121,10 +121,11 @@ export function usePlanningCalendar(options: {
   }
 
   function getWeekOptions() {
+    const view = currentView.value ?? preferredView.value
     return {
       nDays: settings.weekNDays.value,
       gridHeight: 800,
-      eventWidth: currentView.value === 'week' ? 100 - 2 : 100, // check how we can center instead,
+      eventWidth: isSmallScreen.value && view === 'day' ? 100 : 98,
     }
   }
 
@@ -156,6 +157,7 @@ export function usePlanningCalendar(options: {
           createViewMonthGrid(),
           createViewMonthAgenda(),
         ],
+        defaultView: prevView ?? (currentView.value ?? preferredView.value),
         locale: 'fr-FR',
         isDark: uiIsDark.value,
         timezone,
@@ -217,6 +219,12 @@ export function usePlanningCalendar(options: {
 
   // Update calendar when the number of days in week view changes
   watch(() => settings.weekNDays.value, () => {
+    calendarControls.setWeekOptions(getWeekOptions())
+  })
+
+  // Keep week options in sync with the current view and responsive mode (eventWidth depends on view).
+  watch([currentView, isSmallScreen], () => {
+    if (!calendarApp.value) return
     calendarControls.setWeekOptions(getWeekOptions())
   })
 

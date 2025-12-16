@@ -27,32 +27,52 @@ export function useCalendarResponsiveView(options: {
 }) {
   const { calendarControls, calendarApp } = options
 
-  const currentView = shallowRef<string | null>(null)
+  const { width: windowWidth } = useWindowSize()
+  const isSmallScreen = computed(() => windowWidth.value < RESPONSIVE_BREAKPOINT)
+
   const lastDesktopView = useLocalStorage<string | null>(PLANNING_CALENDAR_VIEW_STORAGE_KEY, null, {
     writeDefaults: false,
   })
   const shouldRestoreView = shallowRef(false)
   const canPersistView = shallowRef(false)
 
-  const { width: windowWidth } = useWindowSize()
-  const isSmallScreen = computed(() => windowWidth.value < RESPONSIVE_BREAKPOINT)
+  const preferredView = computed<PlanningCalendarView>(() => {
+    if (isSmallScreen.value) return 'day'
+    return normalizePlanningCalendarView(lastDesktopView.value) ?? 'week'
+  })
+
+  // Initialize to a best-guess view even before ScheduleX has mounted.
+  // This avoids `null` consumers during bootstrap (e.g. weekOptions sizing).
+  const currentView = shallowRef<PlanningCalendarView>(preferredView.value)
+
+  const safeGetView = (): PlanningCalendarView | null => {
+    if (!calendarApp.value) return null
+    try {
+      return normalizePlanningCalendarView(calendarControls.getView())
+    } catch {
+      return null
+    }
+  }
 
   const updateCurrentView = (view?: string | null) => {
-    const next = view ?? calendarControls.getView() ?? null
+    const next = normalizePlanningCalendarView(view) ?? safeGetView() ?? preferredView.value
     currentView.value = next
-
-    const norm = normalizePlanningCalendarView(next)
-    if (!norm) return
 
     // Don't overwrite the "real" view with ScheduleX forced 'day' while below the breakpoint.
     // This keeps the auto day/week switch on resize while still persisting the user's last view.
-    if (isSmallScreen.value && norm === 'day') return
+    if (isSmallScreen.value && next === 'day') return
 
     // Avoid overwriting persisted view during initial calendar bootstrap (ScheduleX defaults to week).
     if (!canPersistView.value) return
 
-    lastDesktopView.value = norm
+    lastDesktopView.value = next
   }
+
+  // Keep a non-null, best-guess view before the calendar app exists.
+  watch([preferredView, calendarApp], ([pref, app]) => {
+    if (app) return
+    currentView.value = pref
+  }, { immediate: true, flush: 'sync' })
 
   // Restore the persisted desktop view when the calendar becomes available on large screens.
   // (ScheduleX will force 'day' on small screens anyway.)
@@ -71,7 +91,7 @@ export function useCalendarResponsiveView(options: {
     canPersistView.value = true
     if (!target) return
 
-    const current = normalizePlanningCalendarView(calendarControls.getView())
+    const current = safeGetView()
     if (current === target) return
 
     calendarControls.setView(target)
@@ -81,9 +101,10 @@ export function useCalendarResponsiveView(options: {
   // Restore the previous large-screen view when leaving the small breakpoint
   watch(isSmallScreen, (isSmall, wasSmall) => {
     if (isSmall) {
+      if (!calendarApp.value) return
       // Capture the current view before the calendar forces day mode
       if (wasSmall === false) {
-        const view = normalizePlanningCalendarView(calendarControls.getView())
+        const view = safeGetView()
         shouldRestoreView.value = !!(view && view !== 'day')
         if (shouldRestoreView.value) lastDesktopView.value = view
         else shouldRestoreView.value = false
@@ -94,7 +115,7 @@ export function useCalendarResponsiveView(options: {
     if (wasSmall !== true) return
     if (!calendarApp.value) return
 
-    const current = calendarControls.getView()
+    const current = safeGetView()
     const target = normalizePlanningCalendarView(lastDesktopView.value)
     if (shouldRestoreView.value && current === 'day' && target && target !== 'day') {
       calendarControls.setView(target)
@@ -107,6 +128,7 @@ export function useCalendarResponsiveView(options: {
   return {
     currentView,
     isSmallScreen,
+    preferredView,
     updateCurrentView,
   }
 }

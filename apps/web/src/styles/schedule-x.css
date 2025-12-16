@@ -209,3 +209,8 @@ html[data-theme="dracula"] {
   border-bottom: none !important;
   border-right: none !important;
 }
+
+.sx__calendar-wrapper:not(.sx__is-calendar-small)
+  .sx__time-grid-event.sx__event {
+  margin-inline-start: 1%;
+}
