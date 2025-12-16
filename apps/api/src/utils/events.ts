@@ -178,3 +178,79 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
 
   return events
 }
+
+// Types for event resolution
+export type EventsSource = 'db' | 'network' | 'none'
+export type FailureReason = 'network_error' | 'no_data' | 'empty_schedule'
+
+export interface ResolveEventsResult {
+  events: CalEvent[] | null
+  source: EventsSource
+  networkFailed: boolean
+}
+
+/**
+ * Resolve events for a planning.
+ * @param planning - The planning object.
+ * @param planning.url - The URL of the planning.
+ * @param planning.fullId - The full ID of the planning.
+ * @param onlyDb - Whether to only use the database.
+ * @returns The events for the planning, their source, and whether network failed.
+ */
+export async function resolveEvents(planning: { url: string, fullId: string }, onlyDb: boolean): Promise<ResolveEventsResult> {
+  if (onlyDb) {
+    const events = await getBackupEvents(planning.fullId)
+    return { events, source: events ? 'db' : 'none', networkFailed: false }
+  }
+
+  const networkEvents = await fetchEvents(planning.url)
+  if (networkEvents) {
+    return { events: networkEvents, source: 'network', networkFailed: false }
+  }
+
+  // Network failed, try DB fallback
+  const dbEvents = await getBackupEvents(planning.fullId)
+  return { events: dbEvents, source: dbEvents ? 'db' : 'none', networkFailed: true }
+}
+
+/**
+ * Determine the failure reason based on resolution result.
+ */
+export function getFailureReason(result: ResolveEventsResult, nbEvents: number): FailureReason | null {
+  // Network succeeded with events - no failure
+  if (result.source === 'network' && nbEvents > 0) {
+    return null
+  }
+
+  // Network succeeded but no events - empty schedule
+  if (result.source === 'network' && nbEvents === 0) {
+    return 'empty_schedule'
+  }
+
+  // Network failed but DB has events - network error with fallback
+  if (result.networkFailed && result.source === 'db' && nbEvents > 0) {
+    return 'network_error'
+  }
+
+  // Network failed and no data anywhere
+  if (result.networkFailed && result.source === 'none') {
+    return 'no_data'
+  }
+
+  // Network failed, DB returned but empty
+  if (result.networkFailed && result.source === 'db' && nbEvents === 0) {
+    return 'no_data'
+  }
+
+  // onlyDb mode with no data
+  if (!result.networkFailed && result.source === 'none') {
+    return 'no_data'
+  }
+
+  // onlyDb mode with empty data
+  if (!result.networkFailed && result.source === 'db' && nbEvents === 0) {
+    return 'empty_schedule'
+  }
+
+  return null
+}

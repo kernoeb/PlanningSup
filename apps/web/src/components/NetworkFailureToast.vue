@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { FailureReason } from '@web/composables/usePlanningData'
 import { useOnline } from '@vueuse/core'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
@@ -40,6 +41,18 @@ function formatBackupTime(timestamp: number | null): string {
     hour: '2-digit',
     minute: '2-digit',
   })
+}
+
+function getReasonLabel(reason: FailureReason | null, timestamp: number | null): string {
+  switch (reason) {
+    case 'no_data':
+      return 'aucune donnée disponible'
+    case 'empty_schedule':
+      return 'aucun événement prévu'
+    case 'network_error':
+    default:
+      return `maj : ${formatBackupTime(timestamp)}`
+  }
 }
 
 function dismiss() {
@@ -135,9 +148,9 @@ watch(planningFullIds, () => {
                   {{ failure.title }}
                 </span>
 
-                <!-- Date: Always visible, stuck to text (ml-1), never wraps -->
+                <!-- Reason: Shows appropriate message based on failure reason -->
                 <span class="opacity-70 text-xs whitespace-nowrap shrink-0 ml-1">
-                  (<span class="hidden sm:inline">dernière mise à jour&nbsp;:</span><span class="sm:hidden">maj&nbsp;:</span>&nbsp;{{ formatBackupTime(failure.timestamp) }})
+                  ({{ getReasonLabel(failure.reason, failure.timestamp) }})
                 </span>
               </li>
             </ul>

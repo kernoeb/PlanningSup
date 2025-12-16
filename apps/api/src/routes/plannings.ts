@@ -1,33 +1,7 @@
-import type { CalEvent } from '@api/utils/events'
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
-import { fetchEvents, getBackupEvents, getFormattedEvents } from '@api/utils/events'
+import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
 import { Elysia } from 'elysia'
-
-type EventsSource = 'db' | 'network' | 'none'
-
-/**
- * Resolve events for a planning.
- * @param planning - The planning object.
- * @param planning.url - The URL of the planning.
- * @param planning.fullId - The full ID of the planning.
- * @param onlyDb - Whether to only use the database.
- * @returns The events for the planning and their source.
- */
-async function resolveEvents(planning: { url: string, fullId: string }, onlyDb: boolean): Promise<{ events: CalEvent[] | null, source: EventsSource }> {
-  if (onlyDb) {
-    const events = await getBackupEvents(planning.fullId)
-    return { events, source: events ? 'db' : 'none' }
-  }
-
-  const networkEvents = await fetchEvents(planning.url)
-  if (networkEvents) {
-    return { events: networkEvents, source: 'network' }
-  }
-
-  const dbEvents = await getBackupEvents(planning.fullId)
-  return { events: dbEvents, source: dbEvents ? 'db' : 'none' }
-}
 
 export default new Elysia({ prefix: '/plannings' })
   .get('/', () => cleanedPlannings)
@@ -38,7 +12,8 @@ export default new Elysia({ prefix: '/plannings' })
     const partialInfos = { id: planning.id, fullId: planning.fullId, title: planning.title }
 
     if (query.events === 'true') {
-      const { events, source } = await resolveEvents(planning, query.onlyDb === 'true')
+      const resolveResult = await resolveEvents(planning, query.onlyDb === 'true')
+      const { events, source } = resolveResult
 
       // blocklist ?blocklist=string (comma-separated)
       const blocklist = query.blocklist?.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0) || []
@@ -60,11 +35,13 @@ export default new Elysia({ prefix: '/plannings' })
         : null
 
       const nbEvents = allEvents ? allEvents.length : 0
+      const reason = getFailureReason(resolveResult, nbEvents)
 
-      elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
+      elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, reason: {reason}, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
         fullId,
         nbEvents,
         source,
+        reason,
         blocklist,
         highlightTeacher,
       })
@@ -74,6 +51,7 @@ export default new Elysia({ prefix: '/plannings' })
         timestamp: Date.now(),
         status: events ? 'ok' : 'error',
         source,
+        reason,
         events: allEvents,
         nbEvents,
       }
