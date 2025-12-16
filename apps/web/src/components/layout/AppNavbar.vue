@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useOnline } from '@vueuse/core'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
-import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, X as IconX } from 'lucide-vue-next'
+import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
 import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
 const { titles, planningFullIds, networkFailures, refreshing } = usePlanningData()
+const isOnline = useOnline()
 
 const selectedCount = computed(() => planningFullIds.value.length)
 const singleSelectedTitle = computed(() => {
@@ -98,7 +99,8 @@ onKeyStroke(
           <div>PlanningSup</div>
           <div class="text-xs font-light flex items-center gap-1 sm:hidden">
             <span>{{ selectedSummaryLabel }}</span>
-            <IconWarning v-if="hasNetworkFailures" class="size-3 text-warning" />
+            <IconWifiOff v-if="!isOnline" class="size-3 text-warning" />
+            <IconWarning v-else-if="hasNetworkFailures" class="size-3 text-warning" />
             <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
             <button
               v-if="selectedCount > 1"
@@ -126,7 +128,10 @@ onKeyStroke(
         <Transition mode="out-in" name="fade">
           <span v-if="selectedCount === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex gap-1">
             {{ singleSelectedTitle || '...' }}
-            <span v-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Données hors ligne">
+            <span v-if="!isOnline" class="tooltip tooltip-bottom" data-tip="Hors ligne">
+              <IconWifiOff class="size-4 text-warning" />
+            </span>
+            <span v-else-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Données hors ligne">
               <IconWarning class="size-4 text-warning" />
             </span>
             <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
@@ -138,7 +143,10 @@ onKeyStroke(
           >
             <span id="current-planning-badge" class="badge truncate max-w-88 h-6 gap-1">
               {{ selectedCount }} plannings sélectionnés
-              <span v-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Certains plannings sont hors ligne">
+              <span v-if="!isOnline" class="tooltip tooltip-bottom" data-tip="Hors ligne">
+                <IconWifiOff class="size-4 text-warning" />
+              </span>
+              <span v-else-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Certains plannings sont hors ligne">
                 <IconWarning class="size-4 text-warning" />
               </span>
               <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
