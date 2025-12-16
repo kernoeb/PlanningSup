@@ -389,7 +389,7 @@ watch(
     <slot v-if="!props.standaloneTrigger" name="trigger" :open="open" />
 
     <dialog id="planning-picker-modal" ref="dialogRef" class="modal">
-      <div class="modal-box overflow-visible max-w-svw flex flex-col p-0">
+      <div class="modal-box overflow-visible max-w-[min(var(--container-xl),100svw)] flex flex-col p-0">
         <div class="sticky top-0 z-10 flex items-center justify-between px-6 py-4 border-b border-base-300 dark:border-base-200 bg-base-200 dark:bg-base-100">
           <div class="flex flex-col">
             <h3 id="planning-picker-title" class="font-bold text-xl">
