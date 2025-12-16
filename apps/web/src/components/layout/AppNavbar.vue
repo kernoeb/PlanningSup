@@ -93,7 +93,7 @@ onKeyStroke(
         <a href="/">
           <div class="avatar">
             <div class="w-8 rounded">
-              <img alt="PlanningSup" src="/icon.png">
+              <img alt="PlanningSup" src="/favicon.png">
             </div>
           </div>
         </a>

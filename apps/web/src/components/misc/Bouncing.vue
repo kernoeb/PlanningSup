@@ -172,7 +172,7 @@ onUnmounted(() => {
       <img
         alt="PlanningSup DVD"
         loading="lazy"
-        src="/icon.png"
+        src="/maskable_icon.png"
       >
     </div>
   </div>
