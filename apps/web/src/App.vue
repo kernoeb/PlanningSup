@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import PlanningCalendar from '@web/components/calendar/PlanningCalendar.vue'
 import AppNavbar from '@web/components/layout/AppNavbar.vue'
+import NetworkFailureToast from '@web/components/NetworkFailureToast.vue'
 import PWABadge from '@web/components/PWABadge.vue'
 
 import { defineAsyncComponent } from 'vue'
@@ -17,6 +18,7 @@ const LazyBouncing = defineAsyncComponent(() => import('@web/components/misc/Bou
     <AppNavbar />
     <PlanningCalendar class="planning-calendar" />
     <PWABadge />
+    <NetworkFailureToast />
     <LazyBouncing />
   </div>
 </template>

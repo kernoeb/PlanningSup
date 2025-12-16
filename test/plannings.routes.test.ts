@@ -295,4 +295,59 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     const body = await res.json()
     expect(body).toEqual({ error: 'Planning not found' })
   })
+
+  it('uses only database when onlyDb=true (skips network fetch)', async () => {
+    // Set backup events for this planning id
+    backupStore[targetFullId] = sampleEvents
+    // Keep fetch in OK mode - but it should NOT be called
+    fetchMode = 'ok'
+
+    // Track whether fetch was called for the target URL
+    let fetchCalled = false
+    const prevFetch = globalThis.fetch
+    // @ts-expect-error bun types
+    globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input)
+      if (url === targetUrl) {
+        fetchCalled = true
+      }
+      return prevFetch(input as any, init)
+    }
+
+    const res = await app.handle(
+      new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
+    )
+    expect(res.status).toBe(200)
+    const body = await res.json()
+
+    // Should get events from DB, source should be 'db'
+    expect(body.status).toBe('ok')
+    expect(body.source).toBe('db')
+    expect(Array.isArray(body.events)).toBeTrue()
+    expect(body.nbEvents).toBe((body.events as any[]).length)
+
+    // Verify fetch was NOT called for the planning URL
+    expect(fetchCalled).toBeFalse()
+
+    // Restore fetch
+    globalThis.fetch = prevFetch
+    // Clean up backup
+    backupStore[targetFullId] = undefined
+  })
+
+  it('returns source=none when onlyDb=true and no backup exists', async () => {
+    // Ensure no backup
+    backupStore[targetFullId] = undefined
+
+    const res = await app.handle(
+      new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
+    )
+    expect(res.status).toBe(200)
+    const body = await res.json()
+
+    // No events available
+    expect(body.status).toBe('error')
+    expect(body.source).toBe('none')
+    expect(body.events).toBeNull()
+  })
 })

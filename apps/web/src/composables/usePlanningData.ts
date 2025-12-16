@@ -8,12 +8,20 @@ import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
 
 export type EventWithFullId = Events[number] & { fullId: string }
 
+export interface NetworkFailure {
+  fullId: string
+  title: string
+  timestamp: number | null // last backup timestamp
+}
+
 export interface PlanningDataStore {
   planningFullIds: Ref<string[]>
   titles: Ref<Record<string, string>>
   events: Ref<EventWithFullId[]>
   loading: Ref<boolean>
+  refreshing: Ref<boolean>
   error: Ref<string | null>
+  networkFailures: Ref<NetworkFailure[]>
   refresh: () => Promise<void>
 }
 
@@ -33,7 +41,9 @@ function createPlanningDataStore(): PlanningDataStore {
   const titles = ref<Record<string, string>>({})
   const events = ref<EventWithFullId[]>([])
   const loading = ref(false)
+  const refreshing = ref(false)
   const error = ref<string | null>(null)
+  const networkFailures = ref<NetworkFailure[]>([])
 
   // Prevent race conditions when selection changes quickly
   let requestToken = 0
@@ -53,6 +63,44 @@ function createPlanningDataStore(): PlanningDataStore {
     await refresh(`bg:${trigger}`)
   }
 
+  /**
+   * Process API response and extract planning data.
+   */
+  function processResponse(
+    fullId: string,
+    res: PromiseSettledResult<Awaited<ReturnType<ReturnType<typeof client.api.plannings>['get']>>> | undefined,
+  ): { success: PlanningWithEvents | null, title: string | null, error: string | null, timestamp: number | null } {
+    if (!res) {
+      return { success: null, title: null, error: `${fullId}: missing response`, timestamp: null }
+    }
+
+    if (res.status === 'rejected') {
+      const msg = res.reason instanceof Error ? res.reason.message : String(res.reason)
+      return { success: null, title: null, error: `${fullId}: ${msg}`, timestamp: null }
+    }
+
+    const data = res.value?.data
+    if (!data) {
+      return { success: null, title: null, error: `${fullId}: invalid response`, timestamp: null }
+    }
+
+    const title = ('fullId' in data && 'title' in data && typeof data.fullId === 'string' && typeof data.title === 'string')
+      ? data.title
+      : null
+
+    const timestamp = ('timestamp' in data && typeof data.timestamp === 'number') ? data.timestamp : null
+
+    if ('events' in data && data.events) {
+      return { success: data as PlanningWithEvents, title, error: null, timestamp }
+    }
+
+    if ('status' in data && data.status === 'error') {
+      return { success: null, title, error: `${fullId}: no events available`, timestamp }
+    }
+
+    return { success: null, title, error: `${fullId}: no events`, timestamp }
+  }
+
   async function refresh(_reason: string = 'manual') {
     const fullIds = [...planningFullIds.value]
 
@@ -60,20 +108,26 @@ function createPlanningDataStore(): PlanningDataStore {
       titles.value = {}
       events.value = []
       error.value = null
+      networkFailures.value = []
+      refreshing.value = false
       return
     }
 
     lastRefreshAt.value = Date.now()
     loading.value = true
+    refreshing.value = false
     error.value = null
+    networkFailures.value = []
     const token = ++requestToken
 
     try {
-      const results = await Promise.allSettled(
+      // Phase 1: Fast database-only fetch (parallel)
+      const dbResults = await Promise.allSettled(
         fullIds.map(fullId =>
           client.api.plannings({ fullId }).get({
             query: {
               events: 'true',
+              onlyDb: 'true',
               ...settings.queryParams.value,
             },
           }),
@@ -83,59 +137,111 @@ function createPlanningDataStore(): PlanningDataStore {
       // Ignore outdated responses
       if (token !== requestToken) return
 
-      const successes: Array<PlanningWithEvents> = []
-      const errors: string[] = []
+      const dbSuccesses: Array<PlanningWithEvents> = []
+      const dbErrors: string[] = []
       const titlesMap: Record<string, string> = {}
+      const dbTimestamps: Record<string, number | null> = {}
 
       for (let i = 0; i < fullIds.length; i++) {
         const id = fullIds[i]!
-        const res = results[i]
-        if (!res) {
-          errors.push(`${id}: missing response`)
-          continue
+        const { success, title, error: err, timestamp } = processResponse(id, dbResults[i])
+
+        if (title) titlesMap[id] = title
+        if (success) dbSuccesses.push(success)
+        else if (err) dbErrors.push(err)
+        dbTimestamps[id] = timestamp
+      }
+
+      // Update UI immediately with database data
+      titles.value = { ...titlesMap }
+      events.value = dbSuccesses.length > 0
+        ? dbSuccesses.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
+        : []
+
+      // Mark loading as done after DB phase, start refreshing phase
+      loading.value = false
+      refreshing.value = true
+
+      // Phase 2: Network fetch (parallel, update UI as each completes)
+      const failures: NetworkFailure[] = []
+      let completedCount = 0
+
+      function replaceEventsForPlanning(fullId: string, newEvents: Events) {
+        // Remove old events for this planningId and add new ones
+        const otherEvents = events.value.filter(e => e.fullId !== fullId)
+        const newEventsWithFullId = newEvents.map(e => ({ ...e, fullId }))
+        events.value = [...otherEvents, ...newEventsWithFullId]
+      }
+
+      function handleNetworkResult(fullId: string, res: Awaited<ReturnType<ReturnType<typeof client.api.plannings>['get']>> | null, err?: unknown) {
+        if (token !== requestToken) return
+
+        if (err || !res) {
+          failures.push({
+            fullId,
+            title: titlesMap[fullId] || fullId,
+            timestamp: dbTimestamps[fullId] ?? null,
+          })
+          networkFailures.value = [...failures]
+        } else {
+          const { success, title, timestamp } = processResponse(fullId, { status: 'fulfilled', value: res })
+
+          if (title) {
+            titlesMap[fullId] = title
+            titles.value = { ...titlesMap }
+          }
+
+          if (success) {
+            const isFromNetwork = 'source' in success && success.source === 'network'
+            if (isFromNetwork) {
+              // Directly replace events for this planning
+              replaceEventsForPlanning(fullId, success.events || [])
+            } else {
+              failures.push({
+                fullId,
+                title: title || fullId,
+                timestamp,
+              })
+              networkFailures.value = [...failures]
+            }
+          } else {
+            failures.push({
+              fullId,
+              title: title || fullId,
+              timestamp: dbTimestamps[fullId] ?? null,
+            })
+            networkFailures.value = [...failures]
+          }
         }
 
-        if (res.status === 'fulfilled') {
-          const data = res.value?.data
-          if (!data) {
-            errors.push(`${id}: invalid response`)
-            continue
-          }
+        completedCount++
+        if (completedCount === fullIds.length) {
+          if (token !== requestToken) return
+          refreshing.value = false
 
-          // Titles should not depend on whether events loaded successfully.
-          if ('fullId' in data && 'title' in data && typeof data.fullId === 'string' && typeof data.title === 'string') {
-            titlesMap[data.fullId] = data.title
+          if (dbErrors.length === fullIds.length && failures.length === fullIds.length) {
+            error.value = `All plannings failed to load. Details: ${dbErrors.join(' | ')}`
+          } else {
+            error.value = null
           }
-
-          // Only append events when they exist (some API responses can have `events: null` while still exposing a title).
-          if ('events' in data && data.events) successes.push(data as PlanningWithEvents)
-          else if ('status' in data && data.status === 'error' && typeof data.title === 'string') errors.push(`${id}: ${data.title}`)
-          else errors.push(`${id}: no events`)
-        } else {
-          const msg = res.reason instanceof Error ? res.reason.message : String(res.reason)
-          errors.push(`${id}: ${msg}`)
         }
       }
 
-      // Titles - build map of fullId -> title (includes responses with `events: null`).
-      titles.value = titlesMap
-
-      // Events (concatenate)
-      events.value = successes.length > 0
-        ? successes.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
-        : []
-
-      // Partial failures shouldn't wipe out data from successes; surface an error note
-      error.value = errors.length > 0
-        ? `Some plannings failed to load (${errors.length}). Details: ${errors.join(' | ')}`
-        : null
+      // Fire all network requests in parallel
+      for (const fullId of fullIds) {
+        client.api.plannings({ fullId }).get({
+          query: {
+            events: 'true',
+            ...settings.queryParams.value,
+          },
+        }).then(res => handleNetworkResult(fullId, res)).catch(err => handleNetworkResult(fullId, null, err))
+      }
     } catch (e: unknown) {
       if (token !== requestToken) return
       error.value = e instanceof Error ? e.message : String(e)
       titles.value = {}
       events.value = []
-    } finally {
-      if (token === requestToken) loading.value = false
+      refreshing.value = false
     }
   }
 
@@ -169,7 +275,9 @@ function createPlanningDataStore(): PlanningDataStore {
     titles,
     events,
     loading,
+    refreshing,
     error,
+    networkFailures,
     refresh,
   }
 }

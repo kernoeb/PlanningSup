@@ -4,10 +4,10 @@ import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
-import { List as IconList, X as IconX } from 'lucide-vue-next'
+import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, X as IconX } from 'lucide-vue-next'
 import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
-const { titles, planningFullIds } = usePlanningData()
+const { titles, planningFullIds, networkFailures, refreshing } = usePlanningData()
 
 const selectedCount = computed(() => planningFullIds.value.length)
 const singleSelectedTitle = computed(() => {
@@ -29,6 +29,9 @@ const selectedPlanningItems = computed(() =>
 const selectedTitlesTooltip = computed(() =>
   selectedPlanningItems.value.map(i => i.label).join(' + '),
 )
+
+// Network failure indicator
+const hasNetworkFailures = computed(() => networkFailures.value.length > 0)
 
 const planningPicker = useTemplateRef('planningPicker')
 const planningPickerController = usePlanningPickerController()
@@ -83,7 +86,7 @@ onKeyStroke(
 </script>
 
 <template>
-  <div id="app-navbar" class="navbar bg-base-100 shadow-sm px-3 gap-2">
+  <div id="app-navbar" class="navbar bg-base-100 px-3 gap-2">
     <div class="flex-1 flex items-center gap-3">
       <a id="app-logo" class="text-xl flex items-center gap-3" href="/">
         <div class="avatar">
@@ -95,6 +98,8 @@ onKeyStroke(
           <div>PlanningSup</div>
           <div class="text-xs font-light flex items-center gap-1 sm:hidden">
             <span>{{ selectedSummaryLabel }}</span>
+            <IconWarning v-if="hasNetworkFailures" class="size-3 text-warning" />
+            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
             <button
               v-if="selectedCount > 1"
               id="mobile-selected-plannings-info"
@@ -119,16 +124,24 @@ onKeyStroke(
           </template>
         </PlanningPicker>
         <Transition mode="out-in" name="fade">
-          <span v-if="selectedCount === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex">
+          <span v-if="selectedCount === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex gap-1">
             {{ singleSelectedTitle || '...' }}
+            <span v-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Données hors ligne">
+              <IconWarning class="size-4 text-warning" />
+            </span>
+            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
           </span>
           <div
             v-else-if="selectedCount > 1"
             class="tooltip tooltip-bottom hidden sm:inline-flex relative z-50"
             :data-tip="selectedTitlesTooltip"
           >
-            <span id="current-planning-badge" class="badge truncate max-w-88 h-6">
+            <span id="current-planning-badge" class="badge truncate max-w-88 h-6 gap-1">
               {{ selectedCount }} plannings sélectionnés
+              <span v-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Certains plannings sont hors ligne">
+                <IconWarning class="size-4 text-warning" />
+              </span>
+              <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
             </span>
           </div>
         </Transition>

@@ -136,17 +136,6 @@ body {
   height: 100%;
 }
 
-html[data-theme="light"] .shadow,
-html[data-theme="light"] .shadow-sm,
-html[data-theme="light"] .shadow-md,
-html[data-theme="light"] .shadow-lg,
-html[data-theme="light"] .shadow-xl,
-html[data-theme="light"] .shadow-2xl,
-html[data-theme="light"] .shadow-inner,
-html[data-theme="light"] .shadow-none {
-  box-shadow: none !important;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
