@@ -350,4 +350,146 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(body.source).toBe('none')
     expect(body.events).toBeNull()
   })
+
+  // Tests for the 'reason' field
+  describe('reason field', () => {
+    it('returns reason=null when network succeeds with events', async () => {
+      fetchMode = 'ok'
+      backupStore[targetFullId] = undefined
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('ok')
+      expect(body.source).toBe('network')
+      expect(body.reason).toBeNull()
+      expect(body.nbEvents).toBeGreaterThan(0)
+    })
+
+    it('returns reason=network_error when network fails but DB has backup', async () => {
+      backupStore[targetFullId] = sampleEvents
+      fetchMode = 'error'
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('ok')
+      expect(body.source).toBe('db')
+      expect(body.reason).toBe('network_error')
+      expect(body.nbEvents).toBeGreaterThan(0)
+
+      // Cleanup
+      backupStore[targetFullId] = undefined
+      fetchMode = 'ok'
+    })
+
+    it('returns reason=no_data when network fails and no DB backup', async () => {
+      backupStore[targetFullId] = undefined
+      fetchMode = 'error'
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('error')
+      expect(body.source).toBe('none')
+      expect(body.reason).toBe('no_data')
+      expect(body.events).toBeNull()
+
+      // Cleanup
+      fetchMode = 'ok'
+    })
+
+    it('returns reason=no_data when onlyDb=true and no backup exists', async () => {
+      backupStore[targetFullId] = undefined
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('error')
+      expect(body.source).toBe('none')
+      expect(body.reason).toBe('no_data')
+    })
+
+    it('returns reason=null when onlyDb=true and DB has events', async () => {
+      backupStore[targetFullId] = sampleEvents
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('ok')
+      expect(body.source).toBe('db')
+      expect(body.reason).toBeNull()
+      expect(body.nbEvents).toBeGreaterThan(0)
+
+      // Cleanup
+      backupStore[targetFullId] = undefined
+    })
+
+    it('returns reason=empty_schedule when network succeeds but no events', async () => {
+      fetchMode = 'ok'
+      // Override fetch to return empty ICS
+      const prevFetch = globalThis.fetch
+      // @ts-expect-error bun types
+      globalThis.fetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+        const url = String(input)
+        if (url === targetUrl) {
+          // Return valid ICS with no events
+          const emptyICS = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//PlanningSup Test//EN\r\nEND:VCALENDAR'
+          return new Response(emptyICS, {
+            status: 200,
+            headers: { 'Content-Type': 'text/calendar' },
+          })
+        }
+        return prevFetch(input as any, init)
+      }
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('ok')
+      expect(body.source).toBe('network')
+      expect(body.reason).toBe('empty_schedule')
+      expect(body.nbEvents).toBe(0)
+      expect(body.events).toEqual([])
+
+      // Restore fetch
+      globalThis.fetch = prevFetch
+    })
+
+    it('returns reason=empty_schedule when onlyDb=true and DB has empty events', async () => {
+      backupStore[targetFullId] = [] // Empty array
+
+      const res = await app.handle(
+        new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
+      )
+      expect(res.status).toBe(200)
+      const body = await res.json()
+
+      expect(body.status).toBe('ok')
+      expect(body.source).toBe('db')
+      expect(body.reason).toBe('empty_schedule')
+      expect(body.nbEvents).toBe(0)
+
+      // Cleanup
+      backupStore[targetFullId] = undefined
+    })
+  })
 })
