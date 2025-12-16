@@ -3,14 +3,13 @@ import { client } from '@libs'
 import { refDebounced, useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 // Object.groupBy is Baseline 2024
 import 'groupby-polyfill/lib/polyfill.js'
 
 defineOptions({ name: 'PlanningPicker' })
 
 const props = defineProps<{
-  openOnMount?: boolean
   standaloneTrigger?: boolean
 }>()
 
@@ -40,6 +39,7 @@ const searchInputRef = ref<HTMLInputElement | null>(null)
 const loading = ref(false)
 const error = ref<string | null>(null)
 const tree = ref<PlanningNode[]>([])
+const didAutoScrollForOpen = ref(false)
 
 // Multi-selection composable (synced with server)
 const { planningFullIds, isSelected, togglePlanning } = useSharedSyncedCurrentPlanning()
@@ -210,12 +210,16 @@ async function loadTree() {
 
 async function open() {
   void loadTree()
-  dialogRef.value?.showModal()
+  const dialog = dialogRef.value
+  if (!dialog || !dialog.isConnected || dialog.open) return
+  dialog.showModal()
   // Focus the search box after the dialog is visible to avoid replaying the opening keystroke
   requestAnimationFrame(() => searchInputRef.value?.focus())
+  didAutoScrollForOpen.value = false
 }
 
 function close() {
+  didAutoScrollForOpen.value = false
   dialogRef.value?.close()
 }
 
@@ -335,9 +339,49 @@ const { list: vlist, containerProps, wrapperProps } = useVirtualList(
   { itemHeight: ROW_HEIGHT },
 )
 
-onMounted(() => {
-  if (props.openOnMount || selectionCount.value === 0) open()
-})
+function scrollToFirstSelectedGroup() {
+  if (didAutoScrollForOpen.value) return
+  if (selectionCount.value === 0) return
+  if (debouncedSearchQuery.value.trim()) return
+
+  const group = groupedRows.value.find(({ data }) => data.some(row => selectedCountFor(row.fullId) > 0))?.group
+  if (!group) return
+
+  const index = virtualRows.value.findIndex(row => row.type === 'group' && row.group === group)
+  if (index < 0) return
+
+  const containerEl = containerProps.ref.value
+  if (!containerEl) return
+
+  const PADDING_TOP_PX = 12
+  containerEl.scrollTo({ top: Math.max(0, (index * ROW_HEIGHT) - PADDING_TOP_PX), behavior: 'smooth' })
+  didAutoScrollForOpen.value = true
+}
+
+watch(
+  [
+    () => dialogRef.value?.open ?? false,
+    () => loading.value,
+    () => tree.value.length,
+    () => virtualRows.value.length,
+    () => selectionCount.value,
+    () => debouncedSearchQuery.value,
+  ],
+  async ([isOpen, isLoading]) => {
+    if (!isOpen) {
+      didAutoScrollForOpen.value = false
+      return
+    }
+
+    if (isLoading) return
+    if (tree.value.length === 0) return
+    if (virtualRows.value.length === 0) return
+
+    await nextTick()
+    requestAnimationFrame(() => scrollToFirstSelectedGroup())
+  },
+  { flush: 'post' },
+)
 </script>
 
 <template>

@@ -3,12 +3,37 @@ import { onKeyStroke } from '@vueuse/core'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
+import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { List } from 'lucide-vue-next'
-import { useTemplateRef } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
 const { title, planningFullIds } = usePlanningData()
 
 const planningPicker = useTemplateRef('planningPicker')
+const planningPickerController = usePlanningPickerController()
+
+function openPickerIfEmpty() {
+  if (planningFullIds.value.length !== 0) return
+  void nextTick(() => {
+    requestAnimationFrame(() => planningPickerController.open())
+  })
+}
+
+onMounted(() => {
+  planningPickerController.register(planningPicker.value ?? null)
+  openPickerIfEmpty()
+})
+
+onBeforeUnmount(() => {
+  planningPickerController.register(null)
+})
+
+watch(
+  () => planningFullIds.value.length,
+  (len, prevLen) => {
+    if (len === 0 && prevLen > 0) openPickerIfEmpty()
+  },
+)
 
 onKeyStroke(
   'u',
@@ -25,7 +50,7 @@ onKeyStroke(
     // Prevent the keystroke from inserting "u" into the newly focused search box
     e.preventDefault()
     e.stopPropagation()
-    planningPicker.value?.open()
+    planningPickerController.open()
   },
   { dedupe: true },
 )
@@ -74,7 +99,7 @@ onKeyStroke(
     <UserMenu />
 
     <div class="fab sm:hidden">
-      <button id="mobile-planning-fab" aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPicker?.open()">
+      <button id="mobile-planning-fab" aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary" type="button" @click="planningPickerController.open()">
         <List />
       </button>
     </div>

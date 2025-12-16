@@ -130,12 +130,18 @@ export function usePlanningCalendar(options: {
   }
 
   function initOrUpdate(forceRecreate = false) {
+    const hasSelection = (planning.planningFullIds.value?.length ?? 0) > 0
+
+    // If there is no selection, unmount the calendar (avoid updating plugins without a backing app)
+    if (!hasSelection) {
+      if (calendarApp.value) calendarApp.value = null
+      return
+    }
+
     const timezone = timezoneValue.value
     const mappedEvents = getMappedEvents(timezone)
 
-    // Only initialize calendar if we have planning data or are forcing recreation
-    const hasData = planning.planningFullIds.value?.length > 0
-    if ((!calendarApp.value && hasData) || forceRecreate) {
+    if (!calendarApp.value || forceRecreate) {
       // Preserve current state (view and date) when recreating
       const isRecreate = !!calendarApp.value
       const prevView = isRecreate ? calendarControls.getView() : undefined

@@ -2,6 +2,7 @@
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { onClickOutside, useSwipe } from '@vueuse/core'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
+import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
@@ -38,7 +39,12 @@ const {
     enableAnimationsOnce(reason)
   },
 })
+const planningPickerController = usePlanningPickerController()
 const { isDark: uiIsDark } = useSharedTheme()
+
+function openPlanningPicker() {
+  planningPickerController.open()
+}
 
 const el = useTemplateRef('calendarSwipeEl')
 useSwipe(el, {
@@ -232,5 +238,22 @@ defineExpose({ reload })
         </div>
       </template>
     </ScheduleXCalendar>
+
+    <div v-else class="h-full flex items-center justify-center px-6">
+      <div class="max-w-md text-center space-y-3">
+        <div class="text-xl font-semibold">
+          Aucun planning sélectionné
+        </div>
+        <div class="opacity-70">
+          Choisis un planning pour afficher ton agenda.
+        </div>
+        <button class="btn btn-primary" type="button" @click="openPlanningPicker">
+          Sélectionner un planning
+        </button>
+        <div class="text-xs opacity-50 hidden sm:block">
+          Raccourci clavier : U
+        </div>
+      </div>
+    </div>
   </div>
 </template>
