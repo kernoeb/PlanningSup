@@ -154,17 +154,20 @@ defineExpose({ reload })
       data-calendar-id="schedule-x-calendar"
     >
       <template #headerContent>
-        <div class="flex items-center justify-between w-full gap-2 px-2 flex-wrap">
+        <div class="flex items-center justify-between w-full gap-2 flex-wrap">
           <div class="flex items-center gap-2">
-            <button
-              id="calendar-today-btn"
-              class="btn btn-outline border-base-200 hidden md:inline-flex"
-              @click="goToToday"
-            >
-              <IconCalendarCheck2 v-if="isToday" aria-label="Today" :size="16" />
-              <IconCalendar v-else aria-label="Today" :size="16" />
-              Aujourd'hui
-            </button>
+            <div class="max-md:tooltip max-md:tooltip-bottom z-50" data-tip="Aujourd'hui">
+              <button
+                id="calendar-today-btn"
+                aria-label="Aller à aujourd'hui"
+                class="btn btn-outline border-base-200"
+                @click="goToToday"
+              >
+                <IconCalendarCheck2 v-if="isToday" aria-hidden="true" :size="16" />
+                <IconCalendar v-else aria-hidden="true" :size="16" />
+                <span class="hidden md:inline">Aujourd'hui</span>
+              </button>
+            </div>
 
             <div class="join hidden md:flex">
               <button
