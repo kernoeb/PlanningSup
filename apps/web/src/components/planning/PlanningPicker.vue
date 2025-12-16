@@ -439,16 +439,16 @@ watch(
           </div>
 
           <div class="flex items-center gap-2">
-            <div id="selected-plannings-list" class="flex flex-wrap gap-2 flex-1 min-w-0">
+            <div id="selected-plannings-list" class="flex max-w-full overflow-x-auto md:flex-wrap gap-2 flex-1 min-w-0">
               <div
                 v-for="item in selectedItems"
                 :id="`selected-planning-${item.id}`"
                 :key="item.id"
-                class="tooltip max-w-full min-w-0"
+                class="tooltip w-fit"
                 :data-tip="item.title"
               >
                 <div
-                  class="badge badge-md gap-1 bg-base-200 max-w-full min-w-0"
+                  class="badge badge-md gap-1 bg-base-200"
                   title="Cliquer pour retirer"
                 >
                   <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
