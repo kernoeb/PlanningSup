@@ -94,11 +94,11 @@ function clearSelection() {
 
 const customGroupName = ref<string | undefined>(undefined)
 const groupToDelete = ref<{ id: string, name: string } | null>(null)
+const customGroupDetailsRef = ref<HTMLDetailsElement | null>(null)
 
 const { customGroups, addCustomGroup } = useSettings()
 
-function saveSelection(e: Event) {
-  e.preventDefault();
+function saveSelection() {
   // Close the form
   (document?.activeElement as HTMLElement)?.blur()
 
@@ -109,6 +109,10 @@ function saveSelection(e: Event) {
       plannings: safePlanningIds.value,
     })
     customGroupName.value = undefined
+    // Close the dropdown
+    if (customGroupDetailsRef.value) {
+      customGroupDetailsRef.value.open = false
+    }
   }
 }
 
@@ -472,7 +476,7 @@ watch(
             >
               <IconRotateCcw class="size-4 text-base-content" />
             </button>
-            <details class="dropdown dropdown-end">
+            <details ref="customGroupDetailsRef" class="dropdown dropdown-end">
               <summary
                 id="planning-save-selection"
                 class="tooltip btn z-5000"
@@ -482,7 +486,7 @@ watch(
               </summary>
               <form
                 class="menu dropdown-content flex flex-row justify-end bg-base-200 mt-1 rounded-box z-1 w-72 py-2 px-4 shadow-xl"
-                @submit="saveSelection"
+                @submit.prevent="saveSelection()"
               >
                 <fieldset class="fieldset">
                   <legend class="fieldset-legend text-sm">
