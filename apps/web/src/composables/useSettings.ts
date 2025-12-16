@@ -5,6 +5,12 @@ import { computed } from 'vue'
 export type EventKind = 'lecture' | 'lab' | 'tutorial' | 'other'
 export type ColorMap = Record<EventKind, string>
 
+export interface CustomGroup {
+  id: `${string}-${string}-${string}-${string}-${string}` // UUID-v4
+  name: string
+  plannings: string[]
+}
+
 /**
  * Default color palette for planning event kinds.
  * These are Tailwind-like hex values to play nicely with DaisyUI themes.
@@ -90,6 +96,9 @@ export function useSettings() {
   // 6) Merge duplicate events across plannings (client-only)
   const mergeDuplicates = useLocalStorage<boolean>('settings.mergeDuplicates', true)
 
+  // 7) Save custom planning groups
+  const customGroups = useLocalStorage<CustomGroup[]>('settings.customGroups', [])
+
   // Derived helper for calendar weekOptions.nDays
   const weekNDays = computed(() => (showWeekends.value ? 7 : 5))
 
@@ -121,6 +130,18 @@ export function useSettings() {
    */
   function getColorFor(kind: EventKind): string {
     return colors.value[kind] ?? DEFAULT_COLORS[kind]
+  }
+
+  /**
+   * Add a Custom Group
+   */
+  function addCustomGroup({ name, plannings}: { name: string, plannings: string[] }) {
+    const customGroup: CustomGroup = {
+      id: crypto.randomUUID(),
+      name,
+      plannings,
+    }
+    customGroups.value.push(customGroup)
   }
 
   // Local-first sync to DB for user preferences (debounced, only on actual changes)
@@ -167,6 +188,25 @@ export function useSettings() {
     debounce: 50,
   })
 
+  // customGroups (client-side behavior but kept in user prefs for consistency)
+  syncPref('customGroups', customGroups, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw => (
+      Array.isArray(raw) && raw.every(x =>
+        typeof x === 'object'
+        && 'name' in x
+        && 'plannings' in x
+        && Array.isArray(x.plannings)
+        && x.plannings.every((p: unknown) => typeof p === 'string'),
+      ))
+      ? (raw as CustomGroup[])
+      : null,
+    setLocal: v => (customGroups.value = v),
+    debounce: 50,
+  })
+
   // colors (stored in DB as JSON string)
   syncPref('colors', colors, {
     toServer: v => encodeColorsToString(v),
@@ -194,6 +234,7 @@ export function useSettings() {
     targetTimezone,
     showWeekends,
     mergeDuplicates,
+    customGroups,
 
     // derived
     queryParams,
@@ -201,6 +242,7 @@ export function useSettings() {
 
     // helpers
     getColorFor,
+    addCustomGroup,
   }
 }
 export const useSharedSettings = createSharedComposable(useSettings)

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { client } from '@libs'
 import { refDebounced, useVirtualList } from '@vueuse/core'
+import { useSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
-import { RotateCcwIcon as IconRotateCcw, XIcon as IconX } from 'lucide-vue-next'
+import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcwIcon as IconRotateCcw, XIcon as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
 // Object.groupBy is Baseline 2024
 import 'groupby-polyfill/lib/polyfill.js'
@@ -89,6 +90,33 @@ const selectedItems = computed(() => {
 
 function clearSelection() {
   planningFullIds.value = []
+}
+
+const customGroupName = ref<string | undefined>(undefined)
+
+const { customGroups, addCustomGroup } = useSettings()
+
+function saveSelection(e: Event) {
+  e.preventDefault();
+  // Close the form
+  (document?.activeElement as HTMLElement)?.blur()
+
+  // Save the custom group
+  if (customGroupName.value) {
+    addCustomGroup({
+      name: customGroupName.value,
+      plannings: safePlanningIds.value,
+    })
+    customGroupName.value = undefined
+  }
+}
+
+function applyCustomGroup(id: string) {
+  planningFullIds.value = customGroups.value.find(group => group.id === id)?.plannings || []
+}
+
+function removeCustomGroup(id: string) {
+  customGroups.value = customGroups.value.filter(group => group.id !== id)
 }
 
 const selectionCount = computed(() => safePlanningIds.value.length)
@@ -413,7 +441,7 @@ watch(
         </div>
 
         <!-- Controls -->
-        <div class="flex-1 px-6 py-4 space-y-2">
+        <div class="flex-1 px-6 pt-4 space-y-2">
           <div class="flex items-center gap-2">
             <label class="input input-bordered w-full pe-0">
               <input
@@ -443,10 +471,103 @@ watch(
             >
               <IconRotateCcw class="size-4 text-base-content" />
             </button>
+            <details class="dropdown dropdown-end">
+              <summary
+                id="planning-save-selection"
+                class="tooltip btn z-5000"
+                data-tip="Enregistrer la sélection"
+              >
+                <PinIcon class="size-4 text-base-content" />
+              </summary>
+              <form
+                class="menu dropdown-content flex flex-row justify-end bg-base-200 mt-1 rounded-box z-1 w-72 py-2 px-4 shadow-xl"
+                @submit="saveSelection"
+              >
+                <fieldset class="fieldset">
+                  <legend class="fieldset-legend text-sm">
+                    Nom du groupe de favoris
+                  </legend>
+                  <label class="input">
+                    <FolderPenIcon class="h-[1em] opacity-50" />
+                    <input v-model="customGroupName" class="grow" placeholder="Fac de bio" type="text">
+                  </label>
+                  <p class="legend">
+                    Créez un groupe pour retrouver plus facilement vos plannings  .
+                  </p>
+                </fieldset>
+                <button
+                  class="btn btn-soft bg-secondary"
+                  type="submit"
+                >
+                  <CheckIcon class="size-4 text-base-content me-2" />
+                  Enregistrer
+                </button>
+              </form>
+            </details>
           </div>
 
-          <div class="flex items-center gap-2">
-            <div id="selected-plannings-list" class="flex max-w-full overflow-x-auto md:flex-wrap gap-2 flex-1 min-w-0">
+          <details v-if="customGroups.length > 0" class="collapse collapse-arrow flex flex-col gap-2" name="my-accordion-det-1" open>
+            <summary class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0">
+              <h4 class="text-sm font-medium text-base-content/70">
+                Groupes enregistrés
+              </h4>
+              <span class="text-xs text-base-content/50">
+                Cliquer pour appliquer un groupe
+              </span>
+            </summary>
+            <div class="collapse-content flex flex-wrap max-w-full gap-2 flex-1 min-w-0 px-0">
+              <div
+                v-for="item in customGroups"
+                :id="`custom-group-${item.id}`"
+                :key="item.id"
+                class="group flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 hover:border-secondary/40 cursor-pointer transition-all"
+                @click="applyCustomGroup(item.id)"
+              >
+                <FolderIcon class="size-4 text-secondary shrink-0" />
+                <span class="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-40">
+                  {{ item.name }}
+                </span>
+                <span class="text-xs text-base-content/50">
+                  ({{ item.plannings.length }})
+                </span>
+                <details class="dropdown dropdown-right" @click.stop>
+                  <summary
+                    :id="`remove-custom-group-${item.name}`"
+                    :aria-label="`Supprimer le groupe ${item.name}`"
+                    class="btn btn-xs btn-circle btn-ghost grid place-items-center opacity-50 group-hover:opacity-100 shrink-0 ml-1"
+                  >
+                    <span>
+                      <IconX class="size-3.5" />
+                    </span>
+                  </summary>
+                  <div class="dropdown-content bg-base-100 mt-2 rounded-box w-60 p-4 shadow-xl z-50">
+                    <p class="text-sm mb-3">
+                      Supprimer le groupe « {{ item.name }} » ?
+                    </p>
+                    <button
+                      class="btn btn-soft btn-error btn-sm w-full"
+                      type="button"
+                      @click="removeCustomGroup(item.id)"
+                    >
+                      <Trash2Icon class="size-4 me-2" />
+                      Supprimer
+                    </button>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </details>
+
+          <details v-if="selectedItems.length > 0" class="collapse collapse-arrow flex flex-col gap-2 mt-4">
+            <summary class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0">
+              <h4 class="text-sm font-medium text-base-content/70">
+                Plannings sélectionnés
+              </h4>
+              <span class="text-xs text-base-content/50">
+                Cliquer un planning pour le retirer
+              </span>
+            </summary>
+            <div id="selected-plannings-list" class="collapse-content flex max-w-full overflow-x-auto md:flex-wrap gap-2 flex-1 min-w-0 px-0">
               <div
                 v-for="item in selectedItems"
                 :id="`selected-planning-${item.id}`"
@@ -472,7 +593,7 @@ watch(
                 </div>
               </div>
             </div>
-          </div>
+          </details>
         </div>
 
         <!-- Body -->
