@@ -88,39 +88,57 @@ watch(planningFullIds, () => {
       <div
         aria-atomic="true"
         aria-live="polite"
-        class="alert alert-soft network-toast-alert pointer-events-auto w-full max-w-md flex flex-col items-start gap-2 rounded-2xl border shadow-lg ring-1 ring-base-content/10 text-base-content"
+        class="alert alert-soft network-toast-alert pointer-events-auto flex flex-col items-start gap-3 rounded-2xl border shadow-lg ring-1 ring-base-content/10 text-base-content w-full md:w-lg"
         role="alert"
         style="--alert-color: var(--color-warning);"
       >
-        <div class="flex items-center justify-between w-full">
-          <div class="flex items-center gap-2">
-            <IconWifiOff v-if="!isOnline" class="size-5 text-warning" />
-            <IconWarning v-else class="size-5 text-warning" />
-            <span class="font-semibold">{{ !isOnline ? 'Vous êtes hors ligne' : 'Données hors ligne' }}</span>
+        <!-- Header -->
+        <div class="flex items-center justify-between w-full gap-3">
+          <div class="flex items-center gap-2 min-w-0">
+            <IconWifiOff v-if="!isOnline" class="size-5 text-warning shrink-0" />
+            <IconWarning v-else class="size-5 text-warning shrink-0" />
+            <span class="font-semibold truncate">
+              {{ !isOnline ? 'Vous êtes hors ligne' : 'Données hors ligne' }}
+            </span>
           </div>
           <button
             aria-label="Fermer"
-            class="btn btn-ghost btn-xs btn-circle opacity-70 hover:opacity-100"
+            class="btn btn-ghost btn-xs btn-circle opacity-70 hover:opacity-100 shrink-0"
             type="button"
             @click="dismiss"
           >
             <IconX class="size-4" />
           </button>
         </div>
-        <div class="text-sm leading-snug">
+
+        <!-- Content -->
+        <div class="text-sm leading-snug w-full min-w-0">
           <template v-if="!isOnline">
             <p>
               Votre appareil n'est pas connecté à internet. Les données affichées peuvent ne pas être à jour.
             </p>
           </template>
+
           <template v-else-if="hasNetworkFailures">
-            <p class="mb-1">
+            <p class="mb-2">
               Les plannings suivants n'ont pas pu être mis à jour :
             </p>
-            <ul class="list-disc list-inside space-y-0.5 max-h-40 overflow-auto pr-1">
-              <li v-for="failure in networkFailures" :key="failure.fullId" class="truncate">
-                <span class="font-medium">{{ failure.title }}</span>
-                <span class="opacity-70 text-xs ml-1">(dernière mise à jour : {{ formatBackupTime(failure.timestamp) }})</span>
+            <ul class="flex flex-col gap-1.5 max-h-30 overflow-y-auto w-full pr-1">
+              <!-- List Item -->
+              <li
+                v-for="failure in networkFailures"
+                :key="failure.fullId"
+                class="w-full min-w-0 flex items-baseline"
+              >
+                <!-- Title: Truncates if too long -->
+                <span class="font-medium truncate">
+                  {{ failure.title }}
+                </span>
+
+                <!-- Date: Always visible, stuck to text (ml-1), never wraps -->
+                <span class="opacity-70 text-xs whitespace-nowrap shrink-0 ml-1">
+                  (<span class="hidden sm:inline">dernière mise à jour&nbsp;:</span><span class="sm:hidden">maj&nbsp;:</span>&nbsp;{{ formatBackupTime(failure.timestamp) }})
+                </span>
               </li>
             </ul>
           </template>
@@ -161,13 +179,13 @@ watch(planningFullIds, () => {
 
 .network-toast-alert {
   border-color: color-mix(in oklab, var(--alert-color) 22%, #0000);
-  background-color: color-mix(in oklab, var(--color-base-100) 70%, #0000);
+  background-color: color-mix(in oklab, var(--color-base-100) 80%, #0000);
   backdrop-filter: blur(12px);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
   .network-toast-alert {
-    background-color: color-mix(in oklab, var(--color-base-100) 86%, #0000);
+    background-color: color-mix(in oklab, var(--color-base-100) 95%, #0000);
   }
 }
 </style>
