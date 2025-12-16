@@ -4,19 +4,61 @@
     "eslint",
     "color-lsp",
     "tailwindcss-language-server",
-    "json-language-server"
+    "json-language-server",
   ],
   "languages": {
+    "Markdown": {
+      "format_on_save": "off",
+      "auto_indent": false,
+    },
     "Vue.js": {
-      "language_servers": ["vtsls", "vue-language-server"],
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [],
       "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+        "source.fixAll.eslint": true,
+      },
     },
     "TypeScript": {
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [],
       "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
-    }
-  }
+        "source.fixAll.eslint": true,
+      },
+    },
+    "JavaScript": {
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TSX": {
+      "prettier": {
+        "allowed": false,
+      },
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "YAML": {
+      "formatter": "language_server",
+    },
+    "JSON": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+      "formatter": [],
+    },
+    "JSONC": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+  },
 }
