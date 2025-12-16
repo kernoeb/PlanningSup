@@ -573,7 +573,7 @@ watch(
               </span>
             </div>
             <div id="selected-plannings-list" class="collapse-content px-0">
-              <div class="flex flex-wrap gap-2 pt-2">
+              <div class="flex flex-wrap gap-2 pt-2 overflow-x-auto">
                 <div
                   v-for="item in selectedItems"
                   :id="`selected-planning-${item.id}`"
