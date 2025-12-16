@@ -2,7 +2,7 @@
 import { client } from '@libs'
 import { refDebounced, useVirtualList } from '@vueuse/core'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
-import { RotateCcwIcon, XIcon } from 'lucide-vue-next'
+import { RotateCcwIcon as IconRotateCcw, XIcon as IconX } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
 // Object.groupBy is Baseline 2024
 import 'groupby-polyfill/lib/polyfill.js'
@@ -403,10 +403,11 @@ watch(
             <button
               id="planning-picker-close"
               aria-label="Fermer"
-              class="btn btn-circle btn-ghost"
+              class="btn btn-sm btn-circle btn-ghost"
+              type="submit"
               @click="close"
             >
-              <XIcon class="size-6 text-base-content" />
+              <IconX class="size-5 text-base-content" />
             </button>
           </form>
         </div>
@@ -429,11 +430,11 @@ watch(
                 type="search"
               >
               <button v-if="searchQuery" id="planning-search-clear" class="btn btn-ghost btn-circle size-8" type="button" @click="searchQuery = ''">
-                <XIcon class="size-4 text-base-content" />
+                <IconX class="size-4 text-base-content" />
               </button>
             </label>
             <button id="planning-clear-selection" class="btn" :disabled="selectionCount === 0" type="button" @click="clearSelection()">
-              <RotateCcwIcon class="size-4 text-base-content" />
+              <IconRotateCcw class="size-4 text-base-content" />
             </button>
           </div>
 
@@ -459,7 +460,7 @@ watch(
                     class="btn btn-xs btn-circle btn-ghost shrink-0"
                     @click="togglePlanning(item.id)"
                   >
-                    <XIcon class="size-3" />
+                    <IconX class="size-3" />
                   </button>
                 </div>
               </div>

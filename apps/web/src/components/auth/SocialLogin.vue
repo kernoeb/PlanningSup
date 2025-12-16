@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useAuth } from '@web/composables/useAuth'
-import { User } from 'lucide-vue-next'
+import { User as IconUser, X as IconX } from 'lucide-vue-next'
 import { reactive, useTemplateRef } from 'vue'
 import { DiscordIcon, GitHubIcon } from 'vue3-simple-icons'
 
@@ -36,15 +36,15 @@ defineExpose({
   <dialog v-if="authEnabled" ref="dialog" class="modal">
     <div class="modal-box max-w-md bg-base-100 shadow-2xl">
       <form method="dialog">
-        <button class="btn btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors">
-          ✕
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-200 transition-colors" type="submit">
+          <IconX class="size-5 text-base-content" />
         </button>
       </form>
 
       <!-- Header Section -->
       <div class="text-center mb-8 pt-4">
         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <User class="text-primary w-8 h-8" />
+          <IconUser class="text-primary w-8 h-8" />
         </div>
         <h3 class="text-2xl font-bold text-base-content mb-2">
           Bienvenue !

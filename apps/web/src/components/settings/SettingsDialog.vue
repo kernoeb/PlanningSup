@@ -2,6 +2,7 @@
 import TagInput from '@web/components/inputs/TagInput.vue'
 import { getDefaultColors, useSharedSettings } from '@web/composables/useSettings'
 import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
+import { X as IconX } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
 defineOptions({ name: 'SettingsDialog' })
@@ -56,10 +57,11 @@ watch(() => props.open, (next) => {
         <form method="dialog">
           <button
             aria-label="Fermer"
-            class="btn btn-circle btn-ghost"
+            class="btn btn-sm btn-circle btn-ghost"
+            type="submit"
             @click="close"
           >
-            ✕
+            <IconX class="size-5 text-base-content" />
           </button>
         </form>
       </div>

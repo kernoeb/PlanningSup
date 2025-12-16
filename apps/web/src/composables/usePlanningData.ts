@@ -10,7 +10,6 @@ export type EventWithFullId = Events[number] & { fullId: string }
 
 export interface PlanningDataStore {
   planningFullIds: Ref<string[]>
-  title: Ref<string>
   titles: Ref<Record<string, string>>
   events: Ref<EventWithFullId[]>
   loading: Ref<boolean>
@@ -19,7 +18,7 @@ export interface PlanningDataStore {
 }
 
 /**
- * Singleton store for planning data (title + events) bound to the selected plannings.
+ * Singleton store for planning data (titles + events) bound to the selected plannings.
  *
  * - When multiple plannings are selected, fetch all in parallel.
  * - Concatenate events from successful responses.
@@ -31,7 +30,6 @@ function createPlanningDataStore(): PlanningDataStore {
   const { planningFullIds } = useSharedSyncedCurrentPlanning()
   const settings = useSharedSettings()
 
-  const title = ref<string>('')
   const titles = ref<Record<string, string>>({})
   const events = ref<EventWithFullId[]>([])
   const loading = ref(false)
@@ -59,7 +57,6 @@ function createPlanningDataStore(): PlanningDataStore {
     const fullIds = [...planningFullIds.value]
 
     if (fullIds.length === 0) {
-      title.value = ''
       titles.value = {}
       events.value = []
       error.value = null
@@ -88,6 +85,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
       const successes: Array<PlanningWithEvents> = []
       const errors: string[] = []
+      const titlesMap: Record<string, string> = {}
 
       for (let i = 0; i < fullIds.length; i++) {
         const id = fullIds[i]!
@@ -99,28 +97,28 @@ function createPlanningDataStore(): PlanningDataStore {
 
         if (res.status === 'fulfilled') {
           const data = res.value?.data
-          if (data && 'events' in data && data.events) successes.push(data)
-          else errors.push(`${id}: invalid response`)
+          if (!data) {
+            errors.push(`${id}: invalid response`)
+            continue
+          }
+
+          // Titles should not depend on whether events loaded successfully.
+          if ('fullId' in data && 'title' in data && typeof data.fullId === 'string' && typeof data.title === 'string') {
+            titlesMap[data.fullId] = data.title
+          }
+
+          // Only append events when they exist (some API responses can have `events: null` while still exposing a title).
+          if ('events' in data && data.events) successes.push(data as PlanningWithEvents)
+          else if ('status' in data && data.status === 'error' && typeof data.title === 'string') errors.push(`${id}: ${data.title}`)
+          else errors.push(`${id}: no events`)
         } else {
           const msg = res.reason instanceof Error ? res.reason.message : String(res.reason)
           errors.push(`${id}: ${msg}`)
         }
       }
 
-      // Titles - build map of fullId -> title and combined title string
-      const titlesMap: Record<string, string> = {}
-      for (const s of successes) {
-        titlesMap[s.fullId] = s.title
-      }
+      // Titles - build map of fullId -> title (includes responses with `events: null`).
       titles.value = titlesMap
-
-      if (successes.length === 0) {
-        title.value = fullIds.join(' + ')
-      } else if (successes.length === 1) {
-        title.value = successes[0]!.title
-      } else {
-        title.value = successes.map(s => s.title).join(' + ')
-      }
 
       // Events (concatenate)
       events.value = successes.length > 0
@@ -134,7 +132,6 @@ function createPlanningDataStore(): PlanningDataStore {
     } catch (e: unknown) {
       if (token !== requestToken) return
       error.value = e instanceof Error ? e.message : String(e)
-      title.value = fullIds.join(' + ')
       titles.value = {}
       events.value = []
     } finally {
@@ -169,7 +166,6 @@ function createPlanningDataStore(): PlanningDataStore {
 
   return {
     planningFullIds,
-    title,
     titles,
     events,
     loading,
