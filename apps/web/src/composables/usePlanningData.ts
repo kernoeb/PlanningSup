@@ -13,7 +13,7 @@ export type FailureReason = 'network_error' | 'no_data' | 'empty_schedule'
 export interface NetworkFailure {
   fullId: string
   title: string
-  timestamp: number | null // last backup timestamp
+  refreshedAt: number | null
   reason: FailureReason | null
 }
 
@@ -80,37 +80,42 @@ function createPlanningDataStore(): PlanningDataStore {
   function processResponse(
     fullId: string,
     res: PromiseSettledResult<Awaited<ReturnType<ReturnType<typeof client.api.plannings>['get']>>> | undefined,
-  ): { success: PlanningWithEvents | null, title: string | null, error: string | null, timestamp: number | null, reason: FailureReason | null } {
+  ): { success: PlanningWithEvents | null, title: string | null, error: string | null, refreshedAt: number | null, reason: FailureReason | null } {
     if (!res) {
-      return { success: null, title: null, error: `${fullId}: missing response`, timestamp: null, reason: 'no_data' }
+      return { success: null, title: null, error: `${fullId}: missing response`, refreshedAt: null, reason: 'no_data' }
     }
 
     if (res.status === 'rejected') {
       const msg = res.reason instanceof Error ? res.reason.message : String(res.reason)
-      return { success: null, title: null, error: `${fullId}: ${msg}`, timestamp: null, reason: 'network_error' }
+      return { success: null, title: null, error: `${fullId}: ${msg}`, refreshedAt: null, reason: 'network_error' }
     }
 
     const data = res.value?.data
     if (!data) {
-      return { success: null, title: null, error: `${fullId}: invalid response`, timestamp: null, reason: 'no_data' }
+      return { success: null, title: null, error: `${fullId}: invalid response`, refreshedAt: null, reason: 'no_data' }
     }
 
     const title = ('fullId' in data && 'title' in data && typeof data.fullId === 'string' && typeof data.title === 'string')
       ? data.title
       : null
 
-    const timestamp = ('timestamp' in data && typeof data.timestamp === 'number') ? data.timestamp : null
+    // Backward-compatible: keep accepting `timestamp` while the API migrates to `refreshedAt`.
+    const refreshedAt = ('refreshedAt' in data && typeof data.refreshedAt === 'number')
+      ? data.refreshedAt
+      : ('timestamp' in data && typeof data.timestamp === 'number')
+          ? data.timestamp
+          : null
     const reason = ('reason' in data && typeof data.reason === 'string') ? data.reason as FailureReason : null
 
     if ('events' in data && data.events) {
-      return { success: data as PlanningWithEvents, title, error: null, timestamp, reason }
+      return { success: data as PlanningWithEvents, title, error: null, refreshedAt, reason }
     }
 
     if ('status' in data && data.status === 'error') {
-      return { success: null, title, error: `${fullId}: no events available`, timestamp, reason: reason || 'no_data' }
+      return { success: null, title, error: `${fullId}: no events available`, refreshedAt, reason: reason || 'no_data' }
     }
 
-    return { success: null, title, error: `${fullId}: no events`, timestamp, reason: reason || 'no_data' }
+    return { success: null, title, error: `${fullId}: no events`, refreshedAt, reason: reason || 'no_data' }
   }
 
   function pruneToSelection(fullIds: string[]) {
@@ -148,7 +153,7 @@ function createPlanningDataStore(): PlanningDataStore {
       const dbSuccesses: Array<PlanningWithEvents> = []
       const dbErrors: string[] = []
       const titlesMap: Record<string, string> = { ...titles.value }
-      const dbTimestamps: Record<string, number | null> = {}
+      const dbRefreshedAt: Record<string, number | null> = {}
 
       // Phase 1: Fast database-only fetch (parallel) - skip when offline
       if (shouldHydrateFromDb) {
@@ -169,12 +174,12 @@ function createPlanningDataStore(): PlanningDataStore {
 
         for (let i = 0; i < needsDbHydrationIds.length; i++) {
           const id = needsDbHydrationIds[i]!
-          const { success, title, error: err, timestamp } = processResponse(id, dbResults[i])
+          const { success, title, error: err, refreshedAt } = processResponse(id, dbResults[i])
 
           if (title) titlesMap[id] = title
           if (success) dbSuccesses.push(success)
           else if (err) dbErrors.push(err)
-          dbTimestamps[id] = timestamp
+          dbRefreshedAt[id] = refreshedAt
         }
 
         // Update UI immediately with DB data for newly-added plannings only.
@@ -212,12 +217,12 @@ function createPlanningDataStore(): PlanningDataStore {
           failures.push({
             fullId,
             title: titlesMap[fullId] || fullId,
-            timestamp: dbTimestamps[fullId] ?? null,
+            refreshedAt: dbRefreshedAt[fullId] ?? null,
             reason: 'network_error',
           })
           networkFailures.value = [...failures]
         } else {
-          const { success, title, timestamp, reason } = processResponse(fullId, { status: 'fulfilled', value: res })
+          const { success, title, refreshedAt, reason } = processResponse(fullId, { status: 'fulfilled', value: res })
 
           if (title) {
             titlesMap[fullId] = title
@@ -234,7 +239,7 @@ function createPlanningDataStore(): PlanningDataStore {
               failures.push({
                 fullId,
                 title: title || fullId,
-                timestamp,
+                refreshedAt,
                 reason: reason || 'network_error',
               })
               networkFailures.value = [...failures]
@@ -243,7 +248,7 @@ function createPlanningDataStore(): PlanningDataStore {
             failures.push({
               fullId,
               title: title || fullId,
-              timestamp: dbTimestamps[fullId] ?? null,
+              refreshedAt: dbRefreshedAt[fullId] ?? null,
               reason: reason || 'no_data',
             })
             networkFailures.value = [...failures]

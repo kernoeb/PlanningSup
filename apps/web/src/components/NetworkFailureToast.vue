@@ -31,9 +31,9 @@ function clearAutoHide() {
   }
 }
 
-function formatBackupTime(timestamp: number | null): string {
-  if (!timestamp) return 'inconnu'
-  const date = new Date(timestamp)
+function formatBackupTime(refreshedAt: number | null): string {
+  if (!refreshedAt) return 'inconnu'
+  const date = new Date(refreshedAt)
   return date.toLocaleString('fr-FR', {
     day: '2-digit',
     month: '2-digit',
@@ -43,7 +43,7 @@ function formatBackupTime(timestamp: number | null): string {
   })
 }
 
-function getReasonLabel(reason: FailureReason | null, timestamp: number | null): string {
+function getReasonLabel(reason: FailureReason | null, refreshedAt: number | null): string {
   switch (reason) {
     case 'no_data':
       return 'aucune donnée disponible'
@@ -51,7 +51,7 @@ function getReasonLabel(reason: FailureReason | null, timestamp: number | null):
       return 'aucun événement prévu'
     case 'network_error':
     default:
-      return `maj : ${formatBackupTime(timestamp)}`
+      return `maj : ${formatBackupTime(refreshedAt)}`
   }
 }
 
@@ -150,7 +150,7 @@ watch(planningFullIds, () => {
 
                 <!-- Reason: Shows appropriate message based on failure reason -->
                 <span class="opacity-70 text-xs whitespace-nowrap shrink-0 ml-1">
-                  ({{ getReasonLabel(failure.reason, failure.timestamp) }})
+                  ({{ getReasonLabel(failure.reason, failure.refreshedAt) }})
                 </span>
               </li>
             </ul>

@@ -67,12 +67,17 @@ export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
   return null
 }
 
-export async function getBackupEvents(planningFullId: string): Promise<CalEvent[] | null> {
+export interface BackupEventsResult {
+  events: CalEvent[]
+  updatedAt: Date
+}
+
+export async function getBackupEvents(planningFullId: string): Promise<BackupEventsResult | null> {
   return db.query.planningsBackupTable
     .findFirst({
       where: eq(planningsBackupTable.planningFullId, planningFullId),
     })
-    .then(r => r ? r.events : null)
+    .then(r => r ? { events: r.events, updatedAt: r.updatedAt } : null)
     .catch(() => null)
 }
 
@@ -187,6 +192,7 @@ export interface ResolveEventsResult {
   events: CalEvent[] | null
   source: EventsSource
   networkFailed: boolean
+  backupUpdatedAt: Date | null
 }
 
 /**
@@ -199,18 +205,28 @@ export interface ResolveEventsResult {
  */
 export async function resolveEvents(planning: { url: string, fullId: string }, onlyDb: boolean): Promise<ResolveEventsResult> {
   if (onlyDb) {
-    const events = await getBackupEvents(planning.fullId)
-    return { events, source: events ? 'db' : 'none', networkFailed: false }
+    const backup = await getBackupEvents(planning.fullId)
+    return {
+      events: backup ? backup.events : null,
+      source: backup ? 'db' : 'none',
+      networkFailed: false,
+      backupUpdatedAt: backup ? backup.updatedAt : null,
+    }
   }
 
   const networkEvents = await fetchEvents(planning.url)
   if (networkEvents) {
-    return { events: networkEvents, source: 'network', networkFailed: false }
+    return { events: networkEvents, source: 'network', networkFailed: false, backupUpdatedAt: null }
   }
 
   // Network failed, try DB fallback
-  const dbEvents = await getBackupEvents(planning.fullId)
-  return { events: dbEvents, source: dbEvents ? 'db' : 'none', networkFailed: true }
+  const backup = await getBackupEvents(planning.fullId)
+  return {
+    events: backup ? backup.events : null,
+    source: backup ? 'db' : 'none',
+    networkFailed: true,
+    backupUpdatedAt: backup ? backup.updatedAt : null,
+  }
 }
 
 /**

@@ -40,6 +40,16 @@ export default new Elysia({ prefix: '/plannings' })
       const nbEvents = allEvents ? allEvents.length : 0
       const reason = getFailureReason(resolveResult, nbEvents)
 
+      // refreshedAt semantics:
+      // - network: request time
+      // - db: backup updatedAt
+      // - none: null
+      const refreshedAt = source === 'network'
+        ? Date.now()
+        : source === 'db'
+          ? resolveResult.backupUpdatedAt?.getTime() ?? null
+          : null
+
       // Keep backups fresh when the UI hits the API directly:
       // - If we successfully fetched events from the network, write-through to DB asynchronously (no extra upstream fetch).
       // - If network failed (and onlyDb wasn't requested), enqueue a refresh retry with priority.
@@ -64,7 +74,7 @@ export default new Elysia({ prefix: '/plannings' })
 
       return {
         ...partialInfos,
-        timestamp: Date.now(),
+        refreshedAt,
         status: events ? 'ok' : 'error',
         source,
         reason,

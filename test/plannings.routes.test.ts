@@ -94,7 +94,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
   let fetchMode: 'ok' | 'error' = 'ok'
 
   // A simple in-memory backup "DB"
-  const backupStore: Record<string, CalEvent[] | undefined> = {}
+  const backupStore: Record<string, { events: CalEvent[], updatedAt: Date } | undefined> = {}
   const refreshQueueStore = new Map<string, { priority: number }>()
 
   async function tick() {
@@ -122,9 +122,9 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
             if (this._values && 'planningFullId' in this._values && 'events' in this._values) {
               const fullId = this._values.planningFullId as string
               const nextEvents = this._values.events as CalEvent[]
-              const prev = backupStore[fullId]
+              const prev = backupStore[fullId]?.events
               const changed = JSON.stringify(prev ?? null) !== JSON.stringify(nextEvents)
-              backupStore[fullId] = nextEvents
+              backupStore[fullId] = { events: nextEvents, updatedAt: new Date() }
               return changed ? [{ planningFullId: fullId }] : []
             }
             return []
@@ -150,9 +150,9 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
               // match interface used in getBackupEvents
               async findFirst(_args: any) {
                 // We only support a single planning id in tests
-                const events = backupStore[targetFullId]
-                if (!events) return undefined
-                return { events }
+                const record = backupStore[targetFullId]
+                if (!record) return undefined
+                return { events: record.events, updatedAt: record.updatedAt }
               },
             },
           },
@@ -264,13 +264,13 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(res.status).toBe(200)
 
     await tick()
-    expect(Array.isArray(backupStore[targetFullId])).toBeTrue()
-    expect((backupStore[targetFullId] as any[]).length).toBe(sampleEvents.length)
+    expect(Array.isArray(backupStore[targetFullId]?.events)).toBeTrue()
+    expect((backupStore[targetFullId]?.events as any[]).length).toBe(sampleEvents.length)
   })
 
   it('uses backup events when ICS fetch fails', async () => {
     // Set backup events for this planning id
-    backupStore[targetFullId] = sampleEvents
+    backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
     // Flip fetch to error
     fetchMode = 'error'
 
@@ -284,6 +284,8 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(body.status).toBe('ok')
     expect(Array.isArray(body.events)).toBeTrue()
     expect(body.nbEvents).toBe((body.events as any[]).length)
+    expect(body.source).toBe('db')
+    expect(body.refreshedAt).toBe(new Date('2025-01-01T00:00:00Z').getTime())
 
     // Clean up backup
     backupStore[targetFullId] = undefined
@@ -293,7 +295,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
   it('enqueues a refresh retry when network fails and DB fallback is used', async () => {
     refreshQueueStore.clear()
-    backupStore[targetFullId] = sampleEvents
+    backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
     fetchMode = 'error'
 
     const res = await app.handle(
@@ -368,7 +370,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
   it('uses only database when onlyDb=true (skips network fetch)', async () => {
     // Set backup events for this planning id
-    backupStore[targetFullId] = sampleEvents
+    backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
     // Keep fetch in OK mode - but it should NOT be called
     fetchMode = 'ok'
 
@@ -395,6 +397,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(body.source).toBe('db')
     expect(Array.isArray(body.events)).toBeTrue()
     expect(body.nbEvents).toBe((body.events as any[]).length)
+    expect(body.refreshedAt).toBe(new Date('2025-01-01T00:00:00Z').getTime())
 
     // Verify fetch was NOT called for the planning URL
     expect(fetchCalled).toBeFalse()
@@ -440,7 +443,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     })
 
     it('returns reason=network_error when network fails but DB has backup', async () => {
-      backupStore[targetFullId] = sampleEvents
+      backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
       fetchMode = 'error'
 
       const res = await app.handle(
@@ -493,7 +496,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     })
 
     it('returns reason=null when onlyDb=true and DB has events', async () => {
-      backupStore[targetFullId] = sampleEvents
+      backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
 
       const res = await app.handle(
         new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
@@ -545,7 +548,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     })
 
     it('returns reason=empty_schedule when onlyDb=true and DB has empty events', async () => {
-      backupStore[targetFullId] = [] // Empty array
+      backupStore[targetFullId] = { events: [], updatedAt: new Date('2025-01-01T00:00:00Z') } // Empty array
 
       const res = await app.handle(
         new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),

@@ -77,7 +77,6 @@ export default new Elysia({ prefix: '/ops' })
     `)
 
     return {
-      timestamp: Date.now(),
       jobs: {
         runJobs: config.jobs.runJobs,
         paused: jobs.isPaused(),

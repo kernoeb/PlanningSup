@@ -50,7 +50,7 @@ describe('usePlanningData refresh strategy', () => {
                       title: `Planning ${fullId}`,
                       events: [{ id: 'e-db', startsAt: 1, endsAt: 2 }],
                       source: 'db',
-                      timestamp: 1,
+                      refreshedAt: 1,
                     },
                   }
                 }
@@ -60,7 +60,7 @@ describe('usePlanningData refresh strategy', () => {
                     title: `Planning ${fullId}`,
                     events: [{ id: 'e-net', startsAt: 3, endsAt: 4 }],
                     source: 'network',
-                    timestamp: 2,
+                    refreshedAt: 2,
                   },
                 }
               },
