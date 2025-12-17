@@ -98,6 +98,7 @@ function userPrefsSync() {
     const session = authClient.useSession()
     const userId = computed(() => session.value.data?.user?.id ?? null)
     const lastSynced = ref<unknown>(null)
+    let applyingServerValue = false
 
     // --- Data Accessors ---
 
@@ -123,8 +124,10 @@ function userPrefsSync() {
 
     const setLocalValue = (value: T) => {
       if (setLocal) {
+        applyingServerValue = true
         setLocal(value)
       } else if (isRef(source)) {
+        applyingServerValue = true
         // Type assertion to bypass read-only check.
         // The `WatchSource` type includes read-only refs (like `ComputedRef`).
         // This fallback logic assumes a standard writable ref (`ref()`).
@@ -136,6 +139,11 @@ function userPrefsSync() {
           `syncPref[${key}]: No 'setLocal' provided and source is not a writable Ref. Cannot apply server value.`,
         )
       }
+
+      // Clear in a macrotask so any pending watcher flushes (microtasks) can see the flag.
+      setTimeout(() => {
+        applyingServerValue = false
+      }, 0)
     }
 
     // --- Core Sync Logic ---
@@ -223,6 +231,13 @@ function userPrefsSync() {
     watch(
       source,
       (newValue) => {
+        // Always keep a local "last modified" timestamp, even while logged out,
+        // so local changes made before login can win against older server values.
+        if (!applyingServerValue) {
+          const localMeta = getLocalMeta()
+          setLocalMeta({ ...localMeta, [key]: Date.now() })
+        }
+
         if (!userId.value) return
 
         // If debounce <= 0, push immediately for every change
