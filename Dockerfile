@@ -34,17 +34,9 @@ RUN bun run lint && bun run typecheck
 ENV NODE_ENV=production
 RUN bun run build
 
-##########################################################
-# Copy json planning files using a simple sh image
-FROM build AS copy-and-test-plannings
-
-WORKDIR /app
-
 COPY /resources/plannings/ /tmp/plannings/
-
 RUN mkdir -p ./plannings && \
   cp /tmp/plannings/*.json ./plannings/
-
 ENV PLANNINGS_LOCATION=/app/plannings
 
 COPY /test ./test
@@ -71,7 +63,7 @@ COPY /apps/api/drizzle ./drizzle
 COPY --from=build /app/apps/api/server ./server
 COPY --from=build /app/apps/web/dist ./web/dist/
 
-COPY --from=copy-and-test-plannings /app/plannings ./plannings
+COPY --from=build /app/plannings ./plannings
 
 ENV NODE_ENV=production
 ENV PORT=20000
