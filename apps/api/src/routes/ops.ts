@@ -3,7 +3,7 @@ import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshQueueTable, planningsTable } from '@api/db/schemas/plannings'
 import { jobs } from '@api/jobs'
 
-import { sql } from 'drizzle-orm'
+import { asc, desc, eq, isNull, sql } from 'drizzle-orm'
 import { Elysia } from 'elysia'
 
 const LOCK_TTL_MINUTES = 5
@@ -30,51 +30,64 @@ export default new Elysia({ prefix: '/ops' })
     }
   })
   .get('/plannings', async () => {
-    const queueAgg = await db.execute(sql`
-      select
-        count(*)::int as "depth",
-        count(*) filter (
+    const [refreshQueueRow] = await db
+      .select({
+        depth: sql<number>`count(*)::int`,
+        ready: sql<number>`count(*) filter (
           where ${planningsRefreshQueueTable.nextAttemptAt} <= now()
             and (
               ${planningsRefreshQueueTable.lockedAt} is null
               or ${planningsRefreshQueueTable.lockedAt} < (now() - (${LOCK_TTL_MINUTES} * interval '1 minute'))
             )
-        )::int as "ready",
-        count(*) filter (
+        )::int`,
+        locked: sql<number>`count(*) filter (
           where ${planningsRefreshQueueTable.lockedAt} is not null
             and ${planningsRefreshQueueTable.lockedAt} >= (now() - (${LOCK_TTL_MINUTES} * interval '1 minute'))
-        )::int as "locked",
-        max(${planningsRefreshQueueTable.priority})::int as "maxPriority",
-        min(${planningsRefreshQueueTable.requestedAt}) as "oldestRequestedAt",
-        min(${planningsRefreshQueueTable.nextAttemptAt}) as "nextAttemptAt"
-      from ${planningsRefreshQueueTable}
-    `)
+        )::int`,
+        maxPriority: sql<number | null>`max(${planningsRefreshQueueTable.priority})::int`,
+        oldestRequestedAt: sql<Date | null>`min(${planningsRefreshQueueTable.requestedAt})`,
+        nextAttemptAt: sql<Date | null>`min(${planningsRefreshQueueTable.nextAttemptAt})`,
+      })
+      .from(planningsRefreshQueueTable)
 
-    const backupAgg = await db.execute(sql`
-      select
-        (select count(*) from ${planningsTable})::int as "totalPlannings",
-        (select count(*) from ${planningsBackupTable})::int as "totalBackups",
-        (select count(*) from ${planningsTable} p left join ${planningsBackupTable} b on b.planning_full_id = p.full_id where b.planning_full_id is null)::int as "missingBackups",
-        (select min(updated_at) from ${planningsBackupTable}) as "oldestBackupUpdatedAt",
-        (select count(*) from ${planningsBackupTable} where updated_at < (now() - interval '1 hour'))::int as "staleOver1h",
-        (select count(*) from ${planningsBackupTable} where updated_at < (now() - interval '6 hours'))::int as "staleOver6h",
-        (select count(*) from ${planningsBackupTable} where updated_at < (now() - interval '24 hours'))::int as "staleOver24h"
-    `)
+    const [planningsAggRow] = await db
+      .select({
+        totalPlannings: sql<number>`count(*)::int`,
+      })
+      .from(planningsTable)
 
-    const topQueue = await db.execute(sql`
-      select
-        planning_full_id as "planningFullId",
-        priority,
-        attempts,
-        requested_at as "requestedAt",
-        next_attempt_at as "nextAttemptAt",
-        locked_at as "lockedAt",
-        lock_owner as "lockOwner",
-        last_error as "lastError"
-      from ${planningsRefreshQueueTable}
-      order by priority desc, requested_at asc
-      limit 20
-    `)
+    const [missingBackupsRow] = await db
+      .select({
+        missingBackups: sql<number>`count(*)::int`,
+      })
+      .from(planningsTable)
+      .leftJoin(planningsBackupTable, eq(planningsBackupTable.planningFullId, planningsTable.fullId))
+      .where(isNull(planningsBackupTable.planningFullId))
+
+    const [backupAggRow] = await db
+      .select({
+        totalBackups: sql<number>`count(*)::int`,
+        oldestBackupUpdatedAt: sql<Date | null>`min(${planningsBackupTable.updatedAt})`,
+        staleOver1h: sql<number>`count(*) filter (where ${planningsBackupTable.updatedAt} < (now() - interval '1 hour'))::int`,
+        staleOver6h: sql<number>`count(*) filter (where ${planningsBackupTable.updatedAt} < (now() - interval '6 hours'))::int`,
+        staleOver24h: sql<number>`count(*) filter (where ${planningsBackupTable.updatedAt} < (now() - interval '24 hours'))::int`,
+      })
+      .from(planningsBackupTable)
+
+    const queueTop = await db
+      .select({
+        planningFullId: planningsRefreshQueueTable.planningFullId,
+        priority: planningsRefreshQueueTable.priority,
+        attempts: planningsRefreshQueueTable.attempts,
+        requestedAt: planningsRefreshQueueTable.requestedAt,
+        nextAttemptAt: planningsRefreshQueueTable.nextAttemptAt,
+        lockedAt: planningsRefreshQueueTable.lockedAt,
+        lockOwner: planningsRefreshQueueTable.lockOwner,
+        lastError: planningsRefreshQueueTable.lastError,
+      })
+      .from(planningsRefreshQueueTable)
+      .orderBy(desc(planningsRefreshQueueTable.priority), asc(planningsRefreshQueueTable.requestedAt))
+      .limit(20)
 
     return {
       jobs: {
@@ -85,7 +98,7 @@ export default new Elysia({ prefix: '/ops' })
         quietHoursTimezone: jobs.getTimezone(),
         inQuietHoursNow: jobs.isInQuietHours(),
       },
-      refreshQueue: (queueAgg as any).rows?.[0] ?? {
+      refreshQueue: refreshQueueRow ?? {
         depth: 0,
         ready: 0,
         locked: 0,
@@ -93,15 +106,15 @@ export default new Elysia({ prefix: '/ops' })
         oldestRequestedAt: null,
         nextAttemptAt: null,
       },
-      backups: (backupAgg as any).rows?.[0] ?? {
-        totalPlannings: 0,
-        totalBackups: 0,
-        missingBackups: 0,
-        oldestBackupUpdatedAt: null,
-        staleOver1h: 0,
-        staleOver6h: 0,
-        staleOver24h: 0,
+      backups: {
+        totalPlannings: planningsAggRow?.totalPlannings ?? 0,
+        totalBackups: backupAggRow?.totalBackups ?? 0,
+        missingBackups: missingBackupsRow?.missingBackups ?? 0,
+        oldestBackupUpdatedAt: backupAggRow?.oldestBackupUpdatedAt ?? null,
+        staleOver1h: backupAggRow?.staleOver1h ?? 0,
+        staleOver6h: backupAggRow?.staleOver6h ?? 0,
+        staleOver24h: backupAggRow?.staleOver24h ?? 0,
       },
-      queueTop: (topQueue as any).rows ?? [],
+      queueTop,
     }
   })

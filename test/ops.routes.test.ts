@@ -14,36 +14,39 @@ describe('Ops routes', () => {
 
     mock.module('@api/db', () => ({
       db: {
-        async execute(_q: any) {
-          // The ops route calls execute 3 times: queueAgg, backupAgg, topQueue
+        select(_fields: any) {
+          let rows: any[] = []
+
+          // The ops route performs 5 selects in this order:
+          // 1) refreshQueue aggregates
+          // 2) total plannings
+          // 3) missing backups
+          // 4) backups aggregates
+          // 5) queue top list
           this._i = (this._i ?? 0) + 1
           if (this._i === 1) {
-            return {
-              rows: [{
-                depth: 2,
-                ready: 1,
-                locked: 1,
-                maxPriority: 42,
-                oldestRequestedAt: new Date('2025-01-01T00:00:00Z'),
-                nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
-              }],
-            }
-          }
-          if (this._i === 2) {
-            return {
-              rows: [{
-                totalPlannings: 100,
-                totalBackups: 90,
-                missingBackups: 10,
-                oldestBackupUpdatedAt: new Date('2025-01-01T00:00:00Z'),
-                staleOver1h: 5,
-                staleOver6h: 3,
-                staleOver24h: 1,
-              }],
-            }
-          }
-          return {
-            rows: [{
+            rows = [{
+              depth: 2,
+              ready: 1,
+              locked: 1,
+              maxPriority: 42,
+              oldestRequestedAt: new Date('2025-01-01T00:00:00Z'),
+              nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
+            }]
+          } else if (this._i === 2) {
+            rows = [{ totalPlannings: 100 }]
+          } else if (this._i === 3) {
+            rows = [{ missingBackups: 10 }]
+          } else if (this._i === 4) {
+            rows = [{
+              totalBackups: 90,
+              oldestBackupUpdatedAt: new Date('2025-01-01T00:00:00Z'),
+              staleOver1h: 5,
+              staleOver6h: 3,
+              staleOver24h: 1,
+            }]
+          } else {
+            rows = [{
               planningFullId: 'p.1',
               priority: 42,
               attempts: 2,
@@ -52,8 +55,31 @@ describe('Ops routes', () => {
               lockedAt: null,
               lockOwner: null,
               lastError: null,
-            }],
+            }]
           }
+
+          const builder = {
+            from() {
+              return this
+            },
+            leftJoin() {
+              return this
+            },
+            where() {
+              return this
+            },
+            orderBy() {
+              return this
+            },
+            limit() {
+              return this
+            },
+            then(onFulfilled: any, onRejected: any) {
+              return Promise.resolve(rows).then(onFulfilled, onRejected)
+            },
+          }
+
+          return builder as any
         },
       },
     }))

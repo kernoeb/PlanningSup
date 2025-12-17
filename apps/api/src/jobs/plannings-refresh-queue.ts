@@ -19,7 +19,7 @@ function backoffMs(attempt: number) {
 
 export async function drainRefreshQueue(db: Database, deps: {
   fetchEvents: (url: string) => Promise<Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }> | null>
-  upsertPlanningBackup: (db: Database, planningFullId: string, events: Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }>) => Promise<unknown>
+  upsertPlanningBackup: (db: Database, planningFullId: string, events: Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }>) => Promise<{ changed: boolean, nbEvents: number }>
   flattenedPlannings: Array<{ fullId: string, url: string }>
 }, signal?: AbortSignal) {
   const { planningsRefreshQueueTable } = await import('@api/db/schemas/plannings')
@@ -35,7 +35,7 @@ export async function drainRefreshQueue(db: Database, deps: {
     if (Date.now() - start > DEFAULT_MAX_RUNTIME_MS) return
 
     // Claim a batch with SKIP LOCKED so multiple workers can cooperate safely.
-    const claimed = await db.execute(sql`
+    const rows = await db.execute<{ planningFullId: string, attempts: number, priority: number }>(sql`
       with picked as (
         select planning_full_id
         from ${planningsRefreshQueueTable}
@@ -61,8 +61,7 @@ export async function drainRefreshQueue(db: Database, deps: {
         q.priority as "priority"
     `)
 
-    const rows = (claimed as any)?.rows as Array<{ planningFullId: string, attempts: number, priority: number }> | undefined
-    if (!rows || rows.length === 0) return
+    if (rows.length === 0) return
 
     for (const row of rows) {
       if (signal?.aborted) return

@@ -32,9 +32,9 @@ describe('plannings-refresh-queue job', () => {
       async execute(_q: any) {
         executeCalls += 1
         if (executeCalls === 1) {
-          return { rows: [{ planningFullId: fullId, attempts: 0, priority: 10 }] }
+          return [{ planningFullId: fullId, attempts: 0, priority: 10 }]
         }
-        return { rows: [] }
+        return []
       },
       delete(_table: any) {
         return {
@@ -83,9 +83,9 @@ describe('plannings-refresh-queue job', () => {
       async execute(_q: any) {
         executeCalls += 1
         if (executeCalls === 1) {
-          return { rows: [{ planningFullId: fullId, attempts: 1, priority: 10 }] }
+          return [{ planningFullId: fullId, attempts: 1, priority: 10 }]
         }
-        return { rows: [] }
+        return []
       },
       delete(_table: any) {
         return {
