@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="96"
+  height="96"
+  viewBox="144 140 341 336"
+>
+  <style>
+    :root {
+      color: #000;
+    }
+  </style>
+
+  <g fill="currentColor">
+    <path
+      fill-rule="evenodd"
+      d="M152 176h325a8 8 0 0 1 8 8v284a8 8 0 0 1-8 8H152a8 8 0 0 1-8-8V184a8 8 0 0 1 8-8Zm15 98a6 6 0 0 1 6-6h279a6 6 0 0 1 6 6v172a6 6 0 0 1-6 6H173a6 6 0 0 1-6-6V274Z"
+    />
+
+    <rect x="180" y="140" width="24" height="36" rx="2" />
+    <rect x="241" y="140" width="24" height="36" rx="2" />
+    <rect x="303" y="140" width="24" height="36" rx="2" />
+    <rect x="364" y="140" width="24" height="36" rx="2" />
+    <rect x="425" y="140" width="24" height="36" rx="2" />
+
+    <rect x="285" y="297" width="54" height="55" rx="4" />
+    <rect x="367" y="297" width="54" height="55" rx="4" />
+    <rect x="203" y="374" width="54" height="55" rx="4" />
+    <rect x="285" y="374" width="54" height="55" rx="4" />
+    <rect x="367" y="374" width="54" height="55" rx="4" />
+  </g>
+</svg>
