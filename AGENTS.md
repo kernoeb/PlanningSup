@@ -36,22 +36,12 @@ PlanningSup is a french university calendar to help students manage their schedu
 ## Environment & Secrets
 - Use `.bun-version` and `.nvmrc` to align runtimes; Docker Compose is the source of truth for services, ports, and test URLs.
 
-## Bun SQL + Drizzle (Important)
-- The API uses **Drizzle `bun-sql`** (`drizzle-orm/bun-sql` + `bun:SQL`).
-- For Bun SQL, `db.execute(...)` returns an **array of rows** (e.g. `Row[]`), **not** an object like `{ rows: Row[] }`.
-  - Do **not** write `const rows = (await db.execute(...)).rows`.
-  - Prefer `await db.execute<Row>(sql\`...\`)` so the result is typed as `Row[]`.
-- Prefer Drizzle query builder (`db.select(...).from(...).orderBy(...)`) when possible. Use `sql\`...\`` inside `select(...)` for Postgres-only expressions (e.g. `count(*) filter (...)`).
-- For advanced Postgres patterns that need locking/CTEs (e.g. `FOR UPDATE SKIP LOCKED` queue claiming), raw SQL via `db.execute<T>(sql\`...\`)` is acceptable and expected.
-
-## API Jobs & Ops Notes
-- Jobs are controlled by env vars in `apps/api/src/jobs/index.ts`:
-  - `RUN_JOBS=false` disables the runner.
-  - `ALLOWED_JOBS` whitelists which jobs can run (default includes `plannings-backup` and `plannings-refresh-queue`).
-- `plannings-backup` can run for a long time in production; tests must not wait for real pauses. Use `JOBS_PLANNINGS_BACKUP_PAUSE_MS=0` in tests when needed.
-- Ops endpoint:
-  - `GET /api/ops/plannings` is guarded by `OPS_TOKEN` (header `x-ops-token`).
-  - In production, missing/invalid token returns **404** (and requires `OPS_TOKEN` to be set).
-  - In non-production, it’s allowed only when `OPS_TOKEN` is unset (if set, it requires the header).
-- Planning events freshness metadata:
-  - API returns `refreshedAt` (epoch ms): network → request time, db → `plannings_backup.updated_at`, none → `null`.
+## API Notes (Bun SQL + Drizzle + routes)
+- DB: Drizzle `bun-sql` (`bun:SQL`). `db.execute(...)` returns `Row[]` (not `{ rows }`).
+- Prefer Drizzle query builder everywhere; use `db.execute<Row>(sql\`...\`)` only for Postgres-specific atomic patterns (CTEs + `FOR UPDATE SKIP LOCKED`, etc.).
+- Routes:
+  - `GET /api/ping`
+  - `GET /api/plannings` (tree)
+  - `GET /api/plannings/:fullId?events=true[&onlyDb=true]` (returns `refreshedAt` ms; db uses `plannings_backup.updated_at`)
+  - `GET /api/ops/plannings` (requires `OPS_TOKEN` via `x-ops-token`; prod returns 404 on missing/invalid)
+- Jobs: `RUN_JOBS=false` disables; `ALLOWED_JOBS` filters (default includes `plannings-backup`, `plannings-refresh-queue`). Tests can set `JOBS_PLANNINGS_BACKUP_PAUSE_MS=0`.
