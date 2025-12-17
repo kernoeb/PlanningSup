@@ -1,7 +1,9 @@
-import { afterAll, beforeAll, describe, expect, it, mock } from 'bun:test'
+import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import { Elysia } from 'elysia'
 import { treaty } from '@elysiajs/eden'
 import { flattenedPlannings } from '@api/plannings'
+
+import { getApiDbMockStores, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
 /**
  * Test goals:
@@ -93,72 +95,43 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
   const originalFetch = globalThis.fetch
   let fetchMode: 'ok' | 'error' = 'ok'
 
-  // A simple in-memory backup "DB"
-  const backupStore: Record<string, { events: CalEvent[], updatedAt: Date } | undefined> = {}
-  const refreshQueueStore = new Map<string, { priority: number }>()
+  let backupStore: Record<string, { events: CalEvent[], updatedAt: Date } | undefined>
+  let refreshQueueStore: Map<string, { priority: number }>
 
   async function tick() {
     await new Promise(resolve => setTimeout(resolve, 0))
   }
 
+  async function waitFor(predicate: () => boolean, options?: { timeoutMs?: number }) {
+    const timeoutMs = options?.timeoutMs ?? 2000
+    const start = Date.now()
+    while (!predicate()) {
+      if (Date.now() - start > timeoutMs) return false
+      // eslint-disable-next-line no-await-in-loop
+      await tick()
+    }
+    return true
+  }
+
   beforeAll(async () => {
+    process.env.RUN_JOBS = 'false'
+    process.env.NODE_ENV = 'test'
+    process.env.PLANNINGS_BACKUP_WRITE_THROTTLE_MS = '0'
     Bun.env.RUN_JOBS = 'false'
     Bun.env.NODE_ENV = 'test'
+    Bun.env.PLANNINGS_BACKUP_WRITE_THROTTLE_MS = '0'
 
-   // Overwrite the planning URL to a local fake endpoint to ensure our fetch mock intercepts it
-   targetUrl = 'http://localhost/__fake_ics__'
-   ;(anyLeaf as any).url = targetUrl
+    installApiDbMock()
+    resetApiDbMockStores()
+    ;({ backupStore, refreshQueueStore } = getApiDbMockStores())
 
-   // Mock only @api/db to satisfy utils/events.getBackupEvents path
-    mock.module('@api/db', () => {
-      function insertBuilder(values: any) {
-        return {
-          _values: values,
-          onConflictDoUpdate(_cfg: any) {
-            return this
-          },
-          async returning() {
-            // plannings backup upsert
-            if (this._values && 'planningFullId' in this._values && 'events' in this._values) {
-              const fullId = this._values.planningFullId as string
-              const nextEvents = this._values.events as CalEvent[]
-              const prev = backupStore[fullId]?.events
-              const changed = JSON.stringify(prev ?? null) !== JSON.stringify(nextEvents)
-              backupStore[fullId] = { events: nextEvents, updatedAt: new Date() }
-              return changed ? [{ planningFullId: fullId }] : []
-            }
-            return []
-          },
-        }
-      }
+    // Ensure no cross-file leakage from other suites (notably memory/load tests).
+    const { __test } = await import('@api/utils/plannings-backup')
+    __test.reset()
 
-      return {
-        db: {
-          insert(_table: any) {
-            return {
-              values(values: any) {
-                // plannings refresh queue upsert
-                if (values && 'planningFullId' in values && 'priority' in values && !('events' in values)) {
-                  refreshQueueStore.set(values.planningFullId as string, { priority: values.priority as number })
-                }
-                return insertBuilder(values)
-              },
-            }
-          },
-          query: {
-            planningsBackupTable: {
-              // match interface used in getBackupEvents
-              async findFirst(_args: any) {
-                // We only support a single planning id in tests
-                const record = backupStore[targetFullId]
-                if (!record) return undefined
-                return { events: record.events, updatedAt: record.updatedAt }
-              },
-            },
-          },
-        },
-      }
-    })
+    // Overwrite the planning URL to a local fake endpoint to ensure our fetch mock intercepts it
+    targetUrl = 'http://localhost/__fake_ics__'
+    ;(anyLeaf as any).url = targetUrl
 
     // Mock global fetch to serve ICS for the selected planning URL
     // @ts-expect-error bun types
@@ -263,8 +236,8 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     )
     expect(res.status).toBe(200)
 
-    await tick()
-    expect(Array.isArray(backupStore[targetFullId]?.events)).toBeTrue()
+    const ok = await waitFor(() => Array.isArray(backupStore[targetFullId]?.events))
+    expect(ok).toBeTrue()
     expect((backupStore[targetFullId]?.events as any[]).length).toBe(sampleEvents.length)
   })
 
@@ -303,8 +276,8 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     )
     expect(res.status).toBe(200)
 
-    await tick()
-    expect(refreshQueueStore.has(targetFullId)).toBeTrue()
+    const ok = await waitFor(() => refreshQueueStore.has(targetFullId))
+    expect(ok).toBeTrue()
 
     // Cleanup
     fetchMode = 'ok'

@@ -3,6 +3,21 @@ import { defaultLogger as logger } from '@api/utils/logger'
 
 const USER_AGENT = 'Mozilla/5.0'
 
+function truncate(value: string, max: number) {
+  if (value.length <= max) return value
+  return `${value.slice(0, max - 1)}…`
+}
+
+function normalizeFetchError(error: Error | string): { name: string, message: string, code: string | null } {
+  if (typeof error === 'string') return { name: 'Error', message: error, code: null }
+
+  const code = typeof (error as Error & { code?: string }).code === 'string'
+    ? (error as Error & { code?: string }).code ?? null
+    : null
+
+  return { name: error.name, message: error.message, code }
+}
+
 async function fetchWithTimeout(
   url: string,
   options?: BunFetchRequestInit,
@@ -12,6 +27,7 @@ async function fetchWithTimeout(
   ok: boolean
   headers?: Headers
   status: number
+  error?: { name: string, message: string, code: string | null }
 }> {
   try {
     const response = await fetch(url, {
@@ -34,12 +50,19 @@ async function fetchWithTimeout(
 
     return result
   } catch (e) {
-    logger.warn('fetchWithTimeout error {*}', { url, error: e })
+    const { name, message, code } = normalizeFetchError(e instanceof Error ? e : String(e))
+    logger.warn('fetchWithTimeout failed (name={name}, code={code}): {message} url={url}', {
+      name,
+      code,
+      message: truncate(message, 180),
+      url,
+    })
     return {
       data: null,
       ok: false,
       headers: new Headers(),
       status: 0,
+      error: { name, message, code },
     }
   }
 }

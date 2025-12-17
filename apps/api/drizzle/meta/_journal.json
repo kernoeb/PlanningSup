@@ -36,6 +36,20 @@
       "when": 1765980311374,
       "tag": "0004_fluffy_malice",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1765987739179,
+      "tag": "0005_boring_flatman",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1765990524555,
+      "tag": "0006_parallel_mentallo",
+      "breakpoints": true
     }
   ]
 }

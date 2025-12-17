@@ -12,7 +12,6 @@ function getConfig() {
     jobs: {
       runJobs: env('RUN_JOBS', { default: true }),
       allowedJobs: env('ALLOWED_JOBS'),
-      delayBetweenJobs: env('DELAY_BETWEEN_JOBS'), // in ms
       quietHours: env('JOBS_QUIET_HOURS', { default: '21:00–06:00' }),
       quietHoursTimezone: env('JOBS_QUIET_HOURS_TIMEZONE', { default: 'Europe/Paris' }),
     },

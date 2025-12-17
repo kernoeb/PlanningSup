@@ -57,9 +57,14 @@ export default new Elysia({ prefix: '/plannings' })
         if (source === 'network' && events) {
           schedulePlanningBackupWrite(planning.fullId, events)
         } else if (resolveResult.networkFailed) {
-          void requestPlanningRefresh(planning.fullId, 10).catch((error) => {
-            elysiaLogger.warn('Failed to enqueue planning refresh for {fullId}: {error}', { fullId, error })
-          })
+          // Only enqueue retries for failures that are likely transient.
+          const kind = resolveResult.networkFailure?.kind
+          const shouldRetry = kind !== 'http_4xx'
+          if (shouldRetry) {
+            void requestPlanningRefresh(planning.fullId, 10).catch((error) => {
+              elysiaLogger.warn('Failed to enqueue planning refresh for {fullId}: {error}', { fullId, error })
+            })
+          }
         }
       }
 

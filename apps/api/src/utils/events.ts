@@ -27,7 +27,52 @@ export interface CalEvent {
   description: string
 }
 
-export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
+export type FetchFailureKind
+  = 'timeout'
+    | 'connection_refused'
+    | 'network_error'
+    | 'http_429'
+    | 'http_4xx'
+    | 'http_5xx'
+    | 'invalid_body'
+    | 'parse_error'
+
+export interface FetchFailure {
+  kind: FetchFailureKind
+  status: number | null
+  code: string | null
+  retryAfterMs: number | null
+  message: string | null
+}
+
+export interface FetchEventsDetailedResult {
+  events: CalEvent[] | null
+  failure: FetchFailure | null
+}
+
+function parseRetryAfterMs(headers: Headers | undefined): number | null {
+  if (!headers) return null
+  const raw = headers.get('retry-after')
+  if (!raw) return null
+
+  const secs = Number(raw)
+  if (Number.isFinite(secs) && secs >= 0) return Math.round(secs * 1000)
+
+  const date = new Date(raw)
+  if (!Number.isNaN(date.getTime())) {
+    return Math.max(0, date.getTime() - Date.now())
+  }
+
+  return null
+}
+
+function classifyNetworkError(error: { name: string, code: string | null, message: string }): FetchFailureKind {
+  if (error.name === 'TimeoutError') return 'timeout'
+  if (error.code === 'ConnectionRefused') return 'connection_refused'
+  return 'network_error'
+}
+
+export async function fetchEventsDetailed(url: string): Promise<FetchEventsDetailedResult> {
   if (includesTemplate(url)) {
     url = url
       .replace(
@@ -40,9 +85,81 @@ export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
       )
   }
 
-  const { data, ok } = await fetchWithTimeout(url)
+  const res = await fetchWithTimeout(url)
+  const { data, ok, status, headers } = res
 
-  if (ok && data && data.length && !data.includes('500 Internal Server Error') && !data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
+  if (!ok) {
+    // Network error (status=0) vs HTTP error (status>0)
+    if (status === 0) {
+      const err = res.error
+      return {
+        events: null,
+        failure: err
+          ? {
+              kind: classifyNetworkError(err),
+              status: null,
+              code: err.code,
+              retryAfterMs: null,
+              message: err.message,
+            }
+          : {
+              kind: 'network_error',
+              status: null,
+              code: null,
+              retryAfterMs: null,
+              message: null,
+            },
+      }
+    }
+
+    const retryAfterMs = parseRetryAfterMs(headers)
+    if (status === 429) {
+      return {
+        events: null,
+        failure: {
+          kind: 'http_429',
+          status,
+          code: null,
+          retryAfterMs,
+          message: null,
+        },
+      }
+    }
+
+    if (status >= 500 && status <= 599) {
+      return {
+        events: null,
+        failure: {
+          kind: 'http_5xx',
+          status,
+          code: null,
+          retryAfterMs: null,
+          message: null,
+        },
+      }
+    }
+
+    return {
+      events: null,
+      failure: {
+        kind: 'http_4xx',
+        status,
+        code: null,
+        retryAfterMs: null,
+        message: null,
+      },
+    }
+  }
+
+  if (!data || !data.length) {
+    return { events: null, failure: { kind: 'invalid_body', status, code: null, retryAfterMs: null, message: 'empty_body' } }
+  }
+
+  if (data.includes('500 Internal Server Error') || data.includes('<!DOCTYPE ')) { // Yeah, that's perfectible
+    return { events: null, failure: { kind: 'invalid_body', status, code: null, retryAfterMs: null, message: 'html_or_500_body' } }
+  }
+
+  try {
     const comp = new icalJs.Component(icalJs.parse(data))
 
     const vEvents = comp.getAllSubcomponents('vevent')
@@ -61,10 +178,14 @@ export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
       })
     }
 
-    return allEvents
+    return { events: allEvents, failure: null }
+  } catch {
+    return { events: null, failure: { kind: 'parse_error', status, code: null, retryAfterMs: null, message: null } }
   }
+}
 
-  return null
+export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
+  return (await fetchEventsDetailed(url)).events
 }
 
 export interface BackupEventsResult {
@@ -193,6 +314,7 @@ export interface ResolveEventsResult {
   source: EventsSource
   networkFailed: boolean
   backupUpdatedAt: Date | null
+  networkFailure: FetchFailure | null
 }
 
 /**
@@ -211,12 +333,13 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
       source: backup ? 'db' : 'none',
       networkFailed: false,
       backupUpdatedAt: backup ? backup.updatedAt : null,
+      networkFailure: null,
     }
   }
 
-  const networkEvents = await fetchEvents(planning.url)
-  if (networkEvents) {
-    return { events: networkEvents, source: 'network', networkFailed: false, backupUpdatedAt: null }
+  const net = await fetchEventsDetailed(planning.url)
+  if (net.events) {
+    return { events: net.events, source: 'network', networkFailed: false, backupUpdatedAt: null, networkFailure: null }
   }
 
   // Network failed, try DB fallback
@@ -226,6 +349,7 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
     source: backup ? 'db' : 'none',
     networkFailed: true,
     backupUpdatedAt: backup ? backup.updatedAt : null,
+    networkFailure: net.failure,
   }
 }
 

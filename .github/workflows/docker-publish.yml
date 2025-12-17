@@ -199,7 +199,7 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Run unit tests
-        run: bun test test/*.test.ts
+        run: bun test --max-concurrency=1 test/*.test.ts
 
   # ============================================================================
   # Stage 4: Integration tests (auth disabled)

@@ -1,88 +1,68 @@
-import { beforeAll, describe, expect, it, mock } from 'bun:test'
+import { beforeAll, describe, expect, it } from 'bun:test'
 import { Elysia } from 'elysia'
 import { treaty } from '@elysiajs/eden'
+
+import { configureApiDbMock, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
 describe('Ops routes', () => {
   let app: Elysia
   let api: ReturnType<typeof treaty>
 
   beforeAll(async () => {
+    process.env.NODE_ENV = 'test'
+    process.env.AUTH_ENABLED = 'false'
+    process.env.TRUSTED_ORIGINS = 'http://localhost'
+    process.env.OPS_TOKEN = 'secret'
     Bun.env.NODE_ENV = 'test'
     Bun.env.AUTH_ENABLED = 'false'
     Bun.env.TRUSTED_ORIGINS = 'http://localhost'
     Bun.env.OPS_TOKEN = 'secret'
 
-    mock.module('@api/db', () => ({
-      db: {
-        select(_fields: any) {
-          let rows: any[] = []
-
-          // The ops route performs 5 selects in this order:
-          // 1) refreshQueue aggregates
-          // 2) total plannings
-          // 3) missing backups
-          // 4) backups aggregates
-          // 5) queue top list
-          this._i = (this._i ?? 0) + 1
-          if (this._i === 1) {
-            rows = [{
-              depth: 2,
-              ready: 1,
-              locked: 1,
-              maxPriority: 42,
-              oldestRequestedAt: new Date('2025-01-01T00:00:00Z'),
-              nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
-            }]
-          } else if (this._i === 2) {
-            rows = [{ totalPlannings: 100 }]
-          } else if (this._i === 3) {
-            rows = [{ missingBackups: 10 }]
-          } else if (this._i === 4) {
-            rows = [{
-              totalBackups: 90,
-              oldestBackupUpdatedAt: new Date('2025-01-01T00:00:00Z'),
-              staleOver1h: 5,
-              staleOver6h: 3,
-              staleOver24h: 1,
-            }]
-          } else {
-            rows = [{
-              planningFullId: 'p.1',
-              priority: 42,
-              attempts: 2,
-              requestedAt: new Date('2025-01-01T00:00:00Z'),
-              nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
-              lockedAt: null,
-              lockOwner: null,
-              lastError: null,
-            }]
-          }
-
-          const builder = {
-            from() {
-              return this
-            },
-            leftJoin() {
-              return this
-            },
-            where() {
-              return this
-            },
-            orderBy() {
-              return this
-            },
-            limit() {
-              return this
-            },
-            then(onFulfilled: any, onRejected: any) {
-              return Promise.resolve(rows).then(onFulfilled, onRejected)
-            },
-          }
-
-          return builder as any
-        },
-      },
-    }))
+    installApiDbMock()
+    resetApiDbMockStores()
+    configureApiDbMock({
+      // The ops route performs 6 selects in this order:
+      // 1) refreshQueue aggregates
+      // 2) refreshState aggregates
+      // 3) total plannings
+      // 4) missing backups
+      // 5) backups aggregates
+      // 6) queue top list
+      opsSelectRowsByCall: [
+        [{
+          depth: 2,
+          ready: 1,
+          locked: 1,
+          maxPriority: 42,
+          oldestRequestedAt: new Date('2025-01-01T00:00:00Z'),
+          nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
+        }],
+        [{
+          disabled: 3,
+          oldestDisabledUntil: new Date('2025-01-02T00:00:00Z'),
+          mostRecentSuccessAt: new Date('2025-01-03T00:00:00Z'),
+        }],
+        [{ totalPlannings: 100 }],
+        [{ missingBackups: 10 }],
+        [{
+          totalBackups: 90,
+          oldestBackupUpdatedAt: new Date('2025-01-01T00:00:00Z'),
+          staleOver1h: 5,
+          staleOver6h: 3,
+          staleOver24h: 1,
+        }],
+        [{
+          planningFullId: 'p.1',
+          priority: 42,
+          attempts: 2,
+          requestedAt: new Date('2025-01-01T00:00:00Z'),
+          nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
+          lockedAt: null,
+          lockOwner: null,
+          lastError: null,
+        }],
+      ],
+    })
 
     const { default: apiRoutes } = await import('@api/api')
     app = new Elysia().use(apiRoutes)

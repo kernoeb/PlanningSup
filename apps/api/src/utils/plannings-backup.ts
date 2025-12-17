@@ -1,6 +1,7 @@
 import type { Database } from '@api/db'
 import { db } from '@api/db'
-import { planningsBackupTable, planningsRefreshQueueTable } from '@api/db/schemas/plannings'
+import { planningsBackupTable, planningsRefreshQueueTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
+import { JOB_ID, pokeJob } from '@api/jobs'
 import { elysiaLogger } from '@api/utils/logger'
 
 import { sql } from 'drizzle-orm'
@@ -84,39 +85,176 @@ export async function upsertPlanningBackup(targetDb: Database, planningFullId: s
   }
 }
 
-const WRITE_THROTTLE_MS = Bun.env.NODE_ENV === 'test' ? 0 : 30_000
-const writeState = new Map<string, { inFlight: Promise<void> | null, lastQueuedAt: number }>()
+function envNumber(key: string, fallback: number) {
+  const raw = Bun.env[key]
+  if (raw == null) return fallback
+  const n = Number(raw)
+  if (!Number.isFinite(n) || n < 0) return fallback
+  return n
+}
+
+function getWriteThrottleMs() {
+  return envNumber(
+    'PLANNINGS_BACKUP_WRITE_THROTTLE_MS',
+    Bun.env.NODE_ENV === 'test' ? 0 : 30_000,
+  )
+}
+
+function getWriteStateTtlMs() {
+  return envNumber(
+    'PLANNINGS_BACKUP_WRITE_STATE_TTL_MS',
+    Bun.env.NODE_ENV === 'test' ? 5_000 : 60 * 60_000,
+  )
+}
+
+function getWriteStateMaxKeys() {
+  return envNumber(
+    'PLANNINGS_BACKUP_WRITE_STATE_MAX_KEYS',
+    Bun.env.NODE_ENV === 'test' ? 200 : 20_000,
+  )
+}
+
+const writeState = new Map<string, {
+  inFlight: Promise<void> | null
+  lastWriteAt: number
+  pending: BackupEvent[] | null
+  lastTouchedAt: number
+}>()
+
+function pruneWriteState(now: number, ttlMs: number, maxKeys: number) {
+  for (const [key, state] of writeState) {
+    if (state.inFlight) continue
+    if (state.pending) continue
+    if (now - state.lastTouchedAt > ttlMs) writeState.delete(key)
+  }
+  if (writeState.size <= maxKeys) return
+  // Drop oldest (in insertion order) entries until we're under the cap.
+  for (const [key] of writeState) {
+    writeState.delete(key)
+    if (writeState.size <= maxKeys) break
+  }
+}
 
 export function schedulePlanningBackupWrite(planningFullId: string, events: BackupEvent[]) {
-  const state = writeState.get(planningFullId) ?? { inFlight: null, lastQueuedAt: 0 }
   const now = Date.now()
+  const maxKeys = getWriteStateMaxKeys()
+  pruneWriteState(now, getWriteStateTtlMs(), maxKeys)
+
+  const existing = writeState.get(planningFullId)
+  if (!existing && writeState.size >= maxKeys) {
+    // Hard cap to avoid unbounded memory growth in edge cases.
+    return
+  }
+
+  const state = existing ?? { inFlight: null, lastWriteAt: 0, pending: null, lastTouchedAt: now }
+
+  state.pending = events
+  state.lastTouchedAt = now
+  writeState.set(planningFullId, state)
 
   if (state.inFlight) return
-  if (now - state.lastQueuedAt < WRITE_THROTTLE_MS) return
 
-  state.lastQueuedAt = now
-  const p = upsertPlanningBackup(db, planningFullId, events)
-    .then(() => {})
-    .catch((error) => {
-      elysiaLogger.warn('Async backup write failed for planning {fullId}: {error}', { fullId: planningFullId, error })
-    })
+  const run = async () => {
+    for (;;) {
+      const current = writeState.get(planningFullId)
+      if (!current?.pending) return
+      current.lastTouchedAt = Date.now()
+      const throttleMs = getWriteThrottleMs()
+      const elapsed = Date.now() - current.lastWriteAt
+      if (elapsed < throttleMs) {
+        await new Promise<void>(resolve => setTimeout(resolve, throttleMs - elapsed))
+        continue
+      }
+
+      const payload = current.pending
+      current.pending = null
+      current.lastWriteAt = Date.now()
+      writeState.set(planningFullId, current)
+
+      try {
+        await upsertPlanningBackup(db, planningFullId, payload)
+      } catch (error) {
+        elysiaLogger.warn('Async backup write failed for planning {fullId}: {error}', { fullId: planningFullId, error })
+      }
+    }
+  }
+
+  state.inFlight = run()
     .finally(() => {
       const next = writeState.get(planningFullId)
       if (next) next.inFlight = null
     })
-
-  state.inFlight = p
-  writeState.set(planningFullId, state)
 }
 
-const REFRESH_THROTTLE_MS = Bun.env.NODE_ENV === 'test' ? 0 : 30_000
-const refreshState = new Map<string, number>()
+function getRefreshThrottleMs() {
+  return envNumber(
+    'PLANNINGS_REFRESH_THROTTLE_MS',
+    Bun.env.NODE_ENV === 'test' ? 0 : 30_000,
+  )
+}
+
+function getRefreshStateTtlMs() {
+  return envNumber(
+    'PLANNINGS_REFRESH_STATE_TTL_MS',
+    Bun.env.NODE_ENV === 'test' ? 5_000 : 60 * 60_000,
+  )
+}
+
+function getRefreshStateMaxKeys() {
+  return envNumber(
+    'PLANNINGS_REFRESH_STATE_MAX_KEYS',
+    Bun.env.NODE_ENV === 'test' ? 200 : 50_000,
+  )
+}
+
+const refreshState = new Map<string, { lastRequestedAt: number, lastTouchedAt: number }>()
+
+function pruneRefreshState(now: number, ttlMs: number, maxKeys: number) {
+  for (const [key, state] of refreshState) {
+    if (now - state.lastTouchedAt > ttlMs) refreshState.delete(key)
+  }
+  if (refreshState.size <= maxKeys) return
+  for (const [key] of refreshState) {
+    refreshState.delete(key)
+    if (refreshState.size <= maxKeys) break
+  }
+}
 
 export async function requestPlanningRefresh(planningFullId: string, priority: number = 10) {
   const now = Date.now()
-  const last = refreshState.get(planningFullId) ?? 0
-  if (now - last < REFRESH_THROTTLE_MS) return
-  refreshState.set(planningFullId, now)
+  const maxKeys = getRefreshStateMaxKeys()
+  pruneRefreshState(now, getRefreshStateTtlMs(), maxKeys)
+
+  const prev = refreshState.get(planningFullId)
+  if (!prev && refreshState.size >= maxKeys) {
+    // Hard cap to avoid unbounded memory growth in edge cases.
+    return
+  }
+  const last = prev?.lastRequestedAt ?? 0
+  if (now - last < getRefreshThrottleMs()) return
+  refreshState.set(planningFullId, { lastRequestedAt: now, lastTouchedAt: now })
+
+  // User-triggered refresh should re-enable the planning even if it was disabled by the worker.
+  await db
+    .insert(planningsRefreshStateTable)
+    .values({
+      planningFullId,
+      disabledUntil: null,
+      consecutiveFailures: 0,
+      lastFailureKind: null,
+      lastError: null,
+      updatedAt: sql`now()`,
+    })
+    .onConflictDoUpdate({
+      target: planningsRefreshStateTable.planningFullId,
+      set: {
+        disabledUntil: null,
+        consecutiveFailures: 0,
+        lastFailureKind: null,
+        lastError: null,
+        updatedAt: sql`now()`,
+      },
+    })
 
   // Dedupe by PK, bump priority, and bring next_attempt_at forward.
   await db
@@ -132,6 +270,7 @@ export async function requestPlanningRefresh(planningFullId: string, priority: n
       set: {
         priority: sql`least(100, greatest(${planningsRefreshQueueTable.priority}, excluded.priority))`,
         requestedAt: sql`excluded.requested_at`,
+        lastError: sql`null`,
         nextAttemptAt: sql`least(${planningsRefreshQueueTable.nextAttemptAt}, excluded.next_attempt_at)`,
       },
       where: sql`
@@ -139,4 +278,62 @@ export async function requestPlanningRefresh(planningFullId: string, priority: n
         or ${planningsRefreshQueueTable.priority} < excluded.priority
       `,
     })
+
+  pokeJob(JOB_ID.planningsRefreshWorker)
+}
+
+export async function enqueuePlanningRefreshBatch(planningFullIds: string[], priority: number) {
+  if (planningFullIds.length === 0) return
+
+  await db
+    .insert(planningsRefreshQueueTable)
+    .values(planningFullIds.map(planningFullId => ({
+      planningFullId,
+      priority,
+      requestedAt: sql`now()`,
+      nextAttemptAt: sql`now()`,
+    })))
+    .onConflictDoUpdate({
+      target: planningsRefreshQueueTable.planningFullId,
+      set: {
+        // Backfill: don't churn "dead" rows (max attempts or permanent HTTP 4xx).
+        priority: sql`
+          case
+            when ${planningsRefreshQueueTable.lastError} like 'http_4%' then ${planningsRefreshQueueTable.priority}
+            when ${planningsRefreshQueueTable.lastError} = 'max_attempts' then ${planningsRefreshQueueTable.priority}
+            else least(100, greatest(${planningsRefreshQueueTable.priority}, excluded.priority))
+          end
+        `,
+        requestedAt: sql`
+          case
+            when ${planningsRefreshQueueTable.lastError} like 'http_4%' then ${planningsRefreshQueueTable.requestedAt}
+            when ${planningsRefreshQueueTable.lastError} = 'max_attempts' then ${planningsRefreshQueueTable.requestedAt}
+            else excluded.requested_at
+          end
+        `,
+        nextAttemptAt: sql`
+          case
+            when ${planningsRefreshQueueTable.lastError} like 'http_4%' then ${planningsRefreshQueueTable.nextAttemptAt}
+            when ${planningsRefreshQueueTable.lastError} = 'max_attempts' then ${planningsRefreshQueueTable.nextAttemptAt}
+            else least(${planningsRefreshQueueTable.nextAttemptAt}, excluded.next_attempt_at)
+          end
+        `,
+      },
+    })
+
+  pokeJob(JOB_ID.planningsRefreshWorker)
+}
+
+export const __test = {
+  reset() {
+    if (Bun.env.NODE_ENV !== 'test') return
+    writeState.clear()
+    refreshState.clear()
+  },
+  sizes() {
+    return {
+      writeState: writeState.size,
+      refreshState: refreshState.size,
+    }
+  },
 }

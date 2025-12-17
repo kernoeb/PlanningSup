@@ -45,12 +45,30 @@ export const planningsRefreshQueueTable = pgTable('plannings_refresh_queue', {
 }, table => [
   index('plannings_refresh_queue_next_attempt_at_idx').on(table.nextAttemptAt),
   index('plannings_refresh_queue_priority_idx').on(table.priority),
+  index('plannings_refresh_queue_pick_idx').on(table.nextAttemptAt, table.priority, table.requestedAt),
+])
+
+export const planningsRefreshStateTable = pgTable('plannings_refresh_state', {
+  planningFullId: varchar('planning_full_id', { length: 255 })
+    .notNull()
+    .primaryKey()
+    .references(() => planningsTable.fullId, { onDelete: 'cascade' }),
+  disabledUntil: timestamp('disabled_until', { withTimezone: true }),
+  consecutiveFailures: integer('consecutive_failures').notNull().default(0),
+  lastFailureKind: text('last_failure_kind'),
+  lastError: text('last_error'),
+  lastAttemptAt: timestamp('last_attempt_at', { withTimezone: true }),
+  lastSuccessAt: timestamp('last_success_at', { withTimezone: true }),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
+}, table => [
+  index('plannings_refresh_state_disabled_until_idx').on(table.disabledUntil),
 ])
 
 export const table = {
   planningsTable,
   planningsBackupTable,
   planningsRefreshQueueTable,
+  planningsRefreshStateTable,
 } as const
 
 export type Table = typeof table

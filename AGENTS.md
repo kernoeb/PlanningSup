@@ -14,7 +14,7 @@ PlanningSup is a french university calendar to help students manage their schedu
 - Unit sweep: `bun run test:unit`  
 - Integration: `bun run test:integration` (builds image) or `bun run test:integration:local` with existing containers.  
 - E2E: `bun run test:e2e` (`:safari`, `:headed`, `:debug` variants).  
-- Quality gates: `bun run lint`, `bun run lint-fix`, `bun run typecheck`, `bun run coverage`.
+- Quality gates: `bun run lint`, `bun run lint-fix` (auto-fix most of the issues), `bun run typecheck`, `bun run coverage`.
 
 ## Coding Style & Naming
 - 2-space indent, LF, UTF-8, final newline (`.editorconfig`).  
@@ -44,4 +44,4 @@ PlanningSup is a french university calendar to help students manage their schedu
   - `GET /api/plannings` (tree)
   - `GET /api/plannings/:fullId?events=true[&onlyDb=true]` (returns `refreshedAt` ms; db uses `plannings_backup.updated_at`)
   - `GET /api/ops/plannings` (requires `OPS_TOKEN` via `x-ops-token`; prod returns 404 on missing/invalid)
-- Jobs: `RUN_JOBS=false` disables; `ALLOWED_JOBS` filters (default includes `plannings-backup`, `plannings-refresh-queue`). Tests can set `JOBS_PLANNINGS_BACKUP_PAUSE_MS=0`.
+- Jobs: `RUN_JOBS=false` disables; `ALLOWED_JOBS` filters (default includes `plannings-refresh-worker`, `plannings-backfill`).

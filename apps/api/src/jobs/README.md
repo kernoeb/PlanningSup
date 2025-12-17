@@ -1,20 +1,19 @@
 # Jobs System with Quiet Hours
 
-Background jobs system with automatic quiet hours functionality.
+Background jobs system with optional quiet hours (jobs can choose to respect it).
 
 ## Environment Variables
 
 | Variable                    | Default            | Description                                    |
 | --------------------------- | ------------------ | ---------------------------------------------- |
 | `RUN_JOBS`                  | `true`             | Enable/disable the job runner                  |
-| `DELAY_BETWEEN_JOBS`        | `60000`            | Delay between cycles (ms, or `60s`, `1m`, etc) |
-| `ALLOWED_JOBS`              | `plannings-backup` | Comma-separated job IDs or `*` for all         |
+| `ALLOWED_JOBS`              | `plannings-refresh-worker,plannings-backfill` | Comma-separated job IDs or `*` for all |
 | `JOBS_QUIET_HOURS`          | `21:00–06:00`      | Time range when jobs should not run            |
 | `JOBS_QUIET_HOURS_TIMEZONE` | `Europe/Paris`     | Timezone for quiet hours evaluation            |
 
 ## Quiet Hours
 
-Configure when jobs should not run:
+Configure when periodic jobs should not run:
 
 ```bash
 export JOBS_QUIET_HOURS="21:00–06:00"          # 9 PM to 6 AM (crosses midnight)
@@ -27,40 +26,12 @@ export JOBS_QUIET_HOURS_TIMEZONE="UTC"             # UTC timezone
 export JOBS_QUIET_HOURS_TIMEZONE="America/New_York" # US Eastern timezone
 ```
 
-**Behavior:**
+Quiet hours are evaluated in the configured timezone (default: Europe/Paris).
 
-- Jobs are skipped if started during quiet hours
-- Running jobs receive abort signal when quiet hours begin
-- Supports ranges crossing midnight or within same day
-- Times are evaluated in the configured timezone (default: Europe/Paris)
+## Registered jobs
 
-## Writing Jobs
-
-```typescript
-import type { Database } from '@api/db'
-import { jobsLogger } from '@api/utils/logger'
-
-export async function run(db: Database, signal?: AbortSignal) {
-  for (const item of items) {
-    // Check for abort signal (quiet hours or shutdown)
-    if (signal?.aborted) {
-      jobsLogger.info('Job aborted: {reason}', { reason: signal.reason })
-      return
-    }
-
-    await processItem(item)
-  }
-}
-```
-
-Add to `JOB_REGISTRY` in `index.ts`:
-
-```typescript
-const _JOB_REGISTRY: Record<string, JobModule['run']> = {
-  'plannings-backup': runPlanningsBackup,
-  'my-job': runMyJob,
-}
-```
+- `plannings-refresh-worker`: drains `plannings_refresh_queue` (user-triggered, low latency)
+- `plannings-backfill`: periodically enqueues missing/stale backups into the refresh queue
 
 ## Testing
 

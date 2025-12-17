@@ -1,266 +1,166 @@
 import type { Database } from '@api/db'
+
+import type { JobId } from './utils/ids'
+import type { QuietHours } from './utils/quiet-hours'
+import type { JobContext } from './utils/types'
+
 import config from '@api/config'
-
 import { jobsLogger } from '@api/utils/logger'
-// ----- Explicit job registry (whitelist) -----
-// Add new jobs by importing their run() function and registering here.
-import { run as runPlanningsBackup } from './plannings-backup'
-import { run as runPlanningsRefreshQueue } from './plannings-refresh-queue'
 
-// Environment variable names supported:
-// - RUN_JOBS: "false" | "0" disables the job runner, everything else enables it (default: enabled)
-// - DELAY_BETWEEN_JOBS: delay between cycles (supports ms number or "60s", "1m", "500ms", "1h")
-// - ALLOWED_JOBS: comma-separated list of job IDs to run, or "*" for all registered jobs.
-//   Example: ALLOWED_JOBS="plannings-backup,another-job"
-// - JOBS_QUIET_HOURS: time range when jobs should not run (default: "21:00–06:00")
-//   Examples: "21:00–06:00" (crosses midnight), "02:00–04:00" (same day), "" (disabled)
-//   Supports both en dash (–) and hyphen (-) as separators
-// - JOBS_QUIET_HOURS_TIMEZONE: timezone for quiet hours (default: "Europe/Paris")
-//   Examples: "Europe/Paris", "UTC", "America/New_York"
-//
-// A "job" is any module that exports an async `run(db: Database, signal?: AbortSignal): Promise<void>` function.
-// Jobs must be added to the JOB_REGISTRY below, which is an explicit allowlist.
-//
-// Quiet Hours Feature:
-// - Jobs are skipped if the current time falls within the configured quiet hours
-// - If quiet hours begin while a job is running, the job receives an abort signal
-// - Jobs should check the abort signal periodically and handle graceful shutdown
-// - Quiet hours can cross midnight (e.g., 21:00–06:00) or stay within the same day (e.g., 02:00–04:00)
-// - Times are evaluated in the configured timezone (default: Europe/Paris)
+import { JOB_ID } from './utils/ids'
+import { formatQuietHours, isInQuietHours, parseQuietHours } from './utils/quiet-hours'
+
+export { formatQuietHours, isInQuietHours, parseQuietHours }
+export type { QuietHours }
+export { JOB_ID } from './utils/ids'
+export { pokeJob } from './utils/poke'
 
 interface JobModule {
+  id: JobId
   name: string
-  run: (db: Database, signal?: AbortSignal) => Promise<void>
+  restartOnExit?: boolean
+  start: (db: Database, signal: AbortSignal, ctx: JobContext) => Promise<void>
 }
 
-let isRunning = false
-let isStopped = false
-let paused = false
-let currentJobAbortController: AbortController | null = null
-
-const DEFAULT_DELAY_MS = 60_000
-
-export interface QuietHours {
-  start: { hour: number, minute: number }
-  end: { hour: number, minute: number }
-  crossesMidnight: boolean
+function toPrettyName(id: string) {
+  return id.replace(/[-_.]+/g, ' ')
 }
 
-function parseDelayMs(): number {
-  const parsed = parseDurationToMs(config.jobs.delayBetweenJobs)
-  if (parsed != null) return parsed
-  return DEFAULT_DELAY_MS
-}
-
-function parseDurationToMs(input: string | undefined | null): number | null {
-  if (!input) return null
-  const raw = String(input).trim().toLowerCase()
-  if (raw === '') return null
-
-  // Pure number -> ms
-  if (/^\d+$/.test(raw)) {
-    const n = Number(raw)
-    if (Number.isFinite(n) && n >= 0) return n
-    return null
-  }
-
-  // Simple "500ms", "10s", "2m", "1h"
-  const m = /^(?<n>\d+)(?<u>ms|[smh])$/.exec(raw)
-  if (m?.groups) {
-    const n = Number(m.groups.n)
-    const unit = m.groups.u
-    if (!Number.isFinite(n)) return null
-    switch (unit) {
-      case 'ms': return n
-      case 's': return n * 1000
-      case 'm': return n * 60_000
-      case 'h': return n * 3_600_000
-    }
-  }
-
-  return null
+function waitForAbort(signal: AbortSignal) {
+  return new Promise<void>((resolve) => {
+    if (signal.aborted) return resolve()
+    signal.addEventListener('abort', () => resolve(), { once: true })
+  })
 }
 
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
 }
 
-function formatDuration(ms: number): string {
-  const parts: string[] = []
-  const hours = Math.floor(ms / 3_600_000)
-  const minutes = Math.floor((ms % 3_600_000) / 60_000)
-  const seconds = Math.floor((ms % 60_000) / 1000)
-  const millis = ms % 1000
-  if (hours) parts.push(`${hours}h`)
-  if (minutes) parts.push(`${minutes}m`)
-  if (seconds) parts.push(`${seconds}s`)
-  if (millis || parts.length === 0) parts.push(`${millis}ms`)
-  return parts.join(' ')
+let started = false
+let paused = false
+
+let resumeResolve: (() => void) | null = null
+let resumePromise: Promise<void> = Promise.resolve()
+
+const running = new Map<JobId, AbortController>()
+
+function ensureResumePromise() {
+  if (!paused) return
+  if (resumeResolve) return
+  resumePromise = new Promise<void>((resolve) => {
+    resumeResolve = resolve
+  })
 }
 
-export function parseQuietHours(input: string | undefined | null): QuietHours | null {
-  if (!input) return null
-  const raw = String(input).trim()
-  if (raw === '') return null
-
-  // Support both en dash (–) and hyphen (-) as separator
-  const match = /^(\d{1,2}):(\d{2})[–-](\d{1,2}):(\d{2})$/.exec(raw)
-  if (!match) return null
-
-  const startHour = Number(match[1])
-  const startMinute = Number(match[2])
-  const endHour = Number(match[3])
-  const endMinute = Number(match[4])
-
-  if (startHour < 0 || startHour > 23 || endHour < 0 || endHour > 23
-    || startMinute < 0 || startMinute > 59 || endMinute < 0 || endMinute > 59) {
-    return null
-  }
-
-  const start = { hour: startHour, minute: startMinute }
-  const end = { hour: endHour, minute: endMinute }
-
-  // Check if the range crosses midnight (e.g., 21:00–06:00)
-  const startMinutes = startHour * 60 + startMinute
-  const endMinutes = endHour * 60 + endMinute
-  const crossesMidnight = startMinutes >= endMinutes
-
-  return { start, end, crossesMidnight }
-}
-
-export function isInQuietHours(quietHours: QuietHours | null, now: Date = new Date(), timezone: string = config.jobs.quietHoursTimezone): boolean {
-  if (!quietHours) return false
-
-  // Convert current time to the specified timezone
-  const timeInTimezone = new Date(now.toLocaleString('en-US', { timeZone: timezone }))
-  const currentHour = timeInTimezone.getHours()
-  const currentMinute = timeInTimezone.getMinutes()
-  const currentMinutes = currentHour * 60 + currentMinute
-
-  const startMinutes = quietHours.start.hour * 60 + quietHours.start.minute
-  const endMinutes = quietHours.end.hour * 60 + quietHours.end.minute
-
-  if (quietHours.crossesMidnight) {
-    // Range crosses midnight (e.g., 21:00–06:00)
-    return currentMinutes >= startMinutes || currentMinutes < endMinutes
-  } else {
-    // Range within same day (e.g., 02:00–04:00)
-    return currentMinutes >= startMinutes && currentMinutes < endMinutes
+async function waitForResumeOrStop(signal: AbortSignal) {
+  for (;;) {
+    if (signal.aborted) return
+    if (!paused) return
+    ensureResumePromise()
+    await Promise.race([resumePromise, waitForAbort(signal)])
   }
 }
 
-export function formatQuietHours(quietHours: QuietHours | null): string {
-  if (!quietHours) return 'disabled'
-
-  const formatTime = (time: { hour: number, minute: number }) =>
-    `${String(time.hour).padStart(2, '0')}:${String(time.minute).padStart(2, '0')}`
-
-  return `${formatTime(quietHours.start)}–${formatTime(quietHours.end)}`
+const JOB_REGISTRY: Record<JobId, JobModule> = {
+  [JOB_ID.planningsRefreshWorker]: {
+    id: JOB_ID.planningsRefreshWorker,
+    name: toPrettyName(JOB_ID.planningsRefreshWorker),
+    restartOnExit: true,
+    async start(db, signal, ctx) {
+      const mod = await import('./plannings-refresh-worker')
+      return mod.start(db, signal, ctx)
+    },
+  },
+  [JOB_ID.planningsBackfill]: {
+    id: JOB_ID.planningsBackfill,
+    name: toPrettyName(JOB_ID.planningsBackfill),
+    restartOnExit: true,
+    async start(db, signal, ctx) {
+      const mod = await import('./plannings-backfill')
+      return mod.start(db, signal, ctx)
+    },
+  },
 }
 
-function toPrettyName(id: string) {
-  // Turn "foo/bar-baz.ts" into "bar baz"
-  const base = id.replace(/\.[^.]+$/, '').split('/').pop() ?? id
-  return base.replace(/[-_.]+/g, ' ')
-}
-
-function normalizeError(error: unknown) {
-  if (error instanceof Error) {
-    return {
-      name: error.name,
-      message: error.message,
-      stack: error.stack,
-    }
-  }
-  return { message: String(error) }
-}
-
-const JOB_REGISTRY: Record<string, JobModule['run']> = {
-  // id: run function
-  'plannings-refresh-queue': runPlanningsRefreshQueue,
-  'plannings-backup': runPlanningsBackup,
-}
-
-const DEFAULT_ALLOWED_JOBS = Object.freeze<string[]>(['plannings-refresh-queue', 'plannings-backup'])
-
-function readAllowedJobIdsFromEnv(): readonly string[] {
+function readAllowedJobIdsFromEnv(): readonly JobId[] {
   const raw = config.jobs.allowedJobs
-  if (!raw) return DEFAULT_ALLOWED_JOBS
-  const ids = raw.split(',').map(s => s.trim()).filter(Boolean)
-  if (ids.length === 1 && ids[0] === '*') {
-    return Object.keys(JOB_REGISTRY)
+  if (!raw) {
+    return Object.freeze<JobId[]>([JOB_ID.planningsRefreshWorker, JOB_ID.planningsBackfill])
+  }
+  const ids = raw.split(',').map(s => s.trim()).filter(Boolean) as JobId[]
+  if (ids.length === 1 && ids[0] === ('*' as JobId)) {
+    return Object.keys(JOB_REGISTRY) as JobId[]
   }
   return ids
 }
 
 function resolveAllowedJobs(): JobModule[] {
   const requested = readAllowedJobIdsFromEnv()
-  const jobs: JobModule[] = []
+  const resolved: JobModule[] = []
 
   for (const id of requested) {
-    const run = JOB_REGISTRY[id]
-    if (!run) {
+    const job = JOB_REGISTRY[id]
+    if (!job) {
       jobsLogger.warn('Requested job id not in registry: {id}', { id })
       continue
     }
-    jobs.push({ name: toPrettyName(id), run })
+    resolved.push(job)
   }
 
-  if (jobs.length === 0) {
+  if (resolved.length === 0) {
     jobsLogger.warn('No jobs resolved from allowlist. Requested: {requested}', {
       requested: requested.join(', ') || '(none)',
     })
   } else {
     jobsLogger.info('Resolved {count} job(s) from allowlist: {names}', {
-      count: jobs.length,
-      names: jobs.map(j => j.name).join(', '),
+      count: resolved.length,
+      names: resolved.map(j => j.name).join(', '),
     })
   }
 
-  return jobs
+  return resolved
 }
 
-export interface JobsController {
+export interface JobsControls {
   stop: () => void
   pause: () => void
   resume: () => void
   isPaused: () => boolean
-  getDelayMs: () => number
   getQuietHours: () => QuietHours | null
   getTimezone: () => string
   isInQuietHours: () => boolean
 }
 
-const controller: JobsController = {
+export interface JobsApi extends JobsControls {
+  start: (db: Database) => JobsControls
+}
+
+const controller: JobsControls = {
   stop() {
-    if (!isRunning) {
-      jobsLogger.warn('Jobs runner is not running.')
-      return
+    for (const ac of running.values()) {
+      ac.abort('Jobs system stopping')
     }
-    isStopped = true
-    // Abort any currently running job
-    if (currentJobAbortController) {
-      currentJobAbortController.abort('Jobs system stopping')
-    }
-    jobsLogger.info('Stop signal received for jobs loop.')
+    running.clear()
   },
   pause() {
     if (!paused) {
       paused = true
-      jobsLogger.info('Jobs runner paused.')
+      ensureResumePromise()
+      jobsLogger.info('Jobs paused.')
     }
   },
   resume() {
     if (paused) {
       paused = false
-      jobsLogger.info('Jobs runner resumed.')
+      resumeResolve?.()
+      resumeResolve = null
+      resumePromise = Promise.resolve()
+      jobsLogger.info('Jobs resumed.')
     }
   },
   isPaused() {
     return paused
-  },
-  getDelayMs() {
-    return parseDelayMs()
   },
   getQuietHours() {
     return parseQuietHours(config.jobs.quietHours)
@@ -275,156 +175,94 @@ const controller: JobsController = {
   },
 }
 
-/**
- * Starts the jobs loop in the background.
- * - Loads job modules from the explicit allowlist (no directory reads).
- * - Runs each job's `run()` sequentially.
- * - Logs duration per job and total cycle duration.
- * - Continues indefinitely with a delay between cycles (configurable via env).
- * - Supports pause/resume via exported controller methods.
- * - If RUN_JOBS=false, this function logs and returns a no-op controller.
- */
-export function startJobs(db: Database): JobsController {
-  if (isRunning) {
-    jobsLogger.warn('Jobs runner is already running.')
-    return controller
-  }
+export function startJobs(db: Database): JobsControls {
+  if (started) return controller
+  started = true
 
   if (!config.jobs.runJobs) {
-    jobsLogger.info('Jobs runner disabled by RUN_JOBS=false, not starting.')
+    jobsLogger.info('Jobs disabled by RUN_JOBS=false, not starting.')
     return controller
   }
 
-  isRunning = true
-  isStopped = false
-  const delayMs = parseDelayMs()
   const quietHours = parseQuietHours(config.jobs.quietHours)
   const timezone = config.jobs.quietHoursTimezone
+  jobsLogger.info('Starting jobs (quiet hours: {quietHours} in {timezone})', {
+    quietHours: formatQuietHours(quietHours),
+    timezone,
+  })
 
-  ;(async () => {
-    jobsLogger.info('Starting jobs loop with delay {delay} ({ms} ms), quiet hours: {quietHours} ({timezone})', {
-      delay: formatDuration(delayMs),
-      ms: delayMs,
-      quietHours: formatQuietHours(quietHours),
-      timezone,
-    })
+  const ctx: JobContext = {
+    isPaused: () => paused,
+    quietHours,
+    timezone,
+    waitForResumeOrStop,
+  }
 
-    const jobs = resolveAllowedJobs()
+  const jobs = resolveAllowedJobs()
+  for (const job of jobs) {
+    const ac = new AbortController()
+    running.set(job.id, ac)
 
-    for (;;) {
-      if (isStopped) break
-      const iterationStart = Date.now()
+    ;(async () => {
+      let backoffMs = 2_000
+      const maxBackoffMs = 60_000
 
-      // Wait while paused (in 5s ticks to allow timely resume/stop)
       for (;;) {
-        if (isStopped || !paused) break
-        jobsLogger.info('Jobs are paused. Waiting to resume...')
-        await sleep(5_000)
-      }
-      if (isStopped) break
-
-      // Run each job sequentially
-      for (const job of jobs) {
-        if (isStopped) break
-
-        // Check quiet hours before starting job
-        if (isInQuietHours(quietHours, new Date(), timezone)) {
-          jobsLogger.info('Skipping job {name} due to quiet hours ({quietHours} in {timezone})', {
-            name: job.name,
-            quietHours: formatQuietHours(quietHours),
-            timezone,
-          })
-          continue
-        }
-
-        const t0 = Date.now()
-        currentJobAbortController = new AbortController()
+        if (ac.signal.aborted) break
 
         try {
           jobsLogger.info('Starting job: {name}', { name: job.name })
+          await job.start(db, ac.signal, ctx)
 
-          // Start monitoring for quiet hours during job execution
-          const quietHoursChecker = setInterval(() => {
-            if (isInQuietHours(quietHours, new Date(), timezone) && currentJobAbortController && !currentJobAbortController.signal.aborted) {
-              jobsLogger.info('Aborting job {name} due to quiet hours starting', { name: job.name })
-              currentJobAbortController.abort('Quiet hours started')
-            }
-          }, 30_000) // Check every 30 seconds
-
-          await job.run(db, currentJobAbortController.signal)
-          clearInterval(quietHoursChecker)
-
-          const dur = Date.now() - t0
-          jobsLogger.info('Finished job: {name} in {duration} ({ms} ms)', {
-            name: job.name,
-            duration: formatDuration(dur),
-            ms: dur,
-          })
-        } catch (err) {
-          const dur = Date.now() - t0
-          if (currentJobAbortController?.signal.aborted) {
-            jobsLogger.info('Job aborted: {name} after {duration} (reason: {reason})', {
+          if (ac.signal.aborted) {
+            jobsLogger.info('Job aborted: {name} (reason: {reason})', {
               name: job.name,
-              duration: formatDuration(dur),
-              reason: currentJobAbortController.signal.reason || 'Unknown',
+              reason: ac.signal.reason || 'unknown',
             })
-          } else {
-            jobsLogger.error('Job failed: {name} after {duration}', {
-              name: job.name,
-              duration: formatDuration(dur),
-              error: normalizeError(err),
-            })
+            break
           }
-          // Continue to next job
-        } finally {
-          currentJobAbortController = null
+
+          jobsLogger.warn('Job exited unexpectedly: {name}', { name: job.name })
+        } catch (error) {
+          if (ac.signal.aborted) {
+            jobsLogger.info('Job aborted: {name} (reason: {reason})', {
+              name: job.name,
+              reason: ac.signal.reason || 'unknown',
+            })
+            break
+          }
+          jobsLogger.error('Job crashed: {name}', { name: job.name, error })
         }
+
+        if (!job.restartOnExit) {
+          jobsLogger.info('Not restarting job: {name}', { name: job.name })
+          break
+        }
+
+        const jitter = Bun.env.NODE_ENV === 'test' ? 0 : Math.floor(Math.random() * 500)
+        const delay = Math.min(maxBackoffMs, backoffMs) + jitter
+        jobsLogger.warn('Restarting job {name} in {delay}ms', { name: job.name, delay })
+        await Promise.race([sleep(delay), waitForAbort(ac.signal)])
+        backoffMs = Math.min(maxBackoffMs, backoffMs * 2)
       }
 
-      const iterDur = Date.now() - iterationStart
-      jobsLogger.info('Jobs cycle completed in {duration} ({ms} ms)', {
-        duration: formatDuration(iterDur),
-        ms: iterDur,
-      })
+      running.delete(job.id)
+    })()
+  }
 
-      // Sleep until next run, unless stopped/paused interrupts in between
-      const wakeAt = Date.now() + delayMs
-      for (;;) {
-        if (isStopped || Date.now() >= wakeAt) break
-        // If paused during sleep, break and go to pause loop
-        if (paused) break
-        const remaining = Math.max(0, wakeAt - Date.now())
-        await sleep(Math.min(remaining, 1_000))
-      }
-    }
-
-    jobsLogger.info('Jobs loop stopped.')
-    isRunning = false
-  })().catch((err) => {
-    jobsLogger.error('Fatal error in jobs loop', { error: normalizeError(err) })
-    isRunning = false
-  })
+  if (jobs.length === 0) {
+    jobsLogger.warn('No jobs enabled by allowlist.')
+  }
 
   return controller
 }
 
-export const jobs: {
-  start: (db: Database) => JobsController
-  stop: () => void
-  pause: () => void
-  resume: () => void
-  isPaused: () => boolean
-  getDelayMs: () => number
-  getQuietHours: () => QuietHours | null
-  getTimezone: () => string
-  isInQuietHours: () => boolean
-} = {
+export const jobs: JobsApi = {
   start: startJobs,
   stop: controller.stop,
   pause: controller.pause,
   resume: controller.resume,
   isPaused: controller.isPaused,
-  getDelayMs: controller.getDelayMs,
   getQuietHours: controller.getQuietHours,
   getTimezone: controller.getTimezone,
   isInQuietHours: controller.isInQuietHours,
