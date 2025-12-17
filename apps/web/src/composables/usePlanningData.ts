@@ -2,7 +2,7 @@ import type { Events, PlanningWithEvents } from '@libs'
 import type { Ref } from 'vue'
 import { client } from '@libs'
 import { useIntervalFn, useOnline, useWindowFocus } from '@vueuse/core'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useSharedSettings } from './useSettings'
 import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
 
@@ -23,6 +23,8 @@ export interface PlanningDataStore {
   events: Ref<EventWithFullId[]>
   loading: Ref<boolean>
   refreshing: Ref<boolean>
+  syncing: Ref<boolean>
+  hasEvents: Ref<boolean>
   error: Ref<string | null>
   networkFailures: Ref<NetworkFailure[]>
   refresh: () => Promise<void>
@@ -46,11 +48,16 @@ function createPlanningDataStore(): PlanningDataStore {
   const events = ref<EventWithFullId[]>([])
   const loading = ref(false)
   const refreshing = ref(false)
+  const syncing = computed(() => loading.value || refreshing.value)
+  const hasEvents = computed(() => (events.value?.length ?? 0) > 0)
   const error = ref<string | null>(null)
   const networkFailures = ref<NetworkFailure[]>([])
 
   // Prevent race conditions when selection changes quickly
   let requestToken = 0
+  // Track which plannings have already been hydrated into memory (DB or network).
+  // For these, refreshes should be network-first to avoid UI jumping back to DB snapshots.
+  const hydratedFullIds = new Set<string>()
 
   // Background refresh management
   const focused = useWindowFocus()
@@ -106,6 +113,12 @@ function createPlanningDataStore(): PlanningDataStore {
     return { success: null, title, error: `${fullId}: no events`, timestamp, reason: reason || 'no_data' }
   }
 
+  function pruneToSelection(fullIds: string[]) {
+    const set = new Set(fullIds)
+    events.value = events.value.filter(e => set.has(e.fullId))
+    titles.value = Object.fromEntries(Object.entries(titles.value).filter(([id]) => set.has(id)))
+  }
+
   async function refresh(_reason: string = 'manual') {
     const fullIds = [...planningFullIds.value]
 
@@ -118,9 +131,15 @@ function createPlanningDataStore(): PlanningDataStore {
       return
     }
 
+    pruneToSelection(fullIds)
+
     lastRefreshAt.value = Date.now()
-    loading.value = true
-    refreshing.value = false
+    const hasAnyDataInMemory = events.value.length > 0 || Object.keys(titles.value).length > 0
+    const needsDbHydrationIds = fullIds.filter(id => !hydratedFullIds.has(id))
+    const shouldHydrateFromDb = isOnline.value && needsDbHydrationIds.length > 0
+
+    loading.value = !hasAnyDataInMemory && shouldHydrateFromDb
+    refreshing.value = !loading.value
     error.value = null
     networkFailures.value = []
     const token = ++requestToken
@@ -128,13 +147,13 @@ function createPlanningDataStore(): PlanningDataStore {
     try {
       const dbSuccesses: Array<PlanningWithEvents> = []
       const dbErrors: string[] = []
-      const titlesMap: Record<string, string> = {}
+      const titlesMap: Record<string, string> = { ...titles.value }
       const dbTimestamps: Record<string, number | null> = {}
 
       // Phase 1: Fast database-only fetch (parallel) - skip when offline
-      if (isOnline.value) {
+      if (shouldHydrateFromDb) {
         const dbResults = await Promise.allSettled(
-          fullIds.map(fullId =>
+          needsDbHydrationIds.map(fullId =>
             client.api.plannings({ fullId }).get({
               query: {
                 events: 'true',
@@ -148,8 +167,8 @@ function createPlanningDataStore(): PlanningDataStore {
         // Ignore outdated responses
         if (token !== requestToken) return
 
-        for (let i = 0; i < fullIds.length; i++) {
-          const id = fullIds[i]!
+        for (let i = 0; i < needsDbHydrationIds.length; i++) {
+          const id = needsDbHydrationIds[i]!
           const { success, title, error: err, timestamp } = processResponse(id, dbResults[i])
 
           if (title) titlesMap[id] = title
@@ -158,11 +177,17 @@ function createPlanningDataStore(): PlanningDataStore {
           dbTimestamps[id] = timestamp
         }
 
-        // Update UI immediately with database data
+        // Update UI immediately with DB data for newly-added plannings only.
         titles.value = { ...titlesMap }
-        events.value = dbSuccesses.length > 0
-          ? dbSuccesses.flatMap(s => (s.events || []).map(e => ({ ...e, fullId: s.fullId })))
-          : []
+
+        for (const s of dbSuccesses) {
+          const id = s.fullId
+          // Replace events for this planningId and add new ones
+          const otherEvents = events.value.filter(e => e.fullId !== id)
+          const newEventsWithFullId = (s.events || []).map(e => ({ ...e, fullId: id }))
+          events.value = [...otherEvents, ...newEventsWithFullId]
+          hydratedFullIds.add(id)
+        }
       }
 
       // Mark loading as done after DB phase, start refreshing phase
@@ -204,6 +229,7 @@ function createPlanningDataStore(): PlanningDataStore {
             if (isFromNetwork) {
               // Directly replace events for this planning
               replaceEventsForPlanning(fullId, success.events || [])
+              hydratedFullIds.add(fullId)
             } else {
               failures.push({
                 fullId,
@@ -229,8 +255,16 @@ function createPlanningDataStore(): PlanningDataStore {
           if (token !== requestToken) return
           refreshing.value = false
 
-          if (dbErrors.length === fullIds.length && failures.length === fullIds.length) {
-            error.value = `All plannings failed to load. Details: ${dbErrors.join(' | ')}`
+          const allNetworkFailed = failures.length === fullIds.length
+          const allDbFailed = shouldHydrateFromDb
+            && needsDbHydrationIds.length === fullIds.length
+            && dbErrors.length === fullIds.length
+            && dbSuccesses.length === 0
+
+          if ((allDbFailed && allNetworkFailed) || (!shouldHydrateFromDb && allNetworkFailed && events.value.length === 0)) {
+            const failureDetails = failures.map(f => `${f.fullId}: ${f.reason || 'network_error'}`)
+            const details = [...dbErrors, ...failureDetails].join(' | ')
+            error.value = `All plannings failed to load. Details: ${details}`
           } else {
             error.value = null
           }
@@ -280,12 +314,17 @@ function createPlanningDataStore(): PlanningDataStore {
     void refresh('settings.queryParams')
   })
 
+  // @ts-expect-error - for debugging purposes
+  globalThis.__refresh = refresh
+
   return {
     planningFullIds,
     titles,
     events,
     loading,
     refreshing,
+    syncing,
+    hasEvents,
     error,
     networkFailures,
     refresh,

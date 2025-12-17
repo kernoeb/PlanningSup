@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { onKeyStroke, useOnline } from '@vueuse/core'
+import CurrentPlanningBadge from '@web/components/layout/CurrentPlanningBadge.vue'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
@@ -7,8 +8,14 @@ import { usePlanningPickerController } from '@web/composables/usePlanningPickerC
 import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
 import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
 
-const { titles, planningFullIds, networkFailures, refreshing } = usePlanningData()
+const { titles, planningFullIds, networkFailures, syncing, hasEvents } = usePlanningData()
 const isOnline = useOnline()
+
+const isInitialLoading = computed(() => planningFullIds.value.length > 0 && syncing.value && !hasEvents.value)
+const showBackgroundSync = computed(() => syncing.value && hasEvents.value)
+
+// Network failure indicator
+const hasNetworkFailures = computed(() => networkFailures.value.length > 0)
 
 const selectedCount = computed(() => planningFullIds.value.length)
 const singleSelectedTitle = computed(() => {
@@ -17,7 +24,25 @@ const singleSelectedTitle = computed(() => {
   if (!id) return ''
   return titles.value[id] ?? ''
 })
+const showDesktopBadge = computed(() => !isInitialLoading.value && selectedCount.value > 0)
+const desktopBadgeLabel = computed(() => {
+  if (selectedCount.value === 1) return singleSelectedTitle.value || '...'
+  return `${selectedCount.value} plannings sélectionnés`
+})
+const desktopBadgeStatus = computed<'offline' | 'warning' | 'sync' | null>(() => {
+  if (!isOnline.value) return 'offline'
+  if (hasNetworkFailures.value) return 'warning'
+  if (showBackgroundSync.value) return 'sync'
+  return null
+})
+const desktopBadgeStatusTooltip = computed(() => {
+  if (desktopBadgeStatus.value === 'offline') return 'Hors ligne'
+  if (desktopBadgeStatus.value === 'warning') return selectedCount.value > 1 ? 'Certains plannings sont hors ligne' : 'Données hors ligne'
+  if (desktopBadgeStatus.value === 'sync') return 'Mise à jour en arrière-plan'
+  return undefined
+})
 const selectedSummaryLabel = computed(() => {
+  if (isInitialLoading.value) return 'Chargement…'
   if (selectedCount.value === 0) return '...'
   if (selectedCount.value === 1) return singleSelectedTitle.value || '...'
   return `${selectedCount.value} plannings sélectionnés`
@@ -30,9 +55,7 @@ const selectedPlanningItems = computed(() =>
 const selectedTitlesTooltip = computed(() =>
   selectedPlanningItems.value.map(i => i.label).join(' + '),
 )
-
-// Network failure indicator
-const hasNetworkFailures = computed(() => networkFailures.value.length > 0)
+const desktopBadgeTooltip = computed(() => (selectedCount.value > 1 ? selectedTitlesTooltip.value : undefined))
 
 const planningPicker = useTemplateRef('planningPicker')
 const planningPickerController = usePlanningPickerController()
@@ -100,19 +123,44 @@ onKeyStroke(
         <div class="flex flex-col">
           <div>PlanningSup</div>
           <div class="text-xs font-light flex items-center gap-1 sm:hidden">
-            <span>{{ selectedSummaryLabel }}</span>
-            <button
-              v-if="selectedCount > 1"
-              id="mobile-selected-plannings-info"
-              class="badge badge-soft badge-xs border-base-300 cursor-pointer select-none"
-              type="button"
-              @click.prevent.stop="openSelectedInfo"
-            >
-              i
-            </button>
-            <IconWifiOff v-if="!isOnline" class="size-3 text-warning" />
-            <IconWarning v-else-if="hasNetworkFailures" class="size-3 text-warning" />
-            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
+            <Transition mode="out-in" name="fade-fast">
+              <div :key="isInitialLoading ? 'loading' : 'loaded'" class="flex items-center gap-1">
+                <div
+                  class="truncate max-w-70"
+                  :class="{ 'skeleton skeleton-text': isInitialLoading }"
+                >
+                  {{ selectedSummaryLabel }}
+                </div>
+
+                <template v-if="!isInitialLoading">
+                  <button
+                    v-if="selectedCount > 1"
+                    id="mobile-selected-plannings-info"
+                    class="badge badge-soft badge-xs border-base-300 cursor-pointer select-none"
+                    type="button"
+                    @click.prevent.stop="openSelectedInfo"
+                  >
+                    i
+                  </button>
+
+                  <Transition mode="out-in" name="fade">
+                    <IconWifiOff v-if="!isOnline" key="offline" class="size-3 text-warning" />
+                    <IconWarning v-else-if="hasNetworkFailures" key="warning" class="size-3 text-warning" />
+                    <span
+                      v-else-if="showBackgroundSync"
+                      key="refresh"
+                      class="tooltip tooltip-bottom before:z-50 after:z-50"
+                      data-tip="Mise à jour en arrière-plan"
+                    >
+                      <IconRefresh class="size-3 animate-spin opacity-50" />
+                    </span>
+                    <span v-else key="empty" aria-hidden="true" class="inline-block w-3" />
+                  </Transition>
+                </template>
+
+                <span v-else aria-hidden="true" class="inline-block w-3" />
+              </div>
+            </Transition>
           </div>
         </div>
       </div>
@@ -128,32 +176,15 @@ onKeyStroke(
           </template>
         </PlanningPicker>
         <Transition mode="out-in" name="fade">
-          <span v-if="selectedCount === 1" id="current-planning-badge" class="badge truncate max-w-88 h-6 hidden sm:inline-flex gap-1">
-            {{ singleSelectedTitle || '...' }}
-            <span v-if="!isOnline" class="tooltip tooltip-bottom" data-tip="Hors ligne">
-              <IconWifiOff class="size-4 text-warning" />
-            </span>
-            <span v-else-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Données hors ligne">
-              <IconWarning class="size-4 text-warning" />
-            </span>
-            <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
-          </span>
-          <div
-            v-else-if="selectedCount > 1"
-            class="tooltip tooltip-bottom hidden sm:inline-flex relative before:z-50 after:z-50"
-            :data-tip="selectedTitlesTooltip"
-          >
-            <span id="current-planning-badge" class="badge truncate max-w-88 h-6 gap-1">
-              {{ selectedCount }} plannings sélectionnés
-              <span v-if="!isOnline" class="tooltip tooltip-bottom" data-tip="Hors ligne">
-                <IconWifiOff class="size-4 text-warning" />
-              </span>
-              <span v-else-if="hasNetworkFailures" class="tooltip tooltip-bottom" data-tip="Certains plannings sont hors ligne">
-                <IconWarning class="size-4 text-warning" />
-              </span>
-              <IconRefresh v-else-if="refreshing" class="size-3 animate-spin opacity-50" />
-            </span>
+          <div v-if="showDesktopBadge" key="badge" class="hidden sm:inline-flex">
+            <CurrentPlanningBadge
+              :label="desktopBadgeLabel"
+              :status="desktopBadgeStatus"
+              :status-tooltip="desktopBadgeStatusTooltip"
+              :tooltip="desktopBadgeTooltip"
+            />
           </div>
+          <span v-else key="empty" aria-hidden="true" class="hidden sm:inline-flex h-6" />
         </Transition>
       </div>
     </div>
@@ -200,3 +231,20 @@ onKeyStroke(
     </dialog>
   </div>
 </template>
+
+<style scoped>
+.fade-fast-enter-active,
+.fade-fast-leave-active {
+  transition: opacity 0.15s ease;
+}
+
+.fade-fast-enter-from,
+.fade-fast-leave-to {
+  opacity: 0;
+}
+
+.fade-fast-enter-to,
+.fade-fast-leave-from {
+  opacity: 1;
+}
+</style>

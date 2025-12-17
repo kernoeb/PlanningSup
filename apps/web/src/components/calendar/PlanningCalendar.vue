@@ -33,7 +33,6 @@ const {
   currentDate,
   currentView,
   nbHours,
-  loading,
   selectedEvent,
   closeEventModal,
   planningTitles,
@@ -207,10 +206,12 @@ defineExpose({ reload })
               S{{ weekNumber }}
             </span>
 
-            <span v-if="loading" id="calendar-loading-spinner" class="loading loading-spinner loading-sm" />
-            <span v-else-if="nbHours != null" id="calendar-hours-display" class="text-xs text-gray-500">
-              {{ nbHours }}
-            </span>
+            <Transition mode="out-in" name="fade">
+              <span v-if="nbHours != null" id="calendar-hours-display" key="hours" class="text-xs text-gray-500">
+                {{ nbHours }}
+              </span>
+              <span v-else key="no-hours" aria-hidden="true" class="inline-block w-10" />
+            </Transition>
           </div>
 
           <!-- Right section: View selector + Date picker -->
@@ -255,7 +256,7 @@ defineExpose({ reload })
       </template>
     </ScheduleXCalendar>
 
-    <div v-else class="h-full flex items-center justify-center px-6">
+    <div v-if="!calendarApp" class="h-full flex items-center justify-center px-6">
       <div class="max-w-md text-center space-y-3">
         <div class="text-xl font-semibold">
           Aucun planning sélectionné
