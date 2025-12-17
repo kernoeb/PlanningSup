@@ -11,9 +11,8 @@ function truncate(value: string, max: number) {
 function normalizeFetchError(error: Error | string): { name: string, message: string, code: string | null } {
   if (typeof error === 'string') return { name: 'Error', message: error, code: null }
 
-  const code = typeof (error as Error & { code?: string }).code === 'string'
-    ? (error as Error & { code?: string }).code ?? null
-    : null
+  const { code: rawCode } = error as Error & { code?: unknown }
+  const code = typeof rawCode === 'string' ? rawCode : null
 
   return { name: error.name, message: error.message, code }
 }

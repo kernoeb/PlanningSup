@@ -1,5 +1,3 @@
-import type { Mock } from 'bun:test'
-
 import { mock } from 'bun:test'
 
 type CalEvent = {
