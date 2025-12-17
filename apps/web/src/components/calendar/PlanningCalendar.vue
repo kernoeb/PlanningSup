@@ -8,8 +8,7 @@ import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { Calendar as IconCalendar, CalendarCheck2 as IconCalendarCheck2, ChevronDown as IconChevronDown, ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from 'lucide-vue-next'
-import { computed, ref, useTemplateRef } from 'vue'
-import 'cally'
+import { computed, defineAsyncComponent, ref, useTemplateRef } from 'vue'
 
 const settings = useSharedSettings()
 const allowedTimezones = getSupportedTimezones()
@@ -115,13 +114,22 @@ const formattedDateShort = computed(() => {
   return date.toLocaleString('fr-FR', { day: 'numeric', month: 'numeric', year: 'numeric' })
 })
 
+const AsyncCallyDatePicker = defineAsyncComponent(() => import('@web/components/calendar/CallyDatePicker.vue'))
+const isDatePickerOpen = ref(false)
+
 const datePickerDropdown = useTemplateRef<HTMLDetailsElement>('datePickerDropdown')
 const viewDropdown = useTemplateRef<HTMLDetailsElement>('viewDropdown')
 
 function closeDatePicker() {
+  isDatePickerOpen.value = false
   if (datePickerDropdown.value) {
     datePickerDropdown.value.open = false
   }
+}
+
+function onDatePickerToggle(e: Event) {
+  const details = e.currentTarget as HTMLDetailsElement | null
+  isDatePickerOpen.value = Boolean(details?.open)
 }
 
 function closeViewDropdown() {
@@ -234,21 +242,15 @@ defineExpose({ reload })
               </div>
             </details>
 
-            <details ref="datePickerDropdown" class="dropdown dropdown-end hidden md:block">
+            <details ref="datePickerDropdown" class="dropdown dropdown-end hidden md:block" @toggle="onDatePickerToggle">
               <summary class="btn btn-outline font-normal border-base-200">
                 {{ formattedDateShort }} <IconChevronDown :size="16" />
               </summary>
               <div class="dropdown-content z-50 mt-1">
-                <!-- eslint-disable vue/no-deprecated-slot-attribute -- Web component requires native slot attribute -->
-                <calendar-date
-                  v-model.lazy="callyDateModel"
-                  class="cally bg-base-100 border border-base-200 shadow-lg rounded-box"
-                >
-                  <IconChevronLeft slot="previous" aria-label="Précédent" :size="16" />
-                  <IconChevronRight slot="next" aria-label="Suivant" :size="16" />
-                  <calendar-month />
-                </calendar-date>
-                <!-- eslint-enable vue/no-deprecated-slot-attribute -->
+                <AsyncCallyDatePicker
+                  v-if="isDatePickerOpen"
+                  v-model="callyDateModel"
+                />
               </div>
             </details>
           </div>
