@@ -2,6 +2,7 @@ import type { Events, PlanningWithEvents } from '@libs'
 import type { Ref } from 'vue'
 import { client } from '@libs'
 import { useIntervalFn, useOnline, useWindowFocus } from '@vueuse/core'
+import { sortPlanningEventsDeterministically } from '@web/utils/sort-planning-events'
 import { computed, ref, watch } from 'vue'
 import { useSharedSettings } from './useSettings'
 import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
@@ -45,13 +46,59 @@ function createPlanningDataStore(): PlanningDataStore {
   const isOnline = useOnline()
 
   const titles = ref<Record<string, string>>({})
-  const events = ref<EventWithFullId[]>([])
+  const eventsByFullId = ref<Record<string, EventWithFullId[]>>({})
+  const events = computed(() => {
+    const fullIds = planningFullIds.value ?? []
+    const byId = eventsByFullId.value
+    const merged: EventWithFullId[] = []
+    for (const fullId of fullIds) {
+      const items = byId[fullId]
+      if (items?.length) merged.push(...items)
+    }
+    return merged
+  })
   const loading = ref(false)
   const refreshing = ref(false)
   const syncing = computed(() => loading.value || refreshing.value)
   const hasEvents = computed(() => (events.value?.length ?? 0) > 0)
   const error = ref<string | null>(null)
   const networkFailures = ref<NetworkFailure[]>([])
+
+  const debugEnabled = computed(() => {
+    if (!import.meta.env.DEV) return false
+    try {
+      return localStorage.getItem('planning:debug') === '1'
+    } catch {
+      return false
+    }
+  })
+
+  function debugLog(message: string, details?: Record<string, unknown>) {
+    if (!debugEnabled.value) return
+    console.debug(`[planning-data] ${message}`, details ?? {})
+  }
+
+  function debugOrderSnapshot(message: string, currentPlanningOrder: readonly string[]) {
+    if (!debugEnabled.value) return
+
+    const byId = eventsByFullId.value
+    const counts = Object.fromEntries(currentPlanningOrder.map(id => [id, byId[id]?.length ?? 0]))
+    const head: string[] = []
+    for (const id of currentPlanningOrder) {
+      for (const e of byId[id] ?? []) {
+        head.push(`${id}|${e.uid}|${String(e.startDate)}|${String(e.endDate)}`)
+        if (head.length >= 20) break
+      }
+      if (head.length >= 20) break
+    }
+
+    debugLog(message, {
+      planningOrder: [...currentPlanningOrder],
+      counts,
+      head,
+      total: Object.values(counts).reduce((a, b) => a + b, 0),
+    })
+  }
 
   // Prevent race conditions when selection changes quickly
   let requestToken = 0
@@ -120,7 +167,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
   function pruneToSelection(fullIds: string[]) {
     const set = new Set(fullIds)
-    events.value = events.value.filter(e => set.has(e.fullId))
+    eventsByFullId.value = Object.fromEntries(Object.entries(eventsByFullId.value).filter(([id]) => set.has(id)))
     titles.value = Object.fromEntries(Object.entries(titles.value).filter(([id]) => set.has(id)))
   }
 
@@ -129,7 +176,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
     if (fullIds.length === 0) {
       titles.value = {}
-      events.value = []
+      eventsByFullId.value = {}
       error.value = null
       networkFailures.value = []
       refreshing.value = false
@@ -137,9 +184,10 @@ function createPlanningDataStore(): PlanningDataStore {
     }
 
     pruneToSelection(fullIds)
+    debugOrderSnapshot(`refresh:start reason=${_reason}`, fullIds)
 
     lastRefreshAt.value = Date.now()
-    const hasAnyDataInMemory = events.value.length > 0 || Object.keys(titles.value).length > 0
+    const hasAnyDataInMemory = Object.keys(eventsByFullId.value).length > 0 || Object.keys(titles.value).length > 0
     const needsDbHydrationIds = fullIds.filter(id => !hydratedFullIds.has(id))
     const shouldHydrateFromDb = isOnline.value && needsDbHydrationIds.length > 0
 
@@ -157,6 +205,7 @@ function createPlanningDataStore(): PlanningDataStore {
 
       // Phase 1: Fast database-only fetch (parallel) - skip when offline
       if (shouldHydrateFromDb) {
+        debugLog('db:fetch:start', { fullIds: needsDbHydrationIds })
         const dbResults = await Promise.allSettled(
           needsDbHydrationIds.map(fullId =>
             client.api.plannings({ fullId }).get({
@@ -171,6 +220,8 @@ function createPlanningDataStore(): PlanningDataStore {
 
         // Ignore outdated responses
         if (token !== requestToken) return
+
+        const nextEventsByFullId: Record<string, EventWithFullId[]> = { ...eventsByFullId.value }
 
         for (let i = 0; i < needsDbHydrationIds.length; i++) {
           const id = needsDbHydrationIds[i]!
@@ -187,12 +238,13 @@ function createPlanningDataStore(): PlanningDataStore {
 
         for (const s of dbSuccesses) {
           const id = s.fullId
-          // Replace events for this planningId and add new ones
-          const otherEvents = events.value.filter(e => e.fullId !== id)
           const newEventsWithFullId = (s.events || []).map(e => ({ ...e, fullId: id }))
-          events.value = [...otherEvents, ...newEventsWithFullId]
+          nextEventsByFullId[id] = sortPlanningEventsDeterministically(newEventsWithFullId, [id])
           hydratedFullIds.add(id)
         }
+
+        eventsByFullId.value = nextEventsByFullId
+        debugOrderSnapshot('db:apply:done', fullIds)
       }
 
       // Mark loading as done after DB phase, start refreshing phase
@@ -204,10 +256,11 @@ function createPlanningDataStore(): PlanningDataStore {
       let completedCount = 0
 
       function replaceEventsForPlanning(fullId: string, newEvents: Events) {
-        // Remove old events for this planningId and add new ones
-        const otherEvents = events.value.filter(e => e.fullId !== fullId)
         const newEventsWithFullId = newEvents.map(e => ({ ...e, fullId }))
-        events.value = [...otherEvents, ...newEventsWithFullId]
+        eventsByFullId.value = {
+          ...eventsByFullId.value,
+          [fullId]: sortPlanningEventsDeterministically(newEventsWithFullId, [fullId]),
+        }
       }
 
       function handleNetworkResult(fullId: string, res: Awaited<ReturnType<ReturnType<typeof client.api.plannings>['get']>> | null, err?: unknown) {
@@ -235,6 +288,7 @@ function createPlanningDataStore(): PlanningDataStore {
               // Directly replace events for this planning
               replaceEventsForPlanning(fullId, success.events || [])
               hydratedFullIds.add(fullId)
+              debugLog('net:apply:ok', { fullId, nbEvents: (success.events || []).length })
             } else {
               failures.push({
                 fullId,
@@ -259,6 +313,7 @@ function createPlanningDataStore(): PlanningDataStore {
         if (completedCount === fullIds.length) {
           if (token !== requestToken) return
           refreshing.value = false
+          debugOrderSnapshot('net:all:done', fullIds)
 
           const allNetworkFailed = failures.length === fullIds.length
           const allDbFailed = shouldHydrateFromDb
@@ -289,7 +344,7 @@ function createPlanningDataStore(): PlanningDataStore {
       if (token !== requestToken) return
       error.value = e instanceof Error ? e.message : String(e)
       titles.value = {}
-      events.value = []
+      eventsByFullId.value = {}
       refreshing.value = false
     }
   }
