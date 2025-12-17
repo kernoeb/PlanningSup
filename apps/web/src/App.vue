@@ -3,7 +3,6 @@ import PlanningCalendar from '@web/components/calendar/PlanningCalendar.vue'
 import AppNavbar from '@web/components/layout/AppNavbar.vue'
 import NetworkFailureToast from '@web/components/NetworkFailureToast.vue'
 import PlanningSyncToast from '@web/components/PlanningSyncToast.vue'
-import PWABadge from '@web/components/PWABadge.vue'
 
 import { useSharedTheme } from '@web/composables/useTheme'
 import { defineAsyncComponent } from 'vue'
@@ -22,7 +21,6 @@ useSharedTheme()
   <div id="planningsup-app">
     <AppNavbar />
     <PlanningCalendar class="planning-calendar" />
-    <PWABadge />
     <PlanningSyncToast />
     <NetworkFailureToast />
     <LazyBouncing />

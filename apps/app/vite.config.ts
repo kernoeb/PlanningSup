@@ -10,7 +10,10 @@ export default defineConfig({
   resolve: {
     alias: getAliases(import.meta.url),
   },
-  plugins: getCommonPlugins({ addIgnorePWABadge: true }),
+  define: {
+    __PWA_ENABLED__: false,
+  },
+  plugins: getCommonPlugins(),
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent Vite from obscuring rust errors

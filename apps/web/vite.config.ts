@@ -7,8 +7,11 @@ export default defineConfig({
   resolve: {
     alias: getAliases(import.meta.url),
   },
+  define: {
+    __PWA_ENABLED__: true,
+  },
   plugins: [
-    ...getCommonPlugins({ addIgnorePWABadge: false }),
+    ...getCommonPlugins(),
     VitePWA({
       strategies: 'injectManifest',
       srcDir: 'src',

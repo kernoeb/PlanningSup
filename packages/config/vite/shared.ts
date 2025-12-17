@@ -1,7 +1,6 @@
 /* Shared Vite config helpers (ESM JS)
  * - Path resolvers (root, aliases)
  * - Common plugins (tailwindcss, vue)
- * - Ignore-PWA-badge plugin
  * - Default dev proxy
  *
  * Import from vite configs with:
@@ -50,30 +49,10 @@ export function getOptimizeDeps() {
 }
 
 /**
- * Plugin that stubs out the PWABadge component.
- * Useful for environments that are not PWAs (e.g., Tauri app, browser extension).
- */
-export function ignorePWABadgePlugin(name = 'ignore-pwa-badge') {
-  console.log('Applying ignore-PWA-badge plugin')
-  return {
-    name,
-    resolveId(id: string) {
-      if (id.includes('PWABadge.vue')) return id
-      return null
-    },
-    load(id: string) {
-      if (id.includes('PWABadge.vue')) return '<template></template>'
-      return null
-    },
-  }
-}
-
-/**
  * Returns the set of plugins that are common across apps.
  * By default includes tailwindcss and vue plugins.
- * Optionally adds the ignore-PWA-badge plugin (enabled by default).
  */
-export function getCommonPlugins(options: { addIgnorePWABadge?: boolean } = {}) {
+export function getCommonPlugins() {
   const plugins = [
     tailwindcss(),
     vue({
@@ -85,7 +64,6 @@ export function getCommonPlugins(options: { addIgnorePWABadge?: boolean } = {}) 
       },
     }),
   ] as PluginOption[]
-  if (options.addIgnorePWABadge) plugins.push(ignorePWABadgePlugin())
   return plugins
 }
 

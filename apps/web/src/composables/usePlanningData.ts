@@ -374,8 +374,10 @@ function createPlanningDataStore(): PlanningDataStore {
     void refresh('settings.queryParams')
   })
 
-  // @ts-expect-error - for debugging purposes
-  globalThis.__refresh = refresh
+  if (import.meta.env.DEV) {
+    // @ts-expect-error - for debugging purposes
+    globalThis.__refresh = refresh
+  }
 
   return {
     planningFullIds,

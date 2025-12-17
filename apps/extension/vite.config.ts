@@ -21,9 +21,10 @@ export default defineConfig(({ command }) => ({
   define: {
     __DEV__: isDev,
     __NAME__: JSON.stringify(packageJson.name),
+    __PWA_ENABLED__: false,
   },
   plugins: [
-    ...getCommonPlugins({ addIgnorePWABadge: true }),
+    ...getCommonPlugins(),
 
     // rewrite assets to use relative path
     {

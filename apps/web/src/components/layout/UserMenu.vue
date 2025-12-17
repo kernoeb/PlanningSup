@@ -3,7 +3,8 @@ import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
-import { User } from 'lucide-vue-next'
+import { getPwa } from '@web/pwa'
+import { RefreshCw, User } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
@@ -19,6 +20,11 @@ const hasImage = computed(() => !!user.value?.image)
 
 const canOpenMenu = computed(() => (authEnabled ? !isPending.value : true))
 const ariaLabel = computed(() => (authEnabled && isPending.value ? 'Chargement de la session' : 'Ouvrir le menu utilisateur'))
+
+const needRefresh = computed(() => getPwa()?.needRefresh.value ?? false)
+function updateServiceWorker() {
+  return getPwa()?.updateServiceWorker()
+}
 
 const { theme, i18nThemes, setTheme } = useSharedTheme()
 const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
@@ -84,6 +90,14 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
           </button>
         </li>
         <div class="divider m-0" />
+        <li v-if="needRefresh">
+          <button id="pwa-reload" class="justify-between text-warning" type="button" @click="updateServiceWorker()">
+            <span class="flex items-center gap-2">
+              <RefreshCw class="size-4" />
+              Nouvelle version
+            </span>
+          </button>
+        </li>
         <li v-if="authEnabled && !user">
           <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
             Se connecter
