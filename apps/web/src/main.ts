@@ -17,7 +17,7 @@ if (plausibleConfig?.domain) {
 
 // PWA is only enabled in the web build via a Vite define flag.
 if (typeof __PWA_ENABLED__ !== 'undefined' && __PWA_ENABLED__) {
-  void import('./pwa').then(m => m.initPwa())
+  void import('./utils/pwa').then(m => m.initPwa())
 }
 
 createApp(App).mount('#app')

@@ -3,7 +3,7 @@ import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
-import { getPwa } from '@web/pwa'
+import { getPwa } from '@web/utils/pwa'
 import { RefreshCw, User } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef } from 'vue'
 

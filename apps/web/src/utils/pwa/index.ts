@@ -1,4 +1,4 @@
-import { usePwa } from './composables/usePwa'
+import { usePwa } from '@web/composables/usePwa'
 
 export type PwaStore = import('@web/composables/usePwa').PwaStore
 

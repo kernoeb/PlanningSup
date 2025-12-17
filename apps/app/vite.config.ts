@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { fileURLToPath } from 'node:url'
 import { getAliases, getCommonPlugins, getOptimizeDeps } from '../../packages/config/vite/shared'
 
 const host = Bun.env.TAURI_DEV_HOST
@@ -8,7 +9,10 @@ export default defineConfig({
   root: import.meta.dirname,
   optimizeDeps: getOptimizeDeps(),
   resolve: {
-    alias: getAliases(import.meta.url),
+    alias: [
+      ...getAliases(import.meta.url),
+      { find: 'virtual:pwa-register/vue', replacement: fileURLToPath(new URL('../web/src/utils/pwa/register-stub.ts', import.meta.url)) },
+    ],
   },
   define: {
     __PWA_ENABLED__: false,

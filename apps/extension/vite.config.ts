@@ -1,4 +1,5 @@
 import { dirname, relative } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 
 import { getAliases, getCommonPlugins, getOptimizeDeps, getRoot } from '../../packages/config/vite/shared'
@@ -16,7 +17,10 @@ export default defineConfig(({ command }) => ({
   },
   root: getRoot(import.meta.url),
   resolve: {
-    alias: getAliases(import.meta.url),
+    alias: [
+      ...getAliases(import.meta.url),
+      { find: 'virtual:pwa-register/vue', replacement: fileURLToPath(new URL('../web/src/utils/pwa/register-stub.ts', import.meta.url)) },
+    ],
   },
   define: {
     __DEV__: isDev,
