@@ -56,6 +56,59 @@ function parseAndNormalizeColors(raw: unknown) {
   }
 }
 
+function normalizePlanningsForGroups(ids: readonly unknown[]): string[] {
+  const out: string[] = []
+  const seen = new Set<string>()
+  for (const raw of ids) {
+    if (typeof raw !== 'string') continue
+    const trimmed = raw.trim()
+    if (!trimmed) continue
+    if (trimmed.length > 255) continue
+    if (!seen.has(trimmed)) {
+      seen.add(trimmed)
+      out.push(trimmed)
+      if (out.length >= 100) break
+    }
+  }
+  return out
+}
+
+interface NormalizedCustomGroup { id: string, name: string, plannings: string[] }
+function normalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] {
+  if (!Array.isArray(raw)) return []
+  const isUuid = (id: string) =>
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)
+  const out: NormalizedCustomGroup[] = []
+  const seenIds = new Set<string>()
+  for (const item of raw) {
+    if (!item || typeof item !== 'object') continue
+    const obj = item as Record<string, unknown>
+    const id = typeof obj.id === 'string' ? obj.id.trim() : ''
+    const name = typeof obj.name === 'string' ? obj.name.trim() : ''
+    if (!id || !isUuid(id)) continue
+    if (!name || name.length > 80) continue
+    if (seenIds.has(id)) continue
+    seenIds.add(id)
+    const plannings = normalizePlanningsForGroups(Array.isArray(obj.plannings) ? obj.plannings : [])
+    out.push({ id, name, plannings })
+    if (out.length >= 50) break
+  }
+  return out
+}
+function encodeCustomGroupsToString(groups: CustomGroup[]): string {
+  // Ensure a stable key order per entry for predictable JSON stringify comparisons.
+  const normalized = normalizeCustomGroups(groups).map(g => ({ id: g.id, name: g.name, plannings: g.plannings }))
+  return JSON.stringify(normalized)
+}
+function parseAndNormalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] | null {
+  if (typeof raw !== 'string') return null
+  try {
+    return normalizeCustomGroups(JSON.parse(raw || '[]'))
+  } catch {
+    return null
+  }
+}
+
 /**
  * useSettings
  * - Persists:
@@ -65,6 +118,7 @@ function parseAndNormalizeColors(raw: unknown) {
  *   - targetTimezone: string | null
  *   - showWeekends: boolean
  *   - mergeDuplicates: boolean
+ *   - customGroups: CustomGroup[] (synced as a JSON string in user prefs)
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - weekNDays: number (7 when showWeekends, otherwise 5)
@@ -190,19 +244,18 @@ export function useSettings() {
 
   // customGroups (client-side behavior but kept in user prefs for consistency)
   syncPref('customGroups', customGroups, {
-    toServer: v => v,
-    normalizeLocal: v => v,
-    normalizeServer: v => v,
-    fromServerToLocal: raw => (
-      Array.isArray(raw) && raw.every(x =>
-        typeof x === 'object'
-        && 'name' in x
-        && 'plannings' in x
-        && Array.isArray(x.plannings)
-        && x.plannings.every((p: unknown) => typeof p === 'string'),
-      ))
-      ? (raw as CustomGroup[])
-      : null,
+    toServer: v => encodeCustomGroupsToString(v),
+    normalizeLocal: v => normalizeCustomGroups(v),
+    normalizeServer: raw => parseAndNormalizeCustomGroups(raw),
+    fromServerToLocal: (raw) => {
+      const parsed = parseAndNormalizeCustomGroups(raw)
+      if (!parsed) return null
+      return parsed.map(g => ({
+        id: g.id as CustomGroup['id'],
+        name: g.name,
+        plannings: g.plannings,
+      }))
+    },
     setLocal: v => (customGroups.value = v),
     debounce: 50,
   })

@@ -52,7 +52,7 @@
     "predev": "bun install; docker compose up -d --pull always; ln -sf AGENTS.md CLAUDE.md; ln -sf AGENTS.md GEMINI.md;",
     "dev": "bun scripts/run dev",
     "build": "bun scripts/run build",
-    "test:unit": "bun test test/*.test.ts",
+    "test:unit": "bun test --max-concurrency=1 test/*.test.ts",
     "coverage": "bun scripts/run coverage",
     "test:e2e": "bun scripts/test.ts",
     "test:e2e:safari": "bun scripts/test.ts --safari",

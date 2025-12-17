@@ -1,6 +1,10 @@
-import { describe, expect, it, mock } from 'bun:test'
+import { afterEach, describe, expect, it, mock } from 'bun:test'
 
 describe('plannings-backfill job', () => {
+  afterEach(() => {
+    mock.restore()
+  })
+
   it('enqueues missing and stale plannings (deduped)', async () => {
     const enqueued: Array<{ ids: string[], priority: number }> = []
 

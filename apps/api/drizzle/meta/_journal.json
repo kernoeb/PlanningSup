@@ -50,6 +50,13 @@
       "when": 1765990524555,
       "tag": "0006_parallel_mentallo",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1766008846927,
+      "tag": "0007_fancy_famine",
+      "breakpoints": true
     }
   ]
 }

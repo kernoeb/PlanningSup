@@ -49,16 +49,7 @@ ENV PLANNINGS_LOCATION=/app/plannings
 
 COPY /test ./test
 ENV NODE_ENV=test
-RUN bun test --max-concurrency=1 \
-  test/jobs.test.ts \
-  test/per-key-semaphore.test.ts \
-  test/plannings-backup.memory.test.ts \
-  test/plannings.routes.test.ts \
-  test/plannings.backfill.job.test.ts \
-  test/plannings.refresh-queue.job.test.ts \
-  test/plannings.refresh-sweep.test.ts \
-  test/ops.routes.test.ts \
-  test/web.usePlanningData.refreshStrategy.test.ts
+RUN bun run test:unit
 
 
 ##########################################################

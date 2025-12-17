@@ -7,6 +7,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
 import * as z from 'zod'
+import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from './auth-validators'
 
 function createAuth() {
   // Skip BetterAuth initialization entirely when auth is disabled
@@ -47,37 +48,22 @@ function createAuth() {
         plannings: {
           type: 'string[]',
           validator: {
-            input: z.array(z.string()).optional().transform((arr) => {
-              if (!arr) return []
-              const norm = Array.from(new Set(
-                arr
-                  .map(s => (typeof s === 'string' ? s.trim() : ''))
-                  .filter(s => s.length > 0 && s.length <= 255),
-              ))
-              return norm.slice(0, 100)
-            }),
+            input: planningsInput,
+          },
+        },
+        customGroups: {
+          // Stored as a JSON string for type stability across clients.
+          // Shape: Array<{ id: string; name: string; plannings: string[] }>
+          type: 'string',
+          validator: {
+            input: customGroupsInput,
           },
         },
         colors: {
           type: 'string',
           validator: {
             // Record<string, string>
-            input: z.string().optional().transform((val) => {
-              try {
-                const parsed = JSON.parse(val || '{}')
-                if (typeof parsed === 'object' && parsed !== null && !Array.isArray(parsed)) {
-                  for (const [key, value] of Object.entries(parsed)) {
-                    if (typeof key !== 'string' || typeof value !== 'string') {
-                      return '{}'
-                    }
-                  }
-                  return JSON.stringify(parsed)
-                }
-                return '{}'
-              } catch {
-                return '{}'
-              }
-            }),
+            input: colorsInput,
           },
         },
         prefsMeta: {
@@ -88,30 +74,8 @@ function createAuth() {
             // - If value is a number, keep it as-is
             // - If value is not a number, stamp with Date.now()
             // - Always return normalized JSON string
-            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings', number>
-            input: z.string().optional().transform((val) => {
-              try {
-                const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'blocklist', 'colors', 'plannings'] as const
-                const set = new Set<string>(allowed as unknown as string[])
-                const raw = JSON.parse(val || '{}')
-                if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return '{}'
-
-                const out: Record<string, number> = {}
-                const now = Date.now()
-                for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
-                  if (!set.has(key)) continue
-                  if (typeof value === 'number' && Number.isFinite(value)) {
-                    out[key] = value
-                  } else {
-                    // Non-number means: "stamp this key server-side"
-                    out[key] = now
-                  }
-                }
-                return JSON.stringify(out)
-              } catch {
-                return '{}'
-              }
-            }),
+            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups', number>
+            input: prefsMetaInput,
           },
         },
       },

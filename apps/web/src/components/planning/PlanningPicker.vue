@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { client } from '@libs'
 import { refDebounced, useVirtualList } from '@vueuse/core'
-import { useSettings } from '@web/composables/useSettings'
+import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcwIcon as IconRotateCcw, XIcon as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
@@ -101,7 +101,7 @@ const customGroupName = ref<string | undefined>(undefined)
 const groupToDelete = ref<{ id: string, name: string } | null>(null)
 const customGroupDetailsRef = ref<HTMLDetailsElement | null>(null)
 
-const { customGroups, addCustomGroup } = useSettings()
+const { customGroups, addCustomGroup } = useSharedSettings()
 
 function saveSelection() {
   // Close the form

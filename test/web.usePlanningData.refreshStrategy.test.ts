@@ -3,14 +3,16 @@ import { ref } from 'vue'
 
 describe('usePlanningData refresh strategy', () => {
   it('hydrates from DB once, then uses network-first on subsequent refreshes', async () => {
-    const calls: Array<{ fullId: string, query: Record<string, any> }> = []
-    const planningFullIds = ref<string[]>(['A'])
-    const queryParams = ref<Record<string, any>>({})
+    try {
+      const calls: Array<{ fullId: string, query: Record<string, any> }> = []
+      const planningFullIds = ref<string[]>(['A'])
+      const queryParams = ref<Record<string, any>>({})
 
     mock.module('@vueuse/core', () => {
       return {
         createSharedComposable: (fn: any) => fn,
         useIntervalFn: () => ({ pause: () => {}, resume: () => {} }),
+        useLocalStorage: (_key: string, initialValue: any) => ref(initialValue),
         useOnline: () => ref(true),
         useWindowFocus: () => ref(false),
       }
@@ -103,7 +105,10 @@ describe('usePlanningData refresh strategy', () => {
     await new Promise(resolve => setTimeout(resolve, 0))
     await waitUntilIdle()
 
-    const dbOnlyCalls = calls.filter(c => c.query.onlyDb === 'true').map(c => c.fullId)
-    expect(dbOnlyCalls).toEqual(['B'])
+      const dbOnlyCalls = calls.filter(c => c.query.onlyDb === 'true').map(c => c.fullId)
+      expect(dbOnlyCalls).toEqual(['B'])
+    } finally {
+      mock.restore()
+    }
   })
 })

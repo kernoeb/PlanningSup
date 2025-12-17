@@ -62,6 +62,9 @@ describe('useUserPrefsSync (authEnabled=false via runtime config) no-op behavior
     // Restore console
     // eslint-disable-next-line no-console
     console.warn = originalWarn
+
+    mock.restore()
+    delete (globalThis as any).__APP_CONFIG__
   })
 
   beforeEach(() => {
