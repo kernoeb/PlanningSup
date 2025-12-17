@@ -2,7 +2,7 @@ import type { Events, PlanningWithEvents } from '@libs'
 import type { Ref } from 'vue'
 import { client } from '@libs'
 import { useIntervalFn, useOnline, useWindowFocus } from '@vueuse/core'
-import { sortPlanningEventsDeterministically } from '@web/utils/sort-planning-events'
+import { mergeSortedPlanningEventsDeterministically, sortPlanningEventsDeterministically } from '@web/utils/sort-planning-events'
 import { computed, ref, watch } from 'vue'
 import { useSharedSettings } from './useSettings'
 import { useSharedSyncedCurrentPlanning } from './useSyncedCurrentPlanning'
@@ -49,13 +49,7 @@ function createPlanningDataStore(): PlanningDataStore {
   const eventsByFullId = ref<Record<string, EventWithFullId[]>>({})
   const events = computed(() => {
     const fullIds = planningFullIds.value ?? []
-    const byId = eventsByFullId.value
-    const merged: EventWithFullId[] = []
-    for (const fullId of fullIds) {
-      const items = byId[fullId]
-      if (items?.length) merged.push(...items)
-    }
-    return merged
+    return mergeSortedPlanningEventsDeterministically(eventsByFullId.value, fullIds)
   })
   const loading = ref(false)
   const refreshing = ref(false)
@@ -83,6 +77,11 @@ function createPlanningDataStore(): PlanningDataStore {
 
     const byId = eventsByFullId.value
     const counts = Object.fromEntries(currentPlanningOrder.map(id => [id, byId[id]?.length ?? 0]))
+
+    const globalHead = events.value.slice(0, 30).map(e =>
+      `${e.fullId}|${e.uid}|${String(e.startDate)}|${String(e.endDate)}`,
+    )
+
     const head: string[] = []
     for (const id of currentPlanningOrder) {
       for (const e of byId[id] ?? []) {
@@ -95,7 +94,8 @@ function createPlanningDataStore(): PlanningDataStore {
     debugLog(message, {
       planningOrder: [...currentPlanningOrder],
       counts,
-      head,
+      headByPlanning: head,
+      headGlobal: globalHead,
       total: Object.values(counts).reduce((a, b) => a + b, 0),
     })
   }
