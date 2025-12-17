@@ -9,6 +9,7 @@ describe('usePlanningData refresh strategy', () => {
 
     mock.module('@vueuse/core', () => {
       return {
+        createSharedComposable: (fn: any) => fn,
         useIntervalFn: () => ({ pause: () => {}, resume: () => {} }),
         useOnline: () => ref(true),
         useWindowFocus: () => ref(false),
@@ -29,6 +30,14 @@ describe('usePlanningData refresh strategy', () => {
 
     mock.module('@libs', () => {
       return {
+        authClient: {
+          signIn: {
+            social: async () => ({ ok: true }),
+          },
+          signOut: async () => {},
+          updateUser: async () => ({ ok: true }),
+          useSession: () => ref({ isPending: false, data: null, error: null }),
+        },
         client: {
           api: {
             plannings: ({ fullId }: { fullId: string }) => ({
@@ -98,4 +107,3 @@ describe('usePlanningData refresh strategy', () => {
     expect(dbOnlyCalls).toEqual(['B'])
   })
 })
-

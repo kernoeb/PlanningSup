@@ -1,4 +1,5 @@
 import config from '@api/config'
+import opsRoutes from '@api/routes/ops'
 import planningsRoutes from '@api/routes/plannings'
 import { defaultLogger as logger } from '@api/utils/logger'
 import { cors } from '@elysiajs/cors'
@@ -41,6 +42,7 @@ const api = new Elysia({
     }),
   )
   .get('/ping', () => 'pong')
+  .use(opsRoutes)
   .use(planningsRoutes)
 
 // Mount custom auth HTML routes (e.g., /api/auth/auto-redirect/:provider for Tauri/extension)

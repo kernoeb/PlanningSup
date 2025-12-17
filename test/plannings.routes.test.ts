@@ -95,9 +95,15 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
   // A simple in-memory backup "DB"
   const backupStore: Record<string, CalEvent[] | undefined> = {}
+  const refreshQueueStore = new Map<string, { priority: number }>()
+
+  async function tick() {
+    await new Promise(resolve => setTimeout(resolve, 0))
+  }
 
   beforeAll(async () => {
     Bun.env.RUN_JOBS = 'false'
+    Bun.env.NODE_ENV = 'test'
 
    // Overwrite the planning URL to a local fake endpoint to ensure our fetch mock intercepts it
    targetUrl = 'http://localhost/__fake_ics__'
@@ -105,8 +111,40 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
    // Mock only @api/db to satisfy utils/events.getBackupEvents path
     mock.module('@api/db', () => {
+      function insertBuilder(values: any) {
+        return {
+          _values: values,
+          onConflictDoUpdate(_cfg: any) {
+            return this
+          },
+          async returning() {
+            // plannings backup upsert
+            if (this._values && 'planningFullId' in this._values && 'events' in this._values) {
+              const fullId = this._values.planningFullId as string
+              const nextEvents = this._values.events as CalEvent[]
+              const prev = backupStore[fullId]
+              const changed = JSON.stringify(prev ?? null) !== JSON.stringify(nextEvents)
+              backupStore[fullId] = nextEvents
+              return changed ? [{ planningFullId: fullId }] : []
+            }
+            return []
+          },
+        }
+      }
+
       return {
         db: {
+          insert(_table: any) {
+            return {
+              values(values: any) {
+                // plannings refresh queue upsert
+                if (values && 'planningFullId' in values && 'priority' in values && !('events' in values)) {
+                  refreshQueueStore.set(values.planningFullId as string, { priority: values.priority as number })
+                }
+                return insertBuilder(values)
+              },
+            }
+          },
           query: {
             planningsBackupTable: {
               // match interface used in getBackupEvents
@@ -216,6 +254,20 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     expect(cats.includes('lecture') || cats.includes('lab') || cats.includes('other')).toBeTrue()
   })
 
+  it('writes through backup asynchronously when network succeeds', async () => {
+    backupStore[targetFullId] = undefined
+    fetchMode = 'ok'
+
+    const res = await app.handle(
+      new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+    )
+    expect(res.status).toBe(200)
+
+    await tick()
+    expect(Array.isArray(backupStore[targetFullId])).toBeTrue()
+    expect((backupStore[targetFullId] as any[]).length).toBe(sampleEvents.length)
+  })
+
   it('uses backup events when ICS fetch fails', async () => {
     // Set backup events for this planning id
     backupStore[targetFullId] = sampleEvents
@@ -237,6 +289,24 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     backupStore[targetFullId] = undefined
     // Restore fetch OK for next tests
     fetchMode = 'ok'
+  })
+
+  it('enqueues a refresh retry when network fails and DB fallback is used', async () => {
+    refreshQueueStore.clear()
+    backupStore[targetFullId] = sampleEvents
+    fetchMode = 'error'
+
+    const res = await app.handle(
+      new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+    )
+    expect(res.status).toBe(200)
+
+    await tick()
+    expect(refreshQueueStore.has(targetFullId)).toBeTrue()
+
+    // Cleanup
+    fetchMode = 'ok'
+    backupStore[targetFullId] = undefined
   })
 
   it('accepts highlightTeacher query param', async () => {

@@ -1,6 +1,7 @@
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
 import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
+import { requestPlanningRefresh, schedulePlanningBackupWrite } from '@api/utils/plannings-backup'
 import { Elysia } from 'elysia'
 
 export default new Elysia({ prefix: '/plannings' })
@@ -12,7 +13,9 @@ export default new Elysia({ prefix: '/plannings' })
     const partialInfos = { id: planning.id, fullId: planning.fullId, title: planning.title }
 
     if (query.events === 'true') {
-      const resolveResult = await resolveEvents(planning, query.onlyDb === 'true')
+      const onlyDb = query.onlyDb === 'true'
+
+      const resolveResult = await resolveEvents(planning, onlyDb)
       const { events, source } = resolveResult
 
       // blocklist ?blocklist=string (comma-separated)
@@ -36,6 +39,19 @@ export default new Elysia({ prefix: '/plannings' })
 
       const nbEvents = allEvents ? allEvents.length : 0
       const reason = getFailureReason(resolveResult, nbEvents)
+
+      // Keep backups fresh when the UI hits the API directly:
+      // - If we successfully fetched events from the network, write-through to DB asynchronously (no extra upstream fetch).
+      // - If network failed (and onlyDb wasn't requested), enqueue a refresh retry with priority.
+      if (!onlyDb) {
+        if (source === 'network' && events) {
+          schedulePlanningBackupWrite(planning.fullId, events)
+        } else if (resolveResult.networkFailed) {
+          void requestPlanningRefresh(planning.fullId, 10).catch((error) => {
+            elysiaLogger.warn('Failed to enqueue planning refresh for {fullId}: {error}', { fullId, error })
+          })
+        }
+      }
 
       elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, reason: {reason}, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
         fullId,

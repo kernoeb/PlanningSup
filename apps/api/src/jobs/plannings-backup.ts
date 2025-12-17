@@ -3,17 +3,18 @@ import { jobsLogger } from '@api/utils/logger'
 
 const pause = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-export async function run(db: Database, signal?: AbortSignal) {
-  const { fetchEvents } = await import('@api/utils/events')
-  const { flattenedPlannings } = await import('@api/plannings')
-  const { planningsBackupTable } = await import('@api/db/schemas/plannings')
-  const { sql } = await import('drizzle-orm')
+export async function runPlanningsBackup(db: Database, deps: {
+  fetchEvents: (url: string) => Promise<Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }> | null>
+  upsertPlanningBackup: (db: Database, planningFullId: string, events: Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }>) => Promise<{ changed: boolean, nbEvents: number }>
+  flattenedPlannings: Array<{ fullId: string, url: string }>
+}, signal?: AbortSignal) {
+  const pauseMs = Number(Bun.env.JOBS_PLANNINGS_BACKUP_PAUSE_MS ?? 300)
 
-  const nbPlannings = flattenedPlannings.length
+  const nbPlannings = deps.flattenedPlannings.length
   jobsLogger.info('Starting plannings backup job for {count} planning(s)', { count: nbPlannings })
 
   let index = 0
-  for (const planning of flattenedPlannings) {
+  for (const planning of deps.flattenedPlannings) {
     index++
 
     // Check if job was aborted
@@ -26,64 +27,29 @@ export async function run(db: Database, signal?: AbortSignal) {
     }
 
     try {
-      const events = await fetchEvents(planning.url)
-      if (!events || events.length === 0) {
+      const events = await deps.fetchEvents(planning.url)
+      if (!events) {
         jobsLogger.warn(
           `[${index}/${nbPlannings}] No events fetched for planning {fullId}, skipping backup.`,
           { fullId: planning.fullId },
         )
-        await pause(300)
+        if (pauseMs > 0) await pause(pauseMs)
         continue
       }
 
-      // Normalize and build latest payload
-      const normalize = (list: Array<{ uid: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }>) =>
-        list
-          .map(e => ({
-            uid: e.uid,
-            summary: e.summary,
-            startDate: e.startDate,
-            endDate: e.endDate,
-            location: e.location,
-            description: e.description
-              .replace(/\(Exporté.*\)/, '')
-              .replace(/\(Exported :.*\)/, '')
-              .replace(/\(Updated :.*\)/, '')
-              .replace(/\(Modifié le:.*\)/, '')
-              .trim(),
-          }))
+      const result = await deps.upsertPlanningBackup(db, planning.fullId, events)
 
-      const payload = normalize(events)
-
-      const details = await db
-        .insert(planningsBackupTable)
-        .values({
-          planningFullId: planning.fullId,
-          events: payload,
-          signature: sql`md5(${JSON.stringify(payload)}::text)`,
-        })
-        .onConflictDoUpdate({
-          target: planningsBackupTable.planningFullId,
-          set: {
-            events: sql`excluded.events`,
-            signature: sql`md5(excluded.events::text)`,
-            updatedAt: sql`now()`,
-          },
-          where: sql`${planningsBackupTable.signature} is distinct from md5(excluded.events::text)`,
-        })
-        .returning()
-
-      if (details.length === 0) {
+      if (!result.changed) {
         jobsLogger.info(
           `[${index}/${nbPlannings}] No changes for planning {fullId}, skipping backup save.`,
           { fullId: planning.fullId },
         )
-        await pause(300)
+        if (pauseMs > 0) await pause(pauseMs)
         continue
       } else {
         jobsLogger.info(
           `[${index}/${nbPlannings}] Saved backup for planning {fullId}, {count} event(s).`,
-          { fullId: planning.fullId, count: payload.length },
+          { fullId: planning.fullId, count: result.nbEvents },
         )
       }
     } catch (error) {
@@ -93,7 +59,7 @@ export async function run(db: Database, signal?: AbortSignal) {
       )
     }
 
-    await pause(300)
+    if (pauseMs > 0) await pause(pauseMs)
 
     // Check for abort signal between plannings
     if (signal?.aborted) {
@@ -104,4 +70,12 @@ export async function run(db: Database, signal?: AbortSignal) {
       return
     }
   }
+}
+
+export async function run(db: Database, signal?: AbortSignal) {
+  const { fetchEvents } = await import('@api/utils/events')
+  const { upsertPlanningBackup } = await import('@api/utils/plannings-backup')
+  const { flattenedPlannings } = await import('@api/plannings')
+
+  return runPlanningsBackup(db, { fetchEvents, upsertPlanningBackup, flattenedPlannings }, signal)
 }

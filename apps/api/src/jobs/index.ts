@@ -5,6 +5,7 @@ import { jobsLogger } from '@api/utils/logger'
 // ----- Explicit job registry (whitelist) -----
 // Add new jobs by importing their run() function and registering here.
 import { run as runPlanningsBackup } from './plannings-backup'
+import { run as runPlanningsRefreshQueue } from './plannings-refresh-queue'
 
 // Environment variable names supported:
 // - RUN_JOBS: "false" | "0" disables the job runner, everything else enables it (default: enabled)
@@ -106,7 +107,10 @@ export function parseQuietHours(input: string | undefined | null): QuietHours | 
   const match = /^(\d{1,2}):(\d{2})[–-](\d{1,2}):(\d{2})$/.exec(raw)
   if (!match) return null
 
-  const [, startHour, startMinute, endHour, endMinute] = match.map(Number)
+  const startHour = Number(match[1])
+  const startMinute = Number(match[2])
+  const endHour = Number(match[3])
+  const endMinute = Number(match[4])
 
   if (startHour < 0 || startHour > 23 || endHour < 0 || endHour > 23
     || startMinute < 0 || startMinute > 59 || endMinute < 0 || endMinute > 59) {
@@ -173,10 +177,11 @@ function normalizeError(error: unknown) {
 
 const JOB_REGISTRY: Record<string, JobModule['run']> = {
   // id: run function
+  'plannings-refresh-queue': runPlanningsRefreshQueue,
   'plannings-backup': runPlanningsBackup,
 }
 
-const DEFAULT_ALLOWED_JOBS = Object.freeze<string[]>(['plannings-backup'])
+const DEFAULT_ALLOWED_JOBS = Object.freeze<string[]>(['plannings-refresh-queue', 'plannings-backup'])
 
 function readAllowedJobIdsFromEnv(): readonly string[] {
   const raw = config.jobs.allowedJobs

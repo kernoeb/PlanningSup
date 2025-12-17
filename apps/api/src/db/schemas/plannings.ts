@@ -1,4 +1,4 @@
-import { index, jsonb, pgTable, text, timestamp, varchar } from 'drizzle-orm/pg-core'
+import { index, integer, jsonb, pgTable, text, timestamp, varchar } from 'drizzle-orm/pg-core'
 
 export const planningsTable = pgTable('plannings', {
   fullId: varchar('full_id', { length: 255 }).notNull().primaryKey(),
@@ -30,9 +30,27 @@ export const planningsBackupTable = pgTable('plannings_backup', {
   index('plannings_backup_latest_updated_at_idx').on(table.updatedAt),
 ])
 
+export const planningsRefreshQueueTable = pgTable('plannings_refresh_queue', {
+  planningFullId: varchar('planning_full_id', { length: 255 })
+    .notNull()
+    .primaryKey()
+    .references(() => planningsTable.fullId, { onDelete: 'cascade' }),
+  priority: integer('priority').notNull().default(0),
+  attempts: integer('attempts').notNull().default(0),
+  requestedAt: timestamp('requested_at', { withTimezone: true }).notNull().defaultNow(),
+  nextAttemptAt: timestamp('next_attempt_at', { withTimezone: true }).notNull().defaultNow(),
+  lockedAt: timestamp('locked_at', { withTimezone: true }),
+  lockOwner: text('lock_owner'),
+  lastError: text('last_error'),
+}, table => [
+  index('plannings_refresh_queue_next_attempt_at_idx').on(table.nextAttemptAt),
+  index('plannings_refresh_queue_priority_idx').on(table.priority),
+])
+
 export const table = {
   planningsTable,
   planningsBackupTable,
+  planningsRefreshQueueTable,
 } as const
 
 export type Table = typeof table

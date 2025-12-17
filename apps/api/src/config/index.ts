@@ -48,6 +48,9 @@ function getConfig() {
       domain: env('PLAUSIBLE_DOMAIN'),
       endpoint: env('PLAUSIBLE_ENDPOINT'),
     },
+
+    // Ops
+    opsToken: env('OPS_TOKEN'),
   }
 }
 
