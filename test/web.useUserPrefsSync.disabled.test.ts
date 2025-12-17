@@ -25,7 +25,7 @@ describe('useUserPrefsSync (authEnabled=false via runtime config) no-op behavior
     (globalThis as any).__APP_CONFIG__ = { authEnabled: false }
 
     // Mock @libs to track any accidental calls to auth client
-    mock.module('@libs', () => {
+    mock.module('@libs/auth', () => {
       return {
         authClient: {
           useSession: () => {
@@ -38,7 +38,6 @@ describe('useUserPrefsSync (authEnabled=false via runtime config) no-op behavior
             return { ok: true }
           },
         },
-        client: {},
       }
     })
 

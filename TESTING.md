@@ -1,409 +1,207 @@
 # Testing Guide
 
-This guide explains how to run all types of tests in the PlanningSup project, which uses **Bun test** for unit and integration tests, and **Playwright** for E2E tests.
+PlanningSup uses **Bun** for unit + integration tests and **Playwright** for E2E tests.
+Most commands are defined in the root `package.json`.
 
 ## Quick Start
 
 ```bash
-# Run all unit tests
-bun test test/*.test.ts
+# Unit tests (fast, no Docker)
+bun run test:unit
 
-# Run integration tests (requires Docker)
+# Integration tests (Docker, AUTH_ENABLED=false, http://localhost:20000)
 bun run test:integration
 
-# Run E2E tests (requires Docker)
+# Integration tests with auth enabled (Docker, AUTH_ENABLED=true, http://localhost:20001)
+bun run test:integration:auth
+
+# E2E (Docker + Playwright, Chrome-only by default)
 bun run test:e2e
 
-# Run E2E tests with debugging
+# E2E debug (headed + verbose)
 bun run test:e2e:debug
 ```
 
-## Test Types Overview
+## Passing Options to `bun run` Scripts
 
-### 1. Unit Tests 🧪
+When you want to pass flags to a script, use `--`:
 
-- **Location**: `test/*.test.ts`
-- **Runner**: Bun test
-- **Purpose**: Test individual functions and modules in isolation
-- **Examples**: `jobs.test.ts`, `plannings.routes.test.ts`, `plannings.schema.test.ts`
+```bash
+# Keep containers around for debugging
+bun run test:integration -- --no-cleanup
 
-### 2. Integration Tests 🔗
+# E2E with fewer workers, in a visible browser
+bun run test:e2e -- --headed --workers 2
+```
 
-- **Location**: `test/integration/*.test.ts`
-- **Runner**: Bun test
-- **Purpose**: Test API endpoints with real HTTP requests
-- **Requirements**: Docker environment with PostgreSQL
+## Docker Image Build (`Dockerfile`)
 
-### 3. E2E Tests 🌐
+`bun run docker:build` builds the production Docker image locally (tag: `test-planningsup`) using the Bun version from `.bun-version`.
+During the Docker build it also runs `bun run lint`, `bun run typecheck`, `bun run build`, and `bun run test:unit` (so it’s a good “packaging smoke test”).
 
-- **Location**: `test/e2e/*.spec.ts`
-- **Runner**: Playwright
-- **Purpose**: Test complete user workflows in a real browser
-- **Requirements**: Docker environment + Playwright browsers
+```bash
+bun run docker:build
+```
 
-## Detailed Test Instructions
+To run integration tests against that prebuilt image (using the compose Postgres container/network):
+
+```bash
+docker compose -f docker-compose.test.yml up -d postgres-test
+
+docker run --rm --name planningsup_test_app_manual \
+  --network planningsup_test_network \
+  -e NODE_ENV=production \
+  -e PORT=20000 \
+  -e DATABASE_URL="postgresql://testuser:testpass@postgres-test:5432/planningsup_test" \
+  -e RUN_JOBS=false \
+  -e AUTH_ENABLED=false \
+  -p 20000:20000 \
+  test-planningsup
+
+bun test test/integration/api.test.ts test/integration/auth.routes.test.ts
+```
+
+## Test Types
 
 ### Unit Tests
 
-Unit tests run quickly and don't require any external dependencies:
+- **Location**: `test/*.test.ts`
+- **Runner**: `bun test` (via `bun run test:unit`)
+- **Notes**: The default unit script runs with `--max-concurrency=1` to reduce flakiness.
+
+Common commands:
 
 ```bash
-# Run all unit tests (glob pattern)
-bun test test/*.test.ts
-
-# Run specific test file
+bun run test:unit
 bun test test/jobs.test.ts
-
-# Run tests with verbose output
-bun test test/jobs.test.ts --verbose
-
-# Run tests in watch mode during development
 bun test test/jobs.test.ts --watch
-
-# Run only tests that match a pattern
 bun test test/jobs.test.ts --test-name-pattern "quiet hours"
 ```
 
-**Available unit test files:**
+### Integration Tests (Auth Disabled)
 
-- `test/jobs.test.ts` - Job scheduling and quiet hours functionality
-- `test/plannings.routes.test.ts` - API route handlers with mocked dependencies
-- `test/plannings.schema.test.ts` - Planning JSON file validation
+- **Location**: `test/integration/api.test.ts`, `test/integration/auth.routes.test.ts`
+- **Runner**: `bun test` (driven by `bun run test:integration`)
+- **Stack**: `docker-compose.test.yml`
+- **URL**: `http://localhost:20000`
 
-### Integration Tests
-
-Integration tests require a running application with a real database:
+Common commands:
 
 ```bash
-# Full integration test (builds Docker image, starts services, runs tests)
+# Full run (build image, start stack, run tests, cleanup)
 bun run test:integration
 
-# Run integration tests with existing Docker image (faster for development)
+# Faster loops (skip Docker build step)
 bun run test:integration:local
 
-# Run with verbose output for debugging
-bun run test:integration --verbose
-
-# Keep containers running after tests for debugging
-bun run test:integration --no-cleanup
-
-# Run integration tests directly (if environment is already running)
-bun test test/integration/
+# Keep containers running after failures
+bun run test:integration -- --no-cleanup --verbose
 ```
 
-**Integration test options:**
+### Integration Tests (Auth Enabled)
 
-- `--skip-build` - Skip Docker image build step
-- `--docker-image IMAGE` - Use specific Docker image
-- `--no-cleanup` - Don't cleanup containers after tests
-- `--verbose` - Show detailed output
+- **Location**: `test/integration/auth.routes.enabled.test.ts`
+- **Runner**: `bun test` (driven by `bun run test:integration:auth`)
+- **Stack**: `docker-compose.test-auth.yml`
+- **URL**: `http://localhost:20001`
 
-**What integration tests cover:**
+Common commands:
 
-- API endpoint responses (`/api/ping`, `/api/plannings`)
-- Planning details and events fetching
-- Query parameter handling (timezone, colors, blocklist)
-- Error handling for invalid requests
-- Database interactions with backup events
+```bash
+bun run test:integration:auth
+bun run test:integration:auth:local
+bun run test:integration:auth -- --no-cleanup --verbose
+```
 
 ### E2E Tests
 
-E2E tests run in real browsers and test complete user workflows:
+- **Location**: `test/e2e/*.spec.ts`
+- **Runner**: Playwright
+- **Stack**: `docker-compose.test.yml`
+- **Default URL**: `http://localhost:20000`
+
+Common commands:
 
 ```bash
-# Run E2E tests
+# Default (Chrome projects only)
 bun run test:e2e
 
-# Run E2E tests with full browser coverage (Chrome + Safari)
+# Full browser coverage (adds Safari/WebKit projects)
 bun run test:e2e:safari
 
-# Run E2E tests in headed mode (see browser window)
+# Headed mode
 bun run test:e2e:headed
 
-# Run E2E tests with debugging and verbose output
-bun run test:e2e:debug
+# Custom flags (note the --)
+bun run test:e2e -- --verbose --headed --workers 2
 ```
 
-**E2E test options:**
+The E2E runner will try to install Playwright browsers if needed (it also writes `.playwright-browsers-installed` as a local marker).
 
-- `--safari` - Include Safari tests (Chrome only by default)
-- `--headed` - Run tests in headed mode (for debugging)
-- `--verbose` - Show detailed test output
-- `--workers NUM` - Number of parallel workers (default: 4)
-- `--no-cleanup` - Don't cleanup containers after tests
+## Docker Test Stacks (Local)
 
-**What E2E tests cover:**
+- `docker-compose.test.yml` (AUTH disabled)
+  - App: `http://localhost:20000`
+  - Postgres: `localhost:5433` → container `5432`
+- `docker-compose.test-auth.yml` (AUTH enabled)
+  - App: `http://localhost:20001`
+  - Postgres: `localhost:5434` → container `5432`
 
-- Application loading and navigation
-- Planning picker functionality
-- Calendar interaction and navigation
-- Responsive design on mobile/desktop
-- Theme switching
-- User menu interactions
-- Keyboard navigation and accessibility
-- Error handling and application stability
-
-### Running Tests in Development
-
-#### Fast Development Workflow
+Manual start/stop (useful for debugging):
 
 ```bash
-# 1. Start the development environment once
-docker compose -f docker-compose.test.yml up -d
-
-# 2. Run unit tests (no Docker needed)
-bun test test/jobs.test.ts --watch
-
-# 3. Run integration tests with existing containers
-bun run test:integration:local
-
-# 4. Run E2E tests with existing containers
-bun run test:e2e --no-cleanup
+docker compose -f docker-compose.test.yml up -d --build
+docker compose -f docker-compose.test.yml ps
+docker compose -f docker-compose.test.yml logs -f app-test
+docker compose -f docker-compose.test.yml down -v --remove-orphans
 ```
 
-#### Debugging Failed Tests
+## Continuous Integration (GitHub Actions)
 
-```bash
-# Run E2E tests in headed mode to see what's happening
-bun run test:e2e:debug
+The main CI workflow is `.github/workflows/docker-publish.yml`:
 
-# Run integration tests with verbose output
-bun run test:integration --verbose --no-cleanup
-
-# Check application logs when tests fail
-docker logs planningsup-app-test
-
-# Keep test environment running for manual testing
-bun run test:integration --no-cleanup
-# Then visit http://localhost:20000 in your browser
-```
-
-## Configuration Files
-
-### Bun Test Configuration
-
-- **File**: `bunfig.toml`
-- **Purpose**: Configure test timeouts and settings for Bun test
-
-```toml
-[test]
-timeout = 30000
-```
-
-### Playwright Configuration
-
-- **File**: `playwright.config.ts`
-- **Purpose**: Configure browsers, test files, and E2E test settings
-
-### Docker Test Environment
-
-- **File**: `docker-compose.test.yml`
-- **Purpose**: Define test environment with application and PostgreSQL
-
-## Test Environment Setup
-
-### Prerequisites
-
-1. **Bun**: Install from https://bun.sh
-2. **Docker**: Required for integration and E2E tests
-3. **Git**: For cloning the repository
-
-### First-Time Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/your-org/planningsup.git
-cd planningsup
-
-# Install dependencies
-bun install
-
-# Run unit tests to verify setup
-bun test test/jobs.test.ts
-
-# Test Docker environment
-bun run test:integration
-```
-
-### Playwright Browser Installation
-
-Playwright browsers are automatically installed when running E2E tests, but you can install them manually:
-
-```bash
-# Install Playwright browsers
-bunx playwright install
-
-# Install only Chromium (faster)
-bunx playwright install chromium
-
-# Install with system dependencies (Linux)
-bunx playwright install --with-deps
-```
-
-## Continuous Integration
-
-### GitHub Actions
-
-The project includes GitHub Actions workflows that run tests automatically:
-
-1. **Docker Build & Test** (`docker-publish.yml`)
-   - Builds Docker image
-   - Runs integration tests with Bun test
-   - Runs E2E tests with Playwright
-   - Publishes Docker image only if tests pass
-
-2. **Extension Build** (`extension-build.yml`)
-   - Builds browser extension
-   - Runs linting and type checking
-
-### Test Results
-
-- **Integration tests**: Results shown in GitHub Actions logs
-- **E2E tests**: Screenshots and videos uploaded as artifacts on failure
-- **Test reports**: Available in workflow artifacts
+- Builds the Docker image once and uploads it as an artifact.
+- The Docker build itself runs `bun run lint`, `bun run typecheck`, `bun run build`, and `bun run test:unit` (see `Dockerfile`).
+- Runs integration tests in two jobs (auth disabled + auth enabled) by starting the built image with `docker run` and using a Postgres service container.
+- Runs E2E tests **only when UI-related paths change** (Playwright Chromium projects only).
+- Publishes the Docker image only on whitelisted branches or valid `vX.Y.Z` tags (and never from fork PRs).
 
 ## Troubleshooting
 
-### Common Issues
-
-#### Unit Tests
-
 ```bash
-# Issue: "Module not found" errors
-# Solution: Ensure all dependencies are installed
-bun install
-
-# Issue: Type errors in tests
-# Solution: Run type checking
-bun run typecheck
-
-# Issue: Tests running E2E files with Bun
-# Solution: Use .test.ts glob pattern to exclude .spec.ts files
-bun test test/*.test.ts
-```
-
-#### Integration Tests
-
-```bash
-# Issue: "Application failed to start"
-# Solution: Check Docker logs
-docker logs planningsup-app-test
-
-# Issue: Database connection errors
-# Solution: Ensure PostgreSQL is running
+# Check stack status
 docker compose -f docker-compose.test.yml ps
 
-# Issue: Port already in use
-# Solution: Stop existing containers
-docker compose -f docker-compose.test.yml down
+# App logs (local integration/e2e stack)
+docker logs planningsup_test_app
+
+# Auth-enabled app logs
+docker logs planningsup_test_auth_app
+
+# Quick health check
+curl -f http://localhost:20000/api/ping
+curl -f http://localhost:20001/api/ping
 ```
 
-#### E2E Tests
+If ports are already in use:
 
 ```bash
-# Issue: "Browser not found"
-# Solution: Install Playwright browsers
-bunx playwright install
-
-# Issue: Tests timing out
-# Solution: Increase workers or run in headed mode
-bun run test:e2e --workers 2 --headed
-
-# Issue: "Cannot connect to application"
-# Solution: Verify test environment is running
-curl http://localhost:20000/api/ping
-```
-
-### Getting Help
-
-1. **Check logs**: Always check Docker logs for application issues
-2. **Run in debug mode**: Use `--verbose` and `--headed` flags
-3. **Isolate the issue**: Run specific test files to narrow down problems
-4. **Clean slate**: Stop all containers and restart
-
-```bash
-# Clean up everything and start fresh
 docker compose -f docker-compose.test.yml down -v --remove-orphans
+docker compose -f docker-compose.test-auth.yml down -v --remove-orphans
+```
+
+## Notes on Runners
+
+- Don’t run Playwright specs with Bun: `bun test test/e2e/*.spec.ts` won’t work.
+- Bun test doesn’t support ignore globs; target `test/*.test.ts` for unit tests and `test/integration/*.test.ts` for integration tests.
+- Avoid quoted globs in shells that don’t expand them (e.g. `bun test "test/*.test.ts"`).
+
+## First-Time Setup
+
+```bash
+git clone https://github.com/kernoeb/planningsup.git
+cd planningsup
+bun install
+bun run test:unit
 bun run test:integration
 ```
-
-## Best Practices
-
-### Writing Tests
-
-1. **Unit tests**: Test functions in isolation with mocked dependencies
-2. **Integration tests**: Test API endpoints with real HTTP requests
-3. **E2E tests**: Test complete user workflows, not individual functions
-
-### Test Organization
-
-- Keep test files close to the code they test
-- Use descriptive test names that explain what is being tested
-- Group related tests using `describe` blocks
-- Use `beforeAll`/`afterAll` for setup/cleanup
-
-### Performance
-
-1. **Run unit tests frequently**
-2. **Run integration tests before commits** (medium speed)
-3. **Run E2E tests before pushes** (slower but comprehensive)
-4. **Use parallel execution** for faster E2E tests
-
-### CI/CD Integration
-
-- All tests must pass before merging PRs
-- Integration and E2E tests run automatically on push
-- Test artifacts (screenshots, videos) are preserved for debugging
-- Docker images are only published after successful tests
-
-## Test Scripts Reference
-
-| Script               | Command                          | Purpose                                    |
-| -------------------- | -------------------------------- | ------------------------------------------ |
-| Unit tests           | `bun test test/*.test.ts`        | Unit tests                                 |
-| Integration (full)   | `bun run test:integration`       | Full integration test suite                |
-| Integration (local)  | `bun run test:integration:local` | Use existing Docker image                  |
-| Integration (direct) | `bun test test/integration/`     | Run tests directly if environment is ready |
-| E2E                  | `bun run test:e2e`               | Chrome-only E2E tests                      |
-| E2E (full)           | `bun run test:e2e:safari`        | All browsers E2E tests                     |
-| E2E (debug)          | `bun run test:e2e:debug`         | Headed mode with verbose output            |
-
-## Important Notes
-
-### Bun Test Limitations
-
-- **No glob ignore patterns**: Bun test doesn't support `--ignore-pattern` flag
-- **Use filename patterns**: Use `*.test.ts` to target unit tests and exclude `*.spec.ts` E2E tests
-- **E2E files are incompatible**: Never run `.spec.ts` files with `bun test` - they're Playwright tests
-
-### Correct vs Incorrect Commands
-
-✅ **Correct:**
-
-```bash
-# Unit tests - glob pattern
-bun test test/*.test.ts
-
-# Integration tests - directory path
-bun test test/integration/
-
-# E2E tests - use scripts
-bun run test:e2e
-```
-
-❌ **Incorrect:**
-
-```bash
-# This doesn't work - no ignore-pattern flag
-bun test test/ --ignore-pattern="**/e2e/**"
-
-# This doesn't work - tries to run Playwright tests with Bun
-bun test test/
-
-# This doesn't work - quoted globs don't expand properly
-bun test "test/*.test.ts"
-```
-
----
-
-For more detailed information about specific test types, see the test files in the `test/` directory or check the GitHub Actions workflows in `.github/workflows/`.

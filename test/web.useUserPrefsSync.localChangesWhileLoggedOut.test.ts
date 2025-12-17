@@ -21,13 +21,7 @@ describe('useUserPrefsSync', () => {
       const updateCalls: any[] = []
       const sessionRef = ref<any>({ isPending: false, data: null, error: null })
 
-      mock.module('@vueuse/core', () => {
-        return {
-          createSharedComposable: (fn: any) => fn,
-        }
-      })
-
-      mock.module('@libs', () => {
+      mock.module('@libs/auth', () => {
         return {
           authClient: {
             useSession: () => sessionRef,
@@ -39,7 +33,8 @@ describe('useUserPrefsSync', () => {
         }
       })
 
-      const { useUserPrefsSync } = await import('@web/composables/useUserPrefsSync')
+      // Cache-bust to avoid cross-test module state (registered keys) interference.
+      const { useUserPrefsSync } = await import(`@web/composables/useUserPrefsSync?test=${Date.now()}`)
       const { syncPref } = useUserPrefsSync()
 
       const blocklist = ref<string[]>([])
@@ -80,4 +75,3 @@ describe('useUserPrefsSync', () => {
     }
   })
 })
-

@@ -1,47 +1,41 @@
-# Repository Guidelines
+# PlanningSup (AGENTS)
 
-## Overview
-PlanningSup is a french university calendar to help students manage their schedules. It features a PWA with offline support, automatic refresh, and customization options. The backend API serves calendar data converted from ICS.
+## Fast (root)
+- Setup: `bun install`
+- API env: `cp apps/api/.env.example apps/api/.env` (needs `DATABASE_URL`)
+- Dev: `bun dev`
+- Quality: `bun run lint-fix && bun run lint && bun run typecheck && bun run test:unit`
+- Docker smoke: `bun run docker:build` (Dockerfile runs lint/typecheck/build/test:unit)
+- Integration: `bun run test:integration[:local]` / `bun run test:integration:auth` (20001)
+- E2E: `bun run test:e2e[:safari|:headed|:debug]`
+- DB/auth changed: `cd apps/api && bun run generate-drizzle && bun run generate-better-auth`
 
-## Project Structure & Modules
-- Monorepo with Bun workspaces: `apps/` (API in `apps/api` on Elysia + Drizzle/PostgreSQL; PWA in `apps/web` on Vue 3 + Vite + DaisyUI (Tailwind CSS); desktop and mobile in `apps/app`; browser extension in `apps/extension`) and shared `packages/` (`libs` for lint/TS utilities, `config` for Vite/TS presets).  
-- Tests live in `test/`: unit `*.test.ts`, integration in `test/integration/`, Playwright specs in `test/e2e/`. Shared assets and ICS metadata are in `resources/`. Root docker-compose files drive local and CI stacks.
+## Workspaces / Bun
+- Workspaces: `apps/*`, `packages/*`, `test`.
+- Root scripts fan-out via `scripts/run.ts` (excludes `apps/app`, `apps/extension`).
+- Per-workspace: `cd <workspace> && bun run <script>` (needed for `apps/extension`).
+- Use Bun only; `.bun-version` + `bun.lock`; `bunx --bun <cli>`; `bun run <script> -- <flags>`.
+- Tests: `bun test` for `*.test.ts`; Playwright for `test/e2e/*.spec.ts`.
 
-## Build, Test & Dev Commands
-- Install: `bun install` (Bun pinned in `.bun-version`, equivalent to Node >=22).  
-- Local stack: `bun dev` (starts Docker, then `scripts/run dev`).  
-- Build: `bun run build`.  
-- Unit sweep: `bun run test:unit`  
-- Integration: `bun run test:integration` (builds image) or `bun run test:integration:local` with existing containers.  
-- E2E: `bun run test:e2e` (`:safari`, `:headed`, `:debug` variants).  
-- Quality gates: `bun run lint`, `bun run lint-fix` (auto-fix most of the issues), `bun run typecheck`, `bun run coverage`.
+## CI / Docker / ports
+- Workflows: `.github/workflows/docker-publish.yml`, `.github/workflows/extension-build.yml`; validate: `bun run validate:workflows`.
+- `docker-publish.yml`: build→integration (auth off/on)→optional e2e on UI changes→publish only on whitelist branches or `vX.Y.Z` (no fork PR publish).
+- DB: Postgres (Docker Compose).
+- Ports: `api=20000 web=4444 pg=5432 testpg=5433 auth=20001 authpg=5434`.
 
-## Coding Style & Naming
-- 2-space indent, LF, UTF-8, final newline (`.editorconfig`).  
-- ESLint extends `@antfu/eslint-config` with 1TBS braces, sorted JSON keys, and unused import warnings (`packages/libs/eslint.config.js`). Run lint before pushing.  
-- TypeScript-first: camelCase for variables/functions, PascalCase for components/types, kebab-case for files/routes. Avoid top-level awaits; drop stray `console` calls in PRs.
+## Key paths
+- Orchestrators: `scripts/run.ts`, `scripts/test*.ts`, `scripts/validate-workflows.ts`
+- API: `apps/api/src/**`, `apps/api/drizzle.config.ts`, `apps/api/drizzle/*.sql`
+- Web: `apps/web/src/**`, `apps/web/vite.config.*`
+- Extension: `apps/extension/**`
+- Shared: `packages/libs/**`, `packages/config/**`
+- Data: `resources/plannings/*.json` (validate via `scripts/check-plannings-json.js`)
+- Tests: `test/*.test.ts`, `test/integration/*.test.ts`, `test/e2e/*.spec.ts`
 
-## Testing Guidelines
-- Bun test for unit/integration; Playwright for E2E (browsers auto-install).  
-- Naming: unit/integration `*.test.ts`; E2E `*.spec.ts` run via Playwright scripts only.  
-- Keep tests isolated: mock externals in unit tests, use Dockerized Postgres for integration, target `http://localhost:20000` with `docker-compose.test.yml` for E2E.  
-- Keep suites lean (Bun timeout 30s in `bunfig.toml`); add regression assertions and descriptive `describe/it` titles.
-
-## Commit & PR Guidelines
-- Use Conventional Commit prefixes (`feat:`, `fix:`, `chore:`, `refactor:`, `test:`, `docs:`); imperative subject, <72 chars.  
-- Before a PR: run lint, typecheck, unit tests, and any integration/E2E affected.  
-- PRs should include scope, linked issue, user impact, and screenshots/recordings for UI changes.  
-- Keep diffs focused; call out env or migration changes and update docs/config samples alongside code.
-
-## Environment & Secrets
-- Use `.bun-version` and `.nvmrc` to align runtimes; Docker Compose is the source of truth for services, ports, and test URLs.
-
-## API Notes (Bun SQL + Drizzle + routes)
-- DB: Drizzle `bun-sql` (`bun:SQL`). `db.execute(...)` returns `Row[]` (not `{ rows }`).
-- Prefer Drizzle query builder everywhere; use `db.execute<Row>(sql\`...\`)` only for Postgres-specific atomic patterns (CTEs + `FOR UPDATE SKIP LOCKED`, etc.).
-- Routes:
-  - `GET /api/ping`
-  - `GET /api/plannings` (tree)
-  - `GET /api/plannings/:fullId?events=true[&onlyDb=true]` (returns `refreshedAt` ms; db uses `plannings_backup.updated_at`)
-  - `GET /api/ops/plannings` (requires `OPS_TOKEN` via `x-ops-token`; prod returns 404 on missing/invalid)
-- Jobs: `RUN_JOBS=false` disables; `ALLOWED_JOBS` filters (default includes `plannings-refresh-worker`, `plannings-backfill`).
+## API notes (bun:sql + Drizzle)
+- DB: `import { SQL } from 'bun'` + `drizzle-orm/bun-sql`; `db.execute(...) => Row[]`.
+- Prefer Drizzle query builder; use raw SQL only when needed (PG-specific/atomic patterns).
+- Migrations on boot unless `NO_MIGRATE_DATABASE=true`.
+- `refreshedAt`: network=`Date.now()`; db=`plannings_backup.updated_at`.
+- `/api/ops/plannings`: `x-ops-token` must match `OPS_TOKEN` (prod: 404 if missing/invalid).
+- Jobs: `RUN_JOBS=false`, `ALLOWED_JOBS`, `JOBS_QUIET_HOURS*`.

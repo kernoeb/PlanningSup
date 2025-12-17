@@ -1,9 +1,8 @@
 import type { Ref, WatchSource } from 'vue'
-import { authClient } from '@libs'
+import { authClient } from '@libs/auth'
 import { createSharedComposable } from '@vueuse/core'
 import { computed, isRef, ref, toValue, watch } from 'vue'
 
-const AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 const DEV = import.meta?.env?.DEV ?? false
 
 export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings' | 'mergeDuplicates' | 'customGroups'
@@ -37,6 +36,12 @@ function jsonEqual(a: unknown, b: unknown): boolean {
     // Fallback for non-serializable values
     return a === b
   }
+}
+
+function isAuthEnabled(): boolean {
+  const runtime = globalThis.__APP_CONFIG__?.authEnabled
+  if (typeof runtime === 'boolean') return runtime
+  return import.meta.env?.VITE_AUTH_ENABLED === 'true'
 }
 
 // --- Local Storage Metadata Helpers ---
@@ -82,7 +87,7 @@ function userPrefsSync() {
     }
     registeredKeys.add(key)
 
-    if (!AUTH_ENABLED) {
+    if (!isAuthEnabled()) {
       return
     }
 
@@ -149,7 +154,7 @@ function userPrefsSync() {
     // --- Core Sync Logic ---
 
     const pushToServer = async (value: T) => {
-      if (!AUTH_ENABLED) return
+      if (!isAuthEnabled()) return
       if (!userId.value) return // Safeguard against calls when logged out.
 
       const payloadValue = toServer(value)

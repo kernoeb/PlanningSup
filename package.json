@@ -63,6 +63,7 @@
     "test:integration:auth": "bun scripts/test-integration-auth.ts",
     "test:integration:auth:local": "bun scripts/test-integration-auth.ts --skip-build",
     "validate:workflows": "bun scripts/validate-workflows.ts",
+    "docker:build": "docker build --build-arg BUN_VERSION=$(cat .bun-version) -t test-planningsup --progress=plain .",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",
     "typecheck": "bun scripts/run typecheck"
