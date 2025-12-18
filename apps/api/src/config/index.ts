@@ -2,11 +2,26 @@ import { env } from './env'
 
 const { NODE_ENV } = Bun.env
 
+function normalizePublicOrigin(raw: string) {
+  const url = new URL(raw)
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new Error('PUBLIC_ORIGIN must start with http:// or https://')
+  }
+  return url.origin
+}
+
 function getConfig() {
+  const port = env('PORT', { default: 20000 })
+
+  const rawPublicOrigin = NODE_ENV === 'production'
+    ? env('PUBLIC_ORIGIN', { required: true })
+    : env('PUBLIC_ORIGIN', { default: `http://localhost:${port}` })
+
   return {
     // Http Server
-    port: env('PORT', { default: 20000 }),
+    port,
     webDistLocation: env('WEB_DIST_LOCATION'),
+    publicOrigin: normalizePublicOrigin(rawPublicOrigin),
 
     // Jobs
     jobs: {

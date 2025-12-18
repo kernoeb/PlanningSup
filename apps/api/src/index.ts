@@ -46,6 +46,33 @@ export const app = new Elysia()
     }
     return body
   })
+  .get('/robots.txt', ({ request, set }) => {
+    const origin = config.publicOrigin
+    const body = `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
+    set.headers = {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    }
+    return body
+  })
+  .get('/sitemap.xml', ({ request, set }) => {
+    const origin = config.publicOrigin
+    const now = new Date().toISOString().slice(0, 10)
+    const body =
+      `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      `  <url>\n` +
+      `    <loc>${origin}/</loc>\n` +
+      `    <lastmod>${now}</lastmod>\n` +
+      `  </url>\n` +
+      `</urlset>\n`
+
+    set.headers = {
+      'Content-Type': 'application/xml; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600',
+    }
+    return body
+  })
 
 if (import.meta.env.NODE_ENV === 'production') {
   logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)

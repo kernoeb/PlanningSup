@@ -22,7 +22,7 @@ export default defineConfig({
       manifest: {
         name: 'PlanningSup',
         short_name: 'PlanningSup',
-        description: 'Un planning simple et efficace pour les étudiants',
+        description: 'Votre calendrier universitaire, simple, rapide, efficace',
         theme_color: '#000000',
         lang: 'fr',
         screenshots: [

@@ -74,5 +74,7 @@ export function getDefaultProxy() {
   return {
     '/api': 'http://localhost:20000',
     '/config.js': 'http://localhost:20000',
+    '/robots.txt': 'http://localhost:20000',
+    '/sitemap.xml': 'http://localhost:20000',
   }
 }
