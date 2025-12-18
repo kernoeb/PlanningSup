@@ -75,12 +75,26 @@
     "concurrently": "9.2.1",
     "eslint": "catalog:dev",
     "eslint-plugin-perfectionist": "4.15.1",
-    "playwright": "1.57.0"
+    "lint-staged": "16.2.7",
+    "playwright": "1.57.0",
+    "simple-git-hooks": "2.13.1"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
     "core-js",
     "esbuild",
     "sharp"
-  ]
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "bunx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,md,mdx,json,yaml,yml}": [
+      "bun run lint-fix",
+      "bun run lint"
+    ],
+    "*.{ts,tsx,vue}": [
+      "bun run typecheck"
+    ]
+  }
 }
