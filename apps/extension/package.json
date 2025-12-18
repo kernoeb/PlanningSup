@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "description": "The official PlanningSup browser extension",
+  "description": "Votre calendrier universitaire, simple, rapide, efficace",
   "scripts": {
     "dev": "bun run clear && cross-env VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://localhost:20000 NODE_ENV=development concurrently bun:dev:*",
     "dev-firefox": "bun run clear && cross-env NODE_ENV=development EXTENSION=firefox bun:dev:*",
@@ -16,7 +16,7 @@
     "build:background": "bunx --bun vite build --config vite.config.background.ts",
     "build:web": "bunx --bun vite build",
     "pack": "cross-env NODE_ENV=production concurrently bun:pack:*",
-    "pack:zip": "rimraf extension.zip && jszip-cli add extension/* -o ./extension.zip",
+    "pack:zip": "rimraf extension.zip && cd extension && zip -r ../extension.zip . && cd ..",
     "pack:crx": "crx pack extension -o ./extension.crx",
     "pack:xpi": "cross-env WEB_EXT_ARTIFACTS_DIR=./ web-ext build --source-dir ./extension --filename extension.xpi --overwrite-dest",
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
@@ -27,7 +27,6 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@ffflorian/jszip-cli": "3.12.8",
     "@tailwindcss/vite": "catalog:ui",
     "@types/bun": "catalog:types",
     "@types/fs-extra": "11.0.4",

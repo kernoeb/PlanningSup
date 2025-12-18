@@ -18,7 +18,7 @@ export async function getManifest() {
     },
     // @ts-expect-error missing in type
     externally_connectable: {
-      matches: ['http://localhost:20000/*', 'https://planningsup.app/*', 'https://*.planningsup.app/*'],
+      matches: ['https://planningsup.app/*', 'https://*.planningsup.app/*'],
     },
     background: isFirefox
       ? {
@@ -35,12 +35,12 @@ export async function getManifest() {
     },
     permissions: [
       'tabs',
-      'storage',
-      'activeTab',
       'sidePanel',
     ],
-
-    host_permissions: ['*://*/*'],
+    host_permissions: [
+      'https://planningsup.app/*',
+      'https://*.planningsup.app/*',
+    ],
     content_security_policy: {
       extension_pages: isDev
         // this is required on dev for Vite script to load
