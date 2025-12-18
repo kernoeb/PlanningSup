@@ -38,9 +38,14 @@ describe('Ops routes', () => {
           nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
         }],
         [{
+          total: 50,
           disabled: 3,
           oldestDisabledUntil: new Date('2025-01-02T00:00:00Z'),
           mostRecentSuccessAt: new Date('2025-01-03T00:00:00Z'),
+          refreshedLast1h: 20,
+          refreshedLast6h: 35,
+          refreshedLast24h: 45,
+          neverRefreshed: 5,
         }],
         [{ totalPlannings: 100 }],
         [{ missingBackups: 10 }],
@@ -79,9 +84,29 @@ describe('Ops routes', () => {
       headers: { 'x-ops-token': 'secret' },
     })
     expect(response.status).toBe(200)
+
+    // Health check at top level
+    expect(data).toHaveProperty('health')
+    expect((data as any).health.status).toBeOneOf(['healthy', 'degraded', 'unhealthy'])
+    expect(Array.isArray((data as any).health.issues)).toBeTrue()
+
+    // Queue metrics
     expect(data).toHaveProperty('refreshQueue')
     expect((data as any).refreshQueue.depth).toBe(2)
+
+    // Refresh state with freshness metrics
+    expect(data).toHaveProperty('refreshState')
+    expect((data as any).refreshState.total).toBe(50)
+    expect((data as any).refreshState.disabled).toBe(3)
+    expect((data as any).refreshState.refreshedLast1h).toBe(20)
+    expect((data as any).refreshState.refreshedLast6h).toBe(35)
+
+    // Backups with renamed content stale fields
     expect((data as any).backups.missingBackups).toBe(10)
+    expect((data as any).backups.contentStaleOver1h).toBe(5)
+    expect((data as any).backups).toHaveProperty('missingExplained')
+    expect((data as any).backups).toHaveProperty('contentStaleMeaning')
+
     expect(Array.isArray((data as any).queueTop)).toBeTrue()
   })
 })
