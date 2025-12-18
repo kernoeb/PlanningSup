@@ -228,6 +228,7 @@ jobs:
             --network host \
             -e NODE_ENV=production \
             -e PORT=20000 \
+            -e PUBLIC_ORIGIN="http://localhost:20000" \
             -e DATABASE_URL="postgresql://testuser:testpass@localhost:5432/planningsup_test" \
             -e RUN_JOBS=false \
             -e AUTH_ENABLED=false \
@@ -323,6 +324,7 @@ jobs:
             --network host \
             -e NODE_ENV=production \
             -e PORT=20001 \
+            -e PUBLIC_ORIGIN="http://localhost:20001" \
             -e DATABASE_URL="postgresql://testuser:testpass@localhost:5434/planningsup_test_auth" \
             -e RUN_JOBS=false \
             -e AUTH_ENABLED=true \
@@ -453,6 +455,7 @@ jobs:
             --network host \
             -e NODE_ENV=production \
             -e PORT=20000 \
+            -e PUBLIC_ORIGIN="http://localhost:20000" \
             -e DATABASE_URL="postgresql://testuser:testpass@localhost:5433/planningsup_test_e2e" \
             -e RUN_JOBS=false \
             -e AUTH_ENABLED=false \

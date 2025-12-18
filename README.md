@@ -96,6 +96,7 @@ bun dev
 DATABASE_URL=postgres://planningsup:mysecretpassword@postgres:5432/planningsup
 PORT=20000
 RUN_JOBS=true
+PUBLIC_ORIGIN=https://planningsup.app
 TRUSTED_ORIGINS=https://planningsup.app
 ```
 
