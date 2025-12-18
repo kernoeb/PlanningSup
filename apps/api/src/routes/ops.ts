@@ -110,10 +110,20 @@ export default new Elysia({ prefix: '/ops' })
     return {
       jobs: {
         runJobs: env('RUN_JOBS', { default: true }),
+        started: jobs.isStarted(),
         paused: jobs.isPaused(),
+        pausedMeaning: 'manual',
         quietHours: jobs.getQuietHours(),
         quietHoursTimezone: jobs.getTimezone(),
         inQuietHoursNow: jobs.isInQuietHours(),
+        quietHoursMeaning: 'advisory',
+        quietHoursRespectedBy: {
+          // Backfill is periodic/background and should pause during quiet hours.
+          planningsBackfill: true,
+          // Refresh worker is user-triggered/low-latency and intentionally ignores quiet hours.
+          planningsRefreshWorker: false,
+        },
+        runtime: jobs.getRuntime(),
       },
       workers: {
         refreshWorker: {

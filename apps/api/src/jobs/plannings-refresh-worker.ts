@@ -7,6 +7,7 @@ import { jobsLogger } from '@api/utils/logger'
 
 import { JOB_ID } from './utils/ids'
 import { registerJobPoke } from './utils/poke'
+import { updateJobRuntime } from './utils/runtime'
 
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
@@ -109,15 +110,19 @@ export async function start(db: Database, signal: AbortSignal, ctx: JobContext) 
     'Starting refresh worker (minPollMs={minPollMs}, maxPollMs={maxPollMs}, batchSize={batchSize}, concurrency={concurrency}, drainBudgetMs={drainBudgetMs})',
     { minPollMs, maxPollMs, batchSize, concurrency, drainBudgetMs, perHostConcurrency },
   )
+  updateJobRuntime(JOB_ID.planningsRefreshWorker, { state: 'idle' })
 
   for (;;) {
     if (signal.aborted) return
     if (ctx.isPaused()) {
+      updateJobRuntime(JOB_ID.planningsRefreshWorker, { state: 'paused', lastPausedWaitAt: new Date() })
       await ctx.waitForResumeOrStop(signal)
+      updateJobRuntime(JOB_ID.planningsRefreshWorker, { state: 'idle' })
       idleMs = minPollMs
       continue
     }
 
+    updateJobRuntime(JOB_ID.planningsRefreshWorker, { lastLoopAt: new Date() })
     const result = await drainRefreshQueue(
       db,
       { fetchEvents, upsertPlanningBackup, planningUrlById },
@@ -138,6 +143,12 @@ export async function start(db: Database, signal: AbortSignal, ctx: JobContext) 
     accDeleted += result.deleted
     accRequeued += result.requeued
     accFailed += result.failed
+
+    if (result.picked > 0) {
+      updateJobRuntime(JOB_ID.planningsRefreshWorker, { state: 'working', lastWorkAt: new Date() })
+    } else {
+      updateJobRuntime(JOB_ID.planningsRefreshWorker, { state: 'idle' })
+    }
 
     if (sweepIntervalMs > 0) {
       const now = Date.now()

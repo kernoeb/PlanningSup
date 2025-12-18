@@ -9,6 +9,7 @@ import { jobsLogger } from '@api/utils/logger'
 
 import { JOB_ID } from './utils/ids'
 import { formatQuietHours, isInQuietHours, parseQuietHours } from './utils/quiet-hours'
+import { getJobRuntimeSnapshot, updateJobRuntime } from './utils/runtime'
 
 export { formatQuietHours, isInQuietHours, parseQuietHours }
 export type { QuietHours }
@@ -127,9 +128,11 @@ export interface JobsControls {
   pause: () => void
   resume: () => void
   isPaused: () => boolean
+  isStarted: () => boolean
   getQuietHours: () => QuietHours | null
   getTimezone: () => string
   isInQuietHours: () => boolean
+  getRuntime: () => ReturnType<typeof getJobRuntimeSnapshot>
 }
 
 export interface JobsApi extends JobsControls {
@@ -162,6 +165,9 @@ const controller: JobsControls = {
   isPaused() {
     return paused
   },
+  isStarted() {
+    return started
+  },
   getQuietHours() {
     return parseQuietHours(config.jobs.quietHours)
   },
@@ -172,6 +178,9 @@ const controller: JobsControls = {
     const quietHours = parseQuietHours(config.jobs.quietHours)
     const timezone = config.jobs.quietHoursTimezone
     return isInQuietHours(quietHours, new Date(), timezone)
+  },
+  getRuntime() {
+    return getJobRuntimeSnapshot()
   },
 }
 
@@ -212,6 +221,7 @@ export function startJobs(db: Database): JobsControls {
 
         try {
           jobsLogger.info('Starting job: {name}', { name: job.name })
+          updateJobRuntime(job.id, { state: 'starting', startedAt: new Date() })
           await job.start(db, ac.signal, ctx)
 
           if (ac.signal.aborted) {
@@ -219,19 +229,27 @@ export function startJobs(db: Database): JobsControls {
               name: job.name,
               reason: ac.signal.reason || 'unknown',
             })
+            updateJobRuntime(job.id, { state: 'stopped' })
             break
           }
 
           jobsLogger.warn('Job exited unexpectedly: {name}', { name: job.name })
+          updateJobRuntime(job.id, { state: 'exited' })
         } catch (error) {
           if (ac.signal.aborted) {
             jobsLogger.info('Job aborted: {name} (reason: {reason})', {
               name: job.name,
               reason: ac.signal.reason || 'unknown',
             })
+            updateJobRuntime(job.id, { state: 'stopped' })
             break
           }
           jobsLogger.error('Job crashed: {name}', { name: job.name, error })
+          updateJobRuntime(job.id, {
+            state: 'crashed',
+            lastErrorAt: new Date(),
+            lastError: error instanceof Error ? (error.stack || error.message) : String(error),
+          })
         }
 
         if (!job.restartOnExit) {
@@ -263,9 +281,11 @@ export const jobs: JobsApi = {
   pause: controller.pause,
   resume: controller.resume,
   isPaused: controller.isPaused,
+  isStarted: controller.isStarted,
   getQuietHours: controller.getQuietHours,
   getTimezone: controller.getTimezone,
   isInQuietHours: controller.isInQuietHours,
+  getRuntime: controller.getRuntime,
 }
 
 export default jobs

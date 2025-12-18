@@ -7,7 +7,9 @@ import { enqueuePlanningRefreshBatch } from '@api/utils/plannings-backup'
 
 import { and, asc, eq, isNull, lt, or, sql } from 'drizzle-orm'
 
+import { JOB_ID } from './utils/ids'
 import { isInQuietHours } from './utils/quiet-hours'
+import { updateJobRuntime } from './utils/runtime'
 
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms))
@@ -77,23 +79,35 @@ export async function start(db: Database, signal: AbortSignal, ctx: JobContext) 
   const intervalMs = envNumber('PLANNINGS_BACKFILL_INTERVAL_MS', 10 * 60_000)
 
   jobsLogger.info('Starting plannings backfill (intervalMs={intervalMs})', { intervalMs })
+  updateJobRuntime(JOB_ID.planningsBackfill, { state: 'idle' })
 
   for (;;) {
     if (signal.aborted) return
+    updateJobRuntime(JOB_ID.planningsBackfill, { lastLoopAt: new Date() })
     if (ctx.isPaused()) {
+      updateJobRuntime(JOB_ID.planningsBackfill, { state: 'paused', lastPausedWaitAt: new Date() })
       await ctx.waitForResumeOrStop(signal)
+      updateJobRuntime(JOB_ID.planningsBackfill, { state: 'idle' })
       continue
     }
 
     if (isInQuietHours(ctx.quietHours, new Date(), ctx.timezone)) {
+      updateJobRuntime(JOB_ID.planningsBackfill, { state: 'quiet_hours', lastQuietHoursSkipAt: new Date() })
       await sleepOrAbort(60_000, signal)
       continue
     }
 
     try {
+      updateJobRuntime(JOB_ID.planningsBackfill, { state: 'working' })
       const result = await runOnce(db)
+      updateJobRuntime(JOB_ID.planningsBackfill, { state: 'idle', lastWorkAt: new Date() })
       jobsLogger.info('Backfill enqueued {count} planning(s)', { count: result.enqueued })
     } catch (error) {
+      updateJobRuntime(JOB_ID.planningsBackfill, {
+        state: 'idle',
+        lastErrorAt: new Date(),
+        lastError: error instanceof Error ? (error.stack || error.message) : String(error),
+      })
       jobsLogger.warn('Backfill failed: {error}', { error })
     }
 
