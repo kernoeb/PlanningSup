@@ -1,5 +1,7 @@
 # PlanningSup (AGENTS)
 
+Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
+
 ## Fast (root)
 - Setup: `bun install`
 - API env: `cp apps/api/.env.example apps/api/.env` (needs `DATABASE_URL`)
@@ -16,6 +18,7 @@
 - Per-workspace: `cd <workspace> && bun run <script>` (needed for `apps/extension`).
 - Use Bun only; `.bun-version` + `bun.lock`; `bunx --bun <cli>`; `bun run <script> -- <flags>`.
 - Tests: `bun test` for `*.test.ts`; Playwright for `test/e2e/*.spec.ts`.
+- End-to-end typed API: use Eden treaty client `packages/libs/src/client/index.ts` (`client.api.*`), avoid ad-hoc `fetch('/api/...')`.
 
 ## CI / Docker / ports
 - Workflows: `.github/workflows/docker-publish.yml`, `.github/workflows/extension-build.yml`; validate: `bun run validate:workflows`.
@@ -26,6 +29,7 @@
 ## Key paths
 - Orchestrators: `scripts/run.ts`, `scripts/test*.ts`, `scripts/validate-workflows.ts`
 - API: `apps/api/src/**`, `apps/api/drizzle.config.ts`, `apps/api/drizzle/*.sql`
+- Auth/prefs sync: `apps/web/src/composables/useUserPrefsSync.ts` ↔ `apps/api/src/utils/auth.ts` ↔ `apps/api/src/db/schemas/auth.ts`
 - Web: `apps/web/src/**`, `apps/web/vite.config.*`
 - Extension: `apps/extension/**`
 - Shared: `packages/libs/**`, `packages/config/**`
@@ -39,3 +43,4 @@
 - `refreshedAt`: network=`Date.now()`; db=`plannings_backup.updated_at`.
 - `/api/ops/plannings`: `x-ops-token` must match `OPS_TOKEN` (prod: 404 if missing/invalid).
 - Jobs: `RUN_JOBS=false`, `ALLOWED_JOBS`, `JOBS_QUIET_HOURS*`.
+- Routes (current): `/api/ping`, `/api/plannings`, `/api/plannings/:fullId?events=true[&onlyDb=true]`, `/api/ops/plannings`, `/api/auth/*`, `/api/auth/auto-redirect/:provider`, `/config.js`.
