@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { client } from '@libs'
-import { refDebounced, useVirtualList } from '@vueuse/core'
+import { onClickOutside, refDebounced, useVirtualList } from '@vueuse/core'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
 import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcwIcon as IconRotateCcw, XIcon as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
@@ -103,6 +103,55 @@ const customGroupDetailsRef = ref<HTMLDetailsElement | null>(null)
 
 const { customGroups, addCustomGroup } = useSharedSettings()
 
+const suggestedGroupName = computed<string | null>(() => {
+  if (safePlanningIds.value.length !== 1) return null
+  const fullId = safePlanningIds.value[0]
+  if (!fullId) return null
+  const path = findPathInTree(tree.value, fullId)
+  if (!path?.length) return null
+  // Use the leaf title (not the full "A > B > C" path) for nicer group naming.
+  return path.at(-1) ?? null
+})
+
+watch(
+  suggestedGroupName,
+  (name) => {
+    // Only auto-fill when empty, so we never overwrite what the user typed.
+    if (!name) return
+    if (customGroupName.value && customGroupName.value.trim().length > 0) return
+    customGroupName.value = name
+  },
+)
+
+function resetCustomGroupForm() {
+  customGroupName.value = undefined
+}
+
+function applySuggestedGroupNameIfEmpty() {
+  const name = suggestedGroupName.value
+  if (!name) return
+  if (customGroupName.value && customGroupName.value.trim().length > 0) return
+  customGroupName.value = name
+}
+
+function closeCustomGroupDropdown() {
+  if (customGroupDetailsRef.value) {
+    customGroupDetailsRef.value.open = false
+  }
+  resetCustomGroupForm()
+}
+
+onClickOutside(customGroupDetailsRef, closeCustomGroupDropdown)
+
+function onCustomGroupDetailsToggle(e: Event) {
+  const details = e.currentTarget as HTMLDetailsElement | null
+  if (details?.open) {
+    applySuggestedGroupNameIfEmpty()
+  } else {
+    resetCustomGroupForm()
+  }
+}
+
 function saveSelection() {
   // Close the form
   (document?.activeElement as HTMLElement)?.blur()
@@ -113,7 +162,7 @@ function saveSelection() {
       name: customGroupName.value,
       plannings: safePlanningIds.value,
     })
-    customGroupName.value = undefined
+    resetCustomGroupForm()
     // Close the dropdown
     if (customGroupDetailsRef.value) {
       customGroupDetailsRef.value.open = false
@@ -487,7 +536,7 @@ watch(
             >
               <IconRotateCcw class="size-4 text-base-content" />
             </button>
-            <details ref="customGroupDetailsRef" class="dropdown dropdown-end">
+            <details ref="customGroupDetailsRef" class="dropdown dropdown-end" @toggle="onCustomGroupDetailsToggle">
               <summary
                 id="planning-save-selection"
                 class="tooltip tooltip-left before:z-50 after:z-50 btn z-5000"

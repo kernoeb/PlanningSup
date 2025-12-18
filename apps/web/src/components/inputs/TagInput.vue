@@ -87,10 +87,10 @@ function onPaste(e: ClipboardEvent) {
       <span
         v-for="(tag, idx) in modelValue"
         :key="`${tag}_${idx}`"
-        class="badge badge-outline items-center gap-1 pl-2 pr-1"
+        class="badge badge-soft items-center gap-1 pl-2 pr-1"
         role="listitem"
       >
-        <span class="truncate max-w-xs leading-tight text-xs">{{ tag }}</span>
+        <span class="truncate max-w-xs leading-tight">{{ tag }}</span>
         <button
           :aria-label="`Remove tag ${tag}`"
           class="ml-0.5 inline-flex items-center justify-center h-3 w-3 rounded-full p-0 text-[9px] leading-none hover:bg-base-300/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-base-100 transition-colors cursor-pointer"

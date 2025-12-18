@@ -139,9 +139,18 @@ export function useSettings() {
   const blocklist = useLocalStorage<string[]>('settings.blocklist', [])
 
   // 4) Target timezone (IANA string or null)
-  const targetTimezone = useLocalStorage<string | null>('settings.targetTimezone', null)
-  // Normalize empty string to null for robustness (e.g., when cleared from UI)
-  if (targetTimezone.value === '') targetTimezone.value = null
+  const targetTimezone = useLocalStorage<string | null>('settings.targetTimezone', null, {
+    // Store raw strings (no JSON quotes) for nicer localStorage UX and easy inspection.
+    // - null => '' (empty string)
+    // - '' => null
+    serializer: {
+      read: (raw: string) => {
+        const v = (raw ?? '').trim()
+        return v.length ? v : null
+      },
+      write: (value: string | null) => (value ?? '').trim(),
+    },
+  })
 
   // 5) Show weekends in week view (client-only)
   // Default false to match current behavior (5-day week)
