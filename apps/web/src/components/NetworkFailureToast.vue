@@ -51,7 +51,7 @@ function getReasonLabel(reason: FailureReason | null, refreshedAt: number | null
       return 'aucun événement prévu'
     case 'network_error':
     default:
-      return `maj : ${formatBackupTime(refreshedAt)}`
+      return `synchro : ${formatBackupTime(refreshedAt)}`
   }
 }
 

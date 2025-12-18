@@ -1,7 +1,7 @@
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
 import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
-import { requestPlanningRefresh, schedulePlanningBackupWrite } from '@api/utils/plannings-backup'
+import { markPlanningRefreshSuccess, requestPlanningRefresh, schedulePlanningBackupWrite } from '@api/utils/plannings-backup'
 import { Elysia } from 'elysia'
 
 export default new Elysia({ prefix: '/plannings' })
@@ -42,18 +42,24 @@ export default new Elysia({ prefix: '/plannings' })
 
       // refreshedAt semantics:
       // - network: request time
-      // - db: backup updatedAt
+      // - db: last successful refresh (worker/UI), regardless of backup churn
       // - none: null
       const refreshedAt = source === 'network'
         ? Date.now()
         : source === 'db'
-          ? resolveResult.backupUpdatedAt?.getTime() ?? null
+          ? resolveResult.backupRefreshedAt?.getTime() ?? resolveResult.backupUpdatedAt?.getTime() ?? null
           : null
 
       // Keep backups fresh when the UI hits the API directly:
       // - If we successfully fetched events from the network, write-through to DB asynchronously (no extra upstream fetch).
       // - If network failed (and onlyDb wasn't requested), enqueue a refresh retry with priority.
       if (!onlyDb) {
+        if (source === 'network') {
+          void markPlanningRefreshSuccess(planning.fullId).catch((error) => {
+            elysiaLogger.warn('Failed to mark planning refresh success for {fullId}: {error}', { fullId, error })
+          })
+        }
+
         if (source === 'network' && events) {
           schedulePlanningBackupWrite(planning.fullId, events)
         } else if (resolveResult.networkFailed) {
@@ -80,6 +86,7 @@ export default new Elysia({ prefix: '/plannings' })
       return {
         ...partialInfos,
         refreshedAt,
+        backupUpdatedAt: resolveResult.backupUpdatedAt?.getTime() ?? null,
         status: events ? 'ok' : 'error',
         source,
         reason,

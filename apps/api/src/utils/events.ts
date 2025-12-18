@@ -1,5 +1,5 @@
 import { db } from '@api/db'
-import { planningsBackupTable } from '@api/db/schemas/plannings'
+import { planningsBackupTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
 import { fetchWithTimeout } from '@api/utils/http'
 
 import dayjs from 'dayjs'
@@ -190,16 +190,41 @@ export async function fetchEvents(url: string): Promise<CalEvent[] | null> {
 
 export interface BackupEventsResult {
   events: CalEvent[]
+  refreshedAt: Date
   updatedAt: Date
 }
 
 export async function getBackupEvents(planningFullId: string): Promise<BackupEventsResult | null> {
-  return db.query.planningsBackupTable
-    .findFirst({
-      where: eq(planningsBackupTable.planningFullId, planningFullId),
-    })
-    .then(r => r ? { events: r.events, updatedAt: r.updatedAt } : null)
-    .catch(() => null)
+  try {
+    const [backup, refreshState] = await Promise.all([
+      db.query.planningsBackupTable
+        .findFirst({
+          where: eq(planningsBackupTable.planningFullId, planningFullId),
+          columns: { events: true, updatedAt: true },
+        })
+        .catch(() => undefined),
+      db.query.planningsRefreshStateTable
+        .findFirst({
+          where: eq(planningsRefreshStateTable.planningFullId, planningFullId),
+          columns: { lastSuccessAt: true },
+        })
+        .catch(() => undefined),
+    ])
+
+    if (!backup) return null
+
+    // "refreshedAt" = last successful fetch attempt (worker or UI), even if events didn't change.
+    // Fallback to backup.updatedAt for legacy rows with no refresh_state.
+    const refreshedAt = refreshState?.lastSuccessAt ?? backup.updatedAt
+
+    return {
+      events: backup.events,
+      refreshedAt,
+      updatedAt: backup.updatedAt,
+    }
+  } catch {
+    return null
+  }
 }
 
 function getDate(date: Date, localeUtils: { target: string, browser: string } | null) {
@@ -313,6 +338,7 @@ export interface ResolveEventsResult {
   events: CalEvent[] | null
   source: EventsSource
   networkFailed: boolean
+  backupRefreshedAt: Date | null
   backupUpdatedAt: Date | null
   networkFailure: FetchFailure | null
 }
@@ -332,6 +358,7 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
       events: backup ? backup.events : null,
       source: backup ? 'db' : 'none',
       networkFailed: false,
+      backupRefreshedAt: backup ? backup.refreshedAt : null,
       backupUpdatedAt: backup ? backup.updatedAt : null,
       networkFailure: null,
     }
@@ -339,7 +366,7 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
 
   const net = await fetchEventsDetailed(planning.url)
   if (net.events) {
-    return { events: net.events, source: 'network', networkFailed: false, backupUpdatedAt: null, networkFailure: null }
+    return { events: net.events, source: 'network', networkFailed: false, backupRefreshedAt: null, backupUpdatedAt: null, networkFailure: null }
   }
 
   // Network failed, try DB fallback
@@ -348,6 +375,7 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
     events: backup ? backup.events : null,
     source: backup ? 'db' : 'none',
     networkFailed: true,
+    backupRefreshedAt: backup ? backup.refreshedAt : null,
     backupUpdatedAt: backup ? backup.updatedAt : null,
     networkFailure: net.failure,
   }

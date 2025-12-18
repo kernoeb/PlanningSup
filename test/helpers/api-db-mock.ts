@@ -10,9 +10,11 @@ type CalEvent = {
 }
 
 type BackupRecord = { events: CalEvent[], updatedAt: Date }
+type RefreshStateRecord = { lastSuccessAt: Date }
 
 type ApiDbMockState = {
   backupStore: Record<string, BackupRecord | undefined>
+  refreshStateStore: Record<string, RefreshStateRecord | undefined>
   refreshQueueStore: Map<string, { priority: number }>
   opsSelectRowsByCall: any[][]
   opsSelectCallIndex: number
@@ -26,6 +28,7 @@ function getState(): ApiDbMockState {
   if (!g[STATE_KEY]) {
     g[STATE_KEY] = {
       backupStore: {},
+      refreshStateStore: {},
       refreshQueueStore: new Map(),
       opsSelectRowsByCall: [],
       opsSelectCallIndex: 0,
@@ -55,6 +58,7 @@ export function configureApiDbMock(config: Partial<Pick<ApiDbMockState, 'opsSele
 export function resetApiDbMockStores() {
   const state = getState()
   for (const key of Object.keys(state.backupStore)) delete state.backupStore[key]
+  for (const key of Object.keys(state.refreshStateStore)) delete state.refreshStateStore[key]
   state.refreshQueueStore.clear()
   state.opsSelectRowsByCall = []
   state.opsSelectCallIndex = 0
@@ -64,6 +68,7 @@ export function getApiDbMockStores() {
   const state = getState()
   return {
     backupStore: state.backupStore,
+    refreshStateStore: state.refreshStateStore,
     refreshQueueStore: state.refreshQueueStore,
   }
 }
@@ -138,6 +143,12 @@ export function installApiDbMock() {
                 const fullId = values.planningFullId as string
                 state.refreshQueueStore.set(fullId, { priority: values.priority as number })
               }
+
+              // plannings refresh state upsert (best-effort)
+              if (values && 'planningFullId' in values && ('lastSuccessAt' in values || 'lastAttemptAt' in values) && !('events' in values) && !('priority' in values)) {
+                const fullId = values.planningFullId as string
+                state.refreshStateStore[fullId] = { lastSuccessAt: new Date() }
+              }
               return insertBuilder(values)
             },
           }
@@ -150,6 +161,15 @@ export function installApiDbMock() {
               const record = state.backupStore[id]
               if (!record) return undefined
               return { events: record.events, updatedAt: record.updatedAt }
+            },
+          },
+          planningsRefreshStateTable: {
+            async findFirst(args: any) {
+              const id = extractEqStringValue(args?.where)
+              if (!id) return undefined
+              const record = state.refreshStateStore[id]
+              if (!record) return undefined
+              return { lastSuccessAt: record.lastSuccessAt }
             },
           },
         },

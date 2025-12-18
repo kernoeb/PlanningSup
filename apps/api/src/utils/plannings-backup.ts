@@ -209,6 +209,13 @@ function getRefreshStateMaxKeys() {
 
 const refreshState = new Map<string, { lastRequestedAt: number, lastTouchedAt: number }>()
 
+function getRefreshSuccessWriteThrottleMs() {
+  return envNumber(
+    'PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS',
+    Bun.env.NODE_ENV === 'test' ? 0 : 30_000,
+  )
+}
+
 function pruneRefreshState(now: number, ttlMs: number, maxKeys: number) {
   for (const [key, state] of refreshState) {
     if (now - state.lastTouchedAt > ttlMs) refreshState.delete(key)
@@ -280,6 +287,39 @@ export async function requestPlanningRefresh(planningFullId: string, priority: n
     })
 
   pokeJob(JOB_ID.planningsRefreshWorker)
+}
+
+export async function markPlanningRefreshSuccess(planningFullId: string) {
+  const throttleMs = getRefreshSuccessWriteThrottleMs()
+
+  await db
+    .insert(planningsRefreshStateTable)
+    .values({
+      planningFullId,
+      disabledUntil: null,
+      consecutiveFailures: 0,
+      lastFailureKind: null,
+      lastError: null,
+      lastAttemptAt: sql`now()`,
+      lastSuccessAt: sql`now()`,
+      updatedAt: sql`now()`,
+    })
+    .onConflictDoUpdate({
+      target: planningsRefreshStateTable.planningFullId,
+      set: {
+        disabledUntil: null,
+        consecutiveFailures: 0,
+        lastFailureKind: null,
+        lastError: null,
+        lastAttemptAt: sql`now()`,
+        lastSuccessAt: sql`now()`,
+        updatedAt: sql`now()`,
+      },
+      // Throttle writes (cross-instance) to avoid write amplification under high concurrency.
+      where: throttleMs > 0
+        ? sql`${planningsRefreshStateTable.lastSuccessAt} is null or ${planningsRefreshStateTable.lastSuccessAt} < (now() - (${throttleMs} * interval '1 millisecond'))`
+        : undefined,
+    })
 }
 
 export async function enqueuePlanningRefreshBatch(planningFullIds: string[], priority: number) {

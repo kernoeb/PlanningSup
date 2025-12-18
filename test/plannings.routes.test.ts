@@ -96,6 +96,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
   let fetchMode: 'ok' | 'error' = 'ok'
 
   let backupStore: Record<string, { events: CalEvent[], updatedAt: Date } | undefined>
+  let refreshStateStore: Record<string, { lastSuccessAt: Date } | undefined>
   let refreshQueueStore: Map<string, { priority: number }>
 
   async function tick() {
@@ -123,7 +124,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     installApiDbMock()
     resetApiDbMockStores()
-    ;({ backupStore, refreshQueueStore } = getApiDbMockStores())
+    ;({ backupStore, refreshStateStore, refreshQueueStore } = getApiDbMockStores())
 
     // Ensure no cross-file leakage from other suites (notably memory/load tests).
     const { __test } = await import('@api/utils/plannings-backup')
@@ -244,6 +245,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
   it('uses backup events when ICS fetch fails', async () => {
     // Set backup events for this planning id
     backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+    refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
     // Flip fetch to error
     fetchMode = 'error'
 
@@ -262,13 +264,37 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     // Clean up backup
     backupStore[targetFullId] = undefined
+    refreshStateStore[targetFullId] = undefined
     // Restore fetch OK for next tests
+    fetchMode = 'ok'
+  })
+
+  it('prefers lastSuccessAt over backup updatedAt when serving DB fallback', async () => {
+    // Old snapshot, but a more recent successful refresh with identical data (no churn).
+    backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+    refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-02-01T00:00:00Z') }
+    fetchMode = 'error'
+
+    const res = await app.handle(
+      new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true`),
+    )
+    expect(res.status).toBe(200)
+    const body = await res.json()
+
+    expect(body.status).toBe('ok')
+    expect(body.source).toBe('db')
+    expect(body.refreshedAt).toBe(new Date('2025-02-01T00:00:00Z').getTime())
+    expect(body.backupUpdatedAt).toBe(new Date('2025-01-01T00:00:00Z').getTime())
+
+    backupStore[targetFullId] = undefined
+    refreshStateStore[targetFullId] = undefined
     fetchMode = 'ok'
   })
 
   it('enqueues a refresh retry when network fails and DB fallback is used', async () => {
     refreshQueueStore.clear()
     backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+    refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
     fetchMode = 'error'
 
     const res = await app.handle(
@@ -282,6 +308,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     // Cleanup
     fetchMode = 'ok'
     backupStore[targetFullId] = undefined
+    refreshStateStore[targetFullId] = undefined
   })
 
   it('accepts highlightTeacher query param', async () => {
@@ -344,6 +371,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
   it('uses only database when onlyDb=true (skips network fetch)', async () => {
     // Set backup events for this planning id
     backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+    refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
     // Keep fetch in OK mode - but it should NOT be called
     fetchMode = 'ok'
 
@@ -379,6 +407,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     globalThis.fetch = prevFetch
     // Clean up backup
     backupStore[targetFullId] = undefined
+    refreshStateStore[targetFullId] = undefined
   })
 
   it('returns source=none when onlyDb=true and no backup exists', async () => {
@@ -417,6 +446,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     it('returns reason=network_error when network fails but DB has backup', async () => {
       backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+      refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
       fetchMode = 'error'
 
       const res = await app.handle(
@@ -432,6 +462,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
       // Cleanup
       backupStore[targetFullId] = undefined
+      refreshStateStore[targetFullId] = undefined
       fetchMode = 'ok'
     })
 
@@ -470,6 +501,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     it('returns reason=null when onlyDb=true and DB has events', async () => {
       backupStore[targetFullId] = { events: sampleEvents, updatedAt: new Date('2025-01-01T00:00:00Z') }
+      refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
 
       const res = await app.handle(
         new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
@@ -484,6 +516,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
       // Cleanup
       backupStore[targetFullId] = undefined
+      refreshStateStore[targetFullId] = undefined
     })
 
     it('returns reason=empty_schedule when network succeeds but no events', async () => {
@@ -522,6 +555,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     it('returns reason=empty_schedule when onlyDb=true and DB has empty events', async () => {
       backupStore[targetFullId] = { events: [], updatedAt: new Date('2025-01-01T00:00:00Z') } // Empty array
+      refreshStateStore[targetFullId] = { lastSuccessAt: new Date('2025-01-01T00:00:00Z') }
 
       const res = await app.handle(
         new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&onlyDb=true`),
@@ -536,6 +570,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
       // Cleanup
       backupStore[targetFullId] = undefined
+      refreshStateStore[targetFullId] = undefined
     })
   })
 })
