@@ -157,22 +157,14 @@ jobs:
           retention-days: 90
           compression-level: 0
 
-      - name: Upload Generic Extension Artifact
+      - name: Upload Extension ZIP (for Chrome Web Store)
         uses: actions/upload-artifact@v4
-        if: hashFiles('apps/extension/extension/**') != ''
+        if: hashFiles('apps/extension/extension.zip') != ''
         with:
-          name: planningsup-extension-${{ github.run_number }}
-          path: ${{ env.EXTENSION_DIR }}/extension/
+          name: planningsup-zip-${{ github.run_number }}
+          path: ${{ env.EXTENSION_DIR }}/extension.zip
           retention-days: 90
           compression-level: 0
-
-      - name: Upload Extension Source (Built)
-        uses: actions/upload-artifact@v4
-        with:
-          name: planningsup-source-${{ github.run_number }}
-          path: |
-            ${{ env.EXTENSION_DIR }}/extension/
-          retention-days: 30
 
       - name: Upload Build Logs
         uses: actions/upload-artifact@v4
@@ -289,8 +281,7 @@ jobs:
           echo "### Artifacts Created" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-chrome-${{ github.run_number }}\` (Chrome .crx)" >> $GITHUB_STEP_SUMMARY
           echo "- \`planningsup-firefox-${{ github.run_number }}\` (Firefox .xpi)" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-extension-${{ github.run_number }}\` (Extension files)" >> $GITHUB_STEP_SUMMARY
-          echo "- \`planningsup-source-${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`planningsup-zip-${{ github.run_number }}\` (ZIP for Chrome Web Store)" >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Quick Links" >> $GITHUB_STEP_SUMMARY
