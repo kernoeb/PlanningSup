@@ -12,6 +12,21 @@ export default defineConfig({
   },
   plugins: [
     ...getCommonPlugins(),
+    {
+      name: 'planningsup:inject-runtime-config',
+      transformIndexHtml(html) {
+        return {
+          html,
+          tags: [
+            {
+              tag: 'script',
+              attrs: { 'src': '/config.js', 'data-vite-ignore': '' },
+              injectTo: 'head-prepend',
+            },
+          ],
+        }
+      },
+    },
     VitePWA({
       strategies: 'injectManifest',
       srcDir: 'src',

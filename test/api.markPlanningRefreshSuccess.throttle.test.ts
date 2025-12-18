@@ -5,9 +5,11 @@ describe('markPlanningRefreshSuccess write throttling', () => {
   it('adds a DB-level where clause when throttle is enabled', async () => {
     const prevNodeEnv = Bun.env.NODE_ENV
     const prevThrottle = Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS
+    const prevPublicOrigin = Bun.env.PUBLIC_ORIGIN
 
     try {
       Bun.env.NODE_ENV = 'production'
+      Bun.env.PUBLIC_ORIGIN = prevPublicOrigin ?? 'http://localhost:20000'
       delete Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS
 
       let captured: any = null
@@ -47,6 +49,9 @@ describe('markPlanningRefreshSuccess write throttling', () => {
       if (prevThrottle == null) delete Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS
       else Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS = prevThrottle
 
+      if (prevPublicOrigin == null) delete Bun.env.PUBLIC_ORIGIN
+      else Bun.env.PUBLIC_ORIGIN = prevPublicOrigin
+
       mock.restore()
     }
   })
@@ -54,9 +59,11 @@ describe('markPlanningRefreshSuccess write throttling', () => {
   it('does not add a where clause when throttle is disabled', async () => {
     const prevNodeEnv = Bun.env.NODE_ENV
     const prevThrottle = Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS
+    const prevPublicOrigin = Bun.env.PUBLIC_ORIGIN
 
     try {
       Bun.env.NODE_ENV = 'production'
+      Bun.env.PUBLIC_ORIGIN = prevPublicOrigin ?? 'http://localhost:20000'
       Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS = '0'
 
       let captured: any = null
@@ -91,6 +98,9 @@ describe('markPlanningRefreshSuccess write throttling', () => {
 
       if (prevThrottle == null) delete Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS
       else Bun.env.PLANNINGS_REFRESH_SUCCESS_WRITE_THROTTLE_MS = prevThrottle
+
+      if (prevPublicOrigin == null) delete Bun.env.PUBLIC_ORIGIN
+      else Bun.env.PUBLIC_ORIGIN = prevPublicOrigin
 
       mock.restore()
     }

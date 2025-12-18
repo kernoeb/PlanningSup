@@ -20,7 +20,7 @@ const api = new Elysia({
   })
   .onError(({ error, code, set }) => {
     const isNotFound = code === 'NOT_FOUND'
-    if (import.meta.env.NODE_ENV !== 'production' && !isNotFound) console.error(error)
+    if (!config.isProduction && !isNotFound) console.error(error)
 
     if (isNotFound) set.status = 404
     else if (code === 'INTERNAL_SERVER_ERROR') set.status = 500

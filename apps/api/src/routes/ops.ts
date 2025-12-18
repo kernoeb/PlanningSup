@@ -1,3 +1,4 @@
+import config from '@api/config'
 import { env } from '@api/config/env'
 import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshQueueTable, planningsRefreshStateTable, planningsTable } from '@api/db/schemas/plannings'
@@ -17,7 +18,7 @@ function isAuthorized(headers: Headers) {
   const token = readOpsToken()
 
   // In production, require an explicit token.
-  if (import.meta.env.NODE_ENV === 'production') {
+  if (config.isProduction) {
     if (!token) return false
     return headers.get('x-ops-token') === token
   }

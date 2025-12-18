@@ -1,7 +1,5 @@
 import { env } from './env'
 
-const { NODE_ENV } = Bun.env
-
 function normalizePublicOrigin(raw: string) {
   const url = new URL(raw)
   if (url.protocol !== 'http:' && url.protocol !== 'https:') {
@@ -12,12 +10,17 @@ function normalizePublicOrigin(raw: string) {
 
 function getConfig() {
   const port = env('PORT', { default: 20000 })
+  const nodeEnv = env('NODE_ENV', { default: 'development' })
+  const isProduction = nodeEnv === 'production'
 
-  const rawPublicOrigin = NODE_ENV === 'production'
+  const rawPublicOrigin = isProduction
     ? env('PUBLIC_ORIGIN', { required: true })
     : env('PUBLIC_ORIGIN', { default: `http://localhost:${port}` })
 
   return {
+    nodeEnv,
+    isProduction,
+
     // Http Server
     port,
     webDistLocation: env('WEB_DIST_LOCATION'),
@@ -73,7 +76,7 @@ const config = getConfig()
 if (config.chromeExtensionId && !/^[a-z]{32}$/.test(config.chromeExtensionId)) throw new Error('Invalid CHROME_EXTENSION_ID format')
 if (config.firefoxExtensionId && !/^[a-z0-9-]+$/.test(config.firefoxExtensionId)) throw new Error('Invalid FIREFOX_EXTENSION_ID format')
 
-if (NODE_ENV === 'production') {
+if (config.isProduction) {
   // if (STRICT_MODE && config.globalAPIKey === DEFAULT_GLOBAL_API_KEY) {
   //   throw new Error('GLOBAL_API_KEY must be set in production')
   // }

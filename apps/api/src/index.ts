@@ -7,6 +7,7 @@ import { client, db } from '@api/db'
 import { init as initDb } from '@api/db/init'
 import { jobs } from '@api/jobs'
 import { defaultLogger as logger } from '@api/utils/logger'
+import { renderRobotsTxt, renderSitemapXml, rewriteIndexHtmlSeoMeta } from '@api/utils/seo'
 import staticPlugin from '@elysiajs/static'
 import { webLocation } from '@web/expose'
 import { Elysia } from 'elysia'
@@ -46,26 +47,16 @@ export const app = new Elysia()
     }
     return body
   })
-  .get('/robots.txt', ({ request, set }) => {
-    const origin = config.publicOrigin
-    const body = `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`
+  .get('/robots.txt', ({ set }) => {
+    const body = renderRobotsTxt(config.publicOrigin)
     set.headers = {
       'Content-Type': 'text/plain; charset=utf-8',
       'Cache-Control': 'public, max-age=3600',
     }
     return body
   })
-  .get('/sitemap.xml', ({ request, set }) => {
-    const origin = config.publicOrigin
-    const now = new Date().toISOString().slice(0, 10)
-    const body =
-      `<?xml version="1.0" encoding="UTF-8"?>\n` +
-      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-      `  <url>\n` +
-      `    <loc>${origin}/</loc>\n` +
-      `    <lastmod>${now}</lastmod>\n` +
-      `  </url>\n` +
-      `</urlset>\n`
+  .get('/sitemap.xml', ({ set }) => {
+    const body = renderSitemapXml(config.publicOrigin)
 
     set.headers = {
       'Content-Type': 'application/xml; charset=utf-8',
@@ -74,7 +65,7 @@ export const app = new Elysia()
     return body
   })
 
-if (import.meta.env.NODE_ENV === 'production') {
+if (config.isProduction) {
   logger.info(`Frontend static files will be served from: ${FRONTEND_DIST_PATH}`)
 
   // Serve the app shell explicitly with proper headers.
@@ -85,17 +76,19 @@ if (import.meta.env.NODE_ENV === 'production') {
   // Read the index.html content once at startup
   const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf-8')
   logger.info(`Loaded index.html (${indexHtmlContent.length} bytes)`)
+  const indexHtmlSeoContent = rewriteIndexHtmlSeoMeta(indexHtmlContent, config.publicOrigin)
+  logger.info(`Prepared SEO index.html (${indexHtmlSeoContent.length} bytes)`)
 
   app.get('/', ({ set }) => {
     set.headers['Content-Type'] = 'text/html; charset=utf-8'
     set.headers['Cache-Control'] = 'no-cache'
-    return indexHtmlContent
+    return indexHtmlSeoContent
   })
 
   app.get('/index.html', ({ set }) => {
     set.headers['Content-Type'] = 'text/html; charset=utf-8'
     set.headers['Cache-Control'] = 'no-cache'
-    return indexHtmlContent
+    return indexHtmlSeoContent
   })
 
   // Serve the service worker with no-cache so clients always check for updates.
@@ -118,7 +111,7 @@ if (import.meta.env.NODE_ENV === 'production') {
 }
 
 app.onError(({ code, request }) => {
-  if (import.meta.env.NODE_ENV === 'production' && code === 'NOT_FOUND') {
+  if (config.isProduction && code === 'NOT_FOUND') {
     // Don't serve SPA for API routes - return JSON 404 instead
     const url = new URL(request.url)
     if (url.pathname.startsWith('/api/')) {
