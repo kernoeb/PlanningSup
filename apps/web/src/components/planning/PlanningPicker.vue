@@ -209,26 +209,25 @@ function normalize(text: string): string {
     .toLowerCase()
 }
 
-// Cache normalized titles to avoid recomputing on each search
-const normalizedTitleCache = new WeakMap<PlanningNode, string>()
-function getNormalizedTitle(node: PlanningNode): string {
-  let cached = normalizedTitleCache.get(node)
-  if (cached === undefined) {
-    cached = normalize(node.title)
-    normalizedTitleCache.set(node, cached)
-  }
-  return cached
-}
-
 function filterTree(nodes: PlanningNode[], q: string): FilterResult {
   if (!q.trim()) return { nodes, expandedIds: new Set() }
-  const query = normalize(q)
+
+  // Fulltext: split query into words, all must match somewhere in the full path
+  const queryWords = normalize(q).split(/\s+/).filter(Boolean)
+  if (queryWords.length === 0) return { nodes, expandedIds: new Set() }
+
   const expandedIds = new Set<string>()
 
-  function walk(node: PlanningNode): PlanningNode | null {
-    const selfMatch = getNormalizedTitle(node).includes(query)
+  function walk(node: PlanningNode, parentPath: string[] = []): PlanningNode | null {
+    // Build the full path from root to this node
+    const currentPath = [...parentPath, node.title]
+    const fullTitle = normalize(currentPath.join(' '))
+
+    // All query words must appear in the full path (order-independent fulltext search)
+    const selfMatch = queryWords.every(word => fullTitle.includes(word))
+
     const filteredChildren = (node.children ?? [])
-      .map(walk)
+      .map(child => walk(child, currentPath))
       .filter(Boolean) as PlanningNode[]
 
     const hasChildMatch = filteredChildren.length > 0
@@ -240,7 +239,7 @@ function filterTree(nodes: PlanningNode[], q: string): FilterResult {
     return null
   }
 
-  const filteredNodes = nodes.map(walk).filter(Boolean) as PlanningNode[]
+  const filteredNodes = nodes.map(node => walk(node)).filter(Boolean) as PlanningNode[]
   return { nodes: filteredNodes, expandedIds }
 }
 
