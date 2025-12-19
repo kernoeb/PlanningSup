@@ -93,13 +93,11 @@ onKeyStroke(
   (e) => {
     // Ignore if the target is a text field
     const target = e.target as HTMLElement
-    if (
-      target.tagName === 'INPUT'
-      || target.tagName === 'TEXTAREA'
-      || target.isContentEditable
-    ) {
-      return
-    }
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return
+
+    // Ignore if any dialog is open
+    if (document.querySelector('dialog[open]')) return
+
     // Prevent the keystroke from inserting "u" into the newly focused search box
     e.preventDefault()
     e.stopPropagation()
