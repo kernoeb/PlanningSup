@@ -152,6 +152,15 @@ function onCustomGroupDetailsToggle(e: Event) {
   }
 }
 
+const selectedCustomGroups = computed(() => {
+  // check that every planning inside a group is selected inside safePlanningIds
+  const selectedGroups = customGroups.value.filter(group =>
+    group.plannings.length === safePlanningIds.value.length
+    && group.plannings.every(planningId => safePlanningIds.value.includes(planningId)),
+  )
+  return selectedGroups.map(group => group.id)
+})
+
 function saveSelection() {
   // Close the form
   (document?.activeElement as HTMLElement)?.blur()
@@ -587,10 +596,11 @@ watch(
                   v-for="item in customGroups"
                   :id="`custom-group-${item.id}`"
                   :key="item.id"
-                  class="group flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 hover:border-secondary/40 cursor-pointer transition-all"
+                  class="group flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer transition-all"
+                  :class="[selectedCustomGroups.includes(item.id) ? 'bg-secondary/50 border-secondary/50' : 'bg-secondary/10 hover:bg-secondary/20 border-secondary/20 hover:border-secondary/40']"
                   @click="applyCustomGroup(item.id)"
                 >
-                  <FolderIcon class="size-4 text-secondary shrink-0" />
+                  <FolderIcon class="size-4 text-primary/50 shrink-0" />
                   <span class="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-40">
                     {{ item.name }}
                   </span>
