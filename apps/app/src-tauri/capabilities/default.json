@@ -12,7 +12,7 @@
       "identifier": "http:default",
       "allow": [
         {
-          "url": "https://v3.planningsup.app"
+          "url": "https://planningsup.app"
         },
         {
           "url": "http://localhost:20000"

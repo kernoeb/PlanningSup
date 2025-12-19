@@ -34,7 +34,7 @@ concurrency:
 env:
   EXTENSION_DIR: apps/extension
   NODE_ENV: production
-  VITE_BACKEND_URL: https://v3.planningsup.app
+  VITE_BACKEND_URL: https://planningsup.app
   VITE_AUTH_ENABLED: true
   CI: true
 
