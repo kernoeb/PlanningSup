@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://planningsup.app"><img src="https://raw.githubusercontent.com/kernoeb/PlanningSup/main/apps/web-app/static/icon.png" alt="PlanningSup" width="200"></a>
+  <a href="https://planningsup.app"><img src="https://raw.githubusercontent.com/kernoeb/PlanningSup/main/apps/web/public/icon.png" alt="PlanningSup" width="200"></a>
   <br>
   PlanningSup
   <br>
