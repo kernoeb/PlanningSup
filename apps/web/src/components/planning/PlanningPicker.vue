@@ -53,7 +53,7 @@ const expanded = ref<Set<string>>(new Set())
 
 // Collapse state
 const showCustomGroups = ref(true)
-const showSelectedItems = ref(true)
+const showSelectedItems = ref(false)
 
 function findPathInTree(
   nodes: PlanningNode[] | undefined,
@@ -573,7 +573,7 @@ watch(
 
           <div v-if="customGroups.length > 0" class="collapse collapse-arrow">
             <input v-model="showCustomGroups" type="checkbox">
-            <div class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
+            <div class="collapse-title after:start-2 after:end-auto pe-4 ps-8 flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
               <h4 class="text-sm font-medium text-base-content/70">
                 Groupes enregistrés
               </h4>
@@ -613,7 +613,7 @@ watch(
 
           <div v-if="selectedItems.length > 0" class="collapse collapse-arrow">
             <input v-model="showSelectedItems" type="checkbox">
-            <div class="collapse-title flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
+            <div class="collapse-title after:start-2 after:end-auto pe-4 ps-8 flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
               <h4 class="text-sm font-medium text-base-content/70">
                 Plannings sélectionnés
               </h4>
