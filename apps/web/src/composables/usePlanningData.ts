@@ -169,6 +169,13 @@ function createPlanningDataStore(): PlanningDataStore {
     const set = new Set(fullIds)
     eventsByFullId.value = Object.fromEntries(Object.entries(eventsByFullId.value).filter(([id]) => set.has(id)))
     titles.value = Object.fromEntries(Object.entries(titles.value).filter(([id]) => set.has(id)))
+
+    // Remove deselected IDs from hydratedFullIds so they get DB-first hydration on re-selection
+    for (const id of hydratedFullIds) {
+      if (!set.has(id)) {
+        hydratedFullIds.delete(id)
+      }
+    }
   }
 
   async function refresh(_reason: string = 'manual') {

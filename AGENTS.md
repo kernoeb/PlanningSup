@@ -16,6 +16,7 @@ Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
 - Workspaces: `apps/*`, `packages/*`, `test`.
 - Root scripts fan-out via `scripts/run.ts` (excludes `apps/app`, `apps/extension`).
 - Per-workspace: `cd <workspace> && bun run <script>` (needed for `apps/extension`).
+- No colon-namespaced commands: `bun run typecheck:web`, `bun run lint:web`, etc. do NOT exist. Use `cd apps/web && bun run typecheck` instead.
 - Use Bun only; `.bun-version` + `bun.lock`; `bunx --bun <cli>`; `bun run <script> -- <flags>`.
 - Tests: `bun test` for `*.test.ts`; Playwright for `test/e2e/*.spec.ts`.
 - End-to-end typed API: use Eden treaty client `packages/libs/src/client/index.ts` (`client.api.*`), avoid ad-hoc `fetch('/api/...')`.
