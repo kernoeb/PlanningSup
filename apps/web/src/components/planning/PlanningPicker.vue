@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import type { CustomGroup } from '@web/composables/useSettings'
 import { client } from '@libs'
 import { onClickOutside, refDebounced, useVirtualList } from '@vueuse/core'
 import { useSharedSettings } from '@web/composables/useSettings'
@@ -155,8 +156,7 @@ function onCustomGroupDetailsToggle(e: Event) {
 const selectedCustomGroups = computed(() => {
   // check that every planning inside a group is selected inside safePlanningIds
   const selectedGroups = customGroups.value.filter(group =>
-    group.plannings.length === safePlanningIds.value.length
-    && group.plannings.every(planningId => safePlanningIds.value.includes(planningId)),
+    group.plannings.every(planningId => safePlanningIds.value.includes(planningId)),
   )
   return selectedGroups.map(group => group.id)
 })
@@ -179,8 +179,16 @@ function saveSelection() {
   }
 }
 
-function applyCustomGroup(id: string) {
-  planningFullIds.value = customGroups.value.find(group => group.id === id)?.plannings || []
+function applyCustomGroup(id: CustomGroup['id']) {
+  if (selectedCustomGroups.value.includes(id)) {
+    const customGroup = customGroups.value.find(group => group.id === id)
+    if (customGroup) {
+      // remove all plannings from the custom group from the planningFullIds array
+      planningFullIds.value = planningFullIds.value.filter(planningId => !customGroup.plannings.includes(planningId))
+    }
+  } else {
+    planningFullIds.value = planningFullIds.value.concat(customGroups.value.find(group => group.id === id)?.plannings || [])
+  }
 }
 
 function removeCustomGroup(id: string) {
@@ -587,7 +595,7 @@ watch(
                 Groupes enregistrés
               </h4>
               <span class="text-xs text-base-content/50">
-                Cliquer pour appliquer un groupe
+                Cliquer pour appliquer/désélectionner un groupe
               </span>
             </div>
             <div class="collapse-content px-0">
@@ -626,9 +634,12 @@ watch(
             <div class="collapse-title after:start-2 after:end-auto pe-4 ps-8 flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
               <h4 class="text-sm font-medium text-base-content/70">
                 Plannings sélectionnés
+                <span class="ms-2 text-xs text-base-content/50">
+                  ({{ selectedItems.length }})
+                </span>
               </h4>
               <span class="text-xs text-base-content/50">
-                Cliquer un planning pour le retirer
+                Voir les plannings sélectionnés
               </span>
             </div>
             <div id="selected-plannings-list" class="collapse-content px-0">
