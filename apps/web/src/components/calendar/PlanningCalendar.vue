@@ -9,6 +9,7 @@ import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { Calendar as IconCalendar, CalendarCheck2 as IconCalendarCheck2, ChevronDown as IconChevronDown, ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from 'lucide-vue-next'
 import { computed, defineAsyncComponent, ref, useTemplateRef } from 'vue'
+import CustomTimeGridEvent from './CustomTimeGridEvent.vue'
 
 const settings = useSharedSettings()
 const allowedTimezones = getSupportedTimezones()
@@ -158,6 +159,10 @@ const isToday = computed(() => {
   return date.equals(today)
 })
 
+const customComponents = {
+  timeGridEvent: CustomTimeGridEvent,
+}
+
 // Close dropdowns when clicking outside
 onClickOutside(datePickerDropdown, closeDatePicker)
 onClickOutside(viewDropdown, closeViewDropdown)
@@ -171,6 +176,7 @@ defineExpose({ reload })
       v-if="calendarApp"
       :calendar-app="calendarApp"
       class="h-full"
+      :custom-components="customComponents"
       data-calendar-id="schedule-x-calendar"
     >
       <template #headerContent>

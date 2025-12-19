@@ -210,9 +210,40 @@ html[data-theme="dracula"] {
   border-top: none !important;
   border-bottom: none !important;
   border-right: none !important;
+  padding: var(--sx-spacing-padding1) !important;
 }
 
 .sx__calendar-wrapper:not(.sx__is-calendar-small)
   .sx__time-grid-event.sx__event {
   margin-inline-start: 1%;
+}
+
+.custom-event-lecture {
+  border-inline-start: 4px solid var(--sx-color-lecture);
+  background-color: var(--sx-color-lecture-container);
+  color: var(--sx-color-on-lecture-container);
+}
+
+.custom-event-lab {
+  border-inline-start: 4px solid var(--sx-color-lab);
+  background-color: var(--sx-color-lab-container);
+  color: var(--sx-color-on-lab-container);
+}
+
+.custom-event-tutorial {
+  border-inline-start: 4px solid var(--sx-color-tutorial);
+  background-color: var(--sx-color-tutorial-container);
+  color: var(--sx-color-on-tutorial-container);
+}
+
+.custom-event-no-teacher {
+  border-inline-start: 4px solid var(--sx-color-no-teacher);
+  background-color: var(--sx-color-no-teacher-container);
+  color: var(--sx-color-on-no-teacher-container);
+}
+
+.custom-event-other {
+  border-inline-start: 4px solid var(--sx-color-other);
+  background-color: var(--sx-color-other-container);
+  color: var(--sx-color-on-other-container);
 }

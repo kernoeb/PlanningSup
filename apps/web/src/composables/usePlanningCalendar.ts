@@ -34,6 +34,11 @@ function mapApiEventToCalendarEvent(
     start,
     end,
     calendarId: event.categoryId,
+    _options: {
+      disableDND: true,
+      disableResize: true,
+      additionalClasses: [`custom-event-${event.categoryId}`],
+    },
   } satisfies CalendarEvent
 }
 
