@@ -18,6 +18,7 @@ type ApiDbMockState = {
   refreshQueueStore: Map<string, { priority: number }>
   opsSelectRowsByCall: any[][]
   opsSelectCallIndex: number
+  insertCalls: Array<{ table?: string, values: any }>
 }
 
 const STATE_KEY = '__planningsup_api_db_mock_state__'
@@ -32,6 +33,7 @@ function getState(): ApiDbMockState {
       refreshQueueStore: new Map(),
       opsSelectRowsByCall: [],
       opsSelectCallIndex: 0,
+      insertCalls: [],
     } satisfies ApiDbMockState
   }
   return g[STATE_KEY] as ApiDbMockState
@@ -62,6 +64,7 @@ export function resetApiDbMockStores() {
   state.refreshQueueStore.clear()
   state.opsSelectRowsByCall = []
   state.opsSelectCallIndex = 0
+  state.insertCalls.length = 0
 }
 
 export function getApiDbMockStores() {
@@ -70,12 +73,12 @@ export function getApiDbMockStores() {
     backupStore: state.backupStore,
     refreshStateStore: state.refreshStateStore,
     refreshQueueStore: state.refreshQueueStore,
+    insertCalls: state.insertCalls,
   }
 }
 
 export function installApiDbMock() {
   const g = globalThis as any
-  if (g[INSTALLED_KEY]) return
   g[INSTALLED_KEY] = true
 
   mock.module('@api/db', () => {
@@ -140,9 +143,11 @@ export function installApiDbMock() {
 
           return builder as any
         },
-        insert(_table: any) {
+        insert(table: any) {
           return {
             values(values: any) {
+              state.insertCalls.push({ table: table?.toString(), values })
+
               // plannings refresh queue upsert (best-effort)
               if (values && 'planningFullId' in values && 'priority' in values && !('events' in values)) {
                 const fullId = values.planningFullId as string

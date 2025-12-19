@@ -1,4 +1,5 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, it, mock } from 'bun:test'
+import { getApiDbMockStores, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
 /**
  * Load test simulating concurrent users with mocked upstream responses.
@@ -34,15 +35,14 @@ interface MockStats {
   requestsByBehavior: Map<UpstreamBehavior, number>
 }
 
-// Track mock DB calls
-const mockDbState = {
-  upsertCalls: [] as Array<{ planningFullId: string, eventCount: number }>,
-  insertCalls: [] as Array<{ table: string, values: any }>,
-}
-
-function resetMockDbState() {
-  mockDbState.upsertCalls = []
-  mockDbState.insertCalls = []
+function getUpsertCalls() {
+  return getApiDbMockStores().insertCalls
+    .map(c => c.values)
+    .filter(v => v && 'planningFullId' in v && 'events' in v)
+    .map(v => ({
+      planningFullId: v.planningFullId,
+      eventCount: Array.isArray(v.events) ? v.events.length : 0,
+    }))
 }
 
 // Track logger calls (suppressed output, but counted)
@@ -78,58 +78,6 @@ mock.module('@api/utils/logger', () => {
     defaultLogger: createMockLogger(),
     elysiaLogger: createMockLogger(),
     jobsLogger: createMockLogger(),
-  }
-})
-
-// Mock @api/db BEFORE any imports that use it
-mock.module('@api/db', () => {
-  function createQueryBuilder() {
-    const builder = {
-      from: () => builder,
-      leftJoin: () => builder,
-      where: () => builder,
-      groupBy: () => builder,
-      orderBy: () => builder,
-      limit: () => builder,
-      then: (resolve: any) => Promise.resolve([]).then(resolve),
-    }
-    return builder
-  }
-
-  function createInsertBuilder(values: any) {
-    const builder = {
-      _values: values,
-      onConflictDoUpdate: () => builder,
-      returning: async () => {
-        // Track backup upserts
-        if (values && 'planningFullId' in values && 'events' in values) {
-          mockDbState.upsertCalls.push({
-            planningFullId: values.planningFullId,
-            eventCount: Array.isArray(values.events) ? values.events.length : 0,
-          })
-          return [{ planningFullId: values.planningFullId }]
-        }
-        return []
-      },
-      then: (resolve: any) => Promise.resolve([]).then(resolve),
-    }
-    return builder
-  }
-
-  return {
-    db: {
-      select: () => createQueryBuilder(),
-      insert: (table: any) => ({
-        values: (values: any) => {
-          mockDbState.insertCalls.push({ table: table?.toString() ?? 'unknown', values })
-          return createInsertBuilder(values)
-        },
-      }),
-      query: {
-        planningsBackupTable: { findFirst: async () => undefined },
-        planningsRefreshStateTable: { findFirst: async () => undefined },
-      },
-    },
   }
 })
 
@@ -187,14 +135,18 @@ describe('API load test (mocked upstream)', () => {
   beforeAll(async () => {
     process.env.NODE_ENV = 'test'
     Bun.env.NODE_ENV = 'test'
+    process.env.PLANNINGS_BACKUP_WRITE_THROTTLE_MS = '0'
+    Bun.env.PLANNINGS_BACKUP_WRITE_THROTTLE_MS = '0'
 
-    // Import AFTER mock is set up
-    backupModule = await import('@api/utils/plannings-backup')
+    installApiDbMock()
+    // Import AFTER mock is set up, with cache busting to ensure we get the mocked DB
+    // (in case the module was already loaded with the real DB by a previous test)
+    backupModule = await import(`@api/utils/plannings-backup?test=${Date.now()}`) as any
   })
 
   beforeEach(() => {
     mockStats = createMockStats()
-    resetMockDbState()
+    resetApiDbMockStores()
     resetLoggerCalls()
     backupModule.__test.reset()
   })
@@ -306,13 +258,14 @@ describe('API load test (mocked upstream)', () => {
     await new Promise(resolve => setTimeout(resolve, 100))
 
     const sizes = backupModule.__test.sizes()
+    const upsertCalls = getUpsertCalls()
 
     // Should deduplicate to 1 entry in state
     expect(sizes.writeState).toBe(1)
     // Should have called DB upsert only once (or twice if there was a pending write)
-    expect(mockDbState.upsertCalls.length).toBeLessThanOrEqual(2)
+    expect(upsertCalls.length).toBeLessThanOrEqual(2)
     // Verify the upsert was for our planning
-    expect(mockDbState.upsertCalls.some(c => c.planningFullId === planningId)).toBeTrue()
+    expect(upsertCalls.some(c => c.planningFullId === planningId)).toBeTrue()
     // Verify log counts: 1 scheduled, many queued (499), few upserts
     const scheduled = countLogsByPattern(/scheduled/)
     const queued = countLogsByPattern(/queued/)
@@ -368,12 +321,13 @@ describe('API load test (mocked upstream)', () => {
     await new Promise(resolve => setTimeout(resolve, 100))
 
     const sizes = backupModule.__test.sizes()
+    const upsertCalls = getUpsertCalls()
 
     // Capped at 200 in test mode
     expect(sizes.writeState).toBeLessThanOrEqual(200)
     // Should have made some upsert calls (capped by memory limit)
-    expect(mockDbState.upsertCalls.length).toBeGreaterThan(0)
-    expect(mockDbState.upsertCalls.length).toBeLessThanOrEqual(200)
+    expect(upsertCalls.length).toBeGreaterThan(0)
+    expect(upsertCalls.length).toBeLessThanOrEqual(200)
     // Verify log counts: 200 scheduled, 4800 skipped
     const scheduled = countLogsByPattern(/scheduled/)
     const skipped = countLogsByPattern(/skipped/)
