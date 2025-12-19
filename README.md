@@ -26,7 +26,7 @@
 - Liste de blocage (cacher un cours) et mise en avant de l’enseignant
 - Changement d’université/spécialité via cookie ou paramètres
 
-> N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
+> N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
 ## Ajouter une spécialité ou une université
 
