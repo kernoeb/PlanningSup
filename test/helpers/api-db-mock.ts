@@ -82,16 +82,17 @@ export function installApiDbMock() {
     const state = getState()
 
     function insertBuilder(values: any) {
-      return {
+      // Use explicit object to avoid `this` binding issues with Bun's mock
+      const builder = {
         _values: values,
         onConflictDoUpdate(_cfg: any) {
-          return this
+          return builder
         },
         async returning() {
           // plannings backup upsert
-          if (this._values && 'planningFullId' in this._values && 'events' in this._values) {
-            const fullId = this._values.planningFullId as string
-            const nextEvents = this._values.events as CalEvent[]
+          if (builder._values && 'planningFullId' in builder._values && 'events' in builder._values) {
+            const fullId = builder._values.planningFullId as string
+            const nextEvents = builder._values.events as CalEvent[]
             const prev = state.backupStore[fullId]?.events
             const changed = JSON.stringify(prev ?? null) !== JSON.stringify(nextEvents)
             state.backupStore[fullId] = { events: nextEvents, updatedAt: new Date() }
@@ -104,6 +105,7 @@ export function installApiDbMock() {
           return Promise.resolve([]).then(onFulfilled, onRejected)
         },
       }
+      return builder
     }
 
     return {
@@ -120,6 +122,9 @@ export function installApiDbMock() {
               return this
             },
             where() {
+              return this
+            },
+            groupBy() {
               return this
             },
             orderBy() {

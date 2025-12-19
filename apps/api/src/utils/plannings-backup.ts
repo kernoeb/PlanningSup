@@ -54,6 +54,19 @@ function normalizeForBackup(events: BackupEvent[]): BackupEvent[] {
     })
 }
 
+export interface LastBackupWrite {
+  planningFullId: string
+  changed: boolean
+  nbEvents: number
+  at: Date
+}
+
+let lastBackupWrite: LastBackupWrite | null = null
+
+export function getLastBackupWrite(): LastBackupWrite | null {
+  return lastBackupWrite
+}
+
 export async function upsertPlanningBackup(targetDb: Database, planningFullId: string, events: BackupEvent[]) {
   const payload = normalizeForBackup(events)
 
@@ -79,8 +92,22 @@ export async function upsertPlanningBackup(targetDb: Database, planningFullId: s
     })
     .returning()
 
+  const changed = details.length > 0
+  elysiaLogger.info('Backup upsert for {fullId}: {status} ({nbEvents} events)', {
+    fullId: planningFullId,
+    status: changed ? 'updated' : 'unchanged (signature match)',
+    nbEvents: payload.length,
+  })
+
+  lastBackupWrite = {
+    planningFullId,
+    changed,
+    nbEvents: payload.length,
+    at: new Date(),
+  }
+
   return {
-    changed: details.length > 0,
+    changed,
     nbEvents: payload.length,
   }
 }
@@ -143,6 +170,7 @@ export function schedulePlanningBackupWrite(planningFullId: string, events: Back
   const existing = writeState.get(planningFullId)
   if (!existing && writeState.size >= maxKeys) {
     // Hard cap to avoid unbounded memory growth in edge cases.
+    elysiaLogger.warn('Backup write skipped for {fullId}: max keys reached ({maxKeys})', { fullId: planningFullId, maxKeys })
     return
   }
 
@@ -152,7 +180,12 @@ export function schedulePlanningBackupWrite(planningFullId: string, events: Back
   state.lastTouchedAt = now
   writeState.set(planningFullId, state)
 
-  if (state.inFlight) return
+  if (state.inFlight) {
+    elysiaLogger.info('Backup write queued for {fullId} (write already in flight)', { fullId: planningFullId })
+    return
+  }
+
+  elysiaLogger.info('Backup write scheduled for {fullId} ({nbEvents} events)', { fullId: planningFullId, nbEvents: events.length })
 
   const run = async () => {
     for (;;) {
@@ -162,7 +195,9 @@ export function schedulePlanningBackupWrite(planningFullId: string, events: Back
       const throttleMs = getWriteThrottleMs()
       const elapsed = Date.now() - current.lastWriteAt
       if (elapsed < throttleMs) {
-        await new Promise<void>(resolve => setTimeout(resolve, throttleMs - elapsed))
+        const waitMs = throttleMs - elapsed
+        elysiaLogger.info('Backup write throttled for {fullId}, waiting {waitMs}ms', { fullId: planningFullId, waitMs })
+        await new Promise<void>(resolve => setTimeout(resolve, waitMs))
         continue
       }
 

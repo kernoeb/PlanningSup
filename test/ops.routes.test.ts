@@ -21,51 +21,23 @@ describe('Ops routes', () => {
     installApiDbMock()
     resetApiDbMockStores()
     configureApiDbMock({
-      // The ops route performs 6 selects in this order:
-      // 1) refreshQueue aggregates
-      // 2) refreshState aggregates
-      // 3) total plannings
-      // 4) missing backups
-      // 5) backups aggregates
-      // 6) queue top list
+      // The simplified ops route performs 5 selects:
+      // 1) queue stats (depth, ready, locked)
+      // 2) backup coverage (total, withBackup)
+      // 3) disabled count
+      // 4) failed hosts (grouped by host)
+      // 5) recent failures (top 5)
       opsSelectRowsByCall: [
-        [{
-          depth: 2,
-          ready: 1,
-          locked: 1,
-          maxPriority: 42,
-          oldestRequestedAt: new Date('2025-01-01T00:00:00Z'),
-          nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
-        }],
-        [{
-          total: 50,
-          disabled: 3,
-          oldestDisabledUntil: new Date('2025-01-02T00:00:00Z'),
-          mostRecentSuccessAt: new Date('2025-01-03T00:00:00Z'),
-          refreshedLast1h: 20,
-          refreshedLast6h: 35,
-          refreshedLast24h: 45,
-          neverRefreshed: 5,
-        }],
-        [{ totalPlannings: 100 }],
-        [{ missingBackups: 10 }],
-        [{
-          totalBackups: 90,
-          oldestBackupUpdatedAt: new Date('2025-01-01T00:00:00Z'),
-          staleOver1h: 5,
-          staleOver6h: 3,
-          staleOver24h: 1,
-        }],
-        [{
-          planningFullId: 'p.1',
-          priority: 42,
-          attempts: 2,
-          requestedAt: new Date('2025-01-01T00:00:00Z'),
-          nextAttemptAt: new Date('2025-01-01T00:10:00Z'),
-          lockedAt: null,
-          lockOwner: null,
-          lastError: null,
-        }],
+        [{ depth: 5, ready: 3, locked: 1 }],
+        [{ total: 100, withBackup: 90 }],
+        [{ count: 8 }],
+        [
+          { host: 'uni-a', count: 5, lastFailure: 'http_4xx' },
+          { host: 'uni-b', count: 3, lastFailure: 'timeout' },
+        ],
+        [
+          { planningFullId: 'uni-a.test.1', failureKind: 'http_4xx', failures: 10, disabledUntil: new Date('2025-01-02T00:00:00Z') },
+        ],
       ],
     })
 
@@ -79,34 +51,49 @@ describe('Ops routes', () => {
     expect(response.status).toBe(404)
   })
 
-  it('returns metrics with a valid token', async () => {
+  it('returns simplified metrics with a valid token', async () => {
     const { data, response } = await api.api.ops.plannings.get({
       headers: { 'x-ops-token': 'secret' },
     })
     expect(response.status).toBe(200)
 
-    // Health check at top level
-    expect(data).toHaveProperty('health')
-    expect((data as any).health.status).toBeOneOf(['healthy', 'degraded', 'unhealthy'])
-    expect(Array.isArray((data as any).health.issues)).toBeTrue()
+    // Top level status
+    expect(data).toHaveProperty('status')
+    expect((data as any).status).toBeOneOf(['healthy', 'degraded', 'unhealthy'])
+    expect(Array.isArray((data as any).issues)).toBeTrue()
+
+    // Workers state
+    expect(data).toHaveProperty('workers')
+    expect((data as any).workers).toHaveProperty('backfill')
+    expect((data as any).workers).toHaveProperty('refreshWorker')
 
     // Queue metrics
-    expect(data).toHaveProperty('refreshQueue')
-    expect((data as any).refreshQueue.depth).toBe(2)
+    expect(data).toHaveProperty('queue')
+    expect((data as any).queue.depth).toBe(5)
+    expect((data as any).queue.ready).toBe(3)
+    expect((data as any).queue.locked).toBe(1)
 
-    // Refresh state with freshness metrics
-    expect(data).toHaveProperty('refreshState')
-    expect((data as any).refreshState.total).toBe(50)
-    expect((data as any).refreshState.disabled).toBe(3)
-    expect((data as any).refreshState.refreshedLast1h).toBe(20)
-    expect((data as any).refreshState.refreshedLast6h).toBe(35)
+    // Backups summary
+    expect(data).toHaveProperty('backups')
+    expect((data as any).backups.total).toBe(100)
+    expect((data as any).backups.covered).toBe(90)
+    expect((data as any).backups.disabled).toBe(8)
 
-    // Backups with renamed content stale fields
-    expect((data as any).backups.missingBackups).toBe(10)
-    expect((data as any).backups.contentStaleOver1h).toBe(5)
-    expect((data as any).backups).toHaveProperty('missingExplained')
-    expect((data as any).backups).toHaveProperty('contentStaleMeaning')
+    // Last backup write (may be null)
+    expect(data).toHaveProperty('lastBackupWrite')
 
-    expect(Array.isArray((data as any).queueTop)).toBeTrue()
+    // Failed hosts (grouped)
+    expect(data).toHaveProperty('failedHosts')
+    expect(Array.isArray((data as any).failedHosts)).toBeTrue()
+    expect((data as any).failedHosts[0]).toHaveProperty('host')
+    expect((data as any).failedHosts[0]).toHaveProperty('count')
+
+    // Recent failures
+    expect(data).toHaveProperty('recentFailures')
+    expect(Array.isArray((data as any).recentFailures)).toBeTrue()
+
+    // Quiet hours flag
+    expect(data).toHaveProperty('inQuietHours')
+    expect(typeof (data as any).inQuietHours).toBe('boolean')
   })
 })

@@ -50,6 +50,9 @@ export interface FetchEventsDetailedResult {
   failure: FetchFailure | null
 }
 
+// Request deduplication: collapse concurrent fetches for the same planning into one
+const inflight = new Map<string, Promise<FetchEventsDetailedResult>>()
+
 function parseRetryAfterMs(headers: Headers | undefined): number | null {
   if (!headers) return null
   const raw = headers.get('retry-after')
@@ -364,7 +367,24 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
     }
   }
 
-  const net = await fetchEventsDetailed(planning.url)
+  // Dedupe concurrent fetches for the same planning
+  let netPromise = inflight.get(planning.fullId)
+  const isCoalesced = !!netPromise
+  if (!netPromise) {
+    netPromise = fetchEventsDetailed(planning.url)
+    inflight.set(planning.fullId, netPromise)
+  }
+
+  let net: FetchEventsDetailedResult
+  try {
+    net = await netPromise
+  } finally {
+    // Only the original requester cleans up
+    if (!isCoalesced) {
+      inflight.delete(planning.fullId)
+    }
+  }
+
   if (net.events) {
     return { events: net.events, source: 'network', networkFailed: false, backupRefreshedAt: null, backupUpdatedAt: null, networkFailure: null }
   }
@@ -421,4 +441,14 @@ export function getFailureReason(result: ResolveEventsResult, nbEvents: number):
   }
 
   return null
+}
+
+export const __test = {
+  reset() {
+    if (Bun.env.NODE_ENV !== 'test') return
+    inflight.clear()
+  },
+  inflightSize() {
+    return inflight.size
+  },
 }
