@@ -1,10 +1,11 @@
 {
   "title": "ISTIC",
-  "edts": [
+  "group": "Rennes",
+  "children": [
     {
       "id": "associationsetudiantes",
       "title": "Associations étudiantes",
-      "edts": [
+      "children": [
         {
           "id": "planningassosetudiantes",
           "title": "planning Assos étudiantes",
@@ -15,7 +16,7 @@
     {
       "id": "formationetnc",
       "title": "Formation ETNC",
-      "edts": [
+      "children": [
         {
           "id": "formationetnc",
           "title": "formation ETNC",
@@ -26,15 +27,15 @@
     {
       "id": "l1-l2portailistn",
       "title": "L1-L2 Portail ISTN",
-      "edts": [
+      "children": [
         {
           "id": "licence1",
           "title": "Licence 1",
-          "edts": [
+          "children": [
             {
               "id": "groupesmineuress2",
               "title": "Groupes mineures S2",
-              "edts": [
+              "children": [
                 {
                   "id": "groupedci-1",
                   "title": "Groupe DCI-1",
@@ -83,7 +84,7 @@
                 {
                   "id": "mineurepa:productionecriteetorale",
                   "title": "Mineure PA : Production écrite et orale",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupeexpressiontextuelle",
                       "title": "Groupe expression textuelle",
@@ -106,7 +107,7 @@
             {
               "id": "l1istnparcoursamenage1ereannee",
               "title": "L1 ISTN Parcours Aménagé 1ère année",
-              "edts": [
+              "children": [
                 {
                   "id": "l1istn_g6",
                   "title": "L1 ISTN_G6",
@@ -132,7 +133,7 @@
             {
               "id": "l1parcoursclassique",
               "title": "L1 Parcours Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "l1istn_g1",
                   "title": "L1 ISTN_G1",
@@ -163,11 +164,11 @@
             {
               "id": "langues",
               "title": "Langues",
-              "edts": [
+              "children": [
                 {
                   "id": "lv1",
                   "title": "LV1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea",
                       "title": "Groupe A",
@@ -213,7 +214,7 @@
                 {
                   "id": "lv2",
                   "title": "LV2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemandl1g1istic",
                       "title": "Allemand L1 G1 ISTIC",
@@ -241,15 +242,15 @@
             {
               "id": "parue",
               "title": "Par UE",
-              "edts": [
+              "children": [
                 {
                   "id": "semestre1",
                   "title": "Semestre 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ace_complexite",
                       "title": "ACE_Complexité",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ace_gdefi",
                           "title": "ACE_G Défi",
@@ -290,7 +291,7 @@
                     {
                       "id": "alg1_algorithmique1",
                       "title": "ALG1_Algorithmique 1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "alg1_gdefi",
                           "title": "ALG1_G Défi",
@@ -331,7 +332,7 @@
                     {
                       "id": "cis1_complementinformatique_parcoursl1a",
                       "title": "CIS1_Complément Informatique_parcours L1A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "cis1_g6",
                           "title": "CIS1_G6",
@@ -352,7 +353,7 @@
                     {
                       "id": "cms1_complementmathematiques1_parcoursl1a",
                       "title": "CMS1_Complément Mathématiques 1_parcours L1A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "cms1_g6",
                           "title": "CMS1_G6",
@@ -373,7 +374,7 @@
                     {
                       "id": "de1_decouverteelectronique1",
                       "title": "DE1_Découverte Électronique 1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "de1_g1",
                           "title": "DE1_G1",
@@ -419,7 +420,7 @@
                     {
                       "id": "de2_decouverteelectronique2",
                       "title": "DE2_Découverté Électronique 2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "de2_gl12a",
                           "title": "DE2_G L1.2A",
@@ -455,7 +456,7 @@
                     {
                       "id": "di_decouverteinformatique",
                       "title": "DI_Découverte Informatique",
-                      "edts": [
+                      "children": [
                         {
                           "id": "di_g1",
                           "title": "DI_G1",
@@ -511,7 +512,7 @@
                     {
                       "id": "fom_fondamentauxmathematiques",
                       "title": "FOM_Fondamentaux Mathématiques",
-                      "edts": [
+                      "children": [
                         {
                           "id": "fom_gdefi",
                           "title": "FOM_G Défi",
@@ -572,7 +573,7 @@
                     {
                       "id": "prg1_programmation1_parcoursamenage",
                       "title": "PRG1_Programmation 1_parcours aménagé",
-                      "edts": [
+                      "children": [
                         {
                           "id": "prg1_g6",
                           "title": "PRG1_G6",
@@ -593,7 +594,7 @@
                     {
                       "id": "prg1_programmation1_parcoursclassiqueetdefi",
                       "title": "PRG1_Programmation 1_parcours classique et Défi",
-                      "edts": [
+                      "children": [
                         {
                           "id": "prg1_gdefi",
                           "title": "PRG1_G Défi",
@@ -634,7 +635,7 @@
                     {
                       "id": "prr_processusreussite",
                       "title": "PRR_Processus Réussite",
-                      "edts": [
+                      "children": [
                         {
                           "id": "prr_g1",
                           "title": "PRR_G1",
@@ -676,8 +677,8 @@
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/AWvLpPYP.shu"
                         },
                         {
-                          "id": "prr_g8",
-                          "title": "PRR_G8",
+                          "id": "prr_g8_2",
+                          "title": "PRR_G8_2",
                           "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/rY68ENWz.shu"
                         }
                       ]
@@ -685,7 +686,7 @@
                     {
                       "id": "tic_theorieinformation",
                       "title": "TIC_Théorie Information",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tic_gdefi",
                           "title": "TIC_G Défi",
@@ -728,11 +729,11 @@
                 {
                   "id": "semestre2",
                   "title": "Semestre 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3pe_projetpro",
                       "title": "3PE_Projet Pro",
-                      "edts": [
+                      "children": [
                         {
                           "id": "3pe_gdefi",
                           "title": "3PE_G Défi",
@@ -783,7 +784,7 @@
                     {
                       "id": "an10_analyse_parcoursl1a",
                       "title": "AN10_Analyse_parcours L1A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "an10g_7",
                           "title": "AN10G_7",
@@ -804,7 +805,7 @@
                     {
                       "id": "an1_analyse1",
                       "title": "AN1_Analyse 1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "an1_gdefi",
                           "title": "AN1_G Défi",
@@ -840,7 +841,7 @@
                     {
                       "id": "can_parcoursl12a",
                       "title": "CAN_parcours L1.2A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "can_tdl12a",
                           "title": "CAN_TD L12A",
@@ -851,7 +852,7 @@
                     {
                       "id": "ces2_complementelectronique_parcoursl1a",
                       "title": "CES2_Complément Électronique_parcours L1A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ces2_g6",
                           "title": "CES2_G6",
@@ -872,7 +873,7 @@
                     {
                       "id": "cms2_complementmathematiques2_parcoursl1a",
                       "title": "CMS2_Complément Mathématiques 2_parcours L1A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "cms2_g6",
                           "title": "CMS2_G6",
@@ -893,7 +894,7 @@
                     {
                       "id": "en1_electroniquenumerique1",
                       "title": "EN1_Électronique Numérique 1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "en1_gdefi",
                           "title": "EN1_G Défi",
@@ -934,7 +935,7 @@
                     {
                       "id": "gen_parcoursl12a",
                       "title": "GEN_parcours L1.2A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "gen_tp_gl12a",
                           "title": "GEN_TP_G L1.2A",
@@ -950,7 +951,7 @@
                     {
                       "id": "prg2_programmation2",
                       "title": "PRG2_Programmation 2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "prg2_gdefi",
                           "title": "PRG2_G Défi",
@@ -1001,7 +1002,7 @@
                     {
                       "id": "psi_principesystemes",
                       "title": "PSI_Principe Systèmes",
-                      "edts": [
+                      "children": [
                         {
                           "id": "psi_gdefi",
                           "title": "PSI_G Défi",
@@ -1058,7 +1059,7 @@
         {
           "id": "licence1-2",
           "title": "Licence 1-2",
-          "edts": [
+          "children": [
             {
               "id": "l1-2istnparcoursamenage2emeannee",
               "title": "L1-2 ISTN Parcours Aménagé 2ème année",
@@ -1069,11 +1070,11 @@
         {
           "id": "licence2",
           "title": "Licence 2",
-          "edts": [
+          "children": [
             {
               "id": "groupesmineuress3",
               "title": "Groupes mineures S3",
-              "edts": [
+              "children": [
                 {
                   "id": "groupecra",
                   "title": "Groupe CRA",
@@ -1114,7 +1115,7 @@
             {
               "id": "groupesmineuress4",
               "title": "Groupes mineures S4",
-              "edts": [
+              "children": [
                 {
                   "id": "groupearic",
                   "title": "Groupe ARIC",
@@ -1170,7 +1171,7 @@
             {
               "id": "l2parcoursclassique",
               "title": "L2 Parcours Classique",
-              "edts": [
+              "children": [
                 {
                   "id": "l2istn-g1",
                   "title": "L2 ISTN-G1",
@@ -1211,11 +1212,11 @@
             {
               "id": "langues",
               "title": "Langues",
-              "edts": [
+              "children": [
                 {
                   "id": "lv1",
                   "title": "LV1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "groupea",
                       "title": "Groupe A",
@@ -1261,7 +1262,7 @@
                 {
                   "id": "lv2",
                   "title": "LV2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "allemandl2g1istic",
                       "title": "Allemand L2 G1 ISTIC",
@@ -1279,15 +1280,15 @@
             {
               "id": "parue",
               "title": "Par UE",
-              "edts": [
+              "children": [
                 {
                   "id": "semestre3",
                   "title": "Semestre 3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "alg2",
                       "title": "ALG2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "alg2-gl2a",
                           "title": "ALG2-G L2A",
@@ -1328,7 +1329,7 @@
                     {
                       "id": "alglin",
                       "title": "AlgLin",
-                      "edts": [
+                      "children": [
                         {
                           "id": "alglin-gl2a",
                           "title": "AlgLin-G L2A",
@@ -1369,7 +1370,7 @@
                     {
                       "id": "en2",
                       "title": "EN2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "en2-gl2a",
                           "title": "EN2-G L2A",
@@ -1410,7 +1411,7 @@
                     {
                       "id": "ofi",
                       "title": "OFI",
-                      "edts": [
+                      "children": [
                         {
                           "id": "ofi-gl12a",
                           "title": "OFI-G L1.2A",
@@ -1451,7 +1452,7 @@
                     {
                       "id": "po",
                       "title": "PO",
-                      "edts": [
+                      "children": [
                         {
                           "id": "po-gl12a",
                           "title": "PO-G L1.2A",
@@ -1497,7 +1498,7 @@
                     {
                       "id": "res",
                       "title": "RES",
-                      "edts": [
+                      "children": [
                         {
                           "id": "res-gl2a",
                           "title": "RES-G L2A",
@@ -1538,7 +1539,7 @@
                     {
                       "id": "web",
                       "title": "WEB",
-                      "edts": [
+                      "children": [
                         {
                           "id": "web-gl2a",
                           "title": "WEB-G L2A",
@@ -1581,11 +1582,11 @@
                 {
                   "id": "semestre4",
                   "title": "Semestre 4",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3pe",
                       "title": "3PE",
-                      "edts": [
+                      "children": [
                         {
                           "id": "3pe-gdefi_l2istn",
                           "title": "3PE-G Défi_L2 ISTN",
@@ -1631,7 +1632,7 @@
                     {
                       "id": "an2",
                       "title": "AN2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "an2gdefi",
                           "title": "AN2 G Défi",
@@ -1677,7 +1678,7 @@
                     {
                       "id": "apm",
                       "title": "APM",
-                      "edts": [
+                      "children": [
                         {
                           "id": "apm-gdefi",
                           "title": "APM-G Défi",
@@ -1688,7 +1689,7 @@
                     {
                       "id": "bdd",
                       "title": "BDD",
-                      "edts": [
+                      "children": [
                         {
                           "id": "bdd-gdefi",
                           "title": "BDD-G Défi",
@@ -1729,7 +1730,7 @@
                     {
                       "id": "cal",
                       "title": "CAL",
-                      "edts": [
+                      "children": [
                         {
                           "id": "cal-gdefi",
                           "title": "CAL-G Défi",
@@ -1780,7 +1781,7 @@
                     {
                       "id": "dsd",
                       "title": "DSD",
-                      "edts": [
+                      "children": [
                         {
                           "id": "dsd-gdefi",
                           "title": "DSD-G Défi",
@@ -1826,7 +1827,7 @@
                     {
                       "id": "gen",
                       "title": "GEN",
-                      "edts": [
+                      "children": [
                         {
                           "id": "gen-gdefi",
                           "title": "GEN-G Défi",
@@ -1872,7 +1873,7 @@
                     {
                       "id": "om",
                       "title": "OM",
-                      "edts": [
+                      "children": [
                         {
                           "id": "om-gdefi",
                           "title": "OM-G Défi",
@@ -1918,7 +1919,7 @@
                     {
                       "id": "projetdefi",
                       "title": "Projet Défi",
-                      "edts": [
+                      "children": [
                         {
                           "id": "projetdefi-cm",
                           "title": "Projet Défi-CM",
@@ -1947,11 +1948,11 @@
     {
       "id": "l3eeea-parcourselectronique",
       "title": "L3 EEEA-Parcours Électronique",
-      "edts": [
+      "children": [
         {
           "id": "l3eeea-g1",
           "title": "L3 EEEA-G1",
-          "edts": [
+          "children": [
             {
               "id": "anglaisg1",
               "title": "Anglais G1",
@@ -1992,7 +1993,7 @@
         {
           "id": "l3eeea-g2",
           "title": "L3 EEEA-G2",
-          "edts": [
+          "children": [
             {
               "id": "anglaisg2",
               "title": "Anglais G2",
@@ -2035,11 +2036,11 @@
     {
       "id": "l3informatique",
       "title": "L3 INFORMATIQUE",
-      "edts": [
+      "children": [
         {
           "id": "l3info-parcoursdefi",
           "title": "L3 INFO-Parcours Défi",
-          "edts": [
+          "children": [
             {
               "id": "l3infodefimineures",
               "title": "L3 INFO Défi MINEURES",
@@ -2055,11 +2056,11 @@
         {
           "id": "l3info-parcoursinformatique",
           "title": "L3 INFO-Parcours Informatique",
-          "edts": [
+          "children": [
             {
               "id": "anglais",
               "title": "ANGLAIS",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgra",
                   "title": "Anglais Gr A",
@@ -2100,7 +2101,7 @@
             {
               "id": "l3info-g1",
               "title": "L3 INFO-G1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg11",
                   "title": "L3 INFO-TP G1.1",
@@ -2116,7 +2117,7 @@
             {
               "id": "l3info-g2",
               "title": "L3 INFO-G2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg21",
                   "title": "L3 INFO-TP G2.1",
@@ -2132,7 +2133,7 @@
             {
               "id": "l3info-g3",
               "title": "L3 INFO-G3",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg31",
                   "title": "L3 INFO-TP G3.1",
@@ -2148,7 +2149,7 @@
             {
               "id": "l3info-g4",
               "title": "L3 INFO-G4",
-              "edts": [
+              "children": [
                 {
                   "id": "l3info-tpg41",
                   "title": "L3 INFO-TP G4.1",
@@ -2164,7 +2165,7 @@
             {
               "id": "l3info-mineuress5",
               "title": "L3 INFO-MINEURES S5",
-              "edts": [
+              "children": [
                 {
                   "id": "l3infogrec",
                   "title": "L3 INFO G REC",
@@ -2183,7 +2184,7 @@
                 {
                   "id": "l3info-g1esec",
                   "title": "L3 INFO-G1 ESEC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-tp1esec",
                       "title": "L3 INFO-TP1 ESEC",
@@ -2229,7 +2230,7 @@
                 {
                   "id": "l3info-g2esec",
                   "title": "L3 INFO-G2 ESEC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-tp3esec",
                       "title": "L3 INFO-TP3 ESEC",
@@ -2257,11 +2258,11 @@
             {
               "id": "l3info-mineuress6",
               "title": "L3 INFO-MINEURES S6",
-              "edts": [
+              "children": [
                 {
                   "id": "groupesmineure2ia",
                   "title": "Groupes mineure 2IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-tp12ia",
                       "title": "L3 INFO-TP1 2IA",
@@ -2282,7 +2283,7 @@
                 {
                   "id": "groupesmineurescr",
                   "title": "Groupes mineure SCR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-tdscr",
                       "title": "L3 INFO-TD SCR",
@@ -2313,7 +2314,7 @@
                 {
                   "id": "groupesmineuresecu",
                   "title": "Groupes mineure SECU",
-                  "edts": [
+                  "children": [
                     {
                       "id": "l3info-td1secu",
                       "title": "L3 INFO-TD1 SECU",
@@ -2348,11 +2349,11 @@
         {
           "id": "l3info-parcoursmiage",
           "title": "L3 INFO-Parcours MIAGE",
-          "edts": [
+          "children": [
             {
               "id": "l3miage-g1",
               "title": "L3 MIAGE-G1",
-              "edts": [
+              "children": [
                 {
                   "id": "l3miage-tp1mineure",
                   "title": "L3 MIAGE- TP 1 mineure",
@@ -2373,7 +2374,7 @@
             {
               "id": "l3miage-g2",
               "title": "L3 MIAGE-G2",
-              "edts": [
+              "children": [
                 {
                   "id": "l3miage-tp2mineure",
                   "title": "L3 MIAGE- TP 2 mineure",
@@ -2396,7 +2397,7 @@
         {
           "id": "l3info-parcourssif",
           "title": "L3 INFO-Parcours SIF",
-          "edts": [
+          "children": [
             {
               "id": "l3infosif",
               "title": "L3 INFO SIF",
@@ -2414,7 +2415,7 @@
     {
       "id": "licenceprosphservicesetproduitspourl'habitat",
       "title": "LICENCE PRO SPH Services et Produits pour l'Habitat",
-      "edts": [
+      "children": [
         {
           "id": "lprosph-g1",
           "title": "LPRO SPH-G1",
@@ -2430,11 +2431,11 @@
     {
       "id": "m1cybersecurite",
       "title": "M1 CYBERSECURITE",
-      "edts": [
+      "children": [
         {
           "id": "m1cyber-parcoursrssialternance",
           "title": "M1 cyber-Parcours RSSI (alternance)",
-          "edts": [
+          "children": [
             {
               "id": "m1cyberrssi",
               "title": "M1 CYBER RSSI",
@@ -2445,7 +2446,7 @@
         {
           "id": "m1cyber-parcoursslm",
           "title": "M1 cyber-Parcours SLM",
-          "edts": [
+          "children": [
             {
               "id": "m1info-cyberg4",
               "title": "M1 INFO -Cyber G4",
@@ -2478,11 +2479,11 @@
     {
       "id": "m1eeea",
       "title": "M1 EEEA",
-      "edts": [
+      "children": [
         {
           "id": "m1eeeaidbci",
           "title": "M1 EEEA IDBCI",
-          "edts": [
+          "children": [
             {
               "id": "m1eeeaparcoursidbcigroupea",
               "title": "M1 EEEA Parcours IDBCI Groupe A",
@@ -2510,11 +2511,11 @@
     {
       "id": "m1iaa",
       "title": "M1 IAA",
-      "edts": [
+      "children": [
         {
           "id": "m1iaaalternants",
           "title": "M1 IAA Alternants",
-          "edts": [
+          "children": [
             {
               "id": "m1iaaaltmaths",
               "title": "M1 IAA Alt MATHS",
@@ -2535,7 +2536,7 @@
         {
           "id": "m1iaaclassiques",
           "title": "M1 IAA Classiques",
-          "edts": [
+          "children": [
             {
               "id": "m1iaaclamaths",
               "title": "M1 IAA Cla MATHS",
@@ -2568,11 +2569,11 @@
     {
       "id": "m1informatique",
       "title": "M1 INFORMATIQUE",
-      "edts": [
+      "children": [
         {
           "id": "m1info-parcourscni",
           "title": "M1 INFO-Parcours CNI",
-          "edts": [
+          "children": [
             {
               "id": "m1infocni-g1",
               "title": "M1 INFO CNI-G1",
@@ -2588,11 +2589,11 @@
         {
           "id": "m1info-parcourscr",
           "title": "M1 INFO-Parcours CR",
-          "edts": [
+          "children": [
             {
               "id": "m1cralternants",
               "title": "M1 CR Alternants",
-              "edts": [
+              "children": [
                 {
                   "id": "m1infocr-alternants",
                   "title": "M1 INFO CR - Alternants",
@@ -2601,7 +2602,7 @@
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacf",
                       "title": "mineure ACF",
@@ -2610,14 +2611,9 @@
                   ]
                 },
                 {
-                  "id": "mineureacf",
-                  "title": "Mineure ACF",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8Kl0Y8.shu"
-                },
-                {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuregui",
                       "title": "Mineure GUI",
@@ -2628,7 +2624,7 @@
                 {
                   "id": "mineureia",
                   "title": "Mineure IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureia",
                       "title": "Mineure IA",
@@ -2639,7 +2635,7 @@
                 {
                   "id": "mineureiatr",
                   "title": "Mineure IATR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacf",
                       "title": "mineure ACF",
@@ -2650,7 +2646,7 @@
                 {
                   "id": "mineureplc",
                   "title": "Mineure PLC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureplc",
                       "title": "Mineure PLC",
@@ -2661,7 +2657,7 @@
                 {
                   "id": "mineurersf",
                   "title": "Mineure RSF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurercf",
                       "title": "Mineure RCF",
@@ -2672,7 +2668,7 @@
                 {
                   "id": "mineuresct",
                   "title": "Mineure SCT",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresct",
                       "title": "mineure SCT",
@@ -2683,7 +2679,7 @@
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewe",
                       "title": "mineure WE",
@@ -2696,11 +2692,11 @@
             {
               "id": "m1crclassiques",
               "title": "M1 CR Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "angl",
                   "title": "ANGL",
-                  "edts": [
+                  "children": [
                     {
                       "id": "angltpmolly",
                       "title": "ANGL TP Molly",
@@ -2721,7 +2717,7 @@
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacf",
                       "title": "mineure ACF",
@@ -2732,7 +2728,7 @@
                 {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuregui",
                       "title": "Mineure GUI",
@@ -2743,7 +2739,7 @@
                 {
                   "id": "mineureia",
                   "title": "Mineure IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureia",
                       "title": "Mineure IA",
@@ -2754,7 +2750,7 @@
                 {
                   "id": "mineureiatr",
                   "title": "Mineure IATR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiatr",
                       "title": "mineure IATR",
@@ -2765,7 +2761,7 @@
                 {
                   "id": "mineureplc",
                   "title": "Mineure PLC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureplc",
                       "title": "Mineure PLC",
@@ -2776,7 +2772,7 @@
                 {
                   "id": "mineurersf",
                   "title": "Mineure RSF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurersf",
                       "title": "Mineure RSF",
@@ -2787,7 +2783,7 @@
                 {
                   "id": "mineuresct",
                   "title": "Mineure SCT",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresct",
                       "title": "mineure SCT",
@@ -2798,7 +2794,7 @@
                 {
                   "id": "mineuresea",
                   "title": "Mineure SEA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresea",
                       "title": "Mineure SEA",
@@ -2809,7 +2805,7 @@
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewe",
                       "title": "mineure WE",
@@ -2820,7 +2816,7 @@
                 {
                   "id": "oppa",
                   "title": "OP PA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "oppa",
                       "title": "OP PA",
@@ -2831,7 +2827,7 @@
                 {
                   "id": "opppar",
                   "title": "OP PPAR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "opppar",
                       "title": "OP PPAR",
@@ -2842,7 +2838,7 @@
                 {
                   "id": "optbif",
                   "title": "OPT BIF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "opbif",
                       "title": "OP BIF",
@@ -2853,7 +2849,7 @@
                 {
                   "id": "projets",
                   "title": "PROJETS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "projetcorrectexam",
                       "title": "Projet CorrectExam",
@@ -2888,11 +2884,11 @@
         {
           "id": "m1info-parcoursil",
           "title": "M1 INFO-Parcours IL",
-          "edts": [
+          "children": [
             {
               "id": "m1ilalternants",
               "title": "M1 IL Alternants",
-              "edts": [
+              "children": [
                 {
                   "id": "m1info-ilalternants",
                   "title": "M1 INFO - IL Alternants",
@@ -2901,7 +2897,7 @@
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureacfalt",
                       "title": "Mineure ACF Alt",
@@ -2912,7 +2908,7 @@
                 {
                   "id": "mineuregui",
                   "title": "Mineure GUI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureguialt",
                       "title": "Mineure GUI Alt",
@@ -2923,7 +2919,7 @@
                 {
                   "id": "mineureia",
                   "title": "Mineure IA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiaalt",
                       "title": "Mineure IA Alt",
@@ -2934,7 +2930,7 @@
                 {
                   "id": "mineureiatr",
                   "title": "Mineure IATR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureiatr",
                       "title": "mineure IATR",
@@ -2945,7 +2941,7 @@
                 {
                   "id": "mineureplc",
                   "title": "Mineure PLC",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureplcalt",
                       "title": "Mineure PLC Alt",
@@ -2956,7 +2952,7 @@
                 {
                   "id": "mineurersf",
                   "title": "Mineure RSF",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurersf",
                       "title": "Mineure RSF",
@@ -2967,7 +2963,7 @@
                 {
                   "id": "mineuresct",
                   "title": "Mineure SCT",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineuresct",
                       "title": "mineure SCT",
@@ -2978,7 +2974,7 @@
                 {
                   "id": "mineuresea",
                   "title": "Mineure SEA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureseaalt",
                       "title": "Mineure SEA Alt",
@@ -2989,7 +2985,7 @@
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewealt1",
                       "title": "Mineure WE Alt 1",
@@ -3002,11 +2998,11 @@
             {
               "id": "m1ilclassiques",
               "title": "M1 IL Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "angl",
                   "title": "ANGL",
-                  "edts": [
+                  "children": [
                     {
                       "id": "angltpmolly",
                       "title": "ANGL TP Molly",
@@ -3021,184 +3017,113 @@
                 },
                 {
                   "id": "m1info-ilclassiques2",
-                  "title": "M1 INFO - IL Classiques 2",
+                  "title": "M1 IL - Classiques 2",
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/E3pykZYA.shu"
                 },
                 {
                   "id": "m1infoil-classiques1",
-                  "title": "M1 INFO IL - Classiques 1",
+                  "title": "M1 IL - Classiques 1",
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/NYaGjbWl.shu"
                 },
                 {
                   "id": "mineureacf",
                   "title": "Mineure ACF",
-                  "edts": [
-                    {
-                      "id": "mineureacfcla1",
-                      "title": "Mineure ACF Cla 1",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/LW1oyKYa.shu"
-                    },
+                  "children": [
                     {
                       "id": "mineureacf",
-                      "title": "mineure ACF",
+                      "title": "ACF",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/EYllQyYa.shu"
                     },
                     {
+                      "id": "mineureacfcla1",
+                      "title": "ACF Cla 1",
+                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/LW1oyKYa.shu"
+                    },
+                    {
                       "id": "mineureacfcla2",
-                      "title": "mineure ACF Cla 2",
+                      "title": "ACF Cla 2",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/83DrJNnx.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineuregui",
-                  "title": "Mineure GUI",
-                  "edts": [
-                    {
-                      "id": "mineuregui",
-                      "title": "Mineure GUI",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/qnq2xZWJ.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineureia",
-                  "title": "Mineure IA",
-                  "edts": [
-                    {
-                      "id": "mineureia",
-                      "title": "Mineure IA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/x3dbVvne.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineureiatr",
-                  "title": "Mineure IATR",
-                  "edts": [
-                    {
-                      "id": "mineureiatr",
-                      "title": "mineure IATR",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/Xn0xDOn7.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineureplc",
-                  "title": "Mineure PLC",
-                  "edts": [
-                    {
-                      "id": "mineureplc",
-                      "title": "Mineure PLC",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/ynAOpd3w.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineurersf",
-                  "title": "Mineure RSF",
-                  "edts": [
-                    {
-                      "id": "mineurersf",
-                      "title": "Mineure RSF",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/L3Zk9yYJ.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineuresct",
-                  "title": "Mineure SCT",
-                  "edts": [
-                    {
-                      "id": "mineuresct",
-                      "title": "mineure SCT",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/134M8PYk.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "edts": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/kYka1pWA.shu"
-                    }
-                  ]
-                },
-                {
-                  "id": "mineuresea",
-                  "title": "Mineure SEA",
-                  "edts": [
-                    {
-                      "id": "mineuresea",
-                      "title": "Mineure SEA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/V3LyP8YA.shu"
                     }
                   ]
                 },
                 {
                   "id": "mineurewe",
                   "title": "Mineure WE",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineurewecla",
-                      "title": "Mineure WE Cla",
+                      "title": "WE Cla",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/LW1pqRna.shu"
                     },
                     {
                       "id": "mineurewecla1",
-                      "title": "Mineure WE Cla 1",
+                      "title": "WE Cla 1",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/E3pqGyYA.shu"
                     },
                     {
                       "id": "mineurewecla2",
-                      "title": "Mineure WE Cla 2",
+                      "title": "WE Cla 2",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/9n9KwK3P.shu"
                     }
                   ]
                 },
                 {
+                  "id": "mineuregui",
+                  "title": "Mineure GUI",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/qnq2xZWJ.shu"
+                },
+                {
+                  "id": "mineureia",
+                  "title": "Mineure IA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/x3dbVvne.shu"
+                },
+                {
+                  "id": "mineureiatr",
+                  "title": "Mineure IATR",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/Xn0xDOn7.shu"
+                },
+                {
+                  "id": "mineureplc",
+                  "title": "Mineure PLC",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/ynAOpd3w.shu"
+                },
+                {
+                  "id": "mineurersf",
+                  "title": "Mineure RSF",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/L3Zk9yYJ.shu"
+                },
+                {
+                  "id": "mineuresct",
+                  "title": "Mineure SCT",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/134M8PYk.shu"
+                },
+                {
+                  "id": "mineuresea",
+                  "title": "Mineure SEA",
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/kYka1pWA.shu"
+                },
+                {
                   "id": "opbif",
                   "title": "OP BIF",
-                  "edts": [
-                    {
-                      "id": "opbif",
-                      "title": "OP BIF",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/6YP5vQnv.shu"
-                    }
-                  ]
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/6YP5vQnv.shu"
                 },
                 {
                   "id": "oppa",
                   "title": "OP PA",
-                  "edts": [
-                    {
-                      "id": "oppa",
-                      "title": "OP PA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8zDl38.shu"
-                    }
-                  ]
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/pn8zDl38.shu"
                 },
                 {
                   "id": "opppar",
                   "title": "OP PPAR",
-                  "edts": [
-                    {
-                      "id": "opppar",
-                      "title": "OP PPAR",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/MYzmvJ3Z.shu"
-                    }
-                  ]
+                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/MYzmvJ3Z.shu"
                 },
                 {
                   "id": "projets",
                   "title": "PROJETS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "projetexpoia",
-                      "title": "Projet  Expo IA",
+                      "title": "Projet Expo IA",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/bWK2jQna.shu"
                     },
                     {
@@ -3218,7 +3143,7 @@
                     },
                     {
                       "id": "projetrfraubs",
-                      "title": "Projet RFRA UBS",
+                      "title": "Projet RFRA-UBS",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/KYgONXYJ.shu"
                     }
                   ]
@@ -3230,11 +3155,11 @@
         {
           "id": "m1info-parcourssif",
           "title": "M1 INFO-Parcours SIF",
-          "edts": [
+          "children": [
             {
               "id": "m1sif",
               "title": "M1 SIF",
-              "edts": [
+              "children": [
                 {
                   "id": "mgril1sif",
                   "title": "M gr IL.1 SIF",
@@ -3250,7 +3175,7 @@
             {
               "id": "m1sifoptions",
               "title": "M1 SIF OPTIONS",
-              "edts": [
+              "children": [
                 {
                   "id": "art",
                   "title": "ART",
@@ -3357,11 +3282,6 @@
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/V3LyBPYA.shu"
                 },
                 {
-                  "id": "m1sifitr",
-                  "title": "M1 SIF ITR",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/XnmJLNWr.shu"
-                },
-                {
                   "id": "m1sifinnovationetproprieteintellectuelle",
                   "title": "M1 SIF Innovation et Propriété Intellectuelle",
                   "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/wWxNAzY9.shu"
@@ -3461,7 +3381,7 @@
             {
               "id": "m1sifprojets",
               "title": "M1 SIF PROJETS",
-              "edts": [
+              "children": [
                 {
                   "id": "m1rigrdeprojetmergeyoannmaurel",
                   "title": "M1 RI  gr de projet  MERGE Yoann Maurel",
@@ -3496,11 +3416,11 @@
     {
       "id": "m1miage",
       "title": "M1 MIAGE",
-      "edts": [
+      "children": [
         {
           "id": "m1miage-parcourseit",
           "title": "M1 Miage - Parcours EIT",
-          "edts": [
+          "children": [
             {
               "id": "m1miage-eitdsc",
               "title": "M1 Miage - EIT DSC",
@@ -3516,11 +3436,11 @@
         {
           "id": "m1miages1-parcoursalt+clasemestre1",
           "title": "M1 Miage S1 - Parcours ALT + CLA semestre 1",
-          "edts": [
+          "children": [
             {
               "id": "m1miage-td1",
               "title": "M1 Miage - TD 1",
-              "edts": [
+              "children": [
                 {
                   "id": "m1miage-tpa",
                   "title": "M1 Miage - TP A",
@@ -3531,7 +3451,7 @@
             {
               "id": "m1miage-td2",
               "title": "M1 Miage - TD 2",
-              "edts": [
+              "children": [
                 {
                   "id": "m1miage-tpb",
                   "title": "M1 Miage - TP B",
@@ -3547,11 +3467,11 @@
             {
               "id": "m1miage-option",
               "title": "M1 Miage-Option",
-              "edts": [
+              "children": [
                 {
                   "id": "m1miage-sbd",
                   "title": "M1 Miage - SBD",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m1miage-sbd1",
                       "title": "M1 Miage - SBD1",
@@ -3567,7 +3487,7 @@
                 {
                   "id": "m1miage-ws",
                   "title": "M1 Miage - WS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "m1miage-ws1",
                       "title": "M1 Miage - WS1",
@@ -3587,7 +3507,7 @@
         {
           "id": "m1miages2-parcoursalt+clasemestre2",
           "title": "M1 Miage S2 - Parcours ALT + CLA semestre 2",
-          "edts": [
+          "children": [
             {
               "id": "m1miage-gra",
               "title": "M1 Miage - Gr A",
@@ -3610,11 +3530,11 @@
     {
       "id": "m2cybersecurite",
       "title": "M2 CYBERSECURITE",
-      "edts": [
+      "children": [
         {
           "id": "m2cyber-parcoursrssialternance",
           "title": "M2 CYBER-Parcours RSSI (alternance)",
-          "edts": [
+          "children": [
             {
               "id": "m2cyberrssi",
               "title": "M2 Cyber RSSI",
@@ -3625,7 +3545,7 @@
         {
           "id": "m2cyber-parcoursslm",
           "title": "M2 CYBER-Parcours SLM",
-          "edts": [
+          "children": [
             {
               "id": "anglaisg1cyber",
               "title": "Anglais G1 cyber",
@@ -3728,7 +3648,7 @@
     {
       "id": "m2eeeaparcoursidbci",
       "title": "M2 EEEA Parcours IDBCI",
-      "edts": [
+      "children": [
         {
           "id": "m2eeeaidbci",
           "title": "M2 EEEA IDBCI",
@@ -3747,7 +3667,7 @@
         {
           "id": "m2eeeaparcoursse",
           "title": "M2 EEEA Parcours SE",
-          "edts": [
+          "children": [
             {
               "id": "m2eeeaseg1",
               "title": "M2 EEEA SE G1",
@@ -3763,7 +3683,7 @@
         {
           "id": "m2eeeaparcourssivos",
           "title": "M2 EEEA Parcours SIVOS",
-          "edts": [
+          "children": [
             {
               "id": "m2eeeaimtatlantique",
               "title": "M2 EEEA IMT Atlantique",
@@ -3801,7 +3721,7 @@
     {
       "id": "m2info-parcourscni",
       "title": "M2 INFO-Parcours CNI",
-      "edts": [
+      "children": [
         {
           "id": "m2info-cni",
           "title": "M2 INFO-CNI",
@@ -3810,11 +3730,11 @@
         {
           "id": "m2info-parcourscloudetreseaux",
           "title": "M2 INFO-Parcours Cloud et Réseaux",
-          "edts": [
+          "children": [
             {
               "id": "m2crclassiquesmineures",
               "title": "M2 CR Classiques Mineures",
-              "edts": [
+              "children": [
                 {
                   "id": "mineurecrclassgrarng",
                   "title": "Mineure CR class. gr ARNG",
@@ -3845,7 +3765,7 @@
             {
               "id": "m2cr-alternants",
               "title": "M2 CR-Alternants",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgr1cra",
                   "title": "Anglais GR1 CRA",
@@ -3876,7 +3796,7 @@
             {
               "id": "m2cr-classiques",
               "title": "M2 CR-Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgr1crclass",
                   "title": "Anglais GR1 CR class",
@@ -3909,11 +3829,11 @@
         {
           "id": "m2info-parcoursil",
           "title": "M2 INFO-Parcours IL",
-          "edts": [
+          "children": [
             {
               "id": "m2il-alternants",
               "title": "M2 IL-Alternants",
-              "edts": [
+              "children": [
                 {
                   "id": "anglaisgr1ila",
                   "title": "Anglais GR1 ILA",
@@ -3942,7 +3862,7 @@
                 {
                   "id": "m2ilamineures",
                   "title": "M2 ILA Mineures",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureilagrml",
                       "title": "Mineure ILA gr ML",
@@ -3985,7 +3905,7 @@
             {
               "id": "m2il-classiques",
               "title": "M2 IL-Classiques",
-              "edts": [
+              "children": [
                 {
                   "id": "m2ilclassiques",
                   "title": "M2 IL Classiques",
@@ -3994,7 +3914,7 @@
                 {
                   "id": "m2ilmineures",
                   "title": "M2 IL Mineures",
-                  "edts": [
+                  "children": [
                     {
                       "id": "mineureilclassgridm",
                       "title": "Mineure IL class. gr IDM",
@@ -4059,7 +3979,7 @@
         {
           "id": "m2info-parcourssif",
           "title": "M2 INFO-Parcours SIF",
-          "edts": [
+          "children": [
             {
               "id": "m2info-sif",
               "title": "M2 INFO-SIF",
@@ -4072,11 +3992,11 @@
     {
       "id": "m2miage-parcoursdabi+dlis",
       "title": "M2 MIAGE-Parcours DABI + DLIS",
-      "edts": [
+      "children": [
         {
           "id": "m2miage-parcoursdabi",
           "title": "M2 MIAGE-Parcours DABI",
-          "edts": [
+          "children": [
             {
               "id": "m2miagetpa",
               "title": "M2 MIAGE TP A",
@@ -4090,7 +4010,7 @@
             {
               "id": "m2miage-parcoursdlis",
               "title": "M2 MIAGE-Parcours DLIS",
-              "edts": [
+              "children": [
                 {
                   "id": "m2miagetpc",
                   "title": "M2 MIAGE TP C",
@@ -4103,7 +4023,7 @@
         {
           "id": "m2miage-parcourseit",
           "title": "M2 MIAGE-Parcours EIT",
-          "edts": [
+          "children": [
             {
               "id": "m2miageeit",
               "title": "M2 MIAGE EIT",

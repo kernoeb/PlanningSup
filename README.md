@@ -10,11 +10,6 @@
 
 <p align="center">
   <a href="https://github.com/kernoeb/PlanningSup/releases"><img src="https://img.shields.io/github/v/release/kernoeb/planningsup"></a>
-  <!--
-  <a href="https://betteruptime.com/?utm_source=status_badge">
-    <img src="https://betteruptime.com/status-badges/v1/monitor/cg82.svg">
-  </a>
-  -->
   <a href="https://deepscan.io/dashboard#view=project&tid=12018&pid=22093&bid=649211">
     <img src="https://deepscan.io/api/teams/12018/projects/22093/branches/649211/badge/grade.svg" alt="DeepScan grade">
   </a>
@@ -24,86 +19,90 @@
 
 ## Fonctionnalités
 
-- **Hors connexion** / installation en mode **PWA**
-- Couleurs par catégorie _ou_ par UE (Amphi, TD, TP, etc.) et choix des couleurs
-- Mode jour / semaine / mois
-- Zoom sur un cours
-- Changement d'université / spécialité (cookie ou paramètre)
-- Thème clair / thème sombre (cookie)
-- Sélection **multiple** de plannings
-- Actualisation du planning au chargement, au focus de la page et toutes les 2 minutes
-- Liste de bloquage (cacher un cours)
+- **PWA hors connexion** avec installation sur bureau et mobile
+- Couleurs par catégorie ou UE, thèmes clair/sombre
+- Vues jour / semaine / mois, zoom sur un cours, sélection multiple
+- Rafraîchissement automatique (chargement, focus, toutes les 2 minutes)
+- Liste de blocage (cacher un cours) et mise en avant de l’enseignant
+- Changement d’université/spécialité via cookie ou paramètres
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb#7737) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
 ## Ajouter une spécialité ou une université
 
-Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, n'hésitez pas à faire une Pull Request en modifiant le fichier `.json` de votre université dans `./resources/plannings` :)
+Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, vous pouvez ouvrir une Pull Request en modifiant le fichier `.json` correspondant dans `resources/plannings`.
 
 > Avec [@matissePe](https://github.com/matissePe) et [@ShockedPlot7560](https://github.com/ShockedPlot7560), nous avons réalisé un **script** pour générer automatiquement le JSON dans la bonne forme, situé dans le dossier `scripts` du projet.
 
-## Comment ça marche ?
+## Stack & architecture
 
-Le planning est développé en [Nuxt.js](https://nuxtjs.org/). Tout est dockerisé !
+- **Monorepo Bun workspaces** : `apps/` (API, PWA, desktop/mobile, extension) et `packages/` (config, libs), assets dans `resources/`.
+- **API** `apps/api` : [Elysia](https://elysiajs.com) + Drizzle, base **PostgreSQL** (plus de MongoDB). Les plannings ICS sont lus depuis `resources/plannings/*.json`, convertis à la volée et sauvegardés en backup dans Postgres.
+- **Front** `apps/web` : Vue 3 + Vite + DaisyUI (Tailwind). Sert la PWA et consomme l’API (`/plannings`, `/plannings/:fullId?events=true`).
+- **Jobs** : runner Bun avec fenêtres de silence configurables (`RUN_JOBS`, `JOBS_QUIET_HOURS`), notamment pour le backup des plannings.
+- **Partagé** : presets Vite/TS (`packages/config`) et utilitaires ESLint/TS (`packages/libs`).
 
-#### APIs :
+## Structure du dépôt
 
-- `/api/calendars` : fetch côté serveur du calendrier au format `.ics`, puis conversion au format JSON
-- `/api/urls` (en cache côté serveur) : liste des plannings disponibles
+- `apps/api` : service Elysia, migrations/ORM Drizzle.
+- `apps/web` : PWA Vue 3.
+- `apps/app` : cibles desktop/mobile (Tauri).
+- `apps/extension` : extension navigateur.
+- `packages/libs`, `packages/config` : outillage partagé.
+- `resources/plannings` : JSON ICS par établissement.
+- `test/` : unitaires, intégration, E2E (Playwright).
 
-Chaque planning est sauvegardé dans une base de données `MongoDB`, à un intervalle régulier. En cas de lenteur ou de coupure serveur (côté université), le dernier planning enregistré est alors utilisé.
+## Pré-requis
 
-## Captures (mobile)
+- [Bun](https://bun.sh) (version indiquée dans `.bun-version`)
+- Node.js ≥ 20 (pour certains outils)
+- Docker + Docker Compose (PostgreSQL 17 fourni dans `docker-compose.yml`)
 
-<img src="resources/images/phone1.png" height="300" /><img src="resources/images/phone4.png" height="300"/>
-<br>
-<img src="resources/images/phone2.png" height="300" /><img src="resources/images/phone3.png" height="300"/>
-<br>
+## Démarrage rapide (développement)
 
-## Installation
+```bash
+# 1. Dépendances
+bun install
 
-### Docker
+# 2. Variables d'environnement API
+cp apps/api/.env.example apps/api/.env
+# DATABASE_URL par défaut : postgres://planningsup:mysecretpassword@localhost:5432/planningsup
 
-Créez un fichier `.env` avec les variables suivantes :
-
-> Remplacez la variable 'SESSION_SECRET' avec une valeur aléatoire et **unique**.
-
-```
-SESSION_SECRET=secret
-MONGODB_URL=mongodb:27017
-MONGODB_USERNAME= # optionnel
-MONGODB_PASSWORD= # optionnel
-MONGODB_AUTH_SOURCE=admin # optionnel si différent de la base planningsup
-TZ=Europe/Paris
-```
-
-Copiez le fichier `docker-compose.yml` et lancez `docker-compose pull && docker-compose up -d --remove-orphans` pour démarrer les conteneurs.
-
-Pull automatique (toutes les 30 minutes) du docker-compose et démarrage :
-
-```
-*/30 * * * * cd /path/to/dockercompose/ && docker-compose pull && docker-compose up -d --remove-orphans
+# 3. Lancer tout le stack
+bun dev
+# -> démarre Postgres via docker compose puis API (http://localhost:20000) et PWA (http://localhost:4444)
 ```
 
-## Développement
-
-### Nécessaire
-
-- [Node.js](https://github.com/nodejs/node) 22.X : Installation via [nvm](https://github.com/nvm-sh/nvm) ou [fnm](https://github.com/Schniz/fnm)
+- Les migrations Drizzle et la synchronisation des plannings sont exécutées au démarrage de l’API.
+- `bun dev` passe par `scripts/run dev` et ignore `apps/app`/`apps/extension` pour un démarrage rapide.
 
 ### Commandes utiles
 
-Lancement en local :
+- `bun run build` : build de tous les packages applicables.
+- `bun run lint` · `bun run lint-fix` : ESLint.
+- `bun run typecheck` : vérification TS.
+- `bun run test:unit` : tests unitaires Bun.
+- `bun run test:integration` : tests d’intégration (Docker requis).
+- `bun run test:e2e` (+ variantes `:safari`, `:headed`, `:debug`) : Playwright.  
+  Plus de détails dans `TESTING.md`.
 
-- Modifier le fichier `.env` avec `MONGODB_URL=localhost:27017`
-- (Optionnel) Ajouter `MONGODB_USERNAME`, `MONGODB_PASSWORD` et `MONGODB_AUTH_SOURCE` si votre instance MongoDB requiert une authentification
-- `npm run dev` (pour ne pas utiliser Mongo et ne pas lancer les backups)
+## Déploiement Docker
 
-> For MacOS M1, you can use `npm run dev:darwin-arm64`
+- Image publique : `ghcr.io/kernoeb/planningsup/planning:refactor-elysia-postgresql`.
+- Exemple `docker-compose.prod.yml` (Postgres + webapp).  
+  Créez `db.env` (POSTGRES_USER/PASSWORD/DB) et `webapp.env` avec au minimum :
+
+```bash
+DATABASE_URL=postgres://planningsup:mysecretpassword@postgres:5432/planningsup
+PORT=20000
+RUN_JOBS=true
+PUBLIC_ORIGIN=https://planningsup.app
+TRUSTED_ORIGINS=https://planningsup.app
+```
 
 ## Donateurs
 
-- [Ewennn](https://github.com/Ewennnn) (merci️, le goat)
+- [Ewennn](https://github.com/Ewennnn)
 - [W00dy](https://github.com/0xW00dy)
 - [Rick](https://github.com/rick-gnous)
 - [Lahgolz](https://twitter.com/lahgolzmiin)

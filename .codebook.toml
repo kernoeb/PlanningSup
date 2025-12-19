@@ -1,0 +1,14 @@
+dictionaries = [
+  "en_us",
+  "en_gb",
+  "fr"
+]
+words = [
+  "PlanningSup",
+  "Noéwen",
+  "kernoeb",
+  "PWA",
+  "Tauri",
+  "Elysia",
+  "breakpoint"
+]

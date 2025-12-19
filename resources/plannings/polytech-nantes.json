@@ -1,10 +1,11 @@
 {
   "title": "Polytech Nantes",
-  "edts": [
+  "group": "Nantes",
+  "children": [
     {
       "id": "idia",
       "title": "IDIA",
-      "edts": [
+      "children": [
         {
           "id": "idia-3a",
           "title": "3A",

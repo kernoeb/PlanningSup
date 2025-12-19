@@ -1,0 +1,23 @@
+{
+  "name": "libs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "test": "bun run test:unit && bun run coverage",
+    "test:unit": "bun test",
+    "coverage": "bun test --coverage"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-http": "2.5.4",
+    "elysia": "catalog:"
+  },
+  "devDependencies": {
+    "@elysiajs/eden": "catalog:",
+    "@tauri-apps/api": "2.9.1",
+    "better-auth": "catalog:",
+    "config": "workspace:*",
+    "typescript": "catalog:dev"
+  }
+}

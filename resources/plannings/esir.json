@@ -1,22 +1,23 @@
 {
   "title": "ESIR",
-  "edts": [
+  "group": "Rennes",
+  "children": [
     {
       "id": "01cycleprepa1",
       "title": "01 Cycle prépa 1",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tptoutcycleprepa1",
           "title": "CM-TD-TP tout Cycle prépa 1",
-          "edts": [
+          "children": [
             {
               "id": "tdgracycleprepa1",
               "title": "TD GR A Cycle prépa 1",
-              "edts": [
+              "children": [
                 {
                   "id": "tpgr1cycleprepa1",
                   "title": "TP gr1 Cycle prépa 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tda-tpg1",
                       "title": "TDA-TPG1",
@@ -27,7 +28,7 @@
                 {
                   "id": "tpgr2cycleprepa1",
                   "title": "TP gr2 Cycle prépa 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tda-tpg2",
                       "title": "TDA-TPG2",
@@ -40,11 +41,11 @@
             {
               "id": "tdgrbcycleprepa1",
               "title": "TD GR B Cycle prépa 1",
-              "edts": [
+              "children": [
                 {
                   "id": "tpgr3cycleprepa1",
                   "title": "TP gr3 Cycle prépa 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdb-tpg3",
                       "title": "TDB-TPG3",
@@ -55,7 +56,7 @@
                 {
                   "id": "tpgr4cycleprepa1",
                   "title": "TP gr4 Cycle prépa 1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdb-tpg4",
                       "title": "TDB-TPG4",
@@ -68,7 +69,7 @@
             {
               "id": "lv1cycleprepa1",
               "title": "lv1 Cycle prépa 1",
-              "edts": [
+              "children": [
                 {
                   "id": "g1anglaiscycleprepa1",
                   "title": "G1 anglais Cycle prépa 1",
@@ -89,7 +90,7 @@
             {
               "id": "lv2cycleprepa1facultatif",
               "title": "lv2 Cycle prépa 1 (facultatif)",
-              "edts": [
+              "children": [
                 {
                   "id": "cycleprepa1lv2:allemand",
                   "title": "Cycle prépa 1 LV2: allemand",
@@ -114,19 +115,19 @@
     {
       "id": "01cycleprepa2",
       "title": "01 Cycle prépa 2",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tptoutcycleprepa2",
           "title": "CM-TD-TP tout Cycle prépa 2",
-          "edts": [
+          "children": [
             {
               "id": "tdgracycleprepa2",
               "title": "TD GR A Cycle prépa 2",
-              "edts": [
+              "children": [
                 {
                   "id": "tpgr1cycleprepa2",
                   "title": "TP gr1 Cycle prépa 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tda-tpgr1-tpsecua-ouvsnr",
                       "title": "TDA-TPgr1-TPSécu(a)-OUV SNR",
@@ -152,7 +153,7 @@
                 {
                   "id": "tpgr2cycleprepa2",
                   "title": "TP gr2 Cycle prépa 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tda-tpgr2-tpsecua-ouvsnr",
                       "title": "TDA-TPgr2-TPSécu(a)-OUV SNR",
@@ -170,11 +171,11 @@
             {
               "id": "tdgrbcycleprepa2",
               "title": "TD GR B Cycle prépa 2",
-              "edts": [
+              "children": [
                 {
                   "id": "tpgr3cycleprepa2",
                   "title": "TP gr3 Cycle prépa 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdb-tpgr3-tpsecud-ouvtis-mat",
                       "title": "TDB-TPgr3-TPSécu(d)-OUV TIS-MAT",
@@ -190,7 +191,7 @@
                 {
                   "id": "tpgr4cycleprepa2",
                   "title": "TP gr4 Cycle prépa 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tdb-tpgr4-tpsecue-ouvmat",
                       "title": "TDB-TPgr4-TPSécu(e)-OUV MAT",
@@ -213,7 +214,7 @@
             {
               "id": "tpsecuriteorga-s3",
               "title": "TP sécurité ORGA-S3",
-              "edts": [
+              "children": [
                 {
                   "id": "tps1-2orga-s3",
                   "title": "TPS 1-2 ORGA-S3",
@@ -234,7 +235,7 @@
             {
               "id": "lv1cycleprepa2",
               "title": "lv1 Cycle prépa 2",
-              "edts": [
+              "children": [
                 {
                   "id": "g1anglaiscycleprepa2",
                   "title": "G1 anglais Cycle prépa 2",
@@ -255,7 +256,7 @@
             {
               "id": "lv2cycleprepa2facultatif",
               "title": "lv2 Cycle prépa 2 (facultatif)",
-              "edts": [
+              "children": [
                 {
                   "id": "cycleprepa2lv2:allemand",
                   "title": "Cycle prépa 2 LV2: allemand",
@@ -276,11 +277,11 @@
             {
               "id": "moduled'ouverturecycleprepa2",
               "title": "module d'ouverture Cycle prépa 2",
-              "edts": [
+              "children": [
                 {
                   "id": "moduleouverturebiomedical",
                   "title": "module ouverture Biomédical",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ouvtistpa",
                       "title": "OUV TIS TPA",
@@ -296,7 +297,7 @@
                 {
                   "id": "moduleouvertureinfo",
                   "title": "module ouverture INFO",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ouvinfotpa",
                       "title": "OUV INFO TPA",
@@ -312,7 +313,7 @@
                 {
                   "id": "moduleouverturemateriaux",
                   "title": "module ouverture Matériaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ouvmattp",
                       "title": "OUV MAT TP",
@@ -323,7 +324,7 @@
                 {
                   "id": "moduleouverturesystemesnumeriquesetreseaux",
                   "title": "module ouverture Systèmes Numériques et Réseaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ouvsnrtpa",
                       "title": "OUV SNR TPA",
@@ -339,15 +340,15 @@
                 {
                   "id": "moduleouvertureprojetprofessionnel",
                   "title": "module ouverture projet professionnel",
-                  "edts": [
+                  "children": [
                     {
                       "id": "ouv",
                       "title": "OUV",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16769&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     },
                     {
-                      "id": "ouv",
-                      "title": "OUV",
+                      "id": "ouv-2",
+                      "title": "OUV (Groupe 2)",
                       "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16773&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
@@ -361,23 +362,23 @@
     {
       "id": "02esir1fise",
       "title": "02 ESIR 1 FISE",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tptoutesir1",
           "title": "CM-TD-TP tout ESIR1",
-          "edts": [
+          "children": [
             {
               "id": "informatique1",
               "title": "Informatique 1",
-              "edts": [
+              "children": [
                 {
                   "id": "tdgrainfoesir1",
                   "title": "TD GR A INFO ESIR1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1infoesir1",
                       "title": "TP gr1 INFO ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tda-tpgr1infoesir1",
                           "title": "TD A-TP gr1 INFO ESIR1",
@@ -388,7 +389,7 @@
                     {
                       "id": "tpgr2infoesir1",
                       "title": "TP gr2 INFO ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tda-tpgr2infoesir1",
                           "title": "TD A-TP gr2 INFO ESIR1",
@@ -401,11 +402,11 @@
                 {
                   "id": "tdgrbinfoesir1",
                   "title": "TD GR B INFO ESIR1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr3infoesir1",
                       "title": "TP gr3 INFO ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tdb-tpgr3infoesir1",
                           "title": "TD B-TP gr3 INFO ESIR1",
@@ -416,7 +417,7 @@
                     {
                       "id": "tpgr4infoesir1",
                       "title": "TP gr4 INFO ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tdb-tpgr4infoesir1",
                           "title": "TD B-TP gr4 INFO ESIR1",
@@ -429,7 +430,7 @@
                 {
                   "id": "innovationesir1info",
                   "title": "innovation ESIR1 INFO",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir1info",
                       "title": "Inent esir1 INFO",
@@ -455,7 +456,7 @@
                 {
                   "id": "langues-communicationesir1info",
                   "title": "langues - communication ESIR 1 INFO",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir1info",
                       "title": "G1 ESIR1 INFO",
@@ -488,15 +489,15 @@
             {
               "id": "tis1",
               "title": "TIS 1",
-              "edts": [
+              "children": [
                 {
                   "id": "tdtisesir1",
                   "title": "TD TIS ESIR1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1tisesir1",
                       "title": "TP gr1 TIS ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1tisesir1",
                           "title": "TP gr1 TIS ESIR1",
@@ -507,7 +508,7 @@
                     {
                       "id": "tpgr2tisesir1",
                       "title": "TP gr2 TIS ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2tisesir1",
                           "title": "TP gr2 TIS ESIR1",
@@ -520,7 +521,7 @@
                 {
                   "id": "innovationesir1tis",
                   "title": "innovation ESIR1 TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir1tis",
                       "title": "Inent esir1 TIS",
@@ -546,7 +547,7 @@
                 {
                   "id": "langues-communicationesir1tis",
                   "title": "langues - communication ESIR 1 TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir1tis",
                       "title": "G1 ESIR1 TIS",
@@ -579,15 +580,15 @@
             {
               "id": "fisemateriaux1",
               "title": "fise Matériaux 1",
-              "edts": [
+              "children": [
                 {
                   "id": "cmtdtpmateriauxesir1",
                   "title": "CM TD TP Matériaux ESIR1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1matesir1",
                       "title": "TP gr1 MAT ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1matesir1",
                           "title": "TP gr1 MAT ESIR1",
@@ -598,7 +599,7 @@
                     {
                       "id": "tpgr2matesir1",
                       "title": "TP gr2 MAT ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2matesir1",
                           "title": "TP gr2 MAT ESIR1",
@@ -611,7 +612,7 @@
                 {
                   "id": "innovationesir1materiaux",
                   "title": "innovation ESIR1 Matériaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir1materiaux",
                       "title": "Inent esir1 MATERIAUX",
@@ -637,7 +638,7 @@
                 {
                   "id": "langues-communicationesir1materiaux",
                   "title": "langues - communication ESIR 1 Matériaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir1materiaux",
                       "title": "G1 ESIR1 Matériaux",
@@ -670,7 +671,7 @@
             {
               "id": "optionexpressionesir1",
               "title": "option expression ESIR1",
-              "edts": [
+              "children": [
                 {
                   "id": "lv2espagnol",
                   "title": "LV2 espagnol",
@@ -705,23 +706,23 @@
     {
       "id": "03esir2fise",
       "title": "03 ESIR 2 FISE",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tptoutesir2",
           "title": "CM-TD-TP tout ESIR2",
-          "edts": [
+          "children": [
             {
               "id": "informatique2",
               "title": "Informatique 2",
-              "edts": [
+              "children": [
                 {
                   "id": "inesir2",
                   "title": "IN ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpinesir2",
                       "title": "CM-TD-TP IN ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpinesir2",
                           "title": "TP IN ESIR2",
@@ -732,7 +733,7 @@
                     {
                       "id": "innovationesir2in",
                       "title": "innovation ESIR 2 IN",
-                      "edts": [
+                      "children": [
                         {
                           "id": "inentesir2in",
                           "title": "Inent esir2 IN",
@@ -758,7 +759,7 @@
                     {
                       "id": "langues-communicationesir2in",
                       "title": "langues - communication ESIR 2 IN",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1esir2in",
                           "title": "G1 ESIR2 IN",
@@ -791,11 +792,11 @@
                 {
                   "id": "iotesir2",
                   "title": "IoT ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpiotesir2",
                       "title": "CM-TD-TP  IOT ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpiotesir2",
                           "title": "TP IOT ESIR2",
@@ -806,7 +807,7 @@
                     {
                       "id": "innovationesir2iot",
                       "title": "innovation ESIR 2 IoT",
-                      "edts": [
+                      "children": [
                         {
                           "id": "inentesir2iot",
                           "title": "Inent esir2 IoT",
@@ -832,7 +833,7 @@
                     {
                       "id": "langues-communicationesir2",
                       "title": "langues - communication ESIR 2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1esir2iot",
                           "title": "G1 ESIR2 IoT",
@@ -865,15 +866,15 @@
                 {
                   "id": "siesir2",
                   "title": "SI ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpsiesir2",
                       "title": "CM-TD-TP SI ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1siesir2",
                           "title": "TP gr1 SI ESIR2",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr1siesir2",
                               "title": "TP gr1 SI ESIR2",
@@ -884,7 +885,7 @@
                         {
                           "id": "tpgr2siesir2",
                           "title": "TP gr2 SI ESIR2",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr2siesir2",
                               "title": "TP gr2 SI ESIR2",
@@ -897,7 +898,7 @@
                     {
                       "id": "innovationesir2si",
                       "title": "innovation ESIR 2 SI",
-                      "edts": [
+                      "children": [
                         {
                           "id": "inentesir2si",
                           "title": "Inent esir2 SI",
@@ -923,7 +924,7 @@
                     {
                       "id": "langues-communicationesir2",
                       "title": "langues - communication ESIR 2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1esir2si",
                           "title": "G1 ESIR2 SI",
@@ -958,15 +959,15 @@
             {
               "id": "tis2",
               "title": "TIS 2",
-              "edts": [
+              "children": [
                 {
                   "id": "tdtisesir2",
                   "title": "TD TIS ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1tisesir2",
                       "title": "TP gr1 TIS ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1tisesir2",
                           "title": "TP gr1 TIS ESIR2",
@@ -977,7 +978,7 @@
                     {
                       "id": "tpgr2tisesir2",
                       "title": "TP gr2 TIS ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2tisesir2",
                           "title": "TP gr2 TIS ESIR2",
@@ -990,7 +991,7 @@
                 {
                   "id": "innovationesir2tis",
                   "title": "innovation ESIR 2 TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir2tis",
                       "title": "Inent esir2 TIS",
@@ -1016,7 +1017,7 @@
                 {
                   "id": "langues-communicationesir2",
                   "title": "langues - communication ESIR 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir2tis",
                       "title": "G1 ESIR2 TIS",
@@ -1049,15 +1050,15 @@
             {
               "id": "fisemateriaux2",
               "title": "fise Matériaux 2",
-              "edts": [
+              "children": [
                 {
                   "id": "cm-td-tpmateriauxesir2",
                   "title": "CM-TD-TP Matériaux ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1matesir2",
                       "title": "TP gr1 MAT ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1matesir2",
                           "title": "TP gr1 MAT ESIR2",
@@ -1068,7 +1069,7 @@
                     {
                       "id": "tpgr2matesir2",
                       "title": "TP gr2 MAT ESIR2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2matesir2",
                           "title": "TP gr2 MAT ESIR2",
@@ -1081,7 +1082,7 @@
                 {
                   "id": "innovationesir2materiaux",
                   "title": "innovation ESIR 2 Matériaux",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir2materiaux",
                       "title": "Inent esir2 Matériaux",
@@ -1107,7 +1108,7 @@
                 {
                   "id": "langues-communicationesir2",
                   "title": "langues - communication ESIR 2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir2materiaux",
                       "title": "G1 ESIR2 Matériaux",
@@ -1140,7 +1141,7 @@
             {
               "id": "optionexpressionesir2",
               "title": "option expression ESIR2",
-              "edts": [
+              "children": [
                 {
                   "id": "lv2espagnol",
                   "title": "LV2 espagnol",
@@ -1175,27 +1176,27 @@
     {
       "id": "04esir3fise",
       "title": "04 ESIR 3 FISE",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tptoutesir3",
           "title": "CM-TD-TP tout ESIR3",
-          "edts": [
+          "children": [
             {
               "id": "informatique3",
               "title": "Informatique 3",
-              "edts": [
+              "children": [
                 {
                   "id": "inesir3",
                   "title": "IN ESIR3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpinesir3",
                       "title": "CM-TD-TP IN ESIR3",
-                      "edts": [
+                      "children": [
                         {
                           "id": "td-tpinesir3contratpro",
                           "title": "TD-TP IN ESIR3 contrat pro",
-                          "edts": [
+                          "children": [
                             {
                               "id": "td-tpinesir3contratpro",
                               "title": "TD-TP IN ESIR3 contrat pro",
@@ -1206,7 +1207,7 @@
                         {
                           "id": "td-tpinesir3projetindustriel",
                           "title": "TD-TP IN ESIR3 projet industriel",
-                          "edts": [
+                          "children": [
                             {
                               "id": "td-tpinesir3projetindustriel",
                               "title": "TD-TP IN ESIR3 projet industriel",
@@ -1217,11 +1218,11 @@
                         {
                           "id": "langues-communicationesir3in",
                           "title": "langues - communication ESIR 3 IN",
-                          "edts": [
+                          "children": [
                             {
                               "id": "g1esir3in",
                               "title": "G1 ESIR3 IN",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "g1-aesir3in",
                                   "title": "G1-A ESIR3 IN",
@@ -1258,19 +1259,19 @@
                 {
                   "id": "iotesir3",
                   "title": "IoT ESIR3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpiotesir3",
                       "title": "CM-TD-TP IoT ESIR3",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1iotesir3",
                           "title": "TP gr1 IoT ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr1iotesir3contratpro",
                               "title": "TP gr1 IoT ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr1iotesir3contratpro",
                                   "title": "TP gr1 IoT ESIR3 contrat pro",
@@ -1281,7 +1282,7 @@
                             {
                               "id": "tpgr1iotesir3projetindustriel",
                               "title": "TP gr1 IoT ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr1iotesir3projetindustriel",
                                   "title": "TP gr1 IoT ESIR3 projet industriel",
@@ -1294,11 +1295,11 @@
                         {
                           "id": "tpgr2iotesir3",
                           "title": "TP gr2 IOT ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr2iotesir3contratpro",
                               "title": "TP gr2 IoT ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr2iotesir3contratpro",
                                   "title": "TP gr2 IoT ESIR3 contrat pro",
@@ -1309,7 +1310,7 @@
                             {
                               "id": "tpgr2iotesir3projetindustriel",
                               "title": "TP gr2 IoT ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr2iotesir3projetindustriel",
                                   "title": "TP gr2 IoT ESIR3 projet industriel",
@@ -1322,11 +1323,11 @@
                         {
                           "id": "langues-communicationesir3iot",
                           "title": "langues - communication ESIR 3 IoT",
-                          "edts": [
+                          "children": [
                             {
                               "id": "g1esir3iot",
                               "title": "G1 ESIR3 IoT",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "g1-aesir3iot",
                                   "title": "G1-A ESIR3 IoT",
@@ -1363,19 +1364,19 @@
                 {
                   "id": "siesir3",
                   "title": "SI ESIR3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "cm-td-tpsiesir3",
                       "title": "CM-TD-TP SI ESIR3",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1siesir3",
                           "title": "TP gr1 SI ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr1siesir3contratpro",
                               "title": "TP gr1 SI ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr1siesir3contratpro",
                                   "title": "TP gr1 SI ESIR3 contrat pro",
@@ -1386,7 +1387,7 @@
                             {
                               "id": "tpgr1siesir3projetindustriel",
                               "title": "TP gr1 SI ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr1siesir3projetindustriel",
                                   "title": "TP gr1 SI ESIR3 projet industriel",
@@ -1399,11 +1400,11 @@
                         {
                           "id": "tpgr2siesir3",
                           "title": "TP gr2 SI ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr2siesir3contratpro",
                               "title": "TP gr2 SI ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr2siesir3contratpro",
                                   "title": "TP gr2 SI ESIR3 contrat pro",
@@ -1414,7 +1415,7 @@
                             {
                               "id": "tpgr2siesir3projetindustriel",
                               "title": "TP gr2 SI ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "tpgr2siesir3projetindustriel",
                                   "title": "TP gr2 SI ESIR3 projet industriel",
@@ -1427,11 +1428,11 @@
                         {
                           "id": "langues-communicationesir3si",
                           "title": "langues - communication ESIR 3 SI",
-                          "edts": [
+                          "children": [
                             {
                               "id": "g1esir3si",
                               "title": "G1 ESIR3 SI",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "g1-aesir3si",
                                   "title": "G1-A ESIR3 SI",
@@ -1470,23 +1471,23 @@
             {
               "id": "tis3",
               "title": "TIS 3",
-              "edts": [
+              "children": [
                 {
                   "id": "cm-td-tptisesir3",
                   "title": "CM-TD-TP TIS ESIR3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "voie1:dispositifsmedicauxnumeriques",
                       "title": "Voie 1: Dispositifs médicaux numériques",
-                      "edts": [
+                      "children": [
                         {
                           "id": "voie1:tpgr1tisesir3",
                           "title": "voie 1:TP gr1 TIS ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "voie1:tpgr1tisesir3contratpro",
                               "title": "voie 1:TP gr1 TIS ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "voie1:tpgr1tisesir3contratpro",
                                   "title": "voie 1:TP gr1 TIS ESIR3 contrat pro",
@@ -1497,7 +1498,7 @@
                             {
                               "id": "voie1:tpgr1tisesir3projetindustriel",
                               "title": "voie 1:TP gr1 TIS ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "voie1:tpgr1tisesir3projetindustriel",
                                   "title": "voie 1:TP gr1 TIS ESIR3 projet industriel",
@@ -1512,15 +1513,15 @@
                     {
                       "id": "voie2:systemesinterconnectesensante",
                       "title": "Voie 2 : Systèmes interconnectés en santé",
-                      "edts": [
+                      "children": [
                         {
                           "id": "voie2:tpgr2tisesir3",
                           "title": "voie 2:TP gr2 TIS ESIR3",
-                          "edts": [
+                          "children": [
                             {
                               "id": "voie2:tpgr2tisesir3contratpro",
                               "title": "voie 2: TP gr2 TIS ESIR3 contrat pro",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "voie2:tpgr2tisesir3contratpro",
                                   "title": "voie 2: TP gr2 TIS ESIR3 contrat pro",
@@ -1531,7 +1532,7 @@
                             {
                               "id": "voie2:tpgr2tisesir3projetindustriel",
                               "title": "voie 2:TP gr2 TIS ESIR3 projet industriel",
-                              "edts": [
+                              "children": [
                                 {
                                   "id": "voie2:tpgr2tisesir3projetindustriel",
                                   "title": "voie 2:TP gr2 TIS ESIR3 projet industriel",
@@ -1546,11 +1547,11 @@
                     {
                       "id": "langues-communicationesir3tis",
                       "title": "langues - communication ESIR 3 TIS",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1esir3tis",
                           "title": "G1 ESIR3 TIS",
-                          "edts": [
+                          "children": [
                             {
                               "id": "g1-aesir3tis",
                               "title": "G1-A ESIR3 TIS",
@@ -1592,19 +1593,19 @@
             {
               "id": "fisemateriaux3",
               "title": "fise Matériaux 3",
-              "edts": [
+              "children": [
                 {
                   "id": "cm-td-tpmatesir3",
                   "title": "CM-TD-TP MAT ESIR3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpgr1matesir3",
                       "title": "TP gr1 MAT ESIR3",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr1matesir3contratpro",
                           "title": "TP gr1 MAT ESIR3 contrat pro",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr1matesir3contratpro",
                               "title": "TP gr1 MAT ESIR3 contrat pro",
@@ -1615,7 +1616,7 @@
                         {
                           "id": "tpgr1matesir3projetindustriel",
                           "title": "TP gr1 MAT ESIR3 projet industriel",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr1matesir3projetindustriel",
                               "title": "TP gr1 MAT ESIR3 projet industriel",
@@ -1628,11 +1629,11 @@
                     {
                       "id": "tpgr2matesir3",
                       "title": "TP gr2 MAT ESIR3",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2matesir3contratpro",
                           "title": "TP gr2 MAT ESIR3 contrat pro",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr2matesir3contratpro",
                               "title": "TP gr2 MAT ESIR3 contrat pro",
@@ -1643,7 +1644,7 @@
                         {
                           "id": "tpgr2matesir3projetindustriel",
                           "title": "TP gr2 MAT ESIR3 projet industriel",
-                          "edts": [
+                          "children": [
                             {
                               "id": "tpgr2matesir3projetindustriel",
                               "title": "TP gr2 MAT ESIR3 projet industriel",
@@ -1656,11 +1657,11 @@
                     {
                       "id": "langues-communicationesir3materiaux",
                       "title": "langues - communication ESIR 3 Matériaux",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1esir3materiaux",
                           "title": "G1 ESIR3 Matériaux",
-                          "edts": [
+                          "children": [
                             {
                               "id": "g1-aesir3materiaux",
                               "title": "G1-A ESIR3 Matériaux",
@@ -1704,7 +1705,7 @@
         {
           "id": "optionexpressionesir3facultatif",
           "title": "option expression ESIR3 (facultatif)",
-          "edts": [
+          "children": [
             {
               "id": "lv2espagnol",
               "title": "LV2 espagnol",
@@ -1735,7 +1736,7 @@
         {
           "id": "parcourscontratpro",
           "title": "parcours contrat pro",
-          "edts": [
+          "children": [
             {
               "id": "parcourscontratpro",
               "title": "parcours contrat pro",
@@ -1751,7 +1752,7 @@
         {
           "id": "parcoursprojetindustriel",
           "title": "parcours projet industriel",
-          "edts": [
+          "children": [
             {
               "id": "parcoursprojetindustriel",
               "title": "parcours projet industriel",
@@ -1762,7 +1763,7 @@
         {
           "id": "semaineentreprenariatesir",
           "title": "semaine entreprenariat ESIR",
-          "edts": [
+          "children": [
             {
               "id": "semaineentreprenariatesir",
               "title": "semaine entreprenariat ESIR",
@@ -1775,7 +1776,7 @@
     {
       "id": "05esir3fisamateriaux",
       "title": "05 esir3 fisa matériaux",
-      "edts": [
+      "children": [
         {
           "id": "adeesir3fisamat",
           "title": "ADE ESIR3 FISA MAT",
@@ -1796,7 +1797,7 @@
     {
       "id": "08esir1fisasnr",
       "title": "08 esir1 fisa snr",
-      "edts": [
+      "children": [
         {
           "id": "etudiantsfisasnr1",
           "title": "étudiants FISA SNR1",
@@ -1807,11 +1808,11 @@
     {
       "id": "08esir2fisasnr",
       "title": "08 esir2 fisa snr",
-      "edts": [
+      "children": [
         {
           "id": "parcourss8",
           "title": "parcours S8",
-          "edts": [
+          "children": [
             {
               "id": "parcourssnsfesir2fisasnr",
               "title": "parcours SNSF esir2 fisa SNR",
@@ -1829,11 +1830,11 @@
     {
       "id": "08esir3fisasnr",
       "title": "08 esir3 fisa snr",
-      "edts": [
+      "children": [
         {
           "id": "parcourss9",
           "title": "parcours S9",
-          "edts": [
+          "children": [
             {
               "id": "parcourssnsfesir3fisasnr",
               "title": "parcours SNSF esir3 fisa SNR",
@@ -1851,23 +1852,23 @@
     {
       "id": "09esir1fiseatis",
       "title": "09 ESIR 1 fisea TIS",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tpesir1fiseatis",
           "title": "CM-TD-TP ESIR1 fisea TIS",
-          "edts": [
+          "children": [
             {
               "id": "fiseatis1",
               "title": "fisea TIS 1",
-              "edts": [
+              "children": [
                 {
                   "id": "td-tpfiseatisesir1",
                   "title": "TD-TP fisea TIS ESIR1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpfiseatisesir1",
                       "title": "TP fisea TIS ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2fiseatisesir1",
                           "title": "TP gr2 fisea TIS ESIR1",
@@ -1880,7 +1881,7 @@
                 {
                   "id": "innovationesir1fiseatis",
                   "title": "innovation ESIR 1 fisea TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir1fiseatis",
                       "title": "Inent esir1 fisea TIS",
@@ -1906,7 +1907,7 @@
                 {
                   "id": "languesesir1fiseatis",
                   "title": "langues  ESIR 1 fisea TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir1fiseatis",
                       "title": "G1 ESIR1 fisea TIS",
@@ -1943,23 +1944,23 @@
     {
       "id": "09esir2fiseatis",
       "title": "09 ESIR 2 fisea TIS",
-      "edts": [
+      "children": [
         {
           "id": "cm-td-tpesir2fiseatis",
           "title": "CM-TD-TP ESIR2 fisea TIS",
-          "edts": [
+          "children": [
             {
               "id": "fiseatis2",
               "title": "fisea TIS 2",
-              "edts": [
+              "children": [
                 {
                   "id": "td-tpfiseatisesir2",
                   "title": "TD-TP fisea TIS ESIR2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "tpfiseatisesir1",
                       "title": "TP fisea TIS ESIR1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "tpgr2fiseatisesir1",
                           "title": "TP gr2 fisea TIS ESIR1",
@@ -1972,7 +1973,7 @@
                 {
                   "id": "innovationesir2fiseatis",
                   "title": "innovation ESIR2 fisea TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "inentesir2fiseatis",
                       "title": "Inent esir2 fisea TIS",
@@ -1998,7 +1999,7 @@
                 {
                   "id": "languesesir2fiseatis",
                   "title": "langues  ESIR 2 fisea TIS",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1esir2fiseatis",
                       "title": "G1 ESIR2 fisea TIS",
@@ -2035,7 +2036,7 @@
     {
       "id": "planeteesir",
       "title": "planète ESIR",
-      "edts": [
+      "children": [
         {
           "id": "agconferencesetpresentationsetevenements",
           "title": "AG, conférences et présentations et événements",

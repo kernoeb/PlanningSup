@@ -12,42 +12,89 @@
     "planning",
     "university"
   ],
-  "workspaces": [
-    "apps/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "test"
+    ],
+    "catalog": {
+      "elysia": "1.4.19",
+      "@elysiajs/eden": "1.4.5",
+      "zod": "4.2.1",
+      "better-auth": "1.4.7"
+    },
+    "catalogs": {
+      "types": {
+        "@types/bun": "1.3.4"
+      },
+      "dev": {
+        "vite": "npm:rolldown-vite@7.2.11",
+        "@vitejs/plugin-vue": "6.0.3",
+        "typescript": "5.9.3",
+        "vue-tsc": "3.1.8",
+        "@antfu/eslint-config": "6.7.1",
+        "eslint": "9.39.2"
+      },
+      "ui": {
+        "sass-embedded": "1.96.0",
+        "vue": "3.5.25",
+        "daisyui": "5.5.14",
+        "@tailwindcss/vite": "4.1.18",
+        "tailwindcss": "4.1.18"
+      }
+    }
+  },
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "fix-plannings-project-ids": "node ./scripts/check-plannings-json.js --fetch",
-    "dev": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && npm run dev -w apps/web-app",
-    "test": "docker compose -f docker-compose-dev.yml up -d --remove-orphans && cross-env NODE_ENV=test mocha --exit test/calendar.test.js test/urls.test.js",
-    "real-world-test": "docker compose -f docker-compose-test.yml up -d --build --remove-orphans"
+    "predev": "bun install; docker compose up -d --pull always; ln -sf AGENTS.md CLAUDE.md; ln -sf AGENTS.md GEMINI.md;",
+    "dev": "bun scripts/run dev",
+    "build": "bun scripts/run build",
+    "test:unit": "env -u PUBLIC_ORIGIN -u DATABASE_URL NODE_ENV=test bun test --max-concurrency=1 test/*.test.ts",
+    "coverage": "bun scripts/run coverage",
+    "test:e2e": "bun scripts/test.ts",
+    "test:e2e:safari": "bun scripts/test.ts --safari",
+    "test:e2e:headed": "bun scripts/test.ts --headed",
+    "test:e2e:debug": "bun scripts/test.ts --headed --verbose",
+    "test:integration": "bun scripts/test-integration.ts",
+    "test:integration:local": "bun scripts/test-integration.ts --skip-build --docker-image planningsup-test:local",
+    "test:integration:auth": "bun scripts/test-integration-auth.ts",
+    "test:integration:auth:local": "bun scripts/test-integration-auth.ts --skip-build",
+    "validate:workflows": "bun scripts/validate-workflows.ts",
+    "docker:build": "docker build --build-arg BUN_VERSION=$(cat .bun-version) -t test-planningsup --progress=plain .",
+    "lint": "bun scripts/run lint",
+    "lint-fix": "bun scripts/run lint-fix",
+    "typecheck": "bun scripts/run typecheck"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5",
-    "ajv": "^8.17.1",
-    "axios": "^1.11.0",
-    "eslint": "^9.34.0",
-    "ical.js": "^2.2.1",
-    "jsdom": "^26.1.0",
-    "mocha": "^11.7.1",
-    "supertest": "^7.1.4"
+    "@antfu/eslint-config": "catalog:dev",
+    "@playwright/test": "1.57.0",
+    "@types/bun": "1.3.4",
+    "concurrently": "9.2.1",
+    "eslint": "catalog:dev",
+    "eslint-plugin-perfectionist": "4.15.1",
+    "lint-staged": "16.2.7",
+    "playwright": "1.57.0",
+    "simple-git-hooks": "2.13.1"
   },
-  "overrides": {
-    "@nuxtjs/axios": {
-      "axios": "$axios",
-      "axios-retry": "$axios-retry"
-    },
-    "eslint-config-vuetify": {
-      "@release-it/conventional-changelog": {
-        "release-it": {
-          "shelljs": "0.8.5"
-        }
-      }
-    }
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "core-js",
+    "esbuild",
+    "sharp"
+  ],
+  "simple-git-hooks": {
+    "pre-commit": "bunx lint-staged"
   },
-  "dependencies": {
-    "axios-retry": "^4.5.0"
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue,md,mdx,json,yaml,yml}": [
+      "bun run lint-fix",
+      "bun run lint"
+    ],
+    "*.{ts,tsx,vue}": [
+      "bun run typecheck"
+    ]
   }
 }

@@ -1,31 +1,28 @@
 services:
-  web:
-    image: ghcr.io/kernoeb/planningsup/planning
-    restart: always
-    stdin_open: true
-    tty: true
-    ports:
-      - '31021:3000'
-    networks:
-      - planning
-    volumes:
-      - '/etc/timezone:/etc/timezone:ro'
-      - '/etc/localtime:/etc/localtime:ro'
-    depends_on:
-      - mongodb
-    env_file:
-      - apps/web-app/.env
+  postgres:
+    image: postgres:17
+    container_name: planningsup_db
     environment:
-      - MONGODB_URL=mongodb:27017
-  mongodb:
-    image: mongo:7.0
-    platform: linux/arm64
-    restart: always
+      POSTGRES_USER: planningsup
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: planningsup
+    ports:
+      - '5432:5432'
     volumes:
-      - '/opt/planning_v2:/data/db'
+      - pgdata:/var/lib/postgresql/data
     networks:
-      - planning
+      - planningsup_network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    name: planningsup_pgdata
 
 networks:
-  planning:
+  planningsup_network:
     driver: bridge
+    name: planningsup_network

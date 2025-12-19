@@ -1,0 +1,249 @@
+:root {
+  --sx-spacing-padding3: 6px;
+  --sx-font-extra-small: 0.82rem;
+  --sx-font-extra-large: 1rem;
+
+  /* Default light theme based on DaisyUI "corporate" palette */
+  --sx-color-background: oklch(100% 0 0);
+  --sx-color-on-background: oklch(22.389% 0.031 278.072);
+
+  --sx-color-surface: oklch(100% 0 0);
+  --sx-color-surface-dim: oklch(93% 0 0);
+  --sx-color-surface-bright: oklch(100% 0 0);
+  --sx-color-on-surface: oklch(22.389% 0.031 278.072);
+  --sx-color-surface-container: oklch(93% 0 0);
+  --sx-color-surface-container-low: oklch(100% 0 0);
+  --sx-color-surface-container-high: oklch(86% 0 0);
+
+  --sx-color-primary: oklch(58% 0.158 241.966);
+  --sx-color-on-primary: oklch(100% 0 0);
+  --sx-color-primary-container: oklch(93% 0 0);
+  --sx-color-on-primary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-secondary: oklch(55% 0.046 257.417);
+  --sx-color-on-secondary: oklch(100% 0 0);
+  --sx-color-secondary-container: oklch(93% 0 0);
+  --sx-color-on-secondary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-tertiary: oklch(60% 0.118 184.704);
+  --sx-color-on-tertiary: oklch(100% 0 0);
+  --sx-color-tertiary-container: oklch(93% 0 0);
+  --sx-color-on-tertiary-container: oklch(22.389% 0.031 278.072);
+
+  --sx-color-outline: oklch(60% 0 0);
+  --sx-color-outline-variant: oklch(93% 0 0);
+  --sx-color-shadow: oklch(0% 0 0);
+  --sx-color-surface-tint: oklch(58% 0.158 241.966);
+
+  --sx-color-neutral: var(--sx-color-outline);
+  --sx-color-neutral-variant: var(--sx-color-outline-variant);
+
+  --sx-internal-color-gray-ripple-background: oklch(86% 0 0);
+  --sx-internal-color-light-gray: #fafafa;
+  --sx-internal-color-text: oklch(22.389% 0.031 278.072);
+}
+
+/* Dark theme */
+html[data-theme="dark"] {
+  .is-dark,
+  .sx__theme--dark {
+    /* The absolute base is pure dark. No compromises. */
+    --sx-color-background: #000;
+    /* Content on dark should be pure white for maximum contrast. */
+    --sx-color-on-background: #fff;
+
+    /* Primary, Secondary, and Tertiary are now a very dark charcoal.
+        On a dark background, they act as subtle, interactive surfaces. */
+    --sx-color-primary: var(--color-primary);
+    --sx-color-on-primary: var(--color-primary-content);
+    --sx-color-primary-container: #1a1a1a;
+    --sx-color-on-primary-container: #fff;
+
+    --sx-color-secondary: #222; /* As requested, secondary is "dark" too */
+    --sx-color-on-secondary: #fff;
+    --sx-color-secondary-container: #1a1a1a;
+    --sx-color-on-secondary-container: #fff;
+
+    --sx-color-tertiary: #222;
+    --sx-color-on-tertiary: #fff;
+    --sx-color-tertiary-container: #1a1a1a;
+    --sx-color-on-tertiary-container: #fff;
+
+    /* Surfaces provide subtle layers over the pure dark background */
+    --sx-color-surface: #111; /* A barely-there off-dark */
+    --sx-color-surface-dim: #111;
+    --sx-color-surface-bright: #222;
+    --sx-color-on-surface: #fff;
+    --sx-color-surface-container: #1a1a1a; /* A slightly more visible layer */
+    --sx-color-surface-container-low: #111;
+    --sx-color-surface-container-high: var(--color-base-200);
+
+    /* Outlines are a slightly lighter dark gray for subtle definition */
+    --sx-color-outline: #666;
+    --sx-color-outline-variant: #333;
+    --sx-color-shadow: #000;
+    --sx-color-surface-tint: #fff; /* Tint is white for a high-contrast overlay effect */
+    --sx-color-neutral: var(--sx-color-outline);
+    --sx-color-neutral-variant: var(--sx-color-outline-variant);
+
+    /* Internally defined colors, adapted for the ultra-dark theme */
+    --sx-internal-color-gray-ripple-background: #333; /* Ripple is a visible gray */
+    --sx-internal-color-light-gray: #1a1a1a; /* "light-gray" is now "darkest-gray" */
+    --sx-internal-color-text: #fff; /* Main text is pure white */
+  }
+}
+
+html[data-theme="dracula"] {
+  .is-dark,
+  .sx__theme--dark {
+    --sx-color-background: #282a36;
+    --sx-color-on-background: #f8f8f2;
+
+    --sx-color-primary: #ff79c6;
+    --sx-color-on-primary: #1d1e25;
+    --sx-color-primary-container: #3a2235;
+    --sx-color-on-primary-container: #f8f8f2;
+
+    --sx-color-secondary: #bd93f9;
+    --sx-color-on-secondary: #1d1e25;
+    --sx-color-secondary-container: #2f2740;
+    --sx-color-on-secondary-container: #f8f8f2;
+
+    --sx-color-tertiary: #f1fa8c;
+    --sx-color-on-tertiary: #1d1e25;
+    --sx-color-tertiary-container: #3b3f1f;
+    --sx-color-on-tertiary-container: #1d1e25;
+
+    --sx-color-surface: #1f2030;
+    --sx-color-surface-dim: #1a1b28;
+    --sx-color-surface-bright: #2a2b3e;
+    --sx-color-on-surface: #f8f8f2;
+    --sx-color-surface-container: #23243a;
+    --sx-color-surface-container-low: #1f2034;
+    --sx-color-surface-container-high: #2c2d44;
+
+    --sx-color-outline: #44475a;
+    --sx-color-outline-variant: #343747;
+    --sx-color-shadow: #000;
+    --sx-color-surface-tint: #bd93f9;
+    --sx-color-neutral: var(--sx-color-on-surface);
+    --sx-color-neutral-variant: var(--sx-color-outline-variant);
+
+    --sx-internal-color-gray-ripple-background: #3a3d52;
+    --sx-internal-color-light-gray: #2a2d40;
+    --sx-internal-color-text: #f8f8f2;
+  }
+}
+
+.sx__calendar {
+  border: none;
+}
+
+.sx__time-grid-event-title {
+  font-weight: 700;
+}
+
+.sx__calendar-header__week-number {
+  background-color: var(--sx-color-surface-container) !important;
+}
+
+.sx__calendar-header {
+  padding-top: var(--sx-spacing-padding3);
+  padding-bottom: var(--sx-spacing-padding3);
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.sx__week-wrapper {
+  padding-right: 12px;
+}
+
+@media (max-width: 640px) {
+  .sx__date-picker-wrapper {
+    display: none;
+  }
+}
+
+.sx__week-grid__date {
+  user-select: none;
+}
+
+@keyframes sx-slide-left {
+  0% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.sx__slide-left {
+  animation: none !important;
+}
+.sx-animations-enabled .sx__slide-left {
+  animation: sx-slide-left 0.1s ease-out !important;
+}
+
+@keyframes sx-slide-right {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.sx__slide-right {
+  animation: none !important;
+}
+.sx-animations-enabled .sx__slide-right {
+  animation: sx-slide-right 0.1s ease-out !important;
+}
+
+.sx__current-time-indicator {
+  z-index: 1;
+}
+
+.sx__time-grid-event.sx__event {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-right: none !important;
+  padding: var(--sx-spacing-padding1) !important;
+}
+
+.sx__calendar-wrapper:not(.sx__is-calendar-small)
+  .sx__time-grid-event.sx__event {
+  margin-inline-start: 1%;
+}
+
+.custom-event-lecture {
+  border-inline-start: 4px solid var(--sx-color-lecture);
+  background-color: var(--sx-color-lecture-container);
+  color: var(--sx-color-on-lecture-container);
+}
+
+.custom-event-lab {
+  border-inline-start: 4px solid var(--sx-color-lab);
+  background-color: var(--sx-color-lab-container);
+  color: var(--sx-color-on-lab-container);
+}
+
+.custom-event-tutorial {
+  border-inline-start: 4px solid var(--sx-color-tutorial);
+  background-color: var(--sx-color-tutorial-container);
+  color: var(--sx-color-on-tutorial-container);
+}
+
+.custom-event-no-teacher {
+  border-inline-start: 4px solid var(--sx-color-no-teacher);
+  background-color: var(--sx-color-no-teacher-container);
+  color: var(--sx-color-on-no-teacher-container);
+}
+
+.custom-event-other {
+  border-inline-start: 4px solid var(--sx-color-other);
+  background-color: var(--sx-color-other-container);
+  color: var(--sx-color-on-other-container);
+}

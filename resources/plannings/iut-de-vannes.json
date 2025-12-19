@@ -1,18 +1,19 @@
 {
   "title": "IUT de Vannes",
-  "edts": [
+  "group": "Vannes",
+  "children": [
     {
       "id": "butdutgea",
       "title": "BUT GEA",
-      "edts": [
+      "children": [
         {
           "id": "1ereannee",
           "title": "1ère année",
-          "edts": [
+          "children": [
             {
               "id": "groupe1",
               "title": "Groupe 1",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1g",
                   "title": "GR 1 G",
@@ -28,7 +29,7 @@
             {
               "id": "groupe2",
               "title": "Groupe 2",
-              "edts": [
+              "children": [
                 {
                   "id": "gr2g",
                   "title": "GR 2 G",
@@ -44,7 +45,7 @@
             {
               "id": "groupe3",
               "title": "Groupe 3",
-              "edts": [
+              "children": [
                 {
                   "id": "gr3g",
                   "title": "GR 3 G",
@@ -60,7 +61,7 @@
             {
               "id": "groupe4",
               "title": "Groupe 4",
-              "edts": [
+              "children": [
                 {
                   "id": "gr4g",
                   "title": "GR 4 G",
@@ -76,7 +77,7 @@
             {
               "id": "groupe5",
               "title": "Groupe 5",
-              "edts": [
+              "children": [
                 {
                   "id": "gr5g",
                   "title": "GR 5 G",
@@ -92,7 +93,7 @@
             {
               "id": "groupe6",
               "title": "Groupe 6",
-              "edts": [
+              "children": [
                 {
                   "id": "gr6g",
                   "title": "GR 6 G",
@@ -108,7 +109,7 @@
             {
               "id": "soutiengroupes",
               "title": "Soutien (groupes)",
-              "edts": [
+              "children": [
                 {
                   "id": "soutienanglaisa",
                   "title": "Soutien Anglais A",
@@ -186,11 +187,11 @@
         {
           "id": "2emeannee",
           "title": "2ème année",
-          "edts": [
+          "children": [
             {
               "id": "cg2p",
               "title": "CG2P",
-              "edts": [
+              "children": [
                 {
                   "id": "cg2pall",
                   "title": "CG2P All",
@@ -206,7 +207,7 @@
             {
               "id": "gc2f-a",
               "title": "GC2F-A",
-              "edts": [
+              "children": [
                 {
                   "id": "gc2f-aall",
                   "title": "GC2F-A All",
@@ -222,7 +223,7 @@
             {
               "id": "gc2f-i",
               "title": "GC2F-I",
-              "edts": [
+              "children": [
                 {
                   "id": "gc2f-i",
                   "title": "GC2F-I",
@@ -233,7 +234,7 @@
             {
               "id": "gema-fa",
               "title": "GEMA-FA",
-              "edts": [
+              "children": [
                 {
                   "id": "gema-faall",
                   "title": "GEMA-FA ALL",
@@ -249,7 +250,7 @@
             {
               "id": "gema-fi1",
               "title": "GEMA-FI1",
-              "edts": [
+              "children": [
                 {
                   "id": "gema-fi1all",
                   "title": "GEMA-FI1 All",
@@ -270,7 +271,7 @@
             {
               "id": "gprh",
               "title": "GPRH",
-              "edts": [
+              "children": [
                 {
                   "id": "gprhall",
                   "title": "GPRH All",
@@ -288,7 +289,7 @@
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "cg2p",
               "title": "CG2P",
@@ -316,15 +317,15 @@
     {
       "id": "butdutinfo",
       "title": "BUT INFO",
-      "edts": [
+      "children": [
         {
           "id": "1ereannee",
           "title": "1ère année",
-          "edts": [
+          "children": [
             {
               "id": "gr1a",
               "title": "GR 1A",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1a1",
                   "title": "GR 1A1",
@@ -340,7 +341,7 @@
             {
               "id": "gr1b",
               "title": "GR 1B",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1b1",
                   "title": "GR 1B1",
@@ -356,7 +357,7 @@
             {
               "id": "gr1c",
               "title": "GR 1C",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1c1",
                   "title": "GR 1C1",
@@ -372,7 +373,7 @@
             {
               "id": "gr1d",
               "title": "GR 1D",
-              "edts": [
+              "children": [
                 {
                   "id": "gr1d1",
                   "title": "GR 1D1",
@@ -390,11 +391,11 @@
         {
           "id": "2emeannee",
           "title": "2ème année",
-          "edts": [
+          "children": [
             {
               "id": "gr2a",
               "title": "GR 2A",
-              "edts": [
+              "children": [
                 {
                   "id": "gr2a1",
                   "title": "GR 2A1",
@@ -410,7 +411,7 @@
             {
               "id": "gr2b",
               "title": "GR 2B",
-              "edts": [
+              "children": [
                 {
                   "id": "gr2b1",
                   "title": "GR 2B1",
@@ -426,7 +427,7 @@
             {
               "id": "gr2c",
               "title": "GR 2C",
-              "edts": [
+              "children": [
                 {
                   "id": "gr2c1",
                   "title": "GR 2C1",
@@ -444,11 +445,11 @@
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "gr3a",
               "title": "GR 3A",
-              "edts": [
+              "children": [
                 {
                   "id": "gr3a1",
                   "title": "GR 3A1",
@@ -464,7 +465,7 @@
             {
               "id": "gr3b",
               "title": "GR 3B",
-              "edts": [
+              "children": [
                 {
                   "id": "gr3b1",
                   "title": "GR 3B1",
@@ -489,15 +490,15 @@
     {
       "id": "butdutstid",
       "title": "BUT SD",
-      "edts": [
+      "children": [
         {
           "id": "1ereannee",
           "title": "1ère année",
-          "edts": [
+          "children": [
             {
               "id": "gr1a",
               "title": "Gr 1A",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1a1",
                   "title": "Groupe 1A1",
@@ -513,7 +514,7 @@
             {
               "id": "gr1b",
               "title": "Gr 1B",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1b1",
                   "title": "Groupe 1B1",
@@ -529,7 +530,7 @@
             {
               "id": "gr1c",
               "title": "Gr 1C",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe1c1",
                   "title": "Groupe 1C1",
@@ -547,11 +548,11 @@
         {
           "id": "2emeannee",
           "title": "2ème année",
-          "edts": [
+          "children": [
             {
               "id": "gr2a",
               "title": "Gr 2A",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe2ae",
                   "title": "Groupe 2AE",
@@ -567,7 +568,7 @@
             {
               "id": "gr2b",
               "title": "Gr 2B",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe2be",
                   "title": "Groupe 2BE",
@@ -583,7 +584,7 @@
             {
               "id": "gr2c",
               "title": "Gr 2C",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe2ce",
                   "title": "Groupe 2CE",
@@ -599,7 +600,7 @@
             {
               "id": "gr2d",
               "title": "Gr 2D",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe2de",
                   "title": "Groupe 2DE",
@@ -617,11 +618,11 @@
         {
           "id": "3emeannee",
           "title": "3ème année",
-          "edts": [
+          "children": [
             {
               "id": "gra-ems",
               "title": "GrA-EMS",
-              "edts": [
+              "children": [
                 {
                   "id": "gra-ems-fa",
                   "title": "GrA-EMS-FA",
@@ -637,7 +638,7 @@
             {
               "id": "grb-ems",
               "title": "GrB-EMS",
-              "edts": [
+              "children": [
                 {
                   "id": "grb-ems-fa",
                   "title": "GrB-EMS-FA",
@@ -653,7 +654,7 @@
             {
               "id": "grc-vcod",
               "title": "GrC-VCOD",
-              "edts": [
+              "children": [
                 {
                   "id": "grc-vcod-fa",
                   "title": "GrC-VCOD-FA",
@@ -669,7 +670,7 @@
             {
               "id": "grd-vcod",
               "title": "GrD-VCOD",
-              "edts": [
+              "children": [
                 {
                   "id": "grd-vcod-fa",
                   "title": "GrD-VCOD-FA",
@@ -689,15 +690,15 @@
     {
       "id": "butduttc",
       "title": "BUT TC",
-      "edts": [
+      "children": [
         {
           "id": "1ereannee",
           "title": "1ère année",
-          "edts": [
+          "children": [
             {
               "id": "groupe1",
               "title": "Groupe 1",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe11",
                   "title": "Groupe 1.1",
@@ -713,7 +714,7 @@
             {
               "id": "groupe2",
               "title": "Groupe 2",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe21",
                   "title": "Groupe 2.1",
@@ -729,7 +730,7 @@
             {
               "id": "groupe3",
               "title": "Groupe 3",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe31",
                   "title": "Groupe 3.1",
@@ -745,7 +746,7 @@
             {
               "id": "groupe4",
               "title": "Groupe 4",
-              "edts": [
+              "children": [
                 {
                   "id": "groupe41",
                   "title": "Groupe 4.1",
@@ -763,11 +764,11 @@
         {
           "id": "2emeanneeparcours",
           "title": "2ème année Parcours",
-          "edts": [
+          "children": [
             {
               "id": "p1-mdeefimktdigital",
               "title": "P1 - MDEE FI (MKT DIGITAL)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudparcours11",
                   "title": "Etud Parcours 1.1",
@@ -783,7 +784,7 @@
             {
               "id": "p2-bifibusinternational",
               "title": "P2 - BI FI (BUS INTERNATIONAL)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudparcours21",
                   "title": "Etud Parcours 2.1",
@@ -799,7 +800,7 @@
             {
               "id": "p3-fa-mmpvfamktetmgmtpointdevente",
               "title": "P3 - FA - MMPV FA (MKT et MGMT POINT DE VENTE)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudparcours31",
                   "title": "Etud Parcours 3.1",
@@ -815,7 +816,7 @@
             {
               "id": "p3-fi-mmpvfimktetmgmtpointdevente",
               "title": "P3 - FI - MMPV FI (MKT et MGMT POINT DE VENTE)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudparcours31",
                   "title": "Etud Parcours 3.1",
@@ -831,7 +832,7 @@
             {
               "id": "p4-bdmrcfibusdevptetrelclient",
               "title": "P4 - BDMRC FI (BUS DEVPT ET REL CLIENT)",
-              "edts": [
+              "children": [
                 {
                   "id": "etudparcours41",
                   "title": "Etud Parcours 4.1",
@@ -849,11 +850,11 @@
         {
           "id": "2emeanneetronccommun",
           "title": "2ème année Tronc Commun",
-          "edts": [
+          "children": [
             {
               "id": "groupea",
               "title": "Groupe A",
-              "edts": [
+              "children": [
                 {
                   "id": "groupea1",
                   "title": "Groupe A.1",
@@ -869,7 +870,7 @@
             {
               "id": "groupeb",
               "title": "Groupe B",
-              "edts": [
+              "children": [
                 {
                   "id": "groupeb1",
                   "title": "Groupe B.1",
@@ -885,7 +886,7 @@
             {
               "id": "groupec",
               "title": "Groupe C",
-              "edts": [
+              "children": [
                 {
                   "id": "groupec1",
                   "title": "Groupe C.1",
@@ -901,7 +902,7 @@
             {
               "id": "grouped",
               "title": "Groupe D",
-              "edts": [
+              "children": [
                 {
                   "id": "grouped1",
                   "title": "Groupe D.1",

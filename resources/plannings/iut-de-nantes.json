@@ -1,10 +1,11 @@
 {
   "title": "IUT de Nantes",
-  "edts": [
+  "group": "Nantes",
+  "children": [
     {
       "id": "but",
       "title": "BUT",
-      "edts": [
+      "children": [
         {
           "id": "g980718",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g980718.ics",
@@ -70,7 +71,7 @@
     {
       "id": "dcu",
       "title": "DCU",
-      "edts": [
+      "children": [
         {
           "id": "g862551",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g862551.ics",
@@ -86,7 +87,7 @@
     {
       "id": "droit",
       "title": "Droit",
-      "edts": [
+      "children": [
         {
           "id": "g491415",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g491415.ics",
@@ -107,7 +108,7 @@
     {
       "id": "ext",
       "title": "Ext",
-      "edts": [
+      "children": [
         {
           "id": "g60085",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g60085.ics",
@@ -133,7 +134,7 @@
     {
       "id": "gea",
       "title": "GEA",
-      "edts": [
+      "children": [
         {
           "id": "g32725",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g32725.ics",
@@ -184,7 +185,7 @@
     {
       "id": "geii",
       "title": "GEII",
-      "edts": [
+      "children": [
         {
           "id": "g32102",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g32102.ics",
@@ -345,7 +346,7 @@
     {
       "id": "gmp",
       "title": "GMP",
-      "edts": [
+      "children": [
         {
           "id": "g32957",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g32957.ics",
@@ -631,7 +632,7 @@
     {
       "id": "info",
       "title": "INFO",
-      "edts": [
+      "children": [
         {
           "id": "g3083",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g3083.ics",
@@ -812,7 +813,7 @@
     {
       "id": "lp",
       "title": "LP",
-      "edts": [
+      "children": [
         {
           "id": "g104173",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g104173.ics",
@@ -838,7 +839,7 @@
     {
       "id": "mj",
       "title": "M1j / M2j",
-      "edts": [
+      "children": [
         {
           "id": "g591084",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g591084.ics",
@@ -894,7 +895,7 @@
     {
       "id": "mm",
       "title": "M1m / M2m",
-      "edts": [
+      "children": [
         {
           "id": "g591268",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g591268.ics",
@@ -950,7 +951,7 @@
     {
       "id": "master",
       "title": "MASTER",
-      "edts": [
+      "children": [
         {
           "id": "g567821",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g567821.ics",
@@ -971,7 +972,7 @@
     {
       "id": "miti",
       "title": "MITI",
-      "edts": [
+      "children": [
         {
           "id": "g591068",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g591068.ics",
@@ -987,7 +988,7 @@
     {
       "id": "mt2e",
       "title": "MT2E",
-      "edts": [
+      "children": [
         {
           "id": "g32759",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g32759.ics",
@@ -1093,7 +1094,7 @@
     {
       "id": "qlio",
       "title": "QLIO",
-      "edts": [
+      "children": [
         {
           "id": "g45979",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g45979.ics",
@@ -1234,7 +1235,7 @@
     {
       "id": "sgm",
       "title": "SGM",
-      "edts": [
+      "children": [
         {
           "id": "g48413",
           "url": "https://edt.univ-nantes.fr/iut_nantes/g48413.ics",

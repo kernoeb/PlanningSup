@@ -1,0 +1,11 @@
+{
+  "name": "config",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:ui",
+    "@vitejs/plugin-vue": "catalog:dev",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev"
+  }
+}

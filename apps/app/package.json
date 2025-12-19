@@ -1,0 +1,38 @@
+{
+  "name": "planningsup-app",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev-vite": "VITE_AUTH_ENABLED=true bun run --run vite",
+    "build": "vue-tsc --noEmit && bunx --bun vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "dev": "VITE_BACKEND_URL=http://localhost:20000 bun --bun run tauri dev",
+    "dev-android": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://10.0.2.2:20000 bun --bun run tauri android dev",
+    "build-android": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri android build",
+    "build-app": "VITE_AUTH_ENABLED=true VITE_BACKEND_URL=http://192.168.1.70:20000 bun --bun run tauri build",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "catalog:ui",
+    "@tauri-apps/api": "2.9.1",
+    "@tauri-apps/plugin-deep-link": "~2.4.5",
+    "@tauri-apps/plugin-opener": "2.5.2",
+    "daisyui": "catalog:ui",
+    "tailwindcss": "catalog:ui",
+    "temporal-polyfill": "0.3.0",
+    "vue": "catalog:ui"
+  },
+  "devDependencies": {
+    "@fontsource-variable/roboto": "5.2.9",
+    "@tauri-apps/cli": "2.9.6",
+    "@types/bun": "catalog:types",
+    "@vitejs/plugin-vue": "catalog:dev",
+    "@vue/tsconfig": "0.8.1",
+    "typescript": "catalog:dev",
+    "vite": "catalog:dev",
+    "vue-tsc": "catalog:dev"
+  }
+}

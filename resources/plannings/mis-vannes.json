@@ -1,14 +1,15 @@
 {
-  "title": "SSI MIS - Vannes",
-  "edts": [
+  "title": "SSI MIS",
+  "group": "Vannes",
+  "children": [
     {
       "id": "s1",
       "title": "S1",
-      "edts": [
+      "children": [
         {
           "id": "l1",
           "title": "L1",
-          "edts": [
+          "children": [
             {
               "id": "l1-cmi-sd0",
               "title": "L1-CMI-SD",
@@ -50,13 +51,13 @@
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1910&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "l1-mmi_ip",
-              "title": "L1-MmI_IP",
+              "id": "l1-mmi_ip-6",
+              "title": "L1-MmI_IP (6)",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3666&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "l1-mmi_mp",
-              "title": "L1-MmI_MP",
+              "id": "l1-mmi_mp-1",
+              "title": "L1-MmI_MP (1)",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3502&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
@@ -69,7 +70,7 @@
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "l2-cmi",
               "title": "L2-CMI",
@@ -120,7 +121,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "l3-cmi",
               "title": "L3-CMI",
@@ -156,7 +157,7 @@
         {
           "id": "m1",
           "title": "M1",
-          "edts": [
+          "children": [
             {
               "id": "m1-dsms",
               "title": "M1-DSMS",
@@ -182,7 +183,7 @@
         {
           "id": "m2",
           "title": "M2",
-          "edts": [
+          "children": [
             {
               "id": "m2-cmi",
               "title": "M2-CMI",
@@ -225,11 +226,11 @@
     {
       "id": "s2",
       "title": "S2",
-      "edts": [
+      "children": [
         {
           "id": "l1",
           "title": "L1",
-          "edts": [
+          "children": [
             {
               "id": "l1-cmi-i0",
               "title": "L1-CMI-I(0)",
@@ -305,7 +306,7 @@
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "l2-cmi",
               "title": "L2-CMI",
@@ -361,7 +362,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "cmi-maths-info",
               "title": "CMI-Maths-Info",
@@ -392,7 +393,7 @@
         {
           "id": "m1",
           "title": "M1",
-          "edts": [
+          "children": [
             {
               "id": "m1sdd",
               "title": "M1 SDD",
@@ -430,7 +431,7 @@
     {
       "id": "tedsvannesl2svtmis",
       "title": "TEDS Vannes L2 SVT/MIS",
-      "edts": [
+      "children": [
         {
           "id": "tedsl2svtmis-groupe1tes01-ssiv",
           "title": "TEDS L2 SVT/MIS - Groupe 1 TES01-SSIV",

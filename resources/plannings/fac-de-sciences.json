@@ -1,14 +1,15 @@
 {
   "title": "UBS – Fac de Sciences",
-  "edts": [
+  "group": "Vannes",
+  "children": [
     {
       "id": "licenceinfomatique",
       "title": "Licence Infomatique",
-      "edts": [
+      "children": [
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "info1",
               "title": "INFO 1",
@@ -29,7 +30,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "info1",
               "title": "INFO 1",
@@ -57,11 +58,11 @@
     {
       "id": "licencemathematiquesspecialisees",
       "title": "Licence Mathématiques spécialisées",
-      "edts": [
+      "children": [
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "groupe1",
               "title": "Groupe 1",
@@ -72,7 +73,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "groupe1",
               "title": "Groupe 1",
@@ -85,11 +86,11 @@
     {
       "id": "licencestatistique",
       "title": "Licence Statistique",
-      "edts": [
+      "children": [
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "statinfo",
               "title": "Stat Info",
@@ -105,7 +106,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "stat1",
               "title": "Stat 1",
@@ -123,11 +124,11 @@
     {
       "id": "licencesvt",
       "title": "Licence SVT",
-      "edts": [
+      "children": [
         {
           "id": "l3biotechnologies",
           "title": "L3 Biotechnologies",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -143,7 +144,7 @@
         {
           "id": "l3bio-sante",
           "title": "L3 Bio-Santé",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -159,7 +160,7 @@
         {
           "id": "l3tacb",
           "title": "L3 TACB",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -177,11 +178,11 @@
     {
       "id": "licencesciencesecologieetsociete",
       "title": "Licence Sciences, Ecologie et Société",
-      "edts": [
+      "children": [
         {
           "id": "l1",
           "title": "L1",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -197,7 +198,7 @@
         {
           "id": "l2",
           "title": "L2",
-          "edts": [
+          "children": [
             {
               "id": "gr1",
               "title": "Gr1",
@@ -228,7 +229,7 @@
         {
           "id": "l3",
           "title": "L3",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",

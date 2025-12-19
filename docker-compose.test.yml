@@ -1,0 +1,41 @@
+services:
+  postgres-test:
+    image: postgres:17
+    container_name: planningsup_test_db
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: planningsup_test
+    ports:
+      - '5433:5432'
+    networks:
+      - planningsup_test_network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U testuser -d planningsup_test']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app-test:
+    build:
+      context: .
+      args:
+        BUN_VERSION: ${BUN_VERSION:-1.3.5}
+    container_name: planningsup_test_app
+    environment:
+      NODE_ENV: production
+      PORT: 20000
+      DATABASE_URL: postgresql://testuser:testpass@postgres-test:5432/planningsup_test
+      RUN_JOBS: false
+      AUTH_ENABLED: 'false'
+    ports:
+      - '20000:20000'
+    depends_on:
+      postgres-test:
+        condition: service_healthy
+    networks:
+      - planningsup_test_network
+
+networks:
+  planningsup_test_network:
+    driver: bridge

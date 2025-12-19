@@ -1,14 +1,15 @@
 {
   "title": "IUT de Rennes",
-  "edts": [
+  "group": "Rennes",
+  "children": [
     {
       "id": "carrieressociales",
       "title": "Carrières Sociales",
-      "edts": [
+      "children": [
         {
           "id": "but1cs",
           "title": "BUT 1 CS",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -44,7 +45,7 @@
         {
           "id": "but2cs",
           "title": "BUT 2 CS",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -70,7 +71,7 @@
         {
           "id": "but3cs",
           "title": "BUT 3 CS",
-          "edts": [
+          "children": [
             {
               "id": "tp1",
               "title": "TP1",
@@ -91,7 +92,7 @@
         {
           "id": "but3fcre",
           "title": "BUT 3 FC RE",
-          "edts": [
+          "children": [
             {
               "id": "but3fcre",
               "title": "BUT 3 FC RE",
@@ -104,19 +105,19 @@
     {
       "id": "chimie",
       "title": "Chimie",
-      "edts": [
+      "children": [
         {
           "id": "but1",
           "title": "BUT1",
-          "edts": [
+          "children": [
             {
               "id": "s1",
               "title": "S1",
-              "edts": [
+              "children": [
                 {
                   "id": "a",
                   "title": "A",
-                  "edts": [
+                  "children": [
                     {
                       "id": "a1",
                       "title": "A1",
@@ -132,7 +133,7 @@
                 {
                   "id": "b",
                   "title": "B",
-                  "edts": [
+                  "children": [
                     {
                       "id": "b1",
                       "title": "B1",
@@ -148,7 +149,7 @@
                 {
                   "id": "c",
                   "title": "C",
-                  "edts": [
+                  "children": [
                     {
                       "id": "c1",
                       "title": "C1",
@@ -164,7 +165,7 @@
                 {
                   "id": "d",
                   "title": "D",
-                  "edts": [
+                  "children": [
                     {
                       "id": "d1",
                       "title": "D1",
@@ -182,11 +183,11 @@
             {
               "id": "s2",
               "title": "S2",
-              "edts": [
+              "children": [
                 {
                   "id": "a",
                   "title": "A",
-                  "edts": [
+                  "children": [
                     {
                       "id": "a1",
                       "title": "A1",
@@ -202,7 +203,7 @@
                 {
                   "id": "b",
                   "title": "B",
-                  "edts": [
+                  "children": [
                     {
                       "id": "b1",
                       "title": "B1",
@@ -218,7 +219,7 @@
                 {
                   "id": "c",
                   "title": "C",
-                  "edts": [
+                  "children": [
                     {
                       "id": "c1",
                       "title": "C1",
@@ -234,7 +235,7 @@
                 {
                   "id": "d",
                   "title": "D",
-                  "edts": [
+                  "children": [
                     {
                       "id": "d1",
                       "title": "D1",
@@ -254,19 +255,19 @@
         {
           "id": "but2",
           "title": "BUT2",
-          "edts": [
+          "children": [
             {
               "id": "s3",
               "title": "S3",
-              "edts": [
+              "children": [
                 {
                   "id": "e",
                   "title": "E",
-                  "edts": [
+                  "children": [
                     {
                       "id": "e1",
                       "title": "E1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "e1-ana",
                           "title": "E1-ANA",
@@ -287,7 +288,7 @@
                     {
                       "id": "e2",
                       "title": "E2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "e2-ana",
                           "title": "E2-ANA",
@@ -310,11 +311,11 @@
                 {
                   "id": "f",
                   "title": "F",
-                  "edts": [
+                  "children": [
                     {
                       "id": "f1",
                       "title": "F1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "f1-ana",
                           "title": "F1-ANA",
@@ -335,7 +336,7 @@
                     {
                       "id": "f2",
                       "title": "F2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "f2-ana",
                           "title": "F2-ANA",
@@ -358,11 +359,11 @@
                 {
                   "id": "g",
                   "title": "G",
-                  "edts": [
+                  "children": [
                     {
                       "id": "g1",
                       "title": "G1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g1-ana",
                           "title": "G1-ANA",
@@ -383,7 +384,7 @@
                     {
                       "id": "g2",
                       "title": "G2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "g2-ana",
                           "title": "G2-ANA",
@@ -408,11 +409,11 @@
             {
               "id": "s4",
               "title": "S4",
-              "edts": [
+              "children": [
                 {
                   "id": "s4-ana",
                   "title": "S4-ANA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s4-ana1",
                       "title": "S4-ANA1",
@@ -428,7 +429,7 @@
                 {
                   "id": "s4-ind",
                   "title": "S4-IND",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s4-ind1",
                       "title": "S4-IND1",
@@ -444,7 +445,7 @@
                 {
                   "id": "s4-syn",
                   "title": "S4-SYN",
-                  "edts": [
+                  "children": [
                     {
                       "id": "s4-syn1",
                       "title": "S4-SYN1",
@@ -464,19 +465,19 @@
         {
           "id": "but3",
           "title": "BUT3",
-          "edts": [
+          "children": [
             {
               "id": "t3-mixes",
               "title": "T3-Mixés",
-              "edts": [
+              "children": [
                 {
                   "id": "fa",
                   "title": "FA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "fa1",
                       "title": "FA1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "fa1-ana",
                           "title": "FA1-ANA",
@@ -497,7 +498,7 @@
                     {
                       "id": "fa2",
                       "title": "FA2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "fa2-ana",
                           "title": "FA2-ANA",
@@ -520,11 +521,11 @@
                 {
                   "id": "fi",
                   "title": "FI",
-                  "edts": [
+                  "children": [
                     {
                       "id": "fi1",
                       "title": "FI1",
-                      "edts": [
+                      "children": [
                         {
                           "id": "fi1-ana",
                           "title": "FI1-ANA",
@@ -545,7 +546,7 @@
                     {
                       "id": "fi2",
                       "title": "FI2",
-                      "edts": [
+                      "children": [
                         {
                           "id": "fi2-ana",
                           "title": "FI2-ANA",
@@ -570,11 +571,11 @@
             {
               "id": "t3-parcours",
               "title": "T3-Parcours",
-              "edts": [
+              "children": [
                 {
                   "id": "t3-ana",
                   "title": "T3-ANA",
-                  "edts": [
+                  "children": [
                     {
                       "id": "t3-ana1",
                       "title": "T3-ANA1",
@@ -590,7 +591,7 @@
                 {
                   "id": "t3-ind",
                   "title": "T3-IND",
-                  "edts": [
+                  "children": [
                     {
                       "id": "t3-ind1",
                       "title": "T3-IND1",
@@ -606,7 +607,7 @@
                 {
                   "id": "t3-syn",
                   "title": "T3-SYN",
-                  "edts": [
+                  "children": [
                     {
                       "id": "t3-syn1",
                       "title": "T3-SYN1",
@@ -633,478 +634,15 @@
     {
       "id": "departementgea",
       "title": "Département GEA",
-      "edts": [
-        {
-          "id": "archives",
-          "title": "Archives",
-          "edts": [
-            {
-              "id": "apear",
-              "title": "APEAR",
-              "edts": [
-                {
-                  "id": "apear01",
-                  "title": "APEAR 01",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5896&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear02",
-                  "title": "APEAR 02",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5895&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear03",
-                  "title": "APEAR 03",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5894&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear04",
-                  "title": "APEAR 04",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5893&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear05",
-                  "title": "APEAR 05",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5892&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear06",
-                  "title": "APEAR 06",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5891&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "apear07",
-                  "title": "APEAR 07",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5890&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "as",
-              "title": "AS",
-              "edts": [
-                {
-                  "id": "as",
-                  "title": "AS",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5663&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "asall",
-                  "title": "AS All",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5861&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "asang2",
-                  "title": "AS Ang2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5848&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "asesp",
-                  "title": "AS Esp",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5860&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "asita",
-                  "title": "AS Ita",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5859&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "asfra",
-                  "title": "AS fra",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5703&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_a",
-                  "title": "AS_A",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5888&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_aall",
-                  "title": "AS_A All",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5788&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_aang2",
-                  "title": "AS_A Ang2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5787&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_aesp",
-                  "title": "AS_A Esp",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5786&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_afra",
-                  "title": "AS_A Fra",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5784&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_aita",
-                  "title": "AS_A Ita",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5785&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_b",
-                  "title": "AS_B",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5887&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_ball",
-                  "title": "AS_B All",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5783&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_bang2",
-                  "title": "AS_B Ang2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5782&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_besp",
-                  "title": "AS_B Esp",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5781&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_bfra",
-                  "title": "AS_B Fra",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5779&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "as_bita",
-                  "title": "AS_B Ita",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5780&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mcas",
-                  "title": "MC AS",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5825&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "duee",
-              "title": "DUEE",
-              "edts": [
-                {
-                  "id": "duee",
-                  "title": "DUEE",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5659&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "duo",
-              "title": "DUO",
-              "edts": [
-                {
-                  "id": "duo",
-                  "title": "DUO",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5661&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "duoall",
-                  "title": "DUO All",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15249&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "duoesp",
-                  "title": "DUO Esp",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15245&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "duoita",
-                  "title": "DUO Ita",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15244&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "fcmorh",
-              "title": "FC MO RH",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5855&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fcmorhas",
-              "title": "FC MO RH AS",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5858&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "gcf2parcoursmanagement",
-              "title": "GCF 2 parcours management",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5878&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "gcf1parcoursmanagement",
-              "title": "GCF1 parcours management",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5877&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "gema4",
-              "title": "GEMA4",
-              "edts": [
-                {
-                  "id": "gema4",
-                  "title": "GEMA4",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5850&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "gema4-a",
-                  "title": "GEMA4-A",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5668&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "gema4-b",
-                  "title": "GEMA4-B",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5667&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "mc",
-              "title": "MC",
-              "edts": [
-                {
-                  "id": "gmomemoires",
-                  "title": "GMO Mémoires",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4080&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc18gmo",
-                  "title": "MC18 GMO",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5603&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc19gmo",
-                  "title": "MC19 GMO",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc20gmo",
-                  "title": "MC20 GMO",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5599&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc21gmo",
-                  "title": "MC21 GMO",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5598&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc301gmocreaiut",
-                  "title": "MC301 GMO CREA IUT",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5618&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc302gmocommunicationd'entreprise",
-                  "title": "MC302 GMO Communication d'entreprise",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5609&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc303gmomanagementpme",
-                  "title": "MC303 GMO Management PME",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5608&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc304gmoouvertureinternationalec",
-                  "title": "MC304 GMO Ouverture internationale C",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5607&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc305gmoeconomielocaleeteco-responsabilite",
-                  "title": "MC305 GMO Economie locale et éco-responsabilité",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5614&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc305gmointiationalaprogrammation",
-                  "title": "MC305 GMO Intiation à la programmation",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3872&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc306gmoouvertureinternationale",
-                  "title": "MC306 GMO Ouverture internationale",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5613&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc306gmoouvertureinternationale2",
-                  "title": "MC306 GMO Ouverture internationale 2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5708&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc307gmocreationd'unsitedevente",
-                  "title": "MC307 GMO Création d'un site de vente",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5612&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc308gmoe-managementgrh",
-                  "title": "MC308 GMO E-management (GRH)",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5611&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc309gmomehtodegestionprojet",
-                  "title": "MC309 GMO Méhtode gestion projet",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5610&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc310gmoboiteaoutilsdumanagerop",
-                  "title": "MC310 GMO Boite à outils du manager op.",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5602&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc310gmoepanouissementetdangersautravail",
-                  "title": "MC310 GMO Epanouissement et dangers au travail",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3405&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4011gmocreatiut",
-                  "title": "MC4011 GMO Créat IUT",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5601&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4012gmoartsvisuels",
-                  "title": "MC4012 GMO Arts visuels",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5617&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4013gmoprepatestslogiquesetnumeriques",
-                  "title": "MC4013 GMO Prépa tests logiques et numériques",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5616&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4014gmoprepatestslogiquesetnumeriquesgroupe2",
-                  "title": "MC4014 GMO Prépa tests logiques et numériques (Groupe 2)",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5615&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4015gmoprepaanglaisconcoursmessagepasserelle",
-                  "title": "MC4015 GMO Prépa anglais concours Message/Passerelle",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5606&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4016gmodroitpublic",
-                  "title": "MC4016 GMO Droit public",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5605&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4017gmoprepapoursuitesd'etudes",
-                  "title": "MC4017 GMO Prépa poursuites d'études",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5604&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "mc",
-              "title": "MC",
-              "edts": [
-                {
-                  "id": "mc301fccreaiut",
-                  "title": "MC301 FC CREA IUT",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5640&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc302fccommunicationd'entreprise",
-                  "title": "MC302 FC Communication d'entreprise",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5631&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc303fcmanagementpme",
-                  "title": "MC303 FC Management PME",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5630&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc304fcouvertureinternationalec",
-                  "title": "MC304 FC Ouverture internationale C",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5629&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc305fceconomielocaleeteco-responsabilite",
-                  "title": "MC305 FC Economie locale et éco-responsabilité",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5636&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc305fcintiationalaprogrammation",
-                  "title": "MC305 FC Intiation à la programmation",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3869&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc306fcouvertureinternationale",
-                  "title": "MC306 FC Ouverture internationale",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5635&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc306fcouvertureinternationale2",
-                  "title": "MC306 FC Ouverture internationale 2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5709&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc307fccreationd'unsitedevente",
-                  "title": "MC307 FC Création d'un site de vente",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5634&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc308fce-managementgrh",
-                  "title": "MC308 FC E-management (GRH)",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5633&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc309fcmehtodegestionprojet",
-                  "title": "MC309 FC Méhtode gestion projet",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5632&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc310fcboiteaoutilsdumanagerop",
-                  "title": "MC310 FC Boite à outils du manager op.",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5624&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc310fcepanouissementetdangersautravail",
-                  "title": "MC310 FC Epanouissement et dangers au travail",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2160&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4011fccreatiut",
-                  "title": "MC4011 FC Créat IUT",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5623&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4012fcartsvisuels",
-                  "title": "MC4012 FC Arts visuels",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5639&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4013fcprepatestslogiquesetnumeriques",
-                  "title": "MC4013 FC Prépa tests logiques et numériques",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5638&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4014fcprepatestslogiquesetnumeriquesgroupe2",
-                  "title": "MC4014 FC Prépa tests logiques et numériques (Groupe 2)",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5637&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4015fcprepaanglaisconcoursmessagepasserelle",
-                  "title": "MC4015 FC Prépa anglais concours Message/Passerelle",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5628&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4016fcdroitpublic",
-                  "title": "MC4016 FC Droit public",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5627&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "mc4017fcprepapoursuitesd'etudes",
-                  "title": "MC4017 FC Prépa poursuites d'études",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5626&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            }
-          ]
-        },
+      "children": [
         {
           "id": "but1gea",
           "title": "BUT 1 GEA",
-          "edts": [
+          "children": [
             {
               "id": "g1",
               "title": "G1",
-              "edts": [
+              "children": [
                 {
                   "id": "g1",
                   "title": "G1",
@@ -1130,7 +668,7 @@
             {
               "id": "g2",
               "title": "G2",
-              "edts": [
+              "children": [
                 {
                   "id": "g2",
                   "title": "G2",
@@ -1151,7 +689,7 @@
             {
               "id": "g3",
               "title": "G3",
-              "edts": [
+              "children": [
                 {
                   "id": "g3",
                   "title": "G3",
@@ -1172,7 +710,7 @@
             {
               "id": "g4",
               "title": "G4",
-              "edts": [
+              "children": [
                 {
                   "id": "g4",
                   "title": "G4",
@@ -1193,7 +731,7 @@
             {
               "id": "g5",
               "title": "G5",
-              "edts": [
+              "children": [
                 {
                   "id": "g5",
                   "title": "G5",
@@ -1219,7 +757,7 @@
             {
               "id": "g6",
               "title": "G6",
-              "edts": [
+              "children": [
                 {
                   "id": "g6",
                   "title": "G6",
@@ -1250,7 +788,7 @@
             {
               "id": "g7",
               "title": "G7",
-              "edts": [
+              "children": [
                 {
                   "id": "g7",
                   "title": "G7",
@@ -1288,7 +826,7 @@
         {
           "id": "but2gea",
           "title": "BUT 2 GEA",
-          "edts": [
+          "children": [
             {
               "id": "but2crea",
               "title": "BUT 2 CREA",
@@ -1302,7 +840,7 @@
             {
               "id": "butgeaparcoursgc2f",
               "title": "BUT.GEA.parcours.GC2F",
-              "edts": [
+              "children": [
                 {
                   "id": "but2gc2f",
                   "title": "BUT2.GC2F",
@@ -1311,7 +849,7 @@
                 {
                   "id": "gc2f1",
                   "title": "GC2F1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gc2f1",
                       "title": "BUT2.GC2F1",
@@ -1342,7 +880,7 @@
                 {
                   "id": "gc2f2",
                   "title": "GC2F2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gc2f2",
                       "title": "BUT2.GC2F2",
@@ -1393,7 +931,7 @@
                 {
                   "id": "gc2f3",
                   "title": "GC2F3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gc2f3",
                       "title": "BUT2.GC2F3",
@@ -1446,7 +984,7 @@
             {
               "id": "butgeaparcoursgema",
               "title": "BUT.GEA.parcours.GEMA",
-              "edts": [
+              "children": [
                 {
                   "id": "but2gema",
                   "title": "BUT2.GEMA",
@@ -1455,7 +993,7 @@
                 {
                   "id": "gema1",
                   "title": "GEMA1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gema1",
                       "title": "BUT2.GEMA1",
@@ -1491,7 +1029,7 @@
                 {
                   "id": "gema2",
                   "title": "GEMA2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gema2",
                       "title": "BUT2.GEMA2",
@@ -1532,7 +1070,7 @@
                 {
                   "id": "gema3",
                   "title": "GEMA3",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gema3",
                       "title": "BUT2.GEMA3",
@@ -1580,11 +1118,11 @@
             {
               "id": "butgeaparcoursgprh",
               "title": "BUT.GEA.parcours.GPRH",
-              "edts": [
+              "children": [
                 {
                   "id": "gprh",
                   "title": "GPRH",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but2gprh",
                       "title": "BUT2.GPRH",
@@ -1644,7 +1182,7 @@
         {
           "id": "but3gea",
           "title": "BUT 3 GEA",
-          "edts": [
+          "children": [
             {
               "id": "but3gc2fgemagprh",
               "title": "BUT3 GC2F GEMA GPRH",
@@ -1653,7 +1191,7 @@
             {
               "id": "but3gc2f",
               "title": "BUT3.GC2F",
-              "edts": [
+              "children": [
                 {
                   "id": "but3gc2f1-2",
                   "title": "BUT3 GC2F 1-2",
@@ -1662,7 +1200,7 @@
                 {
                   "id": "but3gc2fgc2f1",
                   "title": "BUT3.GC2F.GC2F1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but3gc2f1",
                       "title": "BUT3.GC2F1",
@@ -1683,7 +1221,7 @@
                 {
                   "id": "but3gc2fgc2f2",
                   "title": "BUT3.GC2F.GC2F2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but3gc2f2",
                       "title": "BUT3.GC2F2",
@@ -1706,7 +1244,7 @@
             {
               "id": "but3gema",
               "title": "BUT3.GEMA",
-              "edts": [
+              "children": [
                 {
                   "id": "but3gema1-2",
                   "title": "BUT3.GEMA 1-2",
@@ -1715,7 +1253,7 @@
                 {
                   "id": "but3gemagema1",
                   "title": "BUT3.GEMA.GEMA1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but3gema1",
                       "title": "BUT3.GEMA1",
@@ -1736,7 +1274,7 @@
                 {
                   "id": "but3gemagema2",
                   "title": "BUT3.GEMA.GEMA2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but3gema2",
                       "title": "BUT3.GEMA2",
@@ -1759,7 +1297,7 @@
             {
               "id": "but3gprh",
               "title": "BUT3.GPRH",
-              "edts": [
+              "children": [
                 {
                   "id": "but3gprh",
                   "title": "BUT3.GPRH",
@@ -1768,7 +1306,7 @@
                 {
                   "id": "but3gprhgprh1",
                   "title": "BUT3.GPRH.GPRH1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "but3gprh1-a",
                       "title": "BUT3.GPRH1-A",
@@ -1793,11 +1331,11 @@
         {
           "id": "lp",
           "title": "LP",
-          "edts": [
+          "children": [
             {
               "id": "lpage",
               "title": "LP AGE",
-              "edts": [
+              "children": [
                 {
                   "id": "lpageallemand",
                   "title": "LP AGE Allemand",
@@ -1818,7 +1356,7 @@
             {
               "id": "lpccc",
               "title": "LP CCC",
-              "edts": [
+              "children": [
                 {
                   "id": "lpccca",
                   "title": "LP CCC A",
@@ -1834,7 +1372,7 @@
             {
               "id": "lpcrh",
               "title": "LP CRH",
-              "edts": [
+              "children": [
                 {
                   "id": "lpcrha",
                   "title": "LP CRH A",
@@ -1848,7 +1386,7 @@
                 {
                   "id": "lpcrhbloc1paienavison",
                   "title": "LP CRH Bloc 1 Paie Navison",
-                  "edts": [
+                  "children": [
                     {
                       "id": "lpcrhbloccompetences",
                       "title": "LP CRH Bloc Compétences",
@@ -1859,7 +1397,7 @@
                 {
                   "id": "lpcrhbloccompetences",
                   "title": "LP CRH Bloc Compétences",
-                  "edts": [
+                  "children": [
                     {
                       "id": "lpcrhbloccompetences",
                       "title": "LP CRH Bloc Compétences",
@@ -1872,7 +1410,7 @@
             {
               "id": "lpgeae",
               "title": "LP GEAE",
-              "edts": [
+              "children": [
                 {
                   "id": "lpgeaea",
                   "title": "LP GEAE A",
@@ -1883,7 +1421,7 @@
             {
               "id": "lpgean",
               "title": "LP GEAN",
-              "edts": [
+              "children": [
                 {
                   "id": "lpgpamea",
                   "title": "LP GPAME A",
@@ -1903,15 +1441,15 @@
     {
       "id": "gccd",
       "title": "GCCD",
-      "edts": [
+      "children": [
         {
           "id": "1a",
           "title": "1A",
-          "edts": [
+          "children": [
             {
               "id": "g1",
               "title": "G1",
-              "edts": [
+              "children": [
                 {
                   "id": "g11",
                   "title": "G11",
@@ -1927,7 +1465,7 @@
             {
               "id": "g2",
               "title": "G2",
-              "edts": [
+              "children": [
                 {
                   "id": "g21",
                   "title": "G21",
@@ -1943,7 +1481,7 @@
             {
               "id": "g3",
               "title": "G3",
-              "edts": [
+              "children": [
                 {
                   "id": "g31",
                   "title": "G31",
@@ -1959,7 +1497,7 @@
             {
               "id": "g4",
               "title": "G4",
-              "edts": [
+              "children": [
                 {
                   "id": "g41",
                   "title": "G41",
@@ -1975,7 +1513,7 @@
             {
               "id": "g5",
               "title": "G5",
-              "edts": [
+              "children": [
                 {
                   "id": "g51",
                   "title": "G51",
@@ -1991,7 +1529,7 @@
             {
               "id": "g6",
               "title": "G6",
-              "edts": [
+              "children": [
                 {
                   "id": "g61",
                   "title": "G61",
@@ -2004,11 +1542,11 @@
         {
           "id": "2a",
           "title": "2A",
-          "edts": [
+          "children": [
             {
               "id": "bat2",
               "title": "BAT2",
-              "edts": [
+              "children": [
                 {
                   "id": "bat21",
                   "title": "BAT2.1",
@@ -2024,7 +1562,7 @@
             {
               "id": "bec2",
               "title": "BEC2",
-              "edts": [
+              "children": [
                 {
                   "id": "bec21",
                   "title": "BEC2.1",
@@ -2040,7 +1578,7 @@
             {
               "id": "rapeb2",
               "title": "RAPEB2",
-              "edts": [
+              "children": [
                 {
                   "id": "rapeb21",
                   "title": "RAPEB2.1",
@@ -2056,7 +1594,7 @@
             {
               "id": "tpbec2",
               "title": "TP/BEC2",
-              "edts": [
+              "children": [
                 {
                   "id": "tpbec21",
                   "title": "TP/BEC2.1",
@@ -2074,11 +1612,11 @@
         {
           "id": "3a",
           "title": "3A",
-          "edts": [
+          "children": [
             {
               "id": "bat3",
               "title": "BAT3",
-              "edts": [
+              "children": [
                 {
                   "id": "bat31",
                   "title": "BAT3.1",
@@ -2094,7 +1632,7 @@
             {
               "id": "bec3",
               "title": "BEC3",
-              "edts": [
+              "children": [
                 {
                   "id": "bec31",
                   "title": "BEC3.1",
@@ -2110,7 +1648,7 @@
             {
               "id": "rapeb3",
               "title": "RAPEB3",
-              "edts": [
+              "children": [
                 {
                   "id": "rapeb31",
                   "title": "RAPEB3.1",
@@ -2126,7 +1664,7 @@
             {
               "id": "tp3",
               "title": "TP3",
-              "edts": [
+              "children": [
                 {
                   "id": "tp31",
                   "title": "TP3.1",
@@ -2144,11 +1682,11 @@
         {
           "id": "groupemixtetpbec",
           "title": "Groupe Mixte TP/BEC",
-          "edts": [
+          "children": [
             {
               "id": "tpbec21",
               "title": "TP/BEC2.1",
-              "edts": [
+              "children": [
                 {
                   "id": "tpbec21-*bec*",
                   "title": "TP/BEC2.1-*BEC*",
@@ -2164,7 +1702,7 @@
             {
               "id": "tpbec22",
               "title": "TP/BEC2.2",
-              "edts": [
+              "children": [
                 {
                   "id": "tpbec22-*bec*",
                   "title": "TP/BEC2.2-*BEC*",
@@ -2182,7 +1720,7 @@
         {
           "id": "lpcagclim",
           "title": "LP CAGCLIM",
-          "edts": [
+          "children": [
             {
               "id": "cagclim",
               "title": "CAGCLIM",
@@ -2193,7 +1731,7 @@
         {
           "id": "lprtif",
           "title": "LP RTIF",
-          "edts": [
+          "children": [
             {
               "id": "rtif",
               "title": "RTIF",
@@ -2206,15 +1744,15 @@
     {
       "id": "geii",
       "title": "GEII",
-      "edts": [
+      "children": [
         {
           "id": "but1geii",
           "title": "BUT1 GEII",
-          "edts": [
+          "children": [
             {
               "id": "a1",
               "title": "A1",
-              "edts": [
+              "children": [
                 {
                   "id": "a11",
                   "title": "A11",
@@ -2230,7 +1768,7 @@
             {
               "id": "a2",
               "title": "A2",
-              "edts": [
+              "children": [
                 {
                   "id": "a21",
                   "title": "A21",
@@ -2246,7 +1784,7 @@
             {
               "id": "a3",
               "title": "A3",
-              "edts": [
+              "children": [
                 {
                   "id": "a31",
                   "title": "A31",
@@ -2262,7 +1800,7 @@
             {
               "id": "a4",
               "title": "A4",
-              "edts": [
+              "children": [
                 {
                   "id": "a41",
                   "title": "A41",
@@ -2278,7 +1816,7 @@
             {
               "id": "a5",
               "title": "A5",
-              "edts": [
+              "children": [
                 {
                   "id": "a51",
                   "title": "A51",
@@ -2296,11 +1834,11 @@
         {
           "id": "but2geii",
           "title": "BUT2 GEII",
-          "edts": [
+          "children": [
             {
               "id": "b1",
               "title": "B1",
-              "edts": [
+              "children": [
                 {
                   "id": "b1-1",
                   "title": "B1-1",
@@ -2316,7 +1854,7 @@
             {
               "id": "b2",
               "title": "B2",
-              "edts": [
+              "children": [
                 {
                   "id": "b2-1",
                   "title": "B2-1",
@@ -2332,7 +1870,7 @@
             {
               "id": "b3",
               "title": "B3",
-              "edts": [
+              "children": [
                 {
                   "id": "b3-1",
                   "title": "B3-1",
@@ -2348,7 +1886,7 @@
             {
               "id": "b4",
               "title": "B4",
-              "edts": [
+              "children": [
                 {
                   "id": "b4-1",
                   "title": "B4-1",
@@ -2364,7 +1902,7 @@
             {
               "id": "b5",
               "title": "B5",
-              "edts": [
+              "children": [
                 {
                   "id": "b5-1",
                   "title": "B5-1",
@@ -2377,11 +1915,11 @@
         {
           "id": "but3geii",
           "title": "BUT3 GEII",
-          "edts": [
+          "children": [
             {
               "id": "c1",
               "title": "C1",
-              "edts": [
+              "children": [
                 {
                   "id": "c1-1",
                   "title": "C1-1",
@@ -2397,7 +1935,7 @@
             {
               "id": "c2",
               "title": "C2",
-              "edts": [
+              "children": [
                 {
                   "id": "c2-1",
                   "title": "C2-1",
@@ -2413,7 +1951,7 @@
             {
               "id": "c3",
               "title": "C3",
-              "edts": [
+              "children": [
                 {
                   "id": "c3-1",
                   "title": "C3-1",
@@ -2429,7 +1967,7 @@
             {
               "id": "c4",
               "title": "C4",
-              "edts": [
+              "children": [
                 {
                   "id": "c4-1",
                   "title": "C4-1",
@@ -2447,11 +1985,11 @@
         {
           "id": "licencepro",
           "title": "Licence Pro",
-          "edts": [
+          "children": [
             {
               "id": "lpacteer",
               "title": "LP ACTEER",
-              "edts": [
+              "children": [
                 {
                   "id": "acteer",
                   "title": "ACTEER",
@@ -2462,15 +2000,15 @@
             {
               "id": "lpmecatronique",
               "title": "LP Mecatronique",
-              "edts": [
+              "children": [
                 {
                   "id": "isar",
                   "title": "ISAR",
-                  "edts": [
+                  "children": [
                     {
                       "id": "isar-a",
                       "title": "ISAR-A",
-                      "edts": [
+                      "children": [
                         {
                           "id": "isar-a1",
                           "title": "ISAR-A1",
@@ -2486,7 +2024,7 @@
                     {
                       "id": "isar-b",
                       "title": "ISAR-B",
-                      "edts": [
+                      "children": [
                         {
                           "id": "isar-b1",
                           "title": "ISAR-B1",
@@ -2504,7 +2042,7 @@
                 {
                   "id": "pastel",
                   "title": "Pastel",
-                  "edts": [
+                  "children": [
                     {
                       "id": "pastela",
                       "title": "Pastel A",
@@ -2529,11 +2067,11 @@
         {
           "id": "masterearlp",
           "title": "Mastere ARLP",
-          "edts": [
+          "children": [
             {
               "id": "mastere-1-d",
               "title": "Mastere-1-D",
-              "edts": [
+              "children": [
                 {
                   "id": "mastere-d1",
                   "title": "MASTERE-D1",
@@ -2549,7 +2087,7 @@
             {
               "id": "mastere-2-e",
               "title": "Mastere-2-E",
-              "edts": [
+              "children": [
                 {
                   "id": "mastere-e1",
                   "title": "Mastere-E1",
@@ -2567,7 +2105,7 @@
         {
           "id": "reunion",
           "title": "Réunion",
-          "edts": [
+          "children": [
             {
               "id": "portesouvertes",
               "title": "Portes ouvertes",
@@ -2580,19 +2118,19 @@
     {
       "id": "gmp",
       "title": "GMP",
-      "edts": [
+      "children": [
         {
           "id": "1gmp",
           "title": "1GMP",
-          "edts": [
+          "children": [
             {
               "id": "1a",
               "title": "1A",
-              "edts": [
+              "children": [
                 {
                   "id": "1a1",
                   "title": "1A1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1a1",
                       "title": "1A1",
@@ -2603,7 +2141,7 @@
                 {
                   "id": "1a2",
                   "title": "1A2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1a2",
                       "title": "1A2",
@@ -2616,11 +2154,11 @@
             {
               "id": "1b",
               "title": "1B",
-              "edts": [
+              "children": [
                 {
                   "id": "1b1",
                   "title": "1B1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1b1",
                       "title": "1B1",
@@ -2631,7 +2169,7 @@
                 {
                   "id": "1b2",
                   "title": "1B2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1b2",
                       "title": "1B2",
@@ -2644,11 +2182,11 @@
             {
               "id": "1c",
               "title": "1C",
-              "edts": [
+              "children": [
                 {
                   "id": "1c1",
                   "title": "1C1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1c1",
                       "title": "1C1",
@@ -2659,7 +2197,7 @@
                 {
                   "id": "1c2",
                   "title": "1C2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1c2",
                       "title": "1C2",
@@ -2672,11 +2210,11 @@
             {
               "id": "1d",
               "title": "1D",
-              "edts": [
+              "children": [
                 {
                   "id": "1d1",
                   "title": "1D1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1d1",
                       "title": "1D1",
@@ -2687,7 +2225,7 @@
                 {
                   "id": "1d2",
                   "title": "1D2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "1d2",
                       "title": "1D2",
@@ -2702,15 +2240,15 @@
         {
           "id": "2gmp",
           "title": "2GMP",
-          "edts": [
+          "children": [
             {
               "id": "2a",
               "title": "2A",
-              "edts": [
+              "children": [
                 {
                   "id": "2a1",
                   "title": "2A1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2a1",
                       "title": "2A1",
@@ -2721,7 +2259,7 @@
                 {
                   "id": "2a2",
                   "title": "2A2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2a2",
                       "title": "2A2",
@@ -2734,11 +2272,11 @@
             {
               "id": "2b",
               "title": "2B",
-              "edts": [
+              "children": [
                 {
                   "id": "2b1",
                   "title": "2B1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2b1",
                       "title": "2B1",
@@ -2749,7 +2287,7 @@
                 {
                   "id": "2b2",
                   "title": "2B2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2b2",
                       "title": "2B2",
@@ -2762,11 +2300,11 @@
             {
               "id": "2c",
               "title": "2C",
-              "edts": [
+              "children": [
                 {
                   "id": "2c1",
                   "title": "2C1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2c1",
                       "title": "2C1",
@@ -2777,7 +2315,7 @@
                 {
                   "id": "2c2",
                   "title": "2C2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2c2",
                       "title": "2C2",
@@ -2790,11 +2328,11 @@
             {
               "id": "2d",
               "title": "2D",
-              "edts": [
+              "children": [
                 {
                   "id": "2d1",
                   "title": "2D1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2d1",
                       "title": "2D1",
@@ -2805,7 +2343,7 @@
                 {
                   "id": "2d2",
                   "title": "2D2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "2d2",
                       "title": "2D2",
@@ -2820,15 +2358,15 @@
         {
           "id": "3gmp",
           "title": "3GMP",
-          "edts": [
+          "children": [
             {
               "id": "3a",
               "title": "3A",
-              "edts": [
+              "children": [
                 {
                   "id": "3a1",
                   "title": "3A1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3a1",
                       "title": "3A1",
@@ -2839,7 +2377,7 @@
                 {
                   "id": "3a2",
                   "title": "3A2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3a2",
                       "title": "3A2",
@@ -2852,11 +2390,11 @@
             {
               "id": "3b",
               "title": "3B",
-              "edts": [
+              "children": [
                 {
                   "id": "3b1",
                   "title": "3B1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3b1",
                       "title": "3B1",
@@ -2867,7 +2405,7 @@
                 {
                   "id": "3b2",
                   "title": "3B2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3b2",
                       "title": "3B2",
@@ -2880,11 +2418,11 @@
             {
               "id": "3c",
               "title": "3C",
-              "edts": [
+              "children": [
                 {
                   "id": "3c1",
                   "title": "3C1",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3c1",
                       "title": "3C1",
@@ -2895,7 +2433,7 @@
                 {
                   "id": "3c2",
                   "title": "3C2",
-                  "edts": [
+                  "children": [
                     {
                       "id": "3c2",
                       "title": "3C2",
@@ -2910,7 +2448,7 @@
         {
           "id": "lpecosym",
           "title": "LPEcoSyM",
-          "edts": [
+          "children": [
             {
               "id": "lpecosym-e",
               "title": "LPECOSYM-E",
@@ -2926,7 +2464,7 @@
         {
           "id": "lpmecatro",
           "title": "LPMECATRO",
-          "edts": [
+          "children": [
             {
               "id": "mecarobot-1",
               "title": "MecaRobot-1",
@@ -2942,7 +2480,7 @@
         {
           "id": "qse1-lpaqse",
           "title": "QSE1 - LPAQSE",
-          "edts": [
+          "children": [
             {
               "id": "lpaqsegroupea",
               "title": "LPAQSE groupe A",
@@ -2958,7 +2496,7 @@
         {
           "id": "qse2-m1qse",
           "title": "QSE2 - M1QSE",
-          "edts": [
+          "children": [
             {
               "id": "m1qsegroupea",
               "title": "M1 QSE groupe A",
@@ -2974,7 +2512,7 @@
         {
           "id": "qse3-m2qse",
           "title": "QSE3 - M2QSE",
-          "edts": [
+          "children": [
             {
               "id": "m2qsegroupea",
               "title": "M2 QSE groupe A",

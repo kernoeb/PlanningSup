@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@source '.';
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dracula,
+    dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(0% 0 0);
+  --color-base-200: oklch(19% 0 0);
+  --color-base-300: oklch(25% 0 0);
+  --color-base-content: oklch(87.609% 0 0);
+  --color-primary: oklch(52% 0.2 241.966);
+  --color-primary-content: oklch(95% 0 0);
+  --color-secondary: oklch(28% 0 0);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(35% 0 0);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(35% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(45.201% 0.313 264.052);
+  --color-info-content: oklch(89.04% 0.062 264.052);
+  --color-success: oklch(51.975% 0.176 142.495);
+  --color-success-content: oklch(90.395% 0.035 142.495);
+  --color-warning: oklch(75% 0.16 55);
+  --color-warning-content: oklch(18% 0.03 55);
+  --color-error: oklch(62.795% 0.257 29.233);
+  --color-error-content: oklch(12.559% 0.051 29.233);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "corporate";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(93% 0 0);
+  --color-base-300: oklch(86% 0 0);
+  --color-base-content: oklch(22.389% 0.031 278.072);
+  --color-primary: oklch(58% 0.158 241.966);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(85% 0.016 257.417);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(60% 0.118 184.704);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(0% 0 0);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(62% 0.194 149.214);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(80% 0.16 55);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error: oklch(70% 0.191 22.216);
+  --color-error-content: oklch(0% 0 0);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "dracula";
+  default: false;
+  prefersdark: false;
+  color-scheme: "dark";
+  --color-base-100: oklch(28.822% 0.022 277.508);
+  --color-base-200: oklch(26.805% 0.02 277.508);
+  --color-base-300: oklch(24.787% 0.019 277.508);
+  --color-base-content: oklch(97.747% 0.007 106.545);
+  --color-primary: oklch(75.461% 0.183 346.812);
+  --color-primary-content: oklch(15.092% 0.036 346.812);
+  --color-secondary: oklch(40% 0.048 301.883);
+  --color-secondary-content: oklch(14.84% 0.029 301.883);
+  --color-accent: oklch(83.392% 0.124 66.558);
+  --color-accent-content: oklch(16.678% 0.024 66.558);
+  --color-neutral: oklch(39.445% 0.032 275.524);
+  --color-neutral-content: oklch(87.889% 0.006 275.524);
+  --color-info: oklch(88.263% 0.093 212.846);
+  --color-info-content: oklch(17.652% 0.018 212.846);
+  --color-success: oklch(87.099% 0.219 148.024);
+  --color-success-content: oklch(17.419% 0.043 148.024);
+  --color-warning: oklch(82% 0.16 55);
+  --color-warning-content: oklch(19% 0.03 55);
+  --color-error: oklch(68.22% 0.206 24.43);
+  --color-error-content: oklch(13.644% 0.041 24.43);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+html,
+body {
+  height: 100dvh;
+  overscroll-behavior: none;
+}
+
+body {
+  padding-top: env(safe-area-inset-top, 12px);
+  padding-right: env(safe-area-inset-right, 12px);
+  padding-bottom: env(safe-area-inset-bottom, 12px);
+  padding-left: env(safe-area-inset-left, 12px);
+}
+
+body {
+  font-family: "Roboto Variable", sans-serif;
+}
+
+#app {
+  height: 100%;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.modal-box {
+  max-height: calc(100dvh - 3rem);
+}
+
+/* DaisyUI Color fixes */
+.modal {
+  &.modal-open,
+  &[open],
+  &:target {
+    background-color: oklch(
+      from var(--color-secondary) var(--lightness, 30%) c h/ var(--opacity, 0.8)
+    );
+
+    [data-theme="light"] & {
+      --opacity: 0.7;
+      --lightness: 30%;
+    }
+
+    [data-theme="dracula"] & {
+      --opacity: 0.75;
+      --lightness: 10%;
+    }
+
+    [data-theme="dark"] & {
+      --opacity: 0.8;
+      --lightness: 20%;
+    }
+  }
+}
+
+.btn-secondary {
+  [data-theme="light"] & {
+    --btn-bg: oklch(from var(--color-secondary) 55% c h);
+  }
+
+  [data-theme="dracula"] & {
+    --btn-bg: oklch(from var(--color-secondary) 88% c h);
+  }
+
+  [data-theme="dark"] & {
+    --btn-bg: oklch(from var(--color-secondary) 42% c h);
+  }
+}
+
+/* Lighter hover for outline buttons in light theme */
+[data-theme="light"] .btn:hover:not(.btn-secondary) {
+  --btn-bg: color-mix(
+    in oklab,
+    var(--btn-color, var(--color-base-200)),
+    #000 0%
+  );
+}

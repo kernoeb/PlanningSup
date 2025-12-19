@@ -1,0 +1,85 @@
+import { env } from './env'
+
+function normalizePublicOrigin(raw: string) {
+  const url = new URL(raw)
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+    throw new Error('PUBLIC_ORIGIN must start with http:// or https://')
+  }
+  return url.origin
+}
+
+function getConfig() {
+  const port = env('PORT', { default: 20000 })
+  const nodeEnv = env('NODE_ENV', { default: 'development' })
+  const isProduction = nodeEnv === 'production'
+
+  const rawPublicOrigin = isProduction
+    ? env('PUBLIC_ORIGIN', { required: true })
+    : env('PUBLIC_ORIGIN', { default: `http://localhost:${port}` })
+
+  return {
+    nodeEnv,
+    isProduction,
+
+    // Http Server
+    port,
+    webDistLocation: env('WEB_DIST_LOCATION'),
+    publicOrigin: normalizePublicOrigin(rawPublicOrigin),
+
+    // Jobs
+    jobs: {
+      runJobs: env('RUN_JOBS', { default: true }),
+      allowedJobs: env('ALLOWED_JOBS'),
+      quietHours: env('JOBS_QUIET_HOURS', { default: '21:00–06:00' }),
+      quietHoursTimezone: env('JOBS_QUIET_HOURS_TIMEZONE', { default: 'Europe/Paris' }),
+    },
+
+    // Database
+    databaseUrl: env('DATABASE_URL'),
+    noMigrateDatabase: env('NO_MIGRATE_DATABASE', { default: false }),
+
+    // Better-Auth
+    authEnabled: env('AUTH_ENABLED', { default: false }),
+    trustedOrigins: env('TRUSTED_ORIGINS')?.split(',').map(s => s.trim()),
+
+    auth: {
+      discord: {
+        clientId: env('DISCORD_CLIENT_ID'),
+        clientSecret: env('DISCORD_CLIENT_SECRET'),
+      },
+      github: {
+        clientId: env('GITHUB_CLIENT_ID'),
+        clientSecret: env('GITHUB_CLIENT_SECRET'),
+      },
+    },
+
+    // Utils
+    curlTimeout: env('CURL_TIMEOUT', { default: 5000 }), // in ms
+
+    // Extension
+    chromeExtensionId: env('CHROME_EXTENSION_ID'),
+    firefoxExtensionId: env('FIREFOX_EXTENSION_ID'),
+
+    // Analytics
+    plausible: {
+      domain: env('PLAUSIBLE_DOMAIN'),
+      endpoint: env('PLAUSIBLE_ENDPOINT'),
+    },
+
+    // Ops
+    opsToken: env('OPS_TOKEN'),
+  }
+}
+
+const config = getConfig()
+
+if (config.chromeExtensionId && !/^[a-z]{32}$/.test(config.chromeExtensionId)) throw new Error('Invalid CHROME_EXTENSION_ID format')
+if (config.firefoxExtensionId && !/^[a-z0-9-]+$/.test(config.firefoxExtensionId)) throw new Error('Invalid FIREFOX_EXTENSION_ID format')
+
+if (config.isProduction) {
+  // if (STRICT_MODE && config.globalAPIKey === DEFAULT_GLOBAL_API_KEY) {
+  //   throw new Error('GLOBAL_API_KEY must be set in production')
+  // }
+}
+
+export default config

@@ -1,14 +1,15 @@
 {
   "title": "IGR",
-  "edts": [
+  "group": "Rennes",
+  "children": [
     {
       "id": "formationsenfrancais-fi",
       "title": "Formations en français - FI",
-      "edts": [
+      "children": [
         {
           "id": "duetudiantentrepreneur-fi",
           "title": "DU ETUDIANT ENTREPRENEUR - FI",
-          "edts": [
+          "children": [
             {
               "id": "duetudiantentrepreneurd2e-fi",
               "title": "DU Etudiant Entrepreneur (D2E) - FI",
@@ -19,7 +20,7 @@
         {
           "id": "durechercheenmanagement-fi",
           "title": "DU RECHERCHE EN MANAGEMENT - FI",
-          "edts": [
+          "children": [
             {
               "id": "durechercheenmanagement-fi",
               "title": "DU Recherche en Management - FI",
@@ -30,11 +31,11 @@
         {
           "id": "l3sciencesdegestion-fi",
           "title": "L3 Sciences de gestion  - FI",
-          "edts": [
+          "children": [
             {
               "id": "l3-cmcca-fi",
               "title": "L3 - CM CCA - FI",
-              "edts": [
+              "children": [
                 {
                   "id": "l3cca-fi",
                   "title": "L3 CCA - FI",
@@ -45,7 +46,7 @@
             {
               "id": "l3-cmsgm-fi",
               "title": "L3 - CM SGM - FI",
-              "edts": [
+              "children": [
                 {
                   "id": "l3sgm-fi",
                   "title": "L3 SGM  - FI",
@@ -56,7 +57,7 @@
             {
               "id": "l3-groupestd-fi",
               "title": "L3 - groupes TD - FI",
-              "edts": [
+              "children": [
                 {
                   "id": "g1-l3cca-fi",
                   "title": "G1 - L3 CCA - FI",
@@ -92,7 +93,7 @@
             {
               "id": "l3-groupeslangueslv2-ficca",
               "title": "L3 - groupes langues LV2 - FI (CCA)",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-lv2allemandcca",
                   "title": "L3 - LV2 Allemand (CCA)",
@@ -148,7 +149,7 @@
             {
               "id": "l3-groupeslangueslv2-fisgm",
               "title": "L3 - groupes langues LV2 - FI (SGM)",
-              "edts": [
+              "children": [
                 {
                   "id": "l3-lv2allemandsgm",
                   "title": "L3 - LV2 Allemand (SGM)",
@@ -206,11 +207,11 @@
         {
           "id": "m1cgaoparcourssicg-fi",
           "title": "M1 CGAO parcours SICG - FI",
-          "edts": [
+          "children": [
             {
               "id": "groupestdsemestre7",
               "title": "Groupes TD semestre 7",
-              "edts": [
+              "children": [
                 {
                   "id": "g1cgaosicg",
                   "title": "G1 CGAO SICG",
@@ -246,7 +247,7 @@
             {
               "id": "groupestdsemestre8",
               "title": "Groupes TD semestre 8",
-              "edts": [
+              "children": [
                 {
                   "id": "g1cgaosicg",
                   "title": "G1 CGAO SICG",
@@ -287,7 +288,7 @@
             {
               "id": "options",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "gpe1techinternet",
                   "title": "Gpe 1 Tech Internet",
@@ -345,7 +346,7 @@
         {
           "id": "m1maeparcoursmej-fi",
           "title": "M1 MAE parcours MEJ - FI",
-          "edts": [
+          "children": [
             {
               "id": "m1mae-mej-fiparcourseurope",
               "title": "M1 MAE - MEJ  -FI (parcours Europe)",
@@ -367,8 +368,8 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=625&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "m1mae-mej-fi-td",
-              "title": "M1 MAE - MEJ - FI - TD",
+              "id": "m1mae-mej-fi-td-2",
+              "title": "M1 MAE - MEJ - FI - TD (Groupe 2)",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=631&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
@@ -376,7 +377,7 @@
         {
           "id": "m1maeparcoursmanagement-fi",
           "title": "M1 MAE parcours Management - FI",
-          "edts": [
+          "children": [
             {
               "id": "m1mae-ma-fi",
               "title": "M1 MAE - MA - FI",
@@ -398,8 +399,8 @@
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2984&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "m1mae-ma-fi-td",
-              "title": "M1 MAE - MA - FI - TD",
+              "id": "m1mae-ma-fi-td-2",
+              "title": "M1 MAE - MA - FI - TD (Groupe 2)",
               "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11651&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
@@ -407,7 +408,7 @@
         {
           "id": "m1biologie-gestion-fisve-igr",
           "title": "M1 biologie-gestion - FI SVE-IGR",
-          "edts": [
+          "children": [
             {
               "id": "m1biologie-gestion-fisve-igr",
               "title": "M1 biologie-gestion - FI SVE-IGR",
@@ -418,7 +419,7 @@
         {
           "id": "m1comptablitecontroleauditparcourscca-fi",
           "title": "M1 comptablité contrôle audit parcours CCA - FI",
-          "edts": [
+          "children": [
             {
               "id": "gpegestiondeprojetassociatif",
               "title": "Gpe Gestion de projet associatif",
@@ -427,7 +428,7 @@
             {
               "id": "groupestdsemestre7",
               "title": "Groupes TD semestre 7",
-              "edts": [
+              "children": [
                 {
                   "id": "g1cca",
                   "title": "G1 CCA",
@@ -463,7 +464,7 @@
             {
               "id": "groupestdsemestre8",
               "title": "Groupes TD semestre 8",
-              "edts": [
+              "children": [
                 {
                   "id": "g1cca",
                   "title": "G1 CCA",
@@ -506,11 +507,11 @@
         {
           "id": "m1financeparcoursfinance-fi",
           "title": "M1 finance parcours finance - FI",
-          "edts": [
+          "children": [
             {
               "id": "groupestdsemestre7",
               "title": "Groupes TD semestre 7",
-              "edts": [
+              "children": [
                 {
                   "id": "g1fin",
                   "title": "G1 FIN",
@@ -546,7 +547,7 @@
             {
               "id": "groupestdsemestre8",
               "title": "Groupes TD semestre 8",
-              "edts": [
+              "children": [
                 {
                   "id": "g1fin",
                   "title": "G1 FIN",
@@ -587,7 +588,7 @@
             {
               "id": "options",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "gpe1techinternet",
                   "title": "Gpe 1 Tech Internet",
@@ -645,11 +646,11 @@
         {
           "id": "m1gestiondesressourceshumaines-fi",
           "title": "M1 gestion des ressources humaines - FI",
-          "edts": [
+          "children": [
             {
               "id": "groupestdsemestre7",
               "title": "Groupes TD semestre 7",
-              "edts": [
+              "children": [
                 {
                   "id": "g1grh",
                   "title": "G1 GRH",
@@ -685,7 +686,7 @@
             {
               "id": "groupestdsemestre8",
               "title": "Groupes TD semestre 8",
-              "edts": [
+              "children": [
                 {
                   "id": "g1grh",
                   "title": "G1 GRH",
@@ -726,7 +727,7 @@
             {
               "id": "options",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "gpe1techinternet",
                   "title": "Gpe 1 Tech Internet",
@@ -784,11 +785,11 @@
         {
           "id": "m1marketingetventeparcoursmarketing-fi",
           "title": "M1 marketing et vente parcours marketing - FI",
-          "edts": [
+          "children": [
             {
               "id": "groupestdsemestre7",
               "title": "Groupes TD semestre 7",
-              "edts": [
+              "children": [
                 {
                   "id": "g1mkg",
                   "title": "G1 MKG",
@@ -824,7 +825,7 @@
             {
               "id": "groupestdsemestre8",
               "title": "Groupes TD semestre 8",
-              "edts": [
+              "children": [
                 {
                   "id": "g1mkg",
                   "title": "G1 MKG",
@@ -865,7 +866,7 @@
             {
               "id": "options",
               "title": "Options",
-              "edts": [
+              "children": [
                 {
                   "id": "gpe1techinternet",
                   "title": "Gpe 1 Tech Internet",
@@ -923,7 +924,7 @@
         {
           "id": "m2cca-comptabilitecontroleaudit-fi",
           "title": "M2 CCA - Comptabilité Contrôle Audit - FI",
-          "edts": [
+          "children": [
             {
               "id": "m2cca-anglaisdesaffairesg1-fi",
               "title": "M2 CCA - Anglais des Affaires G1  - FI",
