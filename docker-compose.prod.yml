@@ -5,7 +5,7 @@ services:
     env_file: db.env
     restart: always
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql
     networks:
       - planningsup_network
     healthcheck:
