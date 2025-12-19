@@ -607,7 +607,10 @@ watch(
                   :class="[selectedCustomGroups.includes(item.id) ? 'bg-secondary/50 border-secondary/50' : 'bg-secondary/10 hover:bg-secondary/20 border-secondary/20 hover:border-secondary/40']"
                   @click="applyCustomGroup(item.id)"
                 >
-                  <FolderIcon class="size-4 text-primary/50 shrink-0" />
+                  <FolderIcon
+                    class="size-4 shrink-0"
+                    :class="[selectedCustomGroups.includes(item.id) ? 'text-primary/85' : 'text-primary/50']"
+                  />
                   <span class="text-sm font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-40">
                     {{ item.name }}
                   </span>
