@@ -57,11 +57,3 @@ const eventDescription = computed(() => props.calendarEvent.description)
     </div>
   </div>
 </template>
-
-<style scoped>
-.sx__time-grid-event.sx__event {
-  border-inline-start: 4px solid var(--sx-color-tutorial);
-  background-color: var(--sx-color-tutorial-container);
-  color: var(--sx-color-on-tutorial-container);
-}
-</style>
