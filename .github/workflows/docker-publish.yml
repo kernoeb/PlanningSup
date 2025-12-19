@@ -13,10 +13,9 @@ concurrency:
 
 env:
   GHCR_REGISTRY: ghcr.io
-  GHCR_IMAGE_NAME: planningsup/planning
+  GHCR_IMAGE_NAME: planningsup
   PUBLISH_WHITELIST: |
     main
-    refactor/elysia-postgresql
   IS_FORK_PR: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository }}
 
 jobs:
