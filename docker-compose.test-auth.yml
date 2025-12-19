@@ -9,7 +9,7 @@
 
 services:
   postgres-test-auth:
-    image: postgres:17
+    image: postgres:18
     container_name: planningsup_test_auth_db
     environment:
       POSTGRES_USER: testuser

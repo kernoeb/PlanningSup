@@ -15,7 +15,7 @@
   </a>
 </p>
 
-![img.png](resources/images/planning_mac.png)
+![img.png](apps/web/public/screenshots/wide.png)
 
 ## Fonctionnalités
 
@@ -55,8 +55,8 @@ Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, 
 ## Pré-requis
 
 - [Bun](https://bun.sh) (version indiquée dans `.bun-version`)
-- Node.js ≥ 20 (pour certains outils)
-- Docker + Docker Compose (PostgreSQL 17 fourni dans `docker-compose.yml`)
+- Node.js ≥ 24 (pour certains outils)
+- Docker + Docker Compose (PostgreSQL 18 fourni dans `docker-compose.yml`)
 
 ## Démarrage rapide (développement)
 
@@ -88,7 +88,7 @@ bun dev
 
 ## Déploiement Docker
 
-- Image publique : `ghcr.io/kernoeb/planningsup/planning:refactor-elysia-postgresql`.
+- Image publique : `ghcr.io/kernoeb/planningsup`.
 - Exemple `docker-compose.prod.yml` (Postgres + webapp).  
   Créez `db.env` (POSTGRES_USER/PASSWORD/DB) et `webapp.env` avec au minimum :
 
