@@ -541,7 +541,7 @@ jobs:
           push-to-registry: true
 
       - name: Deploy to Dokploy
-        if: steps.push_image.outcome == 'success'
+        if: steps.push_image.outcome == 'success' && needs.prepare.outputs.is_valid_tag == 'true'
         env:
           DOKPLOY_DOMAIN: ${{ secrets.DOKPLOY_DOMAIN }}
           DOKPLOY_API_KEY: ${{ secrets.DOKPLOY_API_KEY }}
