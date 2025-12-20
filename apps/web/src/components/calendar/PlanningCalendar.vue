@@ -195,20 +195,22 @@ defineExpose({ reload })
               </button>
             </div>
 
-            <div class="join hidden md:flex">
+            <div aria-label="Précédent/Suivant" class="join hidden md:flex" role="group">
               <button
                 id="calendar-prev-period-header"
+                aria-label="Précédent"
                 class="btn btn-sm btn-ghost join-item"
                 @click="prevPeriod"
               >
-                <IconChevronLeft :size="18" />
+                <IconChevronLeft aria-hidden="true" :size="18" />
               </button>
               <button
                 id="calendar-next-period-header"
+                aria-label="Suivant"
                 class="btn btn-sm btn-ghost join-item"
                 @click="nextPeriod"
               >
-                <IconChevronRight :size="18" />
+                <IconChevronRight aria-hidden="true" :size="18" />
               </button>
             </div>
 
