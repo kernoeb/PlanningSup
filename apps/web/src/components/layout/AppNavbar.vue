@@ -3,6 +3,7 @@ import { onKeyStroke, useOnline } from '@vueuse/core'
 import CurrentPlanningBadge from '@web/components/layout/CurrentPlanningBadge.vue'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
+import { useAppScroll } from '@web/composables/useAppScroll'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
@@ -10,6 +11,7 @@ import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
 const { titles, planningFullIds, networkFailures, syncing, hasEvents } = usePlanningData()
 const isOnline = useOnline()
+const { isAppScrolled } = useAppScroll()
 
 const isInitialLoading = computed(() => planningFullIds.value.length > 0 && syncing.value && !hasEvents.value)
 const showBackgroundSync = computed(() => syncing.value && hasEvents.value)
@@ -93,7 +95,11 @@ onKeyStroke(
 </script>
 
 <template>
-  <div id="app-navbar" class="navbar bg-base-100 px-3 gap-2">
+  <div
+    id="app-navbar"
+    class="navbar bg-base-100 px-3 gap-2 transition-[box-shadow,border-color] duration-200 border-b border-transparent"
+    :class="{ 'shadow-sm !border-base-200': isAppScrolled }"
+  >
     <div class="flex-1 flex items-center gap-3">
       <div id="app-logo" class="text-xl flex items-center gap-3">
         <a href="/">
