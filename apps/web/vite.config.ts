@@ -39,6 +39,7 @@ export default defineConfig({
         short_name: 'PlanningSup',
         description: 'Votre calendrier universitaire, simple, rapide, efficace',
         theme_color: '#000000',
+        background_color: '#000000', // required for Android splash
         lang: 'fr',
         screenshots: [
           {
