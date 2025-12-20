@@ -2,7 +2,7 @@
   "name": "planningsup-extension",
   "displayName": "PlanningSup",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "description": "Votre calendrier universitaire, simple, rapide, efficace",
   "scripts": {
@@ -36,7 +36,7 @@
     "cross-env": "10.1.0",
     "crx": "5.0.1",
     "daisyui": "catalog:ui",
-    "fs-extra": "11.3.2",
+    "fs-extra": "11.3.3",
     "rimraf": "6.1.2",
     "sass-embedded": "catalog:ui",
     "tailwindcss": "catalog:ui",
