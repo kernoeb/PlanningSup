@@ -116,12 +116,26 @@ export function usePlanningCalendar(options: {
   }
 
   onKeyStroke('ArrowRight', (e) => {
+    // Ignore if the target is a text field
+    const target = e.target as HTMLElement
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return
+
+    // Ignore if any dialog is open
+    if (document.querySelector('dialog[open]')) return
+
     e.preventDefault()
     onUserInteraction('key:ArrowRight')
     nextPeriod()
   }, { dedupe: true })
 
   onKeyStroke('ArrowLeft', (e) => {
+    // Ignore if the target is a text field
+    const target = e.target as HTMLElement
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return
+
+    // Ignore if any dialog is open
+    if (document.querySelector('dialog[open]')) return
+
     e.preventDefault()
     onUserInteraction('key:ArrowLeft')
     prevPeriod()
