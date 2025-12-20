@@ -40,10 +40,6 @@ export function updateJobRuntime(jobId: JobId, patch: Partial<Omit<JobRuntime, '
   return next
 }
 
-export function getJobRuntime(jobId: JobId): JobRuntime | null {
-  return runtimeByJobId.get(jobId) ?? null
-}
-
 export function getJobRuntimeSnapshot(): Record<JobId, JobRuntime> {
   return Object.fromEntries(runtimeByJobId.entries()) as Record<JobId, JobRuntime>
 }

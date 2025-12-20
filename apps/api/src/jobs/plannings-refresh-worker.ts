@@ -132,7 +132,6 @@ export async function start(db: Database, signal: AbortSignal, ctx: JobContext) 
         concurrency,
         maxRuntimeMs: drainBudgetMs,
         maxAttempts,
-        pauseMs: 0,
         owner,
       },
     )

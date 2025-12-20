@@ -9,7 +9,7 @@ const pause = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, m
 
 const DEFAULT_BATCH_SIZE = 25
 const DEFAULT_MAX_RUNTIME_MS = 20_000
-const DEFAULT_PAUSE_MS = 50
+const DEFAULT_PAUSE_MS = 100
 const LOCK_TTL_MINUTES = 5
 const DEFAULT_CONCURRENCY = 1
 
@@ -348,24 +348,6 @@ export async function drainRefreshQueue(db: Database, deps: {
     const workers = Array.from({ length: Math.max(1, concurrency) }, () => runOne())
     await Promise.all(workers)
   }
-}
-
-export async function run(db: Database, signal?: AbortSignal) {
-  const { fetchEventsDetailed } = await import('@api/utils/events')
-  const { upsertPlanningBackup } = await import('@api/utils/plannings-backup')
-  const { flattenedPlannings } = await import('@api/plannings')
-
-  const planningUrlById = new Map(flattenedPlannings.map(p => [p.fullId, p.url]))
-
-  return drainRefreshQueue(
-    db,
-    {
-      fetchEvents: fetchEventsDetailed,
-      upsertPlanningBackup,
-      planningUrlById,
-    },
-    signal,
-  )
 }
 
 export async function sweepLegacyDeadQueueRows(db: Database, options: {

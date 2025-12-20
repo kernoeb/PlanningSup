@@ -1,9 +1,11 @@
 import { init as initPlausible } from '@plausible-analytics/tracker'
 import { createApp } from 'vue'
-import App from './App.vue'
-import { runCookieMigrationOnce } from './utils/cookie-migration'
 
+import App from './App.vue'
+
+import { runCookieMigrationOnce } from './utils/cookie-migration'
 import { getPlausibleAnalyticsProps } from './utils/plausible'
+
 import './style.css'
 import 'temporal-polyfill/global'
 import '@fontsource-variable/roboto'
