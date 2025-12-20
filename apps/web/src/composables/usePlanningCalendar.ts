@@ -75,7 +75,7 @@ export function usePlanningCalendar(options: {
   const { height: windowHeight } = useWindowSize()
 
   const uiOverhead = 64 + 47 + 68 // first header + schedule-x controls header + schedule-x grid header
-  const minHeight = 550
+  const minHeight = 500
 
   // Responsive grid height: use window height minus UI overhead, with min 550
   const responsiveGridHeight = computed(() => {

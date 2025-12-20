@@ -2,7 +2,7 @@ import type { createCalendar } from '@schedule-x/calendar'
 import type { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import type { Ref } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
-import { computed, shallowRef, watch } from 'vue'
+import { computed, provide, shallowRef, watch } from 'vue'
 import { useViewport } from './useViewport'
 
 type CalendarApp = ReturnType<typeof createCalendar>
@@ -42,6 +42,7 @@ export function useCalendarResponsiveView(options: {
   // Initialize to a best-guess view even before ScheduleX has mounted.
   // This avoids `null` consumers during bootstrap (e.g. weekOptions sizing).
   const currentView = shallowRef<PlanningCalendarView>(preferredView.value)
+  provide('currentView', currentView)
 
   const safeGetView = (): PlanningCalendarView | null => {
     if (!calendarApp.value) return null
