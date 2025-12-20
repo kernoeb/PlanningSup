@@ -47,6 +47,10 @@ test.describe('PlanningSup E2E', () => {
     const helper = createOptimizedHelper(page)
     await helper.fastSetup()
 
+    // Select a planning first to show the calendar
+    await helper.openPlanningPicker()
+    await helper.selectPlanning('Group A')
+
     const viewSelect = page.locator('#calendar-view-select')
     await expect(viewSelect).toBeVisible()
 
@@ -61,6 +65,11 @@ test.describe('PlanningSup E2E', () => {
     await helper.fastSetup()
 
     await helper.verifyResponsiveDesign()
+    
+    // Select a planning first to show the current planning badge
+    await helper.openPlanningPicker()
+    await helper.selectPlanning('Group A')
+    
     await helper.verifyNavbarElements()
 
     if (helper.device.isMobile()) {

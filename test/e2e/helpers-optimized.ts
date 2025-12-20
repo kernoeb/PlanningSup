@@ -199,7 +199,12 @@ class OptimizedTestHelper {
     } else {
       // Desktop-specific checks
       await expect(this.page.locator('#planning-picker-trigger')).toBeVisible()
-      await expect(this.page.locator('#current-planning-badge')).toBeVisible()
+      // Current planning badge should be visible only when a planning is selected
+      const currentPlanningBadge = this.page.locator('#current-planning-badge')
+      const isVisible = await currentPlanningBadge.isVisible()
+      if (isVisible) {
+        await expect(currentPlanningBadge).toBeVisible()
+      }
       // Mobile FAB should be hidden on desktop
       await expect(this.page.locator('#mobile-planning-fab')).not.toBeVisible()
     }

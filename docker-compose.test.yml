@@ -24,6 +24,7 @@ services:
     container_name: planningsup_test_app
     environment:
       NODE_ENV: production
+      PUBLIC_ORIGIN: http://localhost:20000
       PORT: 20000
       DATABASE_URL: postgresql://testuser:testpass@postgres-test:5432/planningsup_test
       RUN_JOBS: false
