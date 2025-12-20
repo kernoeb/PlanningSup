@@ -2,12 +2,18 @@
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { onClickOutside, useSwipe } from '@vueuse/core'
 import EventBottomModal from '@web/components/calendar/EventBottomModal.vue'
+import WelcomeScreen from '@web/components/WelcomeScreen.vue'
 import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
-import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
-import { Calendar as IconCalendar, CalendarCheck2 as IconCalendarCheck2, ChevronDown as IconChevronDown, ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from 'lucide-vue-next'
+import {
+  Calendar as IconCalendar,
+  CalendarCheck2 as IconCalendarCheck2,
+  ChevronDown as IconChevronDown,
+  ChevronLeft as IconChevronLeft,
+  ChevronRight as IconChevronRight,
+} from 'lucide-vue-next'
 import { computed, defineAsyncComponent, ref, useTemplateRef } from 'vue'
 import CustomTimeGridEvent from './CustomTimeGridEvent.vue'
 
@@ -51,12 +57,7 @@ const selectedEventPlanningTitle = computed(() => {
   return planningTitles.value[fullId]
 })
 
-const planningPickerController = usePlanningPickerController()
 const { isDark: uiIsDark } = useSharedTheme()
-
-function openPlanningPicker() {
-  planningPickerController.open()
-}
 
 const el = useTemplateRef('calendarSwipeEl')
 useSwipe(el, {
@@ -266,22 +267,7 @@ defineExpose({ reload })
       </template>
     </ScheduleXCalendar>
 
-    <div v-if="!calendarApp" class="h-full flex items-center justify-center px-6">
-      <div class="max-w-md text-center space-y-3">
-        <div class="text-xl font-semibold">
-          Aucun planning sélectionné
-        </div>
-        <div class="opacity-70">
-          Choisis un planning pour afficher ton agenda.
-        </div>
-        <button class="btn btn-primary" type="button" @click="openPlanningPicker">
-          Sélectionner un planning
-        </button>
-        <div class="text-xs opacity-50 hidden sm:block">
-          Raccourci clavier : U
-        </div>
-      </div>
-    </div>
+    <WelcomeScreen v-if="!calendarApp" />
 
     <!-- Event detail modal -->
     <EventBottomModal

@@ -153,7 +153,7 @@ watch(() => props.event, (event) => {
         ref="drawerRef"
         :aria-labelledby="event ? 'event-modal-title' : undefined"
         aria-modal="true"
-        class="fixed bottom-0 left-0 right-0 z-50 bg-base-100 rounded-t-3xl shadow-2xl max-h-[80vh] overflow-y-auto"
+        class="fixed bottom-0 left-0 right-0 z-1000 bg-base-100 rounded-t-3xl shadow-2xl max-h-[80vh] overflow-y-auto"
         role="dialog"
       >
         <!-- Drag handle -->

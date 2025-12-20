@@ -39,7 +39,7 @@ const eventDescription = computed(() => props.calendarEvent.description)
   </div>
   <div
     v-if="eventLocation || eventDescription"
-    class="sx__time-grid-event-location text-gray-800"
+    class="sx__time-grid-event-location opacity-90"
   >
     <div v-if="eventLocation" class="flex items-center">
       <IconMapPin class="mr-1" :size="13" />{{ eventLocation }}
@@ -51,7 +51,7 @@ const eventDescription = computed(() => props.calendarEvent.description)
       {{ eventDescription }}
     </div>
   </div>
-  <div class="sx__time-grid-event-time text-gray-800">
+  <div class="sx__time-grid-event-time opacity-90">
     <div class="flex items-center">
       <IconClock class="mr-1" :size="13" />{{ eventTime }}
     </div>

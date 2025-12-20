@@ -3,11 +3,10 @@ import { useLocalStorage } from '@vueuse/core'
 import { computed } from 'vue'
 
 /**
- * Default planning fullId used when nothing is stored yet.
- * Keep this in sync with the default used by components depending on the planning selection.
+ * Initial planning fullIds used when nothing is stored yet.
+ * Empty array means no plannings selected by default.
  */
-export const DEFAULT_PLANNING_FULL_ID = 'iut-de-vannes.butdutinfo.1ereannee.gr1a.gr1a1'
-export const DEFAULT_PLANNING_FULL_IDS = [DEFAULT_PLANNING_FULL_ID]
+export const INITIAL_PLANNING_FULL_IDS: string[] = []
 
 /**
  * Storage key used to persist the current planning selection.
@@ -41,7 +40,7 @@ export function useCurrentPlanning(): {
   // Use any here to allow migration from a legacy string value
   const raw = useLocalStorage<any>(
     CURRENT_PLANNINGS_STORAGE_KEY,
-    DEFAULT_PLANNING_FULL_IDS,
+    INITIAL_PLANNING_FULL_IDS,
     { writeDefaults: true },
   )
 
@@ -50,8 +49,8 @@ export function useCurrentPlanning(): {
       const v = raw.value
       if (Array.isArray(v)) return normalizeIds(v)
       // fallback
-      raw.value = DEFAULT_PLANNING_FULL_IDS
-      return DEFAULT_PLANNING_FULL_IDS
+      raw.value = INITIAL_PLANNING_FULL_IDS
+      return INITIAL_PLANNING_FULL_IDS
     },
     set(ids: string[]) {
       raw.value = normalizeIds(ids)
@@ -87,7 +86,7 @@ export function useCurrentPlanning(): {
   }
 
   function resetPlanningSelection() {
-    planningFullIds.value = DEFAULT_PLANNING_FULL_IDS
+    planningFullIds.value = INITIAL_PLANNING_FULL_IDS
   }
 
   function isSelected(id: string) {

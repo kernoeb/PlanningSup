@@ -9,7 +9,7 @@ import { createCurrentTimePlugin } from '@schedule-x/current-time'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useDebounceFn, useWindowSize } from '@vueuse/core'
 
 import buildCalendarsUtil from '@web/utils/calendars'
 import { mergeDuplicateEvents } from '@web/utils/events'
@@ -70,6 +70,15 @@ export function usePlanningCalendar(options: {
   const settings = useSharedSettings()
   const planning = usePlanningData()
   const { isDark: uiIsDark } = useSharedTheme()
+  const { height: windowHeight } = useWindowSize()
+
+  const uiOverhead = 64 + 47 + 68 // first header + schedule-x controls header + schedule-x grid header
+  const minHeight = 550
+
+  // Responsive grid height: use window height minus UI overhead, with min 550
+  const responsiveGridHeight = computed(() => {
+    return Math.max(minHeight, windowHeight.value - uiOverhead)
+  })
 
   // Keyboard navigation: ArrowRight => next week, ArrowLeft => previous week
   const currentDate = shallowRef(Temporal.Now.zonedDateTimeISO(timezoneValue.value).toPlainDate())
@@ -130,7 +139,7 @@ export function usePlanningCalendar(options: {
     const view = currentView.value ?? preferredView.value
     return {
       nDays: settings.weekNDays.value,
-      gridHeight: 800,
+      gridHeight: responsiveGridHeight.value,
       eventWidth: isSmallScreen.value && view === 'day' ? 100 : 98,
     }
   }
@@ -242,6 +251,13 @@ export function usePlanningCalendar(options: {
     if (!calendarApp.value) return
     calendarControls.setWeekOptions(getWeekOptions())
   })
+
+  // Update grid height when window is resized
+  const debouncedUpdateGridHeight = useDebounceFn(() => {
+    if (!calendarApp.value) return
+    calendarControls.setWeekOptions(getWeekOptions())
+  }, 150)
+  watch(responsiveGridHeight, debouncedUpdateGridHeight)
 
   // Update calendar when timezone changes
   watch(timezoneValue, () => {

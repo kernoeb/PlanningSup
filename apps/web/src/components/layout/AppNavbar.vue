@@ -6,7 +6,7 @@ import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
-import { computed, nextTick, onBeforeUnmount, onMounted, useTemplateRef, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
 const { titles, planningFullIds, networkFailures, syncing, hasEvents } = usePlanningData()
 const isOnline = useOnline()
@@ -41,9 +41,9 @@ const desktopBadgeStatusTooltip = computed(() => {
   if (desktopBadgeStatus.value === 'sync') return 'Mise à jour en arrière-plan'
   return undefined
 })
+const showMobileSummary = computed(() => !isInitialLoading.value && selectedCount.value > 0)
 const selectedSummaryLabel = computed(() => {
   if (isInitialLoading.value) return 'Chargement…'
-  if (selectedCount.value === 0) return '...'
   if (selectedCount.value === 1) return singleSelectedTitle.value || '...'
   return `${selectedCount.value} plannings sélectionnés`
 })
@@ -65,28 +65,13 @@ function openSelectedInfo() {
   selectedInfoDialog.value?.showModal()
 }
 
-function openPickerIfEmpty() {
-  if (planningFullIds.value.length !== 0) return
-  void nextTick(() => {
-    requestAnimationFrame(() => planningPickerController.open())
-  })
-}
-
 onMounted(() => {
   planningPickerController.register(planningPicker.value ?? null)
-  openPickerIfEmpty()
 })
 
 onBeforeUnmount(() => {
   planningPickerController.register(null)
 })
-
-watch(
-  () => planningFullIds.value.length,
-  (len, prevLen) => {
-    if (len === 0 && prevLen > 0) openPickerIfEmpty()
-  },
-)
 
 onKeyStroke(
   'u',
@@ -120,7 +105,7 @@ onKeyStroke(
         </a>
         <div class="flex flex-col">
           <div>PlanningSup</div>
-          <div class="text-xs font-light flex items-center gap-1 sm:hidden">
+          <div v-if="isInitialLoading || showMobileSummary" class="text-xs font-light flex items-center gap-1 sm:hidden">
             <Transition mode="out-in" name="fade-fast">
               <div :key="isInitialLoading ? 'loading' : 'loaded'" class="flex items-center gap-1">
                 <div
