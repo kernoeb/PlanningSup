@@ -1,13 +1,13 @@
 import type { createCalendar } from '@schedule-x/calendar'
 import type { createCalendarControlsPlugin } from '@schedule-x/calendar-controls'
 import type { Ref } from 'vue'
-import { useLocalStorage, useWindowSize } from '@vueuse/core'
+import { useLocalStorage } from '@vueuse/core'
 import { computed, shallowRef, watch } from 'vue'
+import { useViewport } from './useViewport'
 
 type CalendarApp = ReturnType<typeof createCalendar>
 type CalendarControls = ReturnType<typeof createCalendarControlsPlugin>
 
-const RESPONSIVE_BREAKPOINT = 700 // ScheduleX internal breakpoint
 export const PLANNING_CALENDAR_VIEW_STORAGE_KEY = 'planning.calendar.view'
 
 type PlanningCalendarView = 'day' | 'week' | 'month-grid' | 'month-agenda'
@@ -26,9 +26,7 @@ export function useCalendarResponsiveView(options: {
   calendarApp: Ref<CalendarApp | null>
 }) {
   const { calendarControls, calendarApp } = options
-
-  const { width: windowWidth } = useWindowSize()
-  const isSmallScreen = computed(() => windowWidth.value < RESPONSIVE_BREAKPOINT)
+  const { isSmallScreen } = useViewport()
 
   const lastDesktopView = useLocalStorage<string | null>(PLANNING_CALENDAR_VIEW_STORAGE_KEY, null, {
     writeDefaults: false,
@@ -127,7 +125,6 @@ export function useCalendarResponsiveView(options: {
 
   return {
     currentView,
-    isSmallScreen,
     preferredView,
     updateCurrentView,
   }

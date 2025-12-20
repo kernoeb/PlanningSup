@@ -18,6 +18,7 @@ import { useCalendarResponsiveView } from './useCalendarResponsiveView'
 import { usePlanningData } from './usePlanningData'
 import { useSharedSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
+import { useViewport } from './useViewport'
 
 function mapApiEventToCalendarEvent(
   event: EventWithFullId,
@@ -65,7 +66,8 @@ export function usePlanningCalendar(options: {
 
   // Selected event for the bottom modal
   const selectedEvent = shallowRef<CalendarEvent | null>(null)
-  const { currentView, preferredView, updateCurrentView, isSmallScreen } = useCalendarResponsiveView({ calendarControls, calendarApp })
+  const { currentView, preferredView, updateCurrentView } = useCalendarResponsiveView({ calendarControls, calendarApp })
+  const { isSmallScreen } = useViewport()
 
   const settings = useSharedSettings()
   const planning = usePlanningData()

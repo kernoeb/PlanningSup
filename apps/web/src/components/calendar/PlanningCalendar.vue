@@ -7,6 +7,7 @@ import { usePlanningCalendar } from '@web/composables/usePlanningCalendar'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
+import { useViewport } from '@web/composables/useViewport'
 import {
   Calendar as IconCalendar,
   CalendarCheck2 as IconCalendarCheck2,
@@ -20,6 +21,7 @@ import CustomTimeGridEvent from './CustomTimeGridEvent.vue'
 const settings = useSharedSettings()
 const allowedTimezones = getSupportedTimezones()
 const timezone = computed(() => resolveTimezone(settings.targetTimezone.value, allowedTimezones))
+const { isSmallScreen } = useViewport()
 
 // Disable ScheduleX animations on first load, enable on first user interaction.
 const animationsEnabled = ref(false)
@@ -80,7 +82,10 @@ const viewOptions = [
 const formattedDate = computed(() => {
   const date = currentDate.value
   if (!date) return ''
-  return date.toLocaleString('fr-FR', { month: 'short', year: 'numeric' })
+  return date.toLocaleString('fr-FR', {
+    month: 'short',
+    year: isSmallScreen.value ? '2-digit' : 'numeric',
+  })
 })
 
 // Week number (ISO week)
@@ -187,7 +192,7 @@ defineExpose({ reload })
               <button
                 id="calendar-today-btn"
                 aria-label="Aller à aujourd'hui"
-                class="btn btn-outline border-base-200"
+                class="btn btn-ghost sm:btn-outline sm:border-base-200 btn-xs sm:btn-md"
                 @click="goToToday"
               >
                 <IconCalendarCheck2 v-if="isToday" aria-hidden="true" :size="16" />
