@@ -54,7 +54,7 @@ onUnmounted(() => {
 
           <!-- Action principale (CTA) -->
           <div class="pt-4 space-y-3">
-            <button class="btn btn-primary btn-lg px-8 shadow-md shadow-primary/20" type="button" @click="openPlanningPicker">
+            <button class="btn btn-primary btn-lg px-8 shadow-md shadow-primary/20 plausible-event-name=select-planning" type="button" @click="openPlanningPicker">
               <IconCalendar class="w-5 h-5" />
               Choisir mon planning
             </button>
