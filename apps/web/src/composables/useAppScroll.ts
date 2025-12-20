@@ -5,7 +5,7 @@ const isAppScrolled = ref(false)
 export function useAppScroll() {
   function handleScroll(e: Event) {
     const target = e.target as HTMLElement
-    isAppScrolled.value = target.scrollTop > 20
+    isAppScrolled.value = target.scrollTop > 17 // calendar logo location
   }
 
   function setIsScrolled(value: boolean) {

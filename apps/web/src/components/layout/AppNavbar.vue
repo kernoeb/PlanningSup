@@ -100,7 +100,7 @@ onKeyStroke(
   <div
     id="app-navbar"
     class="navbar bg-base-100 px-3 gap-2 transition-[box-shadow,border-color] duration-200 border-b border-transparent"
-    :class="{ 'shadow-sm !border-base-200': isAppScrolled }"
+    :class="{ 'shadow-sm': isAppScrolled }"
   >
     <div class="flex-1 flex items-center gap-3">
       <div id="app-logo" class="text-xl flex items-center gap-3">
@@ -108,7 +108,7 @@ onKeyStroke(
           <a href="/">
             <div class="avatar">
               <div class="w-8 rounded">
-                <img alt="PlanningSup" src="/favicon.png">
+                <img alt="PlanningSup" src="/maskable_icon_x96.png">
               </div>
             </div>
           </a>
