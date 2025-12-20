@@ -164,6 +164,27 @@ html[data-theme="dracula"] {
   .sx__date-picker-wrapper {
     display: none;
   }
+
+  .sx__week-grid__date {
+    flex-flow: row;
+    justify-content: center;
+  }
+
+  :root {
+    --sx-calendar-week-grid-padding-left: 50px !important;
+  }
+
+  .sx__week-grid__time-axis {
+    width: calc(100% - 50px - 5px);
+  }
+
+  .sx__week-grid__date-number {
+    font-size: 12px;
+  }
+
+  .sx__week-grid__day-name {
+    font-size: 12px;
+  }
 }
 
 .sx__week-grid__date {
