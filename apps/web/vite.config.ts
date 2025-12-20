@@ -1,13 +1,14 @@
 // import { bundleStats } from 'rollup-plugin-bundle-stats'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
-import { getAliases, getCommonPlugins, getDefaultProxy } from '../../packages/config/vite/shared.ts'
+import { getAliases, getCommonPlugins, getDefaultDefine, getDefaultProxy } from '../../packages/config/vite/shared.ts'
 
 export default defineConfig({
   resolve: {
     alias: getAliases(import.meta.url),
   },
   define: {
+    ...getDefaultDefine(),
     __PWA_ENABLED__: true,
   },
   plugins: [

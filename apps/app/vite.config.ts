@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite'
 import { fileURLToPath } from 'node:url'
-import { getAliases, getCommonPlugins, getOptimizeDeps } from '../../packages/config/vite/shared'
+import { defineConfig } from 'vite'
+import { getAliases, getCommonPlugins, getDefaultDefine, getOptimizeDeps } from '../../packages/config/vite/shared'
 
 const host = Bun.env.TAURI_DEV_HOST
 
@@ -15,6 +15,7 @@ export default defineConfig({
     ],
   },
   define: {
+    ...getDefaultDefine(),
     __PWA_ENABLED__: false,
   },
   plugins: getCommonPlugins(),

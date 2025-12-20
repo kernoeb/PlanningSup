@@ -11,6 +11,9 @@ import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import type { PluginOption } from 'vite'
+import { join } from 'node:path'
+
+const packageJson = await Bun.file(join(import.meta.dirname, '../../../package.json')).json() as { displayName: string, version: string }
 
 /**
  * Resolve a filesystem path from a given import.meta.url and a relative URL segment.
@@ -76,5 +79,16 @@ export function getDefaultProxy() {
     '/config.js': 'http://localhost:20000',
     '/robots.txt': 'http://localhost:20000',
     '/sitemap.xml': 'http://localhost:20000',
+  }
+}
+
+
+/**
+ * Returns the default define variables for the monorepo.
+ */
+export function getDefaultDefine() {
+  return {
+    __APP_VERSION__: JSON.stringify(packageJson.version),
+    __APP_DISPLAY_NAME__: JSON.stringify(packageJson.displayName),
   }
 }

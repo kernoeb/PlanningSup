@@ -1,5 +1,6 @@
 {
   "name": "planningsup",
+  "displayName": "PlanningSup",
   "version": "3.0.3",
   "private": "true",
   "type": "module",

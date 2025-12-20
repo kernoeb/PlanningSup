@@ -1,6 +1,8 @@
 /// <reference types="vite/client" />
 
 declare const __PWA_ENABLED__: boolean | undefined
+declare const __APP_VERSION__: string | undefined
+declare const __APP_DISPLAY_NAME__: string | undefined
 
 declare module 'virtual:pwa-register/vue' {
   import type { Ref } from 'vue'

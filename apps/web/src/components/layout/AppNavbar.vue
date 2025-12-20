@@ -9,6 +9,8 @@ import { usePlanningPickerController } from '@web/composables/usePlanningPickerC
 import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
 import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
+const imageTooltipText = `${__APP_DISPLAY_NAME__ || ''} ${__APP_VERSION__ || ''}`.trim()
+
 const { titles, planningFullIds, networkFailures, syncing, hasEvents } = usePlanningData()
 const isOnline = useOnline()
 const { isAppScrolled } = useAppScroll()
@@ -102,13 +104,15 @@ onKeyStroke(
   >
     <div class="flex-1 flex items-center gap-3">
       <div id="app-logo" class="text-xl flex items-center gap-3">
-        <a href="/">
-          <div class="avatar">
-            <div class="w-8 rounded">
-              <img alt="PlanningSup" src="/favicon.png">
+        <div class="tooltip tooltip-right" :data-tip="imageTooltipText">
+          <a href="/">
+            <div class="avatar">
+              <div class="w-8 rounded">
+                <img alt="PlanningSup" src="/favicon.png">
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
         <div class="flex flex-col">
           <div>PlanningSup</div>
           <div v-if="isInitialLoading || showMobileSummary" class="text-xs font-light flex items-center gap-1 sm:hidden">

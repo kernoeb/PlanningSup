@@ -2,7 +2,7 @@ import { dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 
-import { getAliases, getCommonPlugins, getOptimizeDeps, getRoot } from '../../packages/config/vite/shared'
+import { getAliases, getCommonPlugins, getDefaultDefine, getOptimizeDeps, getRoot } from '../../packages/config/vite/shared'
 import packageJson from './package.json'
 import { isDev, port, r } from './scripts/utils'
 
@@ -23,6 +23,7 @@ export default defineConfig(({ command }) => ({
     ],
   },
   define: {
+    ...getDefaultDefine(),
     __DEV__: isDev,
     __NAME__: JSON.stringify(packageJson.name),
     __PWA_ENABLED__: false,
