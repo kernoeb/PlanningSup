@@ -185,8 +185,13 @@ onKeyStroke(
     <UserMenu />
 
     <div class="fab sm:hidden">
-      <button id="mobile-planning-fab" aria-label="Changer de planning" class="btn btn-xl btn-circle btn-primary size-16 shadow-2xl ring-2 ring-base-content/10 hover:shadow-2xl" type="button" @click="planningPickerController.open()">
-        <IconList class="size-7" />
+      <button
+        id="mobile-planning-fab" aria-label="Changer de planning"
+        class="btn btn-circle btn-primary size-14 shadow-xl"
+        type="button"
+        @click="planningPickerController.open()"
+      >
+        <IconList class="size-6" />
       </button>
     </div>
 

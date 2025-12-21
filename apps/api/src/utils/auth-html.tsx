@@ -8,7 +8,9 @@ import config from '@api/config'
 import { html, Html } from '@elysiajs/html' // deepscan-disable-line
 import { Elysia } from 'elysia'
 
-const pageCss = `
+const css = String.raw
+
+const pageCss = css`
             body {
               font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
               background-color: #1a1a1a;

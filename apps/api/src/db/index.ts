@@ -18,7 +18,16 @@ const db = drizzle({
 
 // Wait for database to be ready
 logger.info('Connecting to database...')
-await client.connect()
+async function retryConnect() {
+  try {
+    await client.connect()
+  } catch (error) {
+    console.error('Database connection failed:', (error as Error)?.message || error)
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await retryConnect()
+  }
+}
+await retryConnect()
 logger.info('Database connected.')
 
 if (!config.noMigrateDatabase) {
