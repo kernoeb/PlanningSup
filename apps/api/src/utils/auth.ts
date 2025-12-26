@@ -6,10 +6,11 @@ import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
+import { and, eq, ne } from 'drizzle-orm'
 import * as z from 'zod'
 import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from './auth-validators'
 
-function createAuth() {
+function createAuth(): ReturnType<typeof betterAuth> | null {
   // Skip BetterAuth initialization entirely when auth is disabled
   if (!config.authEnabled) {
     return null
@@ -128,11 +129,27 @@ function createAuth() {
         clientId: config.auth.discord.clientId!,
         clientSecret: config.auth.discord.clientSecret!,
         prompt: 'consent',
+        overrideUserInfoOnSignIn: true,
+        async mapProfileToUser(profile) {
+          await db
+            .update(schema.user)
+            .set({
+              image: profile.image_url,
+            })
+            .where(
+              and(
+                eq(schema.user.email, profile.email),
+                ne(schema.user.image, profile.image_url),
+              ),
+            )
+          return profile
+        },
       },
       github: {
         clientId: config.auth.github.clientId!,
         clientSecret: config.auth.github.clientSecret!,
         prompt: 'consent',
+        overrideUserInfoOnSignIn: true,
       },
     },
   } satisfies BetterAuthOptions
