@@ -15,7 +15,7 @@
   "dependencies": {
     "@elysiajs/cors": "1.4.0",
     "@elysiajs/html": "1.4.0",
-    "@elysiajs/openapi": "1.4.12",
+    "@elysiajs/openapi": "1.4.13",
     "@elysiajs/static": "1.4.7",
     "@logtape/logtape": "1.3.5",
     "better-auth": "catalog:",
