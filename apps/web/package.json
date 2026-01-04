@@ -50,7 +50,7 @@
     "daisyui": "catalog:ui",
     "elysia": "catalog:",
     "playwright": "1.57.0",
-    "rollup-plugin-bundle-stats": "4.21.7",
+    "rollup-plugin-bundle-stats": "4.21.8",
     "sass-embedded": "catalog:ui",
     "tailwindcss": "catalog:ui",
     "typescript": "catalog:dev",

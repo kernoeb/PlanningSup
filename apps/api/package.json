@@ -13,7 +13,7 @@
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
-    "@elysiajs/cors": "1.4.0",
+    "@elysiajs/cors": "1.4.1",
     "@elysiajs/html": "1.4.0",
     "@elysiajs/openapi": "1.4.13",
     "@elysiajs/static": "1.4.7",
