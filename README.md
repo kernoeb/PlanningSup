@@ -28,6 +28,10 @@
 
 > N'hésitez pas à créer une issue ou à me contacter sur [Telegram](https://t.me/kernoeb) (@kernoeb) ou Discord (kernoeb) pour plus d'infos, pour me notifier d'une erreur ou proposer une fonctionnalité !
 
+## Extension navigateur
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/planningsup/bcjhdlcgblcphljokeippholkfifdbod)
+
 ## Ajouter une spécialité ou une université
 
 Si votre université (ou autre !) accepte le format `ICS` pour les calendriers, vous pouvez ouvrir une Pull Request en modifiant le fichier `.json` correspondant dans `resources/plannings`.
