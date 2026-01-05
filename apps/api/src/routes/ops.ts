@@ -6,7 +6,7 @@ import { jobs } from '@api/jobs'
 import { getLastBackupWrite } from '@api/utils/plannings-backup'
 
 import { desc, eq, sql } from 'drizzle-orm'
-import { Elysia } from 'elysia'
+import { Elysia, t } from 'elysia'
 
 const LOCK_TTL_MINUTES = 5
 const DEFAULT_MAX_ATTEMPTS = 10
@@ -31,7 +31,70 @@ function isAuthorized(headers: Headers) {
   return headers.get('x-ops-token') === token
 }
 
-export default new Elysia({ prefix: '/ops' })
+const HealthStatusSchema = t.Union([
+  t.Literal('healthy'),
+  t.Literal('degraded'),
+  t.Literal('unhealthy'),
+], { description: 'Overall health status of the plannings system' })
+
+const JobRuntimeStateSchema = t.Union([
+  t.Literal('starting'),
+  t.Literal('idle'),
+  t.Literal('working'),
+  t.Literal('paused'),
+  t.Literal('quiet_hours'),
+  t.Literal('stopped'),
+  t.Literal('exited'),
+  t.Literal('crashed'),
+  t.Literal('unknown'),
+], { description: 'State of a background job worker' })
+
+const LastBackupWriteSchema = t.Object({
+  planningFullId: t.String({ description: 'ID of the planning that was backed up' }),
+  changed: t.Boolean({ description: 'Whether the backup data changed from the previous version' }),
+  nbEvents: t.Number({ description: 'Number of events in the backup' }),
+  at: t.Date({ description: 'Timestamp when the backup was written' }),
+}, { description: 'Information about the most recent backup write operation' })
+
+const OpsHealthResponse = t.Object({
+  status: HealthStatusSchema,
+  issues: t.Array(t.String(), { description: 'List of detected health issues' }),
+  workers: t.Object({
+    backfill: JobRuntimeStateSchema,
+    refreshWorker: JobRuntimeStateSchema,
+  }, { description: 'Current state of background workers' }),
+  inQuietHours: t.Boolean({ description: 'Whether the system is currently in quiet hours (reduced activity)' }),
+  queue: t.Object({
+    depth: t.Number({ description: 'Total items in the refresh queue' }),
+    ready: t.Number({ description: 'Items ready to be processed' }),
+    locked: t.Number({ description: 'Items currently being processed' }),
+  }, { description: 'Refresh queue statistics' }),
+  backups: t.Object({
+    total: t.Number({ description: 'Total number of plannings' }),
+    covered: t.Number({ description: 'Number of plannings with backups' }),
+    disabled: t.Number({ description: 'Number of plannings with disabled refresh' }),
+  }, { description: 'Backup coverage statistics' }),
+  lastBackupWrite: t.Nullable(LastBackupWriteSchema),
+  failedHosts: t.Nullable(t.Array(t.Object({
+    host: t.String({ description: 'Host name' }),
+    count: t.Number({ description: 'Number of failed plannings on this host' }),
+    lastFailure: t.Nullable(t.String({ description: 'Most recent failure type' })),
+  })), { description: 'Hosts with the most failures' }),
+  recentFailures: t.Nullable(t.Array(t.Object({
+    planningFullId: t.String({ description: 'Full planning ID' }),
+    failureKind: t.Nullable(t.String({ description: 'Type of failure' })),
+    failures: t.Number({ description: 'Consecutive failure count' }),
+    disabledUntil: t.Nullable(t.Date({ description: 'When the planning will be re-enabled' })),
+  })), { description: 'Most recently failed plannings' }),
+})
+
+export default new Elysia({
+  prefix: '/ops',
+  tags: ['Operations'],
+  detail: {
+    security: [{ opsToken: [] }],
+  },
+})
   .onBeforeHandle(({ request, set }) => {
     if (!isAuthorized(request.headers)) {
       set.status = 404
@@ -169,4 +232,10 @@ export default new Elysia({ prefix: '/ops' })
       failedHosts: failedHosts.length > 0 ? failedHosts : null,
       recentFailures: recentFailures.length > 0 ? recentFailures : null,
     }
+  }, {
+    response: OpsHealthResponse,
+    detail: {
+      summary: 'Get plannings health status',
+      description: 'Returns health status of the plannings refresh system including queue stats, backup coverage, and recent failures. Requires x-ops-token header.',
+    },
   })

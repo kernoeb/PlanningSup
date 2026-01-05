@@ -4,7 +4,7 @@ import planningsRoutes from '@api/routes/plannings'
 import { defaultLogger as logger } from '@api/utils/logger'
 import { cors } from '@elysiajs/cors'
 import { openapi } from '@elysiajs/openapi'
-import { Elysia } from 'elysia'
+import { Elysia, t } from 'elysia'
 
 logger.info(`Authentication is ${config.authEnabled ? 'enabled' : 'disabled'}`)
 
@@ -32,7 +32,39 @@ const api = new Elysia({
 
     return Response.json({ error, message: isNotFound ? 'Route not found' : 'Internal server error' })
   })
-  .use(openapi())
+  .use(
+    openapi({
+      documentation: {
+        info: {
+          title: 'PlanningSup API',
+          description: 'University calendar API - ICS to events conversion with offline support and auth preferences sync',
+          version: '3.0.0',
+        },
+        tags: [
+          { name: 'Plannings', description: 'Planning and events endpoints' },
+          { name: 'Operations', description: 'Operational health and monitoring endpoints (requires x-ops-token)' },
+          { name: 'Auth', description: 'Authentication endpoints (BetterAuth)' },
+          { name: 'Health', description: 'Health check endpoints' },
+        ],
+        components: {
+          securitySchemes: {
+            opsToken: {
+              type: 'apiKey',
+              in: 'header',
+              name: 'x-ops-token',
+              description: 'Operations token for admin endpoints',
+            },
+            bearerAuth: {
+              type: 'http',
+              scheme: 'bearer',
+              bearerFormat: 'JWT',
+              description: 'Bearer token for authenticated endpoints',
+            },
+          },
+        },
+      },
+    }),
+  )
   .use(
     cors({
       origin: config.trustedOrigins,
@@ -41,7 +73,14 @@ const api = new Elysia({
       allowedHeaders: ['Content-Type', 'Authorization'],
     }),
   )
-  .get('/ping', () => 'pong')
+  .get('/ping', () => 'pong' as const, {
+    response: t.Literal('pong'),
+    detail: {
+      summary: 'Health check',
+      description: 'Simple ping endpoint to verify API is running',
+      tags: ['Health'],
+    },
+  })
   .use(opsRoutes)
   .use(planningsRoutes)
 
@@ -63,6 +102,8 @@ if (auth) {
 api.all('*', ({ set }) => {
   set.status = 404
   return Response.json({ error: 'NOT_FOUND', message: 'Route not found' })
+}, {
+  detail: { hide: true },
 })
 
 export type App = typeof api
