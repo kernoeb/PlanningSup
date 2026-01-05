@@ -1,12 +1,15 @@
 <script lang="ts" setup>
+import { useCurrentPlanning } from '@web/composables/useCurrentPlanning'
 import { useSharedPlanningState } from '@web/composables/useSharedPlanningUrl'
-import { Link as IconLink } from 'lucide-vue-next'
+import { Link as IconLink, Undo2 as IconUndo } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
-const { loadedFromUrlCount, clearLoadedCount } = useSharedPlanningState()
+const { loadedFromUrlCount, previousPlannings, clearLoadedCount } = useSharedPlanningState()
+const { setPlanningFullIds } = useCurrentPlanning()
 
 const isVisible = ref(false)
 const displayCount = ref(0)
+const canUndo = ref(false)
 
 const message = computed(() => {
   if (displayCount.value === 1) {
@@ -15,7 +18,7 @@ const message = computed(() => {
   return `${displayCount.value} plannings chargés depuis le lien`
 })
 
-// Auto-hide after 10 seconds
+// Auto-hide after 6 seconds
 let hideTimeout: ReturnType<typeof setTimeout> | null = null
 
 function clearHideTimeout() {
@@ -31,16 +34,24 @@ function hide() {
   clearLoadedCount()
 }
 
+function undo() {
+  clearHideTimeout()
+  setPlanningFullIds(previousPlannings.value)
+  isVisible.value = false
+  clearLoadedCount()
+}
+
 watch(loadedFromUrlCount, (count) => {
   clearHideTimeout()
 
   if (count > 0) {
     displayCount.value = count
+    canUndo.value = previousPlannings.value.length > 0
     isVisible.value = true
 
     hideTimeout = setTimeout(() => {
       hide()
-    }, 10_000)
+    }, 6000)
   }
 }, { immediate: true })
 </script>
@@ -49,29 +60,39 @@ watch(loadedFromUrlCount, (count) => {
   <Transition name="share-toast">
     <div
       v-if="isVisible"
-      class="toast toast-bottom z-50 w-full px-8 items-center pointer-events-none md:bottom-4"
+      class="toast toast-bottom z-50 w-full px-4 items-center pointer-events-none bottom-20 sm:bottom-4 md:px-8"
     >
       <div
         aria-atomic="true"
         aria-live="polite"
-        class="alert alert-soft share-toast-alert pointer-events-auto flex items-center justify-between gap-3 rounded-2xl border shadow-lg ring-1 ring-base-content/10 text-base-content w-full md:w-lg"
+        class="alert share-toast-alert pointer-events-auto flex items-center justify-between gap-3 rounded-2xl border shadow-lg text-primary-content w-full md:w-lg"
         role="status"
-        style="--alert-color: var(--color-primary);"
       >
         <div class="flex items-center gap-2">
-          <IconLink aria-hidden="true" class="size-4 opacity-70" />
+          <IconLink aria-hidden="true" class="size-4" />
           <span class="text-sm font-medium">
             {{ message }}
           </span>
         </div>
-        <button
-          aria-label="Fermer"
-          class="btn btn-ghost btn-xs"
-          type="button"
-          @click="hide"
-        >
-          OK
-        </button>
+        <div class="flex items-center gap-1">
+          <button
+            v-if="canUndo"
+            class="btn btn-ghost btn-sm text-primary-content hover:bg-primary-content/20"
+            type="button"
+            @click="undo"
+          >
+            <IconUndo class="size-4" />
+            Annuler
+          </button>
+          <button
+            aria-label="Fermer"
+            class="btn btn-ghost btn-sm text-primary-content hover:bg-primary-content/20"
+            type="button"
+            @click="hide"
+          >
+            OK
+          </button>
+        </div>
       </div>
     </div>
   </Transition>
@@ -107,14 +128,7 @@ watch(loadedFromUrlCount, (count) => {
 }
 
 .share-toast-alert {
-  border-color: color-mix(in oklab, var(--alert-color) 20%, #0000);
-  background-color: color-mix(in oklab, var(--color-base-100) 80%, #0000);
-  backdrop-filter: blur(12px);
-}
-
-@supports not (backdrop-filter: blur(1px)) {
-  .share-toast-alert {
-    background-color: color-mix(in oklab, var(--color-base-100) 95%, #0000);
-  }
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 </style>

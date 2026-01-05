@@ -18,23 +18,27 @@ import { useCurrentPlanning } from './useCurrentPlanning'
 export const SHARE_QUERY_PARAM = 'p'
 
 /**
- * Global state to track how many plannings were loaded from URL
+ * Global state to track plannings loaded from URL and enable undo
  * This is used by the toast component to show a notification
  */
 export const useSharedPlanningState = createGlobalState(() => {
   const loadedFromUrlCount = ref(0)
+  const previousPlannings = ref<string[]>([])
 
-  function setLoadedCount(count: number) {
+  function setLoadedFromUrl(count: number, previousIds: string[]) {
     loadedFromUrlCount.value = count
+    previousPlannings.value = previousIds
   }
 
   function clearLoadedCount() {
     loadedFromUrlCount.value = 0
+    previousPlannings.value = []
   }
 
   return {
     loadedFromUrlCount,
-    setLoadedCount,
+    previousPlannings,
+    setLoadedFromUrl,
     clearLoadedCount,
   }
 })
@@ -56,13 +60,14 @@ function parsePlanningIdsFromParam(param: string | null): string[] {
  *
  * If the `p` query param is present in the URL:
  * - Parses the comma-separated planning IDs
+ * - Stores the previous selection for undo functionality
  * - Sets them as the current planning selection
  * - Removes the query param from the URL (clean URL after loading)
  * - Sets loadedFromUrlCount to trigger toast notification
  */
 export function useSharedPlanningUrl(): void {
-  const { setPlanningFullIds } = useCurrentPlanning()
-  const { setLoadedCount } = useSharedPlanningState()
+  const { planningFullIds, setPlanningFullIds } = useCurrentPlanning()
+  const { setLoadedFromUrl } = useSharedPlanningState()
 
   // Only run in browser
   if (typeof window === 'undefined') return
@@ -73,8 +78,10 @@ export function useSharedPlanningUrl(): void {
   if (sharedParam) {
     const ids = parsePlanningIdsFromParam(sharedParam)
     if (ids.length > 0) {
+      // Store previous plannings before replacing
+      const previousIds = [...planningFullIds.value]
       setPlanningFullIds(ids)
-      setLoadedCount(ids.length)
+      setLoadedFromUrl(ids.length, previousIds)
     }
 
     // Clean up the URL by removing the share parameter
