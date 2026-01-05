@@ -2,9 +2,10 @@
 import type { CustomGroup } from '@web/composables/useSettings'
 import { client } from '@libs'
 import { onClickOutside, refDebounced, useVirtualList } from '@vueuse/core'
+import ShareModal from '@web/components/share/ShareModal.vue'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
-import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcwIcon as IconRotateCcw, XIcon as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
+import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcw as IconRotateCcw, Share2 as IconShare, X as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
 
 // Object.groupBy is Baseline 2024
@@ -55,6 +56,9 @@ const expanded = ref<Set<string>>(new Set())
 // Collapse state
 const showCustomGroups = ref(true)
 const showSelectedItems = ref(false)
+
+// Share modal state
+const shareModalOpen = ref(false)
 
 function findPathInTree(
   nodes: PlanningNode[] | undefined,
@@ -631,47 +635,59 @@ watch(
             </div>
           </div>
 
-          <div v-if="selectedItems.length > 0" class="collapse collapse-arrow">
-            <input v-model="showSelectedItems" type="checkbox">
-            <div class="collapse-title after:start-2 after:end-auto pe-4 ps-8 flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
-              <h4 class="text-sm font-medium text-base-content/70">
-                Plannings sélectionnés
-                <span class="ms-2 text-xs text-base-content/50">
-                  ({{ selectedItems.length }})
+          <div v-if="selectedItems.length > 0" class="flex items-center gap-2">
+            <div class="collapse collapse-arrow flex-1">
+              <input v-model="showSelectedItems" type="checkbox">
+              <div class="collapse-title after:start-2 after:end-auto pe-4 ps-8 flex flex-col md:flex-row md:items-baseline-last justify-start md:gap-4 p-0 min-h-0 py-2">
+                <h4 class="text-sm font-medium text-base-content/70">
+                  Plannings sélectionnés
+                  <span class="ms-2 text-xs text-base-content/50">
+                    ({{ selectedItems.length }})
+                  </span>
+                </h4>
+                <span class="text-xs text-base-content/50">
+                  Voir les plannings sélectionnés
                 </span>
-              </h4>
-              <span class="text-xs text-base-content/50">
-                Voir les plannings sélectionnés
-              </span>
-            </div>
-            <div id="selected-plannings-list" class="collapse-content px-0">
-              <div class="flex flex-wrap gap-2 pt-2 overflow-x-auto">
-                <div
-                  v-for="item in selectedItems"
-                  :id="`selected-planning-${item.id}`"
-                  :key="item.id"
-                  class="tooltip tooltip-top w-fit before:z-50 after:z-50"
-                  :data-tip="item.title"
-                >
+              </div>
+              <div id="selected-plannings-list" class="collapse-content px-0">
+                <div class="flex flex-wrap gap-2 pt-2 overflow-x-auto">
                   <div
-                    class="badge badge-md gap-1 bg-base-200"
-                    title="Cliquer pour retirer"
+                    v-for="item in selectedItems"
+                    :id="`selected-planning-${item.id}`"
+                    :key="item.id"
+                    class="tooltip tooltip-top w-fit before:z-50 after:z-50"
+                    :data-tip="item.title"
                   >
-                    <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
-                      {{ item.shortTitle }}
-                    </div>
-                    <button
-                      :id="`remove-planning-${item.id}`"
-                      :aria-label="`Retirer ${item.title}`"
-                      class="btn btn-xs btn-circle btn-ghost shrink-0"
-                      @click="togglePlanning(item.id)"
+                    <div
+                      class="badge badge-md gap-1 bg-base-200"
+                      title="Cliquer pour retirer"
                     >
-                      <IconX class="size-3" />
-                    </button>
+                      <div class="overflow-hidden text-ellipsis whitespace-nowrap [direction:rtl] text-left flex-1 min-w-0 max-w-full">
+                        {{ item.shortTitle }}
+                      </div>
+                      <button
+                        :id="`remove-planning-${item.id}`"
+                        :aria-label="`Retirer ${item.title}`"
+                        class="btn btn-xs btn-circle btn-ghost shrink-0"
+                        @click="togglePlanning(item.id)"
+                      >
+                        <IconX class="size-3" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+            <button
+              id="share-selection-button"
+              class="btn btn-ghost btn-sm mt-1 tooltip tooltip-left before:z-50 after:z-50"
+              data-tip="Partager la sélection"
+              type="button"
+              @click="shareModalOpen = true"
+            >
+              <IconShare class="size-4" />
+              <span class="hidden sm:inline">Partager</span>
+            </button>
           </div>
         </div>
 
@@ -803,5 +819,7 @@ watch(
         </form>
       </dialog>
     </dialog>
+
+    <ShareModal v-model:open="shareModalOpen" />
   </div>
 </template>
