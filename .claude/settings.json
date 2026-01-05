@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun run test:*)",
+      "Bash(bun test:*)",
+      "Bash(bun run typecheck:*)",
+      "Bash(bun run lint:*)",
+      "Bash(bunx eslint:*)",
+      "Bash(cat:*)",
+      "Bash(curl:*)",
+      "Bash(jq:*)",
+      "mcp__plugin_context7_context7__get-library-docs",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:schedule-x.dev)",
+      "WebFetch(domain:www.better-auth.com)",
+      "WebFetch(domain:elysiajs.com)"
+    ]
+  }
+}

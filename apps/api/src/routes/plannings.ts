@@ -2,10 +2,15 @@ import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
 import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
 import { markPlanningRefreshSuccess, requestPlanningRefresh, schedulePlanningBackupWrite } from '@api/utils/plannings-backup'
-import { Elysia } from 'elysia'
+import { Elysia, t } from 'elysia'
 
-export default new Elysia({ prefix: '/plannings' })
-  .get('/', () => cleanedPlannings)
+export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
+  .get('/', () => cleanedPlannings, {
+    detail: {
+      summary: 'List all plannings',
+      description: 'Returns all available university plannings organized by host',
+    },
+  })
   .get('/:fullId', async ({ params: { fullId }, status, query, headers }) => {
     const planning = flattenedPlannings.find(p => p.fullId === fullId)
     if (!planning) return status(404, { error: 'Planning not found' })
@@ -97,4 +102,20 @@ export default new Elysia({ prefix: '/plannings' })
       elysiaLogger.info('Serving info for planning {fullId}', { fullId })
       return partialInfos
     }
+  }, {
+    params: t.Object({
+      fullId: t.String({ description: 'Full planning ID (e.g., "host.planning-id")' }),
+    }),
+    query: t.Object({
+      events: t.Optional(t.String({ description: 'Set to "true" to include calendar events' })),
+      onlyDb: t.Optional(t.String({ description: 'Set to "true" to only fetch from database (no network)' })),
+      blocklist: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events' })),
+      highlightTeacher: t.Optional(t.String({ description: 'Set to "true" to highlight teacher names' })),
+      browserTimezone: t.Optional(t.String({ description: 'Browser timezone (fallback for x-timezone header)' })),
+      targetTimezone: t.Optional(t.String({ description: 'Target timezone for event times (fallback for x-target-timezone header)' })),
+    }),
+    detail: {
+      summary: 'Get planning by ID',
+      description: 'Returns a planning by its full ID. When events=true, fetches and returns calendar events with optional filtering and timezone conversion.',
+    },
   })
