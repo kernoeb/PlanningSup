@@ -3,11 +3,12 @@ import { onKeyStroke, useOnline } from '@vueuse/core'
 import CurrentPlanningBadge from '@web/components/layout/CurrentPlanningBadge.vue'
 import UserMenu from '@web/components/layout/UserMenu.vue'
 import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
+import ShareModal from '@web/components/share/ShareModal.vue'
 import { useAppScroll } from '@web/composables/useAppScroll'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
-import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
-import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
+import { List as IconList, RefreshCw as IconRefresh, Share2 as IconShare, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
+import { computed, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
 const imageTooltipText = `${__APP_DISPLAY_NAME__ || ''} ${__APP_VERSION__ || ''}`.trim()
 
@@ -64,9 +65,14 @@ const desktopBadgeTooltip = computed(() => (selectedCount.value > 1 ? selectedTi
 const planningPicker = useTemplateRef('planningPicker')
 const planningPickerController = usePlanningPickerController()
 const selectedInfoDialog = useTemplateRef('selectedInfoDialog')
+const shareModalOpen = ref(false)
 
 function openSelectedInfo() {
   selectedInfoDialog.value?.showModal()
+}
+
+function openShareModal() {
+  shareModalOpen.value = true
 }
 
 onMounted(() => {
@@ -136,6 +142,16 @@ onKeyStroke(
                     i
                   </button>
 
+                  <button
+                    id="mobile-share-button"
+                    class="btn btn-ghost btn-xs h-5 min-h-5 px-1"
+                    title="Partager"
+                    type="button"
+                    @click.prevent.stop="openShareModal"
+                  >
+                    <IconShare class="size-3.5" />
+                  </button>
+
                   <Transition mode="out-in" name="fade">
                     <IconWifiOff v-if="!isOnline" key="offline" class="size-3 text-warning" />
                     <IconWarning v-else-if="hasNetworkFailures" key="warning" class="size-3 text-warning" />
@@ -169,13 +185,22 @@ onKeyStroke(
           </template>
         </PlanningPicker>
         <Transition mode="out-in" name="fade">
-          <div v-if="showDesktopBadge" key="badge" class="hidden sm:inline-flex">
+          <div v-if="showDesktopBadge" key="badge" class="hidden sm:inline-flex items-center gap-2">
             <CurrentPlanningBadge
               :label="desktopBadgeLabel"
               :status="desktopBadgeStatus"
               :status-tooltip="desktopBadgeStatusTooltip"
               :tooltip="desktopBadgeTooltip"
             />
+            <button
+              class="btn btn-ghost btn-sm h-6 min-h-6 px-2"
+              title="Partager la sélection"
+              type="button"
+              @click="openShareModal"
+            >
+              <IconShare class="size-4" />
+              <span class="hidden lg:inline">Partager</span>
+            </button>
           </div>
           <span v-else key="empty" aria-hidden="true" class="hidden sm:inline-flex h-6" />
         </Transition>
@@ -227,6 +252,8 @@ onKeyStroke(
         </button>
       </form>
     </dialog>
+
+    <ShareModal v-model:open="shareModalOpen" />
   </div>
 </template>
 

@@ -3,7 +3,9 @@ import PlanningCalendar from '@web/components/calendar/PlanningCalendar.vue'
 import AppNavbar from '@web/components/layout/AppNavbar.vue'
 import NetworkFailureToast from '@web/components/NetworkFailureToast.vue'
 import PlanningSyncToast from '@web/components/PlanningSyncToast.vue'
+import SharedPlanningToast from '@web/components/share/SharedPlanningToast.vue'
 
+import { useSharedPlanningUrl } from '@web/composables/useSharedPlanningUrl'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { defineAsyncComponent } from 'vue'
 
@@ -15,6 +17,9 @@ const LazyBouncing = defineAsyncComponent(() => import('@web/components/misc/Bou
 
 // Ensure global side-effects from theme management (html[data-theme], favicon sync, etc.) run early.
 useSharedTheme()
+
+// Initialize planning selection from URL query parameter if present
+useSharedPlanningUrl()
 </script>
 
 <template>
@@ -23,6 +28,7 @@ useSharedTheme()
     <PlanningCalendar class="planning-calendar" />
     <PlanningSyncToast />
     <NetworkFailureToast />
+    <SharedPlanningToast />
     <LazyBouncing />
   </div>
 </template>
