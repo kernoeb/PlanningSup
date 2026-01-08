@@ -10,7 +10,7 @@
     "coverage": "bun test --coverage"
   },
   "dependencies": {
-    "@tauri-apps/plugin-http": "2.5.4",
+    "@tauri-apps/plugin-http": "2.5.5",
     "elysia": "catalog:"
   },
   "devDependencies": {
