@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { Check as IconCheck, Copy as IconCopy, X as IconX } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, ref, useTemplateRef, watch } from 'vue'
 
 defineOptions({ name: 'ShareModal' })
 
-const props = withDefaults(defineProps<{
-  open?: boolean
-}>(), {
-  open: false,
-})
+const { open = false } = defineProps<{ open?: boolean }>()
 
 const emit = defineEmits<{
-  (e: 'update:open', value: boolean): void
+  'update:open': [value: boolean]
 }>()
 
-const dialogRef = ref<HTMLDialogElement | null>(null)
+const dialogRef = useTemplateRef('dialogRef')
 const copied = ref(false)
 
 const { planningFullIds } = usePlanningData()
@@ -35,28 +31,14 @@ function close() {
 
 async function copyToClipboard() {
   if (!shareUrl.value) return
-  try {
-    await navigator.clipboard.writeText(shareUrl.value)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  } catch {
-    // Fallback for older browsers
-    const textArea = document.createElement('textarea')
-    textArea.value = shareUrl.value
-    document.body.appendChild(textArea)
-    textArea.select()
-    document.execCommand('copy')
-    document.body.removeChild(textArea)
-    copied.value = true
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  }
+  await navigator.clipboard.writeText(shareUrl.value)
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+  }, 2000)
 }
 
-watch(() => props.open, (next) => {
+watch(() => open, (next) => {
   const el = dialogRef.value
   if (!el) return
   if (next) {
