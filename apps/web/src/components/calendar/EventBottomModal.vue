@@ -12,7 +12,7 @@ import {
   Monitor as IconMonitor,
   X as IconX,
 } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, useTemplateRef, watch } from 'vue'
 
 const props = defineProps<{
   event: CalendarEvent | null
@@ -23,8 +23,8 @@ const emit = defineEmits<{
   (e: 'close'): void
 }>()
 
-const drawerRef = ref<HTMLDivElement | null>(null)
-const confirmModalRef = ref<HTMLDialogElement | null>(null)
+const drawerRef = useTemplateRef('drawerRef')
+const confirmModalRef = useTemplateRef('confirmModalRef')
 const settings = useSharedSettings()
 
 // Type guard for ZonedDateTime
