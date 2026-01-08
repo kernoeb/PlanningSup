@@ -266,7 +266,7 @@ watch(() => props.event, (event) => {
               @click="showHideConfirmation"
             >
               <IconEyeOff :size="16" />
-              Cacher ce cours
+              Cacher ce type de cours
             </button>
           </div>
         </div>
@@ -277,13 +277,13 @@ watch(() => props.event, (event) => {
     <dialog ref="confirmModalRef" class="modal">
       <div class="modal-box">
         <h3 class="font-bold text-lg">
-          Cacher ce cours ?
+          Cacher ce type de cours ?
         </h3>
         <p class="py-4">
-          Le cours <strong>{{ event?.title }}</strong> sera masqu&eacute; de votre calendrier.
+          Tous les cours nommés <strong>{{ event?.title }}</strong> seront cachés de votre calendrier.
         </p>
         <p class="text-sm text-base-content/60">
-          Vous pourrez le r&eacute;afficher depuis les param&egrave;tres, dans la section "Liste de blocage".
+          Vous pourrez les réafficher depuis les paramètres, dans la section "Liste de blocage".
         </p>
         <div class="modal-action">
           <form method="dialog">
