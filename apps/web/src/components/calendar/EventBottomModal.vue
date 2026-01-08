@@ -6,12 +6,13 @@ import { getContrastTextColor } from '@web/utils/calendars'
 import {
   Calendar as IconCalendar,
   Clock as IconClock,
+  EyeOff as IconEyeOff,
   FileText as IconFileText,
   MapPin as IconMapPin,
   Monitor as IconMonitor,
   X as IconX,
 } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, useTemplateRef, watch } from 'vue'
 
 const props = defineProps<{
   event: CalendarEvent | null
@@ -22,7 +23,8 @@ const emit = defineEmits<{
   (e: 'close'): void
 }>()
 
-const drawerRef = ref<HTMLDivElement | null>(null)
+const drawerRef = useTemplateRef('drawerRef')
+const confirmModalRef = useTemplateRef('confirmModalRef')
 const settings = useSharedSettings()
 
 // Type guard for ZonedDateTime
@@ -114,6 +116,22 @@ const categoryTextColor = computed(() => {
   if (!bg) return '#000000'
   return getContrastTextColor(bg)
 })
+
+// Hide event by adding its title to the blocklist
+function hideEvent() {
+  if (!props.event) return
+  const title = props.event.title
+  if (title && !settings.blocklist.value.includes(title)) {
+    settings.blocklist.value.push(title)
+  }
+  confirmModalRef.value?.close()
+  emit('close')
+}
+
+// Show confirmation modal before hiding
+function showHideConfirmation() {
+  confirmModalRef.value?.showModal()
+}
 
 // Close on Escape key
 onKeyStroke('Escape', () => {
@@ -240,9 +258,48 @@ watch(() => props.event, (event) => {
               </p>
             </div>
           </div>
+
+          <!-- Hide event action -->
+          <div class="pt-2 border-t border-base-200">
+            <button
+              class="btn btn-ghost btn-sm text-base-content/60 gap-2"
+              @click="showHideConfirmation"
+            >
+              <IconEyeOff :size="16" />
+              Cacher ce type de cours
+            </button>
+          </div>
         </div>
       </div>
     </Transition>
+
+    <!-- Hide confirmation modal -->
+    <dialog ref="confirmModalRef" class="modal">
+      <div class="modal-box">
+        <h3 class="font-bold text-lg">
+          Cacher ce type de cours ?
+        </h3>
+        <p class="py-4">
+          Tous les cours nommés <strong>{{ event?.title }}</strong> seront cachés de votre calendrier.
+        </p>
+        <p class="text-sm text-base-content/60">
+          Vous pourrez les réafficher depuis les paramètres, dans la section "Liste de blocage".
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn btn-ghost">
+              Annuler
+            </button>
+          </form>
+          <button class="btn btn-primary" @click="hideEvent">
+            Cacher
+          </button>
+        </div>
+      </div>
+      <form class="modal-backdrop" method="dialog">
+        <button>close</button>
+      </form>
+    </dialog>
   </Teleport>
 </template>
 
