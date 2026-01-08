@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useAuth } from '@web/composables/useAuth'
-import { User as IconUser, X as IconX } from 'lucide-vue-next'
-import { reactive, useTemplateRef } from 'vue'
+import { Fingerprint as IconFingerprint, Loader2 as IconLoader, User as IconUser, X as IconX } from 'lucide-vue-next'
+import { computed, reactive, ref, useTemplateRef, watch } from 'vue'
 import { DiscordIcon, GitHubIcon } from 'vue3-simple-icons'
 
 const dialog = useTemplateRef('dialog')
@@ -9,11 +9,16 @@ const dialog = useTemplateRef('dialog')
 const isLoading = reactive({
   discord: false,
   github: false,
+  passkey: false,
 })
-const { authEnabled, signInDiscord, signInGithub } = useAuth()
+const passkeyError = ref<string | null>(null)
+const { authEnabled, isPasskeyAvailable, passkeySupported, signInDiscord, signInGithub, signInPasskey } = useAuth()
+
+const showPasskeyButton = computed(() => passkeySupported && isPasskeyAvailable())
 
 async function handleLogin(provider: 'discord' | 'github') {
   isLoading[provider] = true
+  passkeyError.value = null
   try {
     if (provider === 'discord') {
       await signInDiscord()
@@ -26,6 +31,36 @@ async function handleLogin(provider: 'discord' | 'github') {
     isLoading[provider] = false
   }
 }
+
+async function handlePasskeyLogin() {
+  isLoading.passkey = true
+  passkeyError.value = null
+  try {
+    const result = await signInPasskey(false)
+    if (result.error) {
+      // Don't show error for user cancellation
+      if (!result.error.message?.includes('cancelled') && !result.error.message?.includes('canceled')) {
+        passkeyError.value = result.error.message || 'Erreur lors de la connexion avec le passkey'
+      }
+    } else if (result.data) {
+      // Success - close dialog and reload
+      dialog.value?.close()
+      window.location.reload()
+    }
+  } catch (error) {
+    console.error('Passkey login failed:', error)
+    passkeyError.value = 'Erreur lors de la connexion avec le passkey'
+  } finally {
+    isLoading.passkey = false
+  }
+}
+
+// Reset error when dialog opens
+watch(() => dialog.value?.open, (isOpen) => {
+  if (isOpen) {
+    passkeyError.value = null
+  }
+})
 
 defineExpose({
   dialog,
@@ -56,6 +91,29 @@ defineExpose({
 
       <!-- Login Section -->
       <div class="space-y-4 pb-6">
+        <!-- Passkey (shown first if available) -->
+        <template v-if="showPasskeyButton">
+          <button
+            class="btn btn-lg w-full flex items-center justify-center gap-2 btn-primary shadow-lg hover:shadow-xl transition-all duration-200"
+            :disabled="isLoading.passkey"
+            @click="handlePasskeyLogin"
+          >
+            <IconLoader v-if="isLoading.passkey" class="size-5 animate-spin" />
+            <IconFingerprint v-else class="size-5" />
+            <span>{{ isLoading.passkey ? 'Connexion en cours...' : 'Continuer avec un Passkey' }}</span>
+          </button>
+
+          <!-- Passkey error message -->
+          <div v-if="passkeyError" class="text-error text-sm text-center">
+            {{ passkeyError }}
+          </div>
+
+          <!-- Divider -->
+          <div class="divider text-base-content/50 text-sm">
+            ou
+          </div>
+        </template>
+
         <!-- Discord -->
         <button
           class="btn btn-lg w-full flex items-center justify-center gap-2 text-white border-none shadow-lg hover:shadow-xl transition-all duration-200 bg-[#5865F2] hover:bg-[#4752C4]"
@@ -86,7 +144,7 @@ defineExpose({
             <li>Vos préférences synchronisées: couleurs du planning, surlignage enseignant, affichage des week-ends, liste de blocage, thème</li>
             <li>Des métadonnées de session (adresse IP, navigateur, expiration) utilisées à des fins de sécurité</li>
           </ul>
-          <p>Aucune donnée personnelle n’est vendue ou partagée.</p>
+          <p>Aucune donnée personnelle n'est vendue ou partagée.</p>
         </div>
       </div>
     </div>

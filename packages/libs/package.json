@@ -10,6 +10,7 @@
     "coverage": "bun test --coverage"
   },
   "dependencies": {
+    "@better-auth/passkey": "^1.4.10",
     "@tauri-apps/plugin-http": "2.5.5",
     "elysia": "catalog:"
   },

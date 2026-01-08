@@ -13,6 +13,7 @@
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
+    "@better-auth/passkey": "^1.4.10",
     "@elysiajs/cors": "1.4.1",
     "@elysiajs/html": "1.4.0",
     "@elysiajs/openapi": "1.4.13",
