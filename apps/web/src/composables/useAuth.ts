@@ -195,6 +195,85 @@ async function signOut() {
   await authClient.signOut()
 }
 
+// Passkeys are only supported on web (not Tauri/extension)
+const IS_WEB = !IS_TAURI && !IS_EXTENSION
+const PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
+
+/**
+ * Check if passkey (WebAuthn) is supported in the current browser
+ */
+function isPasskeyAvailable(): boolean {
+  return PASSKEY_SUPPORTED && !!window.PublicKeyCredential
+}
+
+/**
+ * Check if Conditional UI (autofill) is supported in the current browser
+ */
+async function isConditionalUIAvailable(): Promise<boolean> {
+  if (!isPasskeyAvailable()) return false
+  try {
+    return await PublicKeyCredential.isConditionalMediationAvailable?.() ?? false
+  } catch {
+    return false
+  }
+}
+
+/**
+ * Register a new passkey for the currently authenticated user
+ */
+async function addPasskey(name?: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported' } }
+  }
+  return authClient.passkey.addPasskey({ name })
+}
+
+/**
+ * Sign in with a passkey
+ * @param autoFill - If true, uses Conditional UI (browser autofill)
+ */
+async function signInPasskey(autoFill = false) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported' } }
+  }
+  return authClient.signIn.passkey({ autoFill })
+}
+
+/**
+ * Get the reactive passkey list store for the currently authenticated user.
+ * Returns a Vue ref with { data, error, isPending, refetch }.
+ */
+function usePasskeyList() {
+  if (!PASSKEY_SUPPORTED) {
+    return ref({ data: null, error: { message: 'Passkeys are not supported' }, isPending: false, refetch: () => {} })
+  }
+  return authClient.useListPasskeys()
+}
+
+/**
+ * Delete a passkey by ID
+ */
+async function deletePasskey(id: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported' } }
+  }
+  return authClient.passkey.deletePasskey({ id })
+}
+
+/**
+ * Update a passkey's name
+ */
+async function updatePasskey(id: string, name: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported' } }
+  }
+  return authClient.passkey.updatePasskey({ id, name })
+}
+
 /**
  * Ensures there's an authenticated session when auth is enabled and exposes the session ref.
  *
@@ -209,5 +288,14 @@ export function useAuth() {
     signInDiscord,
     signInGithub,
     signOut,
+    // Passkey methods (web only)
+    passkeySupported: PASSKEY_SUPPORTED,
+    isPasskeyAvailable,
+    isConditionalUIAvailable,
+    addPasskey,
+    signInPasskey,
+    usePasskeyList,
+    deletePasskey,
+    updatePasskey,
   }
 }
