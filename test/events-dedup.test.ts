@@ -50,6 +50,7 @@ describe('Request deduplication', () => {
     eventsModule.__test.reset()
 
     // Mock globalThis.fetch to track calls and return valid ICS
+    // @ts-expect-error - Bun's fetch type includes extra properties we don't need to mock
     fetchSpy = spyOn(globalThis, 'fetch').mockImplementation(async (input: RequestInfo | URL) => {
       fetchCallCount++
       const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url

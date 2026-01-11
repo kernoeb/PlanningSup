@@ -65,6 +65,7 @@ function toICS(d: Date) {
 }
 
 describe('Plannings range filtering', () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let app: any
   const anyLeaf = flattenedPlannings.find(p => Boolean(p.url)) || flattenedPlannings[0]
   const targetFullId = anyLeaf.fullId
