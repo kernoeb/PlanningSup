@@ -1,4 +1,5 @@
 import type { BetterAuthInstance } from '@api/utils/auth'
+import { passkeyClient } from '@better-auth/passkey/client'
 import { inferAdditionalFields } from 'better-auth/client/plugins'
 import { createAuthClient } from 'better-auth/vue'
 
@@ -9,5 +10,6 @@ export const authClient = createAuthClient({
   baseURL,
   plugins: [
     inferAdditionalFields<BetterAuthInstance>(),
+    passkeyClient(),
   ],
 })
