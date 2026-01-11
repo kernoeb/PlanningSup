@@ -5,7 +5,8 @@ import { treaty } from '@elysiajs/eden'
 import { configureApiDbMock, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
 describe('Ops routes', () => {
-  let app: Elysia
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let app: any
   let api: ReturnType<typeof treaty>
 
   beforeAll(async () => {

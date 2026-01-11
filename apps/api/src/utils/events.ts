@@ -50,7 +50,12 @@ export interface FetchEventsDetailedResult {
   failure: FetchFailure | null
 }
 
-// Request deduplication: collapse concurrent fetches for the same planning into one
+export interface RangeOptions {
+  from?: string
+  to?: string
+}
+
+// Request deduplication: collapse concurrent fetches for the same planning
 const inflight = new Map<string, Promise<FetchEventsDetailedResult>>()
 
 function parseRetryAfterMs(headers: Headers | undefined): number | null {
@@ -75,16 +80,19 @@ function classifyNetworkError(error: { name: string, code: string | null, messag
   return 'network_error'
 }
 
-export async function fetchEventsDetailed(url: string): Promise<FetchEventsDetailedResult> {
+export async function fetchEventsDetailed(url: string, range?: RangeOptions): Promise<FetchEventsDetailedResult> {
   if (includesTemplate(url)) {
+    const from = range?.from || dayjs().subtract(1, 'month').format('YYYY-MM-DD')
+    const to = range?.to || dayjs().add(2, 'year').format('YYYY-MM-DD')
+
     url = url
       .replace(
         dateStartTemplate,
-        encodeURIComponent(dayjs().subtract(1, 'month').format('YYYY-MM-DD')),
+        encodeURIComponent(from),
       )
       .replace(
         dateEndTemplate,
-        encodeURIComponent(dayjs().add(2, 'year').format('YYYY-MM-DD')),
+        encodeURIComponent(to),
       )
   }
 
@@ -309,13 +317,20 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
   localeUtils: { target: string, browser: string } | null
   blocklist: string[]
   highlightTeacher: boolean
+  range?: RangeOptions
 }) {
   const events: (CalEvent & {
     categoryId: string
     remoteLocation: boolean
   })[] = []
 
+  const fromDate = options.range?.from ? dayjs(options.range.from).startOf('day') : null
+  const toDate = options.range?.to ? dayjs(options.range.to).endOf('day') : null
+
   for (const event of eventsList) {
+    if (fromDate && dayjs(event.endDate).isBefore(fromDate)) continue
+    if (toDate && dayjs(event.startDate).isAfter(toDate)) continue
+
     if (!options.blocklist.some(str => event.summary.toLowerCase().includes(str))) {
       events.push({
         uid: event.uid,
@@ -352,9 +367,10 @@ export interface ResolveEventsResult {
  * @param planning.url - The URL of the planning.
  * @param planning.fullId - The full ID of the planning.
  * @param onlyDb - Whether to only use the database.
+ * @param range - Optional date range for filtering.
  * @returns The events for the planning, their source, and whether network failed.
  */
-export async function resolveEvents(planning: { url: string, fullId: string }, onlyDb: boolean): Promise<ResolveEventsResult> {
+export async function resolveEvents(planning: { url: string, fullId: string }, onlyDb: boolean, range?: RangeOptions): Promise<ResolveEventsResult> {
   if (onlyDb) {
     const backup = await getBackupEvents(planning.fullId)
     return {
@@ -367,12 +383,13 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
     }
   }
 
-  // Dedupe concurrent fetches for the same planning
-  let netPromise = inflight.get(planning.fullId)
+  // Dedupe concurrent fetches for the same planning + range
+  const inflightKey = range ? `${planning.fullId}-${range.from}-${range.to}` : planning.fullId
+  let netPromise = inflight.get(inflightKey)
   const isCoalesced = !!netPromise
   if (!netPromise) {
-    netPromise = fetchEventsDetailed(planning.url)
-    inflight.set(planning.fullId, netPromise)
+    netPromise = fetchEventsDetailed(planning.url, range)
+    inflight.set(inflightKey, netPromise)
   }
 
   let net: FetchEventsDetailedResult
@@ -381,7 +398,7 @@ export async function resolveEvents(planning: { url: string, fullId: string }, o
   } finally {
     // Only the original requester cleans up
     if (!isCoalesced) {
-      inflight.delete(planning.fullId)
+      inflight.delete(inflightKey)
     }
   }
 
