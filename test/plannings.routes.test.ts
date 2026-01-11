@@ -85,7 +85,7 @@ function toICS(d: Date) {
 }
 
 describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
-  let app: Elysia
+  let app: any
   let api: ReturnType<typeof treaty>
 
   const anyLeaf = flattenedPlannings.find(p => Boolean(p.url)) || flattenedPlannings[0]
