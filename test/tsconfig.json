@@ -6,7 +6,7 @@
     "target": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "types": ["@types/bun"],
+    "types": ["bun-types"],
     "noEmit": true,
     "skipLibCheck": true,
     "paths": {

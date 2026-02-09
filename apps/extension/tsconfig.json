@@ -21,7 +21,7 @@
     "resolveJsonModule": true,
     "types": [
       "vite/client",
-      "@types/bun"
+      "bun-types"
     ],
     "strict": true,
     "noUnusedLocals": true,

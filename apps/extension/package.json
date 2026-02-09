@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "catalog:ui",
-    "@types/bun": "catalog:types",
+    "bun-types": "catalog:types",
     "@types/fs-extra": "11.0.4",
     "@types/webextension-polyfill": "0.12.4",
     "@vitejs/plugin-vue": "catalog:dev",

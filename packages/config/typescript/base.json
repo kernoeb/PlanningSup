@@ -17,6 +17,7 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
+    "types": ["bun-types"],
     "baseUrl": "../../../",
     "paths": {
       "@web/*": ["apps/web/src/*"],
