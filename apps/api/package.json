@@ -13,7 +13,7 @@
     "typecheck": "bunx --bun tsc --noEmit"
   },
   "dependencies": {
-    "@better-auth/passkey": "^1.4.10",
+    "@better-auth/passkey": "catalog:",
     "@elysiajs/cors": "1.4.1",
     "@elysiajs/html": "1.4.0",
     "@elysiajs/openapi": "1.4.14",
@@ -25,6 +25,7 @@
     "drizzle-typebox": "0.3.3",
     "elysia": "catalog:",
     "ical.js": "2.2.1",
+    "reflect-metadata": "0.2.2",
     "zod": "catalog:"
   },
   "devDependencies": {
