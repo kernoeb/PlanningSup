@@ -85,7 +85,8 @@ function toICS(d: Date) {
 }
 
 describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
-  let app: Elysia
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let app: any
   let api: ReturnType<typeof treaty>
 
   const anyLeaf = flattenedPlannings.find(p => Boolean(p.url)) || flattenedPlannings[0]
@@ -239,7 +240,7 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
 
     const ok = await waitFor(() => Array.isArray(backupStore[targetFullId]?.events))
     expect(ok).toBeTrue()
-    expect((backupStore[targetFullId]?.events as any[]).length).toBe(sampleEvents.length)
+    expect(backupStore[targetFullId]!.events.length).toBe(sampleEvents.length)
   })
 
   it('uses backup events when ICS fetch fails', async () => {

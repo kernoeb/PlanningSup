@@ -4,6 +4,7 @@
   "private": true,
   "devDependencies": {
     "@elysiajs/eden": "catalog:",
+    "bun-types": "catalog:types",
     "elysia": "catalog:",
     "vue": "catalog:ui",
     "zod": "catalog:"

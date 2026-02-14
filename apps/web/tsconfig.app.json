@@ -16,6 +16,7 @@
       "@libs/*": ["../../packages/libs/src/*"],
       "@plannings": ["../../resources/plannings"]
     },
+    "types": ["bun-types"],
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,

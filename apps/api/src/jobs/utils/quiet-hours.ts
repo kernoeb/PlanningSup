@@ -20,8 +20,7 @@ export function parseQuietHours(input: string | undefined | null): QuietHours | 
   const endHour = Number(match[3])
   const endMinute = Number(match[4])
 
-  if (startHour < 0 || startHour > 23 || endHour < 0 || endHour > 23
-    || startMinute < 0 || startMinute > 59 || endMinute < 0 || endMinute > 59) {
+  if (startHour < 0 || startHour > 23 || endHour < 0 || endHour > 23 || startMinute < 0 || startMinute > 59 || endMinute < 0 || endMinute > 59) {
     return null
   }
 
