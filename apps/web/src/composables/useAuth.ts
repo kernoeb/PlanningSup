@@ -2,7 +2,7 @@ import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
-const AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
+let AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
 
 const IS_TAURI = isTauri()
@@ -197,25 +197,13 @@ async function signOut() {
 
 // Passkeys are only supported on web (not Tauri/extension)
 const IS_WEB = !IS_TAURI && !IS_EXTENSION
-const PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
+let PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
 
 /**
  * Check if passkey (WebAuthn) is supported in the current browser
  */
 function isPasskeyAvailable(): boolean {
-  return PASSKEY_SUPPORTED && !!window.PublicKeyCredential
-}
-
-/**
- * Check if Conditional UI (autofill) is supported in the current browser
- */
-async function isConditionalUIAvailable(): Promise<boolean> {
-  if (!isPasskeyAvailable()) return false
-  try {
-    return await PublicKeyCredential.isConditionalMediationAvailable?.() ?? false
-  } catch {
-    return false
-  }
+  return PASSKEY_SUPPORTED && typeof window !== 'undefined' && !!window.PublicKeyCredential
 }
 
 /**
@@ -224,7 +212,7 @@ async function isConditionalUIAvailable(): Promise<boolean> {
 async function addPasskey(name?: string) {
   if (!PASSKEY_SUPPORTED) {
     console.warn('Passkeys are not supported in this environment.')
-    return { data: null, error: { message: 'Passkeys are not supported' } }
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
   }
   return authClient.passkey.addPasskey({ name })
 }
@@ -236,7 +224,7 @@ async function addPasskey(name?: string) {
 async function signInPasskey(autoFill = false) {
   if (!PASSKEY_SUPPORTED) {
     console.warn('Passkeys are not supported in this environment.')
-    return { data: null, error: { message: 'Passkeys are not supported' } }
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
   }
   return authClient.signIn.passkey({ autoFill })
 }
@@ -247,7 +235,7 @@ async function signInPasskey(autoFill = false) {
  */
 function usePasskeyList() {
   if (!PASSKEY_SUPPORTED) {
-    return ref({ data: null, error: { message: 'Passkeys are not supported' }, isPending: false, refetch: () => {} })
+    return ref({ data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' }, isPending: false, refetch: () => {} })
   }
   return authClient.useListPasskeys()
 }
@@ -258,7 +246,7 @@ function usePasskeyList() {
 async function deletePasskey(id: string) {
   if (!PASSKEY_SUPPORTED) {
     console.warn('Passkeys are not supported in this environment.')
-    return { data: null, error: { message: 'Passkeys are not supported' } }
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
   }
   return authClient.passkey.deletePasskey({ id })
 }
@@ -269,7 +257,7 @@ async function deletePasskey(id: string) {
 async function updatePasskey(id: string, name: string) {
   if (!PASSKEY_SUPPORTED) {
     console.warn('Passkeys are not supported in this environment.')
-    return { data: null, error: { message: 'Passkeys are not supported' } }
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
   }
   return authClient.passkey.updatePasskey({ id, name })
 }
@@ -283,19 +271,28 @@ async function updatePasskey(id: string, name: string) {
  */
 export function useAuth() {
   return {
-    authEnabled: AUTH_ENABLED,
+    get authEnabled() {
+      return AUTH_ENABLED
+    },
     session,
     signInDiscord,
     signInGithub,
     signOut,
     // Passkey methods (web only)
-    passkeySupported: PASSKEY_SUPPORTED,
+    get passkeySupported() {
+      return PASSKEY_SUPPORTED
+    },
     isPasskeyAvailable,
-    isConditionalUIAvailable,
     addPasskey,
     signInPasskey,
     usePasskeyList,
     deletePasskey,
     updatePasskey,
   }
+}
+
+// @internal Re-read __APP_CONFIG__ — only for test isolation.
+export function _resetForTesting() {
+  AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? false
+  PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
 }

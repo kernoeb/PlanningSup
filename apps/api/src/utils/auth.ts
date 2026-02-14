@@ -21,6 +21,16 @@ function createAuth(): ReturnType<typeof betterAuth> | null {
   const publicOriginUrl = new URL(config.publicOrigin)
   const rpID = publicOriginUrl.hostname
 
+  // WebAuthn requires http/https origins; filter out custom schemes (tauri://, planningsup://)
+  const webOrigins = config.trustedOrigins?.filter((o) => {
+    try {
+      const p = new URL(o).protocol
+      return p === 'http:' || p === 'https:'
+    } catch {
+      return false
+    }
+  })
+
   const options = {
     appName: 'PlanningSup',
     database: drizzleAdapter(db, {
@@ -98,8 +108,9 @@ function createAuth(): ReturnType<typeof betterAuth> | null {
         rpName: 'PlanningSup',
         // In production, publicOrigin is the single origin for both API and web.
         // In development, trustedOrigins contains the web client origin(s).
-        origin: config.trustedOrigins?.length
-          ? config.trustedOrigins
+        // Only http/https origins are valid for WebAuthn (custom schemes filtered out).
+        origin: webOrigins?.length
+          ? webOrigins
           : config.publicOrigin,
       }),
     ],

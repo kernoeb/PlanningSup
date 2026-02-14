@@ -43,9 +43,8 @@ async function handlePasskeyLogin() {
         passkeyError.value = result.error.message || 'Erreur lors de la connexion avec le passkey'
       }
     } else if (result.data) {
-      // Success - close dialog and reload
+      // Success - close dialog; reactive session propagates auth state automatically
       dialog.value?.close()
-      window.location.reload()
     }
   } catch (error) {
     console.error('Passkey login failed:', error)

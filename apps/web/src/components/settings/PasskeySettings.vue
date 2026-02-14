@@ -125,8 +125,11 @@ function formatDate(date: Date | null): string {
 }
 
 function getDefaultPasskeyName(): string {
-  const count = passkeys.value.length + 1
-  return `Passkey ${count}`
+  const nums = passkeys.value
+    .map(p => p.name?.match(/^Passkey (\d+)$/)?.[1])
+    .filter((n): n is string => n != null)
+    .map(Number)
+  return `Passkey ${nums.length > 0 ? Math.max(...nums) + 1 : 1}`
 }
 
 // The reactive store auto-fetches when accessed, but we can manually refetch if needed
