@@ -186,20 +186,18 @@ describe('Auth routes (enabled)', () => {
   })
 
   describe('Passkey routes', () => {
-    it('POST /api/auth/passkey/generate-authenticate-options responds (not 404)', async () => {
+    it('GET /api/auth/passkey/generate-authenticate-options responds (not 404)', async () => {
       const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-authenticate-options`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
       })
       expect(res.status).not.toBe(404)
     })
 
-    it('POST /api/auth/passkey/generate-register-options responds (not 404)', async () => {
+    it('GET /api/auth/passkey/generate-register-options responds (not 404)', async () => {
       const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-register-options`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({}),
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
       })
       expect(res.status).not.toBe(404)
     })
