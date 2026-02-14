@@ -9,6 +9,8 @@ import { Elysia, t } from 'elysia'
 logger.info(`Authentication is ${config.authEnabled ? 'enabled' : 'disabled'}`)
 
 // Only import auth module when auth is enabled (avoids BetterAuth initialization otherwise)
+// reflect-metadata polyfill must load before @peculiar/x509 (used by passkey plugin) which depends on tsyringe
+if (config.authEnabled) await import('reflect-metadata')
 const auth = config.authEnabled ? (await import('@api/utils/auth')).auth : null
 const authHtml = config.authEnabled ? (await import('./utils/auth-html')).default : null
 

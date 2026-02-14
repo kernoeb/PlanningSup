@@ -66,6 +66,8 @@ describe('useAuth (authEnabled=false via runtime config)', () => {
     // Import after mocks & env are set
     const mod = await import('@web/composables/useAuth')
     useAuth = mod.useAuth
+    // Re-read __APP_CONFIG__ in case another test file cached the module with different config
+    mod._resetForTesting()
   })
 
   afterAll(() => {

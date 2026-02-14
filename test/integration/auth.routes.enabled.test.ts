@@ -185,6 +185,32 @@ describe('Auth routes (enabled)', () => {
     })
   })
 
+  describe('Passkey routes', () => {
+    it('GET /api/auth/passkey/generate-authenticate-options responds (not 404)', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-authenticate-options`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      expect(res.status).not.toBe(404)
+    })
+
+    it('GET /api/auth/passkey/generate-register-options responds (not 404)', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-register-options`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      expect(res.status).not.toBe(404)
+    })
+
+    it('GET /api/auth/passkey/list-user-passkeys responds (not 404)', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/list-user-passkeys`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      expect(res.status).not.toBe(404)
+    })
+  })
+
   describe('Unknown auth routes', () => {
     it('unknown /api/auth/* routes return 404', async () => {
       // Routes that don't exist in BetterAuth should still 404
