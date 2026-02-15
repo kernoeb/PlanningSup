@@ -11,6 +11,7 @@ Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
 - Integration: `bun run test:integration[:local]` / `bun run test:integration:auth` (20001)
 - E2E: `bun run test:e2e[:safari|:headed|:debug]`
 - DB/auth changed: `cd apps/api && bun run generate-drizzle && bun run generate-better-auth`
+- Release: `bun run release <patch|minor|major>` (must be on `main`, clean tree; then ask user to `git push --follow-tags`)
 
 ## Workspaces / Bun
 - Workspaces: `apps/*`, `packages/*`, `test`.

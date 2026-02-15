@@ -68,7 +68,8 @@
     "docker:build": "docker build --build-arg BUN_VERSION=$(cat .bun-version) -t test-planningsup --progress=plain .",
     "lint": "bun scripts/run lint",
     "lint-fix": "bun scripts/run lint-fix",
-    "typecheck": "bun scripts/run typecheck"
+    "typecheck": "bun scripts/run typecheck",
+    "release": "bun scripts/release.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
