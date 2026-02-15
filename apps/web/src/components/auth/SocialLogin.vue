@@ -110,6 +110,10 @@ defineExpose({
             {{ passkeyError }}
           </div>
 
+          <p class="text-xs text-base-content/50 text-center">
+            Pour ajouter un passkey, connectez-vous d'abord via Discord ou GitHub, puis rendez-vous dans les paramètres.
+          </p>
+
           <!-- Divider -->
           <div class="divider text-base-content/50 text-sm">
             ou
