@@ -38,8 +38,10 @@ async function handlePasskeyLogin() {
   try {
     const result = await signInPasskey(false)
     if (result.error) {
-      // Don't show error for user cancellation
-      if (!result.error.message?.includes('cancelled') && !result.error.message?.includes('canceled')) {
+      // Don't show error for user cancellation (covers browser string variations + WebAuthn standard error)
+      const msg = result.error.message ?? ''
+      const isUserCancel = msg.includes('cancelled') || msg.includes('canceled') || (result.error as any).name === 'NotAllowedError'
+      if (!isUserCancel) {
         passkeyError.value = result.error.message || 'Erreur lors de la connexion avec le passkey'
       }
     } else if (result.data) {
@@ -93,6 +95,7 @@ defineExpose({
         <!-- Passkey (shown first if available) -->
         <template v-if="showPasskeyButton">
           <button
+            aria-label="Se connecter avec un Passkey"
             class="btn btn-lg w-full flex items-center justify-center gap-2 btn-primary shadow-lg hover:shadow-xl transition-all duration-200"
             :disabled="isLoading.passkey"
             @click="handlePasskeyLogin"

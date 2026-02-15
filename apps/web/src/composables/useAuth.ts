@@ -2,6 +2,7 @@ import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
+// `let` instead of `const` for test isolation only — _resetForTesting() re-reads __APP_CONFIG__
 let AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
 
@@ -292,6 +293,7 @@ export function useAuth() {
 }
 
 // @internal Re-read __APP_CONFIG__ — only for test isolation.
+// Note: resets flags only; the `session` ref above is computed once at module load and won't change.
 export function _resetForTesting() {
   AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? false
   PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB

@@ -114,6 +114,14 @@ function createAuth(): ReturnType<typeof betterAuth> | null {
           : config.publicOrigin,
       }),
     ],
+    rateLimit: {
+      enabled: true,
+      window: 60,
+      max: 100,
+      customRules: {
+        '/passkey/*': { window: 10, max: 5 },
+      },
+    },
     telemetry: {
       enabled: false,
     },

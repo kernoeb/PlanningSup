@@ -31,7 +31,7 @@ const editingName = ref('')
 // For delete confirmation
 const deletingPasskeyId = ref<string | null>(null)
 
-const webAuthnSupported = computed(() => isPasskeyAvailable())
+const webAuthnSupported = isPasskeyAvailable()
 
 // Computed passkey list from the reactive store
 const passkeys = computed<readonly Passkey[]>(() => (passkeyListStore.value?.data ?? []) as readonly Passkey[])
