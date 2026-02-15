@@ -185,6 +185,35 @@ describe('Auth routes (enabled)', () => {
     })
   })
 
+  describe('Passkey routes', () => {
+    it('GET /api/auth/passkey/generate-authenticate-options returns 200 (public endpoint)', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-authenticate-options`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      // Public endpoint — needed to start passkey login without a session
+      expect(res.status).toBe(200)
+    })
+
+    it('GET /api/auth/passkey/generate-register-options returns 401 without session', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/generate-register-options`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      // Requires an authenticated session to register a new passkey
+      expect(res.status).toBe(401)
+    })
+
+    it('GET /api/auth/passkey/list-user-passkeys returns 401 without session', async () => {
+      const res = await fetch(`${BASE_URL}/api/auth/passkey/list-user-passkeys`, {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+      })
+      // Requires an authenticated session to list passkeys
+      expect(res.status).toBe(401)
+    })
+  })
+
   describe('Unknown auth routes', () => {
     it('unknown /api/auth/* routes return 404', async () => {
       // Routes that don't exist in BetterAuth should still 404

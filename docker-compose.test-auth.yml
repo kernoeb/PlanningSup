@@ -45,6 +45,8 @@ services:
       DISCORD_CLIENT_SECRET: 'test-discord-client-secret'
       GITHUB_CLIENT_ID: 'test-github-client-id'
       GITHUB_CLIENT_SECRET: 'test-github-client-secret'
+      # Public origin (used by passkey rpID derivation)
+      PUBLIC_ORIGIN: 'http://localhost:20001'
       # Trusted origins for CORS
       TRUSTED_ORIGINS: 'http://localhost:20001,http://localhost:3000'
     ports:

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import TagInput from '@web/components/inputs/TagInput.vue'
+import { useAuth } from '@web/composables/useAuth'
 import { getDefaultColors, useSharedSettings } from '@web/composables/useSettings'
 import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
 import { X as IconX } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
 defineOptions({ name: 'SettingsDialog' })
 
@@ -17,8 +18,15 @@ const emit = defineEmits<{
   (e: 'update:open', value: boolean): void
 }>()
 
+// Lazy-load PasskeySettings only when needed (user is authenticated)
+const PasskeySettings = defineAsyncComponent(() => import('@web/components/settings/PasskeySettings.vue'))
+
 const dialogRef = ref<HTMLDialogElement | null>(null)
 const { blocklist, colors, highlightTeacher, mergeDuplicates, showWeekends, targetTimezone } = useSharedSettings()
+const { authEnabled, session } = useAuth()
+
+// Show passkey settings only when authenticated
+const showPasskeySettings = computed(() => authEnabled && !!session.value?.data?.user)
 
 // Timezone selector state
 const browserTimezone = ref<string | null>(detectBrowserTimezone())
@@ -204,6 +212,9 @@ watch(() => props.open, (next) => {
             placeholder="Ajouter un élément puis Entrée ou virgule"
           />
         </section>
+
+        <!-- 7) Passkeys (Security) - only shown when authenticated -->
+        <PasskeySettings v-if="showPasskeySettings" />
       </div>
     </div>
 

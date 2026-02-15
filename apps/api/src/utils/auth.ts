@@ -2,6 +2,7 @@ import type { BetterAuthOptions } from 'better-auth'
 import config from '@api/config'
 import { db } from '@api/db'
 import * as schema from '@api/db/schemas/auth'
+import { passkey } from '@better-auth/passkey'
 import { betterAuth } from 'better-auth'
 import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { createAuthMiddleware } from 'better-auth/api'
@@ -15,6 +16,20 @@ function createAuth(): ReturnType<typeof betterAuth> | null {
   if (!config.authEnabled) {
     return null
   }
+
+  // Derive rpID from publicOrigin (e.g., "https://planningsup.app" -> "planningsup.app")
+  const publicOriginUrl = new URL(config.publicOrigin)
+  const rpID = publicOriginUrl.hostname
+
+  // WebAuthn requires http/https origins; filter out custom schemes (tauri://, planningsup://)
+  const webOrigins = config.trustedOrigins?.filter((o) => {
+    try {
+      const p = new URL(o).protocol
+      return p === 'http:' || p === 'https:'
+    } catch {
+      return false
+    }
+  })
 
   const options = {
     appName: 'PlanningSup',
@@ -87,7 +102,26 @@ function createAuth(): ReturnType<typeof betterAuth> | null {
       // session is updated every 7 days
       updateAge: 7 * 24 * 60 * 60, // 7 days in seconds
     },
-    plugins: [],
+    plugins: [
+      passkey({
+        rpID,
+        rpName: 'PlanningSup',
+        // In production, publicOrigin is the single origin for both API and web.
+        // In development, trustedOrigins contains the web client origin(s).
+        // Only http/https origins are valid for WebAuthn (custom schemes filtered out).
+        origin: webOrigins?.length
+          ? webOrigins
+          : config.publicOrigin,
+      }),
+    ],
+    rateLimit: {
+      enabled: true,
+      window: 60,
+      max: 100,
+      customRules: {
+        '/passkey/*': { window: 10, max: 5 },
+      },
+    },
     telemetry: {
       enabled: false,
     },

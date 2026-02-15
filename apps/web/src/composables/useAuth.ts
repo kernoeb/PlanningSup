@@ -2,7 +2,8 @@ import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
-const AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
+// `let` instead of `const` for test isolation only — _resetForTesting() re-reads __APP_CONFIG__
+let AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
 
 const IS_TAURI = isTauri()
@@ -195,6 +196,73 @@ async function signOut() {
   await authClient.signOut()
 }
 
+// Passkeys are only supported on web (not Tauri/extension)
+const IS_WEB = !IS_TAURI && !IS_EXTENSION
+let PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
+
+/**
+ * Check if passkey (WebAuthn) is supported in the current browser
+ */
+function isPasskeyAvailable(): boolean {
+  return PASSKEY_SUPPORTED && typeof window !== 'undefined' && !!window.PublicKeyCredential
+}
+
+/**
+ * Register a new passkey for the currently authenticated user
+ */
+async function addPasskey(name?: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
+  }
+  return authClient.passkey.addPasskey({ name })
+}
+
+/**
+ * Sign in with a passkey
+ * @param autoFill - If true, uses Conditional UI (browser autofill)
+ */
+async function signInPasskey(autoFill = false) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
+  }
+  return authClient.signIn.passkey({ autoFill })
+}
+
+/**
+ * Get the reactive passkey list store for the currently authenticated user.
+ * Returns a Vue ref with { data, error, isPending, refetch }.
+ */
+function usePasskeyList() {
+  if (!PASSKEY_SUPPORTED) {
+    return ref({ data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' }, isPending: false, refetch: () => {} })
+  }
+  return authClient.useListPasskeys()
+}
+
+/**
+ * Delete a passkey by ID
+ */
+async function deletePasskey(id: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
+  }
+  return authClient.passkey.deletePasskey({ id })
+}
+
+/**
+ * Update a passkey's name
+ */
+async function updatePasskey(id: string, name: string) {
+  if (!PASSKEY_SUPPORTED) {
+    console.warn('Passkeys are not supported in this environment.')
+    return { data: null, error: { message: 'Passkeys are not supported', status: 400, statusText: 'PASSKEY_NOT_SUPPORTED' } }
+  }
+  return authClient.passkey.updatePasskey({ id, name })
+}
+
 /**
  * Ensures there's an authenticated session when auth is enabled and exposes the session ref.
  *
@@ -204,10 +272,29 @@ async function signOut() {
  */
 export function useAuth() {
   return {
-    authEnabled: AUTH_ENABLED,
+    get authEnabled() {
+      return AUTH_ENABLED
+    },
     session,
     signInDiscord,
     signInGithub,
     signOut,
+    // Passkey methods (web only)
+    get passkeySupported() {
+      return PASSKEY_SUPPORTED
+    },
+    isPasskeyAvailable,
+    addPasskey,
+    signInPasskey,
+    usePasskeyList,
+    deletePasskey,
+    updatePasskey,
   }
+}
+
+// @internal Re-read __APP_CONFIG__ — only for test isolation.
+// Note: resets flags only; the `session` ref above is computed once at module load and won't change.
+export function _resetForTesting() {
+  AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? false
+  PASSKEY_SUPPORTED = AUTH_ENABLED && IS_WEB
 }
