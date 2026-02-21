@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import AboutDialog from '@web/components/AboutDialog.vue'
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getPwa } from '@web/utils/pwa'
-import { RefreshCw, User } from 'lucide-vue-next'
+import { Ghost, Info, LogIn, LogOut, Monitor, Moon, RefreshCw, Settings, Sun, User } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
@@ -12,6 +13,7 @@ defineOptions({ name: 'UserMenu' })
 const { authEnabled, session, signOut } = useAuth()
 
 const isSettingsOpen = ref(false)
+const isAboutOpen = ref(false)
 const socialLogin = useTemplateRef('socialLogin')
 
 const isPending = computed(() => session.value.isPending)
@@ -71,22 +73,34 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
         </li>
         <li>
           <button id="theme-auto" :class="{ 'bg-primary text-white': theme === 'auto' }" type="button" @click="setTheme('auto')">
-            {{ i18nThemes.auto }}
+            <span class="flex items-center gap-2">
+              <Monitor class="size-4" />
+              {{ i18nThemes.auto }}
+            </span>
           </button>
         </li>
         <li>
           <button id="theme-dark" :class="{ 'bg-primary text-white': theme === 'dark' }" type="button" @click="setTheme('dark')">
-            {{ i18nThemes.dark }}
+            <span class="flex items-center gap-2">
+              <Moon class="size-4" />
+              {{ i18nThemes.dark }}
+            </span>
           </button>
         </li>
         <li>
           <button id="theme-light" :class="{ 'bg-primary text-white': theme === 'light' }" type="button" @click="setTheme('light')">
-            {{ i18nThemes.light }}
+            <span class="flex items-center gap-2">
+              <Sun class="size-4" />
+              {{ i18nThemes.light }}
+            </span>
           </button>
         </li>
         <li>
           <button id="theme-dracula" :class="{ 'bg-primary text-white': theme === 'dracula' }" type="button" @click="setTheme('dracula')">
-            {{ i18nThemes.dracula }}
+            <span class="flex items-center gap-2">
+              <Ghost class="size-4" />
+              {{ i18nThemes.dracula }}
+            </span>
           </button>
         </li>
         <div class="divider m-0" />
@@ -99,18 +113,35 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
           </button>
         </li>
         <li v-if="authEnabled && !user">
-          <button id="login-button" class="justify-between" @click="socialLogin?.dialog?.showModal()">
-            Se connecter
+          <button id="login-button" @click="socialLogin?.dialog?.showModal()">
+            <span class="flex items-center gap-2">
+              <LogIn class="size-4" />
+              Se connecter
+            </span>
           </button>
         </li>
         <li>
-          <button id="settings-button" class="justify-between" type="button" @click="isSettingsOpen = true">
-            Paramètres
+          <button id="settings-button" type="button" @click="isSettingsOpen = true">
+            <span class="flex items-center gap-2">
+              <Settings class="size-4" />
+              Paramètres
+            </span>
+          </button>
+        </li>
+        <li>
+          <button id="about-button" type="button" @click="isAboutOpen = true">
+            <span class="flex items-center gap-2">
+              <Info class="size-4" />
+              À propos
+            </span>
           </button>
         </li>
         <li v-if="authEnabled && user">
           <button id="logout-button" type="button" @click="signOut()">
-            Se déconnecter
+            <span class="flex items-center gap-2">
+              <LogOut class="size-4" />
+              Se déconnecter
+            </span>
           </button>
         </li>
       </ul>
@@ -120,4 +151,5 @@ const currentThemeLabel = computed<string>(() => i18nThemes[theme.value])
   <!-- Modals -->
   <SocialLogin ref="socialLogin" />
   <SettingsDialog :open="isSettingsOpen" @update:open="val => isSettingsOpen = val" />
+  <AboutDialog :open="isAboutOpen" @update:open="val => isAboutOpen = val" />
 </template>

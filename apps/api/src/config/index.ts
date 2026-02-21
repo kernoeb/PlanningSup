@@ -1,5 +1,18 @@
 import { env } from './env'
 
+function parseDonationLinks(raw: string | undefined): { name: string, url: string }[] | undefined {
+  if (!raw) return undefined
+  try {
+    const parsed = JSON.parse(raw)
+    if (!Array.isArray(parsed)) return undefined
+    return parsed.filter((l: unknown): l is { name: string, url: string } =>
+      typeof l === 'object' && l !== null && typeof (l as Record<string, unknown>).name === 'string' && typeof (l as Record<string, unknown>).url === 'string',
+    )
+  } catch {
+    return undefined
+  }
+}
+
 function normalizePublicOrigin(raw: string) {
   const url = new URL(raw)
   if (url.protocol !== 'http:' && url.protocol !== 'https:') {
@@ -65,6 +78,9 @@ function getConfig() {
       domain: env('PLAUSIBLE_DOMAIN'),
       endpoint: env('PLAUSIBLE_ENDPOINT'),
     },
+
+    // Donation
+    donationLinks: parseDonationLinks(env('DONATION_LINKS')),
 
     // Ops
     opsToken: env('OPS_TOKEN'),

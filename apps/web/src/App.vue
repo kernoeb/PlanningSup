@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import PlanningCalendar from '@web/components/calendar/PlanningCalendar.vue'
+import DonationToast from '@web/components/DonationToast.vue'
 import AppNavbar from '@web/components/layout/AppNavbar.vue'
 import NetworkFailureToast from '@web/components/NetworkFailureToast.vue'
 import PlanningSyncToast from '@web/components/PlanningSyncToast.vue'
@@ -29,6 +30,7 @@ useSharedPlanningUrl()
     <PlanningSyncToast />
     <NetworkFailureToast />
     <SharedPlanningToast />
+    <DonationToast />
     <LazyBouncing />
   </div>
 </template>

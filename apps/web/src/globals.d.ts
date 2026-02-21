@@ -6,6 +6,10 @@ declare global {
       domain?: string
       endpoint?: string
     }
+    donationLinks?: {
+      name: string
+      url: string
+    }[]
   } | undefined
 }
 
