@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
+import GitHubStarButton from '@web/components/GitHubStarButton.vue'
 import BuyMeACoffeeIcon from '@web/components/icons/BuyMeACoffeeIcon.vue'
+import GithubIcon from '@web/components/icons/GithubIcon.vue'
 import KofiIcon from '@web/components/icons/KofiIcon.vue'
 import PaypalIcon from '@web/components/icons/PaypalIcon.vue'
 import { BRAND_COLORS, DONATION_LINKS } from '@web/utils/donation'
-import { Heart, X as IconX } from 'lucide-vue-next'
+import { Code, Heart, X as IconX } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
 
 defineOptions({ name: 'AboutDialog' })
@@ -67,6 +69,28 @@ watch(() => props.open, (next) => {
         <p class="text-sm text-base-content/80">
           <strong>PlanningSup</strong> est un projet open source qui permet de consulter les emplois du temps universitaires.
         </p>
+
+        <section class="space-y-3">
+          <div class="flex items-center gap-2">
+            <Code class="size-4 text-base-content" />
+            <h4 class="font-semibold text-sm">
+              Projet
+            </h4>
+          </div>
+          <div class="flex flex-col gap-3">
+            <a
+              class="btn btn-sm gap-2 no-underline"
+              href="https://github.com/kernoeb/PlanningSup"
+              rel="noopener"
+              style="background-color: #24292e; color: #fff; border-color: #24292e"
+              target="_blank"
+            >
+              <GithubIcon class="size-4" />
+              GitHub
+            </a>
+            <GitHubStarButton repo="PlanningSup" user="kernoeb" />
+          </div>
+        </section>
 
         <section v-if="DONATION_LINKS.length" class="space-y-3">
           <div class="flex items-center gap-2">

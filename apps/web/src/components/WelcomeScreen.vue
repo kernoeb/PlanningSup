@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
+import GithubIcon from '@web/components/icons/GithubIcon.vue'
 import { useAppScroll } from '@web/composables/useAppScroll'
 import { useAuth } from '@web/composables/useAuth'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
@@ -7,7 +8,6 @@ import {
   Calendar as IconCalendar,
   ChevronRight as IconChevronRight,
   CloudOff as IconCloudOff,
-  Github as IconGithub,
   Layers as IconLayers,
   MonitorSmartphone as IconMonitorSmartphone,
   RefreshCw as IconRefreshCw,
@@ -154,7 +154,7 @@ onUnmounted(() => {
             rel="noopener noreferrer"
             target="_blank"
           >
-            <IconGithub class="w-4 h-4" />
+            <GithubIcon class="w-4 h-4" />
             Projet Open Source
           </a>
         </div>
