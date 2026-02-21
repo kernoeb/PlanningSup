@@ -198,7 +198,7 @@ export function useSettings() {
   /**
    * Add a Custom Group
    */
-  function addCustomGroup({ name, plannings}: { name: string, plannings: string[] }) {
+  function addCustomGroup({ name, plannings }: { name: string, plannings: string[] }) {
     const customGroup: CustomGroup = {
       id: crypto.randomUUID(),
       name,
