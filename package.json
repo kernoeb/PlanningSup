@@ -48,7 +48,7 @@
     }
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "scripts": {
     "predev": "bun install; docker compose up -d --pull always; ln -sf AGENTS.md CLAUDE.md; ln -sf AGENTS.md GEMINI.md;",
