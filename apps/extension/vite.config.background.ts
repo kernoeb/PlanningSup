@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 import packageJson from './package.json'
 import { isDev, r } from './scripts/utils'
 
+const ASSETS_PATH_RE = /"\/assets\//g
+
 // bundling the content script using Vite
 export default defineConfig({
   define: {
@@ -18,7 +20,7 @@ export default defineConfig({
       enforce: 'post',
       apply: 'build',
       transformIndexHtml(html, { path }) {
-        return html.replace(/"\/assets\//g, `"${relative(dirname(path), '/assets')}/`)
+        return html.replace(ASSETS_PATH_RE, `"${relative(dirname(path), '/assets')}/`)
       },
     },
   ],

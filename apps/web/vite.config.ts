@@ -110,6 +110,7 @@ export default defineConfig({
 
       injectManifest: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB – Vite 8 produces fewer, larger chunks than rolldown-vite
       },
 
       devOptions: {

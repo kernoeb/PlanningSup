@@ -99,7 +99,7 @@ function launchEscape() {
   isEscaping.value = true
   stopBounce()
 
-  window.setTimeout(() => hideEgg(), 260)
+  window.setTimeout(hideEgg, 260)
 }
 
 async function startEgg() {
@@ -117,7 +117,7 @@ function resetInactivityTimer() {
     inactivityTimer = null
   }
 
-  inactivityTimer = window.setTimeout(() => startEgg(), INACTIVITY_MS)
+  inactivityTimer = window.setTimeout(startEgg, INACTIVITY_MS)
 }
 
 function handleActivity() {

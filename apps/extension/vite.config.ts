@@ -1,10 +1,11 @@
 import { dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
-
 import { getAliases, getCommonPlugins, getDefaultDefine, getOptimizeDeps, getRoot } from '../../packages/config/vite/shared'
 import packageJson from './package.json'
 import { isDev, port, r } from './scripts/utils'
+
+const ASSETS_PATH_RE = /"\/assets\//g
 
 export default defineConfig(({ command }) => ({
   base: command === 'serve' ? `http://localhost:${port}/` : '/dist/',
@@ -37,7 +38,7 @@ export default defineConfig(({ command }) => ({
       enforce: 'post',
       apply: 'build',
       transformIndexHtml(html, { path }) {
-        return html.replace(/"\/assets\//g, `"${relative(dirname(path), '/assets')}/`)
+        return html.replace(ASSETS_PATH_RE, `"${relative(dirname(path), '/assets')}/`)
       },
     },
   ],

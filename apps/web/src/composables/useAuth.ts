@@ -2,6 +2,8 @@ import { authClient } from '@libs'
 import { isTauri } from '@tauri-apps/api/core'
 import { ref } from 'vue'
 
+const NON_ALPHA_ONLY_RE = /^[^a-z]+$/i
+
 // `let` instead of `const` for test isolation only — _resetForTesting() re-reads __APP_CONFIG__
 let AUTH_ENABLED = globalThis.__APP_CONFIG__?.authEnabled ?? import.meta.env?.VITE_AUTH_ENABLED === 'true'
 console.log('AUTH_ENABLED', AUTH_ENABLED)
@@ -48,7 +50,7 @@ if (IS_TAURI) {
 
         // Parse provider from path: "/auth-callback/<provider>"
         const provider = urlObj.pathname.split('/')[1]
-        if (!provider || /^[^a-z]+$/i.test(provider)) {
+        if (!provider || NON_ALPHA_ONLY_RE.test(provider)) {
           console.warn('Missing provider in auth callback URL:', urlObj.toString())
           return
         }
@@ -88,7 +90,7 @@ if (IS_TAURI) {
     console.log('[useAuth.ts] onMessage', message)
     if (message.type !== 'authCallback') return
 
-    if (!message.provider || /^[^a-z]+$/i.test(message.provider)) {
+    if (!message.provider || NON_ALPHA_ONLY_RE.test(message.provider)) {
       console.warn('Missing provider in auth callback message:', message)
       return
     }

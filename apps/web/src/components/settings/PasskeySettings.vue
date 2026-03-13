@@ -5,6 +5,8 @@ import { computed, ref } from 'vue'
 
 defineOptions({ name: 'PasskeySettings' })
 
+const PASSKEY_NAME_RE = /^Passkey (\d+)$/
+
 interface Passkey {
   readonly id: string
   readonly name?: string | undefined
@@ -126,7 +128,7 @@ function formatDate(date: Date | null): string {
 
 function getDefaultPasskeyName(): string {
   const nums = passkeys.value
-    .map(p => p.name?.match(/^Passkey (\d+)$/)?.[1])
+    .map(p => p.name?.match(PASSKEY_NAME_RE)?.[1])
     .filter((n): n is string => n != null)
     .map(Number)
   return `Passkey ${nums.length > 0 ? Math.max(...nums) + 1 : 1}`

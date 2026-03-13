@@ -73,11 +73,12 @@ function normalizePlanningsForGroups(ids: readonly unknown[]): string[] {
   return out
 }
 
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
 interface NormalizedCustomGroup { id: string, name: string, plannings: string[] }
 function normalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] {
   if (!Array.isArray(raw)) return []
-  const isUuid = (id: string) =>
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)
+  const isUuid = (id: string) => UUID_RE.test(id)
   const out: NormalizedCustomGroup[] = []
   const seenIds = new Set<string>()
   for (const item of raw) {

@@ -1,20 +1,39 @@
 {
   "permissions": {
     "allow": [
+      "Bash(bun install*)",
+      "Bash(bun update*)",
+      "Bash(bun run dev*)",
+      "Bash(bun run build*)",
+      "Bash(bun run lint*)",
+      "Bash(bun run typecheck*)",
       "Bash(bun run test:*)",
-      "Bash(bun test:*)",
-      "Bash(bun run typecheck:*)",
-      "Bash(bun run lint:*)",
-      "Bash(bunx eslint:*)",
-      "Bash(cat:*)",
-      "Bash(curl:*)",
-      "Bash(jq:*)",
+      "Bash(bun run coverage*)",
+      "Bash(bun run validate:*)",
+      "Bash(bun run release*)",
+      "Bash(bun test*)",
+      "Bash(bun run docker:*)",
+      "Bash(cd apps/* && bun run *)",
+      "Bash(cd packages/* && bun run *)",
+      "Bash(bunx *)",
+      "Bash(npm view *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(ls *)",
+      "Bash(pwd*)",
+      "Bash(cat *)",
+      "Bash(curl *)",
+      "Bash(jq *)",
+      "Bash(find *)",
+      "Bash(docker compose *)",
+      "Bash(env *)",
       "mcp__plugin_context7_context7__get-library-docs",
       "mcp__plugin_context7_context7__resolve-library-id",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:schedule-x.dev)",
       "WebFetch(domain:www.better-auth.com)",
-      "WebFetch(domain:elysiajs.com)"
+      "WebFetch(domain:elysiajs.com)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }

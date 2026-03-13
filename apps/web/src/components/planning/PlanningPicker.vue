@@ -17,6 +17,9 @@ const props = defineProps<{
   standaloneTrigger?: boolean
 }>()
 
+const DIACRITICS_RE = /[\u0300-\u036F]/g
+const WHITESPACE_RE = /\s+/g
+
 interface PlanningNode {
   id: string
   title: string
@@ -191,7 +194,7 @@ function applyCustomGroup(id: CustomGroup['id']) {
       planningFullIds.value = planningFullIds.value.filter(planningId => !customGroup.plannings.includes(planningId))
     }
   } else {
-    planningFullIds.value = planningFullIds.value.concat(customGroups.value.find(group => group.id === id)?.plannings || [])
+    planningFullIds.value = [...planningFullIds.value, ...customGroups.value.find(group => group.id === id)?.plannings || []]
   }
 }
 
@@ -208,8 +211,8 @@ interface FilterResult { nodes: PlanningNode[], expandedIds: Set<string> }
 function normalize(text: string): string {
   return text
     .normalize('NFD')
-    .replace(/[\u0300-\u036F]/g, '')
-    .replace(/\s+/g, ' ')
+    .replace(DIACRITICS_RE, '')
+    .replace(WHITESPACE_RE, ' ')
     .toLowerCase()
 }
 
@@ -217,7 +220,7 @@ function filterTree(nodes: PlanningNode[], q: string): FilterResult {
   if (!q.trim()) return { nodes, expandedIds: new Set() }
 
   // Fulltext: split query into words, all must match somewhere in the full path
-  const queryWords = normalize(q).split(/\s+/).filter(Boolean)
+  const queryWords = normalize(q).split(WHITESPACE_RE).filter(Boolean)
   if (queryWords.length === 0) return { nodes, expandedIds: new Set() }
 
   const expandedIds = new Set<string>()

@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
+    "@simplewebauthn/server": "13.3.0",
     "bun-types": "catalog:types",
     "config": "workspace:*",
     "drizzle-kit": "0.31.9",

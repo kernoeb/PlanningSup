@@ -1,3 +1,5 @@
+// Required for TypeScript to resolve inferred types from @better-auth/passkey
+import type {} from '@simplewebauthn/server'
 import type { BetterAuthOptions } from 'better-auth'
 import config from '@api/config'
 import { db } from '@api/db'
@@ -11,7 +13,7 @@ import { and, eq, ne } from 'drizzle-orm'
 import * as z from 'zod'
 import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from './auth-validators'
 
-function createAuth(): ReturnType<typeof betterAuth> | null {
+function createAuth() {
   // Skip BetterAuth initialization entirely when auth is disabled
   if (!config.authEnabled) {
     return null

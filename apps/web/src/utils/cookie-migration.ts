@@ -1,5 +1,9 @@
 type CookieMap = Record<string, string>
 
+const COOKIE_SEPARATOR_RE = /;\s*/g
+const HEX_SHORT_RE = /^#[0-9a-f]{3}$/i
+const HEX_LONG_RE = /^#[0-9a-f]{6}$/i
+
 const MIGRATION_VERSION = '1'
 const MIGRATION_VERSION_STORAGE_KEY = 'settings.cookieMigrationVersion'
 
@@ -21,7 +25,7 @@ function parseCookies(cookieString: string): CookieMap {
   if (!cookieString) return out
 
   // document.cookie uses "; " separators.
-  const parts = cookieString.split(/;\s*/g)
+  const parts = cookieString.split(COOKIE_SEPARATOR_RE)
   for (const part of parts) {
     if (!part) continue
     const eq = part.indexOf('=')
@@ -72,12 +76,12 @@ function normalizePlanningIds(raw: string): string[] {
   if (decoded.startsWith('[') && decoded.endsWith(']')) {
     const arr = tryParseJson<unknown[]>(decoded)
     if (Array.isArray(arr)) {
-      return Array.from(new Set(arr.filter(x => typeof x === 'string').map(x => (x as string).trim()).filter(Boolean))).slice(0, 100)
+      return [...new Set(arr.filter(x => typeof x === 'string').map(x => (x as string).trim()).filter(Boolean))].slice(0, 100)
     }
   }
 
   const parts = decoded.split(',').map(s => s.trim()).filter(Boolean)
-  return Array.from(new Set(parts)).slice(0, 100)
+  return [...new Set(parts)].slice(0, 100)
 }
 
 function parseBooleanish(raw: string): boolean | null {
@@ -91,13 +95,13 @@ function normalizeHexColor(raw: string): string | null {
   const v = safeDecodeURIComponent(raw).trim()
   if (!v) return null
   const withHash = v.startsWith('#') ? v : `#${v}`
-  if (/^#[0-9a-f]{3}$/i.test(withHash)) {
+  if (HEX_SHORT_RE.test(withHash)) {
     const r = withHash[1]
     const g = withHash[2]
     const b = withHash[3]
     return `#${r}${r}${g}${g}${b}${b}`.toUpperCase()
   }
-  if (/^#[0-9a-f]{6}$/i.test(withHash)) return withHash.toUpperCase()
+  if (HEX_LONG_RE.test(withHash)) return withHash.toUpperCase()
   return null
 }
 
@@ -283,7 +287,7 @@ async function migrateLegacyCookiesToLocalStorage() {
           ? obj.plannings.filter(x => typeof x === 'string').map(x => (x as string).trim()).filter(Boolean)
           : []
         if (!name || plannings.length === 0) continue
-        customGroups.push({ id: crypto.randomUUID(), name, plannings: Array.from(new Set(plannings)).slice(0, 100) })
+        customGroups.push({ id: crypto.randomUUID(), name, plannings: [...new Set(plannings)].slice(0, 100) })
         if (customGroups.length >= 50) break
       }
     }
@@ -309,7 +313,7 @@ async function migrateLegacyCookiesToLocalStorage() {
     } else {
       // Very old format: "a,b,c"
       const ids = raw.split(',').map(s => s.trim()).filter(Boolean)
-      const norm = Array.from(new Set(ids)).slice(0, 100)
+      const norm = [...new Set(ids)].slice(0, 100)
       for (const id of norm) {
         favoriteFullIds.push(id)
       }
@@ -317,7 +321,7 @@ async function migrateLegacyCookiesToLocalStorage() {
   }
 
   if (favoriteFullIds.length > 0) {
-    const unique = Array.from(new Set(favoriteFullIds)).slice(0, 100)
+    const unique = [...new Set(favoriteFullIds)].slice(0, 100)
 
     // Best-effort title lookup (so groups show up with the actual planning title).
     // If it fails (offline, network error), fall back to cookie-provided label or fullId.

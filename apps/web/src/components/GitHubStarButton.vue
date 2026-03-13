@@ -9,6 +9,8 @@ const props = withDefaults(defineProps<{
   repo: string
 }>(), {})
 
+const TRAILING_DOT_ZERO_RE = /\.0$/
+
 const stars = ref<string | null>(null)
 
 onMounted(async () => {
@@ -17,7 +19,7 @@ onMounted(async () => {
     if (!res.ok) return
     const data = await res.json()
     const count = data.stargazers_count as number
-    stars.value = count >= 1000 ? `${(count / 1000).toFixed(1).replace(/\.0$/, '')}k` : count.toLocaleString()
+    stars.value = count >= 1000 ? `${(count / 1000).toFixed(1).replace(TRAILING_DOT_ZERO_RE, '')}k` : count.toLocaleString()
   } catch {
     // silently ignore
   }

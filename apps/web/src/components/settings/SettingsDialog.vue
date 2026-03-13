@@ -30,7 +30,7 @@ const showPasskeySettings = computed(() => authEnabled && !!session.value?.data?
 
 // Timezone selector state
 const browserTimezone = ref<string | null>(detectBrowserTimezone())
-const timezones = ref<string[]>(Array.from(getSupportedTimezones()))
+const timezones = ref<string[]>([...getSupportedTimezones()])
 const targetTz = computed({
   get: () => targetTimezone.value ?? '',
   set: (v: string) => {

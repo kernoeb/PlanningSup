@@ -31,7 +31,7 @@ export async function init(db: Database) {
   const dupCount = allFlat.length - uniqueFlat.length
 
   if (dupCount > 0) {
-    const summary = [...duplicates.entries()].map(([fullId, rec]) => ({
+    const summary = Array.from(duplicates.entries(), ([fullId, rec]) => ({
       fullId,
       totalOccurrences: rec.total,
       first: {

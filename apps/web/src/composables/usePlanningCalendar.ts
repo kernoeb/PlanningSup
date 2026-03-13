@@ -20,6 +20,8 @@ import { useSharedSettings } from './useSettings'
 import { useSharedTheme } from './useTheme'
 import { useViewport } from './useViewport'
 
+const NON_WORD_DASH_RE = /[^\w-]/g
+
 function mapApiEventToCalendarEvent(
   event: EventWithFullId,
   timezone: NonNullable<AllowedTimezones>,
@@ -27,7 +29,7 @@ function mapApiEventToCalendarEvent(
   const start = event.startDate.toTemporalInstant().toZonedDateTimeISO(timezone)
   const end = event.endDate.toTemporalInstant().toZonedDateTimeISO(timezone)
 
-  const id = `${event.fullId}_${event.uid}`.replace(/[^\w-]/g, '_') // valid HTML id (querySelector)
+  const id = `${event.fullId}_${event.uid}`.replace(NON_WORD_DASH_RE, '_') // valid HTML id (querySelector)
   return {
     ...event,
     id,

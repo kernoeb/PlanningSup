@@ -3,6 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     stylistic: true,
+    markdown: false,
     rules: {
       'vue/attributes-order': ['error', {
         alphabetical: true,

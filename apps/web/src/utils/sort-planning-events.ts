@@ -67,7 +67,7 @@ export function sortPlanningEventsDeterministically<T extends SortablePlanningEv
 ): T[] {
   if (!events || events.length <= 1) return events as T[]
 
-  return [...events].sort(createPlanningEventComparator(planningOrder))
+  return events.toSorted(createPlanningEventComparator(planningOrder))
 }
 
 export function mergeSortedPlanningEventsDeterministically<T extends SortablePlanningEvent>(

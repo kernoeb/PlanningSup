@@ -8,6 +8,8 @@ import config from '@api/config'
 import { html, Html } from '@elysiajs/html' // deepscan-disable-line
 import { Elysia } from 'elysia'
 
+const ALLOWED_PARAM_RE = /^[-\w.~]+$/
+
 const css = String.raw
 
 const pageCss = css`
@@ -87,8 +89,7 @@ export default new Elysia().use(html()).get('/auth/auto-redirect/:provider', asy
   if (client !== 'tauri' && client !== 'extension') return c.status(400, 'Invalid client parameter')
 
   // Simple validation: only allow base64url-like characters for code and state
-  const allowedPattern = /^[-\w.~]+$/
-  if (!allowedPattern.test(code) || !allowedPattern.test(state)) return c.status(400)
+  if (!ALLOWED_PARAM_RE.test(code) || !ALLOWED_PARAM_RE.test(state)) return c.status(400)
 
   if (client === 'tauri') {
     // Rebuild safe search params

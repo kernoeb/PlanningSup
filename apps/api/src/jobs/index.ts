@@ -16,6 +16,8 @@ export type { QuietHours }
 export { JOB_ID } from './utils/ids'
 export { pokeJob } from './utils/poke'
 
+const SEPARATOR_RE = /[-_.]+/g
+
 interface JobModule {
   id: JobId
   name: string
@@ -24,7 +26,7 @@ interface JobModule {
 }
 
 function toPrettyName(id: string) {
-  return id.replace(/[-_.]+/g, ' ')
+  return id.replace(SEPARATOR_RE, ' ')
 }
 
 function waitForAbort(signal: AbortSignal) {

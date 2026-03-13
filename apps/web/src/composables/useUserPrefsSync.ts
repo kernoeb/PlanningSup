@@ -110,13 +110,13 @@ function userPrefsSync() {
     const getServerValue = (): unknown => {
       const user = session.value.data?.user as UserWithPrefsData | undefined
       if (!user) return undefined
-      return Object.prototype.hasOwnProperty.call(user, key) ? user[key] : user.additionalFields?.[key]
+      return Object.hasOwn(user, key) ? user[key] : user.additionalFields?.[key]
     }
 
     const getServerMeta = (): PrefsMeta => {
       const user = session.value.data?.user as UserWithPrefsData | undefined
       if (!user) return {}
-      const rawMeta = Object.prototype.hasOwnProperty.call(user, 'prefsMeta')
+      const rawMeta = Object.hasOwn(user, 'prefsMeta')
         ? user.prefsMeta
         : user.additionalFields?.prefsMeta
       if (typeof rawMeta !== 'string') return {}
