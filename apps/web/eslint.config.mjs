@@ -4,6 +4,7 @@ export default antfu({
   stylistic: true,
   vue: true,
   typescript: true,
+  markdown: false,
   rules: {
     'vue/attributes-order': ['error', {
       alphabetical: true,

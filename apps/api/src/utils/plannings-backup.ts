@@ -6,6 +6,11 @@ import { elysiaLogger } from '@api/utils/logger'
 
 import { sql } from 'drizzle-orm'
 
+const EXPORTE_RE = /\(Exporté.*\)/
+const EXPORTED_RE = /\(Exported :.*\)/
+const UPDATED_RE = /\(Updated :.*\)/
+const MODIFIE_RE = /\(Modifié le:.*\)/
+
 interface BackupEvent {
   uid: string
   summary: string
@@ -17,10 +22,10 @@ interface BackupEvent {
 
 function normalizeDescription(description: string) {
   return description
-    .replace(/\(Exporté.*\)/, '')
-    .replace(/\(Exported :.*\)/, '')
-    .replace(/\(Updated :.*\)/, '')
-    .replace(/\(Modifié le:.*\)/, '')
+    .replace(EXPORTE_RE, '')
+    .replace(EXPORTED_RE, '')
+    .replace(UPDATED_RE, '')
+    .replace(MODIFIE_RE, '')
     .trim()
 }
 

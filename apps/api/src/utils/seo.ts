@@ -1,3 +1,6 @@
+const TRAILING_SLASH_RE = /\/$/
+const WHITESPACE_RE = /\s/
+
 function escapeAttrValue(value: string) {
   return value
     .replaceAll('&', '&amp;')
@@ -8,7 +11,7 @@ function escapeAttrValue(value: string) {
 }
 
 function normalizeOrigin(publicOrigin: string) {
-  return publicOrigin.replace(/\/$/, '')
+  return publicOrigin.replace(TRAILING_SLASH_RE, '')
 }
 
 interface HtmlAttr {
@@ -18,12 +21,12 @@ interface HtmlAttr {
 
 function parseTagNameInfo(tag: string) {
   let i = 1
-  while (i < tag.length && /\s/.test(tag[i]!)) i++
+  while (i < tag.length && WHITESPACE_RE.test(tag[i]!)) i++
 
   const start = i
   while (i < tag.length) {
     const c = tag[i]!
-    if (c === '>' || c === '/' || /\s/.test(c)) break
+    if (c === '>' || c === '/' || WHITESPACE_RE.test(c)) break
     i++
   }
   return { name: tag.slice(start, i).toLowerCase(), end: i }
@@ -41,7 +44,7 @@ function parseAttributes(tag: string): HtmlAttr[] {
   while (i < tag.length) {
     const c = tag[i]!
     if (c === '>' || (c === '/' && tag[i + 1] === '>')) break
-    if (/\s/.test(c)) {
+    if (WHITESPACE_RE.test(c)) {
       i++
       continue
     }
@@ -49,14 +52,14 @@ function parseAttributes(tag: string): HtmlAttr[] {
     const nameStart = i
     while (i < tag.length) {
       const cc = tag[i]!
-      if (cc === '>' || cc === '/' || cc === '=' || /\s/.test(cc)) break
+      if (cc === '>' || cc === '/' || cc === '=' || WHITESPACE_RE.test(cc)) break
       i++
     }
     const rawName = tag.slice(nameStart, i)
     const name = rawName.toLowerCase()
     if (!name) break
 
-    while (i < tag.length && /\s/.test(tag[i]!)) i++
+    while (i < tag.length && WHITESPACE_RE.test(tag[i]!)) i++
 
     if (tag[i] !== '=') {
       attrs.push({ name: rawName, value: null })
@@ -64,7 +67,7 @@ function parseAttributes(tag: string): HtmlAttr[] {
     }
 
     i++ // skip '='
-    while (i < tag.length && /\s/.test(tag[i]!)) i++
+    while (i < tag.length && WHITESPACE_RE.test(tag[i]!)) i++
 
     if (i >= tag.length) {
       attrs.push({ name: rawName, value: '' })
@@ -85,7 +88,7 @@ function parseAttributes(tag: string): HtmlAttr[] {
     const valueStart = i
     while (i < tag.length) {
       const cc = tag[i]!
-      if (cc === '>' || /\s/.test(cc)) break
+      if (cc === '>' || WHITESPACE_RE.test(cc)) break
       i++
     }
     const value = tag.slice(valueStart, i)

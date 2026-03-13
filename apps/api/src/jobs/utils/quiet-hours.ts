@@ -1,5 +1,7 @@
 import config from '@api/config'
 
+const QUIET_HOURS_RE = /^(\d{1,2}):(\d{2})[–-](\d{1,2}):(\d{2})$/
+
 export interface QuietHours {
   start: { hour: number, minute: number }
   end: { hour: number, minute: number }
@@ -12,7 +14,7 @@ export function parseQuietHours(input: string | undefined | null): QuietHours | 
   if (raw === '') return null
 
   // Support both en dash (–) and hyphen (-) as separator
-  const match = /^(\d{1,2}):(\d{2})[–-](\d{1,2}):(\d{2})$/.exec(raw)
+  const match = QUIET_HOURS_RE.exec(raw)
   if (!match) return null
 
   const startHour = Number(match[1])

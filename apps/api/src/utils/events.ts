@@ -11,6 +11,28 @@ import icalJs from 'ical.js'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
+// Regex constants hoisted from functions to avoid re-compilation on every call
+const LOWERCASE_CHAR_RE = /.*[a-z].*/
+const BROKEN_APOSTROPHE_RE = /([A-Z])\?([A-Z])/gi
+const CM_WORD_RE = /\bCM\b/
+const TP_WORD_RE = /\bTP\d*\b/
+const SUBGROUP_RE = /\sG\d\.\d$/
+const TD_WORD_RE = /\bTD\b/
+const GROUP_RE = /\sG\d$/
+const MODULE_CODE_RE = /^S\d\.\d\d/
+const CONTROLE_RE = /contr[ôo]le/i
+const SALLE_JOKER_DISTANCE_RE = /(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/
+const ROOM_PREFIX_RE = /^V-/
+const GRP_RE = /Grp \d/g
+const GR_RE = /GR \d.?\d?/g
+const LP_RE = /LP (DLIS|CYBER)/g
+const EXPORTE_RE = /\(Exporté.*\)/
+const EXPORTED_RE = /\(Exported :.*\)/
+const UPDATED_RE = /\(Updated :.*\)/
+const MODIFIE_RE = /\(Modifié le:.*\)/
+const LEADING_DASH_RE = /^\s+-/
+const REMOTE_LOCATION_RE = /à distance$|EAD/
+
 const dateStartTemplate = '{date-start}'
 const dateEndTemplate = '{date-end}'
 
@@ -262,25 +284,25 @@ function checkHighlightTeacher(id: string, event: CalEvent) {
     if (event.description.slice(-28, -20) === 'Exported') {
       slicedDescription = event.description.slice(0, -29)
     }
-    return !slicedDescription.match(/.*[a-z].*/) && !event.summary.toLowerCase().includes('amphi') && !event.location.toLowerCase().includes('amphi')
+    return !slicedDescription.match(LOWERCASE_CHAR_RE) && !event.summary.toLowerCase().includes('amphi') && !event.location.toLowerCase().includes('amphi')
   }
 
   return false
 }
 
 function cleanName(name: string) {
-  return (name && name.replace(/([A-Z])\?([A-Z])/gi, (_, b, c) => `${b}'${c}`).trim()) || ''
+  return (name && name.replace(BROKEN_APOSTROPHE_RE, (_, b, c) => `${b}'${c}`).trim()) || ''
 }
 function getCategoryId(id: string, event: CalEvent, options: {
   highlightTeacher?: boolean
 }) {
   if (options.highlightTeacher && checkHighlightTeacher(id, event)) {
     return 'no-teacher'
-  } else if (/\bCM\b/.test(event.summary) || event.summary.toUpperCase().includes('AMPHI') || event.location.toUpperCase().includes('AMPHI')) {
+  } else if (CM_WORD_RE.test(event.summary) || event.summary.toUpperCase().includes('AMPHI') || event.location.toUpperCase().includes('AMPHI')) {
     return 'lecture'
-  } else if (/\bTP\d*\b/.test(event.summary) || event.summary.includes('TPi') || event.summary.includes('TDi') || event.summary.trim().match(/\sG\d\.\d$/)) {
+  } else if (TP_WORD_RE.test(event.summary) || event.summary.includes('TPi') || event.summary.includes('TDi') || SUBGROUP_RE.test(event.summary.trim())) {
     return 'lab'
-  } else if ((/\bTD\b/.test(event.summary) || event.location.includes('V-B') || event.summary.trim().match(/\sG\d$/)) && !/^S\d\.\d\d/.test(event.summary) && !/contr[ôo]le/i.test(event.summary)) {
+  } else if ((TD_WORD_RE.test(event.summary) || event.location.includes('V-B') || GROUP_RE.test(event.summary.trim())) && !MODULE_CODE_RE.test(event.summary) && !CONTROLE_RE.test(event.summary)) {
     return 'tutorial'
   } else {
     return 'other'
@@ -290,27 +312,27 @@ function getCategoryId(id: string, event: CalEvent, options: {
 function cleanLocation(l: string) {
   return l.trim()
     .replace('salle joker à distance', 'À distance')
-    .replace(/(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/, 'À distance')
+    .replace(SALLE_JOKER_DISTANCE_RE, 'À distance')
     .split(',')
-    .map(v => v.replace(/^V-/, ''))
+    .map(v => v.replace(ROOM_PREFIX_RE, ''))
     .join(', ')
 }
 
 function cleanDescription(d: string) {
   return d
-    .replace(/Grp \d/g, '')
-    .replace(/GR \d.?\d?/g, '')
-    .replace(/LP (DLIS|CYBER)/g, '')
-    .replace(/\(Exporté.*\)/, '')
-    .replace(/\(Exported :.*\)/, '')
-    .replace(/\(Updated :.*\)/, '')
-    .replace(/\(Modifié le:.*\)/, '')
-    .replace(/^\s+-/, '')
+    .replace(GRP_RE, '')
+    .replace(GR_RE, '')
+    .replace(LP_RE, '')
+    .replace(EXPORTE_RE, '')
+    .replace(EXPORTED_RE, '')
+    .replace(UPDATED_RE, '')
+    .replace(MODIFIE_RE, '')
+    .replace(LEADING_DASH_RE, '')
     .trim()
 }
 
 function isRemoteLocation(location: string) {
-  return /à distance$|EAD/.test(location.trim())
+  return REMOTE_LOCATION_RE.test(location.trim())
 }
 
 export function getFormattedEvents(id: string, eventsList: CalEvent[], options: {

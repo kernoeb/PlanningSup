@@ -7,6 +7,7 @@ export default antfu({
   jsx: true,
   typescript: true,
   vue: false,
+  markdown: false,
   rules: {
     'no-console': 'off',
     'antfu/if-newline': 'off',

@@ -15,7 +15,7 @@ export const INITIAL_PLANNING_FULL_IDS: string[] = []
 export const CURRENT_PLANNINGS_STORAGE_KEY = 'plannings'
 
 function normalizeIds(ids: string[]): string[] {
-  return Array.from(new Set(ids.map(s => s.trim()).filter(Boolean)))
+  return [...new Set(ids.map(s => s.trim()).filter(Boolean))]
 }
 
 /**

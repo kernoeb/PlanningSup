@@ -3,6 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
   stylistic: true,
   vue: false,
+  markdown: false,
   rules: {
     'no-console': 'off',
     'antfu/if-newline': 'off',

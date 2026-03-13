@@ -19,6 +19,9 @@
 
 import Color from 'color'
 
+const HEX_SHORT_RE = /^#[0-9a-f]{3}$/i
+const HEX_LONG_RE = /^#[0-9a-f]{6}$/i
+
 export type EventKind = 'lecture' | 'lab' | 'tutorial' | 'other'
 export type ColorMap = Record<EventKind, string>
 
@@ -60,13 +63,13 @@ export function normalizeHex(hex: string): string | null {
   if (!hex || typeof hex !== 'string') return null
   let h = hex.trim().toLowerCase()
   if (!h.startsWith('#')) h = `#${h}`
-  if (h.length === 4 && /^#[0-9a-f]{3}$/i.test(h)) {
+  if (h.length === 4 && HEX_SHORT_RE.test(h)) {
     const r = h[1]
     const g = h[2]
     const b = h[3]
     return `#${r}${r}${g}${g}${b}${b}`.toUpperCase()
   }
-  if (h.length === 7 && /^#[0-9a-f]{6}$/i.test(h)) {
+  if (h.length === 7 && HEX_LONG_RE.test(h)) {
     return h.toUpperCase()
   }
   return null

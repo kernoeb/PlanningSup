@@ -345,6 +345,7 @@ export async function drainRefreshQueue(db: Database, deps: {
       }
     }
 
+    // eslint-disable-next-line e18e/prefer-array-fill -- each call must create a separate promise
     const workers = Array.from({ length: Math.max(1, concurrency) }, () => runOne())
     await Promise.all(workers)
   }
