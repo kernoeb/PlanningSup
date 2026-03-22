@@ -18,9 +18,9 @@
     "@elysiajs/html": "1.4.0",
     "@elysiajs/openapi": "1.4.14",
     "@elysiajs/static": "1.4.7",
-    "@logtape/logtape": "2.0.2",
+    "@logtape/logtape": "2.0.4",
     "better-auth": "catalog:",
-    "dayjs": "1.11.19",
+    "dayjs": "1.11.20",
     "drizzle-orm": "0.45.1",
     "drizzle-typebox": "0.3.3",
     "elysia": "catalog:",
@@ -33,9 +33,9 @@
     "@simplewebauthn/server": "13.3.0",
     "bun-types": "catalog:types",
     "config": "workspace:*",
-    "drizzle-kit": "0.31.9",
+    "drizzle-kit": "0.31.10",
     "eslint": "catalog:dev",
-    "pg": "8.18.0"
+    "pg": "8.20.0"
   },
   "overrides": {
     "@sinclair/typebox": "0.34"

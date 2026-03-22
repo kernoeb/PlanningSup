@@ -54,7 +54,12 @@ async function handleAddPasskey() {
     const name = newPasskeyName.value.trim() || undefined
     const result = await addPasskey(name)
     if (result.error) {
-      error.value = result.error.message || 'Impossible d\'ajouter le passkey'
+      if ('code' in result.error && result.error.code === 'ERROR_CEREMONY_ABORTED') return
+      if ('code' in result.error && result.error.code === 'ERROR_AUTHENTICATOR_PREVIOUSLY_REGISTERED') {
+        error.value = 'Ce passkey est déjà enregistré'
+      } else {
+        error.value = 'Impossible d\'ajouter le passkey'
+      }
     } else {
       showAddDialog.value = false
       newPasskeyName.value = ''
