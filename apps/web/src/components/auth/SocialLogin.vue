@@ -38,11 +38,10 @@ async function handlePasskeyLogin() {
   try {
     const result = await signInPasskey(false)
     if (result.error) {
-      // Don't show error for user cancellation (covers browser string variations + WebAuthn standard error)
-      const msg = result.error.message ?? ''
-      const isUserCancel = msg.includes('cancelled') || msg.includes('canceled') || (result.error as any).name === 'NotAllowedError'
-      if (!isUserCancel) {
-        passkeyError.value = result.error.message || 'Erreur lors de la connexion avec le passkey'
+      const isCancelled = ('code' in result.error && result.error.code === 'AUTH_CANCELLED')
+        || (result.error as any).name === 'NotAllowedError'
+      if (!isCancelled) {
+        passkeyError.value = 'Erreur lors de la connexion avec le passkey'
       }
     } else if (result.data) {
       // Success - close dialog; reactive session propagates auth state automatically
