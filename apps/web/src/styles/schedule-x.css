@@ -1,4 +1,9 @@
 :root {
+  /* Restore low z-indexes (schedule-x 4.3.1 bumped to 100+) */
+  --sx-z-index-week-header: 2;
+  --sx-z-index-event-modal: 3;
+  --sx-calendar-header-popup-z-index: 4;
+
   --sx-spacing-padding3: 6px;
   --sx-font-extra-small: 0.82rem;
   --sx-font-extra-large: 1rem;

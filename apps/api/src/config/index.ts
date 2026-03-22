@@ -53,7 +53,7 @@ function getConfig() {
 
     // Better-Auth
     authEnabled: env('AUTH_ENABLED', { default: false }),
-    trustedOrigins: env('TRUSTED_ORIGINS')?.split(',').map(s => s.trim()),
+    trustedOrigins: env('TRUSTED_ORIGINS')?.split(',').map(s => s.trim()) ?? [rawPublicOrigin],
 
     auth: {
       discord: {
