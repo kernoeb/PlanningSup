@@ -29,7 +29,7 @@
     "@fontsource-variable/roboto": "5.2.10",
     "@tauri-apps/cli": "2.10.1",
     "@vitejs/plugin-vue": "catalog:dev",
-    "@vue/tsconfig": "0.9.0",
+    "@vue/tsconfig": "0.9.1",
     "bun-types": "catalog:types",
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
