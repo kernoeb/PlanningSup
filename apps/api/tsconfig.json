@@ -4,7 +4,6 @@
     "jsx": "react",
     "jsxFactory": "Html.createElement",
     "jsxFragmentFactory": "Html.Fragment",
-    "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
@@ -12,8 +11,8 @@
       "@web/public/*": ["../web/public/*"],
       "@web/expose": ["../web/expose.ts"],
       "@web/libs": ["../web/libs/index.ts"],
-      "@api": ["src/index.ts"],
-      "@api/*": ["src/*"],
+      "@api": ["./src/index.ts"],
+      "@api/*": ["./src/*"],
       "@libs": ["../../packages/libs/src/index.ts"],
       "@libs/*": ["../../packages/libs/src/*"],
       "@plannings": ["../../resources/plannings"]

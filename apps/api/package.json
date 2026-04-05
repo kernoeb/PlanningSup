@@ -35,7 +35,8 @@
     "config": "workspace:*",
     "drizzle-kit": "0.31.10",
     "eslint": "catalog:dev",
-    "pg": "8.20.0"
+    "pg": "8.20.0",
+    "typescript": "catalog:dev"
   },
   "overrides": {
     "@sinclair/typebox": "0.34"
