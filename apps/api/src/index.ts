@@ -31,10 +31,13 @@ await initDb(db).then(() => {
   jobs.start(db)
 })
 
+const commitSha = await Bun.file(path.join(process.cwd(), 'commit_sha')).text().catch(() => '')
+
 const RUNTIME_CONFIG = {
   authEnabled: config.authEnabled,
   plausible: config.plausible,
   donationLinks: config.donationLinks,
+  commitSha,
 }
 
 export const app = new Elysia()

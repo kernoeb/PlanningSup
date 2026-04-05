@@ -9,7 +9,8 @@ import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
-const imageTooltipText = `${__APP_DISPLAY_NAME__ || ''} ${__APP_VERSION__ || ''}`.trim()
+const commitSha = globalThis.__APP_CONFIG__?.commitSha
+const imageTooltipText = `${__APP_DISPLAY_NAME__ || ''} ${__APP_VERSION__ || ''}${commitSha ? ` (${commitSha})` : ''}`.trim()
 
 const { titles, planningFullIds, networkFailures, syncing, hasEvents } = usePlanningData()
 const isOnline = useOnline()
