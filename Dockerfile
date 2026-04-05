@@ -45,14 +45,11 @@ RUN bun run test:unit
 
 
 ##########################################################
-FROM busybox:uclibc AS busybox
-
-##########################################################
-FROM gcr.io/distroless/base-debian12
-COPY --from=busybox /bin/sh /bin/sh
-COPY --from=busybox /bin/wget /usr/bin/wget
+FROM cgr.dev/chainguard/glibc-dynamic:latest
 
 WORKDIR /app
+
+COPY --from=ghcr.io/tarampampam/microcheck:1 /bin/httpcheck /bin/httpcheck
 
 ENV PLANNINGS_LOCATION=/app/plannings
 ENV WEB_DIST_LOCATION=/app/web/dist
@@ -68,8 +65,8 @@ COPY --from=build /app/plannings ./plannings
 ENV NODE_ENV=production
 ENV PORT=20000
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-  CMD ["/bin/sh", "-c", "[ \"$(/usr/bin/wget -qO- http://localhost:20000/api/ping)\" = \"pong\" ]"]
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
+  CMD ["/bin/httpcheck", "http://127.0.0.1:20000/api/ping"]
 
 CMD ["./server"]
 
