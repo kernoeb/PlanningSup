@@ -10,6 +10,7 @@ declare global {
       name: string
       url: string
     }[]
+    commitSha?: string
   } | undefined
 }
 

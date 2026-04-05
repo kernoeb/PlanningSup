@@ -43,6 +43,18 @@ COPY /test ./test
 ENV NODE_ENV=test
 RUN bun run test:unit
 
+COPY .git/HEAD /tmp/git/HEAD
+COPY .git/refs /tmp/git/refs
+RUN set -e; \
+    head=$(cat /tmp/git/HEAD); \
+    if echo "$head" | grep -q '^ref: '; then \
+      ref=$(echo "$head" | sed 's/^ref: //'); \
+      sha=$(cat "/tmp/git/$ref"); \
+    else \
+      sha="$head"; \
+    fi; \
+    printf '%.7s' "$sha" > /tmp/commit_sha
+
 
 ##########################################################
 FROM cgr.dev/chainguard/glibc-dynamic:latest
@@ -61,6 +73,8 @@ COPY --from=build /app/apps/api/server ./server
 COPY --from=build /app/apps/web/dist ./web/dist/
 
 COPY --from=build /app/plannings ./plannings
+
+COPY --from=build /tmp/commit_sha ./commit_sha
 
 ENV NODE_ENV=production
 ENV PORT=20000
