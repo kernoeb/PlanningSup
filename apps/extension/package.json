@@ -21,8 +21,8 @@
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf --glob extension/dist extension/manifest.json extension.*",
-    "lint": "eslint --cache .",
-    "lint-fix": "eslint --cache --fix .",
+    "lint": "bunx --bun eslint --cache .",
+    "lint-fix": "bunx --bun eslint --cache --fix .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
