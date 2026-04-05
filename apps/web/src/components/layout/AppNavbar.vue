@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from '@lucide/vue'
 import { onKeyStroke, useOnline } from '@vueuse/core'
 import CurrentPlanningBadge from '@web/components/layout/CurrentPlanningBadge.vue'
 import UserMenu from '@web/components/layout/UserMenu.vue'
@@ -6,7 +7,6 @@ import PlanningPicker from '@web/components/planning/PlanningPicker.vue'
 import { useAppScroll } from '@web/composables/useAppScroll'
 import { usePlanningData } from '@web/composables/usePlanningData'
 import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
-import { List as IconList, RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
 import { computed, onBeforeUnmount, onMounted, useTemplateRef } from 'vue'
 
 const imageTooltipText = `${__APP_DISPLAY_NAME__ || ''} ${__APP_VERSION__ || ''}`.trim()

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff } from 'lucide-vue-next'
+import { RefreshCw as IconRefresh, TriangleAlert as IconWarning, WifiOff as IconWifiOff } from '@lucide/vue'
 import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 
 const props = defineProps<{

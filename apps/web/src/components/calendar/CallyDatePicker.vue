@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from 'lucide-vue-next'
+import { ChevronLeft as IconChevronLeft, ChevronRight as IconChevronRight } from '@lucide/vue'
 import { computed } from 'vue'
 import 'cally'
 

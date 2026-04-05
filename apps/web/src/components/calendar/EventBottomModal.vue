@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import type { CalendarEvent } from '@schedule-x/calendar'
-import { onKeyStroke, useSwipe } from '@vueuse/core'
-import { useSharedSettings } from '@web/composables/useSettings'
-import { getContrastTextColor } from '@web/utils/calendars'
 import {
   Calendar as IconCalendar,
   Clock as IconClock,
@@ -11,7 +8,10 @@ import {
   MapPin as IconMapPin,
   Monitor as IconMonitor,
   X as IconX,
-} from 'lucide-vue-next'
+} from '@lucide/vue'
+import { onKeyStroke, useSwipe } from '@vueuse/core'
+import { useSharedSettings } from '@web/composables/useSettings'
+import { getContrastTextColor } from '@web/utils/calendars'
 import { computed, useTemplateRef, watch } from 'vue'
 
 const props = defineProps<{

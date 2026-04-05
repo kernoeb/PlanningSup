@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import type { CalendarEvent } from '@schedule-x/calendar'
+import { Info as IconInfo, MapPin as IconMapPin } from '@lucide/vue'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { useViewport } from '@web/composables/useViewport'
-import { Info as IconInfo, MapPin as IconMapPin } from 'lucide-vue-next'
 import { computed, inject } from 'vue'
 
 const props = defineProps<{ calendarEvent: CalendarEvent }>()

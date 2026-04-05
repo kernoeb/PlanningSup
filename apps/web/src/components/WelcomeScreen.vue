@@ -1,9 +1,4 @@
 <script lang="ts" setup>
-import SocialLogin from '@web/components/auth/SocialLogin.vue'
-import GithubIcon from '@web/components/icons/GithubIcon.vue'
-import { useAppScroll } from '@web/composables/useAppScroll'
-import { useAuth } from '@web/composables/useAuth'
-import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import {
   Calendar as IconCalendar,
   ChevronRight as IconChevronRight,
@@ -11,7 +6,12 @@ import {
   Layers as IconLayers,
   MonitorSmartphone as IconMonitorSmartphone,
   RefreshCw as IconRefreshCw,
-} from 'lucide-vue-next'
+} from '@lucide/vue'
+import SocialLogin from '@web/components/auth/SocialLogin.vue'
+import GithubIcon from '@web/components/icons/GithubIcon.vue'
+import { useAppScroll } from '@web/composables/useAppScroll'
+import { useAuth } from '@web/composables/useAuth'
+import { usePlanningPickerController } from '@web/composables/usePlanningPickerController'
 import { computed, onUnmounted, useTemplateRef } from 'vue'
 
 const { authEnabled, session } = useAuth()

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { Link as IconLink, Undo2 as IconUndo } from '@lucide/vue'
 import { useCurrentPlanning } from '@web/composables/useCurrentPlanning'
 import { useSharedPlanningState } from '@web/composables/useSharedPlanningUrl'
-import { Link as IconLink, Undo2 as IconUndo } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
 const { loadedFromUrlCount, previousPlannings, clearLoadedCount } = useSharedPlanningState()

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { X as IconX } from '@lucide/vue'
 import TagInput from '@web/components/inputs/TagInput.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { getDefaultColors, useSharedSettings } from '@web/composables/useSettings'
 import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
-import { X as IconX } from 'lucide-vue-next'
 import { computed, defineAsyncComponent, ref, watch } from 'vue'
 
 defineOptions({ name: 'SettingsDialog' })

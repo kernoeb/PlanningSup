@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Check as IconCheck, Copy as IconCopy, X as IconX } from '@lucide/vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { Check as IconCheck, Copy as IconCopy, X as IconX } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef, watch } from 'vue'
 
 defineOptions({ name: 'ShareModal' })

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import { Ghost, Info, LogIn, LogOut, Monitor, Moon, RefreshCw, Settings, Sun, User } from '@lucide/vue'
 import AboutDialog from '@web/components/AboutDialog.vue'
 import SocialLogin from '@web/components/auth/SocialLogin.vue'
 import SettingsDialog from '@web/components/settings/SettingsDialog.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getPwa } from '@web/utils/pwa'
-import { Ghost, Info, LogIn, LogOut, Monitor, Moon, RefreshCw, Settings, Sun, User } from 'lucide-vue-next'
 import { computed, ref, useTemplateRef } from 'vue'
 
 defineOptions({ name: 'UserMenu' })
