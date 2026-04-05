@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
+import { Heart, X } from '@lucide/vue'
 import { useLocalStorage } from '@vueuse/core'
 import BuyMeACoffeeIcon from '@web/components/icons/BuyMeACoffeeIcon.vue'
 import KofiIcon from '@web/components/icons/KofiIcon.vue'
 import PaypalIcon from '@web/components/icons/PaypalIcon.vue'
 import { BRAND_COLORS, DONATION_LINKS } from '@web/utils/donation'
-import { Heart, X } from 'lucide-vue-next'
 import { computed, onMounted, ref } from 'vue'
 
 defineOptions({ name: 'DonationToast' })

@@ -50,15 +50,20 @@ jobs:
         run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: '.bun-version'
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
       - name: Cache Bun dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ${{ runner.temp }}/bun/install/cache
@@ -140,7 +145,7 @@ jobs:
           fi
 
       - name: Upload Chrome Extension Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: hashFiles('apps/extension/extension.crx') != ''
         with:
           name: planningsup-chrome-${{ github.run_number }}
@@ -149,7 +154,7 @@ jobs:
           compression-level: 0
 
       - name: Upload Firefox Extension Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: hashFiles('apps/extension/extension.xpi') != ''
         with:
           name: planningsup-firefox-${{ github.run_number }}
@@ -158,7 +163,7 @@ jobs:
           compression-level: 0
 
       - name: Upload Extension ZIP (for Chrome Web Store)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: hashFiles('apps/extension/extension.zip') != ''
         with:
           name: planningsup-zip-${{ github.run_number }}
@@ -167,7 +172,7 @@ jobs:
           compression-level: 0
 
       - name: Upload Build Logs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: planningsup-build-logs-${{ github.run_number }}

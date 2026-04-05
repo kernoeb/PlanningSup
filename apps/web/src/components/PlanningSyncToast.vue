@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { RefreshCw as IconRefresh } from '@lucide/vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { RefreshCw as IconRefresh } from 'lucide-vue-next'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 
 const { syncing, hasEvents, planningFullIds } = usePlanningData()

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Fingerprint as IconFingerprint, Loader2 as IconLoader, User as IconUser, X as IconX } from '@lucide/vue'
 import { useAuth } from '@web/composables/useAuth'
-import { Fingerprint as IconFingerprint, Loader2 as IconLoader, User as IconUser, X as IconX } from 'lucide-vue-next'
 import { computed, reactive, ref, useTemplateRef, watch } from 'vue'
 import { DiscordIcon, GitHubIcon } from 'vue3-simple-icons'
 

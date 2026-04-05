@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { FailureReason } from '@web/composables/usePlanningData'
+import { TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from '@lucide/vue'
 import { useOnline } from '@vueuse/core'
 import { usePlanningData } from '@web/composables/usePlanningData'
-import { TriangleAlert as IconWarning, WifiOff as IconWifiOff, X as IconX } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
 const { networkFailures, planningFullIds } = usePlanningData()

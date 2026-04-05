@@ -21,8 +21,8 @@
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf --glob extension/dist extension/manifest.json extension.*",
-    "lint": "eslint --cache .",
-    "lint-fix": "eslint --cache --fix .",
+    "lint": "bunx --bun eslint --cache .",
+    "lint-fix": "bunx --bun eslint --cache --fix .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
     "vue": "catalog:ui",
-    "web-ext": "10.0.0",
+    "web-ext": "10.1.0",
     "webext-bridge": "6.0.1",
     "webextension-polyfill": "0.12.0"
   }

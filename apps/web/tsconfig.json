@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@web/*": ["../web/src/*"],
       "@web/public/*": ["../web/public/*"],

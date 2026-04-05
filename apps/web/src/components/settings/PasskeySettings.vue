@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { Fingerprint as IconFingerprint, Loader2 as IconLoader, Pencil as IconPencil, Plus as IconPlus, Trash2 as IconTrash, X as IconX } from '@lucide/vue'
 import { useAuth } from '@web/composables/useAuth'
-import { Fingerprint as IconFingerprint, Loader2 as IconLoader, Pencil as IconPencil, Plus as IconPlus, Trash2 as IconTrash, X as IconX } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'PasskeySettings' })

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Star } from 'lucide-vue-next'
+import { Star } from '@lucide/vue'
 import { onMounted, ref } from 'vue'
 
 defineOptions({ name: 'GitHubStarButton' })

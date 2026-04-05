@@ -1,4 +1,11 @@
 <script lang="ts" setup>
+import {
+  Calendar as IconCalendar,
+  CalendarCheck2 as IconCalendarCheck2,
+  ChevronDown as IconChevronDown,
+  ChevronLeft as IconChevronLeft,
+  ChevronRight as IconChevronRight,
+} from '@lucide/vue'
 import { ScheduleXCalendar } from '@schedule-x/vue'
 import { onClickOutside, useSwipe } from '@vueuse/core'
 import EventBottomModal from '@web/components/calendar/EventBottomModal.vue'
@@ -8,13 +15,6 @@ import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { useViewport } from '@web/composables/useViewport'
-import {
-  Calendar as IconCalendar,
-  CalendarCheck2 as IconCalendarCheck2,
-  ChevronDown as IconChevronDown,
-  ChevronLeft as IconChevronLeft,
-  ChevronRight as IconChevronRight,
-} from 'lucide-vue-next'
 import { computed, defineAsyncComponent, ref, useTemplateRef } from 'vue'
 import CustomTimeGridEvent from './CustomTimeGridEvent.vue'
 

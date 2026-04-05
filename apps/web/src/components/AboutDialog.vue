@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import type { Component } from 'vue'
+import { Code, Heart, X as IconX } from '@lucide/vue'
 import GitHubStarButton from '@web/components/GitHubStarButton.vue'
 import BuyMeACoffeeIcon from '@web/components/icons/BuyMeACoffeeIcon.vue'
 import GithubIcon from '@web/components/icons/GithubIcon.vue'
 import KofiIcon from '@web/components/icons/KofiIcon.vue'
 import PaypalIcon from '@web/components/icons/PaypalIcon.vue'
 import { BRAND_COLORS, DONATION_LINKS } from '@web/utils/donation'
-import { Code, Heart, X as IconX } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
 
 defineOptions({ name: 'AboutDialog' })

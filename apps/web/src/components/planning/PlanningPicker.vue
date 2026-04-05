@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import type { CustomGroup } from '@web/composables/useSettings'
 import { client } from '@libs'
+import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcw as IconRotateCcw, Share2 as IconShare, X as IconX, PinIcon, Trash2Icon } from '@lucide/vue'
 import { onClickOutside, refDebounced, useVirtualList } from '@vueuse/core'
 import ShareModal from '@web/components/share/ShareModal.vue'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedSyncedCurrentPlanning } from '@web/composables/useSyncedCurrentPlanning'
-import { CheckIcon, FolderIcon, FolderPenIcon, RotateCcw as IconRotateCcw, Share2 as IconShare, X as IconX, PinIcon, Trash2Icon } from 'lucide-vue-next'
 import { computed, nextTick, ref, watch } from 'vue'
 
 // Object.groupBy is Baseline 2024
