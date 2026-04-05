@@ -18,7 +18,7 @@
   "dependencies": {
     "@tailwindcss/vite": "catalog:ui",
     "@tauri-apps/api": "2.10.1",
-    "@tauri-apps/plugin-deep-link": "~2.4.7",
+    "@tauri-apps/plugin-deep-link": "~2.4.8",
     "@tauri-apps/plugin-opener": "2.5.3",
     "daisyui": "catalog:ui",
     "tailwindcss": "catalog:ui",
@@ -29,7 +29,7 @@
     "@fontsource-variable/roboto": "5.2.10",
     "@tauri-apps/cli": "2.10.1",
     "@vitejs/plugin-vue": "catalog:dev",
-    "@vue/tsconfig": "0.9.0",
+    "@vue/tsconfig": "0.9.1",
     "bun-types": "catalog:types",
     "typescript": "catalog:dev",
     "vite": "catalog:dev",
