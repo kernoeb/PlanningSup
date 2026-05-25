@@ -1,14 +1,12 @@
 ARG BUN_VERSION=1
 FROM oven/bun:${BUN_VERSION} AS build
 
-RUN apt-get update && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && apt-get install -y nodejs
-
 WORKDIR /app
 
 COPY /scripts/run.ts ./scripts/run.ts
 
 # Cache packages
-# COPY patches patches
+COPY patches patches
 COPY package.json package.json
 COPY bun.lock bun.lock
 

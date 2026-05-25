@@ -99,5 +99,8 @@
     "*.{ts,tsx,vue}": [
       "bun run typecheck"
     ]
+  },
+  "patchedDependencies": {
+    "@volar/typescript@2.4.28": "patches/@volar%2Ftypescript@2.4.28.patch"
   }
 }
