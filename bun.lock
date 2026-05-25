@@ -187,9 +187,12 @@
   "trustedDependencies": [
     "@tailwindcss/oxide",
     "esbuild",
-    "sharp",
     "core-js",
+    "sharp",
   ],
+  "patchedDependencies": {
+    "@volar/typescript@2.4.28": "patches/@volar%2Ftypescript@2.4.28.patch",
+  },
   "catalog": {
     "@better-auth/passkey": "1.5.6",
     "@elysiajs/eden": "1.4.9",
