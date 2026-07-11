@@ -1,6 +1,6 @@
 import antfu, { perfectionist } from '@antfu/eslint-config'
 
-const perfectionistRules = await perfectionist()
+const perfectionistRules = await perfectionist({})
 
 export default antfu({
   stylistic: true,

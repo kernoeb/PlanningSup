@@ -50,7 +50,7 @@ jobs:
         run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
 
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -58,12 +58,12 @@ jobs:
           bun-version-file: '.bun-version'
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: Cache Bun dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: |
             ${{ runner.temp }}/bun/install/cache
@@ -200,7 +200,7 @@ jobs:
 
       - name: Create Release
         if: github.event.inputs.create_release == 'true' && github.ref == 'refs/heads/main'
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: extension-v${{ steps.version.outputs.version }}
           name: Extension v${{ steps.version.outputs.version }}

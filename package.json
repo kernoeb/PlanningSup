@@ -20,30 +20,30 @@
       "test"
     ],
     "catalog": {
-      "elysia": "1.4.28",
+      "elysia": "1.4.29",
       "@elysiajs/eden": "1.4.9",
-      "zod": "4.3.6",
-      "@better-auth/passkey": "1.5.6",
-      "better-auth": "1.5.6"
+      "zod": "4.4.3",
+      "@better-auth/passkey": "1.6.23",
+      "better-auth": "1.6.23"
     },
     "catalogs": {
       "types": {
-        "bun-types": "1.3.11"
+        "bun-types": "1.3.14"
       },
       "dev": {
-        "vite": "8.0.3",
-        "@vitejs/plugin-vue": "6.0.5",
-        "typescript": "6.0.2",
-        "vue-tsc": "3.2.6",
-        "@antfu/eslint-config": "8.0.0",
-        "eslint": "10.2.0"
+        "vite": "8.1.3",
+        "@vitejs/plugin-vue": "6.0.7",
+        "typescript": "6.0.3",
+        "vue-tsc": "3.3.7",
+        "@antfu/eslint-config": "9.1.0",
+        "eslint": "10.6.0"
       },
       "ui": {
-        "sass-embedded": "1.99.0",
-        "vue": "3.5.32",
-        "daisyui": "5.5.19",
-        "@tailwindcss/vite": "4.2.2",
-        "tailwindcss": "4.2.2"
+        "sass-embedded": "1.100.0",
+        "vue": "3.5.39",
+        "daisyui": "5.6.16",
+        "@tailwindcss/vite": "4.3.2",
+        "tailwindcss": "4.3.2"
       }
     }
   },
@@ -73,13 +73,13 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
-    "@playwright/test": "1.59.1",
+    "@playwright/test": "1.61.1",
     "bun-types": "catalog:types",
-    "concurrently": "9.2.1",
+    "concurrently": "10.0.3",
     "eslint": "catalog:dev",
-    "eslint-plugin-perfectionist": "5.8.0",
-    "lint-staged": "16.4.0",
-    "playwright": "1.59.1",
+    "eslint-plugin-perfectionist": "5.10.0",
+    "lint-staged": "17.0.8",
+    "playwright": "1.61.1",
     "simple-git-hooks": "2.13.1"
   },
   "trustedDependencies": [
@@ -102,5 +102,9 @@
   },
   "patchedDependencies": {
     "@volar/typescript@2.4.28": "patches/@volar%2Ftypescript@2.4.28.patch"
+  },
+  "overrides": {
+    "@simplewebauthn/server": "13.3.2",
+    "temporal-polyfill": "0.3.2"
   }
 }
