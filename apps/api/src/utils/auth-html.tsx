@@ -160,22 +160,29 @@ export default new Elysia().use(html()).get('/auth/auto-redirect/:provider', asy
         <script>
           {`
             function sendMessageToExtension(message) {
-              if (typeof browser !== 'undefined' && browser.runtime && browser.runtime.sendMessage) {
-                // For Firefox and browsers supporting webextension-polyfill
-                if (${!!config.firefoxExtensionId}) return browser.runtime.sendMessage('${config.firefoxExtensionId || '*'}', message);
-              } else if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
-                // For Chrome
+              var firefoxId = ${JSON.stringify(config.firefoxExtensionId || '')};
+              var chromeId = ${JSON.stringify(config.chromeExtensionId || '')};
+              // Detect the engine explicitly: a stray 'browser' global (injected by an
+              // unrelated extension's webextension-polyfill) must NOT route a Chromium
+              // page down the Firefox branch — that returned undefined and crashed on .then.
+              var isFirefox = typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
+
+              if (isFirefox && firefoxId && typeof browser !== 'undefined' && browser.runtime && browser.runtime.sendMessage) {
+                // Firefox (webextension-polyfill: returns a Promise)
+                return browser.runtime.sendMessage(firefoxId, message);
+              }
+              if (chromeId && typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+                // Chromium (Chrome, Brave, Edge): callback API
                 return new Promise((resolve, reject) => {
-                  if (${!!config.chromeExtensionId}) chrome.runtime.sendMessage('${config.chromeExtensionId || '*'}', message, (response) => {
+                  chrome.runtime.sendMessage(chromeId, message, (response) => {
                     console.log('chrome.runtime.sendMessage response:', response);
                     const err = chrome.runtime.lastError;
                     if (err) reject(err);
                     else resolve(response);
                   });
                 });
-              } else {
-                return Promise.reject(new Error('No extension runtime found'));
               }
+              return Promise.reject(new Error('No extension runtime found for this browser'));
             }
 
             window.addEventListener('load', () => {
