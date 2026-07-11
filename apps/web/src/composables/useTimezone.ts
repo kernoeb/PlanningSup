@@ -54,7 +54,7 @@ export function detectBrowserTimezone(): string | null {
     return temporalNow.timeZoneId()
   } catch {}
   try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    const tz = new Intl.DateTimeFormat().resolvedOptions().timeZone
     return tz || null
   } catch {
     return null

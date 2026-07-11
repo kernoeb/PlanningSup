@@ -167,17 +167,19 @@ function createAuth() {
         prompt: 'consent',
         overrideUserInfoOnSignIn: true,
         async mapProfileToUser(profile) {
-          await db
-            .update(schema.user)
-            .set({
-              image: profile.image_url,
-            })
-            .where(
-              and(
-                eq(schema.user.email, profile.email),
-                ne(schema.user.image, profile.image_url),
-              ),
-            )
+          if (profile.email) {
+            await db
+              .update(schema.user)
+              .set({
+                image: profile.image_url,
+              })
+              .where(
+                and(
+                  eq(schema.user.email, profile.email),
+                  ne(schema.user.image, profile.image_url),
+                ),
+              )
+          }
           return profile
         },
       },
