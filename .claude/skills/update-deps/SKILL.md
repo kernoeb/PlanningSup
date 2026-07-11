@@ -17,8 +17,8 @@ ask, unless a bump has a genuinely ambiguous breaking change the user must rule 
 
 ## Step 0 — self-install the persistence goal (do this FIRST, on your own)
 
-The user should never have to type `/goal`. As your very first action, invoke the
-`/goal` command yourself with an objective like:
+Invoking `/goal` is the skill's job, not the user's — never make them type it. As
+your very first action, invoke the `/goal` command yourself with an objective like:
 
 > Update PlanningSup to the latest across every module type (bun/JS deps,
 > Rust/Tauri, Docker base images, CI actions), changelog-checking each notable
@@ -31,7 +31,7 @@ the environment, proceed anyway and simply do not stop until the PR is open.)
 Read the repo `AGENTS.md` (symlinked as `CLAUDE.md`) first — it has ports,
 workspace layout, and the release flow.
 
-## 0. Golden rules (project-specific gotchas — do not relearn these the hard way)
+## Golden rules (project-specific gotchas — read once, do not relearn these the hard way)
 
 - **NEVER `bun update --latest`.** It rewrites `catalog:` references in
   package.json into resolved `^x.y.z` strings and breaks the catalog system.
@@ -82,8 +82,21 @@ Known findings from past runs (re-verify, but expect these):
   options arg → must call `perfectionist({})` in `apps/api/eslint.config.js`.
 - **concurrently / lint-staged** majors: ESM-only, raised Node (≥22) + Git (≥2.32)
   mins — satisfied by `engines.node>=24`. Inline JSON config unaffected.
-- **temporal-polyfill** 0.x→1.x: only the ISO `/global` entrypoint is used
-  (`apps/{app,web}/src/main.ts`), so the non-ISO calendar entrypoint split is N/A.
+- **temporal-polyfill — DO NOT bump past 0.3.x.** `@schedule-x/calendar` pins
+  `temporal-polyfill@0.3.0` and the app installs it globally
+  (`import 'temporal-polyfill/global'` in `apps/{app,web}/src/main.ts`).
+  temporal-polyfill **1.x** "uses native `Temporal` when available"; in browsers
+  that ship native Temporal (current Chrome) this splits Temporal identity —
+  `Date.prototype.toTemporalInstant()` returns a polyfill `ZonedDateTime` while
+  `globalThis.Temporal` is native — so Schedule X's `instanceof` check rejects
+  every event and **the calendar silently renders nothing**. Keep temporal-polyfill
+  at **0.3.2** (in `apps/web`, `apps/app`, and a root `overrides` entry so Schedule
+  X's transitive copy dedupes to the same one) until `@schedule-x` itself moves to
+  temporal-polyfill 1.x. This bug does NOT show up in typecheck/build/unit tests or
+  the docker build — only in live browser QA with native Temporal (step 8).
+  `test/deps.temporal-schedulex.test.ts` now guards this deterministically (it
+  fails if the app's temporal-polyfill line diverges from what `@schedule-x` pins,
+  or if more than one copy is installed) — if it goes red after a bump, this is why.
 
 ## 3. Apply the version bumps
 
@@ -197,13 +210,36 @@ cargo check), and calls out what was deliberately left as-is (already-latest
 images/actions) — no tool footer. Then report the PR URL. Do not merge — CI's
 `docker-publish` pipeline runs on the PR.
 
-## 8. UI QA handoff (always end here)
+## 8. Live browser QA (mandatory — build/tests are NOT enough)
 
-Package bumps pass tests but can shift visuals silently. After the PR is open,
-produce a concise **QA checklist** for the user covering every UI-affecting bump —
-`daisyui`, `@schedule-x/*`, `@lucide/vue`, `tailwindcss`, `vue`. For each, read the
-changelog for *visual/behavioral* changes, then grep the app for what's actually
-used and only list what applies. Reference from the last run:
+Some regressions only appear in a real browser and NEVER in typecheck/build/unit
+tests or the docker build — the temporal-polyfill×Schedule X event-rendering bug
+(step 2) is the canonical example: it needs a browser with **native Temporal** to
+trigger, and it does NOT reproduce in Playwright's Chromium (whose native Temporal
+is complete), so `test/e2e/events-render.spec.ts` — the "events actually render"
+guard — cannot catch this particular bug in CI (the unit test in step 2 is its real
+backstop). So after the branch is deployed (ask the user to deploy it to
+`dev.planningsup.app` if they haven't — confirm via the commit SHA in the logo
+hover tooltip), drive it with the chrome-devtools MCP:
+
+1. Load the site, confirm the deployed SHA matches the branch HEAD, and check the
+   console for errors (ignore the `ERR_BLOCKED_BY_CLIENT` — that's Plausible being
+   ad-blocked; a `[Schedule-X error] ...` is NOT ignorable).
+2. **Verify events actually render.** Off-season (summer) most plannings are empty,
+   so find a formation WITH events: probe the API — flatten `/api/plannings`, then
+   `GET /api/plannings/<fullId>?events=true` looking for `nbEvents > 0` (the backend
+   only keeps a window of events, not the full history). Temporarily set
+   `localStorage.plannings` to that fullId (save + restore the original after),
+   reload, navigate the date picker to a week in the event range, and confirm event
+   blocks appear in the grid — cross-check against production if unsure.
+3. Exercise view switching (day/week/month/agenda), the date picker, the "Changer
+   de planning" modal, buttons, and tooltips.
+4. Restore any `localStorage` you changed (on both dev and prod).
+
+Then produce a concise **visual QA checklist** for the user covering every
+UI-affecting bump — `daisyui`, `@schedule-x/*`, `@lucide/vue`, `tailwindcss`,
+`vue`. For each, read the changelog for *visual/behavioral* changes, then grep the
+app for what's actually used and only list what applies. Reference from the last run:
 
 - **daisyui** minor bumps often restyle components — the 5.6 line rewrote **button
   states** (checked/disabled/soft/ghost/link/focus) and changed modals to
