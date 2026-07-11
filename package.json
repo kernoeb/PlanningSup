@@ -104,6 +104,7 @@
     "@volar/typescript@2.4.28": "patches/@volar%2Ftypescript@2.4.28.patch"
   },
   "overrides": {
-    "@simplewebauthn/server": "13.3.2"
+    "@simplewebauthn/server": "13.3.2",
+    "temporal-polyfill": "0.3.2"
   }
 }

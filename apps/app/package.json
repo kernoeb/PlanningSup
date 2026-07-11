@@ -22,7 +22,7 @@
     "@tauri-apps/plugin-opener": "2.5.4",
     "daisyui": "catalog:ui",
     "tailwindcss": "catalog:ui",
-    "temporal-polyfill": "1.0.1",
+    "temporal-polyfill": "0.3.2",
     "vue": "catalog:ui"
   },
   "devDependencies": {
