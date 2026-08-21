@@ -1287,6 +1287,8 @@
                   "title": "SE",
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4318&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
+              ]
+            }    
           ]
         }
       ]
