@@ -44,7 +44,7 @@
                 {
                   "id": "l2-spi-s3",
                   "title": "L2 SPI - S3",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7251&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7251&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -55,7 +55,7 @@
                 {
                   "id": "l2-spi-s4",
                   "title": "L2 SPI - S4",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3192&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3192&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -100,7 +100,7 @@
                 {
                   "id": "l3gl-s1",
                   "title": "L3GL Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12799&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12799&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -111,7 +111,7 @@
                 {
                   "id": "l3gl-s2",
                   "title": "L3GL Semestre 2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12800&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12800&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -128,7 +128,7 @@
                 {
                   "id": "l3-gc-s1",
                   "title": "L3GC Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3019&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3019&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -156,7 +156,7 @@
                 {
                   "id": "l3-ge-s5",
                   "title": "L3GE S5",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12775&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12775&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -208,7 +208,7 @@
             {
               "id": "l3-gm2d",
               "title": "L3 GM2D",
-              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12766&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12766&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
@@ -229,17 +229,17 @@
                 {
                   "id": "lp-cao-s1",
                   "title": "LPCAO",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12756&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12756&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "lp-cao-s1-gr1",
                   "title": "LPCAO TP GR1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3008&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3008&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "lp-cao-s1-gr2",
                   "title": "LPCAO TP GR2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3035&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3035&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -282,7 +282,7 @@
                 {
                   "id": "lp-cdcpe-s1",
                   "title": "LP CDCPE Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8054&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8054&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -293,7 +293,7 @@
                 {
                   "id": "lp-cdcpe-s2",
                   "title": "LP CDCPE Semestre 2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8373&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8373&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -310,7 +310,7 @@
                 {
                   "id": "lp-melog-s1",
                   "title": "LP MELOG Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8106&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8106&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -321,7 +321,7 @@
                 {
                   "id": "lp-melog-s2",
                   "title": "LP MELOG Semestre 2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2181&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2181&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -338,7 +338,7 @@
                 {
                   "id": "lp-mige-s1",
                   "title": "LP MIGE S1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8053&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8053&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -349,7 +349,7 @@
                 {
                   "id": "lp-mige-s2",
                   "title": "LP MIGE S2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=151&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=151&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -372,7 +372,7 @@
                 {
                   "id": "m1-cmi-s1",
                   "title": "Master 1 CMI Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8056&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8056&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -383,7 +383,7 @@
                 {
                   "id": "m1-cmi-s2",
                   "title": "Master 1 CMI Semestre 2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=130&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=130&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -400,7 +400,7 @@
                 {
                   "id": "m1-eeea-s1",
                   "title": "M1 EEEA Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8052&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8052&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -428,7 +428,7 @@
                 {
                   "id": "m1-gc-s1",
                   "title": "M1GC Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3007&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3007&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -452,7 +452,7 @@
             {
               "id": "m1-icl",
               "title": "M1 ICL",
-              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12763&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12763&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "m1-icl-td-1",
@@ -483,7 +483,7 @@
                 {
                   "id": "m2-gc-bdee-s1",
                   "title": "M2 GC BDEE Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7252&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7252&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
@@ -494,7 +494,7 @@
                 {
                   "id": "m2-gc-bdee-s2",
                   "title": "M2 GC BDEE Semestre 2",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7253&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7253&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -512,7 +512,7 @@
             {
               "id": "m2-bivrd",
               "title": "M2 BIVRD",
-              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4623&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4623&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -527,7 +527,7 @@
                 {
                   "id": "m2-cmi-s9",
                   "title": "M2 CMI - S9",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7254&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7254&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -544,7 +544,7 @@
                 {
                   "id": "m2-eei-s1",
                   "title": "M2 EEI Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13090&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13090&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -561,7 +561,7 @@
                 {
                   "id": "m2-icl-s1",
                   "title": "M2ICL Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3021&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3021&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -578,7 +578,7 @@
                 {
                   "id": "m2-ise-s1",
                   "title": "M2 ISE Semestre 1",
-                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7233&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://ade-consult.univ-artois.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7233&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
