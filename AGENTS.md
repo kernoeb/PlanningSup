@@ -36,7 +36,10 @@ Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
 - Extension: `apps/extension/**`
 - Shared: `packages/libs/**`, `packages/config/**`
 - Data: `resources/plannings/*.json` (schema checked by `test/plannings.schema.test.ts`; live URLs via `bun scripts/check-plannings-urls.ts [--only <file>] [--fix]`, `--fix` repairs a rolled-over ADE `projectId`)
-- Generate plannings: `bun scripts/ade-portal-generator.ts --list` then `--branch <name>` (ADE 7 portal REST API, anonymous login, e.g. Rennes). Legacy ADE 6 sites still use `scripts/browser.js` + `scripts/shu-generator.js`.
+- Generate plannings, per timetable system:
+  - ADE 7 portal (Rennes): `bun scripts/ade-portal-generator.ts --list` then `--branch <name>`, headless via the portal REST API
+  - Celcat webpub (Nantes): `bun scripts/celcat-generator.ts --url https://edt.univ-nantes.fr/<site> --title <t> --out <file>`
+  - ADE 6 (UBS, Lyon 1, INSA, Brest, Artois): `scripts/browser.js` in the browser console, then `scripts/shu-generator.js`
 - Tests: `test/*.test.ts`, `test/integration/*.test.ts`, `test/e2e/*.spec.ts`
 
 ## API notes (bun:sql + Drizzle)
