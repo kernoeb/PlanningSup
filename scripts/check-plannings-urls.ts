@@ -12,11 +12,13 @@
  *   bun scripts/check-plannings-urls.ts
  *   bun scripts/check-plannings-urls.ts --only insa-rennes,iut-quimper
  *   bun scripts/check-plannings-urls.ts --only insa-rennes --fix
+ *   bun scripts/check-plannings-urls.ts --only iut-quimper --prune
  *   bun scripts/check-plannings-urls.ts --sample 10
  *
  * Options:
  *   --only <a,b>       file names to check, without ".json" (default: all)
  *   --fix              rewrite the projectId when another one serves events
+ *   --prune            delete the entries that stay dead, and the folders left empty
  *   --sample <n>       check one URL out of n, for a quick look (default: all)
  *   --concurrency <n>  parallel requests (default: 20)
  *   --delay <ms>       pause after each request, to stay gentle with the ADE servers (default: 200)
@@ -31,6 +33,7 @@ const { values: args } = parseArgs({
   options: {
     only: { type: 'string' },
     fix: { type: 'boolean', default: false },
+    prune: { type: 'boolean', default: false },
     sample: { type: 'string', default: '1' },
     concurrency: { type: 'string', default: '20' },
     delay: { type: 'string', default: '200' },
@@ -41,7 +44,10 @@ const PLANNINGS_DIR = path.join(import.meta.dirname, '..', 'resources', 'plannin
 const MAX_PROJECT_ID = 10
 const TIMEOUT_MS = 20_000
 
-type Status = 'ok' | 'empty' | 'dead'
+// 'dead' means the server answered something that is not a calendar, so the entry is
+// really gone. 'error' means no answer at all, which says nothing about the entry, so
+// --prune leaves it alone.
+type Status = 'ok' | 'empty' | 'dead' | 'error' | 'removed'
 
 interface Check {
   readonly template: string
@@ -72,7 +78,7 @@ async function classify(url: string): Promise<Status> {
     if (!body.includes('BEGIN:VCALENDAR') || body.includes('<html')) return 'dead'
     return body.includes('BEGIN:VEVENT') ? 'ok' : 'empty'
   } catch {
-    return 'dead'
+    return 'error'
   }
 }
 
@@ -88,6 +94,24 @@ async function findWorkingProjectId(url: string): Promise<string | null> {
   }
 
   return null
+}
+
+interface Node { id: string, title: string, url?: string, children?: Node[] }
+
+/** Drop the leaves whose url is in `remove`, then the folders left with nothing. */
+function pruneTree(nodes: Node[], remove: Set<string>): Node[] {
+  return nodes
+    .map((node) => {
+      if (node.children) return { ...node, children: pruneTree(node.children, remove) }
+      return node
+    })
+    .filter(node => (node.children ? node.children.length > 0 : !remove.has(node.url!)))
+}
+
+function pathsOf(nodes: Node[], remove: Set<string>, parents: string[] = []): string[] {
+  return nodes.flatMap(node => node.children
+    ? pathsOf(node.children, remove, [...parents, node.title])
+    : (remove.has(node.url!) ? [[...parents, node.title].join(' > ')] : []))
 }
 
 async function runTasks<T>(items: T[], concurrency: number, run: (item: T) => Promise<void>): Promise<void> {
@@ -138,13 +162,40 @@ for (const file of files) {
     check.status = await classify(check.url)
   })
 
-  const suspect = checks.filter(check => check.status !== 'ok')
+  const suspect = checks.filter(check => check.status === 'empty' || check.status === 'dead')
   if (suspect.length && args.fix) {
     console.log(`  looking for a working projectId on ${suspect.length} urls`)
     await runTasks(suspect, concurrency, async (check) => {
       const projectId = await findWorkingProjectId(check.url)
       if (projectId) check.fixedTo = projectId
     })
+  }
+
+  if (args.prune) {
+    const stillDead = checks.filter(check => check.status === 'dead' && !check.fixedTo)
+    if (stillDead.length) {
+      // One failure can be a hiccup; ask twice more before deleting anything.
+      console.log(`  confirming ${stillDead.length} dead urls`)
+      const confirmed = new Set<string>()
+      await runTasks(stillDead, concurrency, async (check) => {
+        if (await classify(check.url) === 'dead' && await classify(check.url) === 'dead') confirmed.add(check.template)
+      })
+
+      if (confirmed.size) {
+        const planning = JSON.parse(content) as { children: Node[] }
+        for (const path of pathsOf(planning.children, confirmed)) console.log(`    removed: ${path}`)
+        planning.children = pruneTree(planning.children, confirmed)
+
+        if (!planning.children.length) {
+          console.error(`  ${file} would be left empty, nothing removed`)
+        } else {
+          content = `${JSON.stringify(planning, null, 2)}\n`
+          fs.writeFileSync(filePath, content)
+          console.log(`  removed ${confirmed.size} urls`)
+          for (const check of checks) if (confirmed.has(check.template)) check.status = 'removed'
+        }
+      }
+    }
   }
 
   const fixed = checks.filter(check => check.fixedTo)
@@ -158,9 +209,12 @@ for (const file of files) {
   }
 
   const count = (status: Status) => checks.filter(check => check.status === status && !check.fixedTo).length
-  const stillBroken = count('empty') + count('dead')
-  broken += stillBroken
-  console.log(`  ${count('ok')} ok, ${count('empty')} empty, ${count('dead')} dead${fixed.length ? `, ${fixed.length} fixed` : ''}`)
+  broken += count('empty') + count('dead') + count('error')
+  const parts = [`${count('ok')} ok`, `${count('empty')} empty`, `${count('dead')} dead`]
+  if (count('error')) parts.push(`${count('error')} unreachable`)
+  if (count('removed')) parts.push(`${count('removed')} removed`)
+  if (fixed.length) parts.push(`${fixed.length} fixed`)
+  console.log(`  ${parts.join(', ')}`)
 
   for (const check of checks.filter(c => c.status === 'dead' && !c.fixedTo).slice(0, 5)) {
     console.log(`    dead: ${check.url}`)

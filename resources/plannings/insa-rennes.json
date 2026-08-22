@@ -792,11 +792,6 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=130&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "s9-gpm-a3",
-                  "title": "GR A3",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1346&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
                   "id": "s9-gpm-a4",
                   "title": "GR A4",
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=140&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -1016,9 +1011,9 @@
               ]
             },
             {
-                  "id": "s5-eii-pj-lang",
-                  "title": "S5 PROJET LANGUES",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=60&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s5-eii-pj-lang",
+              "title": "S5 PROJET LANGUES",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=60&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1059,9 +1054,9 @@
               ]
             },
             {
-                  "id": "s6-eii-pj-lang",
-                  "title": "S6 PROJET LANGUES",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=66&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s6-eii-pj-lang",
+              "title": "S6 PROJET LANGUES",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=66&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1112,19 +1107,19 @@
               ]
             },
             {
-                  "id": "s7-eii-opt-creativite-challenge",
-                  "title": "OPTION CRÉATIVITÉ CHALLENGE",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=431&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s7-eii-opt-creativite-challenge",
+              "title": "OPTION CRÉATIVITÉ CHALLENGE",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=431&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-                  "id": "s7-eii-opt-entreprendre-inover",
-                  "title": "OPTION ENTREPRENDRE ET INNOVER",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=778&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s7-eii-opt-entreprendre-inover",
+              "title": "OPTION ENTREPRENDRE ET INNOVER",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=778&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-                  "id": "s7-eii-pj-lang",
-                  "title": "S7 PROJET LANGUES",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=80&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s7-eii-pj-lang",
+              "title": "S7 PROJET LANGUES",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=80&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1165,9 +1160,9 @@
               ]
             },
             {
-                  "id": "s8-eii-pj-lang",
-                  "title": "S8 PROJET LANGUES",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=87&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "s8-eii-pj-lang",
+              "title": "S8 PROJET LANGUES",
+              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=87&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -1278,9 +1273,9 @@
               "title": "MASTER EEEA",
               "children": [
                 {
-                "id": "s9-eii-sivosse",
-                "title": "SiVOSSE",
-                "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3888&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "id": "s9-eii-sivosse",
+                  "title": "SiVOSSE",
+                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3888&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "s9-eii-se",
@@ -1288,7 +1283,7 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4318&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
-            }    
+            }
           ]
         }
       ]
@@ -2511,11 +2506,6 @@
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2118&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
-            },
-            {
-              "id": "s8-gma-projet-langues",
-              "title": "S8 GMA Projet Langues",
-              "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=149&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },
@@ -3083,11 +3073,6 @@
                   "id": "s3-classique-k",
                   "title": "Groupe K",
                   "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=389&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "s3-classique-l",
-                  "title": "Groupe L",
-                  "url": "https://ade.insa-rennes.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=897&projectId=0&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },

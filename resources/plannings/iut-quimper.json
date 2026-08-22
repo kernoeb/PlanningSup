@@ -377,84 +377,9 @@
       "title": "International Days",
       "children": [
         {
-          "id": "listegroupe1-etudiants",
-          "title": "Liste Groupe 1 -  étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9921&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe10-etudiants",
-          "title": "Liste Groupe 10 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10219&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe11-etudiants",
-          "title": "Liste Groupe 11 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10220&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe2-etudiants",
-          "title": "Liste Groupe 2 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10045&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe3-etudiants",
-          "title": "Liste Groupe 3 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10234&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe4-etudiants",
-          "title": "Liste Groupe 4 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10339&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe5-etudiants",
-          "title": "Liste Groupe 5 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9974&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe6-etudiants",
-          "title": "Liste Groupe 6 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10091&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe7-etudiants",
-          "title": "Liste Groupe 7 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10092&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe8-etudiants",
-          "title": "Liste Groupe 8 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10093&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listegroupe9-etudiants",
-          "title": "Liste Groupe 9 - étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10212&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
           "id": "listeoi1-16etudiants",
           "title": "Liste OI 1 - 16 étudiants",
           "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8689&projectId=3&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listeoi2-15etudiants",
-          "title": "Liste OI 2 - 15 étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10222&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listeoi3-15etudiants",
-          "title": "Liste OI 3 - 15 étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9084&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listeoi4-15etudiants",
-          "title": "Liste OI 4 - 15 étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9085&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-        },
-        {
-          "id": "listeoi5-15etudiants",
-          "title": "Liste OI 5 - 15 étudiants",
-          "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9091&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
         }
       ]
     },
@@ -832,11 +757,6 @@
               "id": "3c",
               "title": "3C",
               "children": [
-                {
-                  "id": "mdeec",
-                  "title": "MDEEc",
-                  "url": "https://ade.univ-brest.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2910&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
                 {
                   "id": "mmpvd",
                   "title": "MMPVd",
