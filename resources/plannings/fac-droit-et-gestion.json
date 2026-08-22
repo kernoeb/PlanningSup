@@ -325,11 +325,6 @@
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
-              "id": "breton",
-              "title": "BRETON",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5197&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
               "id": "esp1",
               "title": "ESP1",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4410&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -514,11 +509,6 @@
               "id": "ag7",
               "title": "AG7",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1594&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "optionuec",
-              "title": "OPTION UEC",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2133&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },

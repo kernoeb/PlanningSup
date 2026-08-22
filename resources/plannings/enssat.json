@@ -2,6 +2,365 @@
   "title": "ENSSAT",
   "children": [
     {
+      "id": "_autres",
+      "title": "_Autres",
+      "children": [
+        {
+          "id": "continuum",
+          "title": "Continuum",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajqbnl.shu"
+        },
+        {
+          "id": "eq",
+          "title": "Eq",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9pb3x.shu"
+        },
+        {
+          "id": "etudiantsfle",
+          "title": "étudiants FLE",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZqBWD.shu"
+        },
+        {
+          "id": "masterphotonique",
+          "title": "Master Photonique",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGQEY6.shu"
+        },
+        {
+          "id": "snum2-internationalerasmuss4",
+          "title": "SNUM2 - International ERASMUS S4",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YrpBmWO.shu"
+        },
+        {
+          "id": "summerschool",
+          "title": "Summer School",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQpyna.shu"
+        }
+      ]
+    },
+    {
+      "id": "_populationsortante",
+      "title": "_Population sortante",
+      "children": [
+        {
+          "id": "3asortants",
+          "title": "3A sortants",
+          "children": [
+            {
+              "id": "iai3presentielpromosortante",
+              "title": "IAI3 présentiel promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApDdYw.shu"
+            },
+            {
+              "id": "iai3visiopromosortante",
+              "title": "IAI3 visio promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXZvW5.shu"
+            },
+            {
+              "id": "iape3presentielpromosortante",
+              "title": "IAPE3 présentiel promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAGe3v.shu"
+            },
+            {
+              "id": "iape3visiopromosortante",
+              "title": "IAPE3 visio promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPO83A.shu"
+            },
+            {
+              "id": "info3octobrepromosortante",
+              "title": "INFO3 octobre promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9NyWJ.shu"
+            },
+            {
+              "id": "info3presentielpromosortante",
+              "title": "INFO3 présentiel promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/4PnRPl38.shu"
+            },
+            {
+              "id": "info3visiopromosortante",
+              "title": "INFO3 visio promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wb4qWy.shu"
+            },
+            {
+              "id": "phot3octobrepromosortante",
+              "title": "PHOT3 octobre promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348lP3k.shu"
+            },
+            {
+              "id": "phot3presentielpromosortante",
+              "title": "PHOT3 présentiel promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBGZWr.shu"
+            },
+            {
+              "id": "phot3visiopromosortante",
+              "title": "PHOT3 visio promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1vpWA.shu"
+            },
+            {
+              "id": "snum3octobrepromosortante",
+              "title": "SNUM3 octobre promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DBOn7.shu"
+            },
+            {
+              "id": "snum3presentielpromosortante",
+              "title": "SNUM3 présentiel promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35wg1nR.shu"
+            },
+            {
+              "id": "snum3visiopromosortante",
+              "title": "SNUM3 visio promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yP9YM.shu"
+            }
+          ]
+        },
+        {
+          "id": "fisa12sortants",
+          "title": "FISA1&2 sortants",
+          "children": [
+            {
+              "id": "iai1promosortante",
+              "title": "IAI1 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMK4Wr.shu"
+            },
+            {
+              "id": "iai2promosortante",
+              "title": "IAI2 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxJZYJ.shu"
+            },
+            {
+              "id": "iape2promosortante",
+              "title": "IAPE2 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJMNnx.shu"
+            }
+          ]
+        },
+        {
+          "id": "fise1fisea1sortants",
+          "title": "FISE1 & FISEA1 sortants",
+          "children": [
+            {
+              "id": "iape1promosortante",
+              "title": "IAPE1 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kojYk.shu"
+            },
+            {
+              "id": "info1promosortante",
+              "title": "INFO1 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yobenj.shu"
+            },
+            {
+              "id": "phot1promosortante",
+              "title": "PHOT1 promo sortante",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVJvne.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3a",
+      "title": "3A",
+      "children": [
+        {
+          "id": "3ash",
+          "title": "3A SH",
+          "children": [
+            {
+              "id": "3ash",
+              "title": "3A SH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMmQWr.shu"
+            },
+            {
+              "id": "semainesh",
+              "title": "Semaine SH",
+              "children": [
+                {
+                  "id": "communicationinterculturelle",
+                  "title": "Communication interculturelle",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZRgWD.shu"
+                },
+                {
+                  "id": "entrepreneuriat",
+                  "title": "Entrepreneuriat",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YrpgdWO.shu"
+                },
+                {
+                  "id": "gestiondecrise",
+                  "title": "Gestion de crise",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQvona.shu"
+                },
+                {
+                  "id": "teambuilding",
+                  "title": "Team building",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajxQnl.shu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iai3",
+          "title": "IAI3",
+          "children": [
+            {
+              "id": "iai3-cyber",
+              "title": "IAI3-Cyber",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6NqnP.shu"
+            },
+            {
+              "id": "iai3-ia",
+              "title": "IAI3-IA",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Qo35LyWR.shu"
+            }
+          ]
+        },
+        {
+          "id": "iape3",
+          "title": "IAPE3",
+          "children": [
+            {
+              "id": "iape3",
+              "title": "IAPE3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Dk5n8.shu"
+            }
+          ]
+        },
+        {
+          "id": "info3",
+          "title": "INFO3",
+          "children": [
+            {
+              "id": "burkhanovaaygul",
+              "title": "Burkhanova Aygul",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4aQYP.shu"
+            },
+            {
+              "id": "cechfrantisek",
+              "title": "Cech Frantisek",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGoQ4YJ.shu"
+            },
+            {
+              "id": "geisnico",
+              "title": "Geis Nico",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64obWz.shu"
+            },
+            {
+              "id": "hoyerbenjamin",
+              "title": "Hoyer Benjamin",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomX7YM.shu"
+            },
+            {
+              "id": "info3-cyber",
+              "title": "INFO3-Cyber",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzgLPnZ.shu"
+            },
+            {
+              "id": "info3-ia",
+              "title": "INFO3-IA",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRXM3J.shu"
+            },
+            {
+              "id": "info3-international",
+              "title": "INFO3-International",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQ1zYa.shu"
+            },
+            {
+              "id": "info3-msif",
+              "title": "INFO3-MSIF",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMpRn2.shu"
+            }
+          ]
+        },
+        {
+          "id": "phot3",
+          "title": "PHOT3",
+          "children": [
+            {
+              "id": "phot3",
+              "title": "PHOT3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGmMY6.shu"
+            }
+          ]
+        },
+        {
+          "id": "snum3",
+          "title": "SNUM3",
+          "children": [
+            {
+              "id": "snum3",
+              "title": "SNUM3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyzA3B.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cupge1",
+      "title": "CUPGE1",
+      "children": [
+        {
+          "id": "cyber1",
+          "title": "CYBER1",
+          "children": [
+            {
+              "id": "cyber1g1",
+              "title": "CYBER1 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6pKWr.shu"
+            },
+            {
+              "id": "cyber1g2",
+              "title": "CYBER1 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qDRWa.shu"
+            }
+          ]
+        },
+        {
+          "id": "phys1",
+          "title": "PHYS1",
+          "children": [
+            {
+              "id": "phys1",
+              "title": "PHYS1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvzKY9.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cupge2",
+      "title": "CUPGE2",
+      "children": [
+        {
+          "id": "cyber2",
+          "title": "CYBER2",
+          "children": [
+            {
+              "id": "cyber2g1",
+              "title": "CYBER2 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kqEYk.shu"
+            },
+            {
+              "id": "cyber2g2",
+              "title": "CYBER2 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yoN0nj.shu"
+            }
+          ]
+        },
+        {
+          "id": "phys2",
+          "title": "PHYS2",
+          "children": [
+            {
+              "id": "phys2",
+              "title": "PHYS2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVzmne.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "fisa1",
       "title": "FISA1",
       "children": [
@@ -10,14 +369,14 @@
           "title": "IAI1",
           "children": [
             {
-              "id": "iai1g1",
-              "title": "IAI1 G1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1488&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "iai1-cyb",
+              "title": "IAI1-CYB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wdK3P.shu"
             },
             {
-              "id": "iai1g2",
-              "title": "IAI1 G2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1499&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "iai1-iam",
+              "title": "IAI1-IAM",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGMyWA.shu"
             }
           ]
         }
@@ -34,12 +393,616 @@
             {
               "id": "iai2g1",
               "title": "IAI2 G1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18359&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROAzW8.shu"
             },
             {
               "id": "iai2g2",
               "title": "IAI2 G2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvMQWv.shu"
+            }
+          ]
+        },
+        {
+          "id": "iape2",
+          "title": "IAPE2",
+          "children": [
+            {
+              "id": "iape2g1",
+              "title": "IAPE2 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAwdWb.shu"
+            },
+            {
+              "id": "iape2g2",
+              "title": "IAPE2 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQ8Z3B.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fise1",
+      "title": "FISE1",
+      "children": [
+        {
+          "id": "commun",
+          "title": "Commun",
+          "children": [
+            {
+              "id": "cptd1tp1",
+              "title": "CPTD1TP1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8DMln8.shu"
+            },
+            {
+              "id": "cptd1tp2",
+              "title": "CPTD1TP2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQRQYa.shu"
+            },
+            {
+              "id": "cptd2tp3",
+              "title": "CPTD2TP3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzgKJnZ.shu"
+            },
+            {
+              "id": "cptd2tp4",
+              "title": "CPTD2TP4",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4RJYP.shu"
+            },
+            {
+              "id": "cptd3tp5",
+              "title": "CPTD3TP5",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGow7YJ.shu"
+            }
+          ]
+        },
+        {
+          "id": "info1",
+          "title": "INFO1",
+          "children": [
+            {
+              "id": "info1td1tp1",
+              "title": "INFO1 TD1TP1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY649yWz.shu"
+            },
+            {
+              "id": "info1td1tp2",
+              "title": "INFO1 TD1TP2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgR0X3J.shu"
+            },
+            {
+              "id": "info1td2tp2",
+              "title": "INFO1 TD2TP2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMEXn2.shu"
+            },
+            {
+              "id": "info1td2tp3",
+              "title": "INFO1 TD2TP3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomJJYM.shu"
+            }
+          ]
+        },
+        {
+          "id": "majeures-mineures",
+          "title": "Majeures - mineures",
+          "children": [
+            {
+              "id": "majprogavanceeg1",
+              "title": "MAJ Prog avancée G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvyzY9.shu"
+            },
+            {
+              "id": "majprogavanceeg2",
+              "title": "MAJ Prog avancée G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pG49WA.shu"
+            },
+            {
+              "id": "majsystemesnumeriques",
+              "title": "MAJ Systèmes numériques",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w553P.shu"
+            },
+            {
+              "id": "minbureaud'etudesenoptique",
+              "title": "MIN Bureau d'études en optique",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPv01Wv.shu"
+            },
+            {
+              "id": "minconceptiondecartesg1",
+              "title": "MIN Conception de cartes G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VApjWb.shu"
+            },
+            {
+              "id": "minconceptiondecartesg2",
+              "title": "MIN Conception de cartes G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qxLWa.shu"
+            },
+            {
+              "id": "minwebclientg1",
+              "title": "MIN Web client G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQ073B.shu"
+            },
+            {
+              "id": "minwebclientg2",
+              "title": "MIN Web client G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROL7W8.shu"
+            }
+          ]
+        },
+        {
+          "id": "phot1",
+          "title": "PHOT1",
+          "children": [
+            {
+              "id": "phot1g1",
+              "title": "PHOT1 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6zOnP.shu"
+            },
+            {
+              "id": "phot1g2",
+              "title": "PHOT1 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyNK3B.shu"
+            }
+          ]
+        },
+        {
+          "id": "sh",
+          "title": "SH",
+          "children": [
+            {
+              "id": "fise1sh",
+              "title": "FISE1 SH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQG0EY6.shu"
+            },
+            {
+              "id": "lv2_none",
+              "title": "LV2_NONE",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7ya9YM.shu"
+            },
+            {
+              "id": "s1_anglais_mercredi_8h_clp",
+              "title": "S1_ANGLAIS_MERCREDI_8H_CLP",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5Yrp9mWO.shu"
+            },
+            {
+              "id": "s1_anglais_mercredi_8h_rlb",
+              "title": "S1_ANGLAIS_MERCREDI_8H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajObnl.shu"
+            },
+            {
+              "id": "s1_anglais_vendredi_8h_rlb",
+              "title": "S1_ANGLAIS_VENDREDI_8H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9Nb3x.shu"
+            },
+            {
+              "id": "s1_anglais_vendredi_10h_clp",
+              "title": "S1_ANGLAIS_VENDREDI_10H_CLP",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQmyna.shu"
+            },
+            {
+              "id": "s1_anglais_vendredi_10h_rlb",
+              "title": "S1_ANGLAIS_VENDREDI_10H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMA4Wr.shu"
+            },
+            {
+              "id": "s1_aps_mercredi_8h_bl",
+              "title": "S1_APS_MERCREDI_8H_BL",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yo2enj.shu"
+            },
+            {
+              "id": "s1_aps_vendredi_8h_bl",
+              "title": "S1_APS_VENDREDI_8H_BL",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wbyqWy.shu"
+            },
+            {
+              "id": "s1_aps_vendredi_8h_rg",
+              "title": "S1_APS_VENDREDI_8H_RG",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DzOn7.shu"
+            },
+            {
+              "id": "s1_aps_vendredi_10h_bl",
+              "title": "S1_APS_VENDREDI_10H_BL",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVkvne.shu"
+            },
+            {
+              "id": "s1_aps_vendredi_10h_rg",
+              "title": "S1_APS_VENDREDI_10H_RG",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35wl1nR.shu"
+            },
+            {
+              "id": "s1_s2_lv2_allemand",
+              "title": "S1_S2_LV2_ALLEMAND",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZVBWD.shu"
+            },
+            {
+              "id": "s1_s2_lv2_espagnol",
+              "title": "S1_S2_LV2_ESPAGNOL",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJmNnx.shu"
+            },
+            {
+              "id": "s1_s2_lv2_japonais1",
+              "title": "S1_S2_LV2_JAPONAIS1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxVZYJ.shu"
+            },
+            {
+              "id": "s1_s2_lv2_japonais2",
+              "title": "S1_S2_LV2_JAPONAIS2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kDjYk.shu"
+            },
+            {
+              "id": "s2_anglais_mardi_8h_rlb",
+              "title": "S2_ANGLAIS_MARDI_8H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApxdYw.shu"
+            },
+            {
+              "id": "s2_anglais_mercredi_8h_clp",
+              "title": "S2_ANGLAIS_MERCREDI_8H_CLP",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEB1ZWr.shu"
+            },
+            {
+              "id": "s2_anglais_mercredi_8h_rlb",
+              "title": "S2_ANGLAIS_MERCREDI_8H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9qyWJ.shu"
+            },
+            {
+              "id": "s2_anglais_vendredi_14h_clp",
+              "title": "S2_ANGLAIS_VENDREDI_14H_CLP",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348gP3k.shu"
+            },
+            {
+              "id": "s2_anglais_vendredi_14h_rlb",
+              "title": "S2_ANGLAIS_VENDREDI_14H_RLB",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXovW5.shu"
+            },
+            {
+              "id": "s2_aps_mardi_8h_bl_tennis",
+              "title": "S2_APS_MARDI_8H_BL_TENNIS",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAze3v.shu"
+            },
+            {
+              "id": "s2_aps_mardi_8h_jds_golf",
+              "title": "S2_APS_MARDI_8H_JDS_GOLF",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1LpWA.shu"
+            },
+            {
+              "id": "s2_aps_mardi_8h_kayak",
+              "title": "S2_APS_MARDI_8H_KAYAK",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qgRWa.shu"
+            },
+            {
+              "id": "s2_aps_mardi_8h_vtt",
+              "title": "S2_APS_MARDI_8H_VTT",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxv4KY9.shu"
+            },
+            {
+              "id": "s2_aps_mercredi_8h_rg_padel",
+              "title": "S2_APS_MERCREDI_8H_RG_PADEL",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPz83A.shu"
+            },
+            {
+              "id": "s2_aps_mercredi_8h_vtt",
+              "title": "S2_APS_MERCREDI_8H_VTT",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pG9yWA.shu"
+            },
+            {
+              "id": "s2_aps_vendredi_14h_bl_voile",
+              "title": "S2_APS_VENDREDI_14H_BL_VOILE",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6kKWr.shu"
+            },
+            {
+              "id": "s2_aps_vendredi_14h_vtt",
+              "title": "S2_APS_VENDREDI_14H_VTT",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wLK3P.shu"
+            },
+            {
+              "id": "s2_expcom_mardi_8h_mbg",
+              "title": "S2_EXPCOM_MARDI_8H_MBG",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6ANWr.shu"
+            },
+            {
+              "id": "s2_expcom_mardi_10h_mbg",
+              "title": "S2_EXPCOM_MARDI_10H_MBG",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQOZ3B.shu"
+            },
+            {
+              "id": "s2_expcom_mercredi_8h_vg",
+              "title": "S2_EXPCOM_MERCREDI_8H_VG",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAVdWb.shu"
+            },
+            {
+              "id": "s2_expcom_mercredi_10h_oh",
+              "title": "S2_EXPCOM_MERCREDI_10H_OH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROGzW8.shu"
+            },
+            {
+              "id": "s2_expcom_vendredi_14h_nc",
+              "title": "S2_EXPCOM_VENDREDI_14H_NC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvoQWv.shu"
+            },
+            {
+              "id": "s2_gestionprojet_mardi_10h_kh",
+              "title": "S2_GESTIONPROJET_MARDI_10H_KH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8DNln8.shu"
+            },
+            {
+              "id": "s2_gestionprojet_mercredi_10h_kh",
+              "title": "S2_GESTIONPROJET_MERCREDI_10H_KH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNA7Q3v.shu"
+            },
+            {
+              "id": "s2_gestionprojet_vendredi_14h_kh",
+              "title": "S2_GESTIONPROJET_VENDREDI_14H_KH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LP0P3A.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fise2",
+      "title": "FISE2",
+      "children": [
+        {
+          "id": "fise2sh",
+          "title": "FISE 2 SH",
+          "children": [
+            {
+              "id": "fise2sh",
+              "title": "FISE2 SH",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wbPkWy.shu"
+            },
+            {
+              "id": "s3_aps_badminton_jeudi_8h",
+              "title": "S3_aps_BADMINTON_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMXRn2.shu"
+            },
+            {
+              "id": "s3_aps_escalade_mardi_10h",
+              "title": "S3_aps_ESCALADE_mardi_10h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyJA3B.shu"
+            },
+            {
+              "id": "s3_aps_volley_mardi_8h",
+              "title": "S3_aps_VOLLEY_mardi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWom47YM.shu"
+            },
+            {
+              "id": "s3_business_jeudi_8h_clm",
+              "title": "S3_BUSINESS_jeudi_8h_CLM",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRbM3J.shu"
+            },
+            {
+              "id": "s3_business_mardi_8h_clm",
+              "title": "S3_BUSINESS_mardi_8h_CLM",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZjgWD.shu"
+            },
+            {
+              "id": "s3_business_mardi_8h_ls",
+              "title": "S3_BUSINESS_mardi_8h_LS",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGNMY6.shu"
+            },
+            {
+              "id": "s3_business_mardi_10h_ls",
+              "title": "S3_BUSINESS_mardi_10h_LS",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6AqnP.shu"
+            },
+            {
+              "id": "s3_droit_jeudi_8h",
+              "title": "S3_DROIT_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9aV3x.shu"
+            },
+            {
+              "id": "s3_droit_mardi_10h",
+              "title": "S3_DROIT_mardi_10h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMjQWr.shu"
+            },
+            {
+              "id": "s3_expresscom_jeudi_8h",
+              "title": "S3_EXPRESS COM_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQJona.shu"
+            },
+            {
+              "id": "s3_expresscom_mardi_8h",
+              "title": "S3_EXPRESS COM_mardi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajVQnl.shu"
+            },
+            {
+              "id": "s3_methodesnumeriquesequationsphysique_mc",
+              "title": "S3_METHODES NUMERIQUES EQUATIONS PHYSIQUE_MC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kpEYk.shu"
+            },
+            {
+              "id": "s3_noyau_mc",
+              "title": "S3_NOYAU_MC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJvlnx.shu"
+            },
+            {
+              "id": "s3_s4japonais",
+              "title": "S3_S4 JAPONAIS",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5Yrp4dWO.shu"
+            },
+            {
+              "id": "s3_tempsreel_mc",
+              "title": "S3_TEMPS REEL_MC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqx4NYJ.shu"
+            },
+            {
+              "id": "s4_anglaistoeic_lundi_16h",
+              "title": "S4_ANGLAIS TOEIC_lundi_16h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynAp8OYw.shu"
+            },
+            {
+              "id": "s4_aps_plancheavoile_lundi_14h",
+              "title": "S4_aps_Planche à voile_lundi_14h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9Z7WJ.shu"
+            },
+            {
+              "id": "s4_aps_tennis_jeudi_8h",
+              "title": "S4_aps_Tennis_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXBQW5.shu"
+            },
+            {
+              "id": "s4_cles3_lundi_14h",
+              "title": "S4_CLES3_lundi_14h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yVzYM.shu"
+            },
+            {
+              "id": "s4_droit_jeudi_8h",
+              "title": "S4_DROIT_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0D1Mn7.shu"
+            },
+            {
+              "id": "s4_droit_lundi_14h",
+              "title": "S4_DROIT_lundi_14h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35wMbnR.shu"
+            },
+            {
+              "id": "s4_executiftempsreel_mc",
+              "title": "S4_EXECUTIF TEMPS REEL_MC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348VQ3k.shu"
+            },
+            {
+              "id": "s4_expresscom_jeudi_8h",
+              "title": "S4_EXPRESS COM_jeudi_8h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVOmne.shu"
+            },
+            {
+              "id": "s4_expresscom_lundi_14h",
+              "title": "S4_EXPRESS COM_lundi_14h",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yo40nj.shu"
+            },
+            {
+              "id": "s4_reseauxsansfils_mc",
+              "title": "S4_RESEAUX SANS FILS_MC",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEB4zWr.shu"
+            }
+          ]
+        },
+        {
+          "id": "info2",
+          "title": "INFO2",
+          "children": [
+            {
+              "id": "info2g1tp1",
+              "title": "INFO2  G1 TP1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQ0zYa.shu"
+            },
+            {
+              "id": "info2g1tp2",
+              "title": "INFO2 G1 TP2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4PQYP.shu"
+            },
+            {
+              "id": "info2g2tp2",
+              "title": "INFO2 G2 TP2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGo64YJ.shu"
+            },
+            {
+              "id": "info2g2tp3",
+              "title": "INFO2 G2 TP3",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64ObWz.shu"
+            }
+          ]
+        },
+        {
+          "id": "majeures-mineures",
+          "title": "Majeures - mineures",
+          "children": [
+            {
+              "id": "maj1genielogicielg1",
+              "title": "MAJ1 GENIE LOGICIEL G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk14EWA.shu"
+            },
+            {
+              "id": "maj1genielogicielg2",
+              "title": "MAJ1 GENIE LOGICIEL G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNA9Q3v.shu"
+            },
+            {
+              "id": "maj1traitementaudiovideo",
+              "title": "MAJ1 TRAITEMENT AUDIO VIDEO",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPxP3A.shu"
+            },
+            {
+              "id": "maj2conceptionmaterielle",
+              "title": "MAJ2 CONCEPTION MATERIELLE",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvgzY9.shu"
+            },
+            {
+              "id": "maj2reseaux",
+              "title": "MAJ2 RESEAUX",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qKLWa.shu"
+            },
+            {
+              "id": "maj2webserveur",
+              "title": "MAJ2 WEB SERVEUR",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6zNWr.shu"
+            },
+            {
+              "id": "minintroauxreseauxg1",
+              "title": "MIN INTRO AUX RESEAUX G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAjjWb.shu"
+            },
+            {
+              "id": "minintroauxreseauxg2",
+              "title": "MIN INTRO AUX RESEAUX G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnRO17W8.shu"
+            },
+            {
+              "id": "minnoyaug1",
+              "title": "MIN NOYAU G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGk9WA.shu"
+            },
+            {
+              "id": "minnoyaug2",
+              "title": "MIN NOYAU G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w253P.shu"
+            },
+            {
+              "id": "minprojetrobotiqueg1",
+              "title": "MIN PROJET ROBOTIQUE G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQp73B.shu"
+            },
+            {
+              "id": "minprojetrobotiqueg2",
+              "title": "MIN PROJET ROBOTIQUE G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvL1Wv.shu"
+            }
+          ]
+        },
+        {
+          "id": "phot2",
+          "title": "PHOT2",
+          "children": [
+            {
+              "id": "phot2g1",
+              "title": "PHOT2 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Dw5n8.shu"
+            },
+            {
+              "id": "phot2g2",
+              "title": "PHOT2 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzgyPnZ.shu"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fisea1",
+      "title": "FISEA1",
+      "children": [
+        {
+          "id": "iape1",
+          "title": "IAPE1",
+          "children": [
+            {
+              "id": "iape1g1",
+              "title": "IAPE1 G1",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJylnx.shu"
+            },
+            {
+              "id": "iape1g2",
+              "title": "IAPE1 G2",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9OV3x.shu"
             }
           ]
         }

@@ -7,9 +7,51 @@
       "title": "01 Cycle prépa 1",
       "children": [
         {
-          "id": "cm-td-tptoutcycleprepa1",
-          "title": "CM-TD-TP tout Cycle prépa 1",
+          "id": "toutcycleprepa1",
+          "title": "tout Cycle prépa 1",
           "children": [
+            {
+              "id": "lv1cycleprepa1",
+              "title": "lv1 Cycle prépa 1",
+              "children": [
+                {
+                  "id": "g1anglaiscycleprepa1",
+                  "title": "G1 anglais Cycle prépa 1",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzg4NnZ.shu"
+                },
+                {
+                  "id": "g2anglaiscycleprepa1",
+                  "title": "G2 anglais Cycle prépa 1",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4D7YP.shu"
+                },
+                {
+                  "id": "g3anglaiscycleprepa1",
+                  "title": "G3 anglais Cycle prépa 1",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64NQWz.shu"
+                }
+              ]
+            },
+            {
+              "id": "lv2cycleprepa1facultatif",
+              "title": "lv2 Cycle prépa 1 (facultatif)",
+              "children": [
+                {
+                  "id": "cycleprepa1lv2:allemand",
+                  "title": "Cycle prépa 1 LV2: allemand",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRKL3J.shu"
+                },
+                {
+                  "id": "cycleprepa1lv2:espagnol",
+                  "title": "Cycle prépa 1 LV2: espagnol",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomy8YM.shu"
+                },
+                {
+                  "id": "cycleprepa1lv2:japonais",
+                  "title": "Cycle prépa 1 LV2: japonais",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMxGn2.shu"
+                }
+              ]
+            },
             {
               "id": "tdgracycleprepa1",
               "title": "TD GR A Cycle prépa 1",
@@ -21,7 +63,7 @@
                     {
                       "id": "tda-tpg1",
                       "title": "TDA-TPG1",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10458&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROwlW8.shu"
                     }
                   ]
                 },
@@ -32,7 +74,7 @@
                     {
                       "id": "tda-tpg2",
                       "title": "TDA-TPG2",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10463&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvj8Wv.shu"
                     }
                   ]
                 }
@@ -49,7 +91,7 @@
                     {
                       "id": "tdb-tpg3",
                       "title": "TDB-TPG3",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10469&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Dmdn8.shu"
                     }
                   ]
                 },
@@ -60,51 +102,30 @@
                     {
                       "id": "tdb-tpg4",
                       "title": "TDB-TPG4",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10482&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQGLYa.shu"
                     }
                   ]
                 }
               ]
             },
             {
-              "id": "lv1cycleprepa1",
-              "title": "lv1 Cycle prépa 1",
+              "id": "tes-s2",
+              "title": "TES-S2",
               "children": [
                 {
-                  "id": "g1anglaiscycleprepa1",
-                  "title": "G1 anglais Cycle prépa 1",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10498&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "id": "groupe1tes",
+                  "title": "Groupe 1 TES",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyKk3B.shu"
                 },
                 {
-                  "id": "g2anglaiscycleprepa1",
-                  "title": "G2 anglais Cycle prépa 1",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10499&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "id": "groupe2tes",
+                  "title": "Groupe 2 TES",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6BvnP.shu"
                 },
                 {
-                  "id": "g3anglaiscycleprepa1",
-                  "title": "G3 anglais Cycle prépa 1",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10501&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "lv2cycleprepa1facultatif",
-              "title": "lv2 Cycle prépa 1 (facultatif)",
-              "children": [
-                {
-                  "id": "cycleprepa1lv2:allemand",
-                  "title": "Cycle prépa 1 LV2: allemand",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10523&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "cycleprepa1lv2:espagnol",
-                  "title": "Cycle prépa 1 LV2: espagnol",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10514&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "cycleprepa1lv2:japonais",
-                  "title": "Cycle prépa 1 LV2: japonais",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10516&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "id": "groupe3tes",
+                  "title": "Groupe 3 TES",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZOlWD.shu"
                 }
               ]
             }
@@ -117,139 +138,27 @@
       "title": "01 Cycle prépa 2",
       "children": [
         {
-          "id": "cm-td-tptoutcycleprepa2",
-          "title": "CM-TD-TP tout Cycle prépa 2",
+          "id": "toutcycleprepa2",
+          "title": "tout cycle prépa  2",
           "children": [
             {
-              "id": "tdgracycleprepa2",
-              "title": "TD GR A Cycle prépa 2",
-              "children": [
-                {
-                  "id": "tpgr1cycleprepa2",
-                  "title": "TP gr1 Cycle prépa 2",
-                  "children": [
-                    {
-                      "id": "tda-tpgr1-tpsecua-ouvsnr",
-                      "title": "TDA-TPgr1-TPSécu(a)-OUV SNR",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9621&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tda-tpgr1-tpsecub-ouvsnr-tis",
-                      "title": "TDA-TPgr1-TPSécu(b)-OUV SNR-TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16119&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tda-tpgr1-tpsecuc",
-                      "title": "TDA-TPgr1-TPSécu(c)",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19317&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tda-tpgr1-tpsecuc-ouvtis",
-                      "title": "TDA-TPgr1-TPSécu(c)-OUV TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19338&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "tpgr2cycleprepa2",
-                  "title": "TP gr2 Cycle prépa 2",
-                  "children": [
-                    {
-                      "id": "tda-tpgr2-tpsecua-ouvsnr",
-                      "title": "TDA-TPgr2-TPSécu(a)-OUV SNR",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16112&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tda-tpgr2-tpsecub-ouvsnr",
-                      "title": "TDA-TPgr2-TPSécu(b)-OUV SNR",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16115&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "tdgrbcycleprepa2",
-              "title": "TD GR B Cycle prépa 2",
-              "children": [
-                {
-                  "id": "tpgr3cycleprepa2",
-                  "title": "TP gr3 Cycle prépa 2",
-                  "children": [
-                    {
-                      "id": "tdb-tpgr3-tpsecud-ouvtis-mat",
-                      "title": "TDB-TPgr3-TPSécu(d)-OUV TIS-MAT",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9926&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tdb-tpgr3-tpsecue-ouvtis-mat",
-                      "title": "TDB-TPgr3-TPSécu(e)-OUV TIS-MAT",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16117&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "tpgr4cycleprepa2",
-                  "title": "TP gr4 Cycle prépa 2",
-                  "children": [
-                    {
-                      "id": "tdb-tpgr4-tpsecue-ouvmat",
-                      "title": "TDB-TPgr4-TPSécu(e)-OUV MAT",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9934&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tdb-tpgr4-tpsecuf-ouvtis",
-                      "title": "TDB-TPgr4-TPSécu(f)-OUV TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19304&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "tdb-tpgr4-tpsecuf-ouvtis-mat",
-                      "title": "TDB-TPgr4-TPSécu(f)-OUV TIS-MAT",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16118&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "tpsecuriteorga-s3",
-              "title": "TP sécurité ORGA-S3",
-              "children": [
-                {
-                  "id": "tps1-2orga-s3",
-                  "title": "TPS 1-2 ORGA-S3",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2613&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "tps3-4orga-s3",
-                  "title": "TPS 3-4 ORGA-S3",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2626&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "tps5-6orga-s3",
-                  "title": "TPS 5-6 ORGA-S3",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2640&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                }
-              ]
-            },
-            {
-              "id": "lv1cycleprepa2",
-              "title": "lv1 Cycle prépa 2",
+              "id": "lv1cycleprepa",
+              "title": "lv1 Cycle prépa",
               "children": [
                 {
                   "id": "g1anglaiscycleprepa2",
                   "title": "G1 anglais Cycle prépa 2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9938&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROplW8.shu"
                 },
                 {
                   "id": "g2anglaiscycleprepa2",
                   "title": "G2 anglais Cycle prépa 2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9939&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPv18Wv.shu"
                 },
                 {
                   "id": "g3anglaiscycleprepa2",
                   "title": "G3 anglais Cycle prépa 2",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9940&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8DXdn8.shu"
                 }
               ]
             },
@@ -260,17 +169,17 @@
                 {
                   "id": "cycleprepa2lv2:allemand",
                   "title": "Cycle prépa 2 LV2: allemand",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10433&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPRm3A.shu"
                 },
                 {
                   "id": "cycleprepa2lv2:espagnol",
                   "title": "Cycle prépa 2 LV2: espagnol",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10429&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNALq3v.shu"
                 },
                 {
                   "id": "cycleprepa2:japonais",
                   "title": "Cycle prépa 2: japonais",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10432&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6jbWr.shu"
                 }
               ]
             },
@@ -285,12 +194,12 @@
                     {
                       "id": "ouvtistpa",
                       "title": "OUV TIS TPA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15932&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQN23B.shu"
                     },
                     {
                       "id": "ouvtistpb",
                       "title": "OUV TIS TPB",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15933&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROpoW8.shu"
                     }
                   ]
                 },
@@ -301,12 +210,12 @@
                     {
                       "id": "ouvinfotpa",
                       "title": "OUV INFO TPA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10439&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxv6pY9.shu"
                     },
                     {
                       "id": "ouvinfotpb",
                       "title": "OUV INFO TPB",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10436&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qraWa.shu"
                     }
                   ]
                 },
@@ -317,7 +226,7 @@
                     {
                       "id": "ouvmattp",
                       "title": "OUV MAT TP",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=15934&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGQzWA.shu"
                     }
                   ]
                 },
@@ -328,28 +237,68 @@
                     {
                       "id": "ouvsnrtpa",
                       "title": "OUV SNR TPA",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16759&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w7Z3P.shu"
                     },
                     {
                       "id": "ouvsnrtpb",
                       "title": "OUV SNR TPB",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16760&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAR5Wb.shu"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tdgracycleprepa2",
+              "title": "TD GR A Cycle prépa 2",
+              "children": [
+                {
+                  "id": "tpgr1cycleprepa2",
+                  "title": "TP gr1 Cycle prépa 2",
+                  "children": [
+                    {
+                      "id": "tda-tpgr1",
+                      "title": "TDA-TPgr1",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGQ2WA.shu"
                     }
                   ]
                 },
                 {
-                  "id": "moduleouvertureprojetprofessionnel",
-                  "title": "module ouverture projet professionnel",
+                  "id": "tpgr2cycleprepa2",
+                  "title": "TP gr2 Cycle prépa 2",
                   "children": [
                     {
-                      "id": "ouv",
-                      "title": "OUV",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16769&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
+                      "id": "tda-tpgr2",
+                      "title": "TDA-TPgr2",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w7q3P.shu"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tdgrbcycleprepa2",
+              "title": "TD GR B Cycle prépa 2",
+              "children": [
+                {
+                  "id": "tpgr3cycleprepa2",
+                  "title": "TP gr3 Cycle prépa 2",
+                  "children": [
                     {
-                      "id": "ouv-2",
-                      "title": "OUV (Groupe 2)",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=16773&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "tdb-tpgr3",
+                      "title": "TDB-TPgr3",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VARPWb.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "tpgr4cycleprepa2",
+                  "title": "TP gr4 Cycle prépa 2",
+                  "children": [
+                    {
+                      "id": "tdb-tpgr4",
+                      "title": "TDB-TPgr4",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQNg3B.shu"
                     }
                   ]
                 }
@@ -364,13 +313,161 @@
       "title": "02 ESIR 1 FISE",
       "children": [
         {
-          "id": "cm-td-tptoutesir1",
-          "title": "CM-TD-TP tout ESIR1",
+          "id": "toutesir1",
+          "title": "tout ESIR1",
           "children": [
+            {
+              "id": "fisemateriaux1",
+              "title": "fise Matériaux 1",
+              "children": [
+                {
+                  "id": "cmtdtpmateriauxesir1",
+                  "title": "CM TD TP Matériaux ESIR1",
+                  "children": [
+                    {
+                      "id": "tpgr1matesir1",
+                      "title": "TP gr1 MAT ESIR1",
+                      "children": [
+                        {
+                          "id": "tpgr1matesir1",
+                          "title": "TP gr1 MAT ESIR1",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjybX3B.shu"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "tpgr2matesir1",
+                      "title": "TP gr2 MAT ESIR1",
+                      "children": [
+                        {
+                          "id": "tpgr2matesir1",
+                          "title": "TP gr2 MAT ESIR1",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6ggnP.shu"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "innovationesir1materiaux",
+                  "title": "innovation ESIR1 Matériaux",
+                  "children": [
+                    {
+                      "id": "inentesir1materiaux",
+                      "title": "Inent esir1 MATERIAUX",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzgbdnZ.shu"
+                    },
+                    {
+                      "id": "inidesir1materiaux",
+                      "title": "Inid esir1 MATERIAUX",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQzRYa.shu"
+                    },
+                    {
+                      "id": "inrechesir1materiaux",
+                      "title": "Inrech esir1 MATERIAUX",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8DQ8n8.shu"
+                    },
+                    {
+                      "id": "insocesir1materiaux",
+                      "title": "Insoc esir1 MATERIAUX",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4GPYP.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "langues-communicationesir1materiaux",
+                  "title": "langues - communication ESIR 1 Matériaux",
+                  "children": [
+                    {
+                      "id": "g1esir1materiaux",
+                      "title": "G1 ESIR1 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGoMQYJ.shu"
+                    },
+                    {
+                      "id": "g2esir1materiaux",
+                      "title": "G2 ESIR1 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64BNWz.shu"
+                    },
+                    {
+                      "id": "g3esir1materiaux",
+                      "title": "G3 ESIR1 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomoZYM.shu"
+                    },
+                    {
+                      "id": "g4esir1materiaux",
+                      "title": "G4 ESIR1 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbM7Ln2.shu"
+                    },
+                    {
+                      "id": "g5esir1materiaux",
+                      "title": "G5 ESIR1 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRA73J.shu"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "id": "informatique1",
               "title": "Informatique 1",
               "children": [
+                {
+                  "id": "innovationesir1info",
+                  "title": "innovation ESIR1 INFO",
+                  "children": [
+                    {
+                      "id": "inentesir1info",
+                      "title": "Inent esir1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6GbWr.shu"
+                    },
+                    {
+                      "id": "inidesir1info",
+                      "title": "Inid esir1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAEq3v.shu"
+                    },
+                    {
+                      "id": "inrechesir1info",
+                      "title": "Inrech esir1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1ZwWA.shu"
+                    },
+                    {
+                      "id": "insocesir1info",
+                      "title": "Insoc esir1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPKm3A.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "langues-communicationesir1info",
+                  "title": "langues - communication ESIR 1 INFO",
+                  "children": [
+                    {
+                      "id": "g1esir1info",
+                      "title": "G1 ESIR1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qdaWa.shu"
+                    },
+                    {
+                      "id": "g2esir1info",
+                      "title": "G2 ESIR1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvMpY9.shu"
+                    },
+                    {
+                      "id": "g3esir1info",
+                      "title": "G3 ESIR1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGNzWA.shu"
+                    },
+                    {
+                      "id": "g4esir1info",
+                      "title": "G4 ESIR1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wpZ3P.shu"
+                    },
+                    {
+                      "id": "g5esir1info",
+                      "title": "G5 ESIR1 INFO",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAQ5Wb.shu"
+                    }
+                  ]
+                },
                 {
                   "id": "tdgrainfoesir1",
                   "title": "TD GR A INFO ESIR1",
@@ -382,7 +479,7 @@
                         {
                           "id": "tda-tpgr1infoesir1",
                           "title": "TD A-TP gr1 INFO ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8786&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQK23B.shu"
                         }
                       ]
                     },
@@ -393,7 +490,7 @@
                         {
                           "id": "tda-tpgr2infoesir1",
                           "title": "TD A-TP gr2 INFO ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8787&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnRO6oW8.shu"
                         }
                       ]
                     }
@@ -410,7 +507,7 @@
                         {
                           "id": "tdb-tpgr3infoesir1",
                           "title": "TD B-TP gr3 INFO ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8790&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Dx6n8.shu"
                         }
                       ]
                     },
@@ -421,68 +518,42 @@
                         {
                           "id": "tdb-tpgr4infoesir1",
                           "title": "TD B-TP gr4 INFO ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13685&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvKbWv.shu"
                         }
                       ]
                     }
                   ]
+                }
+              ]
+            },
+            {
+              "id": "optionexpressionesir1",
+              "title": "option expression ESIR1",
+              "children": [
+                {
+                  "id": "engagementetudiant",
+                  "title": "engagement étudiant",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBpNWr.shu"
                 },
                 {
-                  "id": "innovationesir1info",
-                  "title": "innovation ESIR1 INFO",
-                  "children": [
-                    {
-                      "id": "inentesir1info",
-                      "title": "Inent esir1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9201&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inidesir1info",
-                      "title": "Inid esir1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3738&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inrechesir1info",
-                      "title": "Inrech esir1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=824&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "insocesir1info",
-                      "title": "Insoc esir1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3797&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
+                  "id": "lv2espagnol",
+                  "title": "LV2 espagnol",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9mvWJ.shu"
                 },
                 {
-                  "id": "langues-communicationesir1info",
-                  "title": "langues - communication ESIR 1 INFO",
-                  "children": [
-                    {
-                      "id": "g1esir1info",
-                      "title": "G1 ESIR1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4493&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2esir1info",
-                      "title": "G2 ESIR1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4505&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir1info",
-                      "title": "G3 ESIR1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4506&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir1info",
-                      "title": "G4 ESIR1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4510&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir1info",
-                      "title": "G5 ESIR1 INFO",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4512&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
+                  "id": "lv2:allemand",
+                  "title": "LV2: allemand",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApk4Yw.shu"
+                },
+                {
+                  "id": "lv2:japonais",
+                  "title": "LV2: japonais",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348NZ3k.shu"
+                },
+                {
+                  "id": "sport",
+                  "title": "sport",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7y1wYM.shu"
                 }
               ]
             },
@@ -490,6 +561,63 @@
               "id": "tis1",
               "title": "TIS 1",
               "children": [
+                {
+                  "id": "innovationesir1tis",
+                  "title": "innovation ESIR1 TIS",
+                  "children": [
+                    {
+                      "id": "inentesir1tis",
+                      "title": "Inent esir1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPKd3A.shu"
+                    },
+                    {
+                      "id": "inidesir1tis",
+                      "title": "Inid esir1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6GJWr.shu"
+                    },
+                    {
+                      "id": "inrechesir1tis",
+                      "title": "Inrech esir1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAEV3v.shu"
+                    },
+                    {
+                      "id": "insocesir1tis",
+                      "title": "Insoc esir1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qd0Wa.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "langues-communicationesir1tis",
+                  "title": "langues - communication ESIR 1 TIS",
+                  "children": [
+                    {
+                      "id": "g1esir1tis",
+                      "title": "G1 ESIR1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvMmY9.shu"
+                    },
+                    {
+                      "id": "g2esir1tis",
+                      "title": "G2 ESIR1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGNLWA.shu"
+                    },
+                    {
+                      "id": "g3esir1tis",
+                      "title": "G3 ESIR1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wpN3P.shu"
+                    },
+                    {
+                      "id": "g4esir1tis",
+                      "title": "G4 ESIR1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQE63B.shu"
+                    },
+                    {
+                      "id": "g5esir1tis",
+                      "title": "G5 ESIR1 TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAQNWb.shu"
+                    }
+                  ]
+                },
                 {
                   "id": "tdtisesir1",
                   "title": "TD TIS ESIR1",
@@ -501,7 +629,7 @@
                         {
                           "id": "tpgr1tisesir1",
                           "title": "TP gr1 TIS ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8806&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvgEWv.shu"
                         }
                       ]
                     },
@@ -512,190 +640,11 @@
                         {
                           "id": "tpgr2tisesir1",
                           "title": "TP gr2 TIS ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4049&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROgOW8.shu"
                         }
                       ]
                     }
                   ]
-                },
-                {
-                  "id": "innovationesir1tis",
-                  "title": "innovation ESIR1 TIS",
-                  "children": [
-                    {
-                      "id": "inentesir1tis",
-                      "title": "Inent esir1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3151&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inidesir1tis",
-                      "title": "Inid esir1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3301&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inrechesir1tis",
-                      "title": "Inrech esir1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1202&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "insocesir1tis",
-                      "title": "Insoc esir1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3903&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "langues-communicationesir1tis",
-                  "title": "langues - communication ESIR 1 TIS",
-                  "children": [
-                    {
-                      "id": "g1esir1tis",
-                      "title": "G1 ESIR1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8816&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2esir1tis",
-                      "title": "G2 ESIR1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8818&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir1tis",
-                      "title": "G3 ESIR1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8831&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir1tis",
-                      "title": "G4 ESIR1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8837&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir1tis",
-                      "title": "G5 ESIR1 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8835&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "fisemateriaux1",
-              "title": "fise Matériaux 1",
-              "children": [
-                {
-                  "id": "cmtdtpmateriauxesir1",
-                  "title": "CM TD TP Matériaux ESIR1",
-                  "children": [
-                    {
-                      "id": "tpgr1matesir1",
-                      "title": "TP gr1 MAT ESIR1",
-                      "children": [
-                        {
-                          "id": "tpgr1matesir1",
-                          "title": "TP gr1 MAT ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8799&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "tpgr2matesir1",
-                      "title": "TP gr2 MAT ESIR1",
-                      "children": [
-                        {
-                          "id": "tpgr2matesir1",
-                          "title": "TP gr2 MAT ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8805&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "innovationesir1materiaux",
-                  "title": "innovation ESIR1 Matériaux",
-                  "children": [
-                    {
-                      "id": "inentesir1materiaux",
-                      "title": "Inent esir1 MATERIAUX",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3271&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inidesir1materiaux",
-                      "title": "Inid esir1 MATERIAUX",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9009&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inrechesir1materiaux",
-                      "title": "Inrech esir1 MATERIAUX",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2538&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "insocesir1materiaux",
-                      "title": "Insoc esir1 MATERIAUX",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9180&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "langues-communicationesir1materiaux",
-                  "title": "langues - communication ESIR 1 Matériaux",
-                  "children": [
-                    {
-                      "id": "g1esir1materiaux",
-                      "title": "G1 ESIR1 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4494&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2esir1materiaux",
-                      "title": "G2 ESIR1 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4495&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir1materiaux",
-                      "title": "G3 ESIR1 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4508&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir1materiaux",
-                      "title": "G4 ESIR1 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4509&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir1materiaux",
-                      "title": "G5 ESIR1 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4511&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "optionexpressionesir1",
-              "title": "option expression ESIR1",
-              "children": [
-                {
-                  "id": "lv2espagnol",
-                  "title": "LV2 espagnol",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9586&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "lv2:allemand",
-                  "title": "LV2: allemand",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9575&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "lv2:japonais",
-                  "title": "LV2: japonais",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9590&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "engagementetudiant",
-                  "title": "engagement étudiant",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9613&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "sport",
-                  "title": "sport",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=172&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -708,9 +657,100 @@
       "title": "03 ESIR 2 FISE",
       "children": [
         {
-          "id": "cm-td-tptoutesir2",
-          "title": "CM-TD-TP tout ESIR2",
+          "id": "toutesir2",
+          "title": "tout ESIR2",
           "children": [
+            {
+              "id": "fisemateriaux2",
+              "title": "fise Matériaux 2",
+              "children": [
+                {
+                  "id": "cm-td-tpmateriauxesir2",
+                  "title": "CM-TD-TP Matériaux ESIR2",
+                  "children": [
+                    {
+                      "id": "tpgr1matesir2",
+                      "title": "TP gr1 MAT ESIR2",
+                      "children": [
+                        {
+                          "id": "tpgr1matesir2",
+                          "title": "TP gr1 MAT ESIR2",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yXaYM.shu"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "tpgr2matesir2",
+                      "title": "TP gr2 MAT ESIR2",
+                      "children": [
+                        {
+                          "id": "tpgr2matesir2",
+                          "title": "TP gr2 MAT ESIR2",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApo8Yw.shu"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "innovationesir2materiaux",
+                  "title": "innovation ESIR 2 Matériaux",
+                  "children": [
+                    {
+                      "id": "inentesir2materiaux",
+                      "title": "Inent esir2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJwZnx.shu"
+                    },
+                    {
+                      "id": "inidesir2materiaux",
+                      "title": "Inid esir2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32k4vYk.shu"
+                    },
+                    {
+                      "id": "inrechesir2materiaux",
+                      "title": "Inrech esir2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9wB3x.shu"
+                    },
+                    {
+                      "id": "insocesir2materiaux",
+                      "title": "Insoc esir2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxPvYJ.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "langues-communicationesir2",
+                  "title": "langues - communication ESIR 2",
+                  "children": [
+                    {
+                      "id": "g1esir2materiaux",
+                      "title": "G1 ESIR2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yokKnj.shu"
+                    },
+                    {
+                      "id": "g2esir2materiaux",
+                      "title": "G2 ESIR2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dV1Vne.shu"
+                    },
+                    {
+                      "id": "g3esir2materiaux",
+                      "title": "G3 ESIR2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wb62Wy.shu"
+                    },
+                    {
+                      "id": "g4esir2materiaux",
+                      "title": "G4 ESIR2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DqNn7.shu"
+                    },
+                    {
+                      "id": "g5esir2materiaux",
+                      "title": "G5 ESIR2 Matériaux",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35wBgnR.shu"
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "id": "informatique2",
               "title": "Informatique 2",
@@ -726,7 +766,7 @@
                         {
                           "id": "tpinesir2",
                           "title": "TP IN ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10533&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvxlY9.shu"
                         }
                       ]
                     },
@@ -737,22 +777,22 @@
                         {
                           "id": "inentesir2in",
                           "title": "Inent esir2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4534&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXjVW5.shu"
                         },
                         {
                           "id": "inidesir2in",
                           "title": "Inid esir2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4544&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEB5mWr.shu"
                         },
                         {
                           "id": "inrechesir2in",
                           "title": "Inrech esir2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4529&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9KAWJ.shu"
                         },
                         {
                           "id": "insocesir2in",
                           "title": "Insoc esir2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4539&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348BB3k.shu"
                         }
                       ]
                     },
@@ -763,27 +803,27 @@
                         {
                           "id": "g1esir2in",
                           "title": "G1 ESIR2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4558&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1PbWA.shu"
                         },
                         {
                           "id": "g2esir2in",
                           "title": "G2 ESIR2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4562&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAvE3v.shu"
                         },
                         {
                           "id": "g3esir2in",
                           "title": "G3 ESIR2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4567&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPwE3A.shu"
                         },
                         {
                           "id": "g4esir2in",
                           "title": "G4 ESIR2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4572&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6gaWr.shu"
                         },
                         {
                           "id": "g5esir2in",
                           "title": "G5 ESIR2 IN",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4580&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qE2Wa.shu"
                         }
                       ]
                     }
@@ -800,7 +840,7 @@
                         {
                           "id": "tpiotesir2",
                           "title": "TP IOT ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10560&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMvOWr.shu"
                         }
                       ]
                     },
@@ -811,22 +851,22 @@
                         {
                           "id": "inentesir2iot",
                           "title": "Inent esir2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4537&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomZ8YM.shu"
                         },
                         {
                           "id": "inidesir2iot",
                           "title": "Inid esir2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4547&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRqL3J.shu"
                         },
                         {
                           "id": "inrechesir2iot",
                           "title": "Inrech esir2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4532&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY645QWz.shu"
                         },
                         {
                           "id": "insocesir2iot",
                           "title": "Insoc esir2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4543&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMDGn2.shu"
                         }
                       ]
                     },
@@ -837,27 +877,27 @@
                         {
                           "id": "g1esir2iot",
                           "title": "G1 ESIR2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4559&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyOk3B.shu"
                         },
                         {
                           "id": "g2esir2iot",
                           "title": "G2 ESIR2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4563&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6OvnP.shu"
                         },
                         {
                           "id": "g3esir2iot",
                           "title": "G3 ESIR2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4569&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZ7lWD.shu"
                         },
                         {
                           "id": "g4esir2iot",
                           "title": "G4 ESIR2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4575&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGA9Y6.shu"
                         },
                         {
                           "id": "g5esir2iot",
                           "title": "G5 ESIR2 IoT",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4578&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQjlna.shu"
                         }
                       ]
                     }
@@ -878,7 +918,7 @@
                             {
                               "id": "tpgr1siesir2",
                               "title": "TP gr1 SI ESIR2",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10562&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4m7YP.shu"
                             }
                           ]
                         },
@@ -889,7 +929,7 @@
                             {
                               "id": "tpgr2siesir2",
                               "title": "TP gr2 SI ESIR2",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10564&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGogjYJ.shu"
                             }
                           ]
                         }
@@ -902,22 +942,22 @@
                         {
                           "id": "inentesir2si",
                           "title": "Inent esir2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4533&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w6q3P.shu"
                         },
                         {
                           "id": "inidesir2si",
                           "title": "Inid esir2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4545&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQvg3B.shu"
                         },
                         {
                           "id": "inrechesir2si",
                           "title": "Inrech esir2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4528&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGZ2WA.shu"
                         },
                         {
                           "id": "insocesir2si",
                           "title": "Insoc esir2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4542&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VA7PWb.shu"
                         }
                       ]
                     },
@@ -928,27 +968,27 @@
                         {
                           "id": "g1esir2si",
                           "title": "G1 ESIR2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4556&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnRO7lW8.shu"
                         },
                         {
                           "id": "g2esir2si",
                           "title": "G2 ESIR2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4565&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPv78Wv.shu"
                         },
                         {
                           "id": "g3esir2si",
                           "title": "G3 ESIR2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4566&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8D2dn8.shu"
                         },
                         {
                           "id": "g4esir2si",
                           "title": "G4 ESIR2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4574&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzg9NnZ.shu"
                         },
                         {
                           "id": "g5esir2si",
                           "title": "G5 ESIR2 SI",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4579&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQvLYa.shu"
                         }
                       ]
                     }
@@ -957,12 +997,43 @@
               ]
             },
             {
+              "id": "optionexpressionesir2",
+              "title": "option expression ESIR2",
+              "children": [
+                {
+                  "id": "engagementetudiant",
+                  "title": "engagement étudiant",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMyOWr.shu"
+                },
+                {
+                  "id": "lv2espagnol",
+                  "title": "LV2 espagnol",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YrpAVWO.shu"
+                },
+                {
+                  "id": "lv2:allemand",
+                  "title": "LV2: allemand",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGj9Y6.shu"
+                },
+                {
+                  "id": "lv2:japonais",
+                  "title": "LV2: japonais",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYaj1onl.shu"
+                },
+                {
+                  "id": "sport",
+                  "title": "sport",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQglna.shu"
+                }
+              ]
+            },
+            {
               "id": "tis2",
               "title": "TIS 2",
               "children": [
                 {
-                  "id": "tdtisesir2",
-                  "title": "TD TIS ESIR2",
+                  "id": "cm-td-tptisesir2",
+                  "title": "CM-TD-TP TIS ESIR2",
                   "children": [
                     {
                       "id": "tpgr1tisesir2",
@@ -971,7 +1042,7 @@
                         {
                           "id": "tpgr1tisesir2",
                           "title": "TP gr1 TIS ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10534&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApw8Yw.shu"
                         }
                       ]
                     },
@@ -982,7 +1053,7 @@
                         {
                           "id": "tpgr2tisesir2",
                           "title": "TP gr2 TIS ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10554&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7y4aYM.shu"
                         }
                       ]
                     }
@@ -995,22 +1066,22 @@
                     {
                       "id": "inentesir2tis",
                       "title": "Inent esir2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4536&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJ2Znx.shu"
                     },
                     {
                       "id": "inidesir2tis",
                       "title": "Inid esir2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4548&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kyvYk.shu"
                     },
                     {
                       "id": "inrechesir2tis",
                       "title": "Inrech esir2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4530&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9PB3x.shu"
                     },
                     {
                       "id": "insocesir2tis",
                       "title": "Insoc esir2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4541&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxyvYJ.shu"
                     }
                   ]
                 },
@@ -1021,151 +1092,29 @@
                     {
                       "id": "g1esir2tis",
                       "title": "G1 ESIR2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4560&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yopKnj.shu"
                     },
                     {
                       "id": "g2esir2tis",
                       "title": "G2 ESIR2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4561&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dV7Vne.shu"
                     },
                     {
                       "id": "g3esir2tis",
                       "title": "G3 ESIR2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4570&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wb12Wy.shu"
                     },
                     {
                       "id": "g4esir2tis",
                       "title": "G4 ESIR2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4571&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DQNn7.shu"
                     },
                     {
                       "id": "g5esir2tis",
                       "title": "G5 ESIR2 TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4577&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35w6gnR.shu"
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "id": "fisemateriaux2",
-              "title": "fise Matériaux 2",
-              "children": [
-                {
-                  "id": "cm-td-tpmateriauxesir2",
-                  "title": "CM-TD-TP Matériaux ESIR2",
-                  "children": [
-                    {
-                      "id": "tpgr1matesir2",
-                      "title": "TP gr1 MAT ESIR2",
-                      "children": [
-                        {
-                          "id": "tpgr1matesir2",
-                          "title": "TP gr1 MAT ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10547&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    },
-                    {
-                      "id": "tpgr2matesir2",
-                      "title": "TP gr2 MAT ESIR2",
-                      "children": [
-                        {
-                          "id": "tpgr2matesir2",
-                          "title": "TP gr2 MAT ESIR2",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10570&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "id": "innovationesir2materiaux",
-                  "title": "innovation ESIR 2 Matériaux",
-                  "children": [
-                    {
-                      "id": "inentesir2materiaux",
-                      "title": "Inent esir2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4535&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inidesir2materiaux",
-                      "title": "Inid esir2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4546&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inrechesir2materiaux",
-                      "title": "Inrech esir2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4531&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "insocesir2materiaux",
-                      "title": "Insoc esir2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "langues-communicationesir2",
-                  "title": "langues - communication ESIR 2",
-                  "children": [
-                    {
-                      "id": "g1esir2materiaux",
-                      "title": "G1 ESIR2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4557&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2esir2materiaux",
-                      "title": "G2 ESIR2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4564&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir2materiaux",
-                      "title": "G3 ESIR2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4568&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir2materiaux",
-                      "title": "G4 ESIR2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4573&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir2materiaux",
-                      "title": "G5 ESIR2 Matériaux",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4576&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "optionexpressionesir2",
-              "title": "option expression ESIR2",
-              "children": [
-                {
-                  "id": "lv2espagnol",
-                  "title": "LV2 espagnol",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9633&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "lv2:allemand",
-                  "title": "LV2: allemand",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9622&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "lv2:japonais",
-                  "title": "LV2: japonais",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9636&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "engagementetudiant",
-                  "title": "engagement étudiant",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9648&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "sport",
-                  "title": "sport",
-                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9638&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             }
@@ -1178,9 +1127,209 @@
       "title": "04 ESIR 3 FISE",
       "children": [
         {
-          "id": "cm-td-tptoutesir3",
-          "title": "CM-TD-TP tout ESIR3",
+          "id": "optionexpressionesir3facultatif",
+          "title": "option expression ESIR3 (facultatif)",
           "children": [
+            {
+              "id": "engagementetudiant",
+              "title": "engagement étudiant",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wbVXWy.shu"
+            },
+            {
+              "id": "lv2espagnol",
+              "title": "LV2 espagnol",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32kdRYk.shu"
+            },
+            {
+              "id": "lv2:allemand",
+              "title": "LV2: allemand",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxLjYJ.shu"
+            },
+            {
+              "id": "lv2:japonais",
+              "title": "LV2: japonais",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dV6Ane.shu"
+            },
+            {
+              "id": "sport",
+              "title": "sport",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yoRRnj.shu"
+            }
+          ]
+        },
+        {
+          "id": "parcourscontratpro",
+          "title": "parcours contrat pro",
+          "children": [
+            {
+              "id": "parcourscontratpro",
+              "title": "parcours contrat pro",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJxwnx.shu"
+            },
+            {
+              "id": "soutenancecontratproetudiants",
+              "title": "soutenance contrat pro étudiants",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9mP3x.shu"
+            }
+          ]
+        },
+        {
+          "id": "parcoursprojetindustriel",
+          "title": "parcours projet industriel",
+          "children": [
+            {
+              "id": "parcoursprojetindustriel",
+              "title": "parcours projet industriel",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQGJna.shu"
+            }
+          ]
+        },
+        {
+          "id": "parcourssivos",
+          "title": "parcours SIVOS",
+          "children": [
+            {
+              "id": "parcoursesir3tis-sivos",
+              "title": "Parcours ESIR3 TIS- SIVOS",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DG2n7.shu"
+            }
+          ]
+        },
+        {
+          "id": "semaineentreprenariatesir",
+          "title": "semaine entreprenariat ESIR",
+          "children": [
+            {
+              "id": "semaineentreprenariatesir",
+              "title": "semaine entreprenariat ESIR",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMPmWr.shu"
+            }
+          ]
+        },
+        {
+          "id": "toutesir3",
+          "title": "tout ESIR3",
+          "children": [
+            {
+              "id": "fisemateriaux3",
+              "title": "fise Matériaux 3",
+              "children": [
+                {
+                  "id": "cm-td-tpmatesir3",
+                  "title": "CM-TD-TP MAT ESIR3",
+                  "children": [
+                    {
+                      "id": "anglaisesir3materiaux",
+                      "title": "anglais ESIR 3 Matériaux",
+                      "children": [
+                        {
+                          "id": "g1esir3materiaux",
+                          "title": "G1 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6BbWr.shu"
+                        },
+                        {
+                          "id": "g2esir3materiaux",
+                          "title": "G2 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qMaWa.shu"
+                        },
+                        {
+                          "id": "g3esir3materiaux",
+                          "title": "G3 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvDpY9.shu"
+                        },
+                        {
+                          "id": "g4esir3materiaux",
+                          "title": "G4 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGbzWA.shu"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ccoesir3materiaux",
+                      "title": "cco ESIR 3 Matériaux",
+                      "children": [
+                        {
+                          "id": "g1esir3materiaux",
+                          "title": "G1 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvrbWv.shu"
+                        },
+                        {
+                          "id": "g2esir3materiaux",
+                          "title": "G2 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wzZ3P.shu"
+                        },
+                        {
+                          "id": "g3esir3materiaux",
+                          "title": "G3 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAv5Wb.shu"
+                        },
+                        {
+                          "id": "g4esir3materiaux",
+                          "title": "G4 ESIR3 Matériaux",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQq23B.shu"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "tpgr1matesir3",
+                      "title": "TP gr1 MAT ESIR3",
+                      "children": [
+                        {
+                          "id": "tpgr1matesir3contratpro",
+                          "title": "TP gr1 MAT ESIR3 contrat pro",
+                          "children": [
+                            {
+                              "id": "tpgr1matesir3contratpro",
+                              "title": "TP gr1 MAT ESIR3 contrat pro",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROroW8.shu"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "tpgr1matesir3projetindustriel",
+                          "title": "TP gr1 MAT ESIR3 projet industriel",
+                          "children": [
+                            {
+                              "id": "tpgr1matesir3projetindustriel",
+                              "title": "TP gr1 MAT ESIR3 projet industriel",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8D56n8.shu"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "tpgr2matesir3",
+                      "title": "TP gr2 MAT ESIR3",
+                      "children": [
+                        {
+                          "id": "tpgr2matesir3contratpro",
+                          "title": "TP gr2 MAT ESIR3 contrat pro",
+                          "children": [
+                            {
+                              "id": "tpgr2matesir3contratpro",
+                              "title": "TP gr2 MAT ESIR3 contrat pro",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzg2GnZ.shu"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "tpgr2matesir3projetindustriel",
+                          "title": "TP gr2 MAT ESIR3 projet industriel",
+                          "children": [
+                            {
+                              "id": "tpgr2matesir3projetindustriel",
+                              "title": "TP gr2 MAT ESIR3 projet industriel",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQJyYa.shu"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
             {
               "id": "informatique3",
               "title": "Informatique 3",
@@ -1194,13 +1343,65 @@
                       "title": "CM-TD-TP IN ESIR3",
                       "children": [
                         {
+                          "id": "anglaisesir3in",
+                          "title": "anglais ESIR 3 IN",
+                          "children": [
+                            {
+                              "id": "g1esir3in",
+                              "title": "G1 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPv1bWv.shu"
+                            },
+                            {
+                              "id": "g2esir3in",
+                              "title": "G2 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8DX6n8.shu"
+                            },
+                            {
+                              "id": "g3esir3in",
+                              "title": "G3 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzg6GnZ.shu"
+                            },
+                            {
+                              "id": "g4esir3in",
+                              "title": "G4 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQMyYa.shu"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ccoesir3in",
+                          "title": "cco ESIR 3 IN",
+                          "children": [
+                            {
+                              "id": "g1esir3in",
+                              "title": "G1 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgR9w3J.shu"
+                            },
+                            {
+                              "id": "g2esir3in",
+                              "title": "G2 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64d6Wz.shu"
+                            },
+                            {
+                              "id": "g3esir3in",
+                              "title": "G3 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomvNYM.shu"
+                            },
+                            {
+                              "id": "g4esir3in",
+                              "title": "G4 ESIR3 IN",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbML4n2.shu"
+                            }
+                          ]
+                        },
+                        {
                           "id": "td-tpinesir3contratpro",
                           "title": "TD-TP IN ESIR3 contrat pro",
                           "children": [
                             {
                               "id": "td-tpinesir3contratpro",
                               "title": "TD-TP IN ESIR3 contrat pro",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10270&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4o5YP.shu"
                             }
                           ]
                         },
@@ -1211,44 +1412,7 @@
                             {
                               "id": "td-tpinesir3projetindustriel",
                               "title": "TD-TP IN ESIR3 projet industriel",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10305&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "langues-communicationesir3in",
-                          "title": "langues - communication ESIR 3 IN",
-                          "children": [
-                            {
-                              "id": "g1esir3in",
-                              "title": "G1 ESIR3 IN",
-                              "children": [
-                                {
-                                  "id": "g1-aesir3in",
-                                  "title": "G1-A ESIR3 IN",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4590&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                },
-                                {
-                                  "id": "g1-besir3in",
-                                  "title": "G1-B ESIR3 IN",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18318&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                }
-                              ]
-                            },
-                            {
-                              "id": "g2esir3in",
-                              "title": "G2 ESIR3 IN",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g3esir3in",
-                              "title": "G3 ESIR3 IN",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4604&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g4esir3in",
-                              "title": "G4 ESIR3 IN",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4615&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGoxbYJ.shu"
                             }
                           ]
                         }
@@ -1265,6 +1429,58 @@
                       "title": "CM-TD-TP IoT ESIR3",
                       "children": [
                         {
+                          "id": "anglaisesir3iot",
+                          "title": "anglais ESIR 3 IoT",
+                          "children": [
+                            {
+                              "id": "g1esir3iot",
+                              "title": "G1 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyqm3B.shu"
+                            },
+                            {
+                              "id": "g2esir3iot",
+                              "title": "G2 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6r6nP.shu"
+                            },
+                            {
+                              "id": "g3esir3iot",
+                              "title": "G3 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZr8WD.shu"
+                            },
+                            {
+                              "id": "g4esir3iot",
+                              "title": "G4 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGEOY6.shu"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ccoesir3iot",
+                          "title": "cco ESIR 3 IoT",
+                          "children": [
+                            {
+                              "id": "g1esir3iot",
+                              "title": "G1 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMrmWr.shu"
+                            },
+                            {
+                              "id": "g2esir3iot",
+                              "title": "G2 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YrplBWO.shu"
+                            },
+                            {
+                              "id": "g3esir3iot",
+                              "title": "G3 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajrOnl.shu"
+                            },
+                            {
+                              "id": "g4esir3iot",
+                              "title": "G4 ESIR3 IoT",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQbJna.shu"
+                            }
+                          ]
+                        },
+                        {
                           "id": "tpgr1iotesir3",
                           "title": "TP gr1 IoT ESIR3",
                           "children": [
@@ -1275,7 +1491,7 @@
                                 {
                                   "id": "tpgr1iotesir3contratpro",
                                   "title": "TP gr1 IoT ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10315&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB94P3x.shu"
                                 }
                               ]
                             },
@@ -1286,7 +1502,7 @@
                                 {
                                   "id": "tpgr1iotesir3projetindustriel",
                                   "title": "TP gr1 IoT ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10328&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJ6wnx.shu"
                                 }
                               ]
                             }
@@ -1303,7 +1519,7 @@
                                 {
                                   "id": "tpgr2iotesir3contratpro",
                                   "title": "TP gr2 IoT ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10332&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yojRnj.shu"
                                 }
                               ]
                             },
@@ -1314,46 +1530,9 @@
                                 {
                                   "id": "tpgr2iotesir3projetindustriel",
                                   "title": "TP gr2 IoT ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10340&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVQAne.shu"
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "id": "langues-communicationesir3iot",
-                          "title": "langues - communication ESIR 3 IoT",
-                          "children": [
-                            {
-                              "id": "g1esir3iot",
-                              "title": "G1 ESIR3 IoT",
-                              "children": [
-                                {
-                                  "id": "g1-aesir3iot",
-                                  "title": "G1-A ESIR3 IoT",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4593&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                },
-                                {
-                                  "id": "g1-besir3iot",
-                                  "title": "G1-B ESIR3 IoT",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18319&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                }
-                              ]
-                            },
-                            {
-                              "id": "g2esir3iot",
-                              "title": "G2 ESIR3 IoT",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4596&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g3esir3iot",
-                              "title": "G3 ESIR3 IoT",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4603&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g4esir3iot",
-                              "title": "G4 ESIR3 IoT",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4605&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
                         }
@@ -1370,6 +1549,58 @@
                       "title": "CM-TD-TP SI ESIR3",
                       "children": [
                         {
+                          "id": "anglaisesir3si",
+                          "title": "anglais ESIR 3 SI",
+                          "children": [
+                            {
+                              "id": "g1esir3si",
+                              "title": "G1 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wbaXWy.shu"
+                            },
+                            {
+                              "id": "g2esir3si",
+                              "title": "G2 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DV2n7.shu"
+                            },
+                            {
+                              "id": "g3esir3si",
+                              "title": "G3 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35wz5nR.shu"
+                            },
+                            {
+                              "id": "g4esir3si",
+                              "title": "G4 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yvwYM.shu"
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ccoesir3si",
+                          "title": "cco ESIR 3 SI",
+                          "children": [
+                            {
+                              "id": "g1esir3si",
+                              "title": "G1 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/13486Z3k.shu"
+                            },
+                            {
+                              "id": "g2esir3si",
+                              "title": "G2 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApK4Yw.shu"
+                            },
+                            {
+                              "id": "g3esir3si",
+                              "title": "G3 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9DvWJ.shu"
+                            },
+                            {
+                              "id": "g4esir3si",
+                              "title": "G4 ESIR3 SI",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXJrW5.shu"
+                            }
+                          ]
+                        },
+                        {
                           "id": "tpgr1siesir3",
                           "title": "TP gr1 SI ESIR3",
                           "children": [
@@ -1380,7 +1611,7 @@
                                 {
                                   "id": "tpgr1siesir3contratpro",
                                   "title": "TP gr1 SI ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10345&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNArq3v.shu"
                                 }
                               ]
                             },
@@ -1391,7 +1622,7 @@
                                 {
                                   "id": "tpgr1siesir3projetindustriel",
                                   "title": "TP gr1 SI ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10346&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPrm3A.shu"
                                 }
                               ]
                             }
@@ -1408,7 +1639,7 @@
                                 {
                                   "id": "tpgr2siesir3contratpro",
                                   "title": "TP gr2 SI ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10348&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBKNWr.shu"
                                 }
                               ]
                             },
@@ -1419,46 +1650,9 @@
                                 {
                                   "id": "tpgr2siesir3projetindustriel",
                                   "title": "TP gr2 SI ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10350&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1bwWA.shu"
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "id": "langues-communicationesir3si",
-                          "title": "langues - communication ESIR 3 SI",
-                          "children": [
-                            {
-                              "id": "g1esir3si",
-                              "title": "G1 ESIR3 SI",
-                              "children": [
-                                {
-                                  "id": "g1-aesir3si",
-                                  "title": "G1-A ESIR3 SI",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4594&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                },
-                                {
-                                  "id": "g1-besir3si",
-                                  "title": "G1-B ESIR3 SI",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18321&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                                }
-                              ]
-                            },
-                            {
-                              "id": "g2esir3si",
-                              "title": "G2 ESIR3 SI",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4599&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g3esir3si",
-                              "title": "G3 ESIR3 SI",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4601&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g4esir3si",
-                              "title": "G4 ESIR3 SI",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4634&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                             }
                           ]
                         }
@@ -1477,6 +1671,58 @@
                   "title": "CM-TD-TP TIS ESIR3",
                   "children": [
                     {
+                      "id": "anglaisesir3tis",
+                      "title": "anglais ESIR 3 TIS",
+                      "children": [
+                        {
+                          "id": "g1esir3tis",
+                          "title": "G1 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4r5YP.shu"
+                        },
+                        {
+                          "id": "g2esir3tis",
+                          "title": "G2 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGoAbYJ.shu"
+                        },
+                        {
+                          "id": "g3esir3tis",
+                          "title": "G3 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64D6Wz.shu"
+                        },
+                        {
+                          "id": "g4esir3tis",
+                          "title": "G4 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWombNYM.shu"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ccoesir3tis",
+                      "title": "cco ESIR 3 TIS",
+                      "children": [
+                        {
+                          "id": "g1esir3tis",
+                          "title": "G1 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajROnl.shu"
+                        },
+                        {
+                          "id": "g2esir3tis",
+                          "title": "G2 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZN8WD.shu"
+                        },
+                        {
+                          "id": "g3esir3tis",
+                          "title": "G3 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGoOY6.shu"
+                        },
+                        {
+                          "id": "g4esir3tis",
+                          "title": "G4 ESIR3 TIS",
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YrpmBWO.shu"
+                        }
+                      ]
+                    },
+                    {
                       "id": "voie1:dispositifsmedicauxnumeriques",
                       "title": "Voie 1: Dispositifs médicaux numériques",
                       "children": [
@@ -1491,7 +1737,7 @@
                                 {
                                   "id": "voie1:tpgr1tisesir3contratpro",
                                   "title": "voie 1:TP gr1 TIS ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10009&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbM04n2.shu"
                                 }
                               ]
                             },
@@ -1502,7 +1748,7 @@
                                 {
                                   "id": "voie1:tpgr1tisesir3projetindustriel",
                                   "title": "voie 1:TP gr1 TIS ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10011&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgR7w3J.shu"
                                 }
                               ]
                             }
@@ -1525,7 +1771,7 @@
                                 {
                                   "id": "voie2:tpgr2tisesir3contratpro",
                                   "title": "voie 2: TP gr2 TIS ESIR3 contrat pro",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10377&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjyXm3B.shu"
                                 }
                               ]
                             },
@@ -1536,238 +1782,17 @@
                                 {
                                   "id": "voie2:tpgr2tisesir3projetindustriel",
                                   "title": "voie 2:TP gr2 TIS ESIR3 projet industriel",
-                                  "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10395&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6K6nP.shu"
                                 }
                               ]
                             }
                           ]
                         }
                       ]
-                    },
-                    {
-                      "id": "langues-communicationesir3tis",
-                      "title": "langues - communication ESIR 3 TIS",
-                      "children": [
-                        {
-                          "id": "g1esir3tis",
-                          "title": "G1 ESIR3 TIS",
-                          "children": [
-                            {
-                              "id": "g1-aesir3tis",
-                              "title": "G1-A ESIR3 TIS",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4592&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g1-besir3tis",
-                              "title": "G1-B ESIR3 TIS",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18322&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "g2esir3tis",
-                          "title": "G2 ESIR3 TIS",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4597&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g3esir3tis",
-                          "title": "G3 ESIR3 TIS",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4602&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g4esir3tis",
-                          "title": "G4 ESIR3 TIS",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4606&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g5esir3tis",
-                          "title": "G5 ESIR 3 TIS",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4635&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
                     }
                   ]
                 }
               ]
-            },
-            {
-              "id": "fisemateriaux3",
-              "title": "fise Matériaux 3",
-              "children": [
-                {
-                  "id": "cm-td-tpmatesir3",
-                  "title": "CM-TD-TP MAT ESIR3",
-                  "children": [
-                    {
-                      "id": "tpgr1matesir3",
-                      "title": "TP gr1 MAT ESIR3",
-                      "children": [
-                        {
-                          "id": "tpgr1matesir3contratpro",
-                          "title": "TP gr1 MAT ESIR3 contrat pro",
-                          "children": [
-                            {
-                              "id": "tpgr1matesir3contratpro",
-                              "title": "TP gr1 MAT ESIR3 contrat pro",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10357&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "tpgr1matesir3projetindustriel",
-                          "title": "TP gr1 MAT ESIR3 projet industriel",
-                          "children": [
-                            {
-                              "id": "tpgr1matesir3projetindustriel",
-                              "title": "TP gr1 MAT ESIR3 projet industriel",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10359&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "tpgr2matesir3",
-                      "title": "TP gr2 MAT ESIR3",
-                      "children": [
-                        {
-                          "id": "tpgr2matesir3contratpro",
-                          "title": "TP gr2 MAT ESIR3 contrat pro",
-                          "children": [
-                            {
-                              "id": "tpgr2matesir3contratpro",
-                              "title": "TP gr2 MAT ESIR3 contrat pro",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10363&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "tpgr2matesir3projetindustriel",
-                          "title": "TP gr2 MAT ESIR3 projet industriel",
-                          "children": [
-                            {
-                              "id": "tpgr2matesir3projetindustriel",
-                              "title": "TP gr2 MAT ESIR3 projet industriel",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10364&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "id": "langues-communicationesir3materiaux",
-                      "title": "langues - communication ESIR 3 Matériaux",
-                      "children": [
-                        {
-                          "id": "g1esir3materiaux",
-                          "title": "G1 ESIR3 Matériaux",
-                          "children": [
-                            {
-                              "id": "g1-aesir3materiaux",
-                              "title": "G1-A ESIR3 Matériaux",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4591&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            },
-                            {
-                              "id": "g1-besir3materiaux",
-                              "title": "G1-B ESIR3 Matériaux",
-                              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18325&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                            }
-                          ]
-                        },
-                        {
-                          "id": "g2esir3materiaux",
-                          "title": "G2 ESIR3 Matériaux",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4598&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g3esir3materiaux",
-                          "title": "G3 ESIR3 Matériaux",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4600&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g4esir3materiaux",
-                          "title": "G4 ESIR3 Matériaux",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4607&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        },
-                        {
-                          "id": "g5esir3materiaux",
-                          "title": "G5 ESIR 3 Matériaux",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4769&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "optionexpressionesir3facultatif",
-          "title": "option expression ESIR3 (facultatif)",
-          "children": [
-            {
-              "id": "lv2espagnol",
-              "title": "LV2 espagnol",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9661&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "lv2:allemand",
-              "title": "LV2: allemand",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9658&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "lv2:japonais",
-              "title": "LV2: japonais",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9662&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "engagementetudiant",
-              "title": "engagement étudiant",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9682&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "sport",
-              "title": "sport",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9668&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "parcourscontratpro",
-          "title": "parcours contrat pro",
-          "children": [
-            {
-              "id": "parcourscontratpro",
-              "title": "parcours contrat pro",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9477&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "soutenancecontratproetudiants",
-              "title": "soutenance contrat pro étudiants",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2177&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "parcoursprojetindustriel",
-          "title": "parcours projet industriel",
-          "children": [
-            {
-              "id": "parcoursprojetindustriel",
-              "title": "parcours projet industriel",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9471&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "semaineentreprenariatesir",
-          "title": "semaine entreprenariat ESIR",
-          "children": [
-            {
-              "id": "semaineentreprenariatesir",
-              "title": "semaine entreprenariat ESIR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=3177&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
@@ -1780,17 +1805,17 @@
         {
           "id": "adeesir3fisamat",
           "title": "ADE ESIR3 FISA MAT",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=899&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6QaWr.shu"
         },
         {
           "id": "groupe1",
           "title": "Groupe 1",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17176&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qy2Wa.shu"
         },
         {
           "id": "groupe2",
           "title": "Groupe 2",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=17189&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxv8lY9.shu"
         }
       ]
     },
@@ -1799,9 +1824,9 @@
       "title": "08 esir1 fisa snr",
       "children": [
         {
-          "id": "etudiantsfisasnr1",
-          "title": "étudiants FISA SNR1",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2525&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "id": "toutfisasnr1",
+          "title": "tout FISA SNR1",
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pG72WA.shu"
         }
       ]
     },
@@ -1816,12 +1841,12 @@
             {
               "id": "parcourssnsfesir2fisasnr",
               "title": "parcours SNSF esir2 fisa SNR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10231&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w1q3P.shu"
             },
             {
               "id": "parcoursvsesir2fisasnr",
               "title": "parcours VS esir2 fisa SNR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10260&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/jLW15MWa.shu"
             }
           ]
         }
@@ -1836,14 +1861,14 @@
           "title": "parcours S9",
           "children": [
             {
-              "id": "parcourssnsfesir3fisasnr",
-              "title": "parcours SNSF esir3 fisa SNR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10247&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "parcourscrcesir3fisasnr",
+              "title": "parcours CRC esir3 fisa SNR",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAlPWb.shu"
             },
             {
-              "id": "parcoursvsesir3fisasnr",
-              "title": "parcours VS esir3 fisa SNR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10234&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "parcourseeresir3fisasnr",
+              "title": "parcours EER esir3 fisa SNR",
+              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQ7g3B.shu"
             }
           ]
         }
@@ -1854,13 +1879,70 @@
       "title": "09 ESIR 1 fisea TIS",
       "children": [
         {
-          "id": "cm-td-tpesir1fiseatis",
-          "title": "CM-TD-TP ESIR1 fisea TIS",
+          "id": "toutesir1fiseatis",
+          "title": "tout ESIR1 fisea TIS",
           "children": [
             {
               "id": "fiseatis1",
               "title": "fisea TIS 1",
               "children": [
+                {
+                  "id": "innovationesir1fiseatis",
+                  "title": "innovation ESIR 1 fisea TIS",
+                  "children": [
+                    {
+                      "id": "inentesir1fiseatis",
+                      "title": "Inent esir1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXxVW5.shu"
+                    },
+                    {
+                      "id": "inidesir1fiseatis",
+                      "title": "Inid esir1 fiseaTIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348XB3k.shu"
+                    },
+                    {
+                      "id": "inrechesir1fiseatis",
+                      "title": "Inrech esir1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9wAWJ.shu"
+                    },
+                    {
+                      "id": "insocesir1fiseatis",
+                      "title": "Insoc esir1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBmmWr.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "languesesir1fiseatis",
+                  "title": "langues  ESIR 1 fisea TIS",
+                  "children": [
+                    {
+                      "id": "g1esir1fiseatis",
+                      "title": "G1 ESIR1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1QbWA.shu"
+                    },
+                    {
+                      "id": "g2esir1fiseatis",
+                      "title": "G2 ESIR1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNALE3v.shu"
+                    },
+                    {
+                      "id": "g3esir1fiseatis",
+                      "title": "G3 ESIR1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPRE3A.shu"
+                    },
+                    {
+                      "id": "g4esir1fiseatis",
+                      "title": "G4 ESIR1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qr2Wa.shu"
+                    },
+                    {
+                      "id": "g5esir1fiseatis",
+                      "title": "G5 ESIR1 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6jaWr.shu"
+                    }
+                  ]
+                },
                 {
                   "id": "td-tpfiseatisesir1",
                   "title": "TD-TP fisea TIS ESIR1",
@@ -1872,66 +1954,9 @@
                         {
                           "id": "tpgr2fiseatisesir1",
                           "title": "TP gr2 fisea TIS ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18195&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxv6lY9.shu"
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "id": "innovationesir1fiseatis",
-                  "title": "innovation ESIR 1 fisea TIS",
-                  "children": [
-                    {
-                      "id": "inentesir1fiseatis",
-                      "title": "Inent esir1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18161&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inidesir1fiseatis",
-                      "title": "Inid esir1 fiseaTIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18162&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "inrechesir1fiseatis",
-                      "title": "Inrech esir1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18159&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "insocesir1fiseatis",
-                      "title": "Insoc esir1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18165&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "languesesir1fiseatis",
-                  "title": "langues  ESIR 1 fisea TIS",
-                  "children": [
-                    {
-                      "id": "g1esir1fiseatis",
-                      "title": "G1 ESIR1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18171&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g2esir1fiseatis",
-                      "title": "G2 ESIR1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18173&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir1fiseatis",
-                      "title": "G3 ESIR1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18175&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir1fiseatis",
-                      "title": "G4 ESIR1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18187&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir1fiseatis",
-                      "title": "G5 ESIR1 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18183&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                     }
                   ]
                 }
@@ -1946,13 +1971,70 @@
       "title": "09 ESIR 2 fisea TIS",
       "children": [
         {
-          "id": "cm-td-tpesir2fiseatis",
-          "title": "CM-TD-TP ESIR2 fisea TIS",
+          "id": "toutesir2fiseatis",
+          "title": "tout ESIR2 fisea TIS",
           "children": [
             {
               "id": "fiseatis2",
               "title": "fisea TIS 2",
               "children": [
+                {
+                  "id": "innovationesir2fiseatis",
+                  "title": "innovation ESIR2 fisea TIS",
+                  "children": [
+                    {
+                      "id": "inentesir2fiseatis",
+                      "title": "Inent esir2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1BEWA.shu"
+                    },
+                    {
+                      "id": "inidesir2fiseatis",
+                      "title": "Inid esir2 fiseaTIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9A7WJ.shu"
+                    },
+                    {
+                      "id": "inrechesir2fiseatis",
+                      "title": "Inrech esir2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7ygzYM.shu"
+                    },
+                    {
+                      "id": "insocesir2fiseatis",
+                      "title": "Insoc esir2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBOzWr.shu"
+                    }
+                  ]
+                },
+                {
+                  "id": "languesesir2fiseatis",
+                  "title": "langues  ESIR 2 fisea TIS",
+                  "children": [
+                    {
+                      "id": "g1esir2fiseatis",
+                      "title": "G1 ESIR2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApAOYw.shu"
+                    },
+                    {
+                      "id": "g2esir2fiseatis",
+                      "title": "G2 ESIR2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eXKQW5.shu"
+                    },
+                    {
+                      "id": "g3esir2fiseatis",
+                      "title": "G3 ESIR2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAjQ3v.shu"
+                    },
+                    {
+                      "id": "g4esir2fiseatis",
+                      "title": "G4 ESIR2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qyLWa.shu"
+                    },
+                    {
+                      "id": "g5esir2fiseatis",
+                      "title": "G5 ESIR2 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348kQ3k.shu"
+                    }
+                  ]
+                },
                 {
                   "id": "td-tpfiseatisesir2",
                   "title": "TD-TP fisea TIS ESIR2",
@@ -1964,66 +2046,98 @@
                         {
                           "id": "tpgr2fiseatisesir1",
                           "title": "TP gr2 fisea TIS ESIR1",
-                          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=13299&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxv8zY9.shu"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "09esir3fiseatis",
+      "title": "09 ESIR 3 fisea TIS",
+      "children": [
+        {
+          "id": "cm-td-tpfiseaesir3",
+          "title": "CM-TD-TP FISEA ESIR3",
+          "children": [
+            {
+              "id": "fiseatis3",
+              "title": "fisea TIS 3",
+              "children": [
+                {
+                  "id": "cm-td-tpfiseatisesir3",
+                  "title": "CM-TD-TP fisea TIS ESIR3",
+                  "children": [
+                    {
+                      "id": "voie1:dispositifsmedicauxnumeriques",
+                      "title": "Voie 1: Dispositifs médicaux numériques",
+                      "children": [
+                        {
+                          "id": "voie1:tpgr1tisesir3fisea",
+                          "title": "voie 1:TP gr1 TIS ESIR3 fisea",
+                          "children": [
+                            {
+                              "id": "voie1:tpgr1tisesir3fisea",
+                              "title": "voie 1:TP gr1 TIS ESIR3 fisea",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAjE3v.shu"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "voie2:systemesinterconnectesensante",
+                      "title": "Voie 2 : Systèmes interconnectés en santé",
+                      "children": [
+                        {
+                          "id": "voie2:tpgr2tisesir3fisea",
+                          "title": "voie 2:TP gr2 TIS ESIR3 fisea",
+                          "children": [
+                            {
+                              "id": "voie2:tpgr2tisesir3fisea",
+                              "title": "voie 2:TP gr2 TIS ESIR3 fisea",
+                              "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPGE3A.shu"
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "id": "innovationesir2fiseatis",
-                  "title": "innovation ESIR2 fisea TIS",
+                  "id": "languesesir3fiseatis",
+                  "title": "langues  ESIR3 fisea TIS",
                   "children": [
                     {
-                      "id": "inentesir2fiseatis",
-                      "title": "Inent esir2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1592&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "g1esir3fiseatis",
+                      "title": "G1 ESIR3 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQ773B.shu"
                     },
                     {
-                      "id": "inidesir2fiseatis",
-                      "title": "Inid esir2 fiseaTIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4116&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "g2esir3fiseatis",
+                      "title": "G2 ESIR3 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAljWb.shu"
                     },
                     {
-                      "id": "inrechesir2fiseatis",
-                      "title": "Inrech esir2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1565&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "g3esir3fiseatis",
+                      "title": "G3 ESIR3 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROw7W8.shu"
                     },
                     {
-                      "id": "insocesir2fiseatis",
-                      "title": "Insoc esir2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4185&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    }
-                  ]
-                },
-                {
-                  "id": "languesesir2fiseatis",
-                  "title": "langues  ESIR 2 fisea TIS",
-                  "children": [
-                    {
-                      "id": "g1esir2fiseatis",
-                      "title": "G1 ESIR2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9798&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "g4esir3fiseatis",
+                      "title": "G4 ESIR3 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Dm5n8.shu"
                     },
                     {
-                      "id": "g2esir2fiseatis",
-                      "title": "G2 ESIR2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11265&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g3esir2fiseatis",
-                      "title": "G3 ESIR2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12190&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g4esir2fiseatis",
-                      "title": "G4 ESIR2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                    },
-                    {
-                      "id": "g5esir2fiseatis",
-                      "title": "G5 ESIR2 fisea TIS",
-                      "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12198&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                      "id": "g5esir3fiseatis",
+                      "title": "G5 ESIR3 fisea TIS",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvj1Wv.shu"
                     }
                   ]
                 }
@@ -2040,22 +2154,22 @@
         {
           "id": "agconferencesetpresentationsetevenements",
           "title": "AG, conférences et présentations et événements",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4779&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pG79WA.shu"
         },
         {
           "id": "soutenancescontratpro2024-2025",
           "title": "soutenances contrat pro 2024-2025",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=235&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPGP3A.shu"
         },
         {
           "id": "soutenancesdestageetudiantsvoienormale2024-2025",
           "title": "soutenances de stage étudiants voie normale 2024-2025",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2530&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6QNWr.shu"
         },
         {
           "id": "vieassociativetutoratreuniond'informationclubs",
           "title": "vie associative (tutorat, réunion d'information, clubs)",
-          "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4781&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+          "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9w153P.shu"
         }
       ]
     }
