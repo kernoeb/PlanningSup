@@ -6,3 +6,6 @@ timeout = 30000
 # Install configuration
 registry = "https://registry.npmjs.org/"
 linker = "isolated"
+# bun-types tracks the Bun release itself, so it always trips the default
+# 3-day minimum release age when we bump the toolchain.
+minimumReleaseAgeExcludes = ["bun-types"]
