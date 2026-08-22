@@ -36,6 +36,7 @@ Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
 - Extension: `apps/extension/**`
 - Shared: `packages/libs/**`, `packages/config/**`
 - Data: `resources/plannings/*.json` (validate via `scripts/check-plannings-json.js`)
+- Generate plannings: `bun scripts/ade-portal-generator.ts --list` then `--branch <name>` (ADE 7 portal REST API, anonymous login, e.g. Rennes). Legacy ADE 6 sites still use `scripts/browser.js` + `scripts/shu-generator.js`.
 - Tests: `test/*.test.ts`, `test/integration/*.test.ts`, `test/e2e/*.spec.ts`
 
 ## API notes (bun:sql + Drizzle)
