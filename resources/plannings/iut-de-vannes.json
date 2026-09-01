@@ -525,17 +525,56 @@
             {
               "id": "gr3a",
               "title": "GR 3A",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6148&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "children": [
+                {
+                  "id": "gr3a1",
+                  "title": "GR 3A1 - FA",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19141&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gr3a2",
+                  "title": "GR 3A2 - FI",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19143&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
             },
             {
               "id": "gr3b",
               "title": "GR 3B",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6300&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "children": [
+                {
+                  "id": "gr3b1",
+                  "title": "GR 3B1",
+                  "children": [
+                    {
+                      "id": "gr3b1fa",
+                      "title": "GR 3B1 - FA",
+                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19148&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    },
+                    {
+                      "id": "gr3b1fi",
+                      "title": "GR 3B1 - FI",
+                      "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19147&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                    }
+                  ]
+                },
+                {
+                  "id": "gr3b2",
+                  "title": "GR 3B2 - FI",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19149&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
             },
             {
               "id": "gr3c",
               "title": "GR 3C",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=18973&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "children": [
+                {
+                  "id": "gr3c1",
+                  "title": "GR 3C1 - FI",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=19151&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
             }
           ]
         }
