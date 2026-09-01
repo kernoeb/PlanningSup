@@ -1,0 +1,393 @@
+{
+  "title": "ENSEA",
+  "group": "Cergy",
+  "children": [
+    {
+      "id": "bachelor",
+      "title": "BACHELOR",
+      "children": [
+        {
+          "id": "annee_1",
+          "title": "ANNEE_1",
+          "children": [
+            {
+              "id": "bachelor_a1_td",
+              "title": "BACHELOR_A1_TD",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=493,497&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "annee_2",
+          "title": "ANNEE_2",
+          "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=748&nbDays=400"
+        },
+        {
+          "id": "annee_3",
+          "title": "ANNEE_3",
+          "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=800&nbDays=400"
+        }
+      ]
+    },
+    {
+      "id": "cnam",
+      "title": "CNAM",
+      "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=500,561&nbDays=400"
+    },
+    {
+      "id": "fame",
+      "title": "FAME",
+      "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=516,592&nbDays=400"
+    },
+    {
+      "id": "inge_fisa",
+      "title": "INGE_FISA",
+      "children": [
+        {
+          "id": "1ereda",
+          "title": "1ère DA",
+          "children": [
+            {
+              "id": "tout1ereda",
+              "title": "Tout 1ère DA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=140,142,579,591&nbDays=400"
+            },
+            {
+              "id": "1datd1",
+              "title": "1DA TD1",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=579,591&nbDays=400"
+            },
+            {
+              "id": "1datd2",
+              "title": "1DA TD2",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=140,142&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "2emed",
+          "title": "2ème D",
+          "children": [
+            {
+              "id": "tout2emed",
+              "title": "Tout 2ème D",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=600,607,775,776,777,778&nbDays=400"
+            },
+            {
+              "id": "2doptions",
+              "title": "2D - Options",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=775,776,777,778&nbDays=400"
+            },
+            {
+              "id": "2dtd",
+              "title": "2D TD",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=600,607&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "3emed",
+          "title": "3ème D",
+          "children": [
+            {
+              "id": "tout3emed",
+              "title": "Tout 3ème D",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=593,595,596,598,615,616,618&nbDays=400"
+            },
+            {
+              "id": "3dtd1",
+              "title": "3D TD1",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=593,595&nbDays=400"
+            },
+            {
+              "id": "3dtd2",
+              "title": "3D TD2",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=596&nbDays=400"
+            },
+            {
+              "id": "3dn",
+              "title": "3DN",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=598,616&nbDays=400"
+            },
+            {
+              "id": "3drt",
+              "title": "3DRT",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=615,618&nbDays=400"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inge_fise",
+      "title": "INGE_FISE",
+      "children": [
+        {
+          "id": "1ereaensea",
+          "title": "1ère A ENSEA",
+          "children": [
+            {
+              "id": "tout1ereaensea",
+              "title": "Tout 1ère A ENSEA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=430,431,433,434,436,440,442,443,445,451,641,642,654,706&nbDays=400"
+            },
+            {
+              "id": "1g1td1",
+              "title": "1G1 TD1",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=430,431&nbDays=400"
+            },
+            {
+              "id": "1g1td2",
+              "title": "1G1 TD2",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=433,434&nbDays=400"
+            },
+            {
+              "id": "1g1td3",
+              "title": "1G1 TD3",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=436,440&nbDays=400"
+            },
+            {
+              "id": "1g2td1",
+              "title": "1G2 TD1",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=442,443&nbDays=400"
+            },
+            {
+              "id": "1g2td2",
+              "title": "1G2 TD2",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=445,451&nbDays=400"
+            },
+            {
+              "id": "1g2td3",
+              "title": "1G2 TD3",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=641,642&nbDays=400"
+            },
+            {
+              "id": "1g2td4nonaffecte",
+              "title": "1G2 TD4 (non affecté)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=654,706&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "1erebensea",
+          "title": "1ère B ENSEA",
+          "children": [
+            {
+              "id": "tout1erebensea",
+              "title": "Tout 1ère B ENSEA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=454,455,459,460&nbDays=400"
+            },
+            {
+              "id": "1g3td1",
+              "title": "1G3 TD1",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=454,455&nbDays=400"
+            },
+            {
+              "id": "1g3td2",
+              "title": "1G3 TD2",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=459,460&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "2emeensea",
+          "title": "2ème ENSEA",
+          "children": [
+            {
+              "id": "tout2emeensea",
+              "title": "Tout 2ème ENSEA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=115,119,125,126,161,296,448,464,465,467,468,470,471,477,479,480,482,483,535,539,540,543,546,547,555,556,558,559,562,564,565,567,570,571,581,605,606,643,656,657,725&nbDays=400"
+            },
+            {
+              "id": "2g1td1informatiquesignal",
+              "title": "2G1 TD1 (Informatique/Signal)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=464,465&nbDays=400"
+            },
+            {
+              "id": "2g1td2informatiquesignalint",
+              "title": "2G1 TD2 (Informatique/Signal int.)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=467,468&nbDays=400"
+            },
+            {
+              "id": "2g1td3informatiqueautomatique",
+              "title": "2G1 TD3 (Informatique/Automatique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=448,540&nbDays=400"
+            },
+            {
+              "id": "2g2td1informatiqueelectronique",
+              "title": "2G2 TD1 (Informatique/Electronique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=470,471&nbDays=400"
+            },
+            {
+              "id": "2g2td2signalelectronique",
+              "title": "2G2 TD2  (Signal/Electronique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=125,126&nbDays=400"
+            },
+            {
+              "id": "2g2td3informatiquesignal",
+              "title": "2G2 TD3 (Informatique/Signal)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=115,119&nbDays=400"
+            },
+            {
+              "id": "2g3td1electroniqueautomatique",
+              "title": "2G3 TD1 (Electronique/Automatique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=479,480&nbDays=400"
+            },
+            {
+              "id": "2g3td2electroniqueautomatique",
+              "title": "2G3 TD2 (Electronique/Automatique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=482,483&nbDays=400"
+            },
+            {
+              "id": "2g3td3signalelectronique",
+              "title": "2G3 TD3  (Signal/Electronique)",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=605,606&nbDays=400"
+            },
+            {
+              "id": "options",
+              "title": "Options",
+              "children": [
+                {
+                  "id": "toutoptions",
+                  "title": "Tout Options",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=161,296,477,535,539,543,546,547,555,556,558,559,562,564,565,567,570,571,581,643,656,657,725&nbDays=400"
+                },
+                {
+                  "id": "drones",
+                  "title": "Drones",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=656,657&nbDays=400"
+                },
+                {
+                  "id": "defenseetsecurite",
+                  "title": "Défense et sécurité",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=535,643&nbDays=400"
+                },
+                {
+                  "id": "electroniqueetsignalpourlamusique",
+                  "title": "Electronique et signal pour la musique",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=539,543&nbDays=400"
+                },
+                {
+                  "id": "humancentereddesign",
+                  "title": "Human centered design",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=725&nbDays=400"
+                },
+                {
+                  "id": "iaetbigdata",
+                  "title": "I.A. et Big Data",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=546,547&nbDays=400"
+                },
+                {
+                  "id": "imageetrealitevirtuelle",
+                  "title": "Image et réalité virtuelle",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=555,556&nbDays=400"
+                },
+                {
+                  "id": "ingenierieenmondecontraint",
+                  "title": "Ingénierie en monde contraint",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=161&nbDays=400"
+                },
+                {
+                  "id": "innovationetentrepreneuriat",
+                  "title": "Innovation et entrepreneuriat",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=581&nbDays=400"
+                },
+                {
+                  "id": "internetofthings",
+                  "title": "Internet of Things",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=558,559&nbDays=400"
+                },
+                {
+                  "id": "microelectronique",
+                  "title": "Microélectronique",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=477,562&nbDays=400"
+                },
+                {
+                  "id": "optionmaker",
+                  "title": "Option Maker",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=296&nbDays=400"
+                },
+                {
+                  "id": "systemesmultiphysiques",
+                  "title": "Systèmes multiphysiques",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=567&nbDays=400"
+                },
+                {
+                  "id": "securitedessystemesdinformation",
+                  "title": "Sécurité des systèmes d'information",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=564,565&nbDays=400"
+                },
+                {
+                  "id": "vehiculeelectrique",
+                  "title": "Véhicule électrique",
+                  "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=570,571&nbDays=400"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3emeensea",
+          "title": "3ème ENSEA",
+          "children": [
+            {
+              "id": "tout3emeensea",
+              "title": "Tout 3ème ENSEA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=137,494,514,523,526,528,551,575,586,589,590,599&nbDays=400"
+            },
+            {
+              "id": "3emeaei",
+              "title": "3ème AEI",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=137,523&nbDays=400"
+            },
+            {
+              "id": "3emeesc",
+              "title": "3ème ESC",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=514,599&nbDays=400"
+            },
+            {
+              "id": "3emeese",
+              "title": "3ème ESE",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=526,528&nbDays=400"
+            },
+            {
+              "id": "3emeeve",
+              "title": "3ème EVE",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=551&nbDays=400"
+            },
+            {
+              "id": "3emeis",
+              "title": "3ème IS",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=575&nbDays=400"
+            },
+            {
+              "id": "3ememsc",
+              "title": "3ème MSC",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=494&nbDays=400"
+            },
+            {
+              "id": "3emerts",
+              "title": "3ème RTS",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=586&nbDays=400"
+            },
+            {
+              "id": "3emesia",
+              "title": "3ème SIA",
+              "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=589,590&nbDays=400"
+            }
+          ]
+        },
+        {
+          "id": "lv3ensea",
+          "title": "LV3 ENSEA",
+          "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=202,648,649,650,673,676,696&nbDays=400"
+        },
+        {
+          "id": "premaster",
+          "title": "PREMASTER",
+          "url": "https://ade.ensea.fr/jsp/rss?projectId=1&resources=661&nbDays=400"
+        }
+      ]
+    }
+  ]
+}

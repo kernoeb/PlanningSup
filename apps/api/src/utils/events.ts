@@ -1,5 +1,6 @@
 import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
+import { fetchAdeRssEvents, isAdeRssUrl } from '@api/utils/ade-rss'
 import { fetchWithTimeout } from '@api/utils/http'
 
 import dayjs from 'dayjs'
@@ -103,6 +104,10 @@ function classifyNetworkError(error: { name: string, code: string | null, messag
 }
 
 export async function fetchEventsDetailed(url: string, range?: RangeOptions): Promise<FetchEventsDetailedResult> {
+  // Some ADE installs have no anonymous iCal export; their events come from the
+  // legacy RSS module through a guest session.
+  if (isAdeRssUrl(url)) return fetchAdeRssEvents(url)
+
   if (includesTemplate(url)) {
     const from = range?.from || dayjs().subtract(1, 'month').format('YYYY-MM-DD')
     const to = range?.to || dayjs().add(2, 'year').format('YYYY-MM-DD')
