@@ -65,8 +65,45 @@ function expand(template: string): string {
   return template.replace('{date-start}', firstDate).replace('{date-end}', lastDate)
 }
 
+/** ENSEA serves events only from its guest RSS session (see apps/api/src/utils/ade-rss.ts). */
+function isEnseaRss(url: string): boolean {
+  try {
+    return new URL(url).pathname === '/jsp/rss'
+  } catch {
+    return false
+  }
+}
+
+let enseaCookie: string | null = null
+
+async function classifyEnsea(url: string): Promise<Status> {
+  try {
+    const { origin, searchParams } = new URL(url)
+    for (let attempt = 0; attempt < 2; attempt++) {
+      if (!enseaCookie) {
+        const boot = await fetch(
+          `${origin}/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1&projectId=${searchParams.get('projectId') ?? '1'}&calType=ical&nbWeeks=4`,
+          { signal: AbortSignal.timeout(TIMEOUT_MS), tls: { rejectUnauthorized: false } } as RequestInit,
+        )
+        enseaCookie = boot.headers.getSetCookie().find(c => c.startsWith('JSESSIONID='))?.split(';')[0] ?? null
+        if (!enseaCookie) return 'error'
+      }
+      const res = await fetch(url, { headers: { cookie: enseaCookie }, signal: AbortSignal.timeout(TIMEOUT_MS), tls: { rejectUnauthorized: false } } as RequestInit)
+      if (!res.ok) return 'dead'
+      const body = await res.text()
+      if (body.includes('<item>')) return 'ok'
+      // An empty body means the session lapsed; drop it and retry once.
+      enseaCookie = null
+    }
+    return 'empty'
+  } catch {
+    return 'error'
+  }
+}
+
 /** An ADE server answers an empty body, HTML or a plain text error when it dislikes the request. */
 async function classify(url: string): Promise<Status> {
+  if (isEnseaRss(url)) return classifyEnsea(url)
   try {
     const res = await fetch(url, {
       headers: { 'Accept-Language': 'en-US,en' }, // Otherwise ADE localises "The project is invalid"
@@ -84,6 +121,9 @@ async function classify(url: string): Promise<Status> {
 
 /** Try the other ADE years and keep the first one that actually has events. */
 async function findWorkingProjectId(url: string): Promise<string | null> {
+  // ENSEA does not roll its projectId the way the ADE portals do; leave its URLs alone.
+  if (isEnseaRss(url)) return null
+
   const current = url.match(/projectId=(\d+)/)?.[1]
   if (current === undefined) return null
 
