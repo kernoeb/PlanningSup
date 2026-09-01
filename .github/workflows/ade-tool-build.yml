@@ -1,0 +1,136 @@
+name: ADE Tool Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'tools/ade-to-json-extension/**'
+      - '.bun-version'
+      - '.github/workflows/ade-tool-build.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'tools/ade-to-json-extension/**'
+      - '.bun-version'
+      - '.github/workflows/ade-tool-build.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ade-tool-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Not a workspace of the root package.json: it has its own bun.lock.
+  TOOL_DIR: tools/ade-to-json-extension
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    defaults:
+      run:
+        working-directory: tools/ade-to-json-extension
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # After the checkout: every run step of this job starts in TOOL_DIR.
+      - name: Set environment variables
+        run: echo "BUN_INSTALL=${{ runner.temp }}/bun/install" >> $GITHUB_ENV
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: '.bun-version'
+
+      # The build scripts chain through npm-run-all, which shells out to `npm run`.
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v6
+        with:
+          path: |
+            ${{ runner.temp }}/bun/install/cache
+            ${{ env.TOOL_DIR }}/node_modules
+          key: ${{ runner.os }}-bun-ade-tool-${{ hashFiles('tools/ade-to-json-extension/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-ade-tool-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type check
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Build
+        run: bun run build
+
+      # pack:crx is left out on purpose: the signing key is not in the repo, so crx
+      # would mint a throwaway one and the extension id would change every run.
+      - name: Package
+        run: |
+          bun run pack:zip
+          bun run pack:xpi
+
+      - name: Check the zip is loadable
+        run: |
+          unzip -l extension.zip
+          unzip -p extension.zip manifest.json > /dev/null
+
+      - name: Upload the zip
+        uses: actions/upload-artifact@v7
+        with:
+          name: ade-tool-zip-${{ github.run_number }}
+          path: ${{ env.TOOL_DIR }}/extension.zip
+          retention-days: 90
+          compression-level: 0
+
+      - name: Upload the Firefox package
+        uses: actions/upload-artifact@v7
+        with:
+          name: ade-tool-firefox-${{ github.run_number }}
+          path: ${{ env.TOOL_DIR }}/extension.xpi
+          retention-days: 90
+          compression-level: 0
+
+      - name: Build summary
+        if: always()
+        run: |
+          {
+            echo "## ADE tool"
+            echo
+            echo "Generates a \`resources/plannings/*.json\` file from an ADE 6 tree."
+            echo
+            echo "| Artifact | Size |"
+            echo "|----------|------|"
+            for file in extension.zip extension.xpi; do
+              if [ -f "$file" ]; then
+                echo "| \`$file\` | $(du -h "$file" | cut -f1) |"
+              else
+                echo "| \`$file\` | not built |"
+              fi
+            done
+            echo
+            echo "### Install"
+            echo
+            echo "Download \`ade-tool-zip-${{ github.run_number }}\`, unzip it twice: once to get"
+            echo "\`extension.zip\`, then again to get the folder. Chrome needs the folder, not the zip."
+            echo
+            echo "1. Go to \`chrome://extensions\`"
+            echo "2. Turn on Developer mode"
+            echo "3. Load unpacked, and pick the unzipped folder"
+            echo
+            echo "Firefox: \`extension.xpi\` is unsigned, so load it from \`about:debugging\` →"
+            echo "This Firefox → Load Temporary Add-on."
+            echo
+            echo "[How to use it](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.sha }}/tools/ade-to-json-extension/README.md)"
+          } >> $GITHUB_STEP_SUMMARY

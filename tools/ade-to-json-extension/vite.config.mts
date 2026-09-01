@@ -63,7 +63,7 @@ export default defineConfig(({ command }) => ({
     origin: `http://localhost:${port}`,
     cors: {
       origin: /chrome-extension:\/\//,
-    }
+    },
   },
   build: {
     watch: isDev
