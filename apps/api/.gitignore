@@ -2,6 +2,7 @@
 duplicates.log.json
 api
 server
+server.map
 
 # dependencies (bun install)
 node_modules

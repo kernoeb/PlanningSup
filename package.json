@@ -28,7 +28,7 @@
     },
     "catalogs": {
       "types": {
-        "bun-types": "1.4.1"
+        "bun-types": "1.4.2"
       },
       "dev": {
         "vite": "8.1.3",
