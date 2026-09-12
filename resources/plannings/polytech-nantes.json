@@ -7,19 +7,34 @@
       "title": "IDIA",
       "children": [
         {
+          "id": "idia-3a-old",
+          "title": "3A-old",
+          "url": "https://edt.univ-nantes.fr/polytech/g3029074.ics"
+        },
+        {
           "id": "idia-3a",
           "title": "3A",
-          "url": "https://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105303"
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=116759"
+        },
+        {
+          "id": "idia-4a-old",
+          "title": "4A-old",
+          "url": "https://edt.univ-nantes.fr/polytech/g3029075.ics"
         },
         {
           "id": "idia-4a",
           "title": "4A",
-          "url": "https://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105346"
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=116758"
+        },
+        {
+          "id": "idia-5a-old",
+          "title": "5A-old",
+          "url": "https://edt.univ-nantes.fr/polytech/g3029076.ics"
         },
         {
           "id": "idia-5a",
           "title": "5A",
-          "url": "https://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=105167"
+          "url": "http://edt-v2.univ-nantes.fr/calendar/ics?timetables[0]=116757"
         }
       ]
     }
