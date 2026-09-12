@@ -132,8 +132,9 @@ function createAuth() {
       before: createAuthMiddleware(async (ctx) => {
         const state = ctx.query?.state
         const client = ctx.query?.client // e.g. "tauri" or "extension"
+        const providerId = ctx.params?.id
 
-        if (!client && ctx.request && ctx.path === '/callback/:id' && state) {
+        if (!client && ctx.request && ctx.path === '/callback/:id' && state && providerId) {
           const data = await ctx.context.internalAdapter.findVerificationValue(state)
           if (data) {
             const parsedData = z
@@ -145,7 +146,7 @@ function createAuth() {
               const client = callbackURL.searchParams.get('client')
               if (client === 'tauri' || client === 'extension') {
                 // Redirect to our auto-redirect page, which will handle the deep link
-                const newUrl = new URL(`${ctx.context.baseURL}/auto-redirect/${ctx.params.id}`)
+                const newUrl = new URL(`${ctx.context.baseURL}/auto-redirect/${providerId}`)
                 // Copy over all search params from the original URL (ctx.request.url)
                 const originalUrl = new URL(ctx.request.url)
                 for (const [key, value] of originalUrl.searchParams.entries()) {
@@ -180,7 +181,9 @@ function createAuth() {
                 ),
               )
           }
-          return profile
+          // Only here for the image refresh above: better-auth already maps
+          // name/email/image/emailVerified, and a returned object overrides them.
+          return {}
         },
       },
       github: {
