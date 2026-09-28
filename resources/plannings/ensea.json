@@ -111,12 +111,12 @@
                 },
                 {
                   "id": "1datp1",
-                  "title": "1DA TP1",
+                  "title": "1DA TD1 TP1",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=591&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1datp2",
-                  "title": "1DA TP2",
+                  "title": "1DA TD1 TP2",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=579&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -132,12 +132,12 @@
                 },
                 {
                   "id": "1datp3",
-                  "title": "1DA TP3",
+                  "title": "1DA TD2 TP3",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=140&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1datp4",
-                  "title": "1DA TP4",
+                  "title": "1DA TD2 TP4",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=142&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -227,12 +227,12 @@
                 },
                 {
                   "id": "3dtp1",
-                  "title": "3D - TP1",
+                  "title": "3D TD1 TP1",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=593&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "3dtp2",
-                  "title": "3D - TP2",
+                  "title": "3D TD1 TP2",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=595&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -312,12 +312,12 @@
                 },
                 {
                   "id": "1g1tp1",
-                  "title": "1G1 TP1",
+                  "title": "1G1 TD1 TP1",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=430&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g1tp2",
-                  "title": "1G1 TP2",
+                  "title": "1G1 TD1 TP2",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=431&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -333,12 +333,12 @@
                 },
                 {
                   "id": "1g1tp3",
-                  "title": "1G1 TP3",
+                  "title": "1G1 TD2 TP3",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=433&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g1tp4",
-                  "title": "1G1 TP4",
+                  "title": "1G1 TD2 TP4",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=434&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -354,12 +354,12 @@
                 },
                 {
                   "id": "1g1tp5",
-                  "title": "1G1 TP5",
+                  "title": "1G1 TD3 TP5",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=436&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g1tp6",
-                  "title": "1G1 TP6",
+                  "title": "1G1 TD3 TP6",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=440&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -375,12 +375,12 @@
                 },
                 {
                   "id": "1g2tp1",
-                  "title": "1G2 TP1",
+                  "title": "1G2 TD1 TP1",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=442&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g2tp2",
-                  "title": "1G2 TP2",
+                  "title": "1G2 TD1 TP2",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=443&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -396,12 +396,12 @@
                 },
                 {
                   "id": "1g2tp3",
-                  "title": "1G2 TP3",
+                  "title": "1G2 TD2 TP3",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=445&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g2tp4",
-                  "title": "1G2 TP4",
+                  "title": "1G2 TD2 TP4",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=451&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -417,12 +417,12 @@
                 },
                 {
                   "id": "1g2tp5",
-                  "title": "1G2 TP5",
+                  "title": "1G2 TD3 TP5",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=641&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g2tp6",
-                  "title": "1G2 TP6",
+                  "title": "1G2 TD3 TP6",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=642&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -438,12 +438,12 @@
                 },
                 {
                   "id": "1g2tp7",
-                  "title": "1G2 TP7",
+                  "title": "1G2 TD4 TP7",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=654&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g2tp8",
-                  "title": "1G2 TP8",
+                  "title": "1G2 TD4 TP8",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=706&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -470,12 +470,12 @@
                 },
                 {
                   "id": "1g3tp1",
-                  "title": "1G3 TP1",
+                  "title": "1G3 TD1 TP1",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=454&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g3tp2",
-                  "title": "1G3 TP2",
+                  "title": "1G3 TD1 TP2",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=455&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -491,12 +491,12 @@
                 },
                 {
                   "id": "1g3tp3",
-                  "title": "1G3 TP3",
+                  "title": "1G3 TD2 TP3",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=459&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "1g3tp4",
-                  "title": "1G3 TP4",
+                  "title": "1G3 TD2 TP4",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=460&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -523,12 +523,12 @@
                 },
                 {
                   "id": "2g1tp1informatiquesignal",
-                  "title": "2G1 TP1 (Informatique/Signal)",
+                  "title": "2G1 TD1 TP1 (Informatique/Signal)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=464&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g1tp2informatiquesignal",
-                  "title": "2G1 TP2 (Informatique/Signal)",
+                  "title": "2G1 TD1 TP2 (Informatique/Signal)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=465&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -544,12 +544,12 @@
                 },
                 {
                   "id": "2g1tp3informatiquesignalint",
-                  "title": "2G1 TP3 (Informatique/Signal int.)",
+                  "title": "2G1 TD2 TP3 (Informatique/Signal int.)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=467&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g1tp4informatiquesignalint",
-                  "title": "2G1 TP4 (Informatique/Signal int.)",
+                  "title": "2G1 TD2 TP4 (Informatique/Signal int.)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=468&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -565,12 +565,12 @@
                 },
                 {
                   "id": "2g1tp5informatiqueautomatique",
-                  "title": "2G1 TP5 (Informatique/Automatique)",
+                  "title": "2G1 TD3 TP5 (Informatique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=540&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g1tp6informatiqueautomatique",
-                  "title": "2G1 TP6 (Informatique/Automatique)",
+                  "title": "2G1 TD3 TP6 (Informatique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=448&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -586,33 +586,33 @@
                 },
                 {
                   "id": "2g2tp1informatiqueelectronique",
-                  "title": "2G2 TP1 (Informatique/Electronique)",
+                  "title": "2G2 TD1 TP1 (Informatique/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=470&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g2tp2informatiqueelectronique",
-                  "title": "2G2 TP2 (Informatique/Electronique)",
+                  "title": "2G2 TD1 TP2 (Informatique/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=471&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
             {
               "id": "2g2td2signalelectronique",
-              "title": "2G2 TD2  (Signal/Electronique)",
+              "title": "2G2 TD2 (Signal/Electronique)",
               "children": [
                 {
                   "id": "tout2g2td2signalelectronique",
-                  "title": "Tout 2G2 TD2  (Signal/Electronique)",
+                  "title": "Tout 2G2 TD2 (Signal/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=125,126&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g2tp3nonaffecte",
-                  "title": "2G2 TP3 (non affecté)",
+                  "title": "2G2 TD2 TP3 (non affecté)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=126&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g2tp4signalelectronique",
-                  "title": "2G2 TP4 (Signal/Electronique)",
+                  "title": "2G2 TD2 TP4 (Signal/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=125&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -628,12 +628,12 @@
                 },
                 {
                   "id": "2g2tp5informatiquesignal",
-                  "title": "2G2 TP5 (Informatique/Signal)",
+                  "title": "2G2 TD3 TP5 (Informatique/Signal)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=119&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g2tp6informatiquesignal",
-                  "title": "2G2 TP6 (Informatique/Signal)",
+                  "title": "2G2 TD3 TP6 (Informatique/Signal)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=115&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -649,12 +649,12 @@
                 },
                 {
                   "id": "2g3tp1electroniqueautomatique",
-                  "title": "2G3 TP1 (Electronique/Automatique)",
+                  "title": "2G3 TD1 TP1 (Electronique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=479&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g3tp2electroniqueautomatique",
-                  "title": "2G3 TP2 (Electronique/Automatique)",
+                  "title": "2G3 TD1 TP2 (Electronique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=480&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
@@ -670,33 +670,33 @@
                 },
                 {
                   "id": "2g3tp3electroniqueautomatique",
-                  "title": "2G3 TP3 (Electronique/Automatique)",
+                  "title": "2G3 TD2 TP3 (Electronique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=482&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g3tp4electroniqueautomatique",
-                  "title": "2G3 TP4 (Electronique/Automatique)",
+                  "title": "2G3 TD2 TP4 (Electronique/Automatique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=483&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]
             },
             {
               "id": "2g3td3signalelectronique",
-              "title": "2G3 TD3  (Signal/Electronique)",
+              "title": "2G3 TD3 (Signal/Electronique)",
               "children": [
                 {
                   "id": "tout2g3td3signalelectronique",
-                  "title": "Tout 2G3 TD3  (Signal/Electronique)",
+                  "title": "Tout 2G3 TD3 (Signal/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=605,606&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g3tp5signalelectronique",
-                  "title": "2G3 TP5  (Signal/Electronique)",
+                  "title": "2G3 TD3 TP5 (Signal/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=605&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "2g3tp6signalelectronique",
-                  "title": "2G3 TP6  (Signal/Electronique)",
+                  "title": "2G3 TD3 TP6 (Signal/Electronique)",
                   "url": "https://ade.ensea.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=606&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 }
               ]

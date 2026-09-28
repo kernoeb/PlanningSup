@@ -83,7 +83,7 @@ function parseTree(html: string): RawNode[] {
 }
 
 function decode(s: string): string {
-  return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, '\'').trim()
+  return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, '\'').replace(/\s+/g, ' ').trim()
 }
 
 /** Same id shape as the other generators: no accents, no separators, lower case. */
@@ -161,13 +161,19 @@ function unique(ids: string[]): (base: string) => string {
   }
 }
 
-function toElements(nodes: TreeNode[], isRoot: boolean): Element[] {
+/** "1G2 TP2" under "1G2 TD1" reads "1G2 TD1 TP2", so the selected planning names its TD. */
+function tpTitle(name: string, parentName: string): string {
+  const td = /\bTD\s*\d+/i.exec(parentName)?.[0]
+  return td ? name.replace(/(?:\s*-\s*|\s+)(TP\s*\d+)/i, ` ${td} $1`) : name
+}
+
+function toElements(nodes: TreeNode[], isRoot: boolean, parentName = ''): Element[] {
   const out: Element[] = []
   const nextId = unique([])
   for (const node of nodes) {
     if (!node.isFolder) {
       // A leaf group, e.g. "1G1 TP1".
-      out.push({ id: nextId(slug(node.name)), title: node.name, url: icalUrl([node.id]) })
+      out.push({ id: nextId(slug(node.name)), title: tpTitle(node.name, parentName), url: icalUrl([node.id]) })
       continue
     }
     const resources = subtreeResources(node)
@@ -178,7 +184,7 @@ function toElements(nodes: TreeNode[], isRoot: boolean): Element[] {
       out.push({ id: nextId(slug(node.name)), title: node.name, url: icalUrl(resources) })
       continue
     }
-    const childElements = toElements(node.children, false)
+    const childElements = toElements(node.children, false, node.name)
     const children: Element[] = []
     // Skip "Tout" on formation roots such as INGE_FISE: nobody needs the whole school.
     const hasFolders = node.children.some(c => c.isFolder)
