@@ -40,6 +40,35 @@ const includesTemplate = (v: string) => v && (v.includes(dateStartTemplate) || v
 
 const randomString = () => crypto.randomUUID()
 
+// All sources are French timetables, so a floating time with no timezone hint is Paris time.
+const FLOATING_TIME_FALLBACK_TZ = 'Europe/Paris'
+
+/**
+ * ical.js reads floating times (no Z, no known TZID) in the server timezone, which is UTC in Docker.
+ * Read them in their TZID, else the calendar timezone (X-WR-TIMEZONE or its only VTIMEZONE).
+ */
+function toInstant(time: icalJs.Time, calendarTz: string) {
+  if (time.isDate || time.zone !== icalJs.Timezone.localTimezone) return time.toJSDate()
+
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const local = `${time.year}-${pad(time.month)}-${pad(time.day)}T${pad(time.hour)}:${pad(time.minute)}:${pad(time.second)}`
+  try {
+    // `timezone` holds the TZID when no VTIMEZONE defines it; ical.js does not type it.
+    const tzid = (time as icalJs.Time & { timezone?: string }).timezone
+    return dayjs.tz(local, tzid || calendarTz).toDate()
+  } catch {
+    return dayjs.tz(local, FLOATING_TIME_FALLBACK_TZ).toDate()
+  }
+}
+
+function getCalendarTimezone(comp: icalJs.Component) {
+  const declared = comp.getFirstPropertyValue('x-wr-timezone')
+  if (typeof declared === 'string' && declared.trim()) return declared.trim()
+  const vtimezones = comp.getAllSubcomponents('vtimezone')
+  const tzid = vtimezones.length === 1 ? vtimezones[0]!.getFirstPropertyValue('tzid') : null
+  return typeof tzid === 'string' && tzid ? tzid : FLOATING_TIME_FALLBACK_TZ
+}
+
 export interface CalEvent {
   uid: string
   summary: string
@@ -196,6 +225,7 @@ export async function fetchEventsDetailed(url: string, range?: RangeOptions): Pr
     const comp = new icalJs.Component(icalJs.parse(data))
 
     const vEvents = comp.getAllSubcomponents('vevent')
+    const calendarTz = getCalendarTimezone(comp)
 
     const allEvents: CalEvent[] = []
 
@@ -204,8 +234,8 @@ export async function fetchEventsDetailed(url: string, range?: RangeOptions): Pr
       allEvents.push({
         uid: tmpEvent.uid || randomString(),
         summary: tmpEvent.summary || '',
-        startDate: tmpEvent.startDate.toJSDate(),
-        endDate: tmpEvent.endDate.toJSDate(),
+        startDate: toInstant(tmpEvent.startDate, calendarTz),
+        endDate: toInstant(tmpEvent.endDate, calendarTz),
         location: tmpEvent.location || '',
         description: tmpEvent.description || '',
       })
