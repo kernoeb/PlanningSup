@@ -1,4 +1,5 @@
 import type { Database } from '@api/db'
+import type { ResolveEventsResult } from '@api/utils/events'
 import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshQueueTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
 import { JOB_ID, pokeJob } from '@api/jobs'
@@ -360,6 +361,27 @@ export async function markPlanningRefreshSuccess(planningFullId: string) {
         ? sql`${planningsRefreshStateTable.lastSuccessAt} is null or ${planningsRefreshStateTable.lastSuccessAt} < (now() - (${throttleMs} * interval '1 millisecond'))`
         : undefined,
     })
+}
+
+/**
+ * Keep backups fresh after a full (no range) network-first resolve:
+ * write network results through to the DB, or enqueue a retry for transient failures.
+ */
+export function keepPlanningBackupFresh(planningFullId: string, result: ResolveEventsResult) {
+  if (result.source === 'network') {
+    void markPlanningRefreshSuccess(planningFullId).catch((error) => {
+      elysiaLogger.warn('Failed to mark planning refresh success for {fullId}: {error}', { fullId: planningFullId, error })
+    })
+    if (result.events) schedulePlanningBackupWrite(planningFullId, result.events)
+    return
+  }
+
+  // Only enqueue retries for failures that are likely transient.
+  if (result.networkFailed && result.networkFailure?.kind !== 'http_4xx') {
+    void requestPlanningRefresh(planningFullId, 10).catch((error) => {
+      elysiaLogger.warn('Failed to enqueue planning refresh for {fullId}: {error}', { fullId: planningFullId, error })
+    })
+  }
 }
 
 export async function enqueuePlanningRefreshBatch(planningFullIds: string[], priority: number) {

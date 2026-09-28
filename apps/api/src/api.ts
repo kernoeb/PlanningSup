@@ -1,4 +1,5 @@
 import config from '@api/config'
+import icsRoutes from '@api/routes/ics'
 import opsRoutes from '@api/routes/ops'
 import planningsRoutes from '@api/routes/plannings'
 import { defaultLogger as logger } from '@api/utils/logger'
@@ -85,6 +86,7 @@ const api = new Elysia({
   })
   .use(opsRoutes)
   .use(planningsRoutes)
+  .use(icsRoutes)
 
 // Mount custom auth HTML routes (e.g., /api/auth/auto-redirect/:provider for Tauri/extension)
 if (authHtml) {

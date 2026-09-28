@@ -66,6 +66,12 @@ function getConfig() {
       },
     },
 
+    // ICS feeds (/api/ics)
+    ics: {
+      cacheTtl: env('ICS_CACHE_TTL', { default: 300 }), // in seconds
+      rateLimit: env('ICS_RATE_LIMIT', { default: 60 }), // requests per minute and per IP, 0 to disable
+    },
+
     // Utils
     curlTimeout: env('CURL_TIMEOUT', { default: 5000 }), // in ms
 
@@ -91,6 +97,9 @@ const config = getConfig()
 
 if (config.chromeExtensionId && !/^[a-z]{32}$/.test(config.chromeExtensionId)) throw new Error('Invalid CHROME_EXTENSION_ID format')
 if (config.firefoxExtensionId && !/^[a-z0-9-]+$/.test(config.firefoxExtensionId)) throw new Error('Invalid FIREFOX_EXTENSION_ID format')
+
+if (config.ics.cacheTtl < 0) throw new Error('ICS_CACHE_TTL must be positive or 0')
+if (config.ics.rateLimit < 0) throw new Error('ICS_RATE_LIMIT must be positive or 0')
 
 if (config.isProduction) {
   // if (STRICT_MODE && config.globalAPIKey === DEFAULT_GLOBAL_API_KEY) {
