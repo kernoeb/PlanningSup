@@ -50,10 +50,10 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
   <section class="space-y-5">
     <div>
       <h4 class="font-semibold m-0">
-        Cacher des cours
+        Masquer des cours
       </h4>
       <p class="text-xs text-base-content/60 mt-1">
-        Les cours cachés disparaissent aussi du lien d’abonnement (ICS).
+        Les cours masqués disparaissent aussi du lien d’abonnement (ICS).
       </p>
     </div>
 
@@ -63,7 +63,7 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
       </h5>
       <TagInput
         v-model="blocklist"
-        helper="Cache les cours dont le nom contient ce texte. Appuyez sur Entrée ou la virgule pour ajouter."
+        helper="Masque les cours dont le nom contient ce texte. Appuyez sur Entrée ou la virgule pour ajouter."
         placeholder="Ajouter un nom puis Entrée ou virgule"
       />
     </div>
@@ -74,7 +74,7 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
       </h5>
       <TagInput
         v-model="teachers"
-        helper="Cache les cours dont la description contient ce texte, par exemple « pas de prof » ou un nom de famille. L’enseignant n’est pas indiqué dans tous les plannings."
+        helper="Masque les cours dont la description contient ce texte, par exemple « pas de prof » ou un nom de famille. L’enseignant n’est pas indiqué dans tous les plannings."
         placeholder="Ajouter un enseignant puis Entrée ou virgule"
       />
     </div>
@@ -85,7 +85,7 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
       </h5>
       <TagInput
         v-model="rooms"
-        helper="Cache les cours dont la salle contient ce texte, par exemple « joker »."
+        helper="Masque les cours dont la salle contient ce texte, par exemple « joker »."
         placeholder="Ajouter une salle puis Entrée ou virgule"
       />
     </div>
@@ -127,13 +127,13 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
         </button>
       </div>
       <p class="text-xs text-base-content/60 mt-1">
-        Cache chaque semaine les cours qui ont lieu, même en partie, sur ce créneau.
+        Masque chaque semaine les cours qui ont lieu, même en partie, sur ce créneau.
       </p>
     </div>
 
     <div v-if="hiddenEvents.length">
       <h5 class="font-medium text-sm mb-2">
-        Cours cachés un par un
+        Cours masqués un par un
       </h5>
       <ul class="space-y-1">
         <li

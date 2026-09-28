@@ -126,7 +126,7 @@ watch(() => open, (next) => {
         <div class="space-y-2">
           <label class="text-sm font-medium" for="ics-url">Lien ICS pour votre agenda</label>
           <p class="text-sm text-base-content/70">
-            Ajoutez ce lien comme abonnement dans Google Agenda, Apple Calendrier ou Outlook. Les cours que vous avez cachés n’y apparaissent pas non plus.
+            Ajoutez ce lien comme abonnement dans Google Agenda, Apple Calendrier ou Outlook. Les cours que vous avez masqués n’y apparaissent pas non plus.
           </p>
           <div class="flex gap-2">
             <input

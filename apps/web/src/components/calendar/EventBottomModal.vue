@@ -272,14 +272,14 @@ watch(() => props.event, (event) => {
               @click="showHideConfirmation('once')"
             >
               <IconEyeOff :size="16" />
-              Cacher ce cours
+              Masquer ce cours
             </button>
             <button
               class="btn btn-ghost btn-sm text-base-content/60 gap-2"
               @click="showHideConfirmation('name')"
             >
               <IconEyeOff :size="16" />
-              Cacher ce type de cours
+              Masquer ce type de cours
             </button>
           </div>
         </div>
@@ -291,24 +291,24 @@ watch(() => props.event, (event) => {
       <div class="modal-box">
         <template v-if="hideMode === 'once'">
           <h3 class="font-bold text-lg">
-            Cacher ce cours ?
+            Masquer ce cours ?
           </h3>
           <p class="py-4">
-            Seul le cours <strong>{{ event?.title }}</strong> du {{ formattedDate }} ({{ timeRange }}) sera caché. Les autres séances restent affichées.
+            Seul le cours <strong>{{ event?.title }}</strong> du {{ formattedDate }} ({{ timeRange }}) sera masqué. Les autres séances restent affichées.
           </p>
           <p class="text-sm text-base-content/60">
-            Vous pourrez le réafficher depuis les paramètres, dans la section "Cacher des cours".
+            Vous pourrez le réafficher depuis les paramètres, dans la section "Masquer des cours".
           </p>
         </template>
         <template v-else>
           <h3 class="font-bold text-lg">
-            Cacher ce type de cours ?
+            Masquer ce type de cours ?
           </h3>
           <p class="py-4">
-            Tous les cours nommés <strong>{{ event?.title }}</strong> seront cachés de votre calendrier.
+            Tous les cours nommés <strong>{{ event?.title }}</strong> seront masqués dans votre calendrier.
           </p>
           <p class="text-sm text-base-content/60">
-            Vous pourrez les réafficher depuis les paramètres, dans la section "Cacher des cours".
+            Vous pourrez les réafficher depuis les paramètres, dans la section "Masquer des cours".
           </p>
         </template>
         <div class="modal-action">
@@ -318,7 +318,7 @@ watch(() => props.event, (event) => {
             </button>
           </form>
           <button class="btn btn-primary" @click="hideEvent">
-            Cacher
+            Masquer
           </button>
         </div>
       </div>

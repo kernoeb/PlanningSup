@@ -201,7 +201,7 @@ watch(() => props.open, (next) => {
           </div>
         </section>
 
-        <!-- 6) Cacher des cours -->
+        <!-- 6) Masquer des cours -->
         <CourseFiltersSettings />
 
         <!-- 7) Passkeys (Security) - only shown when authenticated -->
