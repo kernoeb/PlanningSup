@@ -1,6 +1,7 @@
 import type { CalEvent } from '@api/utils/events'
 import config from '@api/config'
 import { flattenedPlannings, plannings } from '@api/plannings'
+import { getClientIp } from '@api/utils/client-ip'
 import { getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { buildIcsCalendar, FixedWindowRateLimiter, TtlCache } from '@api/utils/ics'
 import { elysiaLogger } from '@api/utils/logger'
@@ -19,12 +20,6 @@ const rateLimiter = new FixedWindowRateLimiter(config.ics.rateLimit, 60_000)
 
 const planningsById = new Map(flattenedPlannings.map(p => [p.fullId, p]))
 const rootTitles = new Map(plannings.map(p => [p.id, p.title]))
-
-function getClientIp(request: Request, server: { requestIP: (request: Request) => { address: string } | null } | null) {
-  // Behind the reverse proxy, the socket address is the proxy itself.
-  const forwarded = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
-  return forwarded || request.headers.get('x-real-ip') || server?.requestIP(request)?.address || 'unknown'
-}
 
 async function getPlanningEvents(planning: { url: string, fullId: string }) {
   const cached = eventsCache.get(planning.fullId)
@@ -62,7 +57,7 @@ export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
     if (cachedFeed) return new Response(cachedFeed, { headers: icsHeaders })
 
     // Only uncached feeds count: Google and Outlook poll every subscriber's feed from a few shared IPs.
-    const waitMs = rateLimiter.hit(getClientIp(request, server))
+    const waitMs = rateLimiter.hit(getClientIp(request, server?.requestIP(request)?.address))
     if (waitMs > 0) {
       set.headers['retry-after'] = String(Math.ceil(waitMs / 1000))
       return status(429, { error: 'Too many requests' })
