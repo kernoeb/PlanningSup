@@ -163,6 +163,12 @@ describe('GET /ics', () => {
     ;(second as any).url = originalUrls[1]
   })
 
+  it('skips unknown plannings when at least one planning exists', async () => {
+    const res = await get(`p=${encodeURIComponent(`does.not.exist,${first.fullId}`)}`)
+    expect(res.status).toBe(200)
+    expect(parseVevents(await res.text()).map(e => e.uid).sort()).toEqual(['evt-1', 'evt-2'])
+  })
+
   it('rejects a missing or unknown planning list', async () => {
     expect((await get('')).status).toBe(400)
     const res = await get('p=does.not.exist')

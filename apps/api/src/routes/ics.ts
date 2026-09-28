@@ -38,12 +38,16 @@ function parseList(raw: string | undefined, lowercase = false) {
 
 export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
   .get('/', async ({ query, request, server, status, set }) => {
-    const fullIds = parseList(query.p)
-    if (fullIds.length === 0) return status(400, { error: 'Missing plannings (?p=id1,id2)' })
-    if (fullIds.length > MAX_ICS_PLANNINGS) return status(400, { error: `Too many plannings (max ${MAX_ICS_PLANNINGS})` })
+    const requested = parseList(query.p)
+    if (requested.length === 0) return status(400, { error: 'Missing plannings (?p=id1,id2)' })
+    if (requested.length > MAX_ICS_PLANNINGS) return status(400, { error: `Too many plannings (max ${MAX_ICS_PLANNINGS})` })
 
-    const unknown = fullIds.filter(id => !planningsById.has(id))
-    if (unknown.length > 0) return status(404, { error: 'Planning not found', plannings: unknown })
+    // Planning ids change when a timetable is regenerated. Skip the old ones, so a subscription
+    // keeps the events of the plannings that still exist.
+    const fullIds = requested.filter(id => planningsById.has(id))
+    const unknown = requested.filter(id => !planningsById.has(id))
+    if (fullIds.length === 0) return status(404, { error: 'Planning not found', plannings: unknown })
+    if (unknown.length > 0) elysiaLogger.info('ICS feed skips unknown plannings {unknown}', { unknown })
 
     const blocklist = parseList(query.blocklist, true)
     const cacheKey = `${fullIds.join(',')}|${blocklist.join(',')}`
