@@ -4,11 +4,12 @@ import { isValidSlot } from '@libs/event-filters'
 import { Plus as IconPlus, X as IconX } from '@lucide/vue'
 import TagInput from '@web/components/inputs/TagInput.vue'
 import { useSharedSettings } from '@web/composables/useSettings'
+import { resolveTimezone } from '@web/composables/useTimezone'
 import { computed, ref } from 'vue'
 
 defineOptions({ name: 'CourseFiltersSettings' })
 
-const { addTimeSlot, blocklist, eventFilters } = useSharedSettings()
+const { addTimeSlot, blocklist, eventFilters, targetTimezone } = useSharedSettings()
 
 const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
 
@@ -41,7 +42,7 @@ const hiddenEvents = computed(() => [...eventFilters.value.hidden]
   .sort((a, b) => a.start.localeCompare(b.start))
   .map(h => ({
     ...h,
-    date: new Date(h.start).toLocaleString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+    date: new Date(h.start).toLocaleString('fr-FR', { timeZone: resolveTimezone(targetTimezone.value), weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
   })))
 </script>
 

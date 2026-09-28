@@ -108,10 +108,6 @@ export function normalizeEventFilters(raw: unknown): EventFilters {
   }
 }
 
-export function hasEventFilters(filters: EventFilters): boolean {
-  return filters.teachers.length > 0 || filters.rooms.length > 0 || filters.slots.length > 0 || filters.hidden.length > 0
-}
-
 /**
  * Short key for one course: a hash of its title and start time.
  * UIDs are not used because some sources (Celcat) end them with the event's position in the file.

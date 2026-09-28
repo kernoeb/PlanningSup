@@ -193,7 +193,10 @@ export function useSettings() {
     if (blocklist.value.length > 0) {
       qp.blocklist = blocklist.value.join(',')
     }
-    return { ...qp, ...eventFiltersToQuery(normalizeEventFilters(eventFilters.value), resolveTimezone(targetTimezone.value)) }
+    const filters = normalizeEventFilters(eventFilters.value)
+    // Read the timezone only with slots, so changing it does not reload every planning.
+    const tz = filters.slots.length > 0 ? resolveTimezone(targetTimezone.value) : ''
+    return { ...qp, ...eventFiltersToQuery(filters, tz) }
   })
 
   /**

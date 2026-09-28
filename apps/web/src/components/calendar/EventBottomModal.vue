@@ -123,9 +123,9 @@ const hideMode = ref<'once' | 'name'>('name')
 function hideEvent() {
   if (!props.event) return
   const title = props.event.title ?? ''
-  const { startDate } = props.event as { startDate?: Date }
-  if (hideMode.value === 'once' && startDate) {
-    settings.hideEventOnce({ title, start: startDate })
+  const { start } = props.event
+  if (hideMode.value === 'once') {
+    if (isZonedDateTime(start)) settings.hideEventOnce({ title, start: new Date(start.epochMilliseconds) })
   } else if (title && !settings.blocklist.value.includes(title)) {
     settings.blocklist.value.push(title)
   }

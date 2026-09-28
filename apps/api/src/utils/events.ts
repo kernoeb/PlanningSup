@@ -389,7 +389,7 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
     const title = cleanName(event.summary)
     const location = cleanLocation(event.location)
     const description = cleanDescription(event.description)
-    if (isHidden({ ...event, title, location, description })) continue
+    if (isHidden({ ...event, title, location, description, rawLocation: event.location, rawDescription: event.description })) continue
 
     events.push({
       uid: event.uid,

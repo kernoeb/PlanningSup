@@ -2,7 +2,7 @@ import { describe, expect, it } from 'bun:test'
 import { createEventMatcher, eventFilterRulesKey, parseEventFilterQuery } from '@api/utils/event-filters'
 import { encodeSlot, eventFiltersToQuery, hiddenEventKey, normalizeEventFilters, parseSlot } from '@libs/event-filters'
 
-function event(overrides: Partial<{ title: string, summary: string, startDate: Date, endDate: Date, location: string, description: string }> = {}) {
+function event(overrides: Partial<{ title: string, summary: string, startDate: Date, endDate: Date, location: string, description: string, rawLocation: string }> = {}) {
   return {
     title: 'Maths TD',
     summary: 'Maths TD',
@@ -110,6 +110,8 @@ describe('createEventMatcher', () => {
     expect(matcher({ teachers: 'martin' })(event())).toBeFalse()
     expect(matcher({ rooms: 'joker' })(event({ location: 'Salle Joker' }))).toBeTrue()
     expect(matcher({ rooms: 'joker' })(event())).toBeFalse()
+    // Cleaning rewrites this room to "À distance", so the raw value must match too.
+    expect(matcher({ rooms: 'joker' })(event({ location: 'À distance', rawLocation: 'salle joker à distance' }))).toBeTrue()
   })
 
   it('hides one course by its title and start time', () => {
@@ -131,6 +133,11 @@ describe('createEventMatcher', () => {
     expect(matcher({ slots: '1-0700-0800' })(event())).toBeFalse()
     expect(matcher({ slots: '1-1000-1200' })(event())).toBeFalse()
     expect(matcher({ slots: '2-0800-1000' })(event())).toBeFalse()
+  })
+
+  it('keeps all-day events out of slots', () => {
+    const allDay = event({ startDate: new Date('2026-01-04T23:00:00Z'), endDate: new Date('2026-01-05T23:00:00Z') })
+    expect(matcher({ slots: '1-0800-1000' })(allDay)).toBeFalse()
   })
 
   it('follows daylight saving time', () => {

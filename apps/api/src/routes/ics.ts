@@ -2,7 +2,7 @@ import type { CalEvent } from '@api/utils/events'
 import config from '@api/config'
 import { flattenedPlannings, plannings } from '@api/plannings'
 import { getClientIp } from '@api/utils/client-ip'
-import { eventFilterRulesKey, parseEventFilterQuery } from '@api/utils/event-filters'
+import { eventFilterRulesKey, parseEventFilterQuery, parseList } from '@api/utils/event-filters'
 import { getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { buildIcsCalendar, FixedWindowRateLimiter, TtlCache } from '@api/utils/ics'
 import { elysiaLogger } from '@api/utils/logger'
@@ -30,11 +30,6 @@ async function getPlanningEvents(planning: { url: string, fullId: string }) {
   keepPlanningBackupFresh(planning.fullId, result)
   if (result.events) eventsCache.set(planning.fullId, result.events)
   return result.events
-}
-
-function parseList(raw: string | undefined) {
-  const values = (raw ?? '').split(',').map(s => s.trim()).filter(s => s.length > 0)
-  return [...new Set(values)].sort()
 }
 
 export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
