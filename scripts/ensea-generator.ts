@@ -2,31 +2,22 @@
  * ENSEA generator
  *
  * Builds `resources/plannings/ensea.json` from ENSEA's ADE install
- * (https://ade.ensea.fr/), which is an ADE 6 "campus" whose public tree sits behind
- * CAS. There is no working anonymous iCal export here: `anonymous_cal.jsp` answers
- * "Le projet est invalide" for every id. The only channel that serves real events
- * without a login is the legacy RSS module, reached through a guest session:
+ * (https://ade.ensea.fr/), an ADE 6 "campus" whose public tree sits behind CAS.
+ * A guest session can still browse the "Stagiaires" tree, so this script walks it
+ * once and writes one anonymous iCal URL per group.
  *
- *   GET anonymous_cal.jsp        -> mints a guest JSESSIONID (the error body is ignored)
- *   GET /jsp/rss?projectId=1&resources=<ids>&nbDays=<n>   -> the events, as RSS
- *
- * The same guest cookie serves every group, so the API fetches this RSS at refresh
- * time (see apps/api/src/utils/ade-rss.ts). This script only discovers the groups:
- * it walks the "Stagiaires" tree once and writes one RSS URL per class group.
- *
- * A group's RSS resource set is every resource leaf under it in the tree, so the whole
- * file is built from a single crawl, with no extra request per group. Class levels
- * that hold sub-groups also get a "Tout <name>" entry that merges the lot.
+ * Leaves are the smallest groups (TP groups such as "1G1 TP1"). ADE adds the events
+ * of every parent group to a leaf, so a TP entry holds the whole schedule of that
+ * student. Folders with several groups also get a "Tout <name>" entry that merges them.
  *
  * Usage:
  *   bun scripts/ensea-generator.ts
- *   bun scripts/ensea-generator.ts --out resources/plannings/ensea.json --nb-days 400
+ *   bun scripts/ensea-generator.ts --out resources/plannings/ensea.json --dry-run
  *
  * Options:
  *   --out <file>     output file (default: resources/plannings/ensea.json)
  *   --domain <host>  ADE host (default: ade.ensea.fr)
  *   --project <id>   ADE projectId, the current year (default: 1)
- *   --nb-days <n>    RSS window in days; ADE caps it at the loaded horizon (default: 400)
  *   --delay <ms>     pause after each tree request (default: 120)
  *   --dry-run        crawl and print the tree, write nothing
  */
@@ -40,7 +31,6 @@ const { values: args } = parseArgs({
     'out': { type: 'string', default: path.join(import.meta.dirname, '..', 'resources', 'plannings', 'ensea.json') },
     'domain': { type: 'string', default: 'ade.ensea.fr' },
     'project': { type: 'string', default: '1' },
-    'nb-days': { type: 'string', default: '400' },
     'delay': { type: 'string', default: '120' },
     'dry-run': { type: 'boolean', default: false },
   },
@@ -49,7 +39,6 @@ const { values: args } = parseArgs({
 const HOST = `https://${args.domain}`
 const GUI = `${HOST}/jsp/standard/gui`
 const PROJECT_ID = Number(args.project)
-const NB_DAYS = Number(args['nb-days'])
 const DELAY_MS = Number(args.delay)
 
 const latin1 = new TextDecoder('iso-8859-1')
@@ -86,7 +75,7 @@ function parseTree(html: string): RawNode[] {
     const folder = /openBranch\((\d+)\)/.exec(seg)
     const leaf = /javascript:check\((\d+)/.exec(seg)
     const open = seg.includes('moins.gif')
-    const name = decode(seg.match(/class="tree(?:branch|leaf)"><a [^>]*>([^<]*)<\/a>/)?.[1]?.trim() ?? '')
+    const name = decode(seg.match(/class="tree(?:branch|leaf|item)"><a [^>]*>([^<]*)<\/a>/i)?.[1]?.trim() ?? '')
     if (folder) nodes.push({ depth, id: Number(folder[1]), name, isFolder: true, open })
     else if (leaf) nodes.push({ depth, id: Number(leaf[1]), name, isFolder: false, open: false })
   }
@@ -94,7 +83,7 @@ function parseTree(html: string): RawNode[] {
 }
 
 function decode(s: string): string {
-  return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, '\'').trim()
+  return s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, '\'').replace(/\s+/g, ' ').trim()
 }
 
 /** Same id shape as the other generators: no accents, no separators, lower case. */
@@ -139,7 +128,7 @@ function buildTree(rows: RawNode[]): TreeNode[] {
   return roots
 }
 
-/** Every resource-leaf id under a node, i.e. the RSS resource set for that group. */
+/** Every resource-leaf id under a node, i.e. the resource set for that group. */
 function subtreeResources(node: TreeNode): number[] {
   const ids: number[] = []
   const walk = (n: TreeNode) => {
@@ -152,8 +141,8 @@ function subtreeResources(node: TreeNode): number[] {
   return [...new Set(ids)].sort((a, b) => a - b)
 }
 
-function rssUrl(resources: number[]): string {
-  return `${HOST}/jsp/rss?projectId=${PROJECT_ID}&resources=${resources.join(',')}&nbDays=${NB_DAYS}`
+function icalUrl(resources: number[]): string {
+  return `${HOST}/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=${resources.join(',')}&projectId=${PROJECT_ID}&calType=ical&firstDate={date-start}&lastDate={date-end}`
 }
 
 type Element
@@ -172,32 +161,39 @@ function unique(ids: string[]): (base: string) => string {
   }
 }
 
-function toElements(nodes: TreeNode[], isRoot: boolean): Element[] {
+/** "1G2 TP2" under "1G2 TD1" reads "1G2 TD1 TP2", so the selected planning names its TD. */
+function tpTitle(name: string, parentName: string): string {
+  const td = /\bTD\s*\d+/i.exec(parentName)?.[0]
+  return td ? name.replace(/(?:\s*-\s*|\s+)(TP\s*\d+)/i, ` ${td} $1`) : name
+}
+
+function toElements(nodes: TreeNode[], isRoot: boolean, parentName = ''): Element[] {
   const out: Element[] = []
   const nextId = unique([])
   for (const node of nodes) {
-    const childFolders = node.children.filter(c => c.isFolder)
-    const hasLeafResources = node.children.some(c => !c.isFolder)
-
-    if (childFolders.length > 0) {
-      // A folder. Class levels (not the formation roots) also get a merged "Tout" entry.
-      const childElements = toElements(node.children, false)
-      const children: Element[] = []
-      const merged = subtreeResources(node)
-      // Skip the merged "Tout" entry when it would just duplicate a lone child group.
-      if (!isRoot && merged.length > 0 && node.children.length >= 2) {
-        // Keep the "Tout" id unique against its siblings' ids.
-        const toutId = unique(childElements.map(c => c.id))(`tout${slug(node.name)}`)
-        children.push({ id: toutId, title: `Tout ${node.name}`, url: rssUrl(merged) })
-      }
-      children.push(...childElements)
-      // Drop branches that hold no group at all, e.g. an empty "VALEO".
-      if (children.length > 0) out.push({ id: nextId(slug(node.name)), title: node.name, children })
-    } else if (hasLeafResources) {
-      // A terminal group, e.g. "1G1 TD1" or "Drones".
-      const resources = subtreeResources(node)
-      if (resources.length > 0) out.push({ id: nextId(slug(node.name)), title: node.name, url: rssUrl(resources) })
+    if (!node.isFolder) {
+      // A leaf group, e.g. "1G1 TP1".
+      out.push({ id: nextId(slug(node.name)), title: tpTitle(node.name, parentName), url: icalUrl([node.id]) })
+      continue
     }
+    const resources = subtreeResources(node)
+    // Drop branches that hold no group at all, e.g. an empty "VALEO".
+    if (resources.length === 0) continue
+    // A lone leaf is the folder itself under another name; keep the folder's title.
+    if (node.children.length === 1 && !node.children[0]!.isFolder) {
+      out.push({ id: nextId(slug(node.name)), title: node.name, url: icalUrl(resources) })
+      continue
+    }
+    const childElements = toElements(node.children, false, node.name)
+    const children: Element[] = []
+    // Skip "Tout" on formation roots such as INGE_FISE: nobody needs the whole school.
+    const hasFolders = node.children.some(c => c.isFolder)
+    if (childElements.length >= 2 && !(isRoot && hasFolders)) {
+      const toutId = unique(childElements.map(c => c.id))(`tout${slug(node.name)}`)
+      children.push({ id: toutId, title: `Tout ${node.name}`, url: icalUrl(resources) })
+    }
+    children.push(...childElements)
+    out.push({ id: nextId(slug(node.name)), title: node.name, children })
   }
   return out
 }
