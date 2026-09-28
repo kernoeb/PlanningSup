@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { Check as IconCheck, Copy as IconCopy, X as IconX } from '@lucide/vue'
+import { CalendarPlus as IconCalendarPlus, Check as IconCheck, Copy as IconCopy, X as IconX } from '@lucide/vue'
 import { usePlanningData } from '@web/composables/usePlanningData'
+import { useSharedSettings } from '@web/composables/useSettings'
 import { computed, ref, useTemplateRef, watch } from 'vue'
 
 defineOptions({ name: 'ShareModal' })
@@ -12,9 +13,13 @@ const emit = defineEmits<{
 }>()
 
 const dialogRef = useTemplateRef('dialogRef')
-const copied = ref(false)
+const copied = ref<'share' | 'ics' | null>(null)
+
+// Keep in sync with MAX_ICS_PLANNINGS in apps/api/src/routes/ics.ts
+const MAX_ICS_PLANNINGS = 50
 
 const { planningFullIds } = usePlanningData()
+const { blocklist } = useSharedSettings()
 
 const shareUrl = computed(() => {
   if (planningFullIds.value.length === 0) return ''
@@ -23,18 +28,30 @@ const shareUrl = computed(() => {
   return `${base}/?p=${encodeURIComponent(encoded)}`
 })
 
+const icsUrl = computed(() => {
+  if (planningFullIds.value.length === 0 || planningFullIds.value.length > MAX_ICS_PLANNINGS) return ''
+  const params = new URLSearchParams({ p: planningFullIds.value.join(',') })
+  if (blocklist.value.length > 0) params.set('blocklist', blocklist.value.join(','))
+  const base = import.meta.env.VITE_BACKEND_URL || window.location.origin
+  return `${base}/api/ics?${params}`
+})
+
+// webcal:// opens the default calendar app (Apple Calendar, Outlook) with a subscribe prompt.
+const webcalUrl = computed(() => icsUrl.value.replace(/^https?:/, 'webcal:'))
+
 function close() {
   const el = dialogRef.value
   if (el?.open) el.close()
   emit('update:open', false)
 }
 
-async function copyToClipboard() {
-  if (!shareUrl.value) return
-  await navigator.clipboard.writeText(shareUrl.value)
-  copied.value = true
+async function copyToClipboard(kind: 'share' | 'ics') {
+  const value = kind === 'share' ? shareUrl.value : icsUrl.value
+  if (!value) return
+  await navigator.clipboard.writeText(value)
+  copied.value = kind
   setTimeout(() => {
-    copied.value = false
+    if (copied.value === kind) copied.value = null
   }, 2000)
 }
 
@@ -42,7 +59,7 @@ watch(() => open, (next) => {
   const el = dialogRef.value
   if (!el) return
   if (next) {
-    copied.value = false
+    copied.value = null
     if (!el.open) el.showModal()
   } else {
     if (el.open) el.close()
@@ -87,14 +104,14 @@ watch(() => open, (next) => {
             >
             <button
               class="btn min-w-24" :class="[
-                copied ? 'btn-success' : 'btn-primary',
+                copied === 'share' ? 'btn-success' : 'btn-primary',
               ]"
               :disabled="!shareUrl"
               type="button"
-              @click="copyToClipboard"
+              @click="copyToClipboard('share')"
             >
               <Transition mode="out-in" name="fade-fast">
-                <span v-if="copied" key="copied" class="flex items-center gap-1">
+                <span v-if="copied === 'share'" key="copied" class="flex items-center gap-1">
                   <IconCheck class="size-4" />
                   Copié
                 </span>
@@ -107,8 +124,55 @@ watch(() => open, (next) => {
           </div>
         </div>
 
+        <div class="space-y-2">
+          <label class="text-sm font-medium" for="ics-url">Lien ICS pour votre agenda</label>
+          <p class="text-sm text-base-content/70">
+            Ajoutez ce lien comme abonnement dans Google Agenda, Apple Calendrier ou Outlook. Votre liste de blocage s'applique aussi.
+          </p>
+          <div class="flex gap-2">
+            <input
+              id="ics-url"
+              class="input input-bordered flex-1 text-sm font-mono"
+              readonly
+              type="text"
+              :value="icsUrl"
+              @focus="($event.target as HTMLInputElement).select()"
+            >
+            <button
+              class="btn min-w-24" :class="[
+                copied === 'ics' ? 'btn-success' : 'btn-primary',
+              ]"
+              :disabled="!icsUrl"
+              type="button"
+              @click="copyToClipboard('ics')"
+            >
+              <Transition mode="out-in" name="fade-fast">
+                <span v-if="copied === 'ics'" key="copied" class="flex items-center gap-1">
+                  <IconCheck class="size-4" />
+                  Copié
+                </span>
+                <span v-else key="copy" class="flex items-center gap-1">
+                  <IconCopy class="size-4" />
+                  Copier
+                </span>
+              </Transition>
+            </button>
+          </div>
+          <a
+            v-if="icsUrl"
+            class="btn btn-sm btn-ghost gap-1"
+            :href="webcalUrl"
+          >
+            <IconCalendarPlus class="size-4" />
+            Ouvrir dans l'agenda
+          </a>
+        </div>
+
         <p v-if="planningFullIds.length === 0" class="text-sm text-warning">
           Aucun planning sélectionné. Sélectionnez au moins un planning pour générer un lien de partage.
+        </p>
+        <p v-else-if="planningFullIds.length > MAX_ICS_PLANNINGS" class="text-sm text-warning">
+          Le lien ICS accepte {{ MAX_ICS_PLANNINGS }} plannings au maximum.
         </p>
       </div>
     </div>

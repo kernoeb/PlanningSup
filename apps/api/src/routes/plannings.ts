@@ -1,7 +1,7 @@
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
 import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
-import { markPlanningRefreshSuccess, requestPlanningRefresh, schedulePlanningBackupWrite } from '@api/utils/plannings-backup'
+import { keepPlanningBackupFresh } from '@api/utils/plannings-backup'
 import dayjs from 'dayjs'
 import { Elysia, t } from 'elysia'
 
@@ -83,26 +83,7 @@ export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
       // - If we successfully fetched events from the network, write-through to DB asynchronously (no extra upstream fetch).
       // - If network failed (and onlyDb wasn't requested), enqueue a refresh retry with priority.
       // - SKIP if a custom range was requested (partial data shouldn't overwrite full backup).
-      if (!onlyDb && !hasRange) {
-        if (source === 'network') {
-          void markPlanningRefreshSuccess(planning.fullId).catch((error) => {
-            elysiaLogger.warn('Failed to mark planning refresh success for {fullId}: {error}', { fullId, error })
-          })
-        }
-
-        if (source === 'network' && events) {
-          schedulePlanningBackupWrite(planning.fullId, events)
-        } else if (resolveResult.networkFailed) {
-          // Only enqueue retries for failures that are likely transient.
-          const kind = resolveResult.networkFailure?.kind
-          const shouldRetry = kind !== 'http_4xx'
-          if (shouldRetry) {
-            void requestPlanningRefresh(planning.fullId, 10).catch((error) => {
-              elysiaLogger.warn('Failed to enqueue planning refresh for {fullId}: {error}', { fullId, error })
-            })
-          }
-        }
-      }
+      if (!onlyDb && !hasRange) keepPlanningBackupFresh(planning.fullId, resolveResult)
 
       elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, reason: {reason}, range: {range}, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
         fullId,
