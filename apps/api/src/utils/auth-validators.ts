@@ -1,3 +1,4 @@
+import { normalizeEventFilters } from '@libs/event-filters'
 import * as z from 'zod'
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
@@ -80,9 +81,17 @@ export const colorsInput = z.string().optional().transform((val) => {
   }
 })
 
+export const eventFiltersInput = z.string().optional().transform((val) => {
+  try {
+    return JSON.stringify(normalizeEventFilters(JSON.parse(val || '{}')))
+  } catch {
+    return JSON.stringify(normalizeEventFilters(null))
+  }
+})
+
 export const prefsMetaInput = z.string().optional().transform((val) => {
   try {
-    const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'blocklist', 'colors', 'plannings', 'customGroups'] as const
+    const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'blocklist', 'colors', 'plannings', 'customGroups', 'eventFilters'] as const
     const set = new Set<string>(allowed as unknown as string[])
     const raw = JSON.parse(val || '{}')
     if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return '{}'

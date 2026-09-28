@@ -18,6 +18,7 @@ export const user = pgTable('user', {
   blocklist: text('blocklist').array(),
   plannings: text('plannings').array(),
   customGroups: text('custom_groups'),
+  eventFilters: text('event_filters'),
   colors: text('colors'),
   prefsMeta: text('prefs_meta'),
 })

@@ -11,7 +11,7 @@ import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
 import { and, eq, ne } from 'drizzle-orm'
 import * as z from 'zod'
-import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from './auth-validators'
+import { colorsInput, customGroupsInput, eventFiltersInput, planningsInput, prefsMetaInput } from './auth-validators'
 
 function createAuth() {
   // Skip BetterAuth initialization entirely when auth is disabled
@@ -77,6 +77,14 @@ function createAuth() {
             input: customGroupsInput,
           },
         },
+        eventFilters: {
+          // Stored as a JSON string, like customGroups.
+          // Shape: { teachers: string[]; rooms: string[]; slots: TimeSlot[]; hidden: HiddenEvent[] } (see @libs/event-filters)
+          type: 'string',
+          validator: {
+            input: eventFiltersInput,
+          },
+        },
         colors: {
           type: 'string',
           validator: {
@@ -92,7 +100,7 @@ function createAuth() {
             // - If value is a number, keep it as-is
             // - If value is not a number, stamp with Date.now()
             // - Always return normalized JSON string
-            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups', number>
+            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups' | 'eventFilters', number>
             input: prefsMetaInput,
           },
         },

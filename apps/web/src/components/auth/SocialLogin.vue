@@ -146,7 +146,7 @@ defineExpose({
           <p>La connexion sert à associer vos préférences à un compte pour les retrouver sur tous vos appareils.</p>
           <ul class="list-disc list-inside space-y-1">
             <li>Votre email, et si disponibles votre nom et avatar fournis par le fournisseur (Discord/GitHub)</li>
-            <li>Vos préférences synchronisées: couleurs du planning, surlignage enseignant, affichage des week-ends, liste de blocage, thème</li>
+            <li>Vos préférences synchronisées: couleurs du planning, surlignage enseignant, affichage des week-ends, cours cachés, thème</li>
             <li>Des métadonnées de session (adresse IP, navigateur, expiration) utilisées à des fins de sécurité</li>
           </ul>
           <p>Aucune donnée personnelle n'est vendue ou partagée.</p>

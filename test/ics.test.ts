@@ -2,6 +2,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'bun:test'
 import { Elysia } from 'elysia'
 import { flattenedPlannings } from '@api/plannings'
 import { buildIcsCalendar, FixedWindowRateLimiter, TtlCache } from '@api/utils/ics'
+import { hiddenEventKey } from '@libs/event-filters'
 
 import { getApiDbMockStores, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
@@ -187,6 +188,16 @@ describe('GET /ics', () => {
   it('applies the blocklist', async () => {
     const res = await get(`p=${encodeURIComponent(first.fullId)}&blocklist=math`)
     expect(parseVevents(await res.text()).map(e => e.summary)).toEqual(['Programming TP'])
+  })
+
+  it('applies the other course filters', async () => {
+    const uids = async (query: string) => parseVevents(await (await get(`p=${encodeURIComponent(first.fullId)}&${query}`)).text()).map(e => e.uid)
+    // The room is matched on the cleaned location, the one users see.
+    expect(await uids('rooms=amphi')).toEqual(['evt-2'])
+    expect(await uids(`hidden=${hiddenEventKey('Programming TP', new Date('2025-01-02T08:00:00Z'))}`)).toEqual(['evt-1'])
+    // Wednesday 1 January 2025, 11:00 to 13:00 in Paris
+    expect(await uids('slots=3-1200-1400')).toEqual(['evt-2'])
+    expect(await uids('slots=3-1200-1400&tz=UTC')).toEqual(['evt-1', 'evt-2'])
   })
 
   it('caches events per planning', async () => {

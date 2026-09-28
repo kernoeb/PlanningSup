@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from '@api/utils/auth-validators'
+import { colorsInput, customGroupsInput, eventFiltersInput, planningsInput, prefsMetaInput } from '@api/utils/auth-validators'
 
 describe('auth validators (Zod transforms)', () => {
   describe('planningsInput', () => {
@@ -81,7 +81,33 @@ describe('auth validators (Zod transforms)', () => {
     })
   })
 
+  describe('eventFiltersInput', () => {
+    it('normalizes the filters to a JSON string', () => {
+      const out = eventFiltersInput.parse(JSON.stringify({
+        teachers: [' pas de prof ', 'PAS DE PROF'],
+        rooms: 'not-an-array',
+        slots: [{ day: 4, start: '14:00', end: '18:00' }, { day: 0, start: '14:00', end: '18:00' }],
+        hidden: [{ key: 'k1', title: 'Maths', start: '2026-01-05T07:00:00.000Z' }],
+        extra: true,
+      }))
+      expect(JSON.parse(out)).toEqual({
+        teachers: ['pas de prof'],
+        rooms: [],
+        slots: [{ day: 4, start: '14:00', end: '18:00' }],
+        hidden: [{ key: 'k1', title: 'Maths', start: '2026-01-05T07:00:00.000Z' }],
+      })
+    })
+
+    it('returns empty filters for invalid JSON', () => {
+      expect(JSON.parse(eventFiltersInput.parse('{oops'))).toEqual({ teachers: [], rooms: [], slots: [], hidden: [] })
+    })
+  })
+
   describe('prefsMetaInput', () => {
+    it('accepts the eventFilters key', () => {
+      expect(JSON.parse(prefsMetaInput.parse(JSON.stringify({ eventFilters: 1 })))).toEqual({ eventFilters: 1 })
+    })
+
     it('keeps allowed keys, keeps numeric timestamps, stamps non-numbers', () => {
       const before = Date.now()
       const outStr = prefsMetaInput.parse(JSON.stringify({

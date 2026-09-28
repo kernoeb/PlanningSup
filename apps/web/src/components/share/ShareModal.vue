@@ -19,7 +19,7 @@ const copied = ref<'share' | 'ics' | null>(null)
 const MAX_ICS_PLANNINGS = 50
 
 const { planningFullIds } = usePlanningData()
-const { blocklist } = useSharedSettings()
+const { filterParams } = useSharedSettings()
 
 const shareUrl = computed(() => {
   if (planningFullIds.value.length === 0) return ''
@@ -30,8 +30,7 @@ const shareUrl = computed(() => {
 
 const icsUrl = computed(() => {
   if (planningFullIds.value.length === 0 || planningFullIds.value.length > MAX_ICS_PLANNINGS) return ''
-  const params = new URLSearchParams({ p: planningFullIds.value.join(',') })
-  if (blocklist.value.length > 0) params.set('blocklist', blocklist.value.join(','))
+  const params = new URLSearchParams({ p: planningFullIds.value.join(','), ...filterParams.value })
   const base = import.meta.env.VITE_BACKEND_URL || window.location.origin
   return `${base}/api/ics?${params}`
 })
@@ -127,7 +126,7 @@ watch(() => open, (next) => {
         <div class="space-y-2">
           <label class="text-sm font-medium" for="ics-url">Lien ICS pour votre agenda</label>
           <p class="text-sm text-base-content/70">
-            Ajoutez ce lien comme abonnement dans Google Agenda, Apple Calendrier ou Outlook. Votre liste de blocage s'applique aussi.
+            Ajoutez ce lien comme abonnement dans Google Agenda, Apple Calendrier ou Outlook. Les cours que vous avez cachés n’y apparaissent pas non plus.
           </p>
           <div class="flex gap-2">
             <input

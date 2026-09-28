@@ -12,7 +12,7 @@ import {
 import { onKeyStroke, useSwipe } from '@vueuse/core'
 import { useSharedSettings } from '@web/composables/useSettings'
 import { getContrastTextColor } from '@web/utils/calendars'
-import { computed, useTemplateRef, watch } from 'vue'
+import { computed, ref, useTemplateRef, watch } from 'vue'
 
 const props = defineProps<{
   event: CalendarEvent | null
@@ -117,11 +117,16 @@ const categoryTextColor = computed(() => {
   return getContrastTextColor(bg)
 })
 
-// Hide event by adding its title to the blocklist
+// 'once' hides this occurrence only, 'name' hides every course with this title.
+const hideMode = ref<'once' | 'name'>('name')
+
 function hideEvent() {
   if (!props.event) return
-  const title = props.event.title
-  if (title && !settings.blocklist.value.includes(title)) {
+  const title = props.event.title ?? ''
+  const { startDate } = props.event as { startDate?: Date }
+  if (hideMode.value === 'once' && startDate) {
+    settings.hideEventOnce({ title, start: startDate })
+  } else if (title && !settings.blocklist.value.includes(title)) {
     settings.blocklist.value.push(title)
   }
   confirmModalRef.value?.close()
@@ -129,7 +134,8 @@ function hideEvent() {
 }
 
 // Show confirmation modal before hiding
-function showHideConfirmation() {
+function showHideConfirmation(mode: 'once' | 'name') {
+  hideMode.value = mode
   confirmModalRef.value?.showModal()
 }
 
@@ -259,11 +265,18 @@ watch(() => props.event, (event) => {
             </div>
           </div>
 
-          <!-- Hide event action -->
-          <div class="pt-2 border-t border-base-200">
+          <!-- Hide event actions -->
+          <div class="pt-2 border-t border-base-200 flex flex-wrap gap-1">
             <button
               class="btn btn-ghost btn-sm text-base-content/60 gap-2"
-              @click="showHideConfirmation"
+              @click="showHideConfirmation('once')"
+            >
+              <IconEyeOff :size="16" />
+              Cacher ce cours
+            </button>
+            <button
+              class="btn btn-ghost btn-sm text-base-content/60 gap-2"
+              @click="showHideConfirmation('name')"
             >
               <IconEyeOff :size="16" />
               Cacher ce type de cours
@@ -276,15 +289,28 @@ watch(() => props.event, (event) => {
     <!-- Hide confirmation modal -->
     <dialog ref="confirmModalRef" class="modal">
       <div class="modal-box">
-        <h3 class="font-bold text-lg">
-          Cacher ce type de cours ?
-        </h3>
-        <p class="py-4">
-          Tous les cours nommés <strong>{{ event?.title }}</strong> seront cachés de votre calendrier.
-        </p>
-        <p class="text-sm text-base-content/60">
-          Vous pourrez les réafficher depuis les paramètres, dans la section "Liste de blocage".
-        </p>
+        <template v-if="hideMode === 'once'">
+          <h3 class="font-bold text-lg">
+            Cacher ce cours ?
+          </h3>
+          <p class="py-4">
+            Seul le cours <strong>{{ event?.title }}</strong> du {{ formattedDate }} ({{ timeRange }}) sera caché. Les autres séances restent affichées.
+          </p>
+          <p class="text-sm text-base-content/60">
+            Vous pourrez le réafficher depuis les paramètres, dans la section "Cacher des cours".
+          </p>
+        </template>
+        <template v-else>
+          <h3 class="font-bold text-lg">
+            Cacher ce type de cours ?
+          </h3>
+          <p class="py-4">
+            Tous les cours nommés <strong>{{ event?.title }}</strong> seront cachés de votre calendrier.
+          </p>
+          <p class="text-sm text-base-content/60">
+            Vous pourrez les réafficher depuis les paramètres, dans la section "Cacher des cours".
+          </p>
+        </template>
         <div class="modal-action">
           <form method="dialog">
             <button class="btn btn-ghost">
