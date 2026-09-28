@@ -1,5 +1,7 @@
+import type { EventFilterRules } from '@api/utils/event-filters'
 import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
+import { createEventMatcher } from '@api/utils/event-filters'
 import { fetchWithTimeout } from '@api/utils/http'
 
 import dayjs from 'dayjs'
@@ -367,7 +369,7 @@ function isRemoteLocation(location: string) {
 
 export function getFormattedEvents(id: string, eventsList: CalEvent[], options: {
   localeUtils: { target: string, browser: string } | null
-  blocklist: string[]
+  filters: EventFilterRules
   highlightTeacher: boolean
   range?: RangeOptions
 }) {
@@ -378,23 +380,27 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
 
   const fromDate = options.range?.from ? dayjs(options.range.from).startOf('day') : null
   const toDate = options.range?.to ? dayjs(options.range.to).endOf('day') : null
+  const isHidden = createEventMatcher(options.filters)
 
   for (const event of eventsList) {
     if (fromDate && dayjs(event.endDate).isBefore(fromDate)) continue
     if (toDate && dayjs(event.startDate).isAfter(toDate)) continue
 
-    if (!options.blocklist.some(str => event.summary.toLowerCase().includes(str))) {
-      events.push({
-        uid: event.uid,
-        summary: cleanName(event.summary),
-        startDate: getDate(event.startDate, options.localeUtils),
-        endDate: getDate(event.endDate, options.localeUtils),
-        categoryId: getCategoryId(id, event, { highlightTeacher: options.highlightTeacher }),
-        location: cleanLocation(event.location),
-        description: cleanDescription(event.description),
-        remoteLocation: isRemoteLocation(event.location),
-      })
-    }
+    const title = cleanName(event.summary)
+    const location = cleanLocation(event.location)
+    const description = cleanDescription(event.description)
+    if (isHidden({ ...event, title, location, description, rawLocation: event.location, rawDescription: event.description })) continue
+
+    events.push({
+      uid: event.uid,
+      summary: title,
+      startDate: getDate(event.startDate, options.localeUtils),
+      endDate: getDate(event.endDate, options.localeUtils),
+      categoryId: getCategoryId(id, event, { highlightTeacher: options.highlightTeacher }),
+      location,
+      description,
+      remoteLocation: isRemoteLocation(event.location),
+    })
   }
 
   return events

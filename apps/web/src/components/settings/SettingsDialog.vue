@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { X as IconX } from '@lucide/vue'
-import TagInput from '@web/components/inputs/TagInput.vue'
+import CourseFiltersSettings from '@web/components/settings/CourseFiltersSettings.vue'
 import { useAuth } from '@web/composables/useAuth'
 import { getDefaultColors, useSharedSettings } from '@web/composables/useSettings'
 import { detectBrowserTimezone, getSupportedTimezones } from '@web/composables/useTimezone'
@@ -22,7 +22,7 @@ const emit = defineEmits<{
 const PasskeySettings = defineAsyncComponent(() => import('@web/components/settings/PasskeySettings.vue'))
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
-const { blocklist, colors, highlightTeacher, mergeDuplicates, showWeekends, targetTimezone } = useSharedSettings()
+const { colors, highlightTeacher, mergeDuplicates, showWeekends, targetTimezone } = useSharedSettings()
 const { authEnabled, session } = useAuth()
 
 // Show passkey settings only when authenticated
@@ -201,17 +201,8 @@ watch(() => props.open, (next) => {
           </div>
         </section>
 
-        <!-- 6) Liste de blocage -->
-        <section>
-          <h4 class="font-semibold mb-2">
-            Liste de blocage
-          </h4>
-          <TagInput
-            v-model="blocklist"
-            helper="Ajoutez des mots ou expressions à exclure du planning. Appuyez sur Entrée ou la virgule pour les ajouter."
-            placeholder="Ajouter un élément puis Entrée ou virgule"
-          />
-        </section>
+        <!-- 6) Masquer des cours -->
+        <CourseFiltersSettings />
 
         <!-- 7) Passkeys (Security) - only shown when authenticated -->
         <PasskeySettings v-if="showPasskeySettings" />

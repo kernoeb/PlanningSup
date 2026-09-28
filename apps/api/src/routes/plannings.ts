@@ -1,4 +1,5 @@
 import { cleanedPlannings, flattenedPlannings } from '@api/plannings'
+import { parseEventFilterQuery } from '@api/utils/event-filters'
 import { getFailureReason, getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { elysiaLogger } from '@api/utils/logger'
 import { keepPlanningBackupFresh } from '@api/utils/plannings-backup'
@@ -46,8 +47,8 @@ export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
       const resolveResult = await resolveEvents(planning, onlyDb, range)
       const { events, source } = resolveResult
 
-      // blocklist ?blocklist=string (comma-separated)
-      const blocklist = query.blocklist?.split(',').map(s => s.trim().toLowerCase()).filter(s => s.length > 0) || []
+      // ?blocklist=, ?teachers=, ?rooms=, ?hidden= (comma-separated), ?slots=1-0800-1000&tz=Europe/Paris
+      const filters = parseEventFilterQuery(query)
 
       // highlightTeacher ?highlightTeacher=boolean
       const highlightTeacher = query.highlightTeacher === 'true'
@@ -59,7 +60,7 @@ export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
 
       const allEvents = events
         ? getFormattedEvents(planning.id, events, {
-            blocklist,
+            filters,
             highlightTeacher,
             localeUtils,
             range,
@@ -85,13 +86,13 @@ export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
       // - SKIP if a custom range was requested (partial data shouldn't overwrite full backup).
       if (!onlyDb && !hasRange) keepPlanningBackupFresh(planning.fullId, resolveResult)
 
-      elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, reason: {reason}, range: {range}, blocklist: {blocklist}, highlightTeacher: {highlightTeacher}`, {
+      elysiaLogger.info(`Serving events for planning {fullId} : {nbEvents} events, source: {source}, reason: {reason}, range: {range}, filters: {filters}, highlightTeacher: {highlightTeacher}`, {
         fullId,
         nbEvents,
         source,
         reason,
         range,
-        blocklist,
+        filters,
         highlightTeacher,
       })
 
@@ -118,7 +119,12 @@ export default new Elysia({ prefix: '/plannings', tags: ['Plannings'] })
       onlyDb: t.Optional(t.String({ description: 'Set to "true" to only fetch from database (no network)' })),
       from: t.Optional(t.String({ description: 'Start date for filtering (YYYY-MM-DD)' })),
       to: t.Optional(t.String({ description: 'End date for filtering (YYYY-MM-DD)' })),
-      blocklist: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events' })),
+      blocklist: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by title' })),
+      teachers: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by description (teacher)' })),
+      rooms: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by location' })),
+      slots: t.Optional(t.String({ description: 'Comma-separated weekly time slots to filter out, as weekday-HHmm-HHmm (1 = Monday), e.g. "4-1400-1800"' })),
+      tz: t.Optional(t.String({ description: 'Timezone of the time slots (default: Europe/Paris)' })),
+      hidden: t.Optional(t.String({ description: 'Comma-separated list of single events to filter out, as keys from hiddenEventKey (hash of title and start)' })),
       highlightTeacher: t.Optional(t.String({ description: 'Set to "true" to highlight teacher names' })),
       browserTimezone: t.Optional(t.String({ description: 'Browser timezone (fallback for x-timezone header)' })),
       targetTimezone: t.Optional(t.String({ description: 'Target timezone for event times (fallback for x-target-timezone header)' })),

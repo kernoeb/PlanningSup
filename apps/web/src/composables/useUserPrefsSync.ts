@@ -5,7 +5,7 @@ import { computed, isRef, ref, toValue, watch } from 'vue'
 
 const DEV = import.meta?.env?.DEV ?? false
 
-export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings' | 'mergeDuplicates' | 'customGroups'
+export type PrefKey = 'theme' | 'highlightTeacher' | 'showWeekends' | 'blocklist' | 'colors' | 'plannings' | 'mergeDuplicates' | 'customGroups' | 'eventFilters'
 
 export interface SyncOptions<T> {
   // Transform local value to the server payload format.

@@ -49,5 +49,6 @@ Uni calendar PWA + API (ICS→events) with offline + auth prefs sync.
 - `refreshedAt`: network=`Date.now()`; db=`plannings_backup.updated_at`.
 - `/api/ops/plannings`: `x-ops-token` must match `OPS_TOKEN` (prod: 404 if missing/invalid).
 - Jobs: `RUN_JOBS=false`, `ALLOWED_JOBS`, `JOBS_QUIET_HOURS*`.
+- Course filters (`blocklist`, `teachers`, `rooms`, `slots`+`tz`, `hidden`; shape in `packages/libs/src/event-filters.ts`) apply server-side on `/api/plannings/:fullId` and `/api/ics`.
 - `/api/ics?p=id1,id2[&blocklist=a,b]`: ICS feed for calendar apps; in-memory cache `ICS_CACHE_TTL` (s, default 300), per-IP `ICS_RATE_LIMIT` (req/min, default 60, 0 = off); 503 if a planning has no events.
 - Routes (current): `/api/ping`, `/api/plannings`, `/api/plannings/:fullId?events=true[&onlyDb=true]`, `/api/ics`, `/api/ops/plannings`, `/api/auth/*`, `/api/auth/auto-redirect/:provider`, `/config.js`.

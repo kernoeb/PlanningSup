@@ -2,6 +2,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'bun:test'
 import { Elysia } from 'elysia'
 import { treaty } from '@elysiajs/eden'
 import { flattenedPlannings } from '@api/plannings'
+import { hiddenEventKey } from '@libs/event-filters'
 
 import { getApiDbMockStores, installApiDbMock, resetApiDbMockStores } from './helpers/api-db-mock'
 
@@ -227,6 +228,20 @@ describe('Plannings routes (no util mocks, fetch+DB mocked)', () => {
     // Categories are inferred by summary/location ("CM"->lecture, "TP"->lab)
     const cats = (body.events as any[]).map((e: any) => e.categoryId)
     expect(cats.includes('lecture') || cats.includes('lab') || cats.includes('other')).toBeTrue()
+  })
+
+  it('GET /plannings/:fullId with events=true applies teacher, room, slot and one-off filters', async () => {
+    fetchMode = 'ok'
+    const uids = async (query: string) => {
+      const res = await app.handle(new Request(`http://local/plannings/${encodeURIComponent(targetFullId)}?events=true&${query}`))
+      return ((await res.json()).events as any[]).map((e: any) => e.uid)
+    }
+    expect(await uids('teachers=basics')).toEqual(['evt-2', 'evt-3'])
+    expect(await uids('rooms=room%2042')).toEqual(['evt-1', 'evt-2'])
+    expect(await uids(`hidden=${hiddenEventKey('Programming TP', new Date('2025-01-02T08:00:00Z'))},unknown`)).toEqual(['evt-1', 'evt-3'])
+    // Thursday 2 January 2025, 09:00 to 11:00 in Paris
+    expect(await uids(`slots=${encodeURIComponent('4-1000-1030')}`)).toEqual(['evt-1', 'evt-3'])
+    expect(await uids(`blocklist=history&slots=4-1000-1030&tz=${encodeURIComponent('America/New_York')}`)).toEqual(['evt-1', 'evt-2'])
   })
 
   it('writes through backup asynchronously when network succeeds', async () => {

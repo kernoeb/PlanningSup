@@ -1,4 +1,7 @@
+import type { EventFilters, TimeSlot } from '@libs/event-filters'
+import { emptyEventFilters, eventFiltersToQuery, hiddenEventKey, MAX_HIDDEN_EVENTS, normalizeEventFilters } from '@libs/event-filters'
 import { createSharedComposable, useLocalStorage } from '@vueuse/core'
+import { resolveTimezone } from '@web/composables/useTimezone'
 import { useUserPrefsSync } from '@web/composables/useUserPrefsSync'
 import { computed } from 'vue'
 
@@ -101,6 +104,15 @@ function encodeCustomGroupsToString(groups: CustomGroup[]): string {
   const normalized = normalizeCustomGroups(groups).map(g => ({ id: g.id, name: g.name, plannings: g.plannings }))
   return JSON.stringify(normalized)
 }
+function parseAndNormalizeEventFilters(raw: unknown): EventFilters | null {
+  if (typeof raw !== 'string') return null
+  try {
+    return normalizeEventFilters(JSON.parse(raw || '{}'))
+  } catch {
+    return null
+  }
+}
+
 function parseAndNormalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] | null {
   if (typeof raw !== 'string') return null
   try {
@@ -120,6 +132,7 @@ function parseAndNormalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] | 
  *   - showWeekends: boolean
  *   - mergeDuplicates: boolean
  *   - customGroups: CustomGroup[] (synced as a JSON string in user prefs)
+ *   - eventFilters: EventFilters (teachers, rooms, time slots, hidden courses; synced as a JSON string)
  * - Exposes:
  *   - queryParams: Record<string, string> matching backend expectation
  *   - weekNDays: number (7 when showWeekends, otherwise 5)
@@ -163,15 +176,35 @@ export function useSettings() {
   // 7) Save custom planning groups
   const customGroups = useLocalStorage<CustomGroup[]>('settings.customGroups', [])
 
+  // 8) Course filters, applied by the API like the blocklist
+  const eventFilters = useLocalStorage<EventFilters>('settings.eventFilters', emptyEventFilters(), {
+    mergeDefaults: true,
+  })
+
   // Derived helper for calendar weekOptions.nDays
   const weekNDays = computed(() => (showWeekends.value ? 7 : 5))
+
+  /**
+   * Filter params, shared by the events requests and the ICS link.
+   * Time slots are written in the timezone the calendar shows.
+   */
+  const filterParams = computed<Record<string, string>>(() => {
+    const qp: Record<string, string> = {}
+    if (blocklist.value.length > 0) {
+      qp.blocklist = blocklist.value.join(',')
+    }
+    const filters = normalizeEventFilters(eventFilters.value)
+    // Read the timezone only with slots, so changing it does not reload every planning.
+    const tz = filters.slots.length > 0 ? resolveTimezone(targetTimezone.value) : ''
+    return { ...qp, ...eventFiltersToQuery(filters, tz) }
+  })
 
   /**
    * Computed query params to be appended to backend requests.
    * Note: Colors are client-side only and are not sent to the backend.
    * Shape:
    * - highlightTeacher=true            (only when true)
-   * - blocklist=a,b,c                  (only when non-empty)
+   * - blocklist, teachers, rooms, slots, tz, hidden (see filterParams)
    */
   const queryParams = computed<Record<string, string>>(() => {
     const qp: Record<string, string> = {}
@@ -182,11 +215,7 @@ export function useSettings() {
       qp.highlightTeacher = 'true'
     }
 
-    if (blocklist.value.length > 0) {
-      qp.blocklist = blocklist.value.join(',')
-    }
-
-    return qp
+    return { ...qp, ...filterParams.value }
   })
 
   /**
@@ -206,6 +235,19 @@ export function useSettings() {
       plannings,
     }
     customGroups.value.push(customGroup)
+  }
+
+  function addTimeSlot(slot: TimeSlot) {
+    eventFilters.value = normalizeEventFilters({ ...eventFilters.value, slots: [...eventFilters.value.slots, slot] })
+  }
+
+  // Past hidden courses are dropped here, so the list and the ICS link stay short.
+  function hideEventOnce(event: { title: string, start: Date }) {
+    const now = Date.now()
+    const key = hiddenEventKey(event.title, event.start)
+    const hidden = eventFilters.value.hidden.filter(h => h.key !== key && Date.parse(h.start) >= now - 24 * 60 * 60 * 1000)
+    hidden.push({ key, title: event.title, start: event.start.toISOString() })
+    eventFilters.value = { ...eventFilters.value, hidden: hidden.slice(-MAX_HIDDEN_EVENTS) }
   }
 
   // Local-first sync to DB for user preferences (debounced, only on actual changes)
@@ -270,6 +312,16 @@ export function useSettings() {
     debounce: 50,
   })
 
+  // eventFilters (stored in DB as JSON string)
+  syncPref('eventFilters', eventFilters, {
+    toServer: v => JSON.stringify(normalizeEventFilters(v)),
+    normalizeLocal: v => normalizeEventFilters(v),
+    normalizeServer: raw => parseAndNormalizeEventFilters(raw),
+    fromServerToLocal: raw => parseAndNormalizeEventFilters(raw),
+    setLocal: v => (eventFilters.value = v),
+    debounce: 250,
+  })
+
   // colors (stored in DB as JSON string)
   syncPref('colors', colors, {
     toServer: v => encodeColorsToString(v),
@@ -298,14 +350,18 @@ export function useSettings() {
     showWeekends,
     mergeDuplicates,
     customGroups,
+    eventFilters,
 
     // derived
+    filterParams,
     queryParams,
     weekNDays,
 
     // helpers
     getColorFor,
     addCustomGroup,
+    addTimeSlot,
+    hideEventOnce,
   }
 }
 export const useSharedSettings = createSharedComposable(useSettings)

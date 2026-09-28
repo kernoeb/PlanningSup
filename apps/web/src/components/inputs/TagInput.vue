@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, useId } from 'vue'
 
 defineOptions({ name: 'TagInput' })
 
@@ -17,6 +17,8 @@ const emit = defineEmits<{
 }>()
 
 const inputValue = ref('')
+// Several inputs can share a page, so the helper id must be unique.
+const helperId = useId()
 
 function normalizeToken(token: string) {
   return token.trim()
@@ -105,7 +107,7 @@ function onPaste(e: ClipboardEvent) {
     <!-- Input -->
     <input
       v-model="inputValue"
-      :aria-describedby="helper ? 'tag-helper' : undefined"
+      :aria-describedby="helper ? helperId : undefined"
       aria-label="Add tag"
       autocapitalize="off"
       autocomplete="off"
@@ -119,7 +121,7 @@ function onPaste(e: ClipboardEvent) {
       @paste="onPaste"
     >
 
-    <p v-if="helper" id="tag-helper" class="text-xs text-base-content/60 mt-1">
+    <p v-if="helper" :id="helperId" class="text-xs text-base-content/60 mt-1">
       {{ helper }}
     </p>
   </div>

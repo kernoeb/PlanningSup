@@ -2,6 +2,7 @@ import type { CalEvent } from '@api/utils/events'
 import config from '@api/config'
 import { flattenedPlannings, plannings } from '@api/plannings'
 import { getClientIp } from '@api/utils/client-ip'
+import { eventFilterRulesKey, parseEventFilterQuery, parseList } from '@api/utils/event-filters'
 import { getFormattedEvents, resolveEvents } from '@api/utils/events'
 import { buildIcsCalendar, FixedWindowRateLimiter, TtlCache } from '@api/utils/ics'
 import { elysiaLogger } from '@api/utils/logger'
@@ -14,7 +15,7 @@ const cacheTtlMs = config.ics.cacheTtl * 1000
 
 // Events are cached per planning, so upstream calls stay bounded whatever combination is asked.
 const eventsCache = new TtlCache<CalEvent[]>(cacheTtlMs, 2000)
-// The blocklist makes feed keys unbounded, so also cap the total length of cached feeds.
+// Filters make feed keys unbounded, so also cap the total length of cached feeds.
 const feedCache = new TtlCache<string>(cacheTtlMs, 1000, { maxWeight: 200_000_000, weigh: body => body.length })
 const rateLimiter = new FixedWindowRateLimiter(config.ics.rateLimit, 60_000)
 
@@ -31,11 +32,6 @@ async function getPlanningEvents(planning: { url: string, fullId: string }) {
   return result.events
 }
 
-function parseList(raw: string | undefined, lowercase = false) {
-  const values = (raw ?? '').split(',').map(s => (lowercase ? s.trim().toLowerCase() : s.trim())).filter(s => s.length > 0)
-  return [...new Set(values)].sort()
-}
-
 export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
   .get('/', async ({ query, request, server, status, set }) => {
     const requested = parseList(query.p)
@@ -49,8 +45,8 @@ export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
     if (fullIds.length === 0) return status(404, { error: 'Planning not found', plannings: unknown })
     if (unknown.length > 0) elysiaLogger.info('ICS feed skips unknown plannings {unknown}', { unknown })
 
-    const blocklist = parseList(query.blocklist, true)
-    const cacheKey = `${fullIds.join(',')}|${blocklist.join(',')}`
+    const filters = parseEventFilterQuery(query)
+    const cacheKey = `${fullIds.join(',')}|${eventFilterRulesKey(filters)}`
     const icsHeaders = {
       'content-type': 'text/calendar; charset=utf-8',
       'content-disposition': 'inline; filename="planningsup.ics"',
@@ -80,7 +76,7 @@ export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
     }
 
     const events = selected.flatMap((planning, i) => getFormattedEvents(planning.id, results[i]!, {
-      blocklist,
+      filters,
       highlightTeacher: false,
       localeUtils: null,
     }))
@@ -97,7 +93,12 @@ export default new Elysia({ prefix: '/ics', tags: ['Plannings'] })
   }, {
     query: t.Object({
       p: t.Optional(t.String({ description: 'Comma-separated list of full planning IDs' })),
-      blocklist: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events' })),
+      blocklist: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by title' })),
+      teachers: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by description (teacher)' })),
+      rooms: t.Optional(t.String({ description: 'Comma-separated list of keywords to filter out events by location' })),
+      slots: t.Optional(t.String({ description: 'Comma-separated weekly time slots to filter out, as weekday-HHmm-HHmm (1 = Monday), e.g. "4-1400-1800"' })),
+      tz: t.Optional(t.String({ description: 'Timezone of the time slots (default: Europe/Paris)' })),
+      hidden: t.Optional(t.String({ description: 'Comma-separated list of single events to filter out, as keys from hiddenEventKey (hash of title and start)' })),
     }),
     detail: {
       summary: 'Get plannings as an ICS feed',
