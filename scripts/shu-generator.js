@@ -3,56 +3,161 @@
  * Reads planning JSON files and replaces URLs in place with generated .shu URLs
  *
  * Usage:
- *   node shu-generator.js [filename]
+ *   node shu-generator.js <filename> [--domain <url>] [--cookie <cookie>] [--project <id>]
  *
  * Examples:
- *   node shu-generator.js               # Process xxxx.json (default)
- *   node shu-generator.js xxxx.json    # Process xxxx.json explicitly
+ *   node shu-generator.js xxxx.json
+ *   node shu-generator.js ensea.json --domain https://ade.ensea.fr --cookie 'JSESSIONID=...' --project 3
+ *
+ * Options (each can also be set in CONFIG below or with ADE_DOMAIN / ADE_COOKIE):
+ *   --domain   ADE host, e.g. https://planning.univ-xxxx.fr
+ *   --cookie   cookie of a logged-in ADE session (copy it from the browser)
+ *   --project  ADE projectId to use instead of the one in each URL (needed after a year rollover)
  *
  * The script will:
  * 1. Read the specified JSON file from resources/plannings/
- * 2. Extract project IDs from URLs with pattern: resources=123
- * 3. Call the GWT RPC API to generate .shu URLs
- * 4. Replace the original URLs in place
- * 5. Create a backup file with .backup extension
+ * 2. Extract the resource ids and the projectId from URLs like: resources=123,456&projectId=3
+ * 3. Read the GWT method name and hashes from the server, so old and new ADE versions both work
+ * 4. Call the GWT RPC API to generate .shu URLs
+ * 5. Replace the original URLs in place
+ * 6. Create a backup file with .backup extension
  */
 
+import { randomBytes } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
-import axios from 'axios'
+import { parseArgs } from 'node:util'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const { values: args, positionals } = parseArgs({
+  allowPositionals: true,
+  options: {
+    domain: { type: 'string' },
+    cookie: { type: 'string' },
+    project: { type: 'string' },
+  },
+})
+
 // Configuration constants
 const CONFIG = {
   // Server configuration
-  DOMAIN: 'https://planning.xxxx-xxxx.fr',
-  COOKIE: 'JSESSIONID=xxxxx',
-  GWT_PERMUTATION: 'EF3D83F3B44FED6FC7C6AD129C70B9DA', // idk what this is
+  DOMAIN: args.domain || process.env.ADE_DOMAIN || 'https://planning.xxxx-xxxx.fr',
+  COOKIE: args.cookie || process.env.ADE_COOKIE || 'JSESSIONID=xxxxx',
 
-  // API endpoints
-  RPC_ENDPOINT: '/direct/gwtdirectplanning/CorePlanningServiceProxy',
+  // Values of the old ADE build, used when the server does not let us read them
+  LEGACY: {
+    PERMUTATION: 'EF3D83F3B44FED6FC7C6AD129C70B9DA',
+    CORE_POLICY: 'AB6CBED41BD6D0AD629E9C452786823C',
+    GET_URL_METHOD: 'method9getGeneratedUrl',
+    SESSION_ID: 'ZptuO4Q',
+  },
 
-  // GWT RPC payload template (DOMAIN and PROJECT_ID will be replaced)
-  RPC_PAYLOAD_TEMPLATE: '7|0|11|DOMAIN/direct/gwtdirectplanning/|AB6CBED41BD6D0AD629E9C452786823C|com.adesoft.gwt.core.client.rpc.CorePlanningServiceProxy|method9getGeneratedUrl|J|java.util.List|java.lang.String/2004016611|java.util.Date/3385151746|java.lang.Integer/3438268394|java.util.ArrayList/4159755760|ical|1|2|3|4|7|5|6|7|8|8|9|9|ZptuO4Q|10|1|9|PROJECT_ID|11|8|Zpq2QmA|8|ZqJvzGA|9|1|9|8|',
+  // GWT encodes dates as base64 milliseconds
+  START_DATE: 'Zpq2QmA',
+  END_DATE: 'ZqJvzGA',
 
   // Request settings
   REQUEST_DELAY_MS: 100,
   RETRY_DELAY_MS: 500,
 
   // File patterns
-  URL_PATTERN: /resources=(\d+)/,
+  RESOURCES_PATTERN: /resources=([\d,]+)/,
+  PROJECT_PATTERN: /projectId=(\d+)/,
   SHU_RESPONSE_PATTERN: /\/\/OK\[1,\["([^"]+\.shu)"\]/,
   MAX_RETRIES: 10,
 }
 
-// Function to extract projectId from URL
+const GWT_BASE = () => `${CONFIG.DOMAIN}/direct/gwtdirectplanning`
+const BASE64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789$_'
+
+// Build details read from the server, or the legacy values
+let build = null
+// One registered session id per projectId
+const sessions = new Map()
+
+// Newer ADE versions rename the RPC method and change the hashes, so read them from the client code.
+async function detectBuild() {
+  const legacy = {
+    permutation: CONFIG.LEGACY.PERMUTATION,
+    corePolicy: CONFIG.LEGACY.CORE_POLICY,
+    directPolicy: null,
+    getUrlMethod: CONFIG.LEGACY.GET_URL_METHOD,
+    detected: false,
+  }
+  try {
+    const get = url => fetch(url).then(r => r.text())
+    const loader = await get(`${GWT_BASE()}/gwtdirectplanning.nocache.js`)
+    const permutation = loader.match(/'([0-9A-F]{32})'/)?.[1]
+    if (!permutation) return legacy
+    const client = await get(`${GWT_BASE()}/${permutation}.cache.html`)
+    const getUrlMethod = client.match(/method\d+getGeneratedUrl/)?.[0]
+    const corePolicy = client.match(/'CorePlanningServiceProxy','([0-9A-F]{32})'/)?.[1]
+    const directPolicy = client.match(/'DirectPlanningServiceProxy','([0-9A-F]{32})'/)?.[1] ?? null
+    if (!getUrlMethod || !corePolicy) return legacy
+    return { permutation, corePolicy, directPolicy, getUrlMethod, detected: true }
+  } catch (error) {
+    console.log(`Could not read the GWT build (${error.message}), using legacy values.`)
+    return legacy
+  }
+}
+
+async function rpc(service, data) {
+  const response = await fetch(`${GWT_BASE()}/${service}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'text/x-gwt-rpc; charset=UTF-8',
+      'x-gwt-permutation': build.permutation,
+      'x-gwt-module-base': `${GWT_BASE()}/`,
+      'Cookie': CONFIG.COOKIE,
+    },
+    body: data,
+  })
+  return response.text()
+}
+
+// Newer ADE versions only accept ids that the web client registered with a login, then a project load.
+async function registerSession(projectId) {
+  if (!build.detected || !build.directPolicy) return CONFIG.LEGACY.SESSION_ID
+
+  const sessionId = `a${Array.from(randomBytes(6), b => BASE64[b % 62]).join('')}`
+  const service = 'com.adesoft.gwt.directplan.client.rpc.DirectPlanningServiceProxy'
+  const header = `${GWT_BASE()}/|${build.directPolicy}|${service}`
+  try {
+    const login = await rpc(
+      'DirectPlanningServiceProxy',
+      `7|0|11|${header}|method1login|J|com.adesoft.gwt.core.client.rpc.data.LoginRequest/3705388826|java.lang.String/2004016611|Z|com.adesoft.gwt.directplan.client.rpc.data.DirectLoginRequest/635437471||fr|1|2|3|4|4|5|6|7|8|${sessionId}|9|0|10|0|1|1|10|10|-1|0|0|11|0|`,
+    )
+    if (!login.startsWith('//OK')) throw new Error(login.slice(0, 120))
+    const load = await rpc(
+      'DirectPlanningServiceProxy',
+      `7|0|7|${header}|method13loadProject|J|I|Z|1|2|3|4|3|5|6|7|${sessionId}|${projectId}|1|`,
+    )
+    if (!load.startsWith('//OK')) throw new Error(load.slice(0, 120))
+    return sessionId
+  } catch (error) {
+    console.log(`Could not register a session (${error.message}), using the legacy session id.`)
+    return CONFIG.LEGACY.SESSION_ID
+  }
+}
+
+async function sessionFor(projectId) {
+  if (!sessions.has(projectId)) sessions.set(projectId, await registerSession(projectId))
+  return sessions.get(projectId)
+}
+
+// Function to extract the resource ids from a URL: resources=12,34 gives ['12', '34']
+function extractResourceIds(url) {
+  const match = url.match(CONFIG.RESOURCES_PATTERN)
+  return match ? match[1].split(',') : null
+}
+
+// The project of the URL, unless --project overrides it. ADE 6 plannings use project 1 by default.
 function extractProjectId(url) {
-  const match = url.match(CONFIG.URL_PATTERN)
-  return match ? match[1] : null
+  return args.project || url.match(CONFIG.PROJECT_PATTERN)?.[1] || '1'
 }
 
 // Some responses return /plannings/.shu (missing filename); detect so we can retry.
@@ -60,26 +165,36 @@ function isIncompleteShuUrl(url) {
   return typeof url === 'string' && url.includes('/plannings/.shu')
 }
 
-// Function to make the curl request and get .shu URL
-async function getShuUrl(projectId) {
-  const url = `${CONFIG.DOMAIN}${CONFIG.RPC_ENDPOINT}`
+// GWT RPC body: a string table, then the type and value of each argument.
+function buildPayload(sessionId, resourceIds, projectId) {
+  const ids = resourceIds.map(id => `9|${id}`).join('|')
+  return [
+    '7|0|11',
+    `${GWT_BASE()}/`,
+    build.corePolicy,
+    'com.adesoft.gwt.core.client.rpc.CorePlanningServiceProxy',
+    build.getUrlMethod,
+    'J',
+    'java.util.List',
+    'java.lang.String/2004016611',
+    'java.util.Date/3385151746',
+    'java.lang.Integer/3438268394',
+    'java.util.ArrayList/4159755760',
+    'ical',
+    '1|2|3|4|7|5|6|7|8|8|9|9',
+    sessionId,
+    `10|${resourceIds.length}|${ids}`,
+    `11|8|${CONFIG.START_DATE}|8|${CONFIG.END_DATE}|9|${projectId}|9|8|`,
+  ].join('|')
+}
 
-  const headers = {
-    'content-type': 'text/x-gwt-rpc; charset=UTF-8',
-    'x-gwt-permutation': CONFIG.GWT_PERMUTATION,
-    'Cookie': CONFIG.COOKIE,
-  }
-
-  // Replace DOMAIN and PROJECT_ID with actual values in the data payload
-  const data = CONFIG.RPC_PAYLOAD_TEMPLATE
-    .replace('DOMAIN', CONFIG.DOMAIN)
-    .replace('PROJECT_ID', projectId)
+// Function to make the request and get the .shu URL
+async function getShuUrl(resourceIds, projectId) {
+  const sessionId = await sessionFor(projectId)
+  const data = buildPayload(sessionId, resourceIds, projectId)
 
   try {
-    const response = await axios.post(url, data, { headers })
-
-    // Parse the response to extract the .shu URL
-    const responseText = response.data
+    const responseText = await rpc('CorePlanningServiceProxy', data)
 
     // Look for the pattern //OK[1,["https://...shu"],...
     const match = responseText.match(CONFIG.SHU_RESPONSE_PATTERN)
@@ -87,12 +202,12 @@ async function getShuUrl(projectId) {
     if (match) {
       return match[1]
     } else {
-      console.log(`No .shu URL found in response for projectId ${projectId}`)
+      console.log(`No .shu URL found in response for resources ${resourceIds.join(',')}`)
       console.log('Response:', responseText)
       return null
     }
   } catch (error) {
-    console.error(`Error fetching .shu URL for projectId ${projectId}:`, error.message)
+    console.error(`Error fetching .shu URL for resources ${resourceIds.join(',')}:`, error.message)
     return null
   }
 }
@@ -104,14 +219,15 @@ function delay(ms) {
 // Function to recursively process and replace URLs in the planning structure
 async function processEdtUrls(planningObject, stats) {
   if (planningObject.url) {
-    const projectId = extractProjectId(planningObject.url)
+    const resourceIds = extractResourceIds(planningObject.url)
 
-    if (projectId) {
-      console.log(`Processing ${planningObject.title} (ID: ${planningObject.id}) with projectId: ${projectId}`)
+    if (resourceIds) {
+      const projectId = extractProjectId(planningObject.url)
+      console.log(`Processing ${planningObject.title} (ID: ${planningObject.id}) with resources: ${resourceIds.join(',')}`)
 
       let shuUrl = null
       for (let attempt = 1; attempt <= CONFIG.MAX_RETRIES; attempt++) {
-        const candidate = await getShuUrl(projectId)
+        const candidate = await getShuUrl(resourceIds, projectId)
 
         if (candidate && !isIncompleteShuUrl(candidate)) {
           shuUrl = candidate
@@ -139,16 +255,18 @@ async function processEdtUrls(planningObject, stats) {
 
       // Add a small delay to avoid overwhelming the server
       await delay(CONFIG.REQUEST_DELAY_MS)
-    } else {
-      console.log(`Could not extract projectId from URL: ${planningObject.url}`)
+    } else if (!planningObject.url.endsWith('.shu')) {
+      console.log(`Could not extract resources from URL: ${planningObject.url}`)
       stats.failed++
     }
   }
 
   // Recursively process nested edts
-  if (planningObject.edts && Array.isArray(planningObject.edts)) {
-    for (const edt of planningObject.edts) {
-      await processEdtUrls(edt, stats)
+  for (const key of ['edts', 'children']) {
+    if (Array.isArray(planningObject[key])) {
+      for (const edt of planningObject[key]) {
+        await processEdtUrls(edt, stats)
+      }
     }
   }
 }
@@ -157,9 +275,9 @@ async function processEdtUrls(planningObject, stats) {
 async function main() {
   try {
     // Get filename from command line argument
-    const filename = process.argv[2]
+    const filename = positionals[0]
     if (!filename) {
-      console.error('Usage: node shu-generator.js [filename]')
+      console.error('Usage: node shu-generator.js <filename> [--domain <url>] [--cookie <cookie>] [--project <id>]')
       process.exit(1)
     }
 
@@ -174,6 +292,10 @@ async function main() {
     const planningData = JSON.parse(jsonContent)
 
     console.log(`Reading ${filename}...`)
+    build = await detectBuild()
+    console.log(build.detected
+      ? `Detected ADE build: ${build.getUrlMethod}`
+      : `Using legacy ADE build: ${build.getUrlMethod}`)
     console.log('Starting URL replacement process...\n')
 
     // Statistics tracking
@@ -211,4 +333,4 @@ async function main() {
 // Run the script
 main()
 
-export { extractProjectId, getShuUrl }
+export { extractProjectId, extractResourceIds, getShuUrl }
