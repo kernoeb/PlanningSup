@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@better-auth/passkey": "catalog:",
-    "@tauri-apps/plugin-http": "2.6.0",
+    "@tauri-apps/plugin-http": "2.8.0",
     "elysia": "catalog:"
   },
   "devDependencies": {
     "@elysiajs/eden": "catalog:",
-    "@tauri-apps/api": "2.11.1",
+    "@tauri-apps/api": "2.12.1",
     "better-auth": "catalog:",
     "config": "workspace:*",
     "typescript": "catalog:dev"
