@@ -332,9 +332,9 @@ function getCategoryId(id: string, event: CalEvent, options: {
     return 'no-teacher'
   } else if (CM_WORD_RE.test(event.summary) || event.summary.toUpperCase().includes('AMPHI') || event.location.toUpperCase().includes('AMPHI')) {
     return 'lecture'
-  } else if (TP_WORD_RE.test(event.summary) || TP_WORD_RE.test(event.description) || event.summary.includes('TPi') || event.summary.includes('TDi') || SUBGROUP_RE.test(event.summary.trim())) {
+  } else if (TP_WORD_RE.test(event.summary) || event.summary.includes('TPi') || event.summary.includes('TDi') || SUBGROUP_RE.test(event.summary.trim())) {
     return 'lab'
-  } else if ((TD_WORD_RE.test(event.summary) || TD_WORD_RE.test(event.description) || event.location.includes('V-B') || GROUP_RE.test(event.summary.trim())) && !MODULE_CODE_RE.test(event.summary) && !CONTROLE_RE.test(event.summary)) {
+  } else if ((TD_WORD_RE.test(event.summary) || event.location.includes('V-B') || GROUP_RE.test(event.summary.trim())) && !MODULE_CODE_RE.test(event.summary) && !CONTROLE_RE.test(event.summary)) {
     return 'tutorial'
   } else {
     return 'other'
