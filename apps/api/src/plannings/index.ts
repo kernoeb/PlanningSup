@@ -73,6 +73,9 @@ for await (const file of glob.scan({
   cwd: planningsLocation,
   onlyFiles: true,
   absolute: true,
+  // Follow symlinks so plannings mounted via Kubernetes ConfigMap volumes
+  // (each file is a symlink to ..data/<file>) are discovered.
+  followSymlinks: true,
 })) {
   const parsed = PlanningSchema.parse(await Bun.file(file).json())
   const id = path.basename(file, '.json')
