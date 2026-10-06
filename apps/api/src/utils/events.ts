@@ -17,9 +17,9 @@ dayjs.extend(timezone)
 const LOWERCASE_CHAR_RE = /.*[a-z].*/
 const BROKEN_APOSTROPHE_RE = /([A-Z])\?([A-Z])/gi
 const CM_WORD_RE = /\bCM\b/
-const TP_WORD_RE = /\bTP\d*\b/
+const TP_WORD_RE = /(?:\b|(?<=[\d_]))TP\d*\b/
 const SUBGROUP_RE = /\sG\d\.\d$/
-const TD_WORD_RE = /\bTD\b/
+const TD_WORD_RE = /(?:\b|(?<=[\d_]))TD\d*\b/
 const GROUP_RE = /\sG\d$/
 const MODULE_CODE_RE = /^S\d\.\d\d/
 const CONTROLE_RE = /contr[ôo]le/i
