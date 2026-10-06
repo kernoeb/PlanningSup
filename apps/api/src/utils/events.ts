@@ -17,9 +17,9 @@ dayjs.extend(timezone)
 const LOWERCASE_CHAR_RE = /.*[a-z].*/
 const BROKEN_APOSTROPHE_RE = /([A-Z])\?([A-Z])/gi
 const CM_WORD_RE = /\bCM\b/
-const TP_WORD_RE = /\bTP\d*\b/
+const TP_WORD_RE = /(?:\b|(?<=[\d_]))TP\d*\b/
 const SUBGROUP_RE = /\sG\d\.\d$/
-const TD_WORD_RE = /\bTD\b/
+const TD_WORD_RE = /(?:\b|(?<=[\d_]))TD\d*\b/
 const GROUP_RE = /\sG\d$/
 const MODULE_CODE_RE = /^S\d\.\d\d/
 const CONTROLE_RE = /contr[ôo]le/i
@@ -332,9 +332,9 @@ function getCategoryId(id: string, event: CalEvent, options: {
     return 'no-teacher'
   } else if (CM_WORD_RE.test(event.summary) || event.summary.toUpperCase().includes('AMPHI') || event.location.toUpperCase().includes('AMPHI')) {
     return 'lecture'
-  } else if (TP_WORD_RE.test(event.summary) || event.summary.includes('TPi') || event.summary.includes('TDi') || SUBGROUP_RE.test(event.summary.trim())) {
+  } else if (TP_WORD_RE.test(event.summary) || TP_WORD_RE.test(event.description) || event.summary.includes('TPi') || event.summary.includes('TDi') || SUBGROUP_RE.test(event.summary.trim())) {
     return 'lab'
-  } else if ((TD_WORD_RE.test(event.summary) || event.location.includes('V-B') || GROUP_RE.test(event.summary.trim())) && !MODULE_CODE_RE.test(event.summary) && !CONTROLE_RE.test(event.summary)) {
+  } else if ((TD_WORD_RE.test(event.summary) || TD_WORD_RE.test(event.description) || event.location.includes('V-B') || GROUP_RE.test(event.summary.trim())) && !MODULE_CODE_RE.test(event.summary) && !CONTROLE_RE.test(event.summary)) {
     return 'tutorial'
   } else {
     return 'other'
