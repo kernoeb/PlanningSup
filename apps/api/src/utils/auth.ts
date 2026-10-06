@@ -11,7 +11,7 @@ import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
 import { and, eq, ne } from 'drizzle-orm'
 import * as z from 'zod'
-import { colorsInput, customGroupsInput, eventFiltersInput, planningsInput, prefsMetaInput } from './auth-validators'
+import { userAdditionalFields } from './auth-fields'
 
 function createAuth() {
   // Skip BetterAuth initialization entirely when auth is disabled
@@ -40,71 +40,7 @@ function createAuth() {
       schema,
     }),
     user: {
-      additionalFields: {
-        theme: {
-          type: 'string',
-          validator: {
-            input: z.enum(['dark', 'light', 'dracula', 'auto']).optional(),
-          },
-        },
-        highlightTeacher: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        showWeekends: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        mergeDuplicates: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        blocklist: {
-          type: 'string[]',
-          validator: { input: z.array(z.string()).optional() },
-        },
-        plannings: {
-          type: 'string[]',
-          validator: {
-            input: planningsInput,
-          },
-        },
-        customGroups: {
-          // Stored as a JSON string for type stability across clients.
-          // Shape: Array<{ id: string; name: string; plannings: string[] }>
-          type: 'string',
-          validator: {
-            input: customGroupsInput,
-          },
-        },
-        eventFilters: {
-          // Stored as a JSON string, like customGroups.
-          // Shape: { teachers: string[]; rooms: string[]; slots: TimeSlot[]; hidden: HiddenEvent[] } (see @libs/event-filters)
-          type: 'string',
-          validator: {
-            input: eventFiltersInput,
-          },
-        },
-        colors: {
-          type: 'string',
-          validator: {
-            // Record<string, string>
-            input: colorsInput,
-          },
-        },
-        prefsMeta: {
-          type: 'string',
-          validator: {
-            // Authoritative server-side timestamping:
-            // - Allowed keys only
-            // - If value is a number, keep it as-is
-            // - If value is not a number, stamp with Date.now()
-            // - Always return normalized JSON string
-            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups' | 'eventFilters', number>
-            input: prefsMetaInput,
-          },
-        },
-      },
+      additionalFields: userAdditionalFields,
     },
     session: {
       // expires in 30 days

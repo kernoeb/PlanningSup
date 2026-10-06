@@ -24,6 +24,7 @@
       "@elysiajs/eden": "1.4.9",
       "zod": "4.6.5",
       "@better-auth/passkey": "1.7.7",
+      "auth": "1.7.7",
       "better-auth": "1.7.7"
     },
     "catalogs": {

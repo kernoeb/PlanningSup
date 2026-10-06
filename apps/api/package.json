@@ -5,7 +5,7 @@
   "module": "src/index.ts",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "generate-better-auth": "NO_MIGRATE=true bunx --bun @better-auth/cli generate --config src/utils/auth.ts --output ./src/db/schemas/auth.ts --yes",
+    "generate-better-auth": "bunx --bun auth generate --config src/utils/auth-schema.ts --adapter drizzle --dialect postgresql --output ./src/db/schemas/auth.ts --yes && bunx --bun eslint --fix src/db/schemas/auth.ts",
     "generate-drizzle": "NO_MIGRATE=true bun run --bun drizzle-kit generate",
     "lint": "bunx --bun eslint .",
     "lint-fix": "bunx --bun eslint . --fix",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
     "@simplewebauthn/server": "13.3.3",
+    "auth": "catalog:",
     "bun-types": "catalog:types",
     "config": "workspace:*",
     "drizzle-kit": "0.31.11",
