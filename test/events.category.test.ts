@@ -55,4 +55,14 @@ describe('event categoryId', () => {
   it('keeps TD summary as tutorial even when description lists TP groups', () => {
     expect(categoryFor('3D930 - SGBDR - TD', 'TP1 / TP2 / TP3\nSome teacher')).toBe('tutorial')
   })
+
+  it('does not treat "microcontrôleurs" as an exam', () => {
+    expect(categoryFor('DTI_1501_Systèmes à microcontrôleurs_1G2TD1')).toBe('tutorial')
+  })
+
+  it('still treats contrôle and contrôles as exams', () => {
+    expect(categoryFor('Contrôle Analyse TD1')).toBe('other')
+    expect(categoryFor('Contrôles continus TD2')).toBe('other')
+    expect(categoryFor('controle maths TD')).toBe('other')
+  })
 })
