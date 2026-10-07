@@ -22,7 +22,7 @@ const SUBGROUP_RE = /\sG\d\.\d$/
 const TD_WORD_RE = /(?:\b|(?<=[\d_]))TD\d*\b/
 const GROUP_RE = /\sG\d$/
 const MODULE_CODE_RE = /^S\d\.\d\d/
-const CONTROLE_RE = /contr[ôo]le/i
+const CONTROLE_RE = /\bcontr[ôo]les?\b/i
 const SALLE_JOKER_DISTANCE_RE = /(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/
 const ROOM_PREFIX_RE = /^V-/
 const GRP_RE = /Grp \d/g
