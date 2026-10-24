@@ -22,7 +22,7 @@ const emit = defineEmits<{
 const PasskeySettings = defineAsyncComponent(() => import('@web/components/settings/PasskeySettings.vue'))
 
 const dialogRef = ref<HTMLDialogElement | null>(null)
-const { colors, highlightTeacher, mergeDuplicates, showWeekends, targetTimezone } = useSharedSettings()
+const { colors, highlightTeacher, mergeDuplicates, showWeekends, splitPlannings, targetTimezone } = useSharedSettings()
 const { authEnabled, session } = useAuth()
 
 // Show passkey settings only when authenticated
@@ -175,7 +175,24 @@ watch(() => props.open, (next) => {
           </label>
         </section>
 
-        <!-- 5) Fuseau horaire cible -->
+        <!-- 5) Une colonne par planning -->
+        <section>
+          <h4 class="font-semibold mb-2">
+            Une colonne par planning
+          </h4>
+          <label class="label cursor-pointer justify-start gap-3">
+            <input
+              v-model="splitPlannings"
+              aria-describedby="split-plannings-desc" class="toggle"
+              type="checkbox"
+            >
+            <span id="split-plannings-desc" class="text-wrap">
+              Avec plusieurs plannings, chaque cours reste dans la colonne de son planning, même quand les autres sont libres.
+            </span>
+          </label>
+        </section>
+
+        <!-- 6) Fuseau horaire cible -->
         <section>
           <h4 class="font-semibold mb-2">
             Fuseau horaire cible
@@ -201,10 +218,10 @@ watch(() => props.open, (next) => {
           </div>
         </section>
 
-        <!-- 6) Masquer des cours -->
+        <!-- 7) Masquer des cours -->
         <CourseFiltersSettings />
 
-        <!-- 7) Passkeys (Security) - only shown when authenticated -->
+        <!-- 8) Passkeys (Security) - only shown when authenticated -->
         <PasskeySettings v-if="showPasskeySettings" />
       </div>
     </div>
