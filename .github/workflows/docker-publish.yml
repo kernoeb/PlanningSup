@@ -158,6 +158,25 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+
+      # Tests only run the amd64 image, so check that the arm64 binary at least starts
+      - name: Build arm64 image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/arm64
+          tags: planningsup-test:arm64
+          build-args: |
+            BUN_VERSION=${{ needs.prepare.outputs.bun_version }}
+          push: false
+          load: true
+          cache-from: type=gha
+
+      - name: Smoke test arm64 binary
+        run: docker run --rm --platform linux/arm64 -e BUN_BE_BUN=1 --entrypoint ./server planningsup-test:arm64 --version
+
       - name: Upload Docker image artifact
         uses: actions/upload-artifact@v7
         with:
@@ -523,7 +542,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           labels: ${{ needs.prepare.outputs.image_labels }}
           tags: ${{ needs.prepare.outputs.image_tags }}
           build-args: |

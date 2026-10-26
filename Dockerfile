@@ -1,5 +1,7 @@
 ARG BUN_VERSION=1
-FROM oven/bun:${BUN_VERSION} AS build
+# Build on the native platform and cross-compile the server, so arm64 needs no emulation
+FROM --platform=$BUILDPLATFORM oven/bun:${BUN_VERSION} AS build
+ARG TARGETARCH
 
 WORKDIR /app
 
@@ -30,7 +32,11 @@ COPY /packages/libs ./packages/libs
 RUN bun run lint && bun run typecheck
 
 ENV NODE_ENV=production
-RUN bun run build
+RUN case "$TARGETARCH" in \
+      amd64) export BUN_COMPILE_TARGET=bun-linux-x64 ;; \
+      arm64) export BUN_COMPILE_TARGET=bun-linux-arm64 ;; \
+    esac; \
+    bun run build
 
 COPY /resources/plannings/ /tmp/plannings/
 RUN mkdir -p ./plannings && \
