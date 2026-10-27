@@ -21,7 +21,7 @@ const dayName = computed(() => plainDate.value.toLocaleString('fr-FR', { weekday
   <div
     v-if="laneTitles?.length"
     class="planning-lane-titles"
-    :style="{ width: `${eventWidth ?? 100}%`, gridTemplateColumns: `repeat(${laneTitles.length}, minmax(0, 1fr))` }"
+    :style="{ width: `calc((100% - 1px) * ${(eventWidth ?? 100) / 100})`, gridTemplateColumns: `repeat(${laneTitles.length}, minmax(0, 1fr))` }"
   >
     <span v-for="(title, i) in laneTitles" :key="i" class="truncate" :title="title">{{ title }}</span>
   </div>

@@ -193,14 +193,35 @@ html[data-theme="dracula"] {
   flex-wrap: wrap;
 }
 
+/* In planning columns, a narrow course shows a clock icon with the time on hover, so the title keeps its room. */
+.sx__time-grid-event-inner {
+  container-type: inline-size;
+}
+
+.event-time-icon {
+  display: none;
+}
+
+@container (max-width: 160px) {
+  .has-planning-lanes .event-time-badge {
+    display: none;
+  }
+
+  .has-planning-lanes .event-time-icon {
+    display: inline-flex;
+  }
+}
+
 /* Keep the default day header layout around the custom date component. */
 .sx__week-grid__date > [data-ccid] {
   display: contents;
 }
 
+/* Same offset as the courses below: the day column's 1px border, plus their margin on large calendars. */
 .planning-lane-titles {
   display: grid;
   align-self: flex-start;
+  margin-inline-start: 1px;
   font-size: 11px;
   line-height: 1.2;
   color: var(--sx-color-neutral);
@@ -261,6 +282,10 @@ html[data-theme="dracula"] {
 .sx__calendar-wrapper:not(.sx__is-calendar-small)
   .sx__time-grid-event.sx__event {
   margin-inline-start: 1%;
+}
+
+.sx__calendar-wrapper:not(.sx__is-calendar-small) .planning-lane-titles {
+  margin-inline-start: calc(1px + 1%);
 }
 
 .custom-event-lecture {

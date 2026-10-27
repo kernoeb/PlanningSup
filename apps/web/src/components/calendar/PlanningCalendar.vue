@@ -184,7 +184,7 @@ defineExpose({ reload })
 </script>
 
 <template>
-  <div id="planning-calendar-container" ref="calendarSwipeEl" :class="{ 'is-dark': uiIsDark, 'sx-animations-enabled': animationsEnabled }">
+  <div id="planning-calendar-container" ref="calendarSwipeEl" :class="{ 'is-dark': uiIsDark, 'sx-animations-enabled': animationsEnabled, 'has-planning-lanes': laneTitles.length > 0 }">
     <ScheduleXCalendar
       v-if="calendarApp"
       :calendar-app="calendarApp"

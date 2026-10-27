@@ -211,6 +211,8 @@ export function usePlanningCalendar(options: {
       nDays: settings.weekNDays.value,
       gridHeight: responsiveGridHeight.value,
       eventWidth: eventWidth.value,
+      // Side by side, so an overlapped course does not hide its time under the next one.
+      eventOverlap: false,
     }
   }
 
