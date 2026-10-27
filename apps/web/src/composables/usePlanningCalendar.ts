@@ -1,4 +1,5 @@
 import type { CalendarEvent } from '@schedule-x/calendar'
+import type { LaneItem, LanePosition } from '@web/utils/planning-lanes'
 import type { Ref } from 'vue'
 import type { EventWithFullId } from './usePlanningData'
 import type { AllowedTimezones } from './useTimezone'
@@ -9,10 +10,11 @@ import { createCurrentTimePlugin } from '@schedule-x/current-time'
 import { createEventsServicePlugin } from '@schedule-x/events-service'
 import { mergeLocales, translations } from '@schedule-x/translations'
 
-import { onKeyStroke, useDebounceFn, useWindowSize } from '@vueuse/core'
+import { onKeyStroke, useDebounceFn, useStyleTag, useWindowSize } from '@vueuse/core'
 
 import buildCalendarsUtil from '@web/utils/calendars'
-import { mergeDuplicateEvents } from '@web/utils/events'
+import { buildEventKey, mergeDuplicateEvents } from '@web/utils/events'
+import { computePlanningLanes, laneClassName, laneStyleSheet } from '@web/utils/planning-lanes'
 import { computed, shallowRef, unref, watch } from 'vue'
 import { useCalendarResponsiveView } from './useCalendarResponsiveView'
 import { usePlanningData } from './usePlanningData'
@@ -21,15 +23,19 @@ import { useSharedTheme } from './useTheme'
 import { useViewport } from './useViewport'
 
 const NON_WORD_DASH_RE = /[^\w-]/g
+const NO_LANES: ReadonlyMap<string, LanePosition> = new Map()
 
 function mapApiEventToCalendarEvent(
   event: EventWithFullId,
   timezone: NonNullable<AllowedTimezones>,
+  lane?: LanePosition,
 ) {
   const start = event.startDate.toTemporalInstant().toZonedDateTimeISO(timezone)
   const end = event.endDate.toTemporalInstant().toZonedDateTimeISO(timezone)
 
   const id = `${event.fullId}_${event.uid}`.replace(NON_WORD_DASH_RE, '_') // valid HTML id (querySelector)
+  const additionalClasses = [`custom-event-${event.categoryId}`]
+  if (lane) additionalClasses.push(laneClassName(lane))
   return {
     ...event,
     id,
@@ -40,7 +46,7 @@ function mapApiEventToCalendarEvent(
     _options: {
       disableDND: true,
       disableResize: true,
-      additionalClasses: [`custom-event-${event.categoryId}`],
+      additionalClasses,
     },
   } satisfies CalendarEvent
 }
@@ -149,16 +155,64 @@ export function usePlanningCalendar(options: {
     settings.mergeDuplicates.value ? mergeDuplicateEvents(planning.events.value) : planning.events.value,
   )
 
+  const eventWidth = computed(() => {
+    const view = currentView.value ?? preferredView.value
+    return isSmallScreen.value && view === 'day' ? 100 : 98
+  })
+
+  // Keyed by index in `displayedEvents`: an upstream UID can repeat, so the event id is not unique.
+  const lanePositions = computed<ReadonlyMap<string, LanePosition>>(() => {
+    const fullIds = planning.planningFullIds.value ?? []
+    if (!settings.splitPlannings.value || fullIds.length < 2) return NO_LANES
+
+    const merge = settings.mergeDuplicates.value
+    const tz = timezoneValue.value
+    const laneOf = new Map(fullIds.map((id, i) => [id, i]))
+    // A merged duplicate keeps the lanes of every planning that holds it.
+    const sharedLanes = new Map<string, number[]>()
+    if (merge) {
+      for (const e of planning.events.value) {
+        const lane = laneOf.get(e.fullId)
+        if (lane === undefined) continue
+        const key = buildEventKey(e)
+        const lanes = sharedLanes.get(key)
+        if (lanes) lanes.push(lane)
+        else sharedLanes.set(key, [lane])
+      }
+    }
+
+    const items: LaneItem[] = []
+    displayedEvents.value.forEach((e, i) => {
+      // Like Schedule X: an event that ends on another day sits in the all-day row, not in the time grid.
+      const startDay = e.startDate.toTemporalInstant().toZonedDateTimeISO(tz).toPlainDate()
+      const endDay = e.endDate.toTemporalInstant().toZonedDateTimeISO(tz).toPlainDate()
+      if (!startDay.equals(endDay)) return
+      const lane = laneOf.get(e.fullId)
+      const lanes = merge ? sharedLanes.get(buildEventKey(e)) : undefined
+      items.push({ id: String(i), start: e.startDate.getTime(), end: e.endDate.getTime(), lanes: lanes ?? (lane === undefined ? [] : [lane]) })
+    })
+    return computePlanningLanes(items, fullIds.length, 100)
+  })
+
+  const laneTitles = computed(() => {
+    if (lanePositions.value === NO_LANES) return []
+    return planning.planningFullIds.value.map(id => planning.titles.value[id] ?? '...')
+  })
+
+  useStyleTag(computed(() => laneStyleSheet(lanePositions.value.values(), eventWidth.value)), { id: 'planning-lanes' })
+
   function getMappedEvents(tz: NonNullable<AllowedTimezones>) {
-    return displayedEvents.value.map(e => mapApiEventToCalendarEvent(e, tz))
+    const lanes = lanePositions.value
+    return displayedEvents.value.map((e, i) => mapApiEventToCalendarEvent(e, tz, lanes.get(String(i))))
   }
 
   function getWeekOptions() {
-    const view = currentView.value ?? preferredView.value
     return {
       nDays: settings.weekNDays.value,
       gridHeight: responsiveGridHeight.value,
-      eventWidth: isSmallScreen.value && view === 'day' ? 100 : 98,
+      eventWidth: eventWidth.value,
+      // Side by side, so an overlapped course does not hide its time under the next one.
+      eventOverlap: false,
     }
   }
 
@@ -242,7 +296,7 @@ export function usePlanningCalendar(options: {
     void initOrUpdate()
   }, { immediate: true })
 
-  watch(displayedEvents, () => {
+  watch([displayedEvents, lanePositions], () => {
     if (calendarApp.value) {
       eventsServicePlugin.set(getMappedEvents(timezoneValue.value))
     }
@@ -402,6 +456,8 @@ export function usePlanningCalendar(options: {
     selectedEvent,
     closeEventModal,
     planningTitles: planning.titles,
+    laneTitles,
+    eventWidth,
     nbHours,
     nextPeriod,
     prevPeriod,

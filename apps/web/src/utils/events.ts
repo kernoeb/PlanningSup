@@ -18,7 +18,7 @@ function normalizeText(v: string | null | undefined): string {
   return (v ?? '').trim().toLowerCase()
 }
 
-function buildEventKey(event: EventWithFullId): string {
+export function buildEventKey(event: EventWithFullId): string {
   const start = toEpochMs(event.startDate)
   const end = toEpochMs(event.endDate)
   const summary = normalizeText(event.summary)

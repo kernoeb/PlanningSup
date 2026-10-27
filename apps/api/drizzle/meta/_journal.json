@@ -71,6 +71,13 @@
       "when": 1790624592677,
       "tag": "0009_graceful_thaddeus_ross",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1792845856222,
+      "tag": "0010_peaceful_xavin",
+      "breakpoints": true
     }
   ]
 }

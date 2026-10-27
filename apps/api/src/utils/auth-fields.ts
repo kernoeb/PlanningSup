@@ -27,6 +27,11 @@ export const userAdditionalFields = {
     required: false,
     validator: { input: z.boolean().optional() },
   },
+  splitPlannings: {
+    type: 'boolean',
+    required: false,
+    validator: { input: z.boolean().optional() },
+  },
   blocklist: {
     type: 'string[]',
     required: false,
@@ -74,7 +79,7 @@ export const userAdditionalFields = {
       // - If value is a number, keep it as-is
       // - If value is not a number, stamp with Date.now()
       // - Always return normalized JSON string
-      // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups' | 'eventFilters', number>
+      // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'splitPlannings' | 'blocklist' | 'colors' | 'plannings' | 'customGroups' | 'eventFilters', number>
       input: prefsMetaInput,
     },
   },

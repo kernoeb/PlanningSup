@@ -91,7 +91,7 @@ export const eventFiltersInput = z.string().optional().transform((val) => {
 
 export const prefsMetaInput = z.string().optional().transform((val) => {
   try {
-    const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'blocklist', 'colors', 'plannings', 'customGroups', 'eventFilters'] as const
+    const allowed = ['theme', 'highlightTeacher', 'showWeekends', 'mergeDuplicates', 'splitPlannings', 'blocklist', 'colors', 'plannings', 'customGroups', 'eventFilters'] as const
     const set = new Set<string>(allowed as unknown as string[])
     const raw = JSON.parse(val || '{}')
     if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return '{}'
