@@ -194,6 +194,11 @@ export function usePlanningCalendar(options: {
     return computePlanningLanes(items, fullIds.length, 100)
   })
 
+  const laneTitles = computed(() => {
+    if (lanePositions.value === NO_LANES) return []
+    return planning.planningFullIds.value.map(id => planning.titles.value[id] ?? '...')
+  })
+
   useStyleTag(computed(() => laneStyleSheet(lanePositions.value.values(), eventWidth.value)), { id: 'planning-lanes' })
 
   function getMappedEvents(tz: NonNullable<AllowedTimezones>) {
@@ -449,6 +454,8 @@ export function usePlanningCalendar(options: {
     selectedEvent,
     closeEventModal,
     planningTitles: planning.titles,
+    laneTitles,
+    eventWidth,
     nbHours,
     nextPeriod,
     prevPeriod,

@@ -15,8 +15,9 @@ import { useSharedSettings } from '@web/composables/useSettings'
 import { useSharedTheme } from '@web/composables/useTheme'
 import { getSupportedTimezones, resolveTimezone } from '@web/composables/useTimezone'
 import { useViewport } from '@web/composables/useViewport'
-import { computed, defineAsyncComponent, ref, useTemplateRef } from 'vue'
+import { computed, defineAsyncComponent, provide, ref, useTemplateRef } from 'vue'
 import CustomTimeGridEvent from './CustomTimeGridEvent.vue'
+import CustomWeekGridDate from './CustomWeekGridDate.vue'
 
 const settings = useSharedSettings()
 const allowedTimezones = getSupportedTimezones()
@@ -44,6 +45,8 @@ const {
   selectedEvent,
   closeEventModal,
   planningTitles,
+  laneTitles,
+  eventWidth,
 } = usePlanningCalendar({
   timezone,
   onUserInteraction: (reason) => {
@@ -165,8 +168,12 @@ const isToday = computed(() => {
   return date.equals(today)
 })
 
+provide('laneTitles', laneTitles)
+provide('eventWidth', eventWidth)
+
 const customComponents = {
   timeGridEvent: CustomTimeGridEvent,
+  weekGridDate: CustomWeekGridDate,
 }
 
 // Close dropdowns when clicking outside

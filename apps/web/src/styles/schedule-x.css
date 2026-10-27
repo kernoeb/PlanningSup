@@ -190,6 +190,29 @@ html[data-theme="dracula"] {
 
 .sx__week-grid__date {
   user-select: none;
+  flex-wrap: wrap;
+}
+
+/* Keep the default day header layout around the custom date component. */
+.sx__week-grid__date > [data-ccid] {
+  display: contents;
+}
+
+.planning-lane-titles {
+  display: grid;
+  align-self: flex-start;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--sx-color-neutral);
+}
+
+.planning-lane-titles > span {
+  padding: 0 2px;
+  text-align: center;
+}
+
+.planning-lane-titles > span + span {
+  border-left: 1px solid var(--sx-color-outline-variant);
 }
 
 @keyframes sx-slide-left {
