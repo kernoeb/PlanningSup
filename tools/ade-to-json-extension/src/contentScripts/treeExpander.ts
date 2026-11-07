@@ -4,13 +4,20 @@ import { onMessage, sendMessage } from 'webext-bridge/content-script'
 interface TreeNode {
   id: string
   title: string
-  edts?: TreeNode[]
+  children?: TreeNode[]
   url?: string
+}
+
+/** Shape of a `resources/plannings/*.json` file. */
+interface Planning {
+  title: string
+  group?: string
+  children: TreeNode[]
 }
 
 interface TreeResult {
   success: boolean
-  data?: TreeNode[]
+  data?: Planning
   error?: string
 }
 
@@ -20,6 +27,7 @@ class TreeExpander {
   private baseURL = ''
   private observer: MutationObserver | null = null
   private lastSentLabels: string[] | null = null
+  private readonly collator = new Intl.Collator('fr', { numeric: true, sensitivity: 'base' })
 
   constructor() {
     this.baseURL = `${window.location.origin}/jsp/custom/modules/plannings/anonymous_cal.jsp`
@@ -69,6 +77,19 @@ class TreeExpander {
 
   private cleanText(str: string): string {
     return this.removeAccents(str).replace(/[/&,().\s]/g, '').toLowerCase()
+  }
+
+  /**
+   * ADE stamps the academic year on many labels ("Groupe 1 26/27"). It would end up
+   * in the id, so every group would look new again next September.
+   */
+  private stripYear(str: string): string {
+    return str
+      .replace(/[\s(-]+(?:20)?\d{2}\s*[/-]\s*(?:20)?\d{2}\)?\s*$/, '')
+      // A bare "2627" is only a year when the two halves run on from each other.
+      .replace(/[\s(-]+(\d{2})(\d{2})\)?\s*$/, (match, start: string, end: string) =>
+        Number(end) === Number(start) + 1 ? '' : match)
+      .trim()
   }
 
   private async copyToClipboard(text: string): Promise<void> {
@@ -137,13 +158,34 @@ class TreeExpander {
     this.isProjectDiscoveryComplete = true
   }
 
-  private async generateAndCopyJson(startNode: Element): Promise<TreeNode[]> {
+  /**
+   * Sort siblings by title and settle their ids, so two exports of the same tree
+   * give the same file whatever order ADE walked it in.
+   */
+  private finalise(nodes: TreeNode[]): TreeNode[] {
+    const kept = nodes.filter(node => node.url || (node.children && node.children.length > 0))
+    kept.sort((a, b) => this.collator.compare(a.title, b.title))
+
+    const usedIds = new Set<string>()
+    for (const node of kept) {
+      let id = node.id
+      for (let i = 2; usedIds.has(id); i++) id = `${node.id}-${i}`
+      usedIds.add(id)
+      node.id = id
+      if (node.children)
+        node.children = this.finalise(node.children)
+    }
+
+    return kept
+  }
+
+  private async generateAndCopyJson(startNode: Element, title: string, group: string): Promise<Planning> {
     console.log('Phase 5: Parsing the DOM and generating JSON...')
 
     const folderLabel = startNode.getAttribute('aria-label') || ''
-    const result: TreeNode[] = [{ id: this.cleanText(folderLabel), title: folderLabel, edts: [] }]
+    const root: TreeNode = { id: '', title: folderLabel, children: [] }
 
-    const path = [result[0]]
+    const path = [root]
     const parentLevel = Number.parseInt(startNode.getAttribute('aria-level') || '0', 10)
     let currentNode = startNode.nextElementSibling
 
@@ -158,7 +200,7 @@ class TreeExpander {
       }
 
       const currentParent = path[path.length - 1]
-      if (!currentParent || !Array.isArray(currentParent.edts)) {
+      if (!currentParent || !Array.isArray(currentParent.children)) {
         console.error('Parsing Error: Could not find valid parent for node:', currentNode)
         currentNode = currentNode.nextElementSibling
         continue
@@ -170,15 +212,15 @@ class TreeExpander {
         continue
       }
 
+      const cleanLabel = this.stripYear(childLabel)
       const isFolder = currentNode.querySelector('img.x-tree3-node-joint[style*="url("]') !== null
 
       if (isFolder) {
-        const newFolder: TreeNode = { id: this.cleanText(childLabel), title: childLabel, edts: [] }
-        currentParent.edts!.push(newFolder)
+        const newFolder: TreeNode = { id: this.cleanText(cleanLabel), title: cleanLabel, children: [] }
+        currentParent.children.push(newFolder)
         path.push(newFolder)
       }
       else {
-        const leafNode: TreeNode = { id: this.cleanText(childLabel), title: childLabel }
         const idBearingElement = currentNode.querySelector('div.x-tree3-node')
         const childIdString = idBearingElement?.id.match(/_(\d+)$/)?.[1]
         const childId = childIdString ? Number.parseInt(childIdString, 10) : 0
@@ -190,21 +232,26 @@ class TreeExpander {
         if (!this.isProjectDiscoveryComplete) {
           await this.findValidProjectId(childId)
         }
-        leafNode.url = `${this.baseURL}?resources=${childId}&projectId=${this.discoveredProjectId}&calType=ical&firstDate={date-start}&lastDate={date-end}`
 
-        if (!leafNode.url) {
-          throw new Error(`Unable to generate URL for "${childLabel}". Please refresh the page and try again.`)
-        }
-
-        currentParent.edts!.push(leafNode)
+        // A label made only of separators would slug to nothing; fall back to the resource id.
+        currentParent.children.push({
+          id: this.cleanText(cleanLabel) || `r${childId}`,
+          title: cleanLabel,
+          url: `${this.baseURL}?resources=${childId}&projectId=${this.discoveredProjectId}&calType=ical&firstDate={date-start}&lastDate={date-end}`,
+        })
       }
       currentNode = currentNode.nextElementSibling
     }
 
-    return result
+    const children = this.finalise(root.children!)
+    if (children.length === 0) {
+      throw new Error(`No timetable found under "${folderLabel}".`)
+    }
+
+    return group ? { title, group, children } : { title, children }
   }
 
-  async expandAndCopyTree(parentLabel: string): Promise<TreeResult> {
+  async expandAndCopyTree(parentLabel: string, title: string, group: string): Promise<TreeResult> {
     try {
       const scroller = document.querySelector('.x-grid3-scroller') as HTMLElement
       if (!scroller) {
@@ -237,7 +284,7 @@ class TreeExpander {
           }
           else {
             console.log(`...Parent "${parentLabel}" is a leaf node.`)
-            const result = await this.generateAndCopyJson(initialParent)
+            const result = await this.generateAndCopyJson(initialParent, title, group)
             return { success: true, data: result }
           }
         }
@@ -317,9 +364,9 @@ class TreeExpander {
           console.warn('...Could not find priming element. Parsing may be incomplete.')
         }
 
-        const result = await this.generateAndCopyJson(initialParent)
+        const result = await this.generateAndCopyJson(initialParent, title, group)
 
-        const jsonString = JSON.stringify(result, null, 2)
+        const jsonString = `${JSON.stringify(result, null, 2)}\n`
         console.log('--- Generated JSON ---')
         console.log(jsonString)
 
@@ -364,8 +411,9 @@ onMessage('expandTree', async (payload) => {
     treeExpander = new TreeExpander()
   }
 
-  const parent = ((payload?.data as { parentLabel?: string } | null)?.parentLabel) ?? ''
-  const result = await treeExpander.expandAndCopyTree(parent)
+  const data = payload?.data as { parentLabel?: string, title?: string, group?: string } | null
+  const parent = data?.parentLabel ?? ''
+  const result = await treeExpander.expandAndCopyTree(parent, data?.title?.trim() || parent, data?.group?.trim() ?? '')
   return result
 })
 

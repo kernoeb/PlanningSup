@@ -396,11 +396,6 @@
                   "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=990&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "bp3",
-                  "title": "BP3",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6347&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
                   "id": "eb1",
                   "title": "EB1",
                   "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2029&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -426,11 +421,6 @@
                   "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6314&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
-                  "id": "eg1",
-                  "title": "EG1",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2137&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
                   "id": "eg2",
                   "title": "EG2",
                   "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2218&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
@@ -439,11 +429,6 @@
                   "id": "eg3",
                   "title": "EG3",
                   "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=787&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-                },
-                {
-                  "id": "eg4",
-                  "title": "EG4",
-                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4899&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
                 },
                 {
                   "id": "gp1",
@@ -670,11 +655,6 @@
               "id": "autre",
               "title": "autre",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7617&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "autres",
-              "title": "autres",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7620&projectId=5&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         },

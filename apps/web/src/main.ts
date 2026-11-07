@@ -5,6 +5,7 @@ import App from './App.vue'
 
 import { runCookieMigrationOnce } from './utils/cookie-migration'
 import { getPlausibleAnalyticsProps } from './utils/plausible'
+import { runTimezoneWorkaroundMigrationOnce } from './utils/timezone-workaround-migration'
 
 import './style.css'
 import 'temporal-polyfill/global'
@@ -33,6 +34,7 @@ async function bootstrap() {
   } catch (err) {
     console.warn('[cookie-migration] Failed (continuing without migration):', err)
   }
+  runTimezoneWorkaroundMigrationOnce()
   createApp(App).mount('#app')
 }
 

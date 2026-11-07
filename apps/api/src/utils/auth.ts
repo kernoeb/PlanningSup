@@ -11,7 +11,7 @@ import { createAuthMiddleware } from 'better-auth/api'
 import { customSession } from 'better-auth/plugins'
 import { and, eq, ne } from 'drizzle-orm'
 import * as z from 'zod'
-import { colorsInput, customGroupsInput, planningsInput, prefsMetaInput } from './auth-validators'
+import { userAdditionalFields } from './auth-fields'
 
 function createAuth() {
   // Skip BetterAuth initialization entirely when auth is disabled
@@ -40,63 +40,7 @@ function createAuth() {
       schema,
     }),
     user: {
-      additionalFields: {
-        theme: {
-          type: 'string',
-          validator: {
-            input: z.enum(['dark', 'light', 'dracula', 'auto']).optional(),
-          },
-        },
-        highlightTeacher: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        showWeekends: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        mergeDuplicates: {
-          type: 'boolean',
-          validator: { input: z.boolean().optional() },
-        },
-        blocklist: {
-          type: 'string[]',
-          validator: { input: z.array(z.string()).optional() },
-        },
-        plannings: {
-          type: 'string[]',
-          validator: {
-            input: planningsInput,
-          },
-        },
-        customGroups: {
-          // Stored as a JSON string for type stability across clients.
-          // Shape: Array<{ id: string; name: string; plannings: string[] }>
-          type: 'string',
-          validator: {
-            input: customGroupsInput,
-          },
-        },
-        colors: {
-          type: 'string',
-          validator: {
-            // Record<string, string>
-            input: colorsInput,
-          },
-        },
-        prefsMeta: {
-          type: 'string',
-          validator: {
-            // Authoritative server-side timestamping:
-            // - Allowed keys only
-            // - If value is a number, keep it as-is
-            // - If value is not a number, stamp with Date.now()
-            // - Always return normalized JSON string
-            // Shape: Record<'theme' | 'highlightTeacher' | 'showWeekends' | 'mergeDuplicates' | 'blocklist' | 'colors' | 'plannings' | 'customGroups', number>
-            input: prefsMetaInput,
-          },
-        },
-      },
+      additionalFields: userAdditionalFields,
     },
     session: {
       // expires in 30 days
@@ -132,8 +76,9 @@ function createAuth() {
       before: createAuthMiddleware(async (ctx) => {
         const state = ctx.query?.state
         const client = ctx.query?.client // e.g. "tauri" or "extension"
+        const providerId = ctx.params?.id
 
-        if (!client && ctx.request && ctx.path === '/callback/:id' && state) {
+        if (!client && ctx.request && ctx.path === '/callback/:id' && state && providerId) {
           const data = await ctx.context.internalAdapter.findVerificationValue(state)
           if (data) {
             const parsedData = z
@@ -145,7 +90,7 @@ function createAuth() {
               const client = callbackURL.searchParams.get('client')
               if (client === 'tauri' || client === 'extension') {
                 // Redirect to our auto-redirect page, which will handle the deep link
-                const newUrl = new URL(`${ctx.context.baseURL}/auto-redirect/${ctx.params.id}`)
+                const newUrl = new URL(`${ctx.context.baseURL}/auto-redirect/${providerId}`)
                 // Copy over all search params from the original URL (ctx.request.url)
                 const originalUrl = new URL(ctx.request.url)
                 for (const [key, value] of originalUrl.searchParams.entries()) {
@@ -167,18 +112,22 @@ function createAuth() {
         prompt: 'consent',
         overrideUserInfoOnSignIn: true,
         async mapProfileToUser(profile) {
-          await db
-            .update(schema.user)
-            .set({
-              image: profile.image_url,
-            })
-            .where(
-              and(
-                eq(schema.user.email, profile.email),
-                ne(schema.user.image, profile.image_url),
-              ),
-            )
-          return profile
+          if (profile.email) {
+            await db
+              .update(schema.user)
+              .set({
+                image: profile.image_url,
+              })
+              .where(
+                and(
+                  eq(schema.user.email, profile.email),
+                  ne(schema.user.image, profile.image_url),
+                ),
+              )
+          }
+          // Only here for the image refresh above: better-auth already maps
+          // name/email/image/emailVerified, and a returned object overrides them.
+          return {}
         },
       },
       github: {

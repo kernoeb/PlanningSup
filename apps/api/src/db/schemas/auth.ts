@@ -1,5 +1,12 @@
 import { relations } from 'drizzle-orm'
-import { boolean, index, integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  index,
+  integer,
+  pgTable,
+  text,
+  timestamp,
+} from 'drizzle-orm/pg-core'
 
 export const user = pgTable('user', {
   id: text('id').primaryKey(),
@@ -15,9 +22,11 @@ export const user = pgTable('user', {
   highlightTeacher: boolean('highlight_teacher'),
   showWeekends: boolean('show_weekends'),
   mergeDuplicates: boolean('merge_duplicates'),
+  splitPlannings: boolean('split_plannings'),
   blocklist: text('blocklist').array(),
   plannings: text('plannings').array(),
   customGroups: text('custom_groups'),
+  eventFilters: text('event_filters'),
   colors: text('colors'),
   prefsMeta: text('prefs_meta'),
 })
@@ -80,25 +89,6 @@ export const verification = pgTable(
   table => [index('verification_identifier_idx').on(table.identifier)],
 )
 
-export const userRelations = relations(user, ({ many }) => ({
-  sessions: many(session),
-  accounts: many(account),
-}))
-
-export const sessionRelations = relations(session, ({ one }) => ({
-  user: one(user, {
-    fields: [session.userId],
-    references: [user.id],
-  }),
-}))
-
-export const accountRelations = relations(account, ({ one }) => ({
-  user: one(user, {
-    fields: [account.userId],
-    references: [user.id],
-  }),
-}))
-
 export const passkey = pgTable(
   'passkey',
   {
@@ -118,6 +108,26 @@ export const passkey = pgTable(
   },
   table => [index('passkey_userId_idx').on(table.userId)],
 )
+
+export const userRelations = relations(user, ({ many }) => ({
+  sessions: many(session),
+  accounts: many(account),
+  passkeys: many(passkey),
+}))
+
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(user, {
+    fields: [session.userId],
+    references: [user.id],
+  }),
+}))
+
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(user, {
+    fields: [account.userId],
+    references: [user.id],
+  }),
+}))
 
 export const passkeyRelations = relations(passkey, ({ one }) => ({
   user: one(user, {

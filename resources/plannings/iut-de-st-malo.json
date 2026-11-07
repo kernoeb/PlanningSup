@@ -6,94 +6,212 @@
       "title": "CJ",
       "children": [
         {
-          "id": "1cj",
-          "title": "Année1 S1/S2",
+          "id": "annee1",
+          "title": "Année1",
           "children": [
             {
-              "id": "g1a",
-              "title": "G1-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8159&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g1",
+              "title": "G1",
+              "children": [
+                {
+                  "id": "g1-a",
+                  "title": "G1-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROEvW8.shu"
+                },
+                {
+                  "id": "g1-b",
+                  "title": "G1-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAa4Wb.shu"
+                }
+              ]
             },
             {
-              "id": "g1b",
-              "title": "G1-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1305&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g2",
+              "title": "G2",
+              "children": [
+                {
+                  "id": "g2-a",
+                  "title": "G2-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQkX3B.shu"
+                },
+                {
+                  "id": "g2-b",
+                  "title": "G2-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wVj3P.shu"
+                }
+              ]
             },
             {
-              "id": "g2a",
-              "title": "G2-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8157&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g3",
+              "title": "G3",
+              "children": [
+                {
+                  "id": "g3-a",
+                  "title": "G3-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGdgWA.shu"
+                },
+                {
+                  "id": "g3-b",
+                  "title": "G3-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvdMY9.shu"
+                }
+              ]
             },
             {
-              "id": "g2b",
-              "title": "G2-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8156&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g3a",
-              "title": "G3-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8154&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g3b",
-              "title": "G3-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8153&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4a",
-              "title": "G4-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8151&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4b",
-              "title": "G4-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8149&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g4",
+              "title": "G4",
+              "children": [
+                {
+                  "id": "g4-a",
+                  "title": "G4-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qQMWa.shu"
+                },
+                {
+                  "id": "g4-b",
+                  "title": "G4-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6djWr.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "2cj",
-          "title": "Année2 S3/S4",
+          "id": "annee2",
+          "title": "Année2",
           "children": [
             {
-              "id": "g1a",
-              "title": "G1-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8191&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g1-aj",
+              "title": "G1 - AJ",
+              "children": [
+                {
+                  "id": "g1-a",
+                  "title": "G1-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64xxWz.shu"
+                },
+                {
+                  "id": "g1-b",
+                  "title": "G1-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomeEYM.shu"
+                }
+              ]
             },
             {
-              "id": "g1b",
-              "title": "G1-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8195&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g2-aj",
+              "title": "G2 - AJ",
+              "children": [
+                {
+                  "id": "g2-a",
+                  "title": "G2-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGoOrYJ.shu"
+                },
+                {
+                  "id": "g2-b",
+                  "title": "G2-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4dqYP.shu"
+                }
+              ]
             },
             {
-              "id": "g2a",
-              "title": "G2-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8183&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g3-ea",
+              "title": "G3 - EA",
+              "children": [
+                {
+                  "id": "g3-a",
+                  "title": "G3-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQalYa.shu"
+                },
+                {
+                  "id": "g3-b",
+                  "title": "G3-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzgNenZ.shu"
+                }
+              ]
             },
             {
-              "id": "g2b",
-              "title": "G2-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8181&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g4-ea",
+              "title": "G4 - EA",
+              "children": [
+                {
+                  "id": "g4-a",
+                  "title": "G4-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8D9jn8.shu"
+                },
+                {
+                  "id": "g4-b",
+                  "title": "G4-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvaDWv.shu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "annee3",
+          "title": "Année3",
+          "children": [
+            {
+              "id": "ajalternance",
+              "title": "AJ Alternance",
+              "children": [
+                {
+                  "id": "g4-a",
+                  "title": "G4-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5Yrpd0WO.shu"
+                },
+                {
+                  "id": "g4-b",
+                  "title": "G4-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajaynl.shu"
+                }
+              ]
             },
             {
-              "id": "g3a",
-              "title": "G3-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8177&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "ajinitial",
+              "title": "AJ Initial",
+              "children": [
+                {
+                  "id": "g3-a",
+                  "title": "G3-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgR453J.shu"
+                },
+                {
+                  "id": "g3-b",
+                  "title": "G3-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMdVn2.shu"
+                }
+              ]
             },
             {
-              "id": "g3b",
-              "title": "G3-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8173&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "eaalternance",
+              "title": "EA Alternance",
+              "children": [
+                {
+                  "id": "g2-a",
+                  "title": "G2-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WO6a2nP.shu"
+                },
+                {
+                  "id": "g2-b",
+                  "title": "G2-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjydg3B.shu"
+                }
+              ]
             },
             {
-              "id": "g4a",
-              "title": "G4-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8169&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4b",
-              "title": "G4-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8168&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "eainitial",
+              "title": "EA Initial",
+              "children": [
+                {
+                  "id": "g1-a",
+                  "title": "G1-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZapWD.shu"
+                },
+                {
+                  "id": "g1-b",
+                  "title": "G1-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGa5Y6.shu"
+                }
+              ]
             }
           ]
         }
@@ -104,94 +222,212 @@
       "title": "GEA",
       "children": [
         {
-          "id": "1gea",
-          "title": "Année1 S1/S2",
+          "id": "gea-annee1",
+          "title": "GEA - Année1",
           "children": [
             {
-              "id": "g1a",
-              "title": "G1-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8221&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g1",
+              "title": "G1",
+              "children": [
+                {
+                  "id": "g1-a",
+                  "title": "G1-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5Yrp7rWO.shu"
+                },
+                {
+                  "id": "g1-b",
+                  "title": "G1-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/NYajw8nl.shu"
+                }
+              ]
             },
             {
-              "id": "g1b",
-              "title": "G1-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8244&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g2",
+              "title": "G2",
+              "children": [
+                {
+                  "id": "g2-a",
+                  "title": "G2-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/m32krlYk.shu"
+                },
+                {
+                  "id": "g2-b",
+                  "title": "G2-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/83DJAgnx.shu"
+                }
+              ]
             },
             {
-              "id": "g2a",
-              "title": "G2-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8243&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g3",
+              "title": "G3",
+              "children": [
+                {
+                  "id": "g3-a",
+                  "title": "G3-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/qnqxwXYJ.shu"
+                },
+                {
+                  "id": "g3-b",
+                  "title": "G3-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rYB9D63x.shu"
+                }
+              ]
             },
             {
-              "id": "g2b",
-              "title": "G2-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8242&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g3a",
-              "title": "G3-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8239&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g3b",
-              "title": "G3-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8238&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4a",
-              "title": "G4-A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8236&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4b",
-              "title": "G4-B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8235&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "g4",
+              "title": "G4",
+              "children": [
+                {
+                  "id": "g4-a",
+                  "title": "G4-A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o3JMLLWr.shu"
+                },
+                {
+                  "id": "g4-b",
+                  "title": "G4-B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/EYlQw4na.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "2gea",
-          "title": "Année2 S3/S4",
+          "id": "gea-annee2",
+          "title": "GEA - Année2",
           "children": [
             {
-              "id": "g1a",
-              "title": "CG2P-A (G1-A)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8232&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "cg2pg1",
+              "title": "CG2P (G1)",
+              "children": [
+                {
+                  "id": "cg2p-ag1-a",
+                  "title": "CG2P-A (G1-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9oGWJ.shu"
+                },
+                {
+                  "id": "cg2p-bg1-b",
+                  "title": "CG2P-B (G1-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApr1Yw.shu"
+                }
+              ]
             },
             {
-              "id": "g1b",
-              "title": "CG2P-B (G1-B)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8231&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gc2fg2",
+              "title": "GC2F (G2)",
+              "children": [
+                {
+                  "id": "gc2f-ag2-a",
+                  "title": "GC2F-A (G2-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yBQYM.shu"
+                },
+                {
+                  "id": "gc2f-bg2-b",
+                  "title": "GC2F-B (G2-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35w4VnR.shu"
+                }
+              ]
             },
             {
-              "id": "g2a",
-              "title": "GC2F-A (G2-A)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8229&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gema-logg3",
+              "title": "GEMA-Log (G3)",
+              "children": [
+                {
+                  "id": "gema-bg3-b",
+                  "title": "GEMA-B (G3-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53wbN9Wy.shu"
+                },
+                {
+                  "id": "gema-log-ag3-a",
+                  "title": "GEMA-Log-A (G3-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xn0DO0n7.shu"
+                }
+              ]
             },
             {
-              "id": "g2b",
-              "title": "GC2F-B (G2-B)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8228&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gema-mdg4",
+              "title": "GEMA-MD (G4)",
+              "children": [
+                {
+                  "id": "gema-md-ag4-a",
+                  "title": "GEMA-MD-A (G4-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/53yom9nj.shu"
+                },
+                {
+                  "id": "gema-md-bg4-b",
+                  "title": "GEMA-MD-B (G4-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/x3dVwNne.shu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gea-annee3",
+          "title": "GEA - Année3",
+          "children": [
+            {
+              "id": "cg2pg1",
+              "title": "CG2P (G1)",
+              "children": [
+                {
+                  "id": "cg2p-ag1-a",
+                  "title": "CG2P-A (G1-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/5YGorAYJ.shu"
+                },
+                {
+                  "id": "cg2p-bg2-b",
+                  "title": "CG2P-B (G2-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/rY64rmWz.shu"
+                }
+              ]
             },
             {
-              "id": "g3a",
-              "title": "GEMA-Log-A (G3-A)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8220&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gc2fg2",
+              "title": "GC2F (G2)",
+              "children": [
+                {
+                  "id": "gc2f-ag1-a",
+                  "title": "GC2F-A (G1-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/mWbMwqn2.shu"
+                },
+                {
+                  "id": "gc2f-bg2-b",
+                  "title": "GC2F-B (G2-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/zWomwoYM.shu"
+                }
+              ]
             },
             {
-              "id": "g3b",
-              "title": "GEMA-B (G3-B)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8219&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gema-logg3",
+              "title": "GEMA-Log (G3)",
+              "children": [
+                {
+                  "id": "gema-log-ag3-a",
+                  "title": "GEMA-Log-A (G3-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYgRkD3J.shu"
+                },
+                {
+                  "id": "gema-log-bg3-b",
+                  "title": "GEMA-Log-B (G3-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ZYjywp3B.shu"
+                }
+              ]
             },
             {
-              "id": "g4a",
-              "title": "GEMA-MD-A (G4-A)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8215&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "g4b",
-              "title": "GEMA-MD-B (G4-B)",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8233&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "gema-mdg4",
+              "title": "GEMA-MD (G4)",
+              "children": [
+                {
+                  "id": "gema-md-ag4-a",
+                  "title": "GEMA-MD-A (G4-A)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/2YXZGDWD.shu"
+                },
+                {
+                  "id": "gema-md-bg4-b",
+                  "title": "GEMA-MD-B (G4-B)",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9WQGMpY6.shu"
+                }
+              ]
             }
           ]
         }
@@ -202,28 +438,40 @@
       "title": "GIM",
       "children": [
         {
-          "id": "but1",
+          "id": "but1fi",
           "title": "BUT1 FI",
           "children": [
             {
-              "id": "tpa",
-              "title": "BUT 1 TPA",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8142&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "but1td1",
+              "title": "BUT 1 TD1",
+              "children": [
+                {
+                  "id": "but1tpa",
+                  "title": "BUT 1 TPA",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LP193A.shu"
+                },
+                {
+                  "id": "but1tpb",
+                  "title": "BUT 1 TPB",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm60PWr.shu"
+                }
+              ]
             },
             {
-              "id": "tpb",
-              "title": "BUT 1 TPB",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8141&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tpc",
-              "title": "BUT 1 TPC",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8199&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tpd",
-              "title": "BUT1 TPD",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8217&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "but1td2",
+              "title": "BUT 1 TD2",
+              "children": [
+                {
+                  "id": "but1tpc",
+                  "title": "BUT 1 TPC",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qXzWa.shu"
+                },
+                {
+                  "id": "but1tpd",
+                  "title": "BUT 1 TPD",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvd2Y9.shu"
+                }
+              ]
             }
           ]
         },
@@ -232,14 +480,20 @@
           "title": "BUT2 FA",
           "children": [
             {
-              "id": "tpa",
-              "title": "BUT2 FA TPA",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8189&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tpb",
-              "title": "BUT2 FA TPB",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4015&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "but2fatd",
+              "title": "BUT2 FA TD",
+              "children": [
+                {
+                  "id": "but2fatpa",
+                  "title": "BUT2 FA TPA",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQk83B.shu"
+                },
+                {
+                  "id": "but2fatpb",
+                  "title": "BUT2 FA TPB",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAamWb.shu"
+                }
+              ]
             }
           ]
         },
@@ -248,127 +502,108 @@
           "title": "BUT2 FI",
           "children": [
             {
-              "id": "tpa",
-              "title": "BUT2 FI TPA",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8249&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
+              "id": "but2fitd1",
+              "title": "BUT2 FI TD1",
+              "children": [
+                {
+                  "id": "but2fitpa",
+                  "title": "BUT2 FI TPA",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wVR3P.shu"
+                },
+                {
+                  "id": "but2fitpb",
+                  "title": "BUT2 FI TPB",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGdGWA.shu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "but3fa",
+          "title": "BUT3 FA",
+          "children": [
             {
-              "id": "tpb",
-              "title": "BUT2 FI TPB",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=1755&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "but3fatd",
+              "title": "BUT3 FA TD",
+              "children": [
+                {
+                  "id": "but3fatpa",
+                  "title": "BUT3 FA TPA",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8D9kn8.shu"
+                },
+                {
+                  "id": "but3fatpb",
+                  "title": "BUT3 FA TPB",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnROEGW8.shu"
+                },
+                {
+                  "id": "but3fatpc",
+                  "title": "BUT3 FA TPC",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPva0Wv.shu"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "but3fi",
+          "title": "BUT3 FI",
+          "children": [
+            {
+              "id": "but3fitd",
+              "title": "BUT3 FI TD",
+              "children": [
+                {
+                  "id": "but3fitpa",
+                  "title": "BUT3 FI TPA",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPJw3A.shu"
+                },
+                {
+                  "id": "but3fitpb",
+                  "title": "BUT3 FI TPB",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNAqj3v.shu"
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
-      "id": "lp",
+      "id": "licencespro",
       "title": "Licences Pro",
       "children": [
         {
-          "id": "asur",
-          "title": "ASUR",
-          "children": [
-            {
-              "id": "asur_fa_cp",
-              "title": "ASUR FA/CP",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2635&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "asur_fi_fc",
-              "title": "ASUR FI/FC",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2636&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "cart",
-          "title": "CART",
-          "children": [
-            {
-              "id": "lpcart_g1",
-              "title": "LPCART G1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11892&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "lpcart_g2",
-              "title": "LPCART G2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=12407&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "cpclg",
-          "title": "CPCLG",
-          "children": [
-            {
-              "id": "cpclg_fa",
-              "title": "CPCLG FA",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8225&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "cpclg_fi",
-              "title": "CPCLG FI",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8224&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "ecommerce",
+          "id": "e-commerce",
           "title": "E-COMMERCE",
           "children": [
             {
-              "id": "ecomm_gr_a",
-              "title": "ECOMM GR A",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=5723&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "ecommidd",
+              "title": "EComm IDD",
+              "children": [
+                {
+                  "id": "ecommidd",
+                  "title": "ECOMM IDD",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1wGWA.shu"
+                }
+              ]
             },
             {
-              "id": "ecomm_gr_b",
-              "title": "ECOMM GR B",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=10029&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "mgri",
-          "title": "MGRI",
-          "children": [
-            {
-              "id": "gimlpg1",
-              "title": "GIMLPG1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8182&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "gimlpg2",
-              "title": "GIMLPG2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8179&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "ogehr",
-          "title": "OGEHR",
-          "children": [
-            {
-              "id": "ogehrlp",
-              "title": "OGEHR",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=9216&projectId=2&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            }
-          ]
-        },
-        {
-          "id": "rims",
-          "title": "RIMS",
-          "children": [
-            {
-              "id": "lprims_g1",
-              "title": "LPRIMS G1",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8194&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "lprims_g2",
-              "title": "LPRIMS G2",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8246&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "ecommiut",
+              "title": "EComm IUT",
+              "children": [
+                {
+                  "id": "ecommiutgra",
+                  "title": "ECOMM IUT GR A",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348wR3k.shu"
+                },
+                {
+                  "id": "ecommiutgrb",
+                  "title": "ECOMM IUT GR B",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBraWr.shu"
+                }
+              ]
             }
           ]
         }
@@ -379,117 +614,242 @@
       "title": "R&T",
       "children": [
         {
-          "id": "fa1a",
-          "title": "FA1A",
+          "id": "rtfa1a",
+          "title": "R&T FA1A",
           "children": [
             {
-              "id": "fa1g11",
-              "title": "FA1G11",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8226&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fa1g1",
+              "title": "FA1G1",
+              "children": [
+                {
+                  "id": "fa1g11",
+                  "title": "FA1G11",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/kYk1lGWA.shu"
+                },
+                {
+                  "id": "fa1g12",
+                  "title": "FA1G12",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KW7yMQYM.shu"
+                }
+              ]
             },
             {
-              "id": "fa1g12",
-              "title": "FA1G12",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8216&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fa1g21",
-              "title": "FA1G21",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20933&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fa1g22",
-              "title": "FA1G22",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=20932&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fa1g2",
+              "title": "FA1G2",
+              "children": [
+                {
+                  "id": "fa1g21",
+                  "title": "FA1G21",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/V3LPV93A.shu"
+                },
+                {
+                  "id": "fa1g22",
+                  "title": "FA1G22",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/KYNARN3v.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "fa2a",
-          "title": "FA2A",
+          "id": "rtfa2a",
+          "title": "R&T FA2A",
           "children": [
             {
-              "id": "fa2g11",
-              "title": "FA2G11",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8202&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fa2g1",
+              "title": "FA2G1",
+              "children": [
+                {
+                  "id": "fa2g11",
+                  "title": "FA2G11",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/v3VAKmWb.shu"
+                },
+                {
+                  "id": "fa2g12",
+                  "title": "FA2G12",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3pGeGWA.shu"
+                }
+              ]
             },
             {
-              "id": "fa2g12",
-              "title": "FA2G12",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8201&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fa2g21",
-              "title": "FA2G21",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8165&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fa2g22",
-              "title": "FA2G22",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8187&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fa2g2",
+              "title": "FA2G2",
+              "children": [
+                {
+                  "id": "fa2g21",
+                  "title": "FA2G21",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/Xnm6qPWr.shu"
+                },
+                {
+                  "id": "fa2g22",
+                  "title": "FA2G22",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/LW1qmzWa.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "fi1a",
-          "title": "FI1A",
+          "id": "rtfi1a",
+          "title": "R&T FI1A",
           "children": [
             {
-              "id": "fi1g11",
-              "title": "FI1G11",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8248&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fi1g1",
+              "title": "FI1G1",
+              "children": [
+                {
+                  "id": "fi1g11",
+                  "title": "FI1G11",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PKYgJP3J.shu"
+                },
+                {
+                  "id": "fi1g12",
+                  "title": "FI1G12",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/MYzg14nZ.shu"
+                }
+              ]
             },
             {
-              "id": "fi1g12",
-              "title": "FI1G12",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8247&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fi1g2",
+              "title": "FI1G2",
+              "children": [
+                {
+                  "id": "fi1g21",
+                  "title": "FI1G21",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/PnRORGW8.shu"
+                },
+                {
+                  "id": "fi1g22",
+                  "title": "FI1G22",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/M3MQx83B.shu"
+                }
+              ]
             },
             {
-              "id": "fi1g21",
-              "title": "FI1G21",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8211&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fi1g22",
-              "title": "FI1G22",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8210&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fi1g3",
+              "title": "FI1G3",
+              "children": [
+                {
+                  "id": "fi1g31",
+                  "title": "FI1G31",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/AWv4woYP.shu"
+                },
+                {
+                  "id": "fi1g32",
+                  "title": "FI1G32",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/bWKQmvYa.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "fi2a",
-          "title": "FI2A",
+          "id": "rtfi2a",
+          "title": "R&T FI2A",
           "children": [
             {
-              "id": "fi2g11",
-              "title": "FI2G11",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8207&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fi2g1",
+              "title": "FI2G1",
+              "children": [
+                {
+                  "id": "fi2g11",
+                  "title": "FI2G11",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/wWxvL2Y9.shu"
+                },
+                {
+                  "id": "fi2g12",
+                  "title": "FI2G12",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/9n9wrR3P.shu"
+                }
+              ]
             },
             {
-              "id": "fi2g12",
-              "title": "FI2G12",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8205&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fi2g21",
-              "title": "FI2G21",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11843&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "fi2g22",
-              "title": "FI2G22",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=11844&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "fi2g2",
+              "title": "FI2G2",
+              "children": [
+                {
+                  "id": "fi2g21",
+                  "title": "FI2G21",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/6YPvV0Wv.shu"
+                },
+                {
+                  "id": "fi2g22",
+                  "title": "FI2G22",
+                  "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/pn8Ddkn8.shu"
+                }
+              ]
             }
           ]
         },
         {
-          "id": "tssr",
-          "title": "TSSR",
+          "id": "rtfifa3a",
+          "title": "R&T FIFA 3A",
           "children": [
             {
-              "id": "tssr2122",
-              "title": "TSSR 21-22",
-              "url": "https://planning.univ-rennes1.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=22598&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+              "id": "cybersecurite",
+              "title": "Cybersécurité",
+              "children": [
+                {
+                  "id": "cyber3a",
+                  "title": "Cyber 3A",
+                  "children": [
+                    {
+                      "id": "cyber3ag1",
+                      "title": "Cyber 3A G1",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/o35w9VnR.shu"
+                    },
+                    {
+                      "id": "cyber3ag2",
+                      "title": "Cyber 3A G2",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/1348pR3k.shu"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "devcloud",
+              "title": "DevCloud",
+              "children": [
+                {
+                  "id": "devcloud3a",
+                  "title": "Devcloud 3A",
+                  "children": [
+                    {
+                      "id": "devcloud3ag1",
+                      "title": "Devcloud 3A G1",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/E3eX0kW5.shu"
+                    },
+                    {
+                      "id": "devcloud3ag2",
+                      "title": "Devcloud 3A G2",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/L3Z9OGWJ.shu"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "pilotagedeprojet",
+              "title": "Pilotage de Projet",
+              "children": [
+                {
+                  "id": "pilpro3a",
+                  "title": "Pilpro 3A",
+                  "children": [
+                    {
+                      "id": "pilpro3ag1",
+                      "title": "Pilpro 3A G1",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/ynApb1Yw.shu"
+                    },
+                    {
+                      "id": "pilpro3ag2",
+                      "title": "Pilpro 3A G2",
+                      "url": "https://planning.univ-rennes.fr/jsp/custom/modules/plannings/OnEBNaWr.shu"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

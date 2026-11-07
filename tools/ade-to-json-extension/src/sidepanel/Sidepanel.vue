@@ -5,15 +5,24 @@ import { onMessage, sendMessage } from 'webext-bridge/popup'
 interface TreeNode {
   id: string
   title: string
-  edts?: TreeNode[]
+  children?: TreeNode[]
   url?: string
 }
 
+interface Planning {
+  title: string
+  group?: string
+  children: TreeNode[]
+}
+
 const parentLabel = ref('IUT - Vannes')
+// What the planning file will carry. The ADE label is rarely the name students know.
+const planningTitle = ref('')
+const planningGroup = ref('')
 const availableLabels = ref<string[]>([])
 const isExpanding = ref(false)
 const status = ref('')
-const lastResult = ref<TreeNode[] | null>(null)
+const lastResult = ref<Planning | null>(null)
 const showDropdown = ref(false)
 
 const activeIndex = ref(-1)
@@ -208,7 +217,7 @@ async function expandTree() {
       throw new Error('Could not prepare the page to run the extension.')
     }
 
-    const result = await sendMessage('expandTree', { parentLabel: parentLabel.value }, `content-script@${tabId}`) as unknown as { success: boolean, data?: TreeNode[], error?: string }
+    const result = await sendMessage('expandTree', { parentLabel: parentLabel.value, title: planningTitle.value, group: planningGroup.value }, `content-script@${tabId}`) as unknown as { success: boolean, data?: Planning, error?: string }
 
     if (result.success) {
       lastResult.value = result.data ?? null
@@ -236,7 +245,7 @@ async function copyLastResult() {
   }
 
   try {
-    const jsonString = JSON.stringify(lastResult.value, null, 2)
+    const jsonString = `${JSON.stringify(lastResult.value, null, 2)}\n`
     const result = await sendMessage('copy-to-clipboard', { text: jsonString }, 'background') as unknown as { success: boolean, error?: string }
 
     if (result.success) {
@@ -254,6 +263,8 @@ async function copyLastResult() {
 
 function selectLabel(label: string) {
   parentLabel.value = label
+  if (!planningTitle.value)
+    planningTitle.value = label
   showDropdown.value = false
   activeIndex.value = -1
 }
@@ -338,6 +349,33 @@ onMounted(() => {
         </button>
       </div>
 
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <label for="planningTitle" class="block text-sm font-medium text-gray-700 mb-2">
+            Planning title
+          </label>
+          <input
+            id="planningTitle"
+            v-model="planningTitle"
+            type="text"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            :placeholder="parentLabel || 'e.g. IUT de Vannes'"
+          >
+        </div>
+        <div>
+          <label for="planningGroup" class="block text-sm font-medium text-gray-700 mb-2">
+            City (optional)
+          </label>
+          <input
+            id="planningGroup"
+            v-model="planningGroup"
+            type="text"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="e.g. Vannes"
+          >
+        </div>
+      </div>
+
       <div class="flex space-x-2">
         <button
           :disabled="isExpanding || !parentLabel.trim()"
@@ -389,8 +427,8 @@ onMounted(() => {
       </div>
 
       <div v-if="lastResult" class="text-xs text-gray-500 bg-gray-50 p-2 rounded">
-        <strong>Last generated:</strong> {{ lastResult.length }} root item(s) with
-        {{ lastResult.reduce((acc, item) => acc + (item.edts?.length || 0), 0) }} child items
+        <strong>Last generated:</strong> "{{ lastResult.title }}"{{ lastResult.group ? ` (${lastResult.group})` : '' }}
+        with {{ lastResult.children.length }} top-level item(s)
       </div>
 
       <div class="text-xs text-gray-500 text-center pt-2 border-t border-gray-200">

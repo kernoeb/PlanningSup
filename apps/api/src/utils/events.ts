@@ -1,5 +1,7 @@
+import type { EventFilterRules } from '@api/utils/event-filters'
 import { db } from '@api/db'
 import { planningsBackupTable, planningsRefreshStateTable } from '@api/db/schemas/plannings'
+import { createEventMatcher } from '@api/utils/event-filters'
 import { fetchWithTimeout } from '@api/utils/http'
 
 import dayjs from 'dayjs'
@@ -15,12 +17,12 @@ dayjs.extend(timezone)
 const LOWERCASE_CHAR_RE = /.*[a-z].*/
 const BROKEN_APOSTROPHE_RE = /([A-Z])\?([A-Z])/gi
 const CM_WORD_RE = /\bCM\b/
-const TP_WORD_RE = /\bTP\d*\b/
+const TP_WORD_RE = /(?:\b|(?<=[\d_]))TP\d*\b/
 const SUBGROUP_RE = /\sG\d\.\d$/
-const TD_WORD_RE = /\bTD\b/
+const TD_WORD_RE = /(?:\b|(?<=[\d_]))TD\d*\b/
 const GROUP_RE = /\sG\d$/
 const MODULE_CODE_RE = /^S\d\.\d\d/
-const CONTROLE_RE = /contr[ôo]le/i
+const CONTROLE_RE = /\bcontr[ôo]les?\b/i
 const SALLE_JOKER_DISTANCE_RE = /(?:\.\.\. MOODLE,)?\.\.a Séance à distance asynchrone-/
 const ROOM_PREFIX_RE = /^V-/
 const GRP_RE = /Grp \d/g
@@ -39,6 +41,35 @@ const dateEndTemplate = '{date-end}'
 const includesTemplate = (v: string) => v && (v.includes(dateStartTemplate) || v.includes(dateEndTemplate))
 
 const randomString = () => crypto.randomUUID()
+
+// All sources are French timetables, so a floating time with no timezone hint is Paris time.
+const FLOATING_TIME_FALLBACK_TZ = 'Europe/Paris'
+
+/**
+ * ical.js reads floating times (no Z, no known TZID) in the server timezone, which is UTC in Docker.
+ * Read them in their TZID, else the calendar timezone (X-WR-TIMEZONE or its only VTIMEZONE).
+ */
+function toInstant(time: icalJs.Time, calendarTz: string) {
+  if (time.isDate || time.zone !== icalJs.Timezone.localTimezone) return time.toJSDate()
+
+  const pad = (n: number) => String(n).padStart(2, '0')
+  const local = `${time.year}-${pad(time.month)}-${pad(time.day)}T${pad(time.hour)}:${pad(time.minute)}:${pad(time.second)}`
+  try {
+    // `timezone` holds the TZID when no VTIMEZONE defines it; ical.js does not type it.
+    const tzid = (time as icalJs.Time & { timezone?: string }).timezone
+    return dayjs.tz(local, tzid || calendarTz).toDate()
+  } catch {
+    return dayjs.tz(local, FLOATING_TIME_FALLBACK_TZ).toDate()
+  }
+}
+
+function getCalendarTimezone(comp: icalJs.Component) {
+  const declared = comp.getFirstPropertyValue('x-wr-timezone')
+  if (typeof declared === 'string' && declared.trim()) return declared.trim()
+  const vtimezones = comp.getAllSubcomponents('vtimezone')
+  const tzid = vtimezones.length === 1 ? vtimezones[0]!.getFirstPropertyValue('tzid') : null
+  return typeof tzid === 'string' && tzid ? tzid : FLOATING_TIME_FALLBACK_TZ
+}
 
 export interface CalEvent {
   uid: string
@@ -196,6 +227,7 @@ export async function fetchEventsDetailed(url: string, range?: RangeOptions): Pr
     const comp = new icalJs.Component(icalJs.parse(data))
 
     const vEvents = comp.getAllSubcomponents('vevent')
+    const calendarTz = getCalendarTimezone(comp)
 
     const allEvents: CalEvent[] = []
 
@@ -204,8 +236,8 @@ export async function fetchEventsDetailed(url: string, range?: RangeOptions): Pr
       allEvents.push({
         uid: tmpEvent.uid || randomString(),
         summary: tmpEvent.summary || '',
-        startDate: tmpEvent.startDate.toJSDate(),
-        endDate: tmpEvent.endDate.toJSDate(),
+        startDate: toInstant(tmpEvent.startDate, calendarTz),
+        endDate: toInstant(tmpEvent.endDate, calendarTz),
         location: tmpEvent.location || '',
         description: tmpEvent.description || '',
       })
@@ -337,7 +369,7 @@ function isRemoteLocation(location: string) {
 
 export function getFormattedEvents(id: string, eventsList: CalEvent[], options: {
   localeUtils: { target: string, browser: string } | null
-  blocklist: string[]
+  filters: EventFilterRules
   highlightTeacher: boolean
   range?: RangeOptions
 }) {
@@ -348,23 +380,27 @@ export function getFormattedEvents(id: string, eventsList: CalEvent[], options: 
 
   const fromDate = options.range?.from ? dayjs(options.range.from).startOf('day') : null
   const toDate = options.range?.to ? dayjs(options.range.to).endOf('day') : null
+  const isHidden = createEventMatcher(options.filters)
 
   for (const event of eventsList) {
     if (fromDate && dayjs(event.endDate).isBefore(fromDate)) continue
     if (toDate && dayjs(event.startDate).isAfter(toDate)) continue
 
-    if (!options.blocklist.some(str => event.summary.toLowerCase().includes(str))) {
-      events.push({
-        uid: event.uid,
-        summary: cleanName(event.summary),
-        startDate: getDate(event.startDate, options.localeUtils),
-        endDate: getDate(event.endDate, options.localeUtils),
-        categoryId: getCategoryId(id, event, { highlightTeacher: options.highlightTeacher }),
-        location: cleanLocation(event.location),
-        description: cleanDescription(event.description),
-        remoteLocation: isRemoteLocation(event.location),
-      })
-    }
+    const title = cleanName(event.summary)
+    const location = cleanLocation(event.location)
+    const description = cleanDescription(event.description)
+    if (isHidden({ ...event, title, location, description, rawLocation: event.location, rawDescription: event.description })) continue
+
+    events.push({
+      uid: event.uid,
+      summary: title,
+      startDate: getDate(event.startDate, options.localeUtils),
+      endDate: getDate(event.endDate, options.localeUtils),
+      categoryId: getCategoryId(id, event, { highlightTeacher: options.highlightTeacher }),
+      location,
+      description,
+      remoteLocation: isRemoteLocation(event.location),
+    })
   }
 
   return events

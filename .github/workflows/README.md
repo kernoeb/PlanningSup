@@ -20,6 +20,15 @@ This directory contains GitHub Actions workflows for automating builds and deplo
   - Manual workflow dispatch
 - **Outputs**: GitHub artifacts containing built extensions
 
+### 3. ADE Tool Build (`ade-tool-build.yml`)
+
+- **Purpose**: Builds the ADE to json tool, the browser extension that turns an ADE 6 tree into a `resources/plannings/*.json` file
+- **Triggers**:
+  - Push to `main` or `develop` branches (when `tools/ade-to-json-extension/**` changes)
+  - Pull requests to `main` or `develop` branches (same paths)
+  - Manual workflow dispatch
+- **Outputs**: GitHub artifacts holding a zip to load unpacked, and an unsigned `.xpi`
+
 ## Docker Build and Test Workflow
 
 ### Integration Testing
@@ -224,3 +233,36 @@ When modifying workflows:
 4. Update this documentation if needed
 
 For extension-specific changes, see `apps/extension/README.md`.
+
+## ADE Tool Build Workflow
+
+### What it does
+
+Type checks, lints, builds and packages `tools/ade-to-json-extension`. The tool is not a
+workspace of the root `package.json`: it carries its own `bun.lock`, so the job installs
+and runs everything inside its directory.
+
+Node is set up next to Bun because the build scripts chain through npm-run-all, which
+shells out to `npm run`.
+
+### Artifacts Created
+
+- `ade-tool-zip-{run-number}` - holds `extension.zip`, to load unpacked
+- `ade-tool-firefox-{run-number}` - holds `extension.xpi`
+
+No `.crx` is built. Packing one needs a signing key, and the key is not in the repo, so
+`crx` would mint a throwaway one and the extension id would change on every run.
+
+### Installing a build
+
+The zip is not draggable into Chrome: only a signed `.crx` is, and there is none.
+
+1. Download `ade-tool-zip-{run-number}` and unzip it twice, once for the artifact and
+   once for `extension.zip` itself, which leaves a folder holding `manifest.json`
+2. Go to `chrome://extensions`, turn on Developer mode
+3. **Load unpacked**, and pick that folder
+
+For Firefox, `extension.xpi` is unsigned, so it only loads from `about:debugging` ->
+This Firefox -> Load Temporary Add-on, and it goes away when Firefox closes.
+
+See `tools/ade-to-json-extension/README.md` for how to use the tool once it is loaded.
