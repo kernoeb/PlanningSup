@@ -8,7 +8,6 @@ WORKDIR /app
 COPY /scripts/run.ts ./scripts/run.ts
 
 # Cache packages
-COPY patches patches
 COPY package.json package.json
 COPY bun.lock bun.lock
 

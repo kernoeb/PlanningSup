@@ -53,7 +53,13 @@ workspace layout, and the release flow.
   the Docker build image (`--build-arg BUN_VERSION`) and CI (`oven-sh/setup-bun`
   reads the file). Bump it to match `bun --version`.
 - `*` in `bun outdated` means an even-newer release is withheld by min-release-age.
-  Take the **recommended** (non-`*`-blocked) version, not the bleeding edge.
+  The version printed in the **Latest** column (with or without `*`) is the newest
+  one old enough to install — take that one, not the true npm `latest`.
+- **`patches/` + `patchedDependencies`.** If `bun install` warns
+  `patches/<pkg>.patch no longer applies`, diff the new upstream file first — the
+  fix may have landed upstream (it did for `@volar/typescript` 2.4.30). If you drop
+  the last patch, also remove the `COPY patches patches` line from the `Dockerfile`,
+  or `docker:build` fails with `"/patches": not found`.
 
 ## 1. Survey
 
@@ -80,6 +86,19 @@ Known findings from past runs (re-verify, but expect these):
   `drizzle-kit generate` → "No schema changes".
 - **@antfu/eslint-config** major (8→9+): `perfectionist()` no longer defaults its
   options arg → must call `perfectionist({})` in `apps/api/eslint.config.js`.
+- **@antfu/eslint-config 10**: its only breaking change is a new style rule,
+  `antfu/reasonable-newline` (splits ternaries, spreads and arrays; ~340 hits in
+  55 files). We keep it **off** in all 5 configs (`apps/{api,web,app,extension}`,
+  `packages/libs`). If a future major adds another style rule, count hits per rule
+  (`eslint . -f json`) before running `lint-fix`, and turn it off rather than ship
+  a mass reformat inside a dependency PR. Note `lint-fix` also reformats the
+  generated `apps/api/src/db/schemas/auth.ts`.
+- **Majors to hold back until their ecosystem catches up** (re-check each run):
+  - `typescript` 7 (Go compiler): blocked while `npm view typescript-eslint
+    peerDependencies` says `typescript <6.1.0` (and vue-tsc needs the JS API).
+    Stay on the latest 6.0.x.
+  - `@simplewebauthn/server` 14: blocked while `npm view @better-auth/passkey@<ver>
+    dependencies` still asks for `^13` — bumping makes 2 copies (see TS2883 below).
 - **concurrently / lint-staged** majors: ESM-only, raised Node (≥22) + Git (≥2.32)
   mins — satisfied by `engines.node>=24`. Inline JSON config unaffected.
 - **temporal-polyfill — DO NOT bump past 0.3.x.** `@schedule-x/calendar` pins
@@ -152,6 +171,19 @@ A harmless `inlineDynamicImports … deprecated` warning comes from inside
 docker info >/dev/null 2>&1 || orbctl start   # OrbStack on this Mac
 bun run docker:build                          # runs frozen-install→lint→typecheck→build→test:unit in-container
 ```
+Run it in the background with `...; echo "docker exit $?"` and read the log: the
+task's own "exit code 0" is the wrapper's, not Docker's. Look for `ERROR` and the
+in-container `N pass / 0 fail` line.
+
+### Compiled server smoke
+The API ships as a `bun build --compile` binary, and Bun bundler bugs have broken
+only that binary before. Run it **from `apps/api`** (migrations are found relative
+to the working folder) and hit a few routes:
+```bash
+cd apps/api && (set -a; source .env; set +a; RUN_JOBS=false PORT=20077 ./server &)
+curl -s localhost:20077/api/ping; curl -s -o /dev/null -w '%{http_code}\n' localhost:20077/api/auth/ok
+pkill -x server; cd -
+```
 
 ## 5. Rust / Tauri (apps/app/src-tauri) — outside the JS fan-out
 
@@ -194,12 +226,16 @@ this Mac — `sed -i`, never `sed -i ''`). Then `bun run validate:workflows`.
 
 ## 7. Branch, commit, PR
 
-Branch first (never commit dep bumps straight to `main`):
+Branch first (never commit dep bumps straight to `main`). Old runs left
+`chore/dependency-updates` behind (squash-merged), so use a dated name:
 ```bash
-git checkout -b chore/dependency-updates
+git checkout -b chore/dependency-updates-$(date +%Y-%m)
 ```
-Commit in logical chunks (JS/bun/Docker; then Rust + CI actions) with plain,
-descriptive messages — no attribution/co-author trailers, no tool footers.
+Commit in logical chunks (JS/bun/Docker; then Rust + CI actions; any unrelated fix
+found on the way as its own commit) with plain, descriptive messages — no
+attribution/co-author trailers, no tool footers. A `git rm` stays staged and gets
+swept into the **next** commit, whatever paths you `git add` — check
+`git diff --cached --stat` before each commit.
 The `simple-git-hooks` pre-commit runs `lint-staged` (lint-fix + lint + typecheck
 on staged files) — let it run; it's a live check that the bumped toolchain works.
 
@@ -218,13 +254,21 @@ tests or the docker build — the temporal-polyfill×Schedule X event-rendering 
 trigger, and it does NOT reproduce in Playwright's Chromium (whose native Temporal
 is complete), so `test/e2e/events-render.spec.ts` — the "events actually render"
 guard — cannot catch this particular bug in CI (the unit test in step 2 is its real
-backstop). So after the branch is deployed (ask the user to deploy it to
-`dev.planningsup.app` if they haven't — confirm via the commit SHA in the logo
-hover tooltip), drive it with the chrome-devtools MCP:
+backstop).
 
-1. Load the site, confirm the deployed SHA matches the branch HEAD, and check the
-   console for errors (ignore the `ERR_BLOCKED_BY_CLIENT` — that's Plausible being
-   ad-blocked; a `[Schedule-X error] ...` is NOT ignorable).
+**Do not stop at "please deploy".** Run the branch locally and drive the user's
+browser (Brave, Chrome engine, native Temporal) with the chrome-devtools MCP —
+this needs no deploy and is part of the run, not a handoff:
+```bash
+cd apps/api && bun run src/index.ts            # run_in_background, port 20000
+cd apps/web && bunx --bun vite --port 4444 --host   # run_in_background; NOT `bun run dev` (it has --open)
+```
+Then `new_page` with `background: true` on `http://localhost:4444` and confirm
+`typeof Temporal !== 'undefined'` in the page. A deploy to `dev.planningsup.app`
+(confirm via the commit SHA in the logo hover tooltip) is an optional extra check.
+
+1. Check the console for errors (ignore the `ERR_BLOCKED_BY_CLIENT` — that's
+   Plausible being ad-blocked; a `[Schedule-X error] ...` is NOT ignorable).
 2. **Verify events actually render.** Off-season (summer) most plannings are empty,
    so find a formation WITH events: probe the API — flatten `/api/plannings`, then
    `GET /api/plannings/<fullId>?events=true` looking for `nbEvents > 0` (the backend
@@ -233,8 +277,17 @@ hover tooltip), drive it with the chrome-devtools MCP:
    reload, navigate the date picker to a week in the event range, and confirm event
    blocks appear in the grid — cross-check against production if unsure.
 3. Exercise view switching (day/week/month/agenda), the date picker, the "Changer
-   de planning" modal, buttons, and tooltips.
-4. Restore any `localStorage` you changed (on both dev and prod).
+   de planning" modal, buttons, and tooltips. Script it with `evaluate_script` to
+   save tokens: the view selector and date picker are `<summary>` elements (text
+   `Jour`/`Semaine`/`Mois`/`Agenda`, and `dd/mm/yyyy`), the menu items are
+   `<button>`s with the same text. Count `.sx__time-grid-event` (day/week),
+   `.sx__month-grid-event` (month) and `.sx__month-agenda-day__event-icon`
+   (agenda dots) after each switch — each must be > 0 in a week with courses.
+4. Anything odd? Repeat the same steps on `https://planningsup.app` before calling
+   it a regression. Known **existing** bug (not a regression): after clicking a day
+   in the agenda view and switching back to week, the grid shows that day's week
+   but the header keeps the old date and week number.
+5. Restore any `localStorage` you changed (on localhost, dev and prod).
 
 Then produce a concise **visual QA checklist** for the user covering every
 UI-affecting bump — `daisyui`, `@schedule-x/*`, `@lucide/vue`, `tailwindcss`,
@@ -251,6 +304,12 @@ app for what's actually used and only list what applies. Reference from the last
   indicator dots, view-change animations, and recurring-event expansion.
 - **@lucide/vue** — check whether any *redesigned* glyphs are used (last run: none
   of martini/carrot/ungroup/text-cursor/landmark were), else it's just new icons.
+  List what the app imports with
+  `grep -rhoE "import \{[^}]*\} from '@lucide/vue'" apps/*/src`, and scan each
+  release for `fix(icons)` lines (1.60–1.68 touched none of ours).
+- **tailwindcss** patches — mostly `@scope`/`var()` fixes. Our blur and
+  drop-shadow effects are plain CSS in `<style>` blocks, not utilities, so they
+  are unaffected unless that changes.
 
 Hand the checklist to the user as the final message (grouped by module, with the
 specific screens/components to click through). This is the deliverable, not an

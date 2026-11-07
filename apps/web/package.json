@@ -15,8 +15,8 @@
     "typecheck": "bunx vue-tsc --build --force"
   },
   "dependencies": {
-    "@lucide/vue": "1.59.0",
-    "@plausible-analytics/tracker": "^0.4.6",
+    "@lucide/vue": "1.68.0",
+    "@plausible-analytics/tracker": "^0.4.7",
     "@schedule-x/calendar": "4.9.1",
     "@schedule-x/calendar-controls": "4.9.1",
     "@schedule-x/theme-default": "4.9.1",
@@ -37,7 +37,7 @@
     "@schedule-x/events-service": "4.9.1",
     "@tailwindcss/vite": "catalog:ui",
     "@tauri-apps/api": "2.12.4",
-    "@tauri-apps/plugin-deep-link": "~2.6.2",
+    "@tauri-apps/plugin-deep-link": "~2.6.3",
     "@tauri-apps/plugin-http": "2.8.3",
     "@tauri-apps/plugin-opener": "2.7.2",
     "@types/webextension-polyfill": "0.12.6",
@@ -50,7 +50,7 @@
     "daisyui": "catalog:ui",
     "elysia": "catalog:",
     "playwright": "1.64.1",
-    "rollup-plugin-bundle-stats": "4.22.3",
+    "rollup-plugin-bundle-stats": "4.23.1",
     "sass-embedded": "catalog:ui",
     "tailwindcss": "catalog:ui",
     "typescript": "catalog:dev",

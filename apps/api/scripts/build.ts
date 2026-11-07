@@ -9,7 +9,8 @@ await Bun.build({
   target: 'bun',
   compile: {
     outfile: 'server',
-    target: Bun.env.BUN_COMPILE_TARGET as Bun.Build.CompileTarget | undefined, // set by the Dockerfile to cross-compile
+    // Set by the Dockerfile to cross-compile. Bun rejects an explicit undefined target.
+    ...(Bun.env.BUN_COMPILE_TARGET && { target: Bun.env.BUN_COMPILE_TARGET as Bun.Build.CompileTarget }),
   },
   external: ['@valibot/to-json-schema', 'sury', 'effect'], // Modules to exclude from the bundle
 })
