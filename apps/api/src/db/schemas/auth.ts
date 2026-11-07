@@ -22,6 +22,7 @@ export const user = pgTable('user', {
   highlightTeacher: boolean('highlight_teacher'),
   showWeekends: boolean('show_weekends'),
   mergeDuplicates: boolean('merge_duplicates'),
+  splitPlannings: boolean('split_plannings'),
   blocklist: text('blocklist').array(),
   plannings: text('plannings').array(),
   customGroups: text('custom_groups'),

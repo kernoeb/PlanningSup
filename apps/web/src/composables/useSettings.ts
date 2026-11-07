@@ -131,6 +131,7 @@ function parseAndNormalizeCustomGroups(raw: unknown): NormalizedCustomGroup[] | 
  *   - targetTimezone: string | null
  *   - showWeekends: boolean
  *   - mergeDuplicates: boolean
+ *   - splitPlannings: boolean
  *   - customGroups: CustomGroup[] (synced as a JSON string in user prefs)
  *   - eventFilters: EventFilters (teachers, rooms, time slots, hidden courses; synced as a JSON string)
  * - Exposes:
@@ -173,10 +174,13 @@ export function useSettings() {
   // 6) Merge duplicate events across plannings (client-only)
   const mergeDuplicates = useLocalStorage<boolean>('settings.mergeDuplicates', true)
 
-  // 7) Save custom planning groups
+  // 7) Give each selected planning its own column in the day (client-only)
+  const splitPlannings = useLocalStorage<boolean>('settings.splitPlannings', false)
+
+  // 8) Save custom planning groups
   const customGroups = useLocalStorage<CustomGroup[]>('settings.customGroups', [])
 
-  // 8) Course filters, applied by the API like the blocklist
+  // 9) Course filters, applied by the API like the blocklist
   const eventFilters = useLocalStorage<EventFilters>('settings.eventFilters', emptyEventFilters(), {
     mergeDefaults: true,
   })
@@ -294,6 +298,16 @@ export function useSettings() {
     debounce: 50,
   })
 
+  // splitPlannings (client-side behavior but kept in user prefs for consistency)
+  syncPref('splitPlannings', splitPlannings, {
+    toServer: v => v,
+    normalizeLocal: v => v,
+    normalizeServer: v => v,
+    fromServerToLocal: raw => (typeof raw === 'boolean' ? (raw as boolean) : null),
+    setLocal: v => (splitPlannings.value = v),
+    debounce: 50,
+  })
+
   // customGroups (client-side behavior but kept in user prefs for consistency)
   syncPref('customGroups', customGroups, {
     toServer: v => encodeCustomGroupsToString(v),
@@ -349,6 +363,7 @@ export function useSettings() {
     targetTimezone,
     showWeekends,
     mergeDuplicates,
+    splitPlannings,
     customGroups,
     eventFilters,
 
