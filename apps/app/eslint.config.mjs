@@ -12,6 +12,7 @@ export default antfu(
         registeredComponentsOnly: true,
       }],
       'no-console': 'off',
+      'antfu/reasonable-newline': 'off',
       'antfu/if-newline': 'off',
       'nonblock-statement-body-position': 'error',
       'curly': ['error', 'multi-line', 'consistent'],

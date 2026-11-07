@@ -23,28 +23,28 @@
       "elysia": "1.4.30",
       "@elysiajs/eden": "1.4.9",
       "zod": "4.6.7",
-      "@better-auth/passkey": "1.7.12",
-      "auth": "1.7.12",
-      "better-auth": "1.7.12"
+      "@better-auth/passkey": "1.7.16",
+      "auth": "1.7.16",
+      "better-auth": "1.7.16"
     },
     "catalogs": {
       "types": {
         "bun-types": "1.4.4"
       },
       "dev": {
-        "vite": "8.3.4",
+        "vite": "8.3.5",
         "@vitejs/plugin-vue": "6.0.10",
         "typescript": "6.0.3",
-        "vue-tsc": "3.3.13",
-        "@antfu/eslint-config": "9.5.1",
-        "eslint": "10.13.0"
+        "vue-tsc": "3.3.14",
+        "@antfu/eslint-config": "10.0.0",
+        "eslint": "10.14.0"
       },
       "ui": {
-        "sass-embedded": "1.105.2",
+        "sass-embedded": "1.107.1",
         "vue": "3.5.44",
         "daisyui": "5.7.50",
-        "@tailwindcss/vite": "4.3.3",
-        "tailwindcss": "4.3.3"
+        "@tailwindcss/vite": "4.3.4",
+        "tailwindcss": "4.3.4"
       }
     }
   },
@@ -100,9 +100,6 @@
     "*.{ts,tsx,vue}": [
       "bun run typecheck"
     ]
-  },
-  "patchedDependencies": {
-    "@volar/typescript@2.4.28": "patches/@volar%2Ftypescript@2.4.28.patch"
   },
   "overrides": {
     "@simplewebauthn/server": "13.3.3",
