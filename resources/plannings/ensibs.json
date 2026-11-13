@@ -694,6 +694,168 @@
           ]
         }
       ]
+    },
+    {
+      "id": "langues",
+      "title": "Langues",
+      "children": [
+        {
+          "id": "lorient",
+          "title": "Lorient",
+          "children": [
+            {
+              "id": "lv2lorient",
+              "title": "LV2 Lorient",
+              "children": [
+                {
+                  "id": "espagnol-gr1a",
+                  "title": "Espagnol - gr1a",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7111&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol-gr1b",
+                  "title": "Espagnol - gr1b",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7119&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol-gr2a",
+                  "title": "Espagnol - gr2a",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7131&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol-gr2b",
+                  "title": "Espagnol - gr2b",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7132&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "italien-gr1",
+                  "title": "Italien - gr1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7187&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "italien-gr2",
+                  "title": "Italien - gr2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7190&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "a5anglaislorient",
+              "title": "[A5] Anglais Lorient",
+              "children": [
+                {
+                  "id": "aa1",
+                  "title": "[AA1] Anglais avancé",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7262&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "aa2",
+                  "title": "[AA2] Anglais avancé",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7407&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "eh-at1",
+                  "title": "[EH-AT1] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8025&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gc-at1",
+                  "title": "[GC-AT1] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8050&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gc-at2",
+                  "title": "[GC-AT2] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8056&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "gi",
+                  "title": "[GI] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8015&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "mta",
+                  "title": "[MTA] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8016&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "mte",
+                  "title": "[MTE] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8020&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "vannes",
+          "title": "Vannes",
+          "children": [
+            {
+              "id": "lv2vannes",
+              "title": "LV2 Vannes",
+              "children": [
+                {
+                  "id": "breton-gr1",
+                  "title": "Breton - gr1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7071&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chinois-gr1a",
+                  "title": "Chinois - gr1a",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7064&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "chinois-gr1b",
+                  "title": "Chinois - gr1b",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7065&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "espagnol-gr1",
+                  "title": "Espagnol - gr1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7081&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "russe-gr1",
+                  "title": "Russe - gr1",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=6990&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "russe-gr2",
+                  "title": "Russe - gr2",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7046&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            },
+            {
+              "id": "a5anglaisvannes",
+              "title": "[A5] Anglais Vannes",
+              "children": [
+                {
+                  "id": "at1",
+                  "title": "[AT1] Anglais TOEIC",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=8000&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "cd-aa2",
+                  "title": "[CD-AA2] Anglais avancé",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7965&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "cd-aa3",
+                  "title": "[CD-AA3] Anglais avancé",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7996&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                },
+                {
+                  "id": "ic-aa1",
+                  "title": "[IC-AA1] Anglais avancé",
+                  "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=7945&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
