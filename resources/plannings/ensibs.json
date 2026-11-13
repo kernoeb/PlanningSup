@@ -168,33 +168,23 @@
           "children": [
             {
               "id": "tp1",
-              "title": "TP1",
+              "title": "TD1 - TP1",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4965&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tp2",
-              "title": "TP2",
+              "title": "TD1 - TP2",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4958&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tp3",
-              "title": "TP3",
+              "title": "TD2 - TP3",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2422&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             },
             {
               "id": "tp4",
-              "title": "TP4",
+              "title": "TD2 - TP4",
               "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=2424&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tp5",
-              "title": "TP5",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4983&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
-            },
-            {
-              "id": "tp6",
-              "title": "TP6",
-              "url": "https://planning.univ-ubs.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=4989&projectId=1&calType=ical&firstDate={date-start}&lastDate={date-end}"
             }
           ]
         }
